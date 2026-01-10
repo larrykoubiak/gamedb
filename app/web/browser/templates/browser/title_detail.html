@@ -1,0 +1,52 @@
+{% extends "browser/base.html" %}
+
+{% block content %}
+  <div class="row g-4">
+    <div class="col-12 col-lg-5">
+      <div class="card p-4 h-100">
+        <p class="muted mb-2">{{ title.system.name }}</p>
+        <h2 class="mb-3">{{ title.name }}</h2>
+        {% if title.description %}
+          <p class="mb-4">{{ title.description }}</p>
+        {% else %}
+          <p class="muted mb-4">No description available.</p>
+        {% endif %}
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge badge-soft">Releases {{ releases|length }}</span>
+          <span class="badge badge-soft">ROMs {{ total_roms }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-7">
+      <div class="card p-4 h-100">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h3 class="mb-0">Releases</h3>
+          <span class="muted">Sorted by region / date</span>
+        </div>
+        <div class="list-group list-group-flush">
+          {% for release in releases %}
+            <div class="list-group-item bg-transparent text-light border-secondary border-opacity-25">
+              <div class="d-flex flex-wrap gap-3 justify-content-between">
+                <div>
+                  <div class="fw-semibold">{{ release.region|default:"Unknown region" }}</div>
+                  <div class="muted small">
+                    {{ release.release_year|default:"-" }}{% if release.release_month %}-{{ release.release_month }}{% endif %}
+                    {% if release.serial %} · {{ release.serial }}{% endif %}
+                  </div>
+                </div>
+                <div class="text-end">
+                  <div class="fw-semibold">{{ release.rom_count }}</div>
+                  <div class="muted small">ROMs</div>
+                </div>
+              </div>
+            </div>
+          {% empty %}
+            <div class="list-group-item bg-transparent text-light border-secondary border-opacity-25">
+              No releases found.
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

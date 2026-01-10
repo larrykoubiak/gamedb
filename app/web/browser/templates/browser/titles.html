@@ -1,0 +1,55 @@
+{% extends "browser/base.html" %}
+
+{% block content %}
+  <div class="d-flex flex-wrap align-items-center justify-content-between mb-4 gap-3">
+    <div>
+      <h2 class="mb-1">{{ system.name }}</h2>
+      <p class="muted mb-0">Browse titles with search and paging.</p>
+    </div>
+    <span class="badge badge-soft px-3 py-2">{{ paginator.count }} titles</span>
+  </div>
+  <form class="input-group mb-4" method="get">
+    <input class="form-control" type="text" name="q" value="{{ query }}" placeholder="Search titles" />
+    <button class="btn btn-outline-light" type="submit">Search</button>
+    {% if query %}
+      <a class="btn btn-link muted" href="/systems/{{ system.id }}/">Clear</a>
+    {% endif %}
+  </form>
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for title in page_obj.object_list %}
+            <tr>
+              <td><a href="/titles/{{ title.id }}/">{{ title.name }}</a></td>
+            </tr>
+          {% empty %}
+            <tr><td>No titles found.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <nav class="mt-4">
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?q={{ query }}&page={{ page_obj.previous_page_number }}">Previous</a>
+        </li>
+      {% endif %}
+      <li class="page-item disabled">
+        <span class="page-link muted">Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
+      </li>
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?q={{ query }}&page={{ page_obj.next_page_number }}">Next</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endblock %}

@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+!.sops.env
+
+__pycache__/
+*.pyc
+
+data/pgdata/
+data/rdb/
+data/media/
+
+.DS_Store

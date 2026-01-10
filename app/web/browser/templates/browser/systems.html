@@ -1,0 +1,33 @@
+{% extends "browser/base.html" %}
+
+{% block content %}
+  <div class="d-flex align-items-baseline justify-content-between mb-4">
+    <div>
+      <h2 class="mb-1">Systems</h2>
+      <p class="muted mb-0">Pick a platform to browse titles.</p>
+    </div>
+    <span class="badge badge-soft px-3 py-2">{{ systems|length }} systems</span>
+  </div>
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead>
+          <tr>
+            <th>System</th>
+            <th class="text-end">Titles</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for system in systems %}
+            <tr>
+              <td><a href="/systems/{{ system.id }}/">{{ system.name }}</a></td>
+              <td class="text-end muted">{{ system.title_count }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="2">No systems found.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}
