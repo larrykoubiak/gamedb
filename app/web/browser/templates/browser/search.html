@@ -1,0 +1,44 @@
+{% extends "browser/base.html" %}
+
+{% block content %}
+  <div class="d-flex flex-wrap align-items-center justify-content-between mb-4 gap-3">
+    <div>
+      <h2 class="mb-1">Search</h2>
+      <p class="muted mb-0">Type at least 2 characters to search titles.</p>
+    </div>
+  </div>
+  <form class="input-group mb-4" method="get">
+    <input class="form-control" type="text" name="q" value="{{ query }}" placeholder="Search titles..." />
+    <button class="btn btn-outline-light" type="submit">Search</button>
+  </form>
+
+  {% if query and query|length < 2 %}
+    <p class="muted">Keep typing to search.</p>
+  {% endif %}
+
+  {% if results %}
+    <div class="card">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>System</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for title in results %}
+              <tr>
+                <td><a href="/titles/{{ title.id }}/">{{ title.name }}</a></td>
+                <td class="muted">{{ title.system.name }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="muted mt-3">Showing first {{ results|length }} matches.</p>
+  {% elif query %}
+    <p class="muted">No titles found.</p>
+  {% endif %}
+{% endblock %}

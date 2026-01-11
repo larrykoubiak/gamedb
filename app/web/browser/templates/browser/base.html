@@ -10,13 +10,18 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         color-scheme: dark;
       }
       body {
-        background: radial-gradient(circle at top, #1b1f2a, #0f1117 55%, #0b0d12);
-        color: #e6e8ef;
+        font-family: "Space Grotesk", sans-serif;
+        background: radial-gradient(circle at top, #24293a, #141822 55%, #0f121b);
+        color: #eef1f7;
       }
       .brand {
         letter-spacing: 0.08em;
@@ -25,8 +30,11 @@
         color: #9fb3ff;
       }
       .card {
-        background-color: rgba(20, 22, 30, 0.9);
+        background-color: rgba(28, 32, 44, 0.92);
         border: 1px solid rgba(80, 90, 120, 0.4);
+      }
+      h2, h3 {
+        color: #f4f6ff;
       }
       .table {
         --bs-table-bg: transparent;
@@ -64,8 +72,27 @@
         <span class="muted">RDB Browser</span>
       </div>
     </nav>
-    <main class="container pb-5">
-      {% block content %}{% endblock %}
+    <main class="container-fluid pb-5">
+      <div class="row g-4">
+        <aside class="col-12 col-lg-3 col-xxl-2">
+          <div class="card p-3 position-sticky" style="top: 16px; max-height: 80vh; overflow-y: auto;">
+            <div class="text-uppercase small muted mb-2">Systems</div>
+            <div class="list-group list-group-flush small">
+              {% for system in nav_systems %}
+                <a class="list-group-item list-group-item-action bg-transparent text-light border-secondary border-opacity-25"
+                   href="/systems/{{ system.id }}/">
+                  {{ system.name }}
+                </a>
+              {% empty %}
+                <div class="muted">No systems</div>
+              {% endfor %}
+            </div>
+          </div>
+        </aside>
+        <section class="col-12 col-lg-9 col-xxl-10">
+          {% block content %}{% endblock %}
+        </section>
+      </div>
     </main>
   </body>
 </html>
