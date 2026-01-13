@@ -45,6 +45,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.media",
                 "app.web.browser.context_processors.systems_nav",
             ],
         },
@@ -70,4 +71,6 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.getenv("MEDIA_ROOT", "/data/media")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

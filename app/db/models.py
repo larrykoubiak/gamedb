@@ -56,6 +56,7 @@ class Release(Base):
 
     title = relationship("Title", back_populates="releases")
     roms = relationship("Rom", back_populates="release")
+    media = relationship("Media", back_populates="release")
 
     __table_args__ = (
         Index("idx_releases_title_region", "title_id", "region"),
@@ -94,4 +95,19 @@ class Attribute(Base):
 
     __table_args__ = (
         Index("idx_attributes_entity", "entity_type", "entity_id", "key"),
+    )
+
+
+class Media(Base):
+    __tablename__ = "media"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    release_id = Column(Integer, ForeignKey("releases.id"), nullable=False)
+    media_type = Column(String, nullable=False)
+    path = Column(String, nullable=False)
+
+    release = relationship("Release", back_populates="media")
+
+    __table_args__ = (
+        Index("idx_media_release_type", "release_id", "media_type"),
     )

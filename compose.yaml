@@ -11,6 +11,8 @@ services:
         condition: service_healthy
     volumes:
       - ./data/rdb:/data/rdb:ro
+      - ./data/media:/data/media:ro
+      - ./data/logs:/data/logs
   web:
     build: .
     container_name: gamedb-web
@@ -25,13 +27,15 @@ services:
     ports:
       - "8000:8000"
     command: ["gunicorn", "app.web.gamedb_web.wsgi:application", "-b", "0.0.0.0:8000"]
+    volumes:
+      - ./data/media:/data/media:ro
   db:
     image: postgres:16
     container_name: gamedb-postgres
     env_file:
       - .env
     ports:
-      - "5432:5432"
+      - "9876:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 5s

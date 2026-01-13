@@ -1,4 +1,5 @@
 .env
+data/logs/
 .env.*
 !.env.example
 !.sops.env

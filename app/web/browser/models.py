@@ -62,3 +62,14 @@ class Attribute(models.Model):
     class Meta:
         managed = False
         db_table = "attributes"
+
+
+class Media(models.Model):
+    id = models.AutoField(primary_key=True)
+    release = models.ForeignKey(Release, models.DO_NOTHING, db_column="release_id")
+    media_type = models.CharField(max_length=255)
+    path = models.CharField(max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = "media"

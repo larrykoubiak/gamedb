@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import sys
 
+from app.core.media.importer import MediaImporter
 from app.core.rdb.importer import RdbImporter
 from app.db.session import SessionLocal, init_db
 
@@ -39,6 +40,34 @@ def cmd_import_rdb(args: argparse.Namespace) -> int:
         session.close()
 
 
+def cmd_import_media(args: argparse.Namespace) -> int:
+    session = SessionLocal()
+    try:
+        importer = MediaImporter(
+            session,
+            media_root=args.path,
+            dry_run=args.dry_run,
+            skipped_log_path=args.skipped_log,
+        )
+        stats = importer.import_path(args.path, limit=args.limit)
+        print(
+            "Imported media: "
+            f"files={stats.files_scanned} "
+            f"titles={stats.titles_matched} "
+            f"releases={stats.releases_matched} "
+            f"created={stats.media_created} "
+            f"skipped_existing={stats.skipped_existing} "
+            f"skipped_unknown_system={stats.skipped_unknown_system} "
+            f"skipped_unknown_title={stats.skipped_unknown_title} "
+            f"skipped_unknown_type={stats.skipped_unknown_type} "
+            f"skipped_ambiguous_release={stats.skipped_ambiguous_release} "
+            f"skipped_unmatched_release={stats.skipped_unmatched_release}"
+        )
+        return 0
+    finally:
+        session.close()
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="gamedb")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -56,6 +85,17 @@ def build_parser() -> argparse.ArgumentParser:
         help="Optional log path for skipped rows.",
     )
     import_parser.set_defaults(func=cmd_import_rdb)
+
+    media_parser = subparsers.add_parser("import-media", help="Import media thumbnails.")
+    media_parser.add_argument("path", help="Path to the media root directory.")
+    media_parser.add_argument("--limit", type=int, default=None, help="Optional file limit.")
+    media_parser.add_argument("--dry-run", action="store_true", help="Scan without writing to the database.")
+    media_parser.add_argument(
+        "--skipped-log",
+        default=None,
+        help="Optional log path for skipped media files.",
+    )
+    media_parser.set_defaults(func=cmd_import_media)
 
     return parser
 

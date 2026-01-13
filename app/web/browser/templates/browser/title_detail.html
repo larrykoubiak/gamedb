@@ -1,77 +1,84 @@
 {% extends "browser/base.html" %}
 
 {% block content %}
-  <div class="row g-4">
-    <div class="col-12 col-lg-5">
-      <div class="card p-4 h-100">
+  <div class="card p-4 mb-4">
+    <div class="row g-4 align-items-start">
+      <div class="col-12 col-lg-7">
         <p class="muted mb-2">{{ title.system.name }}</p>
         <h2 class="mb-3">{{ title.name }}</h2>
         {% if title.description %}
-          <p class="mb-4">{{ title.description }}</p>
+          <p class="mb-0">{{ title.description }}</p>
         {% else %}
-          <p class="muted mb-4">No description available.</p>
+          <p class="muted mb-0">No description available.</p>
         {% endif %}
-        <div class="d-flex flex-wrap gap-2">
+      </div>
+      <div class="col-12 col-lg-5">
+        <div class="d-flex flex-wrap gap-2 mb-3">
           <span class="badge badge-soft">Releases {{ releases|length }}</span>
         </div>
-      </div>
-    </div>
-    <div class="col-12 col-lg-7">
-      <div class="card p-4 h-100">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-          <h3 class="mb-0">Releases</h3>
-          <span class="muted">Sorted by region / date</span>
-        </div>
-        <div class="list-group list-group-flush">
-          {% for release in releases %}
-            <div class="list-group-item bg-transparent text-light border-secondary border-opacity-25">
-              <div class="d-flex flex-wrap gap-3 justify-content-between">
-                <div>
-                  <div class="fw-semibold">{{ release.region|default:"Unknown region" }}</div>
-                  <div class="muted small">
-                    {{ release.release_year|default:"-" }}{% if release.release_month %}-{{ release.release_month }}{% endif %}
-                    {% if release.serial %} · {{ release.serial }}{% endif %}
-                  </div>
-                </div>
-                <div class="text-end muted small">Release</div>
-              </div>
-              {% if release.rom_names %}
-                <div class="mt-2 small muted">ROMs</div>
-                <div class="mt-1 d-flex flex-wrap gap-2">
-                  {% for rom_name in release.rom_names %}
-                    <span class="badge badge-soft">{{ rom_name }}</span>
-                  {% endfor %}
-                </div>
-              {% endif %}
-            </div>
-          {% empty %}
-            <div class="list-group-item bg-transparent text-light border-secondary border-opacity-25">
-              No releases found.
-            </div>
-          {% endfor %}
-        </div>
+        <div class="muted text-uppercase small mb-2">Attributes</div>
+        {% if attributes %}
+          <div class="d-flex flex-wrap gap-2">
+            {% for key, values in attributes.items %}
+              {% for value in values %}
+                <span class="badge badge-soft">{{ key }}: {{ value }}</span>
+              {% endfor %}
+            {% endfor %}
+          </div>
+        {% else %}
+          <p class="muted mb-0">No attributes found.</p>
+        {% endif %}
       </div>
     </div>
   </div>
-  <div class="card p-4 mt-4">
-    <h3 class="mb-3">Attributes</h3>
-    {% if attributes %}
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
-        {% for key, values in attributes.items %}
-          <div class="col">
-            <div class="border border-secondary border-opacity-25 rounded p-3 h-100">
-              <div class="muted text-uppercase small mb-2">{{ key }}</div>
-              <div class="d-flex flex-wrap gap-2">
-                {% for value in values %}
-                  <span class="badge badge-soft">{{ value }}</span>
-                {% endfor %}
-              </div>
+
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="mb-0">Releases</h3>
+    <span class="muted">Sorted by region / date</span>
+  </div>
+  <div class="release-grid">
+    {% for release in releases %}
+      <div class="release-card">
+        <div class="d-flex justify-content-between mb-2">
+          <div>
+            <div class="fw-semibold">{{ release.region|default:"Unknown region" }}</div>
+            <div class="muted small">
+              {{ release.release_year|default:"-" }}{% if release.release_month %}-{{ release.release_month }}{% endif %}
+              {% if release.serial %} SN: {{ release.serial }}{% endif %}
             </div>
           </div>
-        {% endfor %}
+          <span class="muted small">Release</span>
+        </div>
+        {% if release.rom_names %}
+          <div class="mt-2 small muted">ROMs</div>
+          <div class="mt-1 d-flex flex-wrap gap-2">
+            {% for rom_name in release.rom_names %}
+              <span class="badge badge-soft">{{ rom_name }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <div class="mt-3">
+          {% if release.media_items %}
+            <div class="media-strip">
+              {% for media in release.media_items %}
+                <div class="media-tile">
+                  <img src="{{ MEDIA_URL }}{{ media.path }}"
+                       alt="{{ title.name }} {{ release.region|default:'Unknown region' }} {{ media.type }}"
+                       data-lightbox="true"
+                       data-caption="{{ title.name }} · {{ release.region|default:'Unknown region' }} · {{ media.type }}">
+                  <div class="media-label">{{ media.type }}</div>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="muted small">No media found.</div>
+          {% endif %}
+        </div>
       </div>
-    {% else %}
-      <p class="muted mb-0">No attributes found.</p>
-    {% endif %}
+    {% empty %}
+      <div class="card p-4">
+        No releases found.
+      </div>
+    {% endfor %}
   </div>
 {% endblock %}
