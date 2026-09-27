@@ -4,48 +4,28 @@ services:
     container_name: gamedb-app
     env_file:
       - .env
-    environment:
-      POSTGRES_HOST: db
-    depends_on:
-      db:
-        condition: service_healthy
-    volumes:
-      - ./data/rdb:/data/rdb:ro
-      - ./data/media:/data/media:ro
-      - ./data/logs:/data/logs
   web:
+    profiles: ["legacy"]
     build: .
     container_name: gamedb-web
     env_file:
       - .env
     environment:
-      POSTGRES_HOST: db
+      POSTGRES_HOST: ${PGHOST}
+      POSTGRES_PORT: ${PGPORT}
+      POSTGRES_USER: ${PGUSER}
+      POSTGRES_PASSWORD: ${PGPASSWORD}
+      POSTGRES_DB: ${PGDATABASE}
       DJANGO_DEBUG: "0"
-    depends_on:
-      db:
-        condition: service_healthy
     ports:
       - "8000:8000"
     command: ["gunicorn", "app.web.gamedb_web.wsgi:application", "-b", "0.0.0.0:8000"]
     volumes:
       - ./data/media:/data/media:ro
-  db:
-    image: postgres:16
-    container_name: gamedb-postgres
-    env_file:
-      - .env
-    ports:
-      - "9876:5432"
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-    volumes:
-      - ./data/pgdata:/var/lib/postgresql/data
   cloudflared:
+    profiles: ["legacy"]
     image: cloudflare/cloudflared:latest
     container_name: gamedb-cloudflared
-    command: ["tunnel", "--no-autoupdate", "run", "--token", "${CLOUDFLARED_TOKEN}"]
+    command: ["tunnel", "--no-autoupdate", "run", "--token", "${CLOUDFLARED_TOKEN:-}"]
     depends_on:
       - web

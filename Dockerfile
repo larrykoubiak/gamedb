@@ -10,5 +10,7 @@ COPY requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
 COPY app /app/app
+COPY gamedb /app/gamedb
+COPY sql /app/sql
 
-CMD ["python", "-m", "app.cli.main", "--help"]
+CMD ["python", "-m", "gamedb", "--help"]

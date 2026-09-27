@@ -12,3 +12,4 @@ data/rdb/
 data/media/
 
 .DS_Store
+.~lock.*#
