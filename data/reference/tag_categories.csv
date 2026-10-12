@@ -1,0 +1,22 @@
+category,description
+bios,BIOS or firmware flag
+region,Explicit release region or country
+language,Explicit languages or language count
+version,Software version
+revision,Software revision
+release_date,Source release date including unknown digits
+publisher,Source publisher field; may contain a developer or author
+release_status,Development or commercial release status
+demo,Demonstration type
+system_requirement,Source hardware or compatibility requirement
+video,Video format or display mode
+copyright_status,Source copyright or distribution status
+license,Source licensing status
+special,Source-specific special flag
+distribution_channel,Store service or channel through which the release was distributed
+media,Media type and part or side designation
+media_label,Label for a media component
+dump_modification,Source declaration of changes to a dump
+dump_status,Source declaration about dump condition or verification
+additional,Free-form source information with no further interpretation
+unknown,Tag not confidently classified

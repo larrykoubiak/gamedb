@@ -5,21 +5,28 @@ Database storage, ROMs and media under `data/` remain ignored by Git.
 
 ## Reference data
 
-[`reference/canonical_systems.csv`](reference/canonical_systems.csv) is the original
-manually maintained list, moved from `canonical.csv` without changing its contents.
-Its columns are `canonical_manufacturer_name` and `canonical_system_name`.
+[`reference/canonical_systems.csv`](reference/canonical_systems.csv) is the manually
+maintained canonical system list. The first rebuild script loads it into
+`ref.canonical_system`; generated identity values are intentionally rebuild-local.
 
-It supplied the initial canonical systems, which now live in `public.system` with
-stable IDs. Editing the CSV currently does **not** update the database: no ongoing
-reference-file loader has been implemented. System renames in the live catalogue
-must preserve `public.system.id`; recreating systems from CSV would break that
-identity contract. A future loader needs an explicit policy for additions and renames.
+[`reference/system_mappings.csv`](reference/system_mappings.csv) is the complete
+reviewed mapping from each `(romset, source manufacturer, source system)` triple
+to a canonical system. It includes exact and normalized matches, explicit aliases,
+and the reviewed NEC policies. New source triples must be added to this file.
 
-`ref` is reserved for manually maintained database reference tables. None have
-been introduced yet after moving generated records to `etl`. Reviewed alias
-decisions still live in `etl.system_mapping`; their original seeds and the NEC
-policy are recorded in migrations 001 and 002. Moving those decisions into a
-maintained reference file/table is a separate step from this schema cleanup.
+[`reference/archive_name_formats.json`](reference/archive_name_formats.json)
+declares collection grammar: metadata anchors, delimiters, record separators and
+prefix-tag shapes. [`reference/tag_vocabulary.json`](reference/tag_vocabulary.json)
+contains the maintained values used by parsing and classification. Structural
+parsing code consumes these definitions without embedding collection layouts.
+
+[`reference/tag_categories.csv`](reference/tag_categories.csv) documents the
+classification output categories. The archive-name rebuild loads it into
+`ref.tag_category`.
+
+[`reference/path_mappings.csv`](reference/path_mappings.csv) maps stable RomVault
+tree prefixes to host filesystem roots. The catalog applies the longest matching
+prefix to archive/package paths while preserving the original source path.
 
 ## Research material
 
@@ -28,9 +35,7 @@ maintained reference file/table is a separate step from this schema cleanup.
 | [`research/romvault_dat_paths.csv`](research/romvault_dat_paths.csv) | Former `romset.csv`; exported DAT paths split into components, used to explore collection layouts |
 | [`research/tosec.xlsx`](research/tosec.xlsx) | Existing TOSEC workbook, retained as research material |
 
-These files are not read by `python -m gamedb sync` and are not maintained
-reference tables. Their contents were preserved during the move. Regenerating
-an export should not overwrite the curated canonical list.
+These research files are not rebuild inputs. Their contents were preserved during
+the move; regenerating an export should not overwrite maintained reference files.
 
-Exploration SQL lives in [`sql/queries/`](../sql/README.md#queries). Database
-migrations live in [`sql/migrations/`](../sql/README.md#migrations).
+Replayable database construction lives in [`sql/rebuild/`](../sql/README.md).

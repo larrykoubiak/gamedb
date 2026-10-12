@@ -1,136 +1,81 @@
 # Database model
 
-## Schema boundaries
+GameDB is being rebuilt from the retained RomVault import. The schema boundaries
+are intentionally simple:
 
-| Schema | Ownership and contents |
+| Schema | Responsibility |
 | --- | --- |
-| `staging` | Raw external exports: `rv_files` |
-| `ref` | Reserved for manually maintained reference tables, normally loaded from static files |
-| `etl` | Imported source identities, generated mapping results, filename parses and transforms |
-| `public` | Persistent catalogue entities, starting with systems and archives |
+| `staging` | Raw external input; currently only `rv_files` |
+| `ref` | Maintained inputs loaded from version-controlled files |
+| `derived` | Fully rebuildable parsing and classification results |
+| `catalog` | Reconciled systems, titles, releases and files |
 
-Migration 004 introduced the stable IDs. Migration 005 moves the source and
-transform objects from `ref` to `etl`, preserving the existing objects and data.
-`etl.schema_migration` records both upgrades. The [SQL index](../sql/README.md)
-describes their prerequisites and ordering.
+The recovery contract is:
 
-`ref` is currently empty. The [canonical CSV](../data/reference/canonical_systems.csv)
-was the initial seed for `public.system`; edits to that file are not loaded by
-`sync`. Reference-file loading will need an explicit policy for preserving IDs.
+```text
+staging + data/reference
+          ↓
+       derived
+          ↓
+    reconciliation
+          ↓
+       catalog
+```
 
-## Current entities
+Database IDs are ordinary `bigint` identities and may change after a rebuild.
+Reference and reconciliation files therefore use explicit source text, not IDs.
 
-| Table | Identity and purpose |
+## Implemented rebuild layers
+
+[`sql/rebuild/001_reference_and_dat.sql`](../sql/rebuild/001_reference_and_dat.sql)
+currently creates:
+
+| Table | Purpose |
 | --- | --- |
-| `public.system` | `id`; canonical manufacturer and system display names |
-| `public.archive` | `id`; source ZIP, with `system_id`, `dat_id`, `archive_name_id` |
-| `etl.dat` | `id`; DAT path/name, source labels and default `system_id` |
-| `etl.archive_name` | `id`; original ZIP name and its derived title/tag parse |
-| `etl.system_mapping` | Source manufacturer/system alias pair mapped to `system_id` |
+| `ref.canonical_system` | Canonical systems loaded from `canonical_systems.csv` |
+| `ref.system_mapping` | Complete per-romset source mapping loaded from `system_mappings.csv` |
+| `derived.dat` | DAT identities parsed from `staging.rv_files` and resolved through the mapping |
 
-`ref.canonical_system` was moved to `public.system`, preserving the full canonical
-list. Canonical names are no longer stored as foreign keys in `system_mapping`.
-The display fields in `etl.v_romset_system` and `etl.v_archive` are resolved through
-the system ID, so a rename is visible without rewriting archive relationships.
+[`scripts/rebuild_archive_names.py`](../scripts/rebuild_archive_names.py) then
+parses distinct staged names and invokes
+[`sql/rebuild/002_archive_names.sql`](../sql/rebuild/002_archive_names.sql) to create:
 
-```mermaid
-flowchart LR
-    S[public.system] -->|system_id| A[public.archive]
-    D[etl.dat] -->|dat_id| A
-    N[etl.archive_name] -->|archive_name_id| A
-```
+| Table | Purpose |
+| --- | --- |
+| `ref.tag_category` | Maintained classification categories loaded from `tag_categories.csv` |
+| `derived.archive_name` | One parse per `(romset, original archive name)` |
+| `derived.archive_name_record` | One or more ordered title records encoded by a name |
+| `derived.archive_tag` | Ordered raw tags, separated source identifier/value, and rebuildable classifications |
+| `derived.archive` | DAT/archive-name association with its staged row count |
 
-An archive currently identifies a ZIP name within a source DAT. Identical names
-in different DATs remain different archive records; they can share a parsed-name
-ID within one collection. Name changes in canonical systems and parser output
-do not affect either ID. IDs are generated keys, not contiguous counters.
+[`sql/rebuild/003_catalog.sql`](../sql/rebuild/003_catalog.sql) creates the
+first consumer-facing projection:
 
-Source labels still serve as lookup keys at the import boundary. A DAT is
-discovered by `(dat_path, dat_name)` and a source spelling by `(romset,
-archive_name)`. Renaming/versioning a source DAT path/name or ZIP name creates a
-new source identity; automatically reconciling those changes is future work.
-Internal archive joins and future title/release/file relationships use IDs.
+| Table | Purpose |
+| --- | --- |
+| `catalog.system` | Canonical systems presented to consumers |
+| `catalog.release` | Source-faithful releases; no cross-region software grouping yet |
+| `catalog.package` | DAT/archive provenance and archive-level parse state |
+| `catalog.release_package` | Release/package membership and ordered media fields |
+| `catalog.release_attribute` | Lossless classified and unknown tags with source provenance |
+| `catalog.file` | RomVault paths, file names, sizes, hashes and verification state |
 
-The `etl` schema contains persistent state as well as recomputable fields.
-DAT/name IDs are referenced by core archives, and `etl.system_mapping` contains
-reviewed alias/manual decisions alongside discovered matches. Preserve these
-records; only the parsed metadata is freely recomputable. A later split can put
-maintained alias rules into `ref` while keeping discovery results in `etl`.
+The catalog rebuild also loads `data/reference/path_mappings.csv` into
+`ref.path_mapping` before resolving package paths.
 
-## Refresh behavior
+`catalog.package.source_tree_path` preserves the RomVault archive path.
+`catalog.package.resolved_path` applies the longest prefix from
+`data/reference/path_mappings.csv` and is null when no host mapping is maintained.
+The member within an archive remains separately available as
+`catalog.file.member_path`; it is not mistaken for a directly accessible host
+filesystem path.
 
-```sh
-python -m gamedb sync
-```
+Automatic media grouping is deliberately narrow. Records must come from the
+same DAT and have the same title and identical non-media tags. Only their one
+structured media tag may differ. Duplicate part/side slots are split and marked
+`media_ambiguous`; missing sets remain visible as `media_singleton` or
+`media_grouped` rather than being silently treated as complete.
 
-The CLI loads connection settings from the repository's ignored `.env` file
-(`PGHOST`, `PGPORT`, `PGUSER`, `PGDATABASE`, `PGPASSWORD`). Exported settings take
-precedence; `.pgpass` can supply the password when `PGPASSWORD` is omitted.
-Both the local CLI and Compose use this external database. The CLI performs:
-
-1. Discover source system aliases, preserving resolved and manual mappings.
-2. Upsert source DATs and archive records while preserving existing IDs.
-3. Register new archive names as `pending`, then parse them by their IDs.
-
-The individual database refresh is available as:
-
-```sql
-SELECT etl.refresh_system_mapping();
-SELECT * FROM etl.refresh_archives();
-```
-
-Call the archive refresh after staging or system mapping changes. The archive
-view now reads persisted identities instead of grouping the full staging table
-on every query. Name parses remain refreshable derived data. A parser rerun
-updates metadata only, preserving the name ID and every archive reference.
-
-Archives missing from the current staging contents retain their IDs with
-`is_present = false` and `staged_row_count = 0`. If the same source archive returns,
-its record is reactivated. `etl.v_archive` exposes current archives only; query
-`public.archive` directly when historical source records matter.
-
-`staged_row_count` counts source export rows, including repeated exports; it is
-not a deduplicated count of file contents. Blank/missing archive names cannot
-define an archive and are skipped by synchronization. All current supported
-source rows have names and system mappings.
-
-## System assignments and overrides
-
-By default, an archive inherits its DAT's `system_id`, with
-`system_assignment = 'dat'`. Unresolved DATs can create archives with a null
-system ID; a later mapping and refresh resolves them.
-
-To deliberately override one archive, use its IDs and mark the choice manual.
-The following uses psql variables for IDs selected by the reviewer:
-
-```sql
-UPDATE public.archive
-SET system_id = :chosen_system_id, system_assignment = 'manual'
-WHERE id = :archive_id;
-```
-
-Future source refreshes preserve this assignment. Set `system_assignment` back
-to `dat` and refresh to resume inheritance. This supports the future Redump FXGA
-exceptions; no release-name override rules have been applied automatically.
-
-## Inspection
-
-```sql
-SELECT id, manufacturer_name, name FROM public.system ORDER BY manufacturer_name, name;
-
-SELECT a.id AS archive_id, a.system_id, s.manufacturer_name, s.name AS system_name,
-       a.dat_id, a.archive_name_id, p.archive_name, p.title_candidate, p.tags
-FROM public.archive a
-LEFT JOIN public.system s ON s.id = a.system_id
-JOIN etl.archive_name p ON p.id = a.archive_name_id
-WHERE a.is_present;
-
-SELECT archive_id, system_id, dat_id, archive_name_id, title_candidate, parse_issues
-FROM etl.v_archive
-WHERE parse_status = 'review';
-```
-
-The target hierarchy is **System → Title → Release → File**. Systems and source
-archives are established now. Canonical titles, release reconciliation and file
-identities will be introduced in later waves, using these IDs. A candidate title
-or ZIP is not automatically promoted to a canonical title or release.
+The rebuild aborts if a mapping target is invalid, a staged DAT has no mapping,
+or any generated record/tag/archive association is lost during loading. It never
+modifies `staging.rv_files`.

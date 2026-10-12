@@ -1,137 +1,86 @@
-# Archive name extraction
+# Archive-name parsing
 
-`etl.archive_name` stores the first parsing pass over ZIP names from
-`staging.rv_files.game_display_name`. Individual member names such as
-`track07.raw` or `readme.txt` are not title inputs.
+The parser interprets archive filenames from `staging.rv_files.game_display_name`.
+It is intentionally separate from canonical title/release reconciliation.
 
-Each row has a stable `id`, a collection (`romset`), the unchanged `archive_name`, a
-`title_candidate`, the ZIP extension, ordered `tags`, a parse status and issues,
-and the parser version. The same spelling is parsed once per collection and
-reused across source DATs. This is a parse cache, not a canonical title table.
-`public.archive.archive_name_id` references that ID. Parser output can change
-without changing the identity or its archive references.
+The implementation is [`gamedb/archive_names/parser.py`](../gamedb/archive_names/parser.py),
+driven by [`data/reference/archive_name_formats.json`](../data/reference/archive_name_formats.json).
+`parse_archive_name(romset, archive_name)` returns:
 
-An example from TOSEC-ISO:
+- a provisional `title_candidate`;
+- the original ZIP extension;
+- ordered raw tags with delimiters and character offsets;
+- a `parsed` or `review` status and explicit issues.
+
+For example:
 
 ```text
-archive_name:    4 Wheel Thunder v1.002 (2000)(Midway)(US)[!].zip
-title_candidate: 4 Wheel Thunder
-extension:       .zip
-tags:            v1.002, (2000), (Midway), (US), [!]
+Example (USA) (En,Fr) (Rev A) [b].zip
 ```
 
-Each JSON tag has `value`, `delimiter`, `start` and `end`. For example:
+becomes title candidate `Example` plus four raw tags. Raw spelling, order,
+duplicates and delimiters are preserved.
 
-```json
-{"value": "Midway", "delimiter": "()", "start": 29, "end": 37}
-```
+## Structural rules
 
-Offsets are zero-based character offsets into the original archive name, with
-an exclusive end. The delimiters are `()`, `[]`, or an empty string for a bare
-token. Whitespace inside groups, duplicate tags, nested groups and original
-ordering are preserved. `(En,Fr)` stays one unqualified value; it is not split
-into language records. No region, publisher, language, dump-state or other
-semantic classification is stored yet.
+- Balanced `()` and `[]` groups are scanned without splitting their contents.
+- No-Intro and Redump metadata starts at a recognized region group.
+- TOSEC metadata starts at its date-and-publisher pair.
+- Leading square-bracket groups such as `[BIOS]` are retained as tags.
+- TOSEC bare version/revision suffixes are retained as delimiter-free tags.
+- Parentheses and square brackets before the metadata boundary remain title text.
+- Compound TOSEC names joined by a top-level ` & ` become independent records,
+  each with its own title and tags.
+- Missing ZIP extensions, malformed delimiters, empty values and `ZZZ-UNK-`
+  names are retained and flagged rather than silently repaired.
 
-## Parsing rules and limits
+The parser only identifies structure. It does not merge titles or assert that a
+filename describes a verified release.
 
-- A contiguous suffix of balanced parenthesis/square-bracket groups is extracted.
-  Nested groups such as `(Moz(IC)art)` remain a single tag.
-- Leading square-bracket groups such as `[BIOS]` are extracted as raw tags.
-- TOSEC and TOSEC-ISO use the date/publisher group layout as a boundary when
-  present, retaining title parentheses before it. A preceding `(demo...)` group
-  is included in the tag suffix. Conservative trailing `v...` and `Rev ...`
-  forms are also extracted as bare tags. No-Intro and Redump keep unbracketed
-  text in the title candidate.
-- Original punctuation, capitalization, spelling and trailing articles such as
-  `, The` are retained. No cross-region or cross-collection title merging occurs.
-- Malformed delimiters, groups remaining inside titles, legacy `ZZZ-UNK-` names,
-  missing suffixes and other uncertainty are marked `review`. Raw input is
-  always retained. Unsupported suffix layouts such as `.pce.zip` need review.
+## Exceptions in the retained export
 
-`parsed` means the structural rules succeeded, not that the candidate is a
-verified canonical title. A parenthetical title ending can still resemble a tag;
-later source-specific rules and review can refine these boundaries. Tag meanings
-and the Redump FXGA release overrides are deferred.
+An audit of all 795,980 distinct archive names found 619 TOSEC/TOSEC-ISO names
+containing multiple independently tagged records. These now parse as two to six
+records instead of one damaged title.
 
-## Apply and refresh
+The remaining non-legacy exceptions are source anomalies rather than another
+general grammar:
 
-The original DDL is in migration 003; 004 added stable name IDs. To move an
-existing 004 database to the current `etl` schema, apply 005 once:
+- two No-Intro sound-data names omit the normally mandatory region;
+- three TOSEC names have no valid date/publisher pair (one contains a five-digit year);
+- nine TOSEC/TOSEC-ISO names have unmatched delimiters in their metadata suffix;
+- five TOSEC names place `.pce` between their tag suffix and `.zip`; a few malformed
+  bracket suffixes similarly leave text after the parsed tags.
+
+Delimiter-like punctuation before a valid metadata anchor is treated as title
+text; only the metadata suffix must balance. Remaining anomalies stay intact with
+explicit review issues. TOSEC names beginning with `ZZZ-UNK-` are excluded from
+derived data by policy because the source itself does not identify them. Their
+raw rows remain available in `staging.rv_files`.
+
+## Tag classification
+
+[`gamedb/archive_names/classifier.py`](../gamedb/archive_names/classifier.py) separately interprets raw
+tags using the maintained vocabulary in
+[`data/reference/tag_vocabulary.json`](../data/reference/tag_vocabulary.json).
+
+Supported collections are No-Intro, TOSEC and TOSEC-ISO. Redump semantics remain
+unsupported. Classifications include regions, languages, versions, revisions,
+dates, publishers, development status, media, system requirements and dump flags.
+Unknown or contextually ambiguous values remain unclassified.
+
+Every stored tag retains its exact `raw_value`. Where the convention has a marker,
+the classifier also separates `identifier` and `value`: `v1.2` becomes `v` plus
+`1.2`, while `[cr Elite]` becomes `cr` plus `Elite`. Unprefixed tags such as
+`(USA)` have a null identifier and retain `USA` as their value.
+
+Inspect both passes without touching the database:
 
 ```sh
-psql -X -v ON_ERROR_STOP=1 -f sql/migrations/005_etl_schema.sql
+python -m gamedb parse-name TOSEC \
+  'Example v1.2 (1990)(Publisher)(US)(en)[cr Group].zip' --classify
 ```
 
-See the [SQL index](../sql/README.md#migrations) for older prerequisites.
-
-Install `requirements.txt` and configure the ignored repository `.env` with
-your external database connection. The CLI loads it automatically; exported
-variables take precedence. For `psql`, first export these settings as shown in
-the [root README](../README.md#database-layers).
-
-```sh
-python -m gamedb sync
-```
-
-Source synchronization first registers names and persistent archive IDs. New
-names have `parse_status = 'pending'` until the parser runs. The parser reads
-names referenced by current archives and updates parsed fields by ID in one
-transaction. By default it processes pending or older parser versions.
-`python -m gamedb parse-names --reparse` recomputes all current names without
-rewriting unchanged output. Bump `PARSER_VERSION` whenever parsing rules change.
-The parsing code lives in `gamedb/romvault/`. Parser results are derived data;
-do not put manual canonical-title decisions in these fields.
-
-Historical names remain in the cache if a later export no longer contains them.
-Use `etl.v_archive` for current archives after source synchronization.
-
-## Querying
-
-```sql
--- Source archives with DAT, system, title candidate and raw tags.
--- One row per archive_id, with system_id, dat_id and archive_name_id.
-SELECT * FROM etl.v_archive;
-
--- Unique names requiring review, independent of how many DATs use them.
-SELECT * FROM etl.v_archive_name_review ORDER BY romset, archive_name;
-
--- One row per tag, including its position and original delimiters.
-SELECT * FROM etl.v_archive_tag;
-
--- Vocabulary inventory for the later nomenclature work.
-SELECT romset, delimiter, tag_value, count(*) AS occurrences
-FROM etl.v_archive_tag
-GROUP BY romset, delimiter, tag_value
-ORDER BY romset, occurrences DESC;
-```
-
-`etl.v_archive` retains separate rows for identical archive names in different
-DATs or systems. Its `staged_row_count` is the number of associated staging rows,
-not a count of unique files across export runs. New unprocessed names appear
-with `parse_status = 'pending'`.
-
-At the raw staging boundary, all three source identifiers are still needed to
-attach an archive ID to exported files:
-
-```sql
-WITH archives AS MATERIALIZED (SELECT * FROM etl.v_archive)
-SELECT rf.*, a.archive_id, a.system_id,
-       a.title_candidate, a.tags, a.parse_status
-FROM staging.rv_files rf
-LEFT JOIN archives a
-    ON a.dat_path = rf.dat_root_full_name
-   AND a.dat_name = rf.dat_name
-   AND a.archive_name = rf.game_display_name;
-```
-
-`etl.v_archive` itself now joins persistent tables by ID without scanning
-staging. Source synchronization performs the staging scan. Future core file
-records can reference archive/release IDs directly; only raw import matching
-needs source strings.
-
-Run the parser tests with:
-
-```sh
-python -m unittest discover -s tests -v
-```
+Focused behavior is covered by `tests/test_archive_names.py` and
+`tests/test_archive_name_classifier.py`. Parsed names and tags are stored by the
+archive-name rebuild as relational `derived` tables.

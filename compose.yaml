@@ -2,30 +2,3 @@ services:
   app:
     build: .
     container_name: gamedb-app
-    env_file:
-      - .env
-  web:
-    profiles: ["legacy"]
-    build: .
-    container_name: gamedb-web
-    env_file:
-      - .env
-    environment:
-      POSTGRES_HOST: ${PGHOST}
-      POSTGRES_PORT: ${PGPORT}
-      POSTGRES_USER: ${PGUSER}
-      POSTGRES_PASSWORD: ${PGPASSWORD}
-      POSTGRES_DB: ${PGDATABASE}
-      DJANGO_DEBUG: "0"
-    ports:
-      - "8000:8000"
-    command: ["gunicorn", "app.web.gamedb_web.wsgi:application", "-b", "0.0.0.0:8000"]
-    volumes:
-      - ./data/media:/data/media:ro
-  cloudflared:
-    profiles: ["legacy"]
-    image: cloudflare/cloudflared:latest
-    container_name: gamedb-cloudflared
-    command: ["tunnel", "--no-autoupdate", "run", "--token", "${CLOUDFLARED_TOKEN:-}"]
-    depends_on:
-      - web

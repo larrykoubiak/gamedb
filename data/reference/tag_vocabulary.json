@@ -1,0 +1,54 @@
+{
+  "sources": {
+    "no_intro": "https://wiki.no-intro.org/index.php?title=Naming_Convention",
+    "tosec": "https://www.tosecdev.org/tosec-naming-convention"
+  },
+  "languages": ["ar", "bg", "bs", "ca", "cs", "cy", "da", "de", "el", "en", "eo", "es", "et", "eu", "fa", "fi", "fr", "ga", "gu", "he", "hi", "hr", "hu", "id", "is", "it", "ja", "ko", "lt", "lv", "ms", "nl", "no", "pl", "pt", "ro", "ru", "sk", "sl", "sq", "sr", "sv", "th", "tr", "uk", "ur", "vi", "yi", "zh"],
+  "no_intro_regions": {
+    "Asia": "AS", "Australia": "AU", "Austria": "AT", "Belgium": "BE",
+    "Argentina": "AR", "Brazil": "BR", "Canada": "CA", "China": "CN", "Denmark": "DK",
+    "Europe": "EU", "Finland": "FI", "France": "FR", "Germany": "DE",
+    "Greece": "GR", "Hong Kong": "HK", "Hungary": "HU", "India": "IN", "Ireland": "IE",
+    "Israel": "IL", "Italy": "IT", "Japan": "JP", "Korea": "KR",
+    "Mexico": "MX", "Netherlands": "NL", "New Zealand": "NZ", "Norway": "NO", "Peru": "PE",
+    "Poland": "PL", "Portugal": "PT", "Russia": "RU", "South Africa": "ZA",
+    "Scandinavia": "SCANDINAVIA", "Spain": "ES", "Sweden": "SE", "Switzerland": "CH", "Taiwan": "TW",
+    "United Kingdom": "GB", "USA": "US", "World": "WORLD"
+  },
+  "no_intro_special": ["ST", "MB", "NP"],
+  "no_intro_systems": ["AGA", "GB Compatible", "NDSi Enhanced", "SC-3000", "SGB Enhanced"],
+  "no_intro_release_status": {
+    "Kiosk": "kiosk", "Promo": "promotional", "Wi-Fi Kiosk": "wifi_kiosk"
+  },
+  "no_intro_distribution_channels": {
+    "Disk Writer": "nintendo_disk_writer", "Evercade": "evercade",
+    "Sega Channel": "sega_channel", "SoundLink": "soundlink",
+    "Virtual Console": "virtual_console", "Wii U Virtual Console": "wii_u_virtual_console"
+  },
+  "no_intro_media_labels": ["Program"],
+  "redump_regions": {
+    "Asia": "AS", "Australia": "AU", "Austria": "AT", "Belgium": "BE",
+    "Brazil": "BR", "Canada": "CA", "Czech": "CZ", "Denmark": "DK",
+    "Europe": "EU", "Export": "EXPORT", "France": "FR", "Germany": "DE",
+    "India": "IN", "Italy": "IT", "Japan": "JP", "Korea": "KR",
+    "Latin America": "LATIN_AMERICA", "Netherlands": "NL", "Poland": "PL",
+    "Portugal": "PT", "Spain": "ES", "Sweden": "SE", "Switzerland": "CH",
+    "Taiwan": "TW", "UK": "GB", "USA": "US", "World": "WORLD"
+  },
+  "redump_saturn_disc_code_pattern": "[0-9]+[MS](?:, [0-9]+[MS])*",
+  "redump_media_labels": ["Arcade Disc", "Bonus Disc", "Game Disc", "Message Disc", "Omake Disc", "Opening Disc", "Premium Best Disc", "Present Disc", "Special Disc"],
+  "redump_demo_status": {
+    "Taikenban": "trial", "Tentou Taikenban": "kiosk_demo",
+    "Tentou-you Demo Movie": "kiosk_demo_movie", "Trade Demo": "trade_demo"
+  },
+  "redump_systems": ["Mega-CD 32X", "Sega CD 32X"],
+  "tosec_regions": ["AE", "AL", "AS", "AT", "AU", "BA", "BE", "BG", "BR", "BY", "CA", "CH", "CL", "CN", "CS", "CY", "CZ", "DE", "DK", "EE", "EG", "ES", "EU", "FI", "FR", "GB", "GR", "HK", "HR", "HU", "ID", "IE", "IL", "IN", "IR", "IS", "IT", "JO", "JP", "KR", "LT", "LU", "LV", "MN", "MX", "MY", "NL", "NO", "NP", "NZ", "OM", "PE", "PH", "PL", "PT", "QA", "RO", "RU", "SE", "SG", "SI", "SK", "TH", "TR", "TW", "UA", "US", "VN", "YU", "ZA"],
+  "tosec_systems": ["+2", "+2a", "+3", "16K", "16K-48K", "128K", "130XE", "48K-128K", "A1000", "A1200", "A1200-A4000", "A2000", "A2000-A3000", "A2024", "A2500-A3000UX", "A3000", "A4000", "A4000T", "A500", "A500+", "A500-A1000-A2000", "A500-A1000-A2000-CDTV", "A500-A1200", "A500-A1200-A2000-A4000", "A500-A2000", "A500-A600-A2000", "A570", "A600", "A600HD", "AGA", "AGA-CD32", "Aladdin Deck Enhancer", "CD32", "CDTV", "Computrainer", "Doctor PC Jr.", "ECS", "ECS-AGA", "Executive", "II+", "II-II+", "IIE", "IIEE", "Mega ST", "Mega-STE", "OCS", "OCS-AGA", "ORCH80", "Osbourne 1", "Pentagon 128K", "PIANO90", "PlayChoice-10", "Plus4", "Primo-A", "Primo-A64", "Primo-B", "Primo-B64", "Pro-Primo", "ST", "STE", "STE-Falcon", "TC2048-TS2068", "TI-83-TI-83+", "TT", "TURBO-R GT", "TURBO-R ST", "VS DualSystem", "VS UniSystem"],
+  "tosec_media_labels": ["1", "2", "A", "B", "Boot", "Data", "Data Disk", "Game", "Game Disk", "Install", "Intro", "Program", "Program Disk", "System", "System Disk", "User Disk", "Workbench"],
+  "tosec_video": ["CGA", "EGA", "HGC", "MCGA", "MDA", "NTSC", "NTSC-PAL", "PAL", "PAL-60", "PAL-NTSC", "SVGA", "VGA", "XGA"],
+  "tosec_copyright": {
+    "CW": "cardware", "CW-R": "registered_cardware", "FW": "freeware",
+    "GW": "giftware", "GW-R": "registered_giftware", "LW": "licenceware",
+    "PD": "public_domain", "SW": "shareware", "SW-R": "registered_shareware"
+  }
+}

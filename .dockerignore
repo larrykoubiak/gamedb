@@ -2,7 +2,8 @@
 .env
 .env.*
 .sops.env
-data/
+data/*
+!data/reference/
 **/__pycache__/
 **/*.pyc
 .~lock.*#

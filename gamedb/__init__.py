@@ -1,1 +1,1 @@
-"""GameDB's RomVault-based core and transforms."""
+"""GameDB archive-name parsing and catalogue construction."""
