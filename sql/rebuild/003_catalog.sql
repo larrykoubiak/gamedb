@@ -98,23 +98,46 @@ CREATE TABLE catalog.release_package (
     UNIQUE (package_id, source_archive_name_record_id)
 );
 
-CREATE TABLE catalog.release_attribute (
+CREATE TABLE catalog.release_fact (
     id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     release_id bigint NOT NULL REFERENCES catalog.release(id) ON DELETE CASCADE,
+    fact_key text NOT NULL CHECK (btrim(fact_key) <> ''),
+    fact_value text NOT NULL CHECK (btrim(fact_value) <> ''),
+    origin text NOT NULL CHECK (origin IN ('source_tag', 'catalog')),
+    confidence text NOT NULL CHECK (confidence IN ('explicit', 'computed')),
+    UNIQUE (release_id, fact_key, fact_value, origin)
+);
+
+CREATE TABLE catalog.release_fact_evidence (
+    release_fact_id bigint NOT NULL
+        REFERENCES catalog.release_fact(id) ON DELETE CASCADE,
     release_package_id bigint NOT NULL
         REFERENCES catalog.release_package(id) ON DELETE CASCADE,
     source_archive_tag_id bigint NOT NULL
         REFERENCES derived.archive_tag(id) ON DELETE RESTRICT,
-    tag_index integer NOT NULL CHECK (tag_index > 0),
-    category text NOT NULL,
-    classification_status text NOT NULL,
-    raw_value text NOT NULL,
-    identifier text,
-    value text,
-    details jsonb NOT NULL CHECK (jsonb_typeof(details) = 'object'),
-    rule text NOT NULL,
-    UNIQUE (release_package_id, tag_index)
+    PRIMARY KEY (
+        release_fact_id, release_package_id, source_archive_tag_id
+    )
 );
+
+-- Source-shaped attributes remain available for audit without copying them
+-- into another materialized catalog table.
+CREATE VIEW catalog.release_source_attribute AS
+SELECT
+    rp.release_id,
+    rp.id AS release_package_id,
+    t.id AS source_archive_tag_id,
+    t.tag_index,
+    t.category,
+    t.classification_status,
+    t.raw_value,
+    t.identifier,
+    t.value,
+    t.details,
+    t.rule
+FROM catalog.release_package rp
+JOIN derived.archive_tag t
+  ON t.archive_name_record_id = rp.source_archive_name_record_id;
 
 CREATE TABLE catalog.file (
     id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -347,16 +370,123 @@ ORDER BY rel.id,
         NULLS LAST,
     m.media_part, m.media_side, p.id, m.record_index;
 
-INSERT INTO catalog.release_attribute (
-    release_id, release_package_id, source_archive_tag_id, tag_index, category,
-    classification_status, raw_value, identifier, value, details, rule
+-- Normalize only explicit classifier output in this first pass. One source tag
+-- can yield several facts (for example, En,Fr), while identical facts repeated
+-- by several media packages collapse to one release-level row.
+CREATE TEMP TABLE _catalog_source_fact ON COMMIT DROP AS
+SELECT DISTINCT release_id, release_package_id, source_archive_tag_id,
+    fact_key, fact_value
+FROM (
+    SELECT rp.release_id, rp.id AS release_package_id,
+        t.id AS source_archive_tag_id, t.category AS fact_key,
+        code.value AS fact_value
+    FROM catalog.release_package rp
+    JOIN derived.archive_tag t
+      ON t.archive_name_record_id = rp.source_archive_name_record_id
+    CROSS JOIN LATERAL jsonb_array_elements_text(t.details -> 'codes') code(value)
+    WHERE t.classification_status = 'classified'
+      AND t.category IN ('region', 'language')
+
+    UNION ALL
+
+    SELECT rp.release_id, rp.id, t.id, t.category, t.details ->> 'code'
+    FROM catalog.release_package rp
+    JOIN derived.archive_tag t
+      ON t.archive_name_record_id = rp.source_archive_name_record_id
+    WHERE t.classification_status = 'classified'
+      AND t.category IN (
+          'release_status', 'demo', 'copyright_status', 'license', 'special',
+          'distribution_channel', 'dump_modification', 'dump_status'
+      )
+      AND nullif(btrim(t.details ->> 'code'), '') IS NOT NULL
+
+    UNION ALL
+
+    SELECT rp.release_id, rp.id, t.id, t.category, t.details ->> 'text'
+    FROM catalog.release_package rp
+    JOIN derived.archive_tag t
+      ON t.archive_name_record_id = rp.source_archive_name_record_id
+    WHERE t.classification_status = 'classified'
+      AND t.category IN (
+          'version', 'revision', 'release_date', 'publisher',
+          'system_requirement', 'video', 'media_label'
+      )
+      AND nullif(btrim(t.details ->> 'text'), '') IS NOT NULL
+
+    UNION ALL
+
+    SELECT rp.release_id, rp.id, t.id, 'language_count',
+        t.details ->> 'count'
+    FROM catalog.release_package rp
+    JOIN derived.archive_tag t
+      ON t.archive_name_record_id = rp.source_archive_name_record_id
+    WHERE t.classification_status = 'classified'
+      AND t.category = 'language'
+      AND t.details ? 'count'
+
+    UNION ALL
+
+    SELECT rp.release_id, rp.id, t.id, 'bios', 'true'
+    FROM catalog.release_package rp
+    JOIN derived.archive_tag t
+      ON t.archive_name_record_id = rp.source_archive_name_record_id
+    WHERE t.classification_status = 'classified'
+      AND t.category = 'bios'
+
+    UNION ALL
+
+    SELECT rp.release_id, rp.id, t.id, t.category, 'unknown'
+    FROM catalog.release_package rp
+    JOIN derived.archive_tag t
+      ON t.archive_name_record_id = rp.source_archive_name_record_id
+    WHERE t.classification_status = 'classified'
+      AND t.category IN ('region', 'publisher')
+      AND coalesce((t.details ->> 'unknown')::boolean, false)
+) normalized
+WHERE nullif(btrim(fact_value), '') IS NOT NULL;
+
+INSERT INTO catalog.release_fact (
+    release_id, fact_key, fact_value, origin, confidence
 )
-SELECT rp.release_id, rp.id, t.id, t.tag_index, t.category,
-    t.classification_status, t.raw_value, t.identifier, t.value, t.details, t.rule
-FROM catalog.release_package rp
-JOIN derived.archive_tag t
-  ON t.archive_name_record_id = rp.source_archive_name_record_id
-ORDER BY rp.id, t.tag_index;
+SELECT DISTINCT release_id, fact_key, fact_value, 'source_tag', 'explicit'
+FROM _catalog_source_fact
+ORDER BY release_id, fact_key, fact_value;
+
+INSERT INTO catalog.release_fact (
+    release_id, fact_key, fact_value, origin, confidence
+)
+SELECT r.id, 'source_collection', d.romset, 'catalog', 'computed'
+FROM catalog.release r
+JOIN derived.dat d ON d.id = r.source_dat_id
+UNION ALL
+SELECT id, 'media_status',
+    CASE grouping_status
+        WHEN 'media_singleton' THEN 'singleton'
+        WHEN 'media_grouped' THEN 'grouped'
+        WHEN 'media_complete' THEN 'complete'
+        WHEN 'media_ambiguous' THEN 'ambiguous'
+        ELSE 'standalone'
+    END,
+    'catalog', 'computed'
+FROM catalog.release
+UNION ALL
+SELECT id, 'review_status',
+    CASE WHEN needs_review THEN 'needs_review' ELSE 'ready' END,
+    'catalog', 'computed'
+FROM catalog.release
+ORDER BY 1, 2;
+
+INSERT INTO catalog.release_fact_evidence (
+    release_fact_id, release_package_id, source_archive_tag_id
+)
+SELECT f.id, source.release_package_id, source.source_archive_tag_id
+FROM _catalog_source_fact source
+JOIN catalog.release_fact f
+  ON f.release_id = source.release_id
+ AND f.fact_key = source.fact_key
+ AND f.fact_value = source.fact_value
+ AND f.origin = 'source_tag'
+ORDER BY f.id, source.release_package_id, source.source_archive_tag_id;
 
 INSERT INTO catalog.file (
     package_id, source_run_id, source_exported_at, source_tree_path,
@@ -439,11 +569,12 @@ CREATE INDEX release_package_release_order_idx
     );
 CREATE INDEX release_package_package_idx
     ON catalog.release_package(package_id);
-CREATE INDEX release_attribute_release_category_idx
-    ON catalog.release_attribute(release_id, category);
-CREATE INDEX release_attribute_unknown_idx
-    ON catalog.release_attribute(classification_status)
-    WHERE classification_status = 'unclassified';
+CREATE INDEX release_fact_key_value_idx
+    ON catalog.release_fact(fact_key, fact_value, release_id);
+CREATE INDEX release_fact_evidence_package_idx
+    ON catalog.release_fact_evidence(release_package_id);
+CREATE INDEX release_fact_evidence_source_tag_idx
+    ON catalog.release_fact_evidence(source_archive_tag_id);
 CREATE INDEX file_package_idx ON catalog.file(package_id);
 CREATE INDEX file_sha1_idx ON catalog.file(sha1_hex) WHERE sha1_hex IS NOT NULL;
 CREATE INDEX file_md5_idx ON catalog.file(md5_hex) WHERE md5_hex IS NOT NULL;
@@ -483,6 +614,26 @@ BEGIN
             actual_count, expected_count;
     END IF;
 
+    SELECT count(*) INTO expected_count FROM _catalog_source_fact;
+    SELECT count(*) INTO actual_count FROM catalog.release_fact_evidence;
+    IF actual_count <> expected_count THEN
+        RAISE EXCEPTION 'catalog release-fact evidence count %, expected %',
+            actual_count, expected_count;
+    END IF;
+
+    SELECT count(*) INTO actual_count
+    FROM catalog.release_fact f
+    WHERE f.origin = 'source_tag'
+      AND NOT EXISTS (
+          SELECT 1
+          FROM catalog.release_fact_evidence evidence
+          WHERE evidence.release_fact_id = f.id
+      );
+    IF actual_count <> 0 THEN
+        RAISE EXCEPTION '% source-tag release facts have no evidence',
+            actual_count;
+    END IF;
+
     SELECT sum(staged_file_count) INTO expected_count FROM catalog.package;
     SELECT count(*) INTO actual_count FROM catalog.file;
     IF actual_count <> expected_count THEN
@@ -509,8 +660,12 @@ COMMENT ON TABLE catalog.package IS
     'Source archive/package provenance, including optional physical path resolution.';
 COMMENT ON TABLE catalog.release_package IS
     'Many-to-many release/package membership, including parsed media ordering.';
-COMMENT ON TABLE catalog.release_attribute IS
-    'Lossless classified and unclassified source tags attached through their originating package record.';
+COMMENT ON TABLE catalog.release_fact IS
+    'Deduplicated normalized release features from explicit source tags or catalog structure.';
+COMMENT ON TABLE catalog.release_fact_evidence IS
+    'Source package/tag evidence supporting a normalized release fact.';
+COMMENT ON VIEW catalog.release_source_attribute IS
+    'Auditable source-shaped classified and unclassified tags without catalog duplication.';
 COMMENT ON TABLE catalog.file IS
     'RomVault file observations and content hashes belonging to a source package.';
 
@@ -519,7 +674,8 @@ ANALYZE catalog.title;
 ANALYZE catalog.release;
 ANALYZE catalog.package;
 ANALYZE catalog.release_package;
-ANALYZE catalog.release_attribute;
+ANALYZE catalog.release_fact;
+ANALYZE catalog.release_fact_evidence;
 ANALYZE catalog.file;
 
 COMMIT;

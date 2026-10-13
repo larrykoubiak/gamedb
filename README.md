@@ -16,9 +16,11 @@ verified snapshot, terminology, known limitations and next architectural step.
 | `ref` | Maintained inputs loaded from `data/reference/` |
 | `derived` | Fully rebuildable parsing and classification results |
 | `catalog` | Reconciled systems, titles, releases and files |
+| `app` | Durable local users and personal scoring preferences |
 
-The implemented rebuild slice loads canonical systems and the complete reviewed
-source mapping, then recreates `derived.dat` without modifying staging:
+The implemented rebuild loads canonical systems and the complete reviewed
+source mapping, then recreates the derived/catalog data and disposable score
+cache without modifying staging or durable preferences:
 
 ```sh
 set -a
@@ -28,6 +30,7 @@ psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/000_reset.sql
 psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/001_reference_and_dat.sql
 python scripts/rebuild_archive_names.py
 psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/003_catalog.sql
+psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/004_release_scores.sql
 ```
 
 See [the database model](docs/database.md), [system mapping](docs/system_mapping.md),
@@ -48,9 +51,9 @@ The archive-name rebuild persists archive associations, parsed records, raw
 tags and their classifications relationally under `derived`.
 
 The final SQL step projects those results into consumer-facing systems,
-exact-title browse/search clusters, releases, packages, attributes and files.
-Explicitly numbered media parts are grouped conservatively when their title and
-all non-media tags agree.
+exact-title browse/search clusters, releases, normalized facts with source
+evidence, packages and files. Explicitly numbered media parts are grouped
+conservatively when their title and all non-media tags agree.
 
 ## Verification
 

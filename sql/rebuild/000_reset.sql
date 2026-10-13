@@ -1,4 +1,5 @@
--- Remove every superseded GameDB object while preserving staging.rv_files.
+-- Remove rebuildable GameDB objects while preserving staging.rv_files and the
+-- durable local users/preferences under app.
 \set ON_ERROR_STOP on
 BEGIN;
 

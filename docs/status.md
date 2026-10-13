@@ -5,10 +5,11 @@ this document describe that export; they are observations, not schema invariants
 
 ## Current milestone
 
-The first exact-title clustering pass is complete. `staging.rv_files` is the
-only retained raw database input. Everything else can be recreated from staging
-and the maintained files under `data/reference/` using the four commands in the
-root README.
+The first exact-title clustering and normalized release-fact passes are
+complete. `staging.rv_files` is the only retained raw database input. Everything
+else can be recreated from staging and the maintained files under
+`data/reference/` using the five commands in the root README. Durable local
+users and preferences under `app` survive those rebuilds.
 
 The verified build contains:
 
@@ -22,6 +23,9 @@ The verified build contains:
 | Parsed tags | 2,630,601 |
 | Exact-title clusters | 341,736 |
 | Catalog releases | 908,828 |
+| Normalized release facts | 5,395,078 |
+| Release-fact evidence rows | 2,855,950 |
+| Cached scores for the default user | 908,828 |
 | Catalog packages | 973,417 |
 | Catalog files | 1,359,794 |
 
@@ -47,6 +51,9 @@ System
 - A **release** is currently a source-faithful title/variant: system, title,
   region, language, version, revision, dump state and other source claims have
   not been reconciled into a canonical game identity.
+- A **release fact** is a harmonized, deduplicated key/value feature derived
+  from an explicit classified source tag or catalog structure. Evidence links
+  source-derived facts back to every supporting package and original tag.
 - A **package** is one stored source archive, normally a ZIP. It is kept separate
   because one release may use several disc packages, one package may represent
   several compound TOSEC records, and a CD package may contain many files.
@@ -88,13 +95,51 @@ called `Tetris`. `catalog.title.cluster_key` is therefore separate from
 reviewed override can split a same-name cluster without changing visible text or
 depending on rebuild-local IDs.
 
+## Release facts
+
+The first normalization pass contains 2,668,594 explicit source-tag facts and
+2,726,484 computed catalog facts. Explicit facts cover 908,792 releases; all
+908,828 releases have computed `source_collection`, `media_status` and
+`review_status` facts. Multivalued source claims are expanded—for example,
+66,097 releases produce 89,876 individual language facts—and repeated claims
+across packages are collapsed while retaining separate evidence rows.
+
+The pass is deliberately conservative. Free-form `additional`, unclassified
+and media-component tags remain available through
+`catalog.release_source_attribute`. No regional language defaults, translation
+interpretation, revision ordering, preference weights or release scores are
+generated in the fact layer itself.
+
+## Preference scoring
+
+The durable `default` user currently has five enabled seed preferences:
+
+| Preference | Score |
+| --- | ---: |
+| Explicit English language | +100 |
+| Latest fully numeric release date within the title | +20 |
+| Source-verified dump | +30 |
+| Hacked dump modification | -200 |
+| No-Intro source collection | +50 |
+
+The disposable score cache contains every release, including zero-score rows,
+plus the matched-rule breakdown and a dense rank within its title. Scores
+currently range from -200 to 170. Of 341,736 titles, 243,562 have one top-ranked
+release and 98,174 retain a tie. Preferences are illustrative rather than a
+claim that the weights are final.
+
+`catalog.user_preferred_release` provides one convenient row per user/title.
+When top scores tie it selects the lowest rebuild-local release ID but reports
+`top_score_tie_count` and `tie_broken`, so consumers can distinguish a genuine
+unique winner from a deterministic fallback. Lower-ranked and tied releases
+remain available in `catalog.user_release_score`.
+
 ## Next architectural step
 
-Build a read-only visual explorer for systems, title clusters, releases,
-packages and attributes. It should make large and potentially ambiguous clusters
-easy to inspect before committing to reconciliation rules or metadata sources.
-A thin query API can support the page, but the initial goal is hands-on review,
-not a general public API.
+Build a read-only visual explorer showing ranked releases, score breakdowns and
+their underlying facts/evidence. It should also expose the current preference
+rows so the seed weights can be evaluated hands-on before inference rules such
+as region-to-language defaults are introduced.
 
 Only after real same-name collisions are identified should a maintained
 split-override layer be added. Overrides should use explicit source

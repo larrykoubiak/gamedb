@@ -9,6 +9,7 @@ are intentionally simple:
 | `ref` | Maintained inputs loaded from version-controlled files |
 | `derived` | Fully rebuildable parsing and classification results |
 | `catalog` | Reconciled systems, titles, releases and files |
+| `app` | Durable local users and personal preferences |
 
 The recovery contract is:
 
@@ -21,6 +22,10 @@ staging + data/reference
           ↓
        catalog
 ```
+
+The `app` schema is deliberately outside that destructive rebuild path.
+`app.app_user` and `app.user_preference` survive catalog resets; the generated
+score cache lives under `catalog` and is recreated from them.
 
 Database IDs are ordinary `bigint` identities and may change after a rebuild.
 Reference and reconciliation files therefore use explicit source text, not IDs.
@@ -58,7 +63,9 @@ consumer-facing projection:
 | `catalog.release` | Source-faithful releases; no cross-region software grouping yet |
 | `catalog.package` | DAT/archive provenance and archive-level parse state |
 | `catalog.release_package` | Release/package membership and ordered media fields |
-| `catalog.release_attribute` | Lossless classified and unknown tags with source provenance |
+| `catalog.release_fact` | Harmonized, deduplicated release-level features |
+| `catalog.release_fact_evidence` | Package/tag evidence for normalized facts |
+| `catalog.release_source_attribute` | View of lossless source tags and classifications |
 | `catalog.file` | RomVault paths, file names, sizes, hashes and verification state |
 
 The catalog rebuild also loads `data/reference/path_mappings.csv` into
@@ -82,6 +89,36 @@ same DAT and have the same title and identical non-media tags. Only their one
 structured media tag may differ. Duplicate part/side slots are split and marked
 `media_ambiguous`; missing sets remain visible as `media_singleton` or
 `media_grouped` rather than being silently treated as complete.
+
+Release facts are a conservative consumer projection of explicit classifier
+output. Region and language arrays become individual facts, canonical `code`
+and source-preserving `text` fields become key/value facts, and repeated facts
+across media packages are deduplicated. Evidence rows retain the exact source
+package and `derived.archive_tag`. The catalog also supplies computed
+`source_collection`, `media_status` and `review_status` facts. Free-form and
+unclassified tags remain available through `catalog.release_source_attribute`;
+the release-fact pass itself performs no language inference or preference
+scoring.
+
+[`sql/rebuild/004_release_scores.sql`](../sql/rebuild/004_release_scores.sql)
+creates or preserves:
+
+| Table | Purpose |
+| --- | --- |
+| `app.app_user` | Durable local user identities |
+| `app.user_preference` | Enabled additive fact matches and relative scoring rules |
+| `catalog.user_score_generation` | Cache timestamp and preference signature |
+| `catalog.user_release_score` | Disposable scores, title-relative ranks and JSON explanations |
+| `catalog.user_preferred_release` | One highest-scoring release per user/title with tie metadata |
+
+Exact preferences match one deduplicated release fact and contribute their
+configured score once. The initial relative `latest` operator supports fully
+numeric release dates and awards all releases tied for the newest date within a
+title. Cache generation includes zero-score releases, uses dense title-relative
+ranks and replaces the old cache atomically. The preferred-release view uses
+`release_id` only as a deterministic fallback among equal top scores and exposes
+both `top_score_tie_count` and `tie_broken`; it does not claim that a scoring tie
+has been semantically resolved.
 
 The rebuild aborts if a mapping target is invalid, a staged DAT has no mapping,
 or any generated record/tag/archive association is lost during loading. It never
