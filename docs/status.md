@@ -5,9 +5,10 @@ this document describe that export; they are observations, not schema invariants
 
 ## Current milestone
 
-The first rewrite pass is complete. `staging.rv_files` is the only retained raw
-database input. Everything else can be recreated from staging and the maintained
-files under `data/reference/` using the four commands in the root README.
+The first exact-title clustering pass is complete. `staging.rv_files` is the
+only retained raw database input. Everything else can be recreated from staging
+and the maintained files under `data/reference/` using the four commands in the
+root README.
 
 The verified build contains:
 
@@ -19,13 +20,15 @@ The verified build contains:
 | Distinct parsed archive names | 793,615 |
 | Parsed archive-name records | 794,464 |
 | Parsed tags | 2,630,601 |
+| Exact-title clusters | 341,736 |
 | Catalog releases | 908,828 |
 | Catalog packages | 973,417 |
 | Catalog files | 1,359,794 |
 
-The clean rebuild and all 44 parser/classifier tests passed at this milestone.
-All four supported collection roots in `path_mappings.csv` resolve to the local
-Synology mount; every current package has a `resolved_path`.
+The catalog rebuild and all 44 parser/classifier tests passed at this milestone.
+Every release belongs to one title cluster. All four supported collection roots
+in `path_mappings.csv` resolve to the local Synology mount; every current package
+has a `resolved_path`.
 
 ## Terminology
 
@@ -33,11 +36,14 @@ The current consumer hierarchy is:
 
 ```text
 System
-  └── Release
-        └── Package
-              └── File
+  └── Title
+        └── Release
+              └── Package
+                    └── File
 ```
 
+- A **title** is a system-scoped, exact-title browse and metadata-search cluster.
+  It is not proof that all linked releases describe the same software.
 - A **release** is currently a source-faithful title/variant: system, title,
   region, language, version, revision, dump state and other source claims have
   not been reconciled into a canonical game identity.
@@ -69,28 +75,32 @@ Numeric parts, zero-padded parts, alphabetic discs and tape sides retain their
 ordering. Future playlist generation should use `catalog.release_package` and
 must keep region/version variants separate.
 
-## Next architectural step
+## Title grouping
 
-Add the missing **Title** layer without pretending it is an authoritative game
-identity:
-
-```text
-System
-  └── Title (exact-title browse/search cluster)
-        └── Release
-              └── Package
-                    └── File
-```
-
-The first pass should group by exact `(system, display_title)` and link releases
-to that cluster. Treat it as a browsing and metadata-search bucket, not proof
-that every release describes the same software. On the current TOSEC data this
-would reduce 841,867 releases to 308,581 exact-title clusters; 110,398 clusters
-contain multiple releases and the largest contains 486.
+The first pass groups by exact `(system, display_title)`. On the current TOSEC
+data, 841,867 releases form 308,581 exact-title clusters; 110,398 clusters
+contain multiple releases and the largest contains 486. Across all collections,
+908,828 releases form 341,736 clusters.
 
 Same-name collisions remain possible—for example, independently published games
-called `Tetris`. The model must allow a cluster to be split later using reviewed
-overrides or authoritative external identifiers.
+called `Tetris`. `catalog.title.cluster_key` is therefore separate from
+`display_title`, and title display text is not unique within a system. A future
+reviewed override can split a same-name cluster without changing visible text or
+depending on rebuild-local IDs.
+
+## Next architectural step
+
+Build a read-only visual explorer for systems, title clusters, releases,
+packages and attributes. It should make large and potentially ambiguous clusters
+easy to inspect before committing to reconciliation rules or metadata sources.
+A thin query API can support the page, but the initial goal is hands-on review,
+not a general public API.
+
+Only after real same-name collisions are identified should a maintained
+split-override layer be added. Overrides should use explicit source
+text/provenance and stable cluster keys, never generated title or release IDs.
+Metadata ingestion can later cache source responses and external IDs and use
+them as evidence for reviewed splits or eventual cross-title grouping.
 
 An eventual `software` entity can sit above titles and express cross-regional or
 alternate-title equivalence such as *Bare Knuckle* and *Streets of Rage*. Do not

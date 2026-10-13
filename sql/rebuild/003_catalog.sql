@@ -1,4 +1,4 @@
--- Build the first consumer-facing catalogue from the rebuildable parse layer.
+-- Build the consumer-facing catalogue from the rebuildable parse layer.
 -- Releases are source-faithful: only explicitly numbered media records whose
 -- title and every non-media tag agree are grouped automatically.
 \set ON_ERROR_STOP on
@@ -32,9 +32,21 @@ CREATE TABLE catalog.system (
     UNIQUE (manufacturer_name, system_name)
 );
 
-CREATE TABLE catalog.release (
+CREATE TABLE catalog.title (
     id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     system_id bigint NOT NULL REFERENCES catalog.system(id) ON DELETE RESTRICT,
+    cluster_key text NOT NULL CHECK (btrim(cluster_key) <> ''),
+    display_title text NOT NULL CHECK (btrim(display_title) <> ''),
+    grouping_basis text NOT NULL CHECK (grouping_basis IN (
+        'exact_title', 'reviewed_override'
+    )),
+    needs_review boolean NOT NULL,
+    UNIQUE (system_id, cluster_key)
+);
+
+CREATE TABLE catalog.release (
+    id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    title_id bigint NOT NULL REFERENCES catalog.title(id) ON DELETE RESTRICT,
     source_dat_id bigint NOT NULL REFERENCES derived.dat(id) ON DELETE RESTRICT,
     source_group_ordinal integer NOT NULL CHECK (source_group_ordinal > 0),
     display_title text NOT NULL CHECK (btrim(display_title) <> ''),
@@ -237,12 +249,30 @@ SELECT p.*,
         AND p.preliminary_slot_count > 1) AS ambiguous_slot
 FROM _catalog_preliminary p;
 
+-- Exact-title clusters are browse/search buckets, not authoritative software
+-- identities. cluster_key is deliberately separate from display_title so a
+-- later reviewed override can split same-name software without changing the
+-- visible title or referring to a rebuild-local bigint.
+INSERT INTO catalog.title (
+    system_id, cluster_key, display_title, grouping_basis, needs_review
+)
+SELECT DISTINCT
+    s.id,
+    m.title_candidate,
+    m.title_candidate,
+    'exact_title',
+    false
+FROM _catalog_member m
+JOIN catalog.system s
+  ON s.source_canonical_system_id = m.canonical_system_id
+ORDER BY s.id, m.title_candidate;
+
 INSERT INTO catalog.release (
-    system_id, source_dat_id, source_group_ordinal, display_title,
+    title_id, source_dat_id, source_group_ordinal, display_title,
     grouping_status, expected_media_parts, available_media_parts, needs_review
 )
 SELECT
-    s.id,
+    title.id,
     m.dat_id,
     m.group_ordinal,
     min(m.title_candidate),
@@ -277,7 +307,11 @@ SELECT
 FROM _catalog_member m
 JOIN catalog.system s
   ON s.source_canonical_system_id = m.canonical_system_id
-GROUP BY s.id, m.dat_id, m.group_ordinal
+JOIN catalog.title title
+  ON title.system_id = s.id
+ AND title.cluster_key = m.title_candidate
+ AND title.grouping_basis = 'exact_title'
+GROUP BY title.id, m.dat_id, m.group_ordinal
 ORDER BY m.dat_id, m.group_ordinal;
 
 INSERT INTO catalog.package (
@@ -386,8 +420,11 @@ WHERE mapping.package_id = p.id;
 ALTER TABLE catalog.package
     ALTER COLUMN source_tree_path SET NOT NULL;
 
-CREATE INDEX release_system_title_idx
-    ON catalog.release(system_id, display_title);
+CREATE INDEX title_system_display_idx
+    ON catalog.title(system_id, display_title);
+CREATE INDEX title_review_idx
+    ON catalog.title(needs_review) WHERE needs_review;
+CREATE INDEX release_title_idx ON catalog.release(title_id);
 CREATE INDEX release_review_idx
     ON catalog.release(needs_review) WHERE needs_review;
 CREATE INDEX release_grouping_status_idx
@@ -418,6 +455,20 @@ DECLARE
     expected_count bigint;
     actual_count bigint;
 BEGIN
+    SELECT count(*) INTO expected_count
+    FROM (
+        SELECT canonical_system_id, title_candidate
+        FROM _catalog_member
+        GROUP BY canonical_system_id, title_candidate
+    ) exact_titles;
+    SELECT count(*) INTO actual_count
+    FROM catalog.title
+    WHERE grouping_basis = 'exact_title';
+    IF actual_count <> expected_count THEN
+        RAISE EXCEPTION 'catalog exact-title count %, expected %',
+            actual_count, expected_count;
+    END IF;
+
     SELECT count(*) INTO expected_count FROM derived.archive;
     SELECT count(*) INTO actual_count FROM catalog.package;
     IF actual_count <> expected_count THEN
@@ -452,6 +503,8 @@ $$;
 
 COMMENT ON TABLE catalog.release IS
     'Consumer-facing source releases; explicit media parts are grouped only by exact non-media agreement.';
+COMMENT ON TABLE catalog.title IS
+    'System-scoped browse/search clusters; exact-title grouping is not proof of shared software identity.';
 COMMENT ON TABLE catalog.package IS
     'Source archive/package provenance, including optional physical path resolution.';
 COMMENT ON TABLE catalog.release_package IS
@@ -462,6 +515,7 @@ COMMENT ON TABLE catalog.file IS
     'RomVault file observations and content hashes belonging to a source package.';
 
 ANALYZE catalog.system;
+ANALYZE catalog.title;
 ANALYZE catalog.release;
 ANALYZE catalog.package;
 ANALYZE catalog.release_package;

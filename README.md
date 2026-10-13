@@ -1,6 +1,7 @@
 # GameDB
 
-RomVault-based software catalogue, building toward **System → Title → Release → File**.
+RomVault-based software catalogue with a **System → Title → Release → Package → File**
+consumer hierarchy.
 The database is replayable from the retained raw RomVault import and maintained
 reference files.
 
@@ -47,8 +48,9 @@ The archive-name rebuild persists archive associations, parsed records, raw
 tags and their classifications relationally under `derived`.
 
 The final SQL step projects those results into consumer-facing systems,
-releases, packages, attributes and files. Explicitly numbered media parts are
-grouped conservatively when their title and all non-media tags agree.
+exact-title browse/search clusters, releases, packages, attributes and files.
+Explicitly numbered media parts are grouped conservatively when their title and
+all non-media tags agree.
 
 ## Verification
 

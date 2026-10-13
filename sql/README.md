@@ -21,7 +21,7 @@ psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/003_catalog.sql
 | [`000_reset.sql`](rebuild/000_reset.sql) | Preserve `staging.rv_files` and remove all superseded GameDB schemas/tables |
 | [`001_reference_and_dat.sql`](rebuild/001_reference_and_dat.sql) | Load canonical systems and complete source mappings into `ref`, then rebuild `derived.dat` |
 | [`002_archive_names.sql`](rebuild/002_archive_names.sql) | Internal bulk-load step used by `scripts/rebuild_archive_names.py`; rebuild parsed archive records, tags, classifications and DAT/archive associations |
-| [`003_catalog.sql`](rebuild/003_catalog.sql) | Project parsed source records into consumer-facing releases, ordered media packages, attributes and files |
+| [`003_catalog.sql`](rebuild/003_catalog.sql) | Project parsed source records into exact-title clusters, releases, ordered media packages, attributes and files |
 
 The Python wrapper selects names from staging through `derived.dat`, writes
 temporary bulk-load files, invokes `002_archive_names.sql`, and removes the files.

@@ -49,11 +49,12 @@ parses distinct staged names and invokes
 | `derived.archive` | DAT/archive-name association with its staged row count |
 
 [`sql/rebuild/003_catalog.sql`](../sql/rebuild/003_catalog.sql) creates the
-first consumer-facing projection:
+consumer-facing projection:
 
 | Table | Purpose |
 | --- | --- |
 | `catalog.system` | Canonical systems presented to consumers |
+| `catalog.title` | System-scoped exact-title browse/search clusters |
 | `catalog.release` | Source-faithful releases; no cross-region software grouping yet |
 | `catalog.package` | DAT/archive provenance and archive-level parse state |
 | `catalog.release_package` | Release/package membership and ordered media fields |
@@ -62,6 +63,12 @@ first consumer-facing projection:
 
 The catalog rebuild also loads `data/reference/path_mappings.csv` into
 `ref.path_mapping` before resolving package paths.
+
+The first title pass groups releases by exact `(system, display_title)`. A title
+is only a browsing and metadata-search cluster, not an assertion that every
+release is the same piece of software. Its explicit `cluster_key` is separate
+from display text so reviewed overrides can later split same-name collisions
+without depending on rebuild-local IDs.
 
 `catalog.package.source_tree_path` preserves the RomVault archive path.
 `catalog.package.resolved_path` applies the longest prefix from
