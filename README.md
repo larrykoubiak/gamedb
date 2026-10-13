@@ -4,6 +4,9 @@ RomVault-based software catalogue, building toward **System → Title → Releas
 The database is replayable from the retained raw RomVault import and maintained
 reference files.
 
+Start with [the current project status and handoff](docs/status.md) for the
+verified snapshot, terminology, known limitations and next architectural step.
+
 ## Layers
 
 | Schema | Responsibility |
@@ -27,7 +30,8 @@ psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/003_catalog.sql
 ```
 
 See [the database model](docs/database.md), [system mapping](docs/system_mapping.md),
-and the [SQL rebuild index](sql/README.md).
+the [archive-name rules](docs/archive_names.md), and the
+[SQL rebuild index](sql/README.md).
 
 ## Archive-name parser
 

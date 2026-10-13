@@ -64,9 +64,10 @@ raw rows remain available in `staging.rv_files`.
 tags using the maintained vocabulary in
 [`data/reference/tag_vocabulary.json`](../data/reference/tag_vocabulary.json).
 
-Supported collections are No-Intro, TOSEC and TOSEC-ISO. Redump semantics remain
-unsupported. Classifications include regions, languages, versions, revisions,
-dates, publishers, development status, media, system requirements and dump flags.
+Supported collections are No-Intro, Redump, TOSEC and TOSEC-ISO. Classifications
+include regions, languages, versions, revisions, dates, publishers, development
+status, media, system requirements and dump flags. Rules shared by No-Intro and
+Redump are supplemented by collection-specific media and status vocabularies.
 Unknown or contextually ambiguous values remain unclassified.
 
 Every stored tag retains its exact `raw_value`. Where the convention has a marker,
