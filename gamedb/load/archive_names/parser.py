@@ -1,4 +1,4 @@
-"""Separate archive titles from raw naming-convention tags.
+"""Separate archive titles from raw naming-convention tags for loading.
 
 The scanner understands balanced parenthesis and square-bracket groups. A
 collection profile supplies only the metadata boundary; tag interpretation is

@@ -8,6 +8,19 @@ reference files.
 Start with [the current project status and handoff](docs/status.md) for the
 verified snapshot, terminology, known limitations and next architectural step.
 
+## Applications
+
+The repository contains two deliberately separate applications:
+
+| Package | Responsibility | Standalone command |
+| --- | --- | --- |
+| `gamedb.load` | Parse staged input and rebuild disposable database layers | `python -m gamedb.load rebuild` |
+| `gamedb.explorer` | Serve read-only catalog queries and browser assets | `python -m gamedb.explorer` |
+
+`python -m gamedb` remains a convenience dispatcher for local use. The loader
+depends on PyYAML and needs rebuild SQL/reference files; the explorer uses only
+the standard library, `psql`, and its read-only query files.
+
 ## Layers
 
 | Schema | Responsibility |
@@ -18,20 +31,27 @@ verified snapshot, terminology, known limitations and next architectural step.
 | `catalog` | Reconciled systems, titles, releases and files |
 | `app` | Durable local users and personal scoring preferences |
 
-The implemented rebuild loads canonical systems and the complete reviewed
-source mapping, then recreates the derived/catalog data and disposable score
-cache without modifying staging or durable preferences:
+The executable [`pipeline.yml`](pipeline.yml) is the table of contents for the
+rebuild. It loads canonical systems and the reviewed source mapping, then
+recreates derived/catalog data and the disposable score cache without modifying
+staging or local preferences:
 
 ```sh
-set -a
-. ./.env
-set +a
-psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/000_reset.sql
-psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/001_reference_and_dat.sql
-python scripts/rebuild_archive_names.py
-psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/003_catalog.sql
-psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/004_release_scores.sql
+python -m gamedb rebuild --plan
+python -m gamedb rebuild
 ```
+
+Layers can be selected without replaying unchanged upstream work:
+
+```sh
+python -m gamedb rebuild --layers scoring
+python -m gamedb rebuild --from-layer catalog
+python -m gamedb rebuild --through-layer archive_names
+```
+
+The runner executes the YAML in order through explicit step classes. SQL lives
+under `sql/layers/<layer>/`; the archive-name step owns its Python parse/classify
+pass and relational loader.
 
 See [the database model](docs/database.md), [system mapping](docs/system_mapping.md),
 the [archive-name rules](docs/archive_names.md), and the
@@ -61,11 +81,40 @@ conservatively when their title and all non-media tags agree.
 python -m unittest discover -s tests -v
 ```
 
-The parser uses only the Python standard library. A minimal optional container is
-available for running the same CLI.
+## Local explorer
+
+After building the catalog and score cache, start the read-only visualization:
 
 ```sh
-docker compose run --build --rm app python -m gamedb --help
+python -m gamedb serve
+```
+
+Open `http://127.0.0.1:8000`. The page groups systems under manufacturers and
+lists the cached preferred release for every title, including scores, matching
+preference reasons, normalized facts and unresolved tie counts. Expand a row to
+compare every losing release, its source package and complete file hashes. It
+uses the existing `psql` client and does not add an application dependency. The
+read-only SQL is independently reviewable under `sql/queries/explorer/`; a
+`CatalogRepository` binds and executes it while the HTTP module handles routing
+and responses. The command loads missing PostgreSQL connection settings from the project `.env`;
+settings already exported in the shell take precedence. Set
+`GAMEDB_EXPLORER_PORT=8080` there to change the default port, or use `--port` for
+a one-off override.
+
+The parser itself uses only the Python standard library. Install the loader's
+workflow dependency with `python -m pip install -r requirements-load.txt`.
+
+The Dockerfile exposes separate images. Start the read-only explorer with:
+
+```sh
+docker compose up --build explorer
+```
+
+Run the loader as an explicitly selected tool container:
+
+```sh
+docker compose --profile tools run --build --rm loader \
+    python -m gamedb.load rebuild --plan
 ```
 
 ## Secrets

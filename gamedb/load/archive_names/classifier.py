@@ -12,10 +12,10 @@ from pathlib import Path
 import re
 
 
-REFERENCE_DIRECTORY = Path(__file__).resolve().parents[2] / "data" / "reference"
+REFERENCE_DIRECTORY = Path(__file__).resolve().parents[3] / "data" / "reference"
 _vocabulary_bytes = (REFERENCE_DIRECTORY / "tag_vocabulary.json").read_bytes()
 VOCABULARY = json.loads(_vocabulary_bytes)
-CLASSIFIER_VERSION = "2:" + hashlib.sha256(_vocabulary_bytes).hexdigest()[:12]
+CLASSIFIER_VERSION = "3:" + hashlib.sha256(_vocabulary_bytes).hexdigest()[:12]
 SUPPORTED_COLLECTIONS = ("No-Intro", "Redump", "TOSEC", "TOSEC-ISO")
 LANGUAGES = frozenset(VOCABULARY["languages"])
 REDUMP_REGIONS = VOCABULARY["redump_regions"]
@@ -55,6 +55,10 @@ DUMP_CODES = {
     "b": ("dump_status", "bad"), "a": ("dump_status", "alternate"),
     "!": ("dump_status", "verified"),
 }
+TRANSLATION_VERSION = re.compile(
+    r"(?:^|\s)v\s*(?P<version>\d[\w.+-]*)",
+    re.IGNORECASE,
+)
 
 
 @dataclass(frozen=True)
@@ -69,6 +73,28 @@ def _known(category, rule, **details):
 
 def _unknown(reason="no_matching_rule"):
     return {"category": "unknown", "status": "unclassified", "rule": reason, "details": {}}
+
+
+def _translation_details(detail):
+    """Extract explicit TOSEC translation language/version claims."""
+
+    if not detail:
+        return {}
+    language_token = detail.split(maxsplit=1)[0].rstrip(",").lower()
+    partial = language_token.endswith("-partial")
+    if partial:
+        language_token = language_token.removesuffix("-partial")
+    language_codes = [code for code in re.split(r"[-,]", language_token) if code]
+
+    result = {}
+    if language_codes and all(code in LANGUAGES for code in language_codes):
+        result["language_codes"] = language_codes
+        if partial:
+            result["translation_status"] = "partial"
+    version = TRANSLATION_VERSION.search(detail)
+    if version:
+        result["version"] = version.group("version")
+    return result
 
 
 def _source(classification, identifier, value):
@@ -245,6 +271,8 @@ def _tosec_optional(tag):
             if match[3]:
                 # Descriptors may be groups, people, reasons or combinations.
                 details["detail"] = match[3]
+                if match[1].lower() == "tr":
+                    details.update(_translation_details(match[3]))
             return _source(
                 _known(category, "tosec.dump_flag", **details),
                 match[1], match[3],

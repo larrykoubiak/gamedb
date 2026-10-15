@@ -1,4 +1,4 @@
--- Remove rebuildable GameDB objects while preserving staging.rv_files and the
+-- Reset every rebuildable GameDB layer while preserving staging.rv_files and the
 -- durable local users/preferences under app.
 \set ON_ERROR_STOP on
 BEGIN;

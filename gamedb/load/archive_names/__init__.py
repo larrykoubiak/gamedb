@@ -1,4 +1,4 @@
-"""Parse archive names independently of their ingestion source."""
+"""Parse archive names for the loader independently of their source."""
 
 from .parser import (
     COLLECTIONS,

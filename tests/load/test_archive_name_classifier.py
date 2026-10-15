@@ -1,8 +1,8 @@
 from copy import deepcopy
 import unittest
 
-from gamedb.archive_names.classifier import classify_tags
-from gamedb.archive_names.parser import parse_archive_name
+from gamedb.load.archive_names.classifier import classify_tags
+from gamedb.load.archive_names.parser import parse_archive_name
 
 
 def classify(romset, name):
@@ -85,7 +85,29 @@ class TagClassificationTests(unittest.TestCase):
         self.assertEqual(result.tags[3]["details"]["detail"], "+3 Trainer")
         self.assertNotIn("variant", result.tags[3]["details"])
         self.assertEqual(result.tags[4]["details"]["detail"], "fr-partial Someone")
+        self.assertEqual(result.tags[4]["details"]["language_codes"], ["fr"])
+        self.assertEqual(result.tags[4]["details"]["translation_status"], "partial")
         self.assertEqual(result.tags[-1]["details"]["code"], "bad")
+
+    def test_translation_descriptor_exposes_language_and_version(self):
+        _, result = classify(
+            "TOSEC",
+            "Example (1990)(Publisher)(JP)[tr en v1.3 Dejap].zip",
+        )
+        translation = result.tags[-1]
+        self.assertEqual(translation["category"], "dump_modification")
+        self.assertEqual(translation["identifier"], "tr")
+        self.assertEqual(translation["value"], "en v1.3 Dejap")
+        self.assertEqual(
+            translation["details"],
+            {
+                "code": "translated",
+                "flag": "tr",
+                "detail": "en v1.3 Dejap",
+                "language_codes": ["en"],
+                "version": "1.3",
+            },
+        )
 
     def test_media_part_and_side(self):
         _, result = classify("TOSEC", "Example (1990)(Publisher)(Tape 2 of 3 Side B).zip")

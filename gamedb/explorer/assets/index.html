@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GameDB Explorer</title>
+  <meta name="description" content="Browse preferred GameDB releases by manufacturer and system.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Personal catalog</p>
+      <h1>GameDB Explorer</h1>
+    </div>
+    <div class="profile-chip"><span class="status-dot"></span> active preference profile</div>
+  </header>
+
+  <main class="workspace">
+    <aside class="sidebar" aria-label="System tree">
+      <div class="sidebar-heading">
+        <div>
+          <p class="eyebrow">Library tree</p>
+          <h2>Systems</h2>
+        </div>
+        <span id="system-count" class="quiet-count">…</span>
+      </div>
+      <label class="filter-field">
+        <span class="sr-only">Filter systems</span>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
+        <input id="system-filter" type="search" placeholder="Filter manufacturers or systems…">
+      </label>
+      <nav id="system-tree" class="system-tree" aria-live="polite">
+        <div class="loading-row">Loading catalog…</div>
+      </nav>
+    </aside>
+
+    <section class="content" aria-live="polite">
+      <div class="content-heading">
+        <div>
+          <p id="manufacturer-name" class="eyebrow">Choose a system</p>
+          <h2 id="system-name">Preferred games</h2>
+          <p id="system-summary" class="summary">Select a system from the tree to inspect its ranked choices.</p>
+        </div>
+        <div class="legend" aria-label="Score legend">
+          <span><i class="legend-dot positive"></i> preference match</span>
+          <span><i class="legend-dot tie"></i> tied choice</span>
+        </div>
+      </div>
+
+      <label class="filter-field game-filter-field">
+        <span class="sr-only">Filter titles in the selected system</span>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
+        <input id="game-filter" type="search" placeholder="Filter titles in this system…" disabled>
+      </label>
+
+      <div id="game-table-wrap" class="table-wrap" hidden>
+        <table class="game-table">
+          <thead>
+            <tr>
+              <th scope="col" class="expand-heading"><span class="sr-only">Release details</span></th>
+              <th scope="col">Title</th>
+              <th scope="col">Preferred archive</th>
+              <th scope="col">Region</th>
+              <th scope="col">Language</th>
+              <th scope="col">Revision</th>
+              <th scope="col">Release date</th>
+              <th scope="col">Dump</th>
+              <th scope="col">Source</th>
+              <th scope="col" class="numeric-heading">Score</th>
+              <th scope="col">Choice</th>
+            </tr>
+          </thead>
+          <tbody id="game-table-body"></tbody>
+        </table>
+      </div>
+
+      <div id="game-empty" class="empty-state">
+        <div class="empty-glyph">⌁</div>
+        <p>Your preferred release for each title will appear here.</p>
+      </div>
+
+      <footer id="pagination" class="pagination" hidden>
+        <button id="previous-page" type="button">← Previous</button>
+        <span id="page-label"></span>
+        <button id="next-page" type="button">Next →</button>
+      </footer>
+    </section>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

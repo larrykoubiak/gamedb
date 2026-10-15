@@ -1,4 +1,17 @@
 services:
-  app:
-    build: .
-    container_name: gamedb-app
+  explorer:
+    build:
+      context: .
+      target: explorer
+    container_name: gamedb-explorer
+    env_file: .env
+    ports:
+      - "${GAMEDB_EXPLORER_PORT:-8000}:8000"
+
+  loader:
+    build:
+      context: .
+      target: loader
+    container_name: gamedb-loader
+    env_file: .env
+    profiles: [tools]

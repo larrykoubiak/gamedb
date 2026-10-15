@@ -1,6 +1,6 @@
 import unittest
 
-from gamedb.archive_names.parser import parse_archive_name, should_ignore_archive_name
+from gamedb.load.archive_names.parser import parse_archive_name, should_ignore_archive_name
 
 
 class ArchiveNameTests(unittest.TestCase):

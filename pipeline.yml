@@ -1,0 +1,67 @@
+name: gamedb_rebuild
+
+# This file is the executable table of contents for GameDB. Layers are ordered
+# from the retained raw RomVault export toward consumer-facing preferences.
+layers:
+  - name: reset
+    description: Remove every rebuildable layer while retaining staging.rv_files.
+    steps:
+      - name: reset_rebuildable_schemas
+        type: run_sql
+        files:
+          - sql/layers/reset/000_reset.sql
+
+  - name: reference
+    description: Load maintained mappings and discover source DATs from staging.
+    steps:
+      - name: build_reference_data
+        type: run_sql
+        files:
+          - sql/layers/reference/010_reference_and_dat.sql
+
+  - name: archive_names
+    description: Parse archive names, classify their tags, and load derived results.
+    steps:
+      - name: build_archive_names
+        type: archive_names
+        load_file: sql/layers/archive_names/010_load.sql
+
+  - name: catalog
+    description: Build core systems, titles, releases, packages, and files.
+    steps:
+      - name: build_catalog
+        type: run_sql
+        files:
+          - sql/layers/catalog/010_schema_and_releases.sql
+          - sql/layers/catalog/020_files.sql
+          - sql/layers/catalog/090_indexes_and_validation.sql
+
+  - name: facts
+    description: Normalize release attributes and retain their source evidence.
+    steps:
+      - name: build_release_facts
+        type: run_sql
+        files:
+          - sql/layers/facts/010_schema.sql
+          - sql/layers/facts/020_build.sql
+          - sql/layers/facts/090_indexes_and_validation.sql
+
+  - name: identity
+    description: Reconcile titles using complete exact-content signatures.
+    steps:
+      - name: build_content_identity
+        type: run_sql
+        files:
+          - sql/layers/identity/010_schema.sql
+          - sql/layers/identity/020_build.sql
+          - sql/layers/identity/090_indexes_and_validation.sql
+
+  - name: scoring
+    description: Apply user preferences and cache ranked and preferred releases.
+    steps:
+      - name: build_release_scores
+        type: run_sql
+        files:
+          - sql/layers/scoring/010_preferences.sql
+          - sql/layers/scoring/020_generate_scores.sql
+          - sql/layers/scoring/030_preferred_releases.sql

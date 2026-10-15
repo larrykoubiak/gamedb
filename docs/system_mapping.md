@@ -12,19 +12,13 @@ the three manual NEC policies. These method labels are provenance only; rebuildi
 does not repeat fuzzy matching.
 
 When staging introduces a new source triple, the rebuild stops. Review it, add one
-row to `system_mappings.csv`, and run the complete rebuild. The foundation script
-deliberately refuses to hide dependent derived/catalog objects behind `CASCADE`.
+row to `system_mappings.csv`, and rebuild from the reference layer. That layer
+discards its disposable downstream projections before recreating its output.
 
 ```sh
-set -a
-. ./.env
-set +a
-psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/000_reset.sql
-psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/001_reference_and_dat.sql
-python scripts/rebuild_archive_names.py
-psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/003_catalog.sql
+python -m gamedb rebuild --from-layer reference
 ```
 
-The script loads both files into `ref` and joins them while creating `derived.dat`.
+The reference SQL loads both files into `ref` and joins them while creating `derived.dat`.
 The source mapping key includes `romset`, allowing identical labels from different
 collections to diverge later if necessary.

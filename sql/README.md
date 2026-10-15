@@ -1,32 +1,41 @@
-# SQL rebuild
+# SQL layers
 
-`staging.rv_files` is retained as the raw RomVault import. Everything else is
-being replaced by replayable scripts under `rebuild/`. Historical migrations and
-queries for the superseded `etl/public` layout have been removed.
+[`pipeline.yml`](../pipeline.yml) is the executable index for this directory.
+It names every layer, explains its responsibility, and references its SQL in
+execution order. SQL files do not decide which other layers should run; the
+workflow selection does.
 
-Run scripts from the repository root so `psql` can resolve reference CSV paths:
+| Directory | Responsibility |
+| --- | --- |
+| [`layers/reset`](layers/reset/) | Remove disposable schemas for a clean replay from staging |
+| [`layers/reference`](layers/reference/) | Load maintained mappings and discover DATs from staging |
+| [`layers/archive_names`](layers/archive_names/) | Persist Python parsing and classification output |
+| [`layers/catalog`](layers/catalog/) | Build core systems, titles, releases, packages, and files |
+| [`layers/facts`](layers/facts/) | Normalize release facts and retain source evidence |
+| [`layers/identity`](layers/identity/) | Build exact-content signatures, matches, and title aliases |
+| [`layers/scoring`](layers/scoring/) | Maintain preferences and compile disposable scores |
+
+Read-only consumer SQL is separate from the rebuild:
+
+| Directory | Responsibility |
+| --- | --- |
+| [`queries/explorer`](queries/explorer/) | Systems, preferred-title pages, and ranked-release details used by `CatalogRepository` |
+
+Run the complete story or inspect it without executing anything:
 
 ```sh
-set -a
-. ./.env
-set +a
-psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/000_reset.sql
-psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/001_reference_and_dat.sql
-python scripts/rebuild_archive_names.py
-psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/003_catalog.sql
-psql -X -v ON_ERROR_STOP=1 -f sql/rebuild/004_release_scores.sql
+python -m gamedb rebuild --plan
+python -m gamedb rebuild
 ```
 
-| File | Purpose |
-| --- | --- |
-| [`000_reset.sql`](rebuild/000_reset.sql) | Preserve `staging.rv_files` and remove all superseded GameDB schemas/tables |
-| [`001_reference_and_dat.sql`](rebuild/001_reference_and_dat.sql) | Load canonical systems and complete source mappings into `ref`, then rebuild `derived.dat` |
-| [`002_archive_names.sql`](rebuild/002_archive_names.sql) | Internal bulk-load step used by `scripts/rebuild_archive_names.py`; rebuild parsed archive records, tags, classifications and DAT/archive associations |
-| [`003_catalog.sql`](rebuild/003_catalog.sql) | Project parsed records into title clusters, releases, normalized facts with evidence, packages and files |
-| [`004_release_scores.sql`](rebuild/004_release_scores.sql) | Maintain local users/preferences and atomically compile the disposable release-score cache |
+During development, rebuild only the affected layer or the affected layer and
+everything after it:
 
-The Python wrapper selects names from staging through `derived.dat`, writes
-temporary bulk-load files, invokes `002_archive_names.sql`, and removes the files.
-The final SQL step preserves `app.app_user` and `app.user_preference`, seeds the
-`default` user only when missing, and atomically replaces the catalog score
-cache. Edit preferences and rerun only `004_release_scores.sql` to rescore.
+```sh
+python -m gamedb rebuild --layers scoring
+python -m gamedb rebuild --from-layer catalog
+```
+
+Every generated database object remains reproducible from `staging.rv_files`
+and version-controlled rules/reference data. Selecting layers is a development
+convenience, not a dependency on preserved generated state.

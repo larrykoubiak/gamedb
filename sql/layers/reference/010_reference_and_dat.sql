@@ -1,4 +1,4 @@
--- First rebuild slice. Keep staging.rv_files; recreate maintained system
+-- Reference layer. Keep staging.rv_files; recreate maintained system
 -- references and the DATs derived from the current RomVault export.
 -- Run from the repository root with psql -X -v ON_ERROR_STOP=1 -f <this file>.
 \set ON_ERROR_STOP on
@@ -7,8 +7,12 @@ BEGIN;
 CREATE SCHEMA IF NOT EXISTS ref;
 CREATE SCHEMA IF NOT EXISTS derived;
 
--- Refuse to hide future dependencies behind CASCADE. A later rebuild script
--- should explicitly drop its own dependent tables before this foundation.
+-- Replacing reference identities invalidates every disposable downstream layer.
+DROP SCHEMA IF EXISTS catalog CASCADE;
+DROP TABLE IF EXISTS derived.archive_tag;
+DROP TABLE IF EXISTS derived.archive_name_record;
+DROP TABLE IF EXISTS derived.archive;
+DROP TABLE IF EXISTS derived.archive_name;
 DROP TABLE IF EXISTS derived.dat;
 DROP TABLE IF EXISTS ref.system_mapping;
 DROP TABLE IF EXISTS ref.canonical_system;

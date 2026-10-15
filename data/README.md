@@ -38,4 +38,5 @@ prefix to archive/package paths while preserving the original source path.
 These research files are not rebuild inputs. Their contents were preserved during
 the move; regenerating an export should not overwrite maintained reference files.
 
-Replayable database construction lives in [`sql/rebuild/`](../sql/README.md).
+Replayable database construction is declared by [`pipeline.yml`](../pipeline.yml)
+and implemented under [`sql/layers/`](../sql/layers/).

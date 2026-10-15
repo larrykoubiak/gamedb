@@ -3,7 +3,7 @@
 The parser interprets archive filenames from `staging.rv_files.game_display_name`.
 It is intentionally separate from canonical title/release reconciliation.
 
-The implementation is [`gamedb/archive_names/parser.py`](../gamedb/archive_names/parser.py),
+The implementation is [`gamedb/load/archive_names/parser.py`](../gamedb/load/archive_names/parser.py),
 driven by [`data/reference/archive_name_formats.json`](../data/reference/archive_name_formats.json).
 `parse_archive_name(romset, archive_name)` returns:
 
@@ -60,7 +60,7 @@ raw rows remain available in `staging.rv_files`.
 
 ## Tag classification
 
-[`gamedb/archive_names/classifier.py`](../gamedb/archive_names/classifier.py) separately interprets raw
+[`gamedb/load/archive_names/classifier.py`](../gamedb/load/archive_names/classifier.py) separately interprets raw
 tags using the maintained vocabulary in
 [`data/reference/tag_vocabulary.json`](../data/reference/tag_vocabulary.json).
 
@@ -69,6 +69,11 @@ include regions, languages, versions, revisions, dates, publishers, development
 status, media, system requirements and dump flags. Rules shared by No-Intro and
 Redump are supplemented by collection-specific media and status vocabularies.
 Unknown or contextually ambiguous values remain unclassified.
+
+TOSEC translation flags retain the raw descriptor and additionally extract a
+recognized target language, partial-translation marker and patch version when
+present. Thus `[tr en v1.3 Dejap]` remains one source tag while supplying
+`dump_modification=translated`, `language=en` and `version=1.3` to the catalog.
 
 Every stored tag retains its exact `raw_value`. Where the convention has a marker,
 the classifier also separates `identifier` and `value`: `v1.2` becomes `v` plus
