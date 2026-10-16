@@ -189,8 +189,8 @@ The durable `default` user currently has nine enabled seed preferences:
 
 The disposable score cache contains every release, including zero-score rows,
 plus the matched-rule breakdown and a dense rank within its software. Scores
-currently range from -350 to 210. Of 337,303 software identities, 256,569 have
-one top-ranked release and 80,734 retain a tie. Preferences are illustrative
+currently range from -1,030 to 210. Of 337,225 software identities, 257,336 have
+one top-ranked release and 79,889 retain a tie. Preferences are illustrative
 rather than a claim that the weights are final.
 
 `app.user_preferred_release` provides one convenient row per user/software.
