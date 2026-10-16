@@ -11,7 +11,7 @@ FROM (
         count(software.id) AS game_count
     FROM catalog.system system
     JOIN catalog.software software ON software.system_id = system.id
-    JOIN catalog.user_preferred_release preferred
+    JOIN app.user_preferred_release preferred
       ON preferred.software_id = software.id
     JOIN app.app_user user_account
       ON user_account.id = preferred.user_id

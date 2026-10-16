@@ -152,22 +152,22 @@ SELECT system_id, source_snapshot_key, source_software_id,
 
 INSERT INTO catalog.software (
     system_id, preferred_title_id, display_name, identity_basis,
-    source_snapshot_key, source_software_id, source_group_key, needs_review
+    source_snapshot_key, source_software_id, source_group_key
 )
 SELECT recovered.system_id, recovered.title_id,
     coalesce(nullif(btrim(recovered.source_software_name), ''), title.display_title),
     'recovered_legacy', recovered.source_snapshot_key,
-    recovered.source_software_id, NULL, false
+    recovered.source_software_id, NULL
 FROM _software_recovered_title recovered
 JOIN catalog.title title ON title.id = recovered.title_id
 ORDER BY recovered.system_id, recovered.source_snapshot_key,
     recovered.source_software_id;
 
 INSERT INTO catalog.software_release (
-    release_id, software_id, assignment_basis, evidence_match_count, needs_review
+    release_id, software_id, assignment_basis, evidence_match_count
 )
 SELECT assignment.release_id, software.id, 'exact_sha1',
-    assignment.evidence_match_count, false
+    assignment.evidence_match_count
 FROM _software_unique_assignment assignment
 JOIN catalog.software software
   ON software.system_id = assignment.system_id
@@ -175,7 +175,7 @@ JOIN catalog.software software
  AND software.source_software_id = assignment.source_software_id
 ORDER BY assignment.release_id;
 
-INSERT INTO catalog.software_release_evidence (
+INSERT INTO _software_release_evidence (
     software_id, release_id, evidence_type, current_file_id,
     source_snapshot_key, source_record_key, sha1_hex, details
 )
@@ -274,10 +274,10 @@ SELECT * FROM ranked WHERE title_rank = 1;
 
 INSERT INTO catalog.software (
     system_id, preferred_title_id, display_name, identity_basis,
-    source_snapshot_key, source_software_id, source_group_key, needs_review
+    source_snapshot_key, source_software_id, source_group_key
 )
 SELECT parent.system_id, parent.title_id, title.display_title,
-    'parent_clone', parent.snapshot_key, NULL, parent.source_group_key, false
+    'parent_clone', parent.snapshot_key, NULL, parent.source_group_key
 FROM _parent_clone_title parent
 JOIN catalog.title title ON title.id = parent.title_id
 ORDER BY parent.system_id, parent.snapshot_key, parent.source_group_key;
@@ -302,12 +302,12 @@ WHERE group_row.anchor_count <= 1 AND existing.release_id IS NULL
 GROUP BY eligible.release_id, coalesce(group_row.anchor_software_id, parent.id);
 
 INSERT INTO catalog.software_release (
-    release_id, software_id, assignment_basis, evidence_match_count, needs_review
+    release_id, software_id, assignment_basis, evidence_match_count
 )
-SELECT release_id, software_id, 'parent_clone', evidence_match_count, false
+SELECT release_id, software_id, 'parent_clone', evidence_match_count
 FROM _parent_clone_assignment ORDER BY release_id;
 
-INSERT INTO catalog.software_release_evidence (
+INSERT INTO _software_release_evidence (
     software_id, release_id, evidence_type, current_file_id,
     source_snapshot_key, source_record_key, sha1_hex, details
 )
@@ -325,11 +325,11 @@ ORDER BY eligible.release_id, eligible.current_file_id, eligible.dat_rom_id;
 -- Explicit manual assignments override every automatic rule.
 INSERT INTO catalog.software (
     system_id, preferred_title_id, display_name, identity_basis,
-    source_snapshot_key, source_software_id, source_group_key, needs_review
+    source_snapshot_key, source_software_id, source_group_key
 )
 SELECT match.system_id,
     min(coalesce(alias.preferred_title_id, release.title_id)),
-    min(match.target_display_name), 'manual', NULL, NULL, match.target_key, false
+    min(match.target_display_name), 'manual', NULL, NULL, match.target_key
 FROM _software_override_match match
 JOIN catalog.release release ON release.id = match.release_id
 LEFT JOIN catalog.title_alias alias ON alias.alias_title_id = release.title_id
@@ -338,9 +338,9 @@ GROUP BY match.system_id, match.target_key
 ORDER BY match.system_id, match.target_key;
 
 INSERT INTO catalog.software_release (
-    release_id, software_id, assignment_basis, evidence_match_count, needs_review
+    release_id, software_id, assignment_basis, evidence_match_count
 )
-SELECT match.release_id, software.id, 'manual_override', 1, false
+SELECT match.release_id, software.id, 'manual_override', 1
 FROM _software_override_match match
 JOIN catalog.software software
   ON software.identity_basis = 'manual'
@@ -348,7 +348,7 @@ JOIN catalog.software software
  AND software.source_group_key = match.target_key
 WHERE match.action = 'assign' ORDER BY match.release_id;
 
-INSERT INTO catalog.software_release_evidence (
+INSERT INTO _software_release_evidence (
     software_id, release_id, evidence_type, current_file_id,
     source_snapshot_key, source_record_key, sha1_hex, details
 )
@@ -414,13 +414,13 @@ JOIN target_anchor anchor
  AND anchor.anchor_count = 1;
 
 INSERT INTO catalog.software_release (
-    release_id, software_id, assignment_basis, evidence_match_count, needs_review
+    release_id, software_id, assignment_basis, evidence_match_count
 )
 SELECT release_id, software_id, 'translation_original_title',
-    evidence_match_count, true
+    evidence_match_count
 FROM _translation_original_assignment ORDER BY release_id;
 
-INSERT INTO catalog.software_release_evidence (
+INSERT INTO _software_release_evidence (
     software_id, release_id, evidence_type, current_file_id,
     source_snapshot_key, source_record_key, sha1_hex, details
 )
@@ -471,12 +471,12 @@ LEFT JOIN _software_excluded_release excluded ON excluded.release_id = release.i
 WHERE existing.release_id IS NULL AND excluded.release_id IS NULL;
 
 INSERT INTO catalog.software_release (
-    release_id, software_id, assignment_basis, evidence_match_count, needs_review
+    release_id, software_id, assignment_basis, evidence_match_count
 )
-SELECT release_id, software_id, 'anchored_title', 1, true
+SELECT release_id, software_id, 'anchored_title', 1
 FROM _software_title_assignment ORDER BY release_id;
 
-INSERT INTO catalog.software_release_evidence (
+INSERT INTO _software_release_evidence (
     software_id, release_id, evidence_type, current_file_id,
     source_snapshot_key, source_record_key, sha1_hex, details
 )
@@ -485,7 +485,7 @@ SELECT software_id, release_id, 'anchored_title', NULL, NULL,
 FROM _software_title_assignment ORDER BY release_id;
 
 -- Keep unsafe Parent/Clone relationships and recovered human reviews visible.
-INSERT INTO catalog.software_identity_candidate (
+INSERT INTO _software_identity_candidate (
     candidate_type, review_status, system_id,
     source_snapshot_key, source_record_key, details
 )
@@ -494,7 +494,7 @@ SELECT 'parent_clone_conflict', 'pending', system_id, snapshot_key,
         'group_name', group_name, 'anchor_count', anchor_count)
 FROM _parent_clone_group WHERE anchor_count > 1;
 
-INSERT INTO catalog.software_identity_candidate (
+INSERT INTO _software_identity_candidate (
     candidate_type, review_status, system_id,
     source_snapshot_key, source_record_key, details
 )
@@ -505,7 +505,7 @@ SELECT 'parent_clone_ambiguous_release', 'pending', min(system_id),
 FROM _parent_clone_file_match GROUP BY release_id
 HAVING count(DISTINCT (snapshot_key, dat_file_id, group_name)) > 1;
 
-INSERT INTO catalog.software_identity_candidate (
+INSERT INTO _software_identity_candidate (
     candidate_type, review_status, system_id,
     source_snapshot_key, source_record_key, details
 )
@@ -555,10 +555,10 @@ ORDER BY review.row_number;
 -- Every remaining release gets an explicit unresolved title fallback.
 INSERT INTO catalog.software (
     system_id, preferred_title_id, display_name, identity_basis,
-    source_snapshot_key, source_software_id, source_group_key, needs_review
+    source_snapshot_key, source_software_id, source_group_key
 )
 SELECT title.system_id, effective.title_id, title.display_title,
-    'title_fallback', NULL, NULL, NULL, true
+    'title_fallback', NULL, NULL, NULL
 FROM (
     SELECT DISTINCT coalesce(alias.preferred_title_id, release.title_id) AS title_id
     FROM catalog.release release
@@ -571,9 +571,9 @@ ORDER BY title.system_id, lower(title.display_title), title.display_title,
     effective.title_id;
 
 INSERT INTO catalog.software_release (
-    release_id, software_id, assignment_basis, evidence_match_count, needs_review
+    release_id, software_id, assignment_basis, evidence_match_count
 )
-SELECT release.id, software.id, 'title_fallback', 0, true
+SELECT release.id, software.id, 'title_fallback', 0
 FROM catalog.release release
 LEFT JOIN catalog.title_alias alias ON alias.alias_title_id = release.title_id
 JOIN catalog.software software
@@ -721,11 +721,11 @@ LEFT JOIN catalog.title_alias alias ON alias.alias_title_id = release.title_id;
 
 INSERT INTO catalog.software (
     system_id, preferred_title_id, display_name, identity_basis,
-    source_snapshot_key, source_software_id, source_group_key, needs_review
+    source_snapshot_key, source_software_id, source_group_key
 )
 SELECT subject.system_id, min(subject.effective_title_id),
     min(title.display_title), 'manual', NULL, NULL,
-    'content-correction:' || subject.subject_content_signature, false
+    'content-correction:' || subject.subject_content_signature
 FROM _content_correction_subject subject
 JOIN catalog.title title ON title.id = subject.effective_title_id
 WHERE subject.action = 'separate'
@@ -749,12 +749,12 @@ USING _content_correction_assignment assignment
 WHERE membership.release_id = assignment.release_id;
 
 INSERT INTO catalog.software_release (
-    release_id, software_id, assignment_basis, evidence_match_count, needs_review
+    release_id, software_id, assignment_basis, evidence_match_count
 )
-SELECT release_id, software_id, 'manual_correction', 1, false
+SELECT release_id, software_id, 'manual_correction', 1
 FROM _content_correction_assignment ORDER BY release_id;
 
-INSERT INTO catalog.software_release_evidence (
+INSERT INTO _software_release_evidence (
     software_id, release_id, evidence_type, current_file_id,
     source_snapshot_key, source_record_key, sha1_hex, details
 )

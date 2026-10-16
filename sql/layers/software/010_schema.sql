@@ -32,11 +32,16 @@ CREATE UNIQUE INDEX IF NOT EXISTS software_correction_active_subject_idx
         manufacturer_name, system_name, subject_content_signature
     ) WHERE status = 'active';
 
+DROP VIEW IF EXISTS app.user_preferred_release;
+DROP TABLE IF EXISTS app.user_release_score;
+DROP TABLE IF EXISTS app.user_score_generation;
 DROP VIEW IF EXISTS catalog.user_preferred_release;
 DROP TABLE IF EXISTS catalog.user_release_score;
 DROP TABLE IF EXISTS catalog.user_score_generation;
 DROP TABLE IF EXISTS catalog.software_identity_candidate;
 DROP TABLE IF EXISTS catalog.software_release_evidence;
+DROP TABLE IF EXISTS _software_identity_candidate;
+DROP TABLE IF EXISTS _software_release_evidence;
 DROP TABLE IF EXISTS catalog.software_release;
 DROP TABLE IF EXISTS catalog.software;
 
@@ -53,31 +58,26 @@ CREATE TABLE catalog.software (
     source_snapshot_key text,
     source_software_id bigint,
     source_group_key text,
-    needs_review boolean NOT NULL,
     CHECK (
         (identity_basis = 'recovered_legacy'
             AND source_snapshot_key IS NOT NULL
             AND source_software_id IS NOT NULL
-            AND source_group_key IS NULL
-            AND NOT needs_review)
+            AND source_group_key IS NULL)
         OR
         (identity_basis = 'parent_clone'
             AND source_snapshot_key IS NOT NULL
             AND source_software_id IS NULL
-            AND source_group_key IS NOT NULL
-            AND NOT needs_review)
+            AND source_group_key IS NOT NULL)
         OR
         (identity_basis = 'manual'
             AND source_snapshot_key IS NULL
             AND source_software_id IS NULL
-            AND source_group_key IS NOT NULL
-            AND NOT needs_review)
+            AND source_group_key IS NOT NULL)
         OR
         (identity_basis = 'title_fallback'
             AND source_snapshot_key IS NULL
             AND source_software_id IS NULL
-            AND source_group_key IS NULL
-            AND needs_review)
+            AND source_group_key IS NULL)
     )
 );
 
@@ -106,33 +106,25 @@ CREATE TABLE catalog.software_release (
     )),
     evidence_match_count integer NOT NULL
         CHECK (evidence_match_count >= 0),
-    needs_review boolean NOT NULL,
     UNIQUE (software_id, release_id),
     CHECK (
-        (assignment_basis = 'exact_sha1'
-            AND evidence_match_count > 0 AND NOT needs_review)
+        (assignment_basis = 'exact_sha1' AND evidence_match_count > 0)
         OR
-        (assignment_basis = 'parent_clone'
-            AND evidence_match_count > 0 AND NOT needs_review)
+        (assignment_basis = 'parent_clone' AND evidence_match_count > 0)
         OR
-        (assignment_basis = 'anchored_title'
-            AND evidence_match_count > 0 AND needs_review)
+        (assignment_basis = 'anchored_title' AND evidence_match_count > 0)
         OR
-        (assignment_basis = 'translation_original_title'
-            AND evidence_match_count > 0 AND needs_review)
+        (assignment_basis = 'translation_original_title' AND evidence_match_count > 0)
         OR
-        (assignment_basis = 'manual_override'
-            AND evidence_match_count > 0 AND NOT needs_review)
+        (assignment_basis = 'manual_override' AND evidence_match_count > 0)
         OR
-        (assignment_basis = 'manual_correction'
-            AND evidence_match_count > 0 AND NOT needs_review)
+        (assignment_basis = 'manual_correction' AND evidence_match_count > 0)
         OR
-        (assignment_basis = 'title_fallback'
-            AND evidence_match_count = 0 AND needs_review)
+        (assignment_basis = 'title_fallback' AND evidence_match_count = 0)
     )
 );
 
-CREATE TABLE catalog.software_release_evidence (
+CREATE TEMP TABLE _software_release_evidence (
     id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     software_id bigint NOT NULL,
     release_id bigint NOT NULL,
@@ -141,8 +133,7 @@ CREATE TABLE catalog.software_release_evidence (
         'translation_member_title', 'anchored_title', 'manual_override',
         'manual_content_correction'
     )),
-    current_file_id bigint
-        REFERENCES derived.file(id) ON DELETE RESTRICT,
+    current_file_id bigint,
     source_snapshot_key text,
     source_record_key text NOT NULL CHECK (btrim(source_record_key) <> ''),
     sha1_hex text CHECK (sha1_hex ~ '^[0-9a-f]{40}$'),
@@ -151,12 +142,10 @@ CREATE TABLE catalog.software_release_evidence (
         release_id, evidence_type, current_file_id,
         source_snapshot_key, source_record_key
     ),
-    FOREIGN KEY (software_id, release_id)
-        REFERENCES catalog.software_release(software_id, release_id)
-        ON DELETE CASCADE
+    CHECK (software_id > 0 AND release_id > 0)
 );
 
-CREATE TABLE catalog.software_identity_candidate (
+CREATE TEMP TABLE _software_identity_candidate (
     id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     candidate_type text NOT NULL CHECK (candidate_type IN (
         'parent_clone_conflict', 'parent_clone_ambiguous_release',
@@ -165,7 +154,7 @@ CREATE TABLE catalog.software_identity_candidate (
     review_status text NOT NULL CHECK (review_status IN (
         'pending', 'accepted', 'rejected'
     )),
-    system_id bigint REFERENCES catalog.system(id) ON DELETE CASCADE,
+    system_id bigint,
     source_snapshot_key text NOT NULL,
     source_record_key text NOT NULL CHECK (btrim(source_record_key) <> ''),
     details jsonb NOT NULL CHECK (jsonb_typeof(details) = 'object'),

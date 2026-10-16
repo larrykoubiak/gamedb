@@ -3,9 +3,9 @@
 CREATE INDEX title_alias_preferred_idx
     ON catalog.title_alias(preferred_title_id);
 CREATE INDEX title_content_match_left_title_idx
-    ON catalog.title_content_match(left_title_id);
+    ON _title_content_match(left_title_id);
 CREATE INDEX title_content_match_right_title_idx
-    ON catalog.title_content_match(right_title_id);
+    ON _title_content_match(right_title_id);
 
 DO $$
 DECLARE
@@ -26,7 +26,7 @@ BEGIN
     END IF;
 
     SELECT count(*) INTO expected_count FROM _catalog_title_content_match;
-    SELECT count(*) INTO actual_count FROM catalog.title_content_match;
+    SELECT count(*) INTO actual_count FROM _title_content_match;
     IF actual_count <> expected_count THEN
         RAISE EXCEPTION 'catalog title-content match count %, expected %',
             actual_count, expected_count;
@@ -70,7 +70,7 @@ BEGIN
     END IF;
 
     SELECT count(*) INTO actual_count
-    FROM catalog.title_content_match match
+    FROM _title_content_match match
     JOIN catalog.release left_release ON left_release.id = match.left_release_id
     JOIN catalog.release right_release ON right_release.id = match.right_release_id
     JOIN catalog.release_content_signature left_signature
@@ -102,7 +102,7 @@ $$;
 
 COMMENT ON TABLE catalog.title_alias IS
     'Rebuildable mapping from each non-representative title in an exact-content component to its preferred title.';
-COMMENT ON TABLE catalog.title_content_match IS
+COMMENT ON TABLE _title_content_match IS
     'Direct same-system complete-release SHA-1 matches used to build transitive title components.';
 COMMENT ON TABLE catalog.package_content_signature IS
     'Complete ordered-multiset digest of SHA-1 ROM members for an unshared package; known auxiliary-only POK files are excluded.';
@@ -110,7 +110,7 @@ COMMENT ON TABLE catalog.release_content_signature IS
     'Complete ordered-multiset digest of every eligible package signature in a release.';
 
 ANALYZE catalog.title_alias;
-ANALYZE catalog.title_content_match;
+ANALYZE _title_content_match;
 ANALYZE catalog.package_content_signature;
 ANALYZE catalog.release_content_signature;
 

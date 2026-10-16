@@ -8,9 +8,8 @@ WITH scored AS MATERIALIZED (
         release.display_title AS source_title,
         membership.assignment_basis,
         membership.evidence_match_count,
-        membership.needs_review AS identity_needs_review,
         signature.sha1_set_digest AS release_content_signature
-    FROM catalog.user_release_score score
+    FROM app.user_release_score score
     JOIN app.app_user user_account ON user_account.id = score.user_id
     JOIN catalog.release release ON release.id = score.release_id
     JOIN catalog.software_release membership
@@ -18,7 +17,7 @@ WITH scored AS MATERIALIZED (
      AND membership.software_id = score.software_id
     LEFT JOIN catalog.release_content_signature signature
       ON signature.release_id = score.release_id
-    JOIN catalog.user_preferred_release preferred
+    JOIN app.user_preferred_release preferred
      ON preferred.user_id = score.user_id
      AND preferred.software_id = score.software_id
     WHERE user_account.username = __USERNAME__
@@ -58,30 +57,30 @@ release_rows AS (
     LEFT JOIN LATERAL (
         SELECT coalesce(jsonb_agg(
             jsonb_build_object(
-                'sourceCollection', dat.romset,
-                'archiveName', archive_name.archive_name,
+                'sourceCollection', package.source_collection,
+                'archiveName', package.archive_name,
+                'sourcePath', package.source_tree_path,
+                'resolvedPath', package.resolved_path,
                 'contentSignature', signature.sha1_set_digest,
                 'files', files.items
             ) ORDER BY release_package.media_sequence NULLS LAST,
-                archive_name.archive_name, package.id
+                package.archive_name, package.id
         ), '[]'::jsonb) AS items
         FROM catalog.release_package release_package
-        JOIN derived.package package ON package.id = release_package.package_id
-        JOIN derived.dat dat ON dat.id = package.dat_id
-        JOIN derived.archive_name archive_name
-          ON archive_name.id = package.archive_name_id
+        JOIN catalog.package package ON package.id = release_package.package_id
         LEFT JOIN catalog.package_content_signature signature
           ON signature.package_id = package.id
         LEFT JOIN LATERAL (
             SELECT coalesce(jsonb_agg(
                 jsonb_build_object(
                     'name', file.file_name,
+                    'memberPath', file.member_path,
                     'size', file.size,
                     'sha1', file.sha1_hex,
                     'crc', file.crc_hex
                 ) ORDER BY file.member_path, file.id
             ), '[]'::jsonb) AS items
-            FROM derived.file file
+            FROM catalog.package_file file
             WHERE file.package_id = package.id
         ) files ON true
         WHERE release_package.release_id = scored.release_id
@@ -93,7 +92,6 @@ SELECT coalesce(jsonb_agg(
         'releaseContentSignature', release_rows.release_content_signature,
         'assignmentBasis', release_rows.assignment_basis,
         'evidenceMatchCount', release_rows.evidence_match_count,
-        'identityNeedsReview', release_rows.identity_needs_review,
         'score', release_rows.score,
         'rank', release_rows.rank_within_software,
         'breakdown', release_rows.breakdown,

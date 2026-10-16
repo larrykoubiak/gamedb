@@ -162,7 +162,7 @@ function renderReleaseDetails(container, releases, softwareId) {
       translation_original_title: "Original title from translation member",
       manual_override: "Maintained manual override",
       manual_correction: "Working or promoted correction",
-      title_fallback: "Unresolved title fallback",
+      title_fallback: "Grouped by title",
     };
     identity.textContent = identityLabels[release.assignmentBasis] || release.assignmentBasis;
     sourceTitle.append(identity);
@@ -177,6 +177,10 @@ function renderReleaseDetails(container, releases, softwareId) {
       archive.className = "package-name";
       archive.textContent = `${pkg.sourceCollection} · ${pkg.archiveName}`;
       packageBlock.append(archive);
+      const path = document.createElement("div");
+      path.className = "source-path";
+      path.textContent = pkg.resolvedPath || pkg.sourcePath || "Source path unavailable";
+      packageBlock.append(path);
       if (pkg.contentSignature) {
         const signature = document.createElement("div");
         signature.className = "signature-line";
@@ -188,7 +192,7 @@ function renderReleaseDetails(container, releases, softwareId) {
         fileLine.className = "file-hash";
         const name = document.createElement("span");
         const size = file.size == null ? "?" : file.size.toLocaleString();
-        name.textContent = `${file.name} · ${size} bytes`;
+        name.textContent = `${file.memberPath || file.name} · ${size} bytes`;
         const hash = document.createElement("code");
         hash.textContent = file.sha1 ? `SHA-1 ${file.sha1}` : `CRC ${file.crc || "unknown"}`;
         fileLine.append(name, hash);
@@ -237,8 +241,8 @@ function renderReleaseDetails(container, releases, softwareId) {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "correction-button";
-      button.textContent = release.identityNeedsReview ? "Review…" : "Correct…";
-      button.addEventListener("click", () => openCorrectionDialog(release, releases, softwareId));
+      button.textContent = "Correct…";
+      button.addEventListener("click", () => openCorrectionDialog(release, softwareId));
       correction.append(button);
     } else if (state.correctionsEnabled) {
       correction.textContent = "No complete signature";
@@ -283,22 +287,16 @@ const correctionTargetFilter = document.querySelector("#correction-target-filter
 const correctionTargets = document.querySelector("#correction-targets");
 const correctionStatus = document.querySelector("#correction-status");
 
-function openCorrectionDialog(release, releases, softwareId) {
-  const currentAnchor = releases.find(candidate =>
-    candidate.releaseContentSignature
-      && candidate.releaseContentSignature !== release.releaseContentSignature
-  );
-  state.correction = { release, softwareId, target: null, currentAnchor };
+function openCorrectionDialog(release, softwareId) {
+  state.correction = { release, softwareId, target: null };
   document.querySelector("#correction-subject").textContent = release.sourceTitle;
   document.querySelector("#correction-signature").textContent = release.releaseContentSignature;
   document.querySelector("#correction-note").value = "";
   correctionTargetFilter.value = "";
   correctionTargets.textContent = "Type a title to search.";
   correctionStatus.textContent = "";
-  correctionForm.elements["correction-action"].value = release.identityNeedsReview
-    ? "confirm"
-    : "assign";
-  correctionTargetPanel.hidden = release.identityNeedsReview;
+  correctionForm.elements["correction-action"].value = "assign";
+  correctionTargetPanel.hidden = false;
   document.querySelector("#correction-save").disabled = false;
   correctionDialog.showModal();
   correctionTargetFilter.focus();
@@ -360,19 +358,10 @@ for (const radio of correctionForm.elements["correction-action"]) {
 
 correctionForm.addEventListener("submit", async event => {
   event.preventDefault();
-  const selectedAction = correctionForm.elements["correction-action"].value;
-  const confirming = selectedAction === "confirm";
-  const action = confirming && state.correction.currentAnchor ? "assign"
-    : confirming ? "separate" : selectedAction;
+  const action = correctionForm.elements["correction-action"].value;
   if (action === "assign" && !state.correction.target) {
-    if (confirming) {
-      state.correction.target = {
-        targetContentSignature: state.correction.currentAnchor.releaseContentSignature,
-      };
-    } else {
-      correctionStatus.textContent = "Choose a target software.";
-      return;
-    }
+    correctionStatus.textContent = "Choose a target software.";
+    return;
   }
   const save = document.querySelector("#correction-save");
   save.disabled = true;
@@ -386,8 +375,7 @@ correctionForm.addEventListener("submit", async event => {
         subjectContentSignature: state.correction.release.releaseContentSignature,
         action,
         targetContentSignature: action === "assign" ? state.correction.target.targetContentSignature : null,
-        note: document.querySelector("#correction-note").value
-          || (confirming ? "Confirmed current software assignment in explorer." : ""),
+        note: document.querySelector("#correction-note").value,
       }),
     });
     correctionDialog.close();
@@ -436,7 +424,7 @@ function renderGames(payload) {
       recovered_legacy: "Recovered identity · exact SHA-1 anchor",
       parent_clone: "Recovered identity · Parent/Clone",
       manual: "Maintained manual identity",
-      title_fallback: "Title fallback · identity unresolved",
+      title_fallback: "Grouped by title",
     };
     identity.textContent = identityLabels[game.identityBasis] || game.identityBasis;
     titleCell.append(identity);

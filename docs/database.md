@@ -9,8 +9,8 @@ conventions.
 | `staging` | external intake | Untouched RomVault rows and immutable historical-source snapshots |
 | `ref` | deriver | Version-controlled mappings and vocabularies |
 | `derived` | deriver | Stable inventory plus source-faithful semantic interpretation |
-| `catalog` | catalog builder | Browse model, facts, identity reconciliation and score cache |
-| `app` | application | Durable users and preferences |
+| `catalog` | catalog builder | Accepted browse facts: software, releases, packages and files |
+| `app` | application | Durable users/preferences plus disposable user score projections |
 
 ```text
                          DERIVATION PACKAGE
@@ -94,16 +94,18 @@ Each assertion links to its exact raw tag.
 
 | Layer | Main output |
 | --- | --- |
-| `catalog` | `catalog.system`, `title`, `release`, `release_package` |
-| `facts` | `release_fact`, `release_fact_evidence`, source-attribute view |
-| `identity` | exact package/release signatures, title matches and aliases |
-| `software` | platform software, total release membership and SHA-1 evidence |
-| `scoring` | per-user score cache and preferred-release view |
+| `catalog` | systems, titles, releases, packages and member files |
+| `facts` | accepted normalized `release_fact` rows |
+| `identity` | exact package/release signatures and accepted title aliases |
+| `software` | platform software and total accepted release membership |
+| `scoring` | `app`-owned per-user score cache and preferred-release view |
 
-The catalog references `derived.package` and `derived.file` rather than copying
-them. Exact SHA-1 matching takes precedence over spelling when reconciling title
-clusters; the source titles and releases remain unchanged and aliases preserve
-the evidence.
+The catalog projects every release-visible package and member file, including
+its logical and resolved path, size, hashes and verification state. Consumers
+therefore never need to join into `derived`. Exact SHA-1 matching takes
+precedence over spelling when reconciling title clusters; accepted aliases
+remain in the catalog while detailed matching work exists only in temporary
+build relations.
 
 `app.app_user` and `app.user_preference` survive catalog rebuilds. Changing a
 preference requires only:
@@ -127,10 +129,10 @@ platform; unambiguous historical Parent/Clone groups can create or extend those
 identities. A source-backed identity then cascades through an effective title
 only when that title contains exactly one software anchor. Every remaining
 release belongs to a visible `title_fallback` identity.
-`catalog.software_release_evidence` distinguishes exact hashes, Parent/Clone
-hashes, anchored-title inheritance, and maintained overrides. Conflicts and
-recovered positive/negative match reviews remain in
-`catalog.software_identity_candidate`.
+Detailed SHA-1, Parent/Clone, title-inheritance and candidate rows are temporary
+build products. Only the accepted software membership and its compact
+assignment basis are published. Durable human corrections remain in `app` and
+promoted reference files.
 
 The scoring cache includes every release, its additive score, dense rank within
 software, and a JSON explanation. `release_iteration=latest` prefers the

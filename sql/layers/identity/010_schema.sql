@@ -3,21 +3,27 @@
 \set ON_ERROR_STOP on
 BEGIN;
 
+DROP VIEW IF EXISTS app.user_preferred_release;
+DROP TABLE IF EXISTS app.user_release_score;
+DROP TABLE IF EXISTS app.user_score_generation;
 DROP VIEW IF EXISTS catalog.user_preferred_release;
 DROP TABLE IF EXISTS catalog.user_release_score;
 DROP TABLE IF EXISTS catalog.user_score_generation;
 DROP TABLE IF EXISTS catalog.software_identity_candidate;
 DROP TABLE IF EXISTS catalog.software_release_evidence;
+DROP TABLE IF EXISTS _software_identity_candidate;
+DROP TABLE IF EXISTS _software_release_evidence;
 DROP TABLE IF EXISTS catalog.software_release;
 DROP TABLE IF EXISTS catalog.software;
 DROP TABLE IF EXISTS catalog.title_alias;
 DROP TABLE IF EXISTS catalog.title_content_match;
+DROP TABLE IF EXISTS _title_content_match;
 DROP TABLE IF EXISTS catalog.release_content_signature;
 DROP TABLE IF EXISTS catalog.package_content_signature;
 
 CREATE TABLE catalog.package_content_signature (
     package_id bigint PRIMARY KEY
-        REFERENCES derived.package(id) ON DELETE CASCADE,
+        REFERENCES catalog.package(id) ON DELETE CASCADE,
     release_id bigint NOT NULL
         REFERENCES catalog.release(id) ON DELETE CASCADE,
     rom_count integer NOT NULL CHECK (rom_count > 0),
@@ -43,15 +49,11 @@ CREATE TABLE catalog.title_alias (
     CHECK (alias_title_id <> preferred_title_id)
 );
 
-CREATE TABLE catalog.title_content_match (
-    left_title_id bigint NOT NULL
-        REFERENCES catalog.title(id) ON DELETE CASCADE,
-    right_title_id bigint NOT NULL
-        REFERENCES catalog.title(id) ON DELETE CASCADE,
-    left_release_id bigint NOT NULL
-        REFERENCES catalog.release(id) ON DELETE CASCADE,
-    right_release_id bigint NOT NULL
-        REFERENCES catalog.release(id) ON DELETE CASCADE,
+CREATE TEMP TABLE _title_content_match (
+    left_title_id bigint NOT NULL,
+    right_title_id bigint NOT NULL,
+    left_release_id bigint NOT NULL,
+    right_release_id bigint NOT NULL,
     matched_rom_count integer NOT NULL CHECK (matched_rom_count > 0),
     sha1_set_digest text NOT NULL CHECK (sha1_set_digest ~ '^[0-9a-f]{32}$'),
     PRIMARY KEY (left_release_id, right_release_id),

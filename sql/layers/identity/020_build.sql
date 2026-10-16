@@ -23,7 +23,7 @@ SELECT
     count(file.id)::integer,
     md5(string_agg(file.sha1_hex, E'\n' ORDER BY file.sha1_hex))
 FROM package_owner owner
-JOIN derived.file file ON file.package_id = owner.package_id
+JOIN catalog.package_file file ON file.package_id = owner.package_id
 WHERE lower(file.file_name) !~ '\.pok$'
 GROUP BY owner.package_id, owner.release_id
 HAVING bool_and(file.sha1_hex IS NOT NULL)
@@ -80,7 +80,7 @@ JOIN catalog.title right_title
   ON right_title.id = right_release.title_id
  AND right_title.system_id = left_title.system_id;
 
-INSERT INTO catalog.title_content_match (
+INSERT INTO _title_content_match (
     left_title_id, right_title_id, left_release_id, right_release_id,
     matched_rom_count, sha1_set_digest
 )

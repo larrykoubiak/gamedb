@@ -167,17 +167,14 @@ groups. A unique source-backed identity cascades to the remaining releases in
 its effective title; collisions stop the cascade and become review candidates.
 Maybe-Intro `[n]` translations may also join an existing software identity when
 their playable member filename retains one unambiguous original title and that
-title has exactly one source-backed anchor. This remains typed, reviewable
-`translation_member_title` evidence rather than a fuzzy title match.
-Unresolved releases remain in explicit title-fallback software groups.
+title has exactly one source-backed anchor. This is a conservative typed rule
+rather than a fuzzy title match. Remaining releases are grouped by exact title.
 Importing history alone never changes the consumer catalog. Rebuild with
 `python -m gamedb rebuild --from-layer software`.
 
-The explorer's release detail table exposes **Review…** for unresolved matches
-and **Correct…** for reviewed ones. Confirming the current assignment records
-an `assign` decision against another signed release in the same software, or a
-`separate` decision when no distinct anchor exists. Working decisions are
-stored durably in `app.software_correction`, keyed by canonical
+The explorer treats recovered and generated groupings as accepted catalog
+facts and exposes **Correct…** when an exception is found. Working decisions
+are stored durably in `app.software_correction`, keyed by canonical
 system and the complete release-content signature, then applied by rebuilding
 the software and scoring layers. An assignment follows a signed target release
 to its current software; a separation creates a manual software identity.

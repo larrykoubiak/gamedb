@@ -4,14 +4,13 @@ WITH chosen AS MATERIALIZED (
         software.preferred_title_id AS title_id,
         software.display_name AS title,
         software.identity_basis,
-        software.needs_review AS identity_needs_review,
         preferred.release_id,
         preferred.score,
         preferred.breakdown,
         preferred.top_score_tie_count,
         preferred.tie_broken
     FROM catalog.software software
-    JOIN catalog.user_preferred_release preferred
+    JOIN app.user_preferred_release preferred
       ON preferred.software_id = software.id
     JOIN app.app_user user_account
       ON user_account.id = preferred.user_id
@@ -51,13 +50,11 @@ items AS (
     FROM page
     LEFT JOIN LATERAL (
         SELECT
-            min(d.romset) AS source_collection,
-            min(n.archive_name) AS archive_name,
+            min(p.source_collection) AS source_collection,
+            min(p.archive_name) AS archive_name,
             count(*) AS package_count
         FROM catalog.release_package rp
-        JOIN derived.package p ON p.id = rp.package_id
-        JOIN derived.dat d ON d.id = p.dat_id
-        JOIN derived.archive_name n ON n.id = p.archive_name_id
+        JOIN catalog.package p ON p.id = rp.package_id
         WHERE rp.release_id = page.release_id
     ) package ON true
     LEFT JOIN LATERAL (
@@ -87,7 +84,6 @@ SELECT jsonb_build_object(
                 'titleId', items.title_id,
                 'title', items.title,
                 'identityBasis', items.identity_basis,
-                'identityNeedsReview', items.identity_needs_review,
                 'score', items.score,
                 'breakdown', items.breakdown,
                 'topScoreTieCount', items.top_score_tie_count,

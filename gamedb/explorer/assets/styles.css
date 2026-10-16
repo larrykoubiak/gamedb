@@ -255,6 +255,7 @@ h2 { font-size: 1.55rem; letter-spacing: -.025em; }
 .packages-cell { min-width: 27rem; }
 .package-block + .package-block { margin-top: .65rem; padding-top: .65rem; border-top: 1px dashed var(--line); }
 .package-name { color: #bec8d5; font-weight: 600; }
+.source-path { margin-top: .18rem; color: #768397; font: .61rem/1.35 var(--font-mono); overflow-wrap: anywhere; }
 .signature-line { margin-top: .18rem; color: #687588; font: .61rem var(--font-mono); }
 .file-hash { display: grid; gap: .12rem; margin-top: .38rem; }
 .file-hash span { color: #8794a5; }

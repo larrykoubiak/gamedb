@@ -35,14 +35,14 @@ class ExplorerTests(unittest.TestCase):
         for name in ("index.html", "styles.css", "app.js"):
             self.assertTrue((ASSET_DIRECTORY / name).is_file())
 
-    def test_review_action_compiles_to_a_durable_correction(self):
+    def test_explorer_exposes_correction_without_review_queue(self):
         index = (ASSET_DIRECTORY / "index.html").read_text(encoding="utf-8")
         script = (ASSET_DIRECTORY / "app.js").read_text(encoding="utf-8")
 
-        self.assertIn('value="confirm"', index)
+        self.assertNotIn('value="confirm"', index)
         self.assertIn('/app.js?v=', index)
-        self.assertIn('confirming && state.correction.currentAnchor ? "assign"', script)
-        self.assertIn('confirming ? "separate"', script)
+        self.assertIn('button.textContent = "Correct…"', script)
+        self.assertNotIn("identityNeedsReview", script)
         self.assertIn("JSON.parse(body)", script)
 
     def test_explorer_sql_is_kept_in_reviewable_query_files(self):
@@ -60,13 +60,15 @@ class ExplorerTests(unittest.TestCase):
 
     def test_system_query_targets_preferred_release_view(self):
         query = CatalogRepository("default").systems_sql()
-        self.assertIn("catalog.user_preferred_release", query)
+        self.assertIn("app.user_preferred_release", query)
         self.assertIn("user_account.username = 'default'", query)
 
     def test_release_details_include_scores_packages_and_hashes(self):
         query = CatalogRepository("default").software_releases_sql(267707)
         self.assertIn("score.software_id = 267707", query)
         self.assertIn("catalog.package_content_signature", query)
+        self.assertIn("catalog.package_file", query)
+        self.assertNotIn("derived.file", query)
         self.assertIn("'sha1', file.sha1_hex", query)
         self.assertIn("score.rank_within_software", query)
         self.assertIn("release_content_signature", query)

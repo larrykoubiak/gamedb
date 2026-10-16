@@ -33,14 +33,9 @@ SELECT id, 'media_status',
     END,
     'catalog', 'computed'
 FROM catalog.release
-UNION ALL
-SELECT id, 'review_status',
-    CASE WHEN needs_review THEN 'needs_review' ELSE 'ready' END,
-    'catalog', 'computed'
-FROM catalog.release
 ORDER BY 1, 2;
 
-INSERT INTO catalog.release_fact_evidence (
+INSERT INTO _release_fact_evidence (
     release_fact_id, release_package_id, source_assertion_id
 )
 SELECT fact.id, membership.id, assertion.id

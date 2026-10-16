@@ -67,8 +67,8 @@ System
 - A **title** is a system-scoped, exact-title browse and metadata-search cluster.
   It is not proof that all linked releases describe the same software.
 - **Software** is the platform-specific playable product across title spellings
-  and releases. A recovered identity is supported by exact historical SHA-1
-  evidence; a title fallback is explicitly unresolved and marked for review.
+  and releases. Recovered associations and exact same-title grouping are
+  accepted by default; discovered mistakes become explicit corrections.
 - A **release** is currently a source-faithful title/variant: system, title,
   region, language, version, revision, dump state and other source claims have
   not been reconciled into a canonical game identity.
@@ -154,15 +154,13 @@ variant scores -140.
 
 The pass is deliberately conservative. Free-form `additional`, unclassified
 and media-component tags remain available through
-`catalog.release_source_attribute`. No regional language defaults, preference
+the derived source tables. No regional language defaults, preference
 weights or release scores are generated in the fact layer itself.
 
 ## Working software corrections
 
-The local explorer can confirm a signed release's current software assignment,
-move it to an existing same-system software, or separate it into a manual
-identity. Confirmation is persisted using the same stable content-signature
-`assign` or `separate` decision as an explicit correction. The decision is stored in
+The local explorer can move a signed release to an existing same-system
+software or separate it into a manual identity. The exception is stored in
 `app.software_correction`; saving runs the software and scoring layers before
 the UI refreshes. Complete release signatures move identical source
 occurrences together. Missing subjects, ambiguous targets, cross-system
@@ -194,11 +192,11 @@ currently range from -350 to 210. Of 337,303 software identities, 256,569 have
 one top-ranked release and 80,734 retain a tie. Preferences are illustrative
 rather than a claim that the weights are final.
 
-`catalog.user_preferred_release` provides one convenient row per user/software.
+`app.user_preferred_release` provides one convenient row per user/software.
 When top scores tie it selects the lowest rebuild-local release ID but reports
 `top_score_tie_count` and `tie_broken`, so consumers can distinguish a genuine
 unique winner from a deterministic fallback. Lower-ranked and tied releases
-remain available in `catalog.user_release_score`.
+remain available in `app.user_release_score`.
 
 ## Rebuild workflow
 

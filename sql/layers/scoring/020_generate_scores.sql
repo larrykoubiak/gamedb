@@ -1,15 +1,18 @@
 -- Compile enabled preferences into a replaceable per-user release score cache.
+DROP VIEW IF EXISTS app.user_preferred_release;
+DROP TABLE IF EXISTS app.user_release_score;
+DROP TABLE IF EXISTS app.user_score_generation;
 DROP VIEW IF EXISTS catalog.user_preferred_release;
 DROP TABLE IF EXISTS catalog.user_release_score;
 DROP TABLE IF EXISTS catalog.user_score_generation;
 
-CREATE TABLE catalog.user_score_generation (
+CREATE TABLE app.user_score_generation (
     user_id bigint PRIMARY KEY REFERENCES app.app_user(id) ON DELETE CASCADE,
     generated_at timestamptz NOT NULL,
     preference_signature text NOT NULL
 );
 
-CREATE TABLE catalog.user_release_score (
+CREATE TABLE app.user_release_score (
     user_id bigint NOT NULL REFERENCES app.app_user(id) ON DELETE CASCADE,
     software_id bigint NOT NULL REFERENCES catalog.software(id) ON DELETE CASCADE,
     release_id bigint NOT NULL REFERENCES catalog.release(id) ON DELETE CASCADE,
@@ -151,14 +154,14 @@ ranked AS (
         ) AS rank_within_software
     FROM scored
 )
-INSERT INTO catalog.user_release_score (
+INSERT INTO app.user_release_score (
     user_id, software_id, release_id, score, rank_within_software, breakdown
 )
 SELECT user_id, software_id, release_id, score, rank_within_software, breakdown
 FROM ranked
 ORDER BY user_id, software_id, rank_within_software, release_id;
 
-INSERT INTO catalog.user_score_generation (
+INSERT INTO app.user_score_generation (
     user_id, generated_at, preference_signature
 )
 SELECT user_account.id, transaction_timestamp(),
@@ -177,6 +180,6 @@ LEFT JOIN app.user_preference preference
 GROUP BY user_account.id;
 
 CREATE INDEX user_release_score_software_rank_idx
-    ON catalog.user_release_score(
+    ON app.user_release_score(
         user_id, software_id, rank_within_software, score DESC, release_id
     );

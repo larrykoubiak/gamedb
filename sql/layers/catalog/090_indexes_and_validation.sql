@@ -1,13 +1,13 @@
 -- Validate the intentionally small catalog projection and publish it.
 CREATE INDEX title_system_display_idx
     ON catalog.title(system_id, display_title);
-CREATE INDEX title_review_idx
-    ON catalog.title(needs_review) WHERE needs_review;
 CREATE INDEX release_title_idx ON catalog.release(title_id);
-CREATE INDEX release_review_idx
-    ON catalog.release(needs_review) WHERE needs_review;
 CREATE INDEX release_grouping_status_idx
     ON catalog.release(grouping_status);
+CREATE INDEX package_source_idx
+    ON catalog.package(source_collection, archive_name);
+CREATE INDEX package_file_package_idx ON catalog.package_file(package_id);
+CREATE INDEX package_file_sha1_idx ON catalog.package_file(sha1_hex);
 CREATE INDEX release_package_release_order_idx
     ON catalog.release_package(
         release_id, media_sequence NULLS LAST, media_part, media_side
@@ -52,12 +52,18 @@ COMMENT ON TABLE catalog.title IS
     'System-scoped browse/search clusters built from derived source titles.';
 COMMENT ON TABLE catalog.release IS
     'Consumer projection of source-faithful releases assembled by the deriver.';
+COMMENT ON TABLE catalog.package IS
+    'Consumer-visible archive and its resolved source location.';
+COMMENT ON TABLE catalog.package_file IS
+    'Consumer-visible members, hashes, sizes, and verification facts.';
 COMMENT ON TABLE catalog.release_package IS
-    'Catalog membership referencing stable derived inventory packages.';
+    'Catalog membership connecting releases to consumer-visible packages.';
 
 ANALYZE catalog.system;
 ANALYZE catalog.title;
 ANALYZE catalog.release;
+ANALYZE catalog.package;
+ANALYZE catalog.package_file;
 ANALYZE catalog.release_package;
 
 COMMIT;
