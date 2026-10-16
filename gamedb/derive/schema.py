@@ -48,6 +48,21 @@ tag_category = Table(
     schema="ref",
 )
 
+software_correction = Table(
+    "software_correction", metadata,
+    Column("manufacturer_name", Text, primary_key=True),
+    Column("system_name", Text, primary_key=True),
+    Column("subject_content_signature", Text, primary_key=True),
+    Column("action", Text, nullable=False),
+    Column("target_content_signature", Text),
+    Column("note", Text, nullable=False),
+    CheckConstraint("subject_content_signature ~ '^[0-9a-f]{32}$'"),
+    CheckConstraint("target_content_signature IS NULL OR target_content_signature ~ '^[0-9a-f]{32}$'"),
+    CheckConstraint("action IN ('assign', 'separate')"),
+    CheckConstraint("(action = 'assign' AND target_content_signature IS NOT NULL AND target_content_signature <> subject_content_signature) OR (action = 'separate' AND target_content_signature IS NULL)"),
+    schema="ref",
+)
+
 dat_source = Table(
     "dat_source", metadata,
     Column("id", BigInteger, primary_key=True, autoincrement=True),
@@ -134,6 +149,17 @@ file = Table(
     Column("rep_status", Integer, nullable=False),
     Column("source_game_id", Text),
     Column("source_game_description", Text),
+    schema="derived",
+)
+
+translation_member_title = Table(
+    "translation_member_title", metadata,
+    Column("file_id", BigInteger, ForeignKey("derived.file.id", ondelete="CASCADE"), primary_key=True),
+    Column("title_text", Text, nullable=False),
+    Column("parse_status", Text, nullable=False),
+    Column("parse_issues", JSONB, nullable=False),
+    Column("parser_version", Text, nullable=False),
+    CheckConstraint("btrim(title_text) <> ''"),
     schema="derived",
 )
 
@@ -285,5 +311,6 @@ Index("derived_dat_system_idx", dat.c.canonical_system_id)
 Index("derived_package_dat_idx", package.c.dat_id)
 Index("derived_file_package_idx", file.c.package_id)
 Index("derived_file_sha1_idx", file.c.sha1_hex, postgresql_where=file.c.sha1_hex.is_not(None))
+Index("derived_translation_member_title_idx", translation_member_title.c.title_text)
 Index("derived_record_title_idx", record.c.title_text)
 Index("derived_assertion_key_value_idx", assertion.c.assertion_key, assertion.c.assertion_value)

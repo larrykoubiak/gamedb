@@ -1,4 +1,4 @@
-"""Start the standalone read-only explorer process."""
+"""Start the standalone explorer process."""
 
 import argparse
 

@@ -88,6 +88,41 @@
     </section>
   </main>
 
+  <dialog id="correction-dialog" class="correction-dialog">
+    <form id="correction-form" method="dialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">Working correction</p>
+          <h2>Correct release attribution</h2>
+        </div>
+        <button id="correction-close" class="icon-button" type="button" aria-label="Close">×</button>
+      </div>
+      <p id="correction-subject" class="correction-subject"></p>
+      <code id="correction-signature" class="correction-signature"></code>
+
+      <fieldset class="correction-actions">
+        <legend>Decision</legend>
+        <label><input type="radio" name="correction-action" value="confirm" checked> Confirm current assignment</label>
+        <label><input type="radio" name="correction-action" value="assign"> Move to existing software</label>
+        <label><input type="radio" name="correction-action" value="separate"> Keep as separate software</label>
+      </fieldset>
+
+      <div id="correction-target-panel">
+        <label class="dialog-label" for="correction-target-filter">Target software</label>
+        <input id="correction-target-filter" class="dialog-input" type="search" placeholder="Search software titles…" autocomplete="off">
+        <div id="correction-targets" class="correction-targets">Type a title to search.</div>
+      </div>
+
+      <label class="dialog-label" for="correction-note">Reason or note</label>
+      <textarea id="correction-note" class="dialog-input" rows="3" maxlength="1000" placeholder="Why do these releases belong together?"></textarea>
+      <p id="correction-status" class="correction-status"></p>
+      <div class="dialog-buttons">
+        <button id="correction-cancel" type="button" class="secondary-button">Cancel</button>
+        <button id="correction-save" type="submit" class="primary-button">Save and rebuild</button>
+      </div>
+    </form>
+  </dialog>
+
   <script src="/app.js" defer></script>
 </body>
 </html>

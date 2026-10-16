@@ -42,7 +42,7 @@ CROSS JOIN (
     VALUES
         ('language', 'equals', 'en', 40, 'Prefer explicit English releases'),
         ('region', 'equals', 'US', 100, 'Prefer US releases'),
-        ('release_iteration', 'latest', NULL, 20, 'Prefer the latest explicit version or revision within a title'),
+        ('release_iteration', 'latest', NULL, 20, 'Prefer the latest explicit version or revision within software'),
         ('dump_status', 'equals', 'verified', 30, 'Prefer source-verified dumps'),
         ('release_status', 'equals', 'beta', -100, 'Demote beta releases'),
         ('dump_status', 'equals', 'alternate', -50, 'Demote alternate dumps'),
@@ -51,3 +51,11 @@ CROSS JOIN (
 ) seed(fact_key, match_operator, fact_value, score, description)
 WHERE u.username = 'default'
 ON CONFLICT (user_id, fact_key, match_operator, fact_value) DO NOTHING;
+
+-- Migrate only the original seed wording; preserve genuinely customized
+-- descriptions on durable user preferences.
+UPDATE app.user_preference
+SET description = 'Prefer the latest explicit version or revision within software'
+WHERE fact_key = 'release_iteration'
+  AND match_operator = 'latest'
+  AND description = 'Prefer the latest explicit version or revision within a title';

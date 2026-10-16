@@ -16,6 +16,7 @@ from .extractors.name_derivation import NameDerivation
 from .extractors.reference_extract import ReferenceExtractor
 from .extractors.release_assemble import ReleaseAssembler
 from .extractors.system_extract import SystemExtractor
+from .extractors.translation_member_title_extract import TranslationMemberTitleExtractor
 from .schema_manager import DerivedSchemaManager
 
 
@@ -54,6 +55,7 @@ class DerivationPipeline:
             "dat_extract": self._dat,
             "system_extract": self._system,
             "inventory_extract": self._inventory,
+            "translation_member_title_extract": self._translation_member_titles,
             "archive_path_extract": self._paths,
             "archive_name_extract": self._names,
             "release_assemble": self._releases,
@@ -126,6 +128,11 @@ class DerivationPipeline:
     def _inventory(self):
         with self.engine.begin() as connection:
             InventoryExtractor().execute(connection)
+
+    def _translation_member_titles(self):
+        with self.engine.begin() as connection:
+            count = TranslationMemberTitleExtractor().execute(connection)
+            return f"rows={count:,}"
 
     def _paths(self):
         with self.engine.begin() as connection:

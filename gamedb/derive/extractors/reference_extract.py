@@ -8,7 +8,10 @@ from pathlib import Path
 from sqlalchemy import insert, select, text
 from sqlalchemy.engine import Connection
 
-from ..schema import canonical_system, path_mapping, system_mapping, tag_category
+from ..schema import (
+    canonical_system, path_mapping, software_correction, system_mapping,
+    tag_category,
+)
 
 
 class ReferenceExtractor:
@@ -19,7 +22,7 @@ class ReferenceExtractor:
 
     def execute(self, connection: Connection) -> None:
         connection.execute(text("""
-            TRUNCATE ref.tag_category, ref.path_mapping,
+            TRUNCATE ref.software_correction, ref.tag_category, ref.path_mapping,
                 ref.system_mapping, ref.canonical_system
             RESTART IDENTITY CASCADE
         """))
@@ -52,6 +55,15 @@ class ReferenceExtractor:
         ])
         connection.execute(insert(path_mapping), self._rows("path_mappings.csv"))
         connection.execute(insert(tag_category), self._rows("tag_categories.csv"))
+        corrections = self._rows("software_corrections.csv")
+        connection.execute(insert(software_correction), [
+            {
+                **row,
+                "target_content_signature":
+                    row["target_content_signature"] or None,
+            }
+            for row in corrections
+        ])
 
     def _rows(self, name: str) -> list[dict[str, str]]:
         path = self.reference_directory / name

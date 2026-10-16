@@ -6,6 +6,9 @@ const state = {
   query: "",
   requestId: 0,
   releaseDetails: new Map(),
+  correction: null,
+  targetRequestId: 0,
+  correctionsEnabled: false,
 };
 
 const tree = document.querySelector("#system-tree");
@@ -16,8 +19,8 @@ const empty = document.querySelector("#game-empty");
 const pagination = document.querySelector("#pagination");
 const gameFilter = document.querySelector("#game-filter");
 
-async function requestJson(url) {
-  const response = await fetch(url);
+async function requestJson(url, options = {}) {
+  const response = await fetch(url, options);
   const payload = await response.json();
   if (!response.ok) throw new Error(payload.error || `Request failed: ${response.status}`);
   return payload;
@@ -108,7 +111,7 @@ function appendBreakdown(container, breakdown) {
   container.append(list);
 }
 
-function renderReleaseDetails(container, releases) {
+function renderReleaseDetails(container, releases, softwareId) {
   container.replaceChildren();
   const heading = document.createElement("div");
   heading.className = "release-detail-heading";
@@ -121,7 +124,7 @@ function renderReleaseDetails(container, releases) {
   table.className = "release-table";
   const head = document.createElement("thead");
   const headRow = document.createElement("tr");
-  for (const label of ["Result", "Source title", "Packages and hashes", "Facts", "Score"]) {
+  for (const label of ["Result", "Source title", "Packages and hashes", "Facts", "Score", "Correction"]) {
     const th = document.createElement("th");
     th.scope = "col";
     th.textContent = label;
@@ -139,7 +142,21 @@ function renderReleaseDetails(container, releases) {
     resultBadge.className = release.selected ? "winner-badge" : "rank-badge";
     resultBadge.textContent = release.selected ? "Selected" : `Rank ${release.rank}`;
     result.append(resultBadge);
-    row.append(result, cell(release.sourceTitle, "release-title-cell"));
+    const sourceTitle = cell(release.sourceTitle, "release-title-cell");
+    const identity = document.createElement("span");
+    identity.className = "cell-note";
+    const identityLabels = {
+      exact_sha1: "Exact historical SHA-1",
+      parent_clone: "Parent/Clone relationship",
+      anchored_title: "Inherited from unique title anchor",
+      translation_original_title: "Original title from translation member",
+      manual_override: "Maintained manual override",
+      manual_correction: "Working or promoted correction",
+      title_fallback: "Unresolved title fallback",
+    };
+    identity.textContent = identityLabels[release.assignmentBasis] || release.assignmentBasis;
+    sourceTitle.append(identity);
+    row.append(result, sourceTitle);
 
     const packages = document.createElement("td");
     packages.className = "packages-cell";
@@ -204,6 +221,20 @@ function renderReleaseDetails(container, releases) {
     appendBreakdown(explanation, release.breakdown);
     score.append(explanation);
     row.append(score);
+
+    const correction = document.createElement("td");
+    if (state.correctionsEnabled && release.releaseContentSignature) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "correction-button";
+      button.textContent = release.identityNeedsReview ? "Review…" : "Correct…";
+      button.addEventListener("click", () => openCorrectionDialog(release, releases, softwareId));
+      correction.append(button);
+    } else if (state.correctionsEnabled) {
+      correction.textContent = "No complete signature";
+      correction.className = "cell-note";
+    }
+    row.append(correction);
     body.append(row);
   }
   table.append(body);
@@ -222,18 +253,144 @@ async function toggleReleaseDetails(game, row, detailRow, button) {
   const container = detailRow.querySelector(".release-details");
   container.textContent = "Loading ranked releases and hashes…";
   try {
-    let releases = state.releaseDetails.get(game.titleId);
+    let releases = state.releaseDetails.get(game.softwareId);
     if (!releases) {
-      releases = await requestJson(`/api/titles/${game.titleId}/releases`);
-      state.releaseDetails.set(game.titleId, releases);
+      releases = await requestJson(`/api/software/${game.softwareId}/releases`);
+      state.releaseDetails.set(game.softwareId, releases);
     }
-    renderReleaseDetails(container, releases);
+    renderReleaseDetails(container, releases, game.softwareId);
     detailRow.dataset.loaded = "true";
   } catch (error) {
     container.className = "release-details error-row";
     container.textContent = error.message;
   }
 }
+
+const correctionDialog = document.querySelector("#correction-dialog");
+const correctionForm = document.querySelector("#correction-form");
+const correctionTargetPanel = document.querySelector("#correction-target-panel");
+const correctionTargetFilter = document.querySelector("#correction-target-filter");
+const correctionTargets = document.querySelector("#correction-targets");
+const correctionStatus = document.querySelector("#correction-status");
+
+function openCorrectionDialog(release, releases, softwareId) {
+  const currentAnchor = releases.find(candidate =>
+    candidate.releaseContentSignature
+      && candidate.releaseContentSignature !== release.releaseContentSignature
+  );
+  state.correction = { release, softwareId, target: null, currentAnchor };
+  document.querySelector("#correction-subject").textContent = release.sourceTitle;
+  document.querySelector("#correction-signature").textContent = release.releaseContentSignature;
+  document.querySelector("#correction-note").value = "";
+  correctionTargetFilter.value = "";
+  correctionTargets.textContent = "Type a title to search.";
+  correctionStatus.textContent = "";
+  correctionForm.elements["correction-action"].value = release.identityNeedsReview
+    ? "confirm"
+    : "assign";
+  correctionTargetPanel.hidden = release.identityNeedsReview;
+  document.querySelector("#correction-save").disabled = false;
+  correctionDialog.showModal();
+  correctionTargetFilter.focus();
+}
+
+function renderCorrectionTargets(targets) {
+  correctionTargets.replaceChildren();
+  if (!targets.length) {
+    correctionTargets.textContent = "No matching software with a complete signature.";
+    return;
+  }
+  for (const target of targets) {
+    const label = document.createElement("label");
+    label.className = "correction-target";
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = "correction-target";
+    radio.value = target.targetContentSignature;
+    radio.addEventListener("change", () => { state.correction.target = target; });
+    const text = document.createElement("span");
+    const title = document.createElement("strong");
+    title.textContent = target.displayName;
+    const detail = document.createElement("small");
+    detail.textContent = `${target.releaseCount} release${target.releaseCount === 1 ? "" : "s"} · ${target.identityBasis}`;
+    text.append(title, detail);
+    label.append(radio, text);
+    correctionTargets.append(label);
+  }
+}
+
+let correctionSearchTimer;
+correctionTargetFilter.addEventListener("input", () => {
+  clearTimeout(correctionSearchTimer);
+  state.correction.target = null;
+  const query = correctionTargetFilter.value.trim();
+  if (!query) {
+    correctionTargets.textContent = "Type a title to search.";
+    return;
+  }
+  correctionTargets.textContent = "Searching…";
+  const requestId = ++state.targetRequestId;
+  correctionSearchTimer = setTimeout(async () => {
+    try {
+      const targets = await requestJson(
+        `/api/systems/${state.selectedSystem.id}/correction-targets?exclude_software_id=${state.correction.softwareId}&q=${encodeURIComponent(query)}`
+      );
+      if (requestId === state.targetRequestId) renderCorrectionTargets(targets);
+    } catch (error) {
+      if (requestId === state.targetRequestId) correctionTargets.textContent = error.message;
+    }
+  }, 250);
+});
+
+for (const radio of correctionForm.elements["correction-action"]) {
+  radio.addEventListener("change", () => {
+    if (radio.checked) correctionTargetPanel.hidden = radio.value !== "assign";
+  });
+}
+
+correctionForm.addEventListener("submit", async event => {
+  event.preventDefault();
+  const selectedAction = correctionForm.elements["correction-action"].value;
+  const confirming = selectedAction === "confirm";
+  const action = confirming && state.correction.currentAnchor ? "assign"
+    : confirming ? "separate" : selectedAction;
+  if (action === "assign" && !state.correction.target) {
+    if (confirming) {
+      state.correction.target = {
+        targetContentSignature: state.correction.currentAnchor.releaseContentSignature,
+      };
+    } else {
+      correctionStatus.textContent = "Choose a target software.";
+      return;
+    }
+  }
+  const save = document.querySelector("#correction-save");
+  save.disabled = true;
+  correctionStatus.textContent = "Saving correction and rebuilding software…";
+  try {
+    await requestJson("/api/software-corrections", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        systemId: state.selectedSystem.id,
+        subjectContentSignature: state.correction.release.releaseContentSignature,
+        action,
+        targetContentSignature: action === "assign" ? state.correction.target.targetContentSignature : null,
+        note: document.querySelector("#correction-note").value
+          || (confirming ? "Confirmed current software assignment in explorer." : ""),
+      }),
+    });
+    correctionDialog.close();
+    state.releaseDetails.clear();
+    await selectSystem(state.selectedSystem, state.page);
+  } catch (error) {
+    correctionStatus.textContent = error.message;
+    save.disabled = false;
+  }
+});
+
+document.querySelector("#correction-close").addEventListener("click", () => correctionDialog.close());
+document.querySelector("#correction-cancel").addEventListener("click", () => correctionDialog.close());
 
 function showMessage(message, className = "empty-state") {
   tableWrap.hidden = true;
@@ -262,7 +419,18 @@ function renderGames(payload) {
     expand.setAttribute("aria-expanded", "false");
     expandCell.append(expand);
     row.append(expandCell);
-    row.append(cell(game.title, "title-cell"));
+    const titleCell = cell(game.title, "title-cell");
+    const identity = document.createElement("span");
+    identity.className = "cell-note";
+    const identityLabels = {
+      recovered_legacy: "Recovered identity · exact SHA-1 anchor",
+      parent_clone: "Recovered identity · Parent/Clone",
+      manual: "Maintained manual identity",
+      title_fallback: "Title fallback · identity unresolved",
+    };
+    identity.textContent = identityLabels[game.identityBasis] || game.identityBasis;
+    titleCell.append(identity);
+    row.append(titleCell);
 
     const archive = cell(game.archiveName || "No package name", "archive-cell");
     if (game.packageCount > 1) {
@@ -346,8 +514,8 @@ function renderGames(payload) {
   document.querySelector("#previous-page").disabled = payload.page <= 1;
   document.querySelector("#next-page").disabled = payload.page >= pageCount;
   document.querySelector("#system-summary").textContent = state.query
-    ? `${payload.total.toLocaleString()} matching titles · preferred release per title`
-    : `${state.selectedSystem.gameCount.toLocaleString()} title clusters · preferred release per title`;
+    ? `${payload.total.toLocaleString()} matching software titles · preferred release per software`
+    : `${state.selectedSystem.gameCount.toLocaleString()} software titles · preferred release per software`;
 }
 
 async function selectSystem(system, page = 1) {
@@ -357,7 +525,7 @@ async function selectSystem(system, page = 1) {
   renderTree(filter.value);
   document.querySelector("#manufacturer-name").textContent = system.manufacturer;
   document.querySelector("#system-name").textContent = system.name;
-  document.querySelector("#system-summary").textContent = `${system.gameCount.toLocaleString()} title clusters · preferred release per title`;
+  document.querySelector("#system-summary").textContent = `${system.gameCount.toLocaleString()} software titles · preferred release per software`;
   gameFilter.disabled = false;
   showMessage("Loading preferred releases…");
 
@@ -388,7 +556,12 @@ gameFilter.addEventListener("input", () => {
 
 async function initialize() {
   try {
-    state.systems = await requestJson("/api/systems");
+    const [systems, capabilities] = await Promise.all([
+      requestJson("/api/systems"),
+      requestJson("/api/capabilities"),
+    ]);
+    state.systems = systems;
+    state.correctionsEnabled = Boolean(capabilities.softwareCorrections);
     document.querySelector("#system-count").textContent = `${state.systems.length} systems`;
     renderTree();
     if (state.systems.length) selectSystem(state.systems[0]);

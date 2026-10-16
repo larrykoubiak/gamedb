@@ -18,12 +18,37 @@ class NonClosingStringIO(StringIO):
 
 
 class WorkflowConfigTests(unittest.TestCase):
+    def test_software_override_contract_is_version_controlled(self):
+        header = (PROJECT_ROOT / "reference/software_overrides.csv").read_text(
+            encoding="utf-8"
+        ).splitlines()[0]
+
+        self.assertEqual(
+            header,
+            "action,manufacturer_name,system_name,source_collection,"
+            "archive_name,record_index,target_key,target_display_name,note",
+        )
+
+    def test_promoted_software_correction_contract_is_version_controlled(self):
+        header = (PROJECT_ROOT / "reference/software_corrections.csv").read_text(
+            encoding="utf-8"
+        ).splitlines()[0]
+
+        self.assertEqual(
+            header,
+            "manufacturer_name,system_name,subject_content_signature,action,"
+            "target_content_signature,note",
+        )
+
     def test_project_pipeline_tells_the_ordered_layer_story(self):
         config = WorkflowConfig.load(PROJECT_ROOT / "pipeline.yml")
 
         self.assertEqual(
             config.layer_names,
-            ("catalog", "facts", "identity", "scoring"),
+            ("catalog", "facts", "identity", "software", "scoring"),
+        )
+        self.assertEqual(
+            config.layers[-2].steps[0].name, "build_software_identity"
         )
         self.assertEqual(config.layers[-1].steps[0].name, "build_release_scores")
 

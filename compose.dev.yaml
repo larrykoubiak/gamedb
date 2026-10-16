@@ -8,6 +8,8 @@ services:
       context: .
       target: explorer
     env_file: .env
+    environment:
+      GAMEDB_ENABLE_CORRECTIONS: "1"
     ports:
       - "${GAMEDB_EXPLORER_PORT:-8082}:8000"
 

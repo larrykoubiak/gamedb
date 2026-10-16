@@ -12,7 +12,7 @@ catalog. The code is split into three applications with distinct ownership:
 The data flow is deliberately one-way:
 
 ```text
-staging.rv_files + reference
+staging.rv_files + recovered history + reference
                   │
                   ▼
        Python derivation pass
@@ -23,7 +23,7 @@ staging.rv_files + reference
                   ▼
        SQL consumer projection
        catalog systems, titles, releases, facts,
-       exact-content identity and cached ranking
+       software identity and cached ranking
                   │
                   ▼
              explorer
@@ -144,6 +144,62 @@ existing managed tunnel origin.
 ```sh
 python -m unittest discover -s tests -v
 ```
+
+## Recovered identity sources
+
+Historical GameDB databases and review artifacts can be snapshotted into
+history-owned `staging.history_*` tables without affecting `staging.rv_files`:
+
+```sh
+python -m gamedb import-history \
+  --python-gamedb /path/to/recovered/GameDB \
+  --legacy-archive /path/to/20160605-GameDB_Backup.7z \
+  --patch-workbook /path/to/patches.xlsx
+```
+
+`OLD_GAMEDB` supplies the read-only SQLAlchemy URL for the legacy relational
+database. The import preserves source IDs, hashes, Parent/Clone relationships,
+source trust ratings, external mappings, reviewed match scores, workbook rows,
+and artifact checksums.
+The `software` catalog layer interprets unambiguous historical SHA-1 matches as
+recovered software identity and extends them through unambiguous Parent/Clone
+groups. A unique source-backed identity cascades to the remaining releases in
+its effective title; collisions stop the cascade and become review candidates.
+Maybe-Intro `[n]` translations may also join an existing software identity when
+their playable member filename retains one unambiguous original title and that
+title has exactly one source-backed anchor. This remains typed, reviewable
+`translation_member_title` evidence rather than a fuzzy title match.
+Unresolved releases remain in explicit title-fallback software groups.
+Importing history alone never changes the consumer catalog. Rebuild with
+`python -m gamedb rebuild --from-layer software`.
+
+The explorer's release detail table exposes **Review…** for unresolved matches
+and **Correct…** for reviewed ones. Confirming the current assignment records
+an `assign` decision against another signed release in the same software, or a
+`separate` decision when no distinct anchor exists. Working decisions are
+stored durably in `app.software_correction`, keyed by canonical
+system and the complete release-content signature, then applied by rebuilding
+the software and scoring layers. An assignment follows a signed target release
+to its current software; a separation creates a manual software identity.
+Mutation is gated by `GAMEDB_ENABLE_CORRECTIONS`; the workstation
+`compose.dev.yaml` enables it, while the public deployment remains read-only by
+default.
+
+After reviewing working corrections, promote them into the version-controlled
+reference CSV and its `ref` materialization:
+
+```sh
+python -m gamedb promote-corrections
+```
+
+Promoted rows remain in `app` as audit history but no longer participate as
+working decisions. Reviewed reference corrections take precedence on rebuild.
+
+Maintained corrections live in `reference/software_overrides.csv`. An `assign`
+row selects one release by system, source collection, archive name, and record
+index and places it in a system-scoped manual `target_key`; an `exclude` row
+prevents automatic identity inheritance for that release. Every selector must
+resolve to exactly one current release or the software transaction stops.
 
 Connection settings live in the ignored `.env`; exported shell values take
 precedence.

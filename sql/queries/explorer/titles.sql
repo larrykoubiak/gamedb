@@ -1,35 +1,39 @@
 WITH chosen AS MATERIALIZED (
     SELECT
-        title.id AS title_id,
-        title.display_title AS title,
+        software.id AS software_id,
+        software.preferred_title_id AS title_id,
+        software.display_name AS title,
+        software.identity_basis,
+        software.needs_review AS identity_needs_review,
         preferred.release_id,
         preferred.score,
         preferred.breakdown,
         preferred.top_score_tie_count,
         preferred.tie_broken
-    FROM catalog.title title
+    FROM catalog.software software
     JOIN catalog.user_preferred_release preferred
-      ON preferred.title_id = title.id
+      ON preferred.software_id = software.id
     JOIN app.app_user user_account
       ON user_account.id = preferred.user_id
-    WHERE title.system_id = __SYSTEM_ID__
+    WHERE software.system_id = __SYSTEM_ID__
       AND user_account.username = __USERNAME__
       AND (
           __TITLE_FILTER__ = ''
-          OR position(lower(__TITLE_FILTER__) in lower(title.display_title)) > 0
+          OR position(lower(__TITLE_FILTER__) in lower(software.display_name)) > 0
           OR EXISTS (
               SELECT 1
-              FROM catalog.title_alias alias
-              JOIN catalog.title alias_title ON alias_title.id = alias.alias_title_id
-              WHERE alias.preferred_title_id = title.id
-                AND position(lower(__TITLE_FILTER__) in lower(alias_title.display_title)) > 0
+              FROM catalog.software_release membership
+              JOIN catalog.release release ON release.id = membership.release_id
+              JOIN catalog.title member_title ON member_title.id = release.title_id
+              WHERE membership.software_id = software.id
+                AND position(lower(__TITLE_FILTER__) in lower(member_title.display_title)) > 0
           )
       )
 ),
 page AS (
     SELECT *
     FROM chosen
-    ORDER BY lower(title), title, title_id
+    ORDER BY lower(title), title, software_id
     LIMIT __LIMIT__ OFFSET __OFFSET__
 ),
 items AS (
@@ -79,8 +83,11 @@ SELECT jsonb_build_object(
     'items', coalesce((
         SELECT jsonb_agg(
             jsonb_build_object(
+                'softwareId', items.software_id,
                 'titleId', items.title_id,
                 'title', items.title,
+                'identityBasis', items.identity_basis,
+                'identityNeedsReview', items.identity_needs_review,
                 'score', items.score,
                 'breakdown', items.breakdown,
                 'topScoreTieCount', items.top_score_tie_count,
@@ -94,7 +101,7 @@ SELECT jsonb_build_object(
                 'releaseDates', items.release_dates,
                 'dumpModifications', items.dump_modifications,
                 'dumpStatuses', items.dump_statuses
-            ) ORDER BY lower(items.title), items.title, items.title_id
+            ) ORDER BY lower(items.title), items.title, items.software_id
         )
         FROM items
     ), '[]'::jsonb)

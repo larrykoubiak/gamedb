@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import re
 import subprocess
+import threading
 from urllib.parse import parse_qs, urlparse
 
 from gamedb.config import ProjectEnvironment
@@ -17,7 +18,8 @@ ASSET_DIRECTORY = Path(__file__).with_name("assets")
 PROJECT_ENV = Path(__file__).resolve().parent.parent / ".env"
 USERNAME = re.compile(r"[A-Za-z0-9_.-]{1,64}")
 SYSTEM_TITLES = re.compile(r"/api/systems/([0-9]+)/titles")
-TITLE_RELEASES = re.compile(r"/api/titles/([0-9]+)/releases")
+SOFTWARE_RELEASES = re.compile(r"/api/software/([0-9]+)/releases")
+CORRECTION_TARGETS = re.compile(r"/api/systems/([0-9]+)/correction-targets")
 PAGE_SIZE_MAXIMUM = 200
 DEFAULT_PORT = 8000
 
@@ -36,6 +38,12 @@ def _resolve_explorer_port(command_line_port: int | None) -> int:
         raise SystemExit("GAMEDB_EXPLORER_PORT must be an integer") from error
 
 
+def _corrections_enabled() -> bool:
+    return os.environ.get("GAMEDB_ENABLE_CORRECTIONS", "").lower() in (
+        "1", "true", "yes",
+    )
+
+
 def _database_error(stderr: str) -> str:
     if "connection to server" in stderr:
         return "Database connection failed. Check the project .env and that PostgreSQL is running."
@@ -43,7 +51,7 @@ def _database_error(stderr: str) -> str:
 
 
 class ExplorerHandler(BaseHTTPRequestHandler):
-    """Translate HTTP requests into read-only repository operations."""
+    """Translate HTTP requests into catalog and correction operations."""
 
     server_version = "GameDBExplorer/1"
 
@@ -52,6 +60,10 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         try:
             if parsed.path == "/api/systems":
                 return self._json_response(self.server.repository.systems())
+            if parsed.path == "/api/capabilities":
+                return self._json_response({
+                    "softwareCorrections": self.server.corrections_enabled,
+                })
 
             match = SYSTEM_TITLES.fullmatch(parsed.path)
             if match:
@@ -72,11 +84,25 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 payload["pageSize"] = page_size
                 return self._json_response(payload)
 
-            match = TITLE_RELEASES.fullmatch(parsed.path)
+            match = SOFTWARE_RELEASES.fullmatch(parsed.path)
             if match:
                 return self._json_response(
-                    self.server.repository.title_releases(int(match.group(1)))
+                    self.server.repository.software_releases(int(match.group(1)))
                 )
+
+            match = CORRECTION_TARGETS.fullmatch(parsed.path)
+            if match:
+                if not self.server.corrections_enabled:
+                    return self._json_response(
+                        {"error": "Software corrections are disabled"},
+                        HTTPStatus.FORBIDDEN,
+                    )
+                query = parse_qs(parsed.query)
+                software_id = int(query.get("exclude_software_id", ["0"])[0])
+                title_filter = query.get("q", [""])[0].strip()[:100]
+                return self._json_response(self.server.repository.correction_targets(
+                    int(match.group(1)), software_id, title_filter
+                ))
 
             if parsed.path in ("/", "/index.html"):
                 return self._asset_response("index.html", "text/html; charset=utf-8")
@@ -91,7 +117,50 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             )
         except subprocess.CalledProcessError as error:
             self._json_response(
-                {"error": _database_error(error.stderr)},
+                {"error": _database_error(error.stderr or error.stdout)},
+                HTTPStatus.INTERNAL_SERVER_ERROR,
+            )
+
+    def do_POST(self):  # noqa: N802 - BaseHTTPRequestHandler API
+        parsed = urlparse(self.path)
+        if parsed.path != "/api/software-corrections":
+            return self.send_error(HTTPStatus.NOT_FOUND)
+        if not self.server.corrections_enabled:
+            return self._json_response(
+                {"error": "Software corrections are disabled"},
+                HTTPStatus.FORBIDDEN,
+            )
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+            if length < 1 or length > 16_384:
+                raise ValueError("Invalid request body")
+            payload = json.loads(self.rfile.read(length))
+            result = self.server.repository.create_correction(
+                int(payload["systemId"]), payload["subjectContentSignature"],
+                payload["action"], payload.get("targetContentSignature"),
+                payload.get("note", ""),
+            )
+            if not result or not result.get("created"):
+                return self._json_response(
+                    {"error": "The correction signatures could not be resolved"},
+                    HTTPStatus.BAD_REQUEST,
+                )
+            correction_id = int(result["correctionId"])
+            try:
+                with self.server.rebuild_lock:
+                    self.server.rebuild_software()
+            except subprocess.CalledProcessError:
+                self.server.repository.disable_correction(correction_id)
+                raise
+            return self._json_response(result, HTTPStatus.CREATED)
+        except (KeyError, ValueError, TypeError, json.JSONDecodeError) as error:
+            self._json_response(
+                {"error": str(error) or "Invalid correction"},
+                HTTPStatus.BAD_REQUEST,
+            )
+        except subprocess.CalledProcessError as error:
+            self._json_response(
+                {"error": _database_error(error.stderr or error.stdout)},
                 HTTPStatus.INTERNAL_SERVER_ERROR,
             )
 
@@ -122,6 +191,15 @@ class ExplorerServer(ThreadingHTTPServer):
     def __init__(self, address, handler, username):
         super().__init__(address, handler)
         self.repository = CatalogRepository(username)
+        self.rebuild_lock = threading.Lock()
+        self.corrections_enabled = _corrections_enabled()
+
+    @staticmethod
+    def rebuild_software():
+        subprocess.run(
+            ["python", "-m", "gamedb.catalog", "rebuild", "--from-layer", "software"],
+            check=True, capture_output=True, text=True,
+        )
 
 
 def serve_explorer(host: str, port: int | None, username: str) -> int:

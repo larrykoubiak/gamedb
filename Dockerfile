@@ -13,6 +13,7 @@ RUN pip install --no-cache-dir -r /app/requirements-derive.txt
 
 COPY gamedb/__init__.py gamedb/config.py gamedb/database.py /app/gamedb/
 COPY gamedb/derive /app/gamedb/derive
+COPY gamedb/history /app/gamedb/history
 COPY reference /app/reference
 COPY derive.yml /app/derive.yml
 
@@ -24,12 +25,10 @@ FROM postgres-runtime AS catalog-builder
 COPY requirements-catalog.txt /app/requirements-catalog.txt
 RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
 
-COPY gamedb/__init__.py gamedb/config.py /app/gamedb/
+COPY gamedb/__init__.py gamedb/config.py gamedb/database.py /app/gamedb/
 COPY gamedb/catalog /app/gamedb/catalog
-COPY sql/layers/catalog /app/sql/layers/catalog
-COPY sql/layers/facts /app/sql/layers/facts
-COPY sql/layers/identity /app/sql/layers/identity
-COPY sql/layers/scoring /app/sql/layers/scoring
+COPY reference /app/reference
+COPY sql/layers /app/sql/layers
 COPY pipeline.yml /app/pipeline.yml
 
 CMD ["python", "-m", "gamedb.catalog", "rebuild", "--plan"]
@@ -37,9 +36,16 @@ CMD ["python", "-m", "gamedb.catalog", "rebuild", "--plan"]
 
 FROM postgres-runtime AS explorer
 
-COPY gamedb/__init__.py gamedb/config.py /app/gamedb/
+COPY requirements-catalog.txt /app/requirements-catalog.txt
+RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
+
+COPY gamedb/__init__.py gamedb/config.py gamedb/database.py /app/gamedb/
+COPY gamedb/catalog /app/gamedb/catalog
 COPY gamedb/explorer /app/gamedb/explorer
+COPY reference /app/reference
+COPY sql/layers /app/sql/layers
 COPY sql/queries /app/sql/queries
+COPY pipeline.yml /app/pipeline.yml
 
 EXPOSE 8000
 CMD ["python", "-m", "gamedb.explorer", "--host", "0.0.0.0", "--port", "8000"]

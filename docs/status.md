@@ -30,6 +30,12 @@ The verified build contains:
 | Direct cross-title content matches | 4,013 |
 | Titles mapped to content representatives | 3,211 |
 | Effective preferred-title clusters | 338,873 |
+| Recovered software identities (platform-scoped) | 7,969 |
+| Parent/Clone software identities | 2,995 |
+| Title-fallback software identities | 326,339 |
+| Exact-SHA-1 software assignments | 18,425 |
+| Parent/Clone software assignments | 6,132 |
+| Unique-title inherited assignments | 18,492 |
 | Catalog releases | 909,607 |
 | Normalized release facts | 5,407,158 |
 | Release-fact evidence rows | 2,865,856 |
@@ -37,9 +43,10 @@ The verified build contains:
 | Derived packages | 976,597 |
 | Derived files | 1,364,237 |
 
-The independent catalog, facts, identity, and scoring transactions were replayed
-from the new derived contract, and all 78 tests pass. Every
-release belongs to one title cluster. All five supported collection roots in
+The independent catalog, facts, title identity, software identity, and scoring
+transactions were replayed from the derived contract, and all 81 tests pass.
+Every release belongs to one title cluster and exactly one software identity.
+All five supported collection roots in
 `path_mappings.csv` resolve to the local Synology mount; every current package
 has a `resolved_path`. The 2,400 packages whose source names are deliberately
 ignored remain visible in inventory but correctly produce no parse or release.
@@ -50,7 +57,8 @@ The current consumer hierarchy is:
 
 ```text
 System
-  └── Title
+  └── Software
+        ├── Title spelling(s)
         └── Release
               └── Package
                     └── File
@@ -58,6 +66,9 @@ System
 
 - A **title** is a system-scoped, exact-title browse and metadata-search cluster.
   It is not proof that all linked releases describe the same software.
+- **Software** is the platform-specific playable product across title spellings
+  and releases. A recovered identity is supported by exact historical SHA-1
+  evidence; a title fallback is explicitly unresolved and marked for review.
 - A **release** is currently a source-faithful title/variant: system, title,
   region, language, version, revision, dump state and other source claims have
   not been reconciled into a canonical game identity.
@@ -130,6 +141,13 @@ version. For example, `[tr en v1.3 Dejap]` contributes `language=en`,
 The English Translations/Maybe-Intro source contributes 32 DATs, 810 packages,
 2,066 files and 779 grouped releases. Its 780 playable names parse without
 review or unclassified tags; 30 documentation archives remain inventory-only.
+Playable member names are also interpreted separately: for archives carrying
+Maybe-Intro's `[n]` localized-title marker, the retained member title is treated
+as original-title evidence. Of 342 such releases with one unambiguous member
+title, 139 currently resolve to exactly one source-backed software identity.
+For example, `Tenchi Muyou! - The Game` joins the recovered
+`Tenchi Muyou! - Game Hen` software through its member filename; the associated
+readme only calls the game `Tenchi Muyo RPG` and is not used as title evidence.
 For Bahamut Lagoon, its clean v1.3 translation now ties the TOSEC v1.3 release
 at +60 and wins the deterministic fallback, while its explicit Emulation Hack
 variant scores -140.
@@ -138,6 +156,22 @@ The pass is deliberately conservative. Free-form `additional`, unclassified
 and media-component tags remain available through
 `catalog.release_source_attribute`. No regional language defaults, preference
 weights or release scores are generated in the fact layer itself.
+
+## Working software corrections
+
+The local explorer can confirm a signed release's current software assignment,
+move it to an existing same-system software, or separate it into a manual
+identity. Confirmation is persisted using the same stable content-signature
+`assign` or `separate` decision as an explicit correction. The decision is stored in
+`app.software_correction`; saving runs the software and scoring layers before
+the UI refreshes. Complete release signatures move identical source
+occurrences together. Missing subjects, ambiguous targets, cross-system
+targets, and correction chains/cycles stop the software transaction.
+
+Reviewed active decisions can be promoted in one pass with
+`python -m gamedb promote-corrections`. Promotion writes the deterministic
+maintained CSV, updates `ref.software_correction`, and retains the working row
+with `promoted` status for audit.
 
 ## Preference scoring
 
@@ -155,12 +189,12 @@ The durable `default` user currently has eight enabled seed preferences:
 | No-Intro source collection | +50 |
 
 The disposable score cache contains every release, including zero-score rows,
-plus the matched-rule breakdown and a dense rank within its title. Scores
-currently range from -200 to 210. Of 338,873 effective titles, 258,073 have one
-top-ranked release and 80,800 retain a tie. Preferences are illustrative rather
-than a claim that the weights are final.
+plus the matched-rule breakdown and a dense rank within its software. Scores
+currently range from -350 to 210. Of 337,303 software identities, 256,569 have
+one top-ranked release and 80,734 retain a tie. Preferences are illustrative
+rather than a claim that the weights are final.
 
-`catalog.user_preferred_release` provides one convenient row per user/title.
+`catalog.user_preferred_release` provides one convenient row per user/software.
 When top scores tie it selects the lowest rebuild-local release ID but reports
 `top_score_tie_count` and `tie_broken`, so consumers can distinguish a genuine
 unique winner from a deterministic fallback. Lower-ranked and tied releases
@@ -174,8 +208,8 @@ full derivation requires `python -m gamedb derive --rebuild`; no-argument
 execution is rejected. `--layers paths` re-resolves only paths, while
 `--from-layer names` reinterprets stable names and reassembles releases.
 
-`pipeline.yml` begins at that contract and orders only catalog, facts, identity
-and scoring. `python -m gamedb rebuild --layers scoring` was verified as an
+`pipeline.yml` begins at that contract and orders catalog, facts, title
+identity, software identity and scoring. `python -m gamedb rebuild --layers scoring` was verified as an
 isolated 43-second preference-cache refresh: it did not touch derivation,
 inventory, paths, parsing, catalog facts, or identity.
 
@@ -201,19 +235,20 @@ database service and passes the local `.env` connection directly to the local
 explorer and one-shot tools. Setting `COMPOSE_FILE=compose.dev.yaml` locally
 keeps the usual `docker compose` commands while targeting the tower database.
 
-Core catalog, normalized facts, and content identity now have separate
-transactions and validation scripts. Each can be rerun from its declared
-upstream state; rebuilding a layer removes its stale downstream catalog caches.
+Core catalog, normalized facts, content identity, and software identity have
+separate transactions and validation scripts. Each can be rerun from its
+declared upstream state; rebuilding a layer removes its stale downstream
+catalog caches.
 Temporary tables remain only as private scratch state inside one layer. The
 deriver uses focused parser, extractor, spool writer, persistence, and pipeline
 classes instead of the former procedural archive-name loader.
 
-## Next architectural step
+## Next identity step
 
-Use the local read-only explorer to evaluate preferred releases and seed weights
+Use the local explorer to evaluate preferred releases and seed weights
 hands-on. It provides a manufacturer/system tree, in-system title filtering,
 paginated preferred releases, normalized facts, score explanations and explicit
-tie counts. Each title row expands to show all losing releases, source package
+tie counts. Each software row expands to show all losing releases, source package
 names and complete file hashes. Run it with `python -m gamedb serve`; it loads
 missing PostgreSQL connection settings from the project `.env` automatically.
 
@@ -225,20 +260,19 @@ source-specific spellings. Representative selection favors No-Intro for display;
 it does not affect identity evidence. The original exact-title clusters and all
 source releases remain available.
 
-The next identity tier should be a non-destructive `software` entity above the
-current source-title clusters. It can express that regional, official localized,
-fan-translated, romanized and personal names refer to the same game—for example,
-*Bare Knuckle* and *Streets of Rage*—without choosing one display string as the
-entity's identity or erasing any source title. Names should be modeled as
-attributed aliases, with consumers choosing a display name by locale and source
-preference.
+The first non-destructive software tier now exists above source-title clusters.
+It recovers 7,957 historical software records as 7,969 platform-scoped current
+identities and assigns 18,425 releases through exact SHA-1. Parent/Clone adds
+2,995 identities and 6,132 release assignments. Unique anchored titles safely
+inherit another 18,492 releases; titles with competing anchors stop and remain
+reviewable. The remaining 866,558 releases retain title-based behavior through
+326,339 explicit fallback identities.
 
-Software links need graded evidence. Exact content remains strongest, followed
-by known base-ROM or patch metadata, reviewed external identifiers and explicit
-maintained mappings. Normalized or fuzzy name similarity can generate review
-candidates, but should not silently establish identity. Any reviewed mapping or
-split must use stable source text and provenance, never rebuild-local title or
-release IDs.
+The next tier is graded reconciliation: Parent/Clone relationships, reviewed
+external identifiers, recovered positive/negative match decisions and explicit
+maintained overrides. Normalized or fuzzy name similarity may generate review
+candidates, but must not silently establish identity. Reviewed mappings and
+splits must use stable source evidence, never rebuild-local IDs.
 
 Translation scoring also needs one more level of structure. Translation project
 or team identity should be established before comparing versions: `v1.3` from
@@ -258,12 +292,13 @@ source-faithful title and release layers.
   the current derived data. Classification can be improved and replayed later.
 - Metadata scraping has not started. Cache source responses and external IDs;
   use them as evidence for grouping rather than requiring perfect grouping first.
-- No-Intro Parent/Clone DAT relationships are deferred. They can be imported
-  directly and matched to owned ROMs by SHA-1/MD5/CRC and size without rescanning
-  RomVault. TOSEC has no equivalent general relationship source.
-- Cross-region software grouping, attributed/localized names, translation-project
-  identity, metadata conflict handling, emulator selection, extraction and
-  `.m3u` generation are not implemented.
+- Recovered Parent/Clone DAT relationships now contribute only when both the
+  release and group are unambiguous. Six conflicting groups and 115 releases
+  mapping to multiple groups remain review candidates. TOSEC has no equivalent
+  general relationship source.
+- Broader cross-region reconciliation, attributed/localized names,
+  translation-project identity, metadata conflict handling, emulator selection,
+  extraction and `.m3u` generation are not implemented.
 - Ordinary `bigint` identity values are intentionally rebuild-local. Maintained
   reference or override files must use explicit source text, never database IDs.
 

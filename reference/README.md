@@ -8,7 +8,16 @@ These version-controlled files are the reviewed inputs to derivation:
 - `source_formats.json` declares collection identity and filename grammars.
 - `tag_vocabulary.json` supplies maintained parsing/classification values.
 - `tag_categories.csv` documents classification output categories.
+- `software_overrides.csv` records stable source-release assignments or
+  exclusions. `assign` rows sharing a system and `target_key` merge into one
+  manually maintained software identity; `exclude` rows leave target fields
+  empty and block automatic inheritance. Selectors use source collection,
+  archive name and one-based record index rather than rebuild-local IDs.
+- `software_corrections.csv` contains promoted release-to-software decisions.
+  It relates complete release-content signatures within a canonical system;
+  `assign` follows a target signature while `separate` creates an independent
+  manual identity. Working web corrections remain in `app` until promoted.
 
-The deriver loads these into `ref` or reads them as parser configuration. They
+The deriver or catalog builder loads these into `ref` or reads them directly.
 live outside `data/` so Docker can exclude all runtime data—including the
 permission-protected PostgreSQL directory—from its build context.

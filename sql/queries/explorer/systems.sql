@@ -8,11 +8,11 @@ SELECT coalesce(jsonb_agg(
 ), '[]'::jsonb)
 FROM (
     SELECT system.id, system.manufacturer_name, system.system_name,
-        count(title.id) AS game_count
+        count(software.id) AS game_count
     FROM catalog.system system
-    JOIN catalog.title title ON title.system_id = system.id
+    JOIN catalog.software software ON software.system_id = system.id
     JOIN catalog.user_preferred_release preferred
-      ON preferred.title_id = title.id
+      ON preferred.software_id = software.id
     JOIN app.app_user user_account
       ON user_account.id = preferred.user_id
     WHERE user_account.username = __USERNAME__

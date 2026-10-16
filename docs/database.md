@@ -6,7 +6,7 @@ conventions.
 
 | Schema | Owner | Responsibility |
 | --- | --- | --- |
-| `staging` | external intake | Untouched RomVault rows (`rv_files`) |
+| `staging` | external intake | Untouched RomVault rows and immutable historical-source snapshots |
 | `ref` | deriver | Version-controlled mappings and vocabularies |
 | `derived` | deriver | Stable inventory plus source-faithful semantic interpretation |
 | `catalog` | catalog builder | Browse model, facts, identity reconciliation and score cache |
@@ -27,7 +27,8 @@ reference files ───┴──► name parser/classifier
 derived source releases ─► catalog titles/releases
 derived assertions      ─► normalized facts + evidence
 derived file hashes     ─► exact-content identity/aliases
-app preferences         ─► cached scores/preferred releases
+history + file hashes   ─► software + release membership/evidence
+app preferences         ─► software-scoped scores/preferred releases
 ```
 
 The deriver emits ordinary relational values. Downstream SQL never reparses a
@@ -79,6 +80,7 @@ become releases.
 | `derived.tag_classification` | Separate category, rule, identifier/value and details |
 | `derived.assertion` | Normalized key/value facts emitted directly by Python |
 | `derived.media_part` | Typed disc/tape/side/part data |
+| `derived.translation_member_title` | Original-title candidate parsed from each playable Maybe-Intro member name |
 | `derived.source_release` | Source-faithful release assembled from typed records |
 | `derived.source_release_package` | Package membership and media ordering |
 
@@ -95,6 +97,7 @@ Each assertion links to its exact raw tag.
 | `catalog` | `catalog.system`, `title`, `release`, `release_package` |
 | `facts` | `release_fact`, `release_fact_evidence`, source-attribute view |
 | `identity` | exact package/release signatures, title matches and aliases |
+| `software` | platform software, total release membership and SHA-1 evidence |
 | `scoring` | per-user score cache and preferred-release view |
 
 The catalog references `derived.package` and `derived.file` rather than copying
@@ -109,11 +112,31 @@ preference requires only:
 python -m gamedb rebuild --layers scoring
 ```
 
-The scoring cache includes every release, its additive score, dense rank, and a
-JSON explanation. `release_iteration=latest` prefers the highest explicit
-version where any exists for the effective title; otherwise it compares
-revisions. The preferred view exposes unresolved top-score ties rather than
-claiming the deterministic fallback is semantically unique.
+`app.software_correction` likewise survives rebuilds and is the explorer's
+working decision queue. Subjects and targets use complete release-content
+signatures plus canonical system names rather than disposable numeric IDs.
+The software layer consumes active rows after automatic assignment, records
+`manual_content_correction` evidence, and removes any empty identity left by a
+move. Reviewed decisions are promoted to `reference/software_corrections.csv`,
+which derivation materializes as `ref.software_correction`; reference wins over
+an equivalent working subject.
+
+`catalog.software` is the consumer identity boundary. Unambiguous historical
+SHA-1 matches create `recovered_legacy` identities scoped to the current
+platform; unambiguous historical Parent/Clone groups can create or extend those
+identities. A source-backed identity then cascades through an effective title
+only when that title contains exactly one software anchor. Every remaining
+release belongs to a visible `title_fallback` identity.
+`catalog.software_release_evidence` distinguishes exact hashes, Parent/Clone
+hashes, anchored-title inheritance, and maintained overrides. Conflicts and
+recovered positive/negative match reviews remain in
+`catalog.software_identity_candidate`.
+
+The scoring cache includes every release, its additive score, dense rank within
+software, and a JSON explanation. `release_iteration=latest` prefers the
+highest explicit version where any exists for that software; otherwise it
+compares revisions. The preferred view exposes unresolved top-score ties rather
+than claiming the deterministic fallback is semantically unique.
 
 ## Temporary SQL relations
 
@@ -130,3 +153,13 @@ everything. Database IDs are rebuild-local, so maintained files identify
 systems and paths by source text rather than generated IDs. A full derivation
 invalidates the downstream catalog, which must then be rebuilt; routine selected
 layers preserve unrelated upstream work.
+
+Recovered older GameDB generations live alongside that active intake in
+`staging.history_*`. They retain legacy software/release hierarchies, hashes,
+Parent/Clone records, external mappings, synonyms, explicit match reviews, raw
+workbook rows, and checksums for every imported artifact. These tables remain
+evidence rather than canonical truth. The software layer currently consumes
+unique legacy SHA-1 assignments and unambiguous Parent/Clone relationships;
+external mappings, synonyms, and manual reviews remain candidates for later
+reconciliation. Rerunning
+`gamedb import-history` atomically refreshes only the history-owned tables.

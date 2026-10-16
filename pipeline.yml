@@ -32,8 +32,18 @@ layers:
           - sql/layers/identity/020_build.sql
           - sql/layers/identity/090_indexes_and_validation.sql
 
+  - name: software
+    description: Resolve releases into evidence-backed platform software identities.
+    steps:
+      - name: build_software_identity
+        type: run_sql
+        files:
+          - sql/layers/software/010_schema.sql
+          - sql/layers/software/020_build.sql
+          - sql/layers/software/090_indexes_and_validation.sql
+
   - name: scoring
-    description: Apply user preferences and cache ranked and preferred releases.
+    description: Apply user preferences and rank releases within software.
     steps:
       - name: build_release_scores
         type: run_sql

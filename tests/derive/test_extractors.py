@@ -2,6 +2,9 @@ import unittest
 
 from gamedb.derive.extractors.archive_name_extract import ArchiveNameExtractor
 from gamedb.derive.extractors.dat_extract import DatExtractor
+from gamedb.derive.extractors.translation_member_title_extract import (
+    TranslationMemberTitleExtractor,
+)
 
 
 class ArchiveNameExtractorTests(unittest.TestCase):
@@ -111,3 +114,14 @@ class DatExtractorTests(unittest.TestCase):
         self.assertEqual(result.romset, "No-Intro")
         self.assertEqual(result.source_manufacturer, "Nintendo")
         self.assertEqual(result.source_system, "Super Nintendo Entertainment System")
+
+
+class TranslationMemberTitleExtractorTests(unittest.TestCase):
+    def test_original_title_is_recovered_from_localized_member_name(self):
+        result = TranslationMemberTitleExtractor.extract(
+            "Tenchi Muyou! - Game Hen (Japan) "
+            "[T-En by borderLine+LNF v1.1].sfc"
+        )
+
+        self.assertEqual(result.title_candidate, "Tenchi Muyou! - Game Hen")
+        self.assertEqual(result.status, "parsed")

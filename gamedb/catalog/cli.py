@@ -26,7 +26,24 @@ def main(argv=None) -> int:
     selection.add_argument("--layers", type=_name_list)
     selection.add_argument("--from-layer")
     rebuild.add_argument("--through-layer")
+    promote = commands.add_parser("promote-corrections")
+    promote.add_argument(
+        "--reference",
+        type=Path,
+        default=DEFAULT_PIPELINE.parent / "reference/software_corrections.csv",
+    )
     args = parser.parse_args(argv)
+
+    if args.command == "promote-corrections":
+        from gamedb.database import create_database_engine
+
+        from .corrections import SoftwareCorrectionPromoter
+
+        count = SoftwareCorrectionPromoter(
+            create_database_engine(), args.reference.resolve()
+        ).execute()
+        print(f"Promoted {count} software correction(s).")
+        return 0
 
     try:
         config = WorkflowConfig.load(args.pipeline).select(

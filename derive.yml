@@ -33,6 +33,12 @@ layers:
     reads: [staging.rv_files, derived.dat]
     writes: [derived.archive_name, derived.package, derived.file]
 
+  - name: translation_titles
+    description: Recover original titles retained in localized translation member names.
+    extractor: translation_member_title_extract
+    reads: [derived.file, derived.package, derived.dat]
+    writes: [derived.translation_member_title]
+
   - name: paths
     description: Resolve physical package paths independently from name parsing.
     extractor: archive_path_extract

@@ -8,7 +8,8 @@ SQL begins after [`derive.yml`](../derive.yml) has produced a usable relational
 | [`layers/catalog`](layers/catalog/) | Project systems, exact-title clusters, releases and package membership |
 | [`layers/facts`](layers/facts/) | Copy typed derived assertions into normalized facts with evidence |
 | [`layers/identity`](layers/identity/) | Match complete exact-content signatures and build title aliases |
-| [`layers/scoring`](layers/scoring/) | Preserve preferences and compile disposable per-user rankings |
+| [`layers/software`](layers/software/) | Resolve platform software and retain release-assignment evidence |
+| [`layers/scoring`](layers/scoring/) | Preserve preferences and rank releases within software |
 | [`queries/explorer`](queries/explorer/) | Read-only explorer queries |
 
 No SQL layer parses filenames or classifier JSON, resolves source paths, or

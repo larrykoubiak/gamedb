@@ -16,7 +16,7 @@ class DerivationPipelineTests(unittest.TestCase):
             self.pipeline.layer_names,
             (
                 "schema", "reference", "dat", "system", "inventory",
-                "paths", "names", "releases",
+                "translation_titles", "paths", "names", "releases",
             ),
         )
 

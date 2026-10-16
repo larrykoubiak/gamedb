@@ -263,6 +263,49 @@ h2 { font-size: 1.55rem; letter-spacing: -.025em; }
 .release-facts div + div { margin-top: .2rem; }
 .release-score-cell { min-width: 10rem; text-align: right; }
 .release-score-cell .score-details { text-align: left; }
+.correction-button, .primary-button, .secondary-button, .icon-button {
+  border: 1px solid var(--line);
+  border-radius: .35rem;
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+}
+.correction-button { padding: .35rem .5rem; font: .63rem var(--font-mono); white-space: nowrap; }
+.correction-button:hover { border-color: var(--accent); color: var(--accent-strong); }
+
+.correction-dialog {
+  width: min(620px, calc(100vw - 2rem));
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: .55rem;
+  background: #121720;
+  color: var(--text);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .55);
+}
+.correction-dialog::backdrop { background: rgba(5, 8, 12, .78); }
+.correction-dialog form { padding: 1.25rem; }
+.dialog-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.icon-button { width: 2rem; height: 2rem; padding: 0; font-size: 1.2rem; }
+.correction-subject { margin: 1rem 0 .25rem; font-weight: 650; }
+.correction-signature { display: block; color: var(--amber); font: .67rem var(--font-mono); }
+.correction-actions { display: grid; gap: .55rem; margin: 1rem 0; padding: .75rem; border: 1px solid var(--line-soft); }
+.correction-actions legend, .dialog-label { color: var(--muted); font: .67rem var(--font-mono); }
+.correction-actions label { font-size: .78rem; }
+.dialog-label { display: block; margin: .85rem 0 .35rem; text-transform: uppercase; letter-spacing: .05em; }
+.dialog-input { width: 100%; padding: .6rem .7rem; border: 1px solid var(--line); border-radius: .35rem; outline: 0; background: #0d1118; color: var(--text); }
+.dialog-input:focus { border-color: var(--accent); }
+.correction-targets { max-height: 15rem; margin-top: .5rem; overflow: auto; border: 1px solid var(--line-soft); border-radius: .35rem; color: var(--muted); font-size: .75rem; }
+.correction-target { display: flex; gap: .6rem; padding: .65rem; cursor: pointer; }
+.correction-target + .correction-target { border-top: 1px solid var(--line-soft); }
+.correction-target:hover { background: rgba(125, 211, 167, .04); }
+.correction-target span, .correction-target small { display: block; }
+.correction-target strong { color: var(--text); }
+.correction-target small { margin-top: .16rem; color: var(--muted); font: .62rem var(--font-mono); }
+.correction-status { min-height: 1.2rem; margin-top: .75rem; color: var(--amber); font-size: .72rem; }
+.dialog-buttons { display: flex; justify-content: flex-end; gap: .55rem; margin-top: .65rem; }
+.primary-button, .secondary-button { padding: .55rem .75rem; }
+.primary-button { border-color: rgba(125, 211, 167, .45); color: var(--accent-strong); }
+.primary-button:disabled { cursor: wait; opacity: .55; }
 
 .empty-state { min-height: 55vh; display: grid; place-content: center; text-align: center; color: var(--muted); }
 .empty-glyph { margin-bottom: .5rem; color: var(--line); font-size: 3rem; }

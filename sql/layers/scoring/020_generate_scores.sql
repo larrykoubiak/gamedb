@@ -11,10 +11,10 @@ CREATE TABLE catalog.user_score_generation (
 
 CREATE TABLE catalog.user_release_score (
     user_id bigint NOT NULL REFERENCES app.app_user(id) ON DELETE CASCADE,
-    title_id bigint NOT NULL REFERENCES catalog.title(id) ON DELETE CASCADE,
+    software_id bigint NOT NULL REFERENCES catalog.software(id) ON DELETE CASCADE,
     release_id bigint NOT NULL REFERENCES catalog.release(id) ON DELETE CASCADE,
     score bigint NOT NULL,
-    rank_within_title bigint NOT NULL CHECK (rank_within_title > 0),
+    rank_within_software bigint NOT NULL CHECK (rank_within_software > 0),
     breakdown jsonb NOT NULL CHECK (jsonb_typeof(breakdown) = 'array'),
     PRIMARY KEY (user_id, release_id)
 );
@@ -40,7 +40,7 @@ relative_candidate AS (
     SELECT
         preference.id AS preference_id,
         preference.user_id,
-        coalesce(alias.preferred_title_id, release.title_id) AS title_id,
+        membership.software_id,
         fact.release_id,
         preference.fact_key,
         fact.fact_key AS matched_fact_key,
@@ -62,8 +62,8 @@ relative_candidate AS (
           AND fact.fact_key = preference.fact_key
       )
     JOIN catalog.release release ON release.id = fact.release_id
-    LEFT JOIN catalog.title_alias alias
-      ON alias.alias_title_id = release.title_id
+    JOIN catalog.software_release membership
+      ON membership.release_id = release.id
     WHERE preference.enabled
       AND preference.match_operator = 'latest'
 ),
@@ -71,21 +71,21 @@ relative_context AS (
     SELECT candidate.*,
         bool_or(candidate.matched_fact_key = 'version') OVER (
             PARTITION BY candidate.preference_id, candidate.user_id,
-                candidate.title_id
-        ) AS title_has_version
+                candidate.software_id
+        ) AS software_has_version
     FROM relative_candidate candidate
 ),
 relative_eligible AS (
     SELECT *
     FROM relative_context
     WHERE fact_key <> 'release_iteration'
-       OR matched_fact_key = CASE WHEN title_has_version
+       OR matched_fact_key = CASE WHEN software_has_version
             THEN 'version' ELSE 'revision' END
 ),
 relative_ranked AS (
     SELECT eligible.*,
         dense_rank() OVER (
-            PARTITION BY preference_id, user_id, title_id
+            PARTITION BY preference_id, user_id, software_id
             ORDER BY
                 (cardinality(numeric_parts) > 0) DESC,
                 numeric_parts DESC,
@@ -118,7 +118,7 @@ SELECT * FROM latest_match;
 WITH scored AS (
     SELECT
         user_account.id AS user_id,
-        coalesce(alias.preferred_title_id, release.title_id) AS title_id,
+        membership.software_id,
         release.id AS release_id,
         coalesce(sum(matched.score), 0) AS score,
         coalesce(
@@ -135,28 +135,28 @@ WITH scored AS (
         ) AS breakdown
     FROM app.app_user user_account
     CROSS JOIN catalog.release release
-    LEFT JOIN catalog.title_alias alias
-      ON alias.alias_title_id = release.title_id
+    JOIN catalog.software_release membership
+      ON membership.release_id = release.id
     LEFT JOIN _preference_match matched
       ON matched.user_id = user_account.id
      AND matched.release_id = release.id
     GROUP BY user_account.id,
-        coalesce(alias.preferred_title_id, release.title_id), release.id
+        membership.software_id, release.id
 ),
 ranked AS (
     SELECT scored.*,
         dense_rank() OVER (
-            PARTITION BY user_id, title_id
+            PARTITION BY user_id, software_id
             ORDER BY score DESC
-        ) AS rank_within_title
+        ) AS rank_within_software
     FROM scored
 )
 INSERT INTO catalog.user_release_score (
-    user_id, title_id, release_id, score, rank_within_title, breakdown
+    user_id, software_id, release_id, score, rank_within_software, breakdown
 )
-SELECT user_id, title_id, release_id, score, rank_within_title, breakdown
+SELECT user_id, software_id, release_id, score, rank_within_software, breakdown
 FROM ranked
-ORDER BY user_id, title_id, rank_within_title, release_id;
+ORDER BY user_id, software_id, rank_within_software, release_id;
 
 INSERT INTO catalog.user_score_generation (
     user_id, generated_at, preference_signature
@@ -176,7 +176,7 @@ LEFT JOIN app.user_preference preference
   ON preference.user_id = user_account.id
 GROUP BY user_account.id;
 
-CREATE INDEX user_release_score_title_rank_idx
+CREATE INDEX user_release_score_software_rank_idx
     ON catalog.user_release_score(
-        user_id, title_id, rank_within_title, score DESC, release_id
+        user_id, software_id, rank_within_software, score DESC, release_id
     );

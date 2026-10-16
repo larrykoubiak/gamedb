@@ -1,4 +1,4 @@
-"""Database boundary for the read-only catalog explorer."""
+"""Database boundary for catalog exploration and working corrections."""
 
 from __future__ import annotations
 
@@ -12,6 +12,7 @@ from gamedb.config import PROJECT_ROOT
 
 QUERY_DIRECTORY = PROJECT_ROOT / "sql" / "queries" / "explorer"
 UNRESOLVED_TOKEN = re.compile(r"__[A-Z][A-Z0-9_]*__")
+CONTENT_SIGNATURE = re.compile(r"[0-9a-f]{32}")
 
 
 def quote_sql_text(value: str) -> str:
@@ -57,7 +58,7 @@ class PsqlJsonClient:
 
 
 class CatalogRepository:
-    """Provide the explorer's read-only catalog operations."""
+    """Provide catalog reads and validated working-correction writes."""
 
     def __init__(self, username: str, client: PsqlJsonClient | None = None):
         self.username = username
@@ -79,10 +80,55 @@ class CatalogRepository:
             title_filter=quote_sql_text(title_filter),
         )
 
-    def title_releases_sql(self, title_id: int) -> str:
+    def software_releases_sql(self, software_id: int) -> str:
         return SqlTemplate(QUERY_DIRECTORY / "title_releases.sql").render(
             username=quote_sql_text(self.username),
-            title_id=sql_integer(title_id, "title_id", 1),
+            software_id=sql_integer(software_id, "software_id", 1),
+        )
+
+    def correction_targets_sql(
+        self, system_id: int, exclude_software_id: int, title_filter: str
+    ) -> str:
+        return SqlTemplate(QUERY_DIRECTORY / "correction_targets.sql").render(
+            system_id=sql_integer(system_id, "system_id", 1),
+            exclude_software_id=sql_integer(
+                exclude_software_id, "exclude_software_id"
+            ),
+            title_filter=quote_sql_text(title_filter[:100]),
+        )
+
+    @staticmethod
+    def _signature(value: str | None, name: str, required: bool = True) -> str:
+        if value is None and not required:
+            return ""
+        if not isinstance(value, str) or not CONTENT_SIGNATURE.fullmatch(value):
+            raise ValueError(f"{name} must be a 32-character content signature")
+        return value
+
+    def create_correction_sql(
+        self, system_id: int, subject_signature: str, action: str,
+        target_signature: str | None, note: str,
+    ) -> str:
+        if action not in ("assign", "separate"):
+            raise ValueError("action must be assign or separate")
+        subject = self._signature(subject_signature, "subject_signature")
+        target = self._signature(
+            target_signature, "target_signature", required=action == "assign"
+        )
+        if action == "assign" and subject == target:
+            raise ValueError("subject and target signatures must differ")
+        return SqlTemplate(QUERY_DIRECTORY / "create_correction.sql").render(
+            system_id=sql_integer(system_id, "system_id", 1),
+            subject_signature=quote_sql_text(subject),
+            action=quote_sql_text(action),
+            target_signature=quote_sql_text(target),
+            note=quote_sql_text(note.strip()[:1000]),
+            username=quote_sql_text(self.username),
+        )
+
+    def disable_correction_sql(self, correction_id: int) -> str:
+        return SqlTemplate(QUERY_DIRECTORY / "disable_correction.sql").render(
+            correction_id=sql_integer(correction_id, "correction_id", 1)
         )
 
     def systems(self):
@@ -95,5 +141,23 @@ class CatalogRepository:
             self.titles_sql(system_id, limit, offset, title_filter)
         )
 
-    def title_releases(self, title_id: int):
-        return self.client.query(self.title_releases_sql(title_id))
+    def software_releases(self, software_id: int):
+        return self.client.query(self.software_releases_sql(software_id))
+
+    def correction_targets(
+        self, system_id: int, exclude_software_id: int, title_filter: str
+    ):
+        return self.client.query(self.correction_targets_sql(
+            system_id, exclude_software_id, title_filter
+        ))
+
+    def create_correction(
+        self, system_id: int, subject_signature: str, action: str,
+        target_signature: str | None, note: str,
+    ):
+        return self.client.query(self.create_correction_sql(
+            system_id, subject_signature, action, target_signature, note
+        ))
+
+    def disable_correction(self, correction_id: int):
+        return self.client.query(self.disable_correction_sql(correction_id))
