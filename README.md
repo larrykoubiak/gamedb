@@ -74,9 +74,18 @@ See [the database model](docs/database.md), [archive-name rules](docs/archive_na
 
 ## Explorer
 
-After catalog and scoring have been built, run `python -m gamedb serve` and open
-`http://127.0.0.1:8000`. Set `GAMEDB_EXPLORER_PORT=8080` in `.env` to change the
-Docker host port, or pass `--port` locally.
+The Compose stack owns PostgreSQL as well as the explorer. Copy `.env.example`
+to `.env`, retain the credentials that initialized an existing database, then
+start both services and open `http://127.0.0.1:8000`:
+
+```sh
+docker compose up --build -d explorer
+```
+
+PostgreSQL data is retained at `./data/pgdata`. Application containers connect
+to `db:5432`; `PGHOST` and `PGPORT` remain useful for commands run directly on
+the host. Set `GAMEDB_EXPLORER_PORT=8080` to change the explorer's host port and
+`GAMEDB_POSTGRES_PORT` to change the optional host database port.
 
 The Dockerfile exposes independent targets:
 
@@ -87,6 +96,22 @@ docker compose --profile tools run --build --rm catalog-builder \
   python -m gamedb.catalog rebuild --layers scoring
 docker compose up --build explorer
 ```
+
+The `tools` profile does not run derivation or catalog work automatically. It
+only makes those one-shot services available when explicitly requested.
+
+On `larry-tower`, deploy from `/srv/docker/gamedb` so the existing
+`./data/pgdata` bind mount is reused. The Compose file accepts the tower's old
+`POSTGRES_DB`, `POSTGRES_USER`, and `POSTGRES_PASSWORD` names as fallbacks, so
+its current `.env` can be retained. To keep the existing Cloudflare tunnel and
+remove the obsolete Django/ETL containers after the source tree is replaced:
+
+```sh
+docker compose --profile public up --build -d --remove-orphans
+```
+
+The explorer retains `web` as a network alias for compatibility with the
+existing managed tunnel origin.
 
 ## Verification
 

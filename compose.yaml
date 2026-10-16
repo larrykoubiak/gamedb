@@ -1,12 +1,57 @@
+x-database-environment: &database-environment
+  PGHOST: db
+  PGPORT: "5432"
+  PGDATABASE: "${PGDATABASE:-${POSTGRES_DB:-gamedb}}"
+  PGUSER: "${PGUSER:-${POSTGRES_USER:-gamedb}}"
+  PGPASSWORD: "${PGPASSWORD:-${POSTGRES_PASSWORD:?Set PGPASSWORD in .env}}"
+
 services:
+  db:
+    image: postgres:16
+    container_name: gamedb-postgres
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      POSTGRES_DB: "${PGDATABASE:-${POSTGRES_DB:-gamedb}}"
+      POSTGRES_USER: "${PGUSER:-${POSTGRES_USER:-gamedb}}"
+      POSTGRES_PASSWORD: "${PGPASSWORD:-${POSTGRES_PASSWORD:?Set PGPASSWORD in .env}}"
+    ports:
+      - "${GAMEDB_POSTGRES_PORT:-9876}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - ./data/pgdata:/var/lib/postgresql/data
+
   explorer:
     build:
       context: .
       target: explorer
     container_name: gamedb-explorer
+    restart: unless-stopped
     env_file: .env
+    environment: *database-environment
+    depends_on:
+      db:
+        condition: service_healthy
     ports:
       - "${GAMEDB_EXPLORER_PORT:-8000}:8000"
+    networks:
+      default:
+        aliases:
+          # Preserve the origin name used by the existing managed tunnel.
+          - web
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: gamedb-cloudflared
+    restart: unless-stopped
+    command: ["tunnel", "--no-autoupdate", "run", "--token", "${CLOUDFLARED_TOKEN:-}"]
+    depends_on:
+      - explorer
+    profiles: [public]
 
   deriver:
     build:
@@ -14,6 +59,10 @@ services:
       target: deriver
     container_name: gamedb-deriver
     env_file: .env
+    environment: *database-environment
+    depends_on:
+      db:
+        condition: service_healthy
     profiles: [tools]
 
   catalog-builder:
@@ -22,4 +71,8 @@ services:
       target: catalog-builder
     container_name: gamedb-catalog-builder
     env_file: .env
+    environment: *database-environment
+    depends_on:
+      db:
+        condition: service_healthy
     profiles: [tools]

@@ -189,6 +189,14 @@ Deriver, catalog builder and explorer code live in separate `gamedb.derive`,
 `deriver`, `catalog-builder`, and `explorer` targets with only their own runtime
 dependencies and inputs.
 
+The deployment Compose stack also owns its PostgreSQL 16 service. It preserves
+database state in `./data/pgdata`; all application containers connect over the
+Compose network as `db:5432`, while port 9876 remains available for optional
+host access. On `larry-tower`, that bind mount is the existing
+`/srv/docker/gamedb/data/pgdata` database rather than a new Docker volume.
+The optional `public` profile retains the existing Cloudflare tunnel, and the
+explorer has a `web` network alias compatible with its former origin name.
+
 Core catalog, normalized facts, and content identity now have separate
 transactions and validation scripts. Each can be rerun from its declared
 upstream state; rebuilding a layer removes its stale downstream catalog caches.
