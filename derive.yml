@@ -12,7 +12,7 @@ layers:
   - name: reference
     description: Load reviewed systems, mappings, path prefixes, and tag categories.
     extractor: reference_extract
-    reads: [data/reference]
+    reads: [reference]
     writes: [ref]
 
   - name: dat
@@ -42,7 +42,7 @@ layers:
   - name: names
     description: Parse each archive name once into titles, raw tags, classifications, assertions, and media.
     extractor: archive_name_extract
-    reads: [derived.archive_name, data/reference]
+    reads: [derived.archive_name, reference]
     writes: [derived.archive_parse, derived.record, derived.tag, derived.tag_classification, derived.assertion, derived.media_part]
 
   - name: releases

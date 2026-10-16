@@ -2,8 +2,8 @@
 
 System reconciliation is explicit reference data rather than runtime inference.
 
-[`canonical_systems.csv`](../data/reference/canonical_systems.csv) defines the 453
-canonical systems. [`system_mappings.csv`](../data/reference/system_mappings.csv)
+[`canonical_systems.csv`](../reference/canonical_systems.csv) defines the 453
+canonical systems. [`system_mappings.csv`](../reference/system_mappings.csv)
 maps every distinct `(romset, source_manufacturer, source_system)` triple found in
 the retained RomVault import to one of those systems.
 

@@ -2,12 +2,7 @@
 .env
 .env.*
 .sops.env
-data/logs/
-data/media/
-data/pgdata/
-data/rdb/
-data/research/
-data/*.sql
+data/
 **/__pycache__/
 **/*.pyc
 .~lock.*#

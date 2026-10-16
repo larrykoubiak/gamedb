@@ -20,7 +20,7 @@ from .schema_manager import DerivedSchemaManager
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-REFERENCE_DIRECTORY = PROJECT_ROOT / "data" / "reference"
+REFERENCE_DIRECTORY = PROJECT_ROOT / "reference"
 
 
 @dataclass(frozen=True)

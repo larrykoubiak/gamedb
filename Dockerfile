@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r /app/requirements-derive.txt
 
 COPY gamedb/__init__.py gamedb/config.py gamedb/database.py /app/gamedb/
 COPY gamedb/derive /app/gamedb/derive
-COPY data/reference /app/data/reference
+COPY reference /app/reference
 COPY derive.yml /app/derive.yml
 
 CMD ["python", "-m", "gamedb.derive", "--plan"]

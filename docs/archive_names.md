@@ -4,7 +4,7 @@ The parser interprets archive filenames from `staging.rv_files.game_display_name
 It is intentionally separate from canonical title/release reconciliation.
 
 The structural implementation is [`gamedb/derive/parser/structure.py`](../gamedb/derive/parser/structure.py),
-driven by [`data/reference/source_formats.json`](../data/reference/source_formats.json).
+driven by [`reference/source_formats.json`](../reference/source_formats.json).
 `parse_archive_name(romset, archive_name)` returns:
 
 - a provisional `title_candidate`;
@@ -62,7 +62,7 @@ raw rows remain available in `staging.rv_files`.
 
 [`gamedb/derive/parser/classifier.py`](../gamedb/derive/parser/classifier.py) separately interprets raw
 tags using the maintained vocabulary in
-[`data/reference/tag_vocabulary.json`](../data/reference/tag_vocabulary.json).
+[`reference/tag_vocabulary.json`](../reference/tag_vocabulary.json).
 
 Supported collections are English Translations (Maybe-Intro), No-Intro, Redump,
 TOSEC and TOSEC-ISO. Classifications

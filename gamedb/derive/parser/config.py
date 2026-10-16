@@ -9,7 +9,7 @@ from pathlib import Path
 import re
 
 
-REFERENCE_DIRECTORY = Path(__file__).resolve().parents[3] / "data" / "reference"
+REFERENCE_DIRECTORY = Path(__file__).resolve().parents[3] / "reference"
 FORMAT_PATH = REFERENCE_DIRECTORY / "source_formats.json"
 VOCABULARY_PATH = REFERENCE_DIRECTORY / "tag_vocabulary.json"
 

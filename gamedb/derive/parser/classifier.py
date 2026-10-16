@@ -14,7 +14,7 @@ import re
 from .config import COLLECTIONS
 
 
-REFERENCE_DIRECTORY = Path(__file__).resolve().parents[3] / "data" / "reference"
+REFERENCE_DIRECTORY = Path(__file__).resolve().parents[3] / "reference"
 _vocabulary_bytes = (REFERENCE_DIRECTORY / "tag_vocabulary.json").read_bytes()
 VOCABULARY = json.loads(_vocabulary_bytes)
 CLASSIFIER_VERSION = "3:" + hashlib.sha256(_vocabulary_bytes).hexdigest()[:12]

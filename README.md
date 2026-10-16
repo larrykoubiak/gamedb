@@ -12,7 +12,7 @@ catalog. The code is split into three applications with distinct ownership:
 The data flow is deliberately one-way:
 
 ```text
-staging.rv_files + data/reference
+staging.rv_files + reference
                   │
                   ▼
        Python derivation pass
