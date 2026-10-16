@@ -1,0 +1,30 @@
+name: gamedb-dev
+
+# Workstation services use PG* settings from .env verbatim. There is no local
+# PostgreSQL service and no connection override; PGHOST may point at larry-tower.
+services:
+  explorer:
+    build:
+      context: .
+      target: explorer
+    env_file: .env
+    ports:
+      - "${GAMEDB_EXPLORER_PORT:-8082}:8000"
+
+  deriver:
+    build:
+      context: .
+      target: deriver
+    env_file: .env
+    entrypoint: ["python", "-m", "gamedb.derive"]
+    command: ["--plan"]
+    profiles: [tools]
+
+  catalog-builder:
+    build:
+      context: .
+      target: catalog-builder
+    env_file: .env
+    entrypoint: ["python", "-m", "gamedb.catalog"]
+    command: ["rebuild", "--plan"]
+    profiles: [tools]

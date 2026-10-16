@@ -74,9 +74,35 @@ See [the database model](docs/database.md), [archive-name rules](docs/archive_na
 
 ## Explorer
 
-The Compose stack owns PostgreSQL as well as the explorer. Copy `.env.example`
-to `.env`, retain the credentials that initialized an existing database, then
-start both services and open `http://127.0.0.1:8000`:
+There are two Compose entry points with deliberately different database
+ownership:
+
+- `compose.yaml` is the self-contained `larry-tower` deployment and owns
+  PostgreSQL.
+- `compose.dev.yaml` runs local code against the `PG*` connection in `.env` and
+  never starts PostgreSQL.
+
+For workstation development, add this to the local `.env` alongside the tower
+connection and use ordinary Compose commands:
+
+```env
+COMPOSE_FILE=compose.dev.yaml
+PGHOST=larry-tower
+PGPORT=9876
+GAMEDB_EXPLORER_PORT=8082
+```
+
+```sh
+# Rebuild and run the local explorer against the tower database.
+docker compose up --build -d
+
+# Run one-shot tools against that same database.
+docker compose run --build --rm deriver --from-layer names
+docker compose run --build --rm catalog-builder rebuild --layers scoring
+```
+
+On `larry-tower`, where `COMPOSE_FILE` is not set, copy `.env.example` to `.env`,
+retain the credentials that initialized the database, then start the deployment:
 
 ```sh
 docker compose up --build -d explorer
@@ -87,7 +113,7 @@ to `db:5432`; `PGHOST` and `PGPORT` remain useful for commands run directly on
 the host. Set `GAMEDB_EXPLORER_PORT=8080` to change the explorer's host port and
 `GAMEDB_POSTGRES_PORT` to change the optional host database port.
 
-The Dockerfile exposes independent targets:
+The deployment stack also exposes the independent tool targets:
 
 ```sh
 docker compose --profile tools run --build --rm deriver \

@@ -196,6 +196,10 @@ host access. On `larry-tower`, that bind mount is the existing
 `/srv/docker/gamedb/data/pgdata` database rather than a new Docker volume.
 The optional `public` profile retains the existing Cloudflare tunnel, and the
 explorer has a `web` network alias compatible with its former origin name.
+Workstation development uses the separate `compose.dev.yaml`: it contains no
+database service and passes the local `.env` connection directly to the local
+explorer and one-shot tools. Setting `COMPOSE_FILE=compose.dev.yaml` locally
+keeps the usual `docker compose` commands while targeting the tower database.
 
 Core catalog, normalized facts, and content identity now have separate
 transactions and validation scripts. Each can be rerun from its declared
