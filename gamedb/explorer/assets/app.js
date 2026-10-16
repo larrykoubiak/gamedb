@@ -21,7 +21,17 @@ const gameFilter = document.querySelector("#game-filter");
 
 async function requestJson(url, options = {}) {
   const response = await fetch(url, options);
-  const payload = await response.json();
+  const body = await response.text();
+  let payload;
+  try {
+    payload = JSON.parse(body);
+  } catch (error) {
+    throw new Error(
+      response.ok
+        ? "Explorer returned an invalid response. Reload the page and try again."
+        : `Explorer request failed: ${response.status}`
+    );
+  }
   if (!response.ok) throw new Error(payload.error || `Request failed: ${response.status}`);
   return payload;
 }

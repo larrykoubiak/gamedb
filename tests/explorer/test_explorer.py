@@ -40,8 +40,10 @@ class ExplorerTests(unittest.TestCase):
         script = (ASSET_DIRECTORY / "app.js").read_text(encoding="utf-8")
 
         self.assertIn('value="confirm"', index)
+        self.assertIn('/app.js?v=', index)
         self.assertIn('confirming && state.correction.currentAnchor ? "assign"', script)
         self.assertIn('confirming ? "separate"', script)
+        self.assertIn("JSON.parse(body)", script)
 
     def test_explorer_sql_is_kept_in_reviewable_query_files(self):
         for name in (
