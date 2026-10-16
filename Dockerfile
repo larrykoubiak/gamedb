@@ -6,18 +6,33 @@ RUN apt-get update \
 WORKDIR /app
 
 
-FROM postgres-runtime AS loader
+FROM postgres-runtime AS deriver
 
-COPY requirements-load.txt /app/requirements-load.txt
-RUN pip install --no-cache-dir -r /app/requirements-load.txt
+COPY requirements-derive.txt /app/requirements-derive.txt
+RUN pip install --no-cache-dir -r /app/requirements-derive.txt
+
+COPY gamedb/__init__.py gamedb/config.py gamedb/database.py /app/gamedb/
+COPY gamedb/derive /app/gamedb/derive
+COPY data/reference /app/data/reference
+COPY derive.yml /app/derive.yml
+
+CMD ["python", "-m", "gamedb.derive", "--plan"]
+
+
+FROM postgres-runtime AS catalog-builder
+
+COPY requirements-catalog.txt /app/requirements-catalog.txt
+RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
 
 COPY gamedb/__init__.py gamedb/config.py /app/gamedb/
-COPY gamedb/load /app/gamedb/load
-COPY data/reference /app/data/reference
-COPY sql/layers /app/sql/layers
+COPY gamedb/catalog /app/gamedb/catalog
+COPY sql/layers/catalog /app/sql/layers/catalog
+COPY sql/layers/facts /app/sql/layers/facts
+COPY sql/layers/identity /app/sql/layers/identity
+COPY sql/layers/scoring /app/sql/layers/scoring
 COPY pipeline.yml /app/pipeline.yml
 
-CMD ["python", "-m", "gamedb.load", "rebuild", "--plan"]
+CMD ["python", "-m", "gamedb.catalog", "rebuild", "--plan"]
 
 
 FROM postgres-runtime AS explorer

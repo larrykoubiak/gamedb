@@ -1,41 +1,26 @@
 # SQL layers
 
-[`pipeline.yml`](../pipeline.yml) is the executable index for this directory.
-It names every layer, explains its responsibility, and references its SQL in
-execution order. SQL files do not decide which other layers should run; the
-workflow selection does.
+SQL begins after [`derive.yml`](../derive.yml) has produced a usable relational
+`derived` contract. [`pipeline.yml`](../pipeline.yml) is the executable index:
 
 | Directory | Responsibility |
 | --- | --- |
-| [`layers/reset`](layers/reset/) | Remove disposable schemas for a clean replay from staging |
-| [`layers/reference`](layers/reference/) | Load maintained mappings and discover DATs from staging |
-| [`layers/archive_names`](layers/archive_names/) | Persist Python parsing and classification output |
-| [`layers/catalog`](layers/catalog/) | Build core systems, titles, releases, packages, and files |
-| [`layers/facts`](layers/facts/) | Normalize release facts and retain source evidence |
-| [`layers/identity`](layers/identity/) | Build exact-content signatures, matches, and title aliases |
-| [`layers/scoring`](layers/scoring/) | Maintain preferences and compile disposable scores |
+| [`layers/catalog`](layers/catalog/) | Project systems, exact-title clusters, releases and package membership |
+| [`layers/facts`](layers/facts/) | Copy typed derived assertions into normalized facts with evidence |
+| [`layers/identity`](layers/identity/) | Match complete exact-content signatures and build title aliases |
+| [`layers/scoring`](layers/scoring/) | Preserve preferences and compile disposable per-user rankings |
+| [`queries/explorer`](queries/explorer/) | Read-only explorer queries |
 
-Read-only consumer SQL is separate from the rebuild:
-
-| Directory | Responsibility |
-| --- | --- |
-| [`queries/explorer`](queries/explorer/) | Systems, preferred-title pages, and ranked-release details used by `CatalogRepository` |
-
-Run the complete story or inspect it without executing anything:
+No SQL layer parses filenames or classifier JSON, resolves source paths, or
+reloads file inventory. Those are derivation responsibilities.
 
 ```sh
 python -m gamedb rebuild --plan
 python -m gamedb rebuild
-```
-
-During development, rebuild only the affected layer or the affected layer and
-everything after it:
-
-```sh
 python -m gamedb rebuild --layers scoring
-python -m gamedb rebuild --from-layer catalog
+python -m gamedb rebuild --from-layer facts
 ```
 
-Every generated database object remains reproducible from `staging.rv_files`
-and version-controlled rules/reference data. Selecting layers is a development
-convenience, not a dependency on preserved generated state.
+Each selected layer runs as its own transaction. Temporary relations are used
+only where one expensive result feeds several inserts or validations; they
+never cross a layer boundary.

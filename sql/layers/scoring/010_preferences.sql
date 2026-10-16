@@ -44,6 +44,8 @@ CROSS JOIN (
         ('region', 'equals', 'US', 100, 'Prefer US releases'),
         ('release_iteration', 'latest', NULL, 20, 'Prefer the latest explicit version or revision within a title'),
         ('dump_status', 'equals', 'verified', 30, 'Prefer source-verified dumps'),
+        ('release_status', 'equals', 'beta', -100, 'Demote beta releases'),
+        ('dump_status', 'equals', 'alternate', -50, 'Demote alternate dumps'),
         ('dump_modification', 'equals', 'hacked', -200, 'Demote hacked releases'),
         ('source_collection', 'equals', 'No-Intro', 50, 'Prefer No-Intro over unweighted sources')
 ) seed(fact_key, match_operator, fact_value, score, description)

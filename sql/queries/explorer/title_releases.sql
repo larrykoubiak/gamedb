@@ -49,15 +49,18 @@ release_rows AS (
     LEFT JOIN LATERAL (
         SELECT coalesce(jsonb_agg(
             jsonb_build_object(
-                'sourceCollection', package.source_collection,
-                'archiveName', package.archive_name,
+                'sourceCollection', dat.romset,
+                'archiveName', archive_name.archive_name,
                 'contentSignature', signature.sha1_set_digest,
                 'files', files.items
             ) ORDER BY release_package.media_sequence NULLS LAST,
-                package.archive_name, package.id
+                archive_name.archive_name, package.id
         ), '[]'::jsonb) AS items
         FROM catalog.release_package release_package
-        JOIN catalog.package package ON package.id = release_package.package_id
+        JOIN derived.package package ON package.id = release_package.package_id
+        JOIN derived.dat dat ON dat.id = package.dat_id
+        JOIN derived.archive_name archive_name
+          ON archive_name.id = package.archive_name_id
         LEFT JOIN catalog.package_content_signature signature
           ON signature.package_id = package.id
         LEFT JOIN LATERAL (
@@ -69,7 +72,7 @@ release_rows AS (
                     'crc', file.crc_hex
                 ) ORDER BY file.member_path, file.id
             ), '[]'::jsonb) AS items
-            FROM catalog.file file
+            FROM derived.file file
             WHERE file.package_id = package.id
         ) files ON true
         WHERE release_package.release_id = scored.release_id

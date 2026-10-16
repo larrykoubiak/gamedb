@@ -47,11 +47,13 @@ items AS (
     FROM page
     LEFT JOIN LATERAL (
         SELECT
-            min(p.source_collection) AS source_collection,
-            min(p.archive_name) AS archive_name,
+            min(d.romset) AS source_collection,
+            min(n.archive_name) AS archive_name,
             count(*) AS package_count
         FROM catalog.release_package rp
-        JOIN catalog.package p ON p.id = rp.package_id
+        JOIN derived.package p ON p.id = rp.package_id
+        JOIN derived.dat d ON d.id = p.dat_id
+        JOIN derived.archive_name n ON n.id = p.archive_name_id
         WHERE rp.release_id = page.release_id
     ) package ON true
     LEFT JOIN LATERAL (

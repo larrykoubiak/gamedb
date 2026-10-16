@@ -3,8 +3,8 @@
 The parser interprets archive filenames from `staging.rv_files.game_display_name`.
 It is intentionally separate from canonical title/release reconciliation.
 
-The implementation is [`gamedb/load/archive_names/parser.py`](../gamedb/load/archive_names/parser.py),
-driven by [`data/reference/archive_name_formats.json`](../data/reference/archive_name_formats.json).
+The structural implementation is [`gamedb/derive/parser/structure.py`](../gamedb/derive/parser/structure.py),
+driven by [`data/reference/source_formats.json`](../data/reference/source_formats.json).
 `parse_archive_name(romset, archive_name)` returns:
 
 - a provisional `title_candidate`;
@@ -60,11 +60,12 @@ raw rows remain available in `staging.rv_files`.
 
 ## Tag classification
 
-[`gamedb/load/archive_names/classifier.py`](../gamedb/load/archive_names/classifier.py) separately interprets raw
+[`gamedb/derive/parser/classifier.py`](../gamedb/derive/parser/classifier.py) separately interprets raw
 tags using the maintained vocabulary in
 [`data/reference/tag_vocabulary.json`](../data/reference/tag_vocabulary.json).
 
-Supported collections are No-Intro, Redump, TOSEC and TOSEC-ISO. Classifications
+Supported collections are English Translations (Maybe-Intro), No-Intro, Redump,
+TOSEC and TOSEC-ISO. Classifications
 include regions, languages, versions, revisions, dates, publishers, development
 status, media, system requirements and dump flags. Rules shared by No-Intro and
 Redump are supplemented by collection-specific media and status vocabularies.
@@ -74,6 +75,12 @@ TOSEC translation flags retain the raw descriptor and additionally extract a
 recognized target language, partial-translation marker and patch version when
 present. Thus `[tr en v1.3 Dejap]` remains one source tag while supplying
 `dump_modification=translated`, `language=en` and `version=1.3` to the catalog.
+
+The English Translations profile inherits No-Intro's structural grammar while
+interpreting `[T-En by …]`, `[Hack+T-En …]`, `[i]`, and `[n]` explicitly. It
+emits English language, translation version/revision, incomplete-translation,
+localized-title, and explicit hack facts as appropriate. Documentation archive
+names beginning with `_` remain in inventory but do not become releases.
 
 Every stored tag retains its exact `raw_value`. Where the convention has a marker,
 the classifier also separates `identifier` and `value`: `v1.2` becomes `v` plus
@@ -87,6 +94,7 @@ python -m gamedb parse-name TOSEC \
   'Example v1.2 (1990)(Publisher)(US)(en)[cr Group].zip' --classify
 ```
 
-Focused behavior is covered by `tests/test_archive_names.py` and
-`tests/test_archive_name_classifier.py`. Parsed names and tags are stored by the
-archive-name rebuild as relational `derived` tables.
+Focused behavior is covered by `tests/derive/test_archive_names.py`,
+`tests/derive/test_archive_name_classifier.py`, and `tests/derive/test_extractors.py`. The deriver
+stores source records, lossless tags, separate classifications, typed assertions,
+and media parts as relational tables in one interpretation pass.

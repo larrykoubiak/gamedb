@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "collections": {
+    "No-Intro": {
+      "dat_identity": "name_components",
+      "boundary": {
+        "kind": "region",
+        "vocabulary": "no_intro_regions",
+        "additional_values": ["Unknown"]
+      },
+      "leading_tags": ["[]"]
+    },
+    "Redump": {
+      "dat_identity": "name_components",
+      "boundary": {
+        "kind": "region",
+        "vocabulary": "redump_regions",
+        "additional_values": ["Unknown"]
+      },
+      "leading_tags": []
+    },
+    "English Translations": {
+      "inherits": "No-Intro",
+      "dat_identity": "english_translations",
+      "ignore_prefixes": ["_"]
+    },
+    "TOSEC": {
+      "dat_identity": "path_components",
+      "boundary": {
+        "kind": "sequence",
+        "groups": [
+          {"delimiter": "()", "pattern": "^[12][0-9xX]{3}(?:-[0-9xX]{2}){0,2}$"},
+          {"delimiter": "()"}
+        ]
+      },
+      "prefix_tags": [
+        {"name": "demo", "delimiter": "()", "pattern": "^demo(?:-[^()]*)?$", "ignore_case": true},
+        {"name": "version", "pattern": "(?:v\\d[\\w.+-]*|rev(?:ision)?\\.?\\s+[A-Za-z0-9][\\w.+-]*)", "ignore_case": true}
+      ],
+      "record_separator": " & ",
+      "ignore_prefixes": ["ZZZ-UNK-"],
+      "leading_tags": []
+    },
+    "TOSEC-ISO": {
+      "inherits": "TOSEC"
+    }
+  }
+}

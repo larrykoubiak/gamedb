@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS catalog.package_content_signature;
 
 CREATE TABLE catalog.package_content_signature (
     package_id bigint PRIMARY KEY
-        REFERENCES catalog.package(id) ON DELETE CASCADE,
+        REFERENCES derived.package(id) ON DELETE CASCADE,
     release_id bigint NOT NULL
         REFERENCES catalog.release(id) ON DELETE CASCADE,
     rom_count integer NOT NULL CHECK (rom_count > 0),

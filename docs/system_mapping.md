@@ -19,6 +19,7 @@ discards its disposable downstream projections before recreating its output.
 python -m gamedb rebuild --from-layer reference
 ```
 
-The reference SQL loads both files into `ref` and joins them while creating `derived.dat`.
+The deriver loads both files into `ref`; its system layer applies the mappings
+when creating `derived.dat`.
 The source mapping key includes `romset`, allowing identical labels from different
 collections to diverge later if necessary.

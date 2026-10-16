@@ -1,5 +1,4 @@
--- Rebuild normalized release facts from the existing core catalog. Downstream
--- identity and score caches are invalid until their own layers run again.
+-- Aggregate already-typed derived assertions to catalog release facts.
 \set ON_ERROR_STOP on
 BEGIN;
 
@@ -29,26 +28,30 @@ CREATE TABLE catalog.release_fact_evidence (
         REFERENCES catalog.release_fact(id) ON DELETE CASCADE,
     release_package_id bigint NOT NULL
         REFERENCES catalog.release_package(id) ON DELETE CASCADE,
-    source_archive_tag_id bigint NOT NULL
-        REFERENCES derived.archive_tag(id) ON DELETE RESTRICT,
-    PRIMARY KEY (
-        release_fact_id, release_package_id, source_archive_tag_id
-    )
+    source_assertion_id bigint NOT NULL
+        REFERENCES derived.assertion(id) ON DELETE RESTRICT,
+    PRIMARY KEY (release_fact_id, release_package_id, source_assertion_id)
 );
 
 CREATE VIEW catalog.release_source_attribute AS
 SELECT
     rp.release_id,
     rp.id AS release_package_id,
-    t.id AS source_archive_tag_id,
-    t.tag_index,
-    t.category,
-    t.classification_status,
-    t.raw_value,
-    t.identifier,
-    t.value,
-    t.details,
-    t.rule
+    tag.archive_name_id AS source_archive_name_id,
+    tag.record_index AS source_record_index,
+    tag.tag_index,
+    classification.category,
+    classification.classification_status,
+    tag.raw_value,
+    classification.identifier,
+    classification.value,
+    classification.details,
+    classification.rule
 FROM catalog.release_package rp
-JOIN derived.archive_tag t
-  ON t.archive_name_record_id = rp.source_archive_name_record_id;
+JOIN derived.tag tag
+  ON tag.archive_name_id = rp.source_archive_name_id
+ AND tag.record_index = rp.source_record_index
+JOIN derived.tag_classification classification
+  ON classification.archive_name_id = tag.archive_name_id
+ AND classification.record_index = tag.record_index
+ AND classification.tag_index = tag.tag_index;

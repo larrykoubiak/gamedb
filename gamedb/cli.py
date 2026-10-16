@@ -1,19 +1,21 @@
-"""Compatibility dispatcher for the standalone loader and explorer CLIs."""
+"""Convenience dispatcher for the deriver, catalog, and explorer CLIs."""
 
 from __future__ import annotations
 
 import sys
 
 
-HELP = """usage: gamedb {parse-name,rebuild,serve} ...
+HELP = """usage: gamedb {derive,parse-name,rebuild,serve} ...
 
 GameDB commands:
-  parse-name   Inspect one archive filename using loader rules.
-  rebuild      Plan or execute the loader pipeline.
+  derive       Build or selectively refresh the stable derived schema.
+  parse-name   Inspect one archive filename using derivation rules.
+  rebuild      Project catalog, identity, and scores from derived data.
   serve        Run the read-only explorer.
 
 Dedicated entry points:
-  python -m gamedb.load ...
+  python -m gamedb.derive ...
+  python -m gamedb.catalog ...
   python -m gamedb.explorer ...
 """
 
@@ -25,10 +27,18 @@ def main(argv=None) -> int:
         return 0
 
     command, *remaining = arguments
-    if command in ("parse-name", "rebuild"):
-        from gamedb.load.cli import main as loader_main
+    if command == "derive":
+        from gamedb.derive.__main__ import main as derive_main
 
-        return loader_main([command, *remaining])
+        return derive_main(remaining)
+    if command == "parse-name":
+        from gamedb.derive.__main__ import parse_name_main
+
+        return parse_name_main(remaining)
+    if command == "rebuild":
+        from gamedb.catalog.cli import main as catalog_main
+
+        return catalog_main([command, *remaining])
     if command == "serve":
         from gamedb.explorer.__main__ import main as explorer_main
 

@@ -1,0 +1,52 @@
+name: gamedb_derivation
+
+# The deriver is the sole writer of ref and derived. Each layer owns one
+# coherent transformation and may be rerun with its downstream dependants.
+layers:
+  - name: schema
+    description: Recreate ref and derived, invalidate catalog, and retain staging and app preferences.
+    extractor: schema_manager
+    reads: [staging.rv_files]
+    writes: [ref, derived]
+
+  - name: reference
+    description: Load reviewed systems, mappings, path prefixes, and tag categories.
+    extractor: reference_extract
+    reads: [data/reference]
+    writes: [ref]
+
+  - name: dat
+    description: Parse source DAT identity from staging paths and names.
+    extractor: dat_extract
+    reads: [staging.rv_files]
+    writes: [derived.dat_source]
+
+  - name: system
+    description: Resolve source DAT systems through reviewed mappings.
+    extractor: system_extract
+    reads: [derived.dat_source, ref.system_mapping]
+    writes: [derived.dat]
+
+  - name: inventory
+    description: Materialize stable archive packages, files, member paths, and hashes.
+    extractor: inventory_extract
+    reads: [staging.rv_files, derived.dat]
+    writes: [derived.archive_name, derived.package, derived.file]
+
+  - name: paths
+    description: Resolve physical package paths independently from name parsing.
+    extractor: archive_path_extract
+    reads: [derived.package, ref.path_mapping]
+    writes: [derived.package_path]
+
+  - name: names
+    description: Parse each archive name once into titles, raw tags, classifications, assertions, and media.
+    extractor: archive_name_extract
+    reads: [derived.archive_name, data/reference]
+    writes: [derived.archive_parse, derived.record, derived.tag, derived.tag_classification, derived.assertion, derived.media_part]
+
+  - name: releases
+    description: Assemble typed package records into source-faithful releases.
+    extractor: release_assemble
+    reads: [derived.package, derived.record, derived.media_part]
+    writes: [derived.source_release, derived.source_release_package]

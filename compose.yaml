@@ -8,10 +8,18 @@ services:
     ports:
       - "${GAMEDB_EXPLORER_PORT:-8000}:8000"
 
-  loader:
+  deriver:
     build:
       context: .
-      target: loader
-    container_name: gamedb-loader
+      target: deriver
+    container_name: gamedb-deriver
+    env_file: .env
+    profiles: [tools]
+
+  catalog-builder:
+    build:
+      context: .
+      target: catalog-builder
+    container_name: gamedb-catalog-builder
     env_file: .env
     profiles: [tools]

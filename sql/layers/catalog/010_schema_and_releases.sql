@@ -1,26 +1,10 @@
--- Build the consumer-facing catalogue from the rebuildable archive-name layer.
--- Releases are source-faithful: only explicitly numbered media records whose
--- title and every non-media tag agree are grouped automatically.
+-- Build the consumer catalog from complete, typed derived source releases.
+-- No source-name parsing, file loading, path resolution, or media inference
+-- belongs in this layer.
 \set ON_ERROR_STOP on
 BEGIN;
 
-CREATE TABLE IF NOT EXISTS ref.path_mapping (
-    id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    source_prefix text NOT NULL UNIQUE,
-    target_prefix text NOT NULL,
-    CHECK (btrim(source_prefix) <> ''),
-    CHECK (btrim(target_prefix) <> ''),
-    CHECK (right(source_prefix, 1) <> '/'),
-    CHECK (right(target_prefix, 1) <> '/')
-);
-
--- Drop consumers before refreshing the maintained mapping table so this script
--- is independently replayable after a previous catalog build.
 DROP SCHEMA IF EXISTS catalog CASCADE;
-
-TRUNCATE ref.path_mapping RESTART IDENTITY;
-\copy ref.path_mapping (source_prefix, target_prefix) FROM 'data/reference/path_mappings.csv' WITH (FORMAT csv, HEADER true)
-
 CREATE SCHEMA catalog;
 
 CREATE TABLE catalog.system (
@@ -60,30 +44,12 @@ CREATE TABLE catalog.release (
     UNIQUE (source_dat_id, source_group_ordinal)
 );
 
-CREATE TABLE catalog.package (
-    id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    source_archive_id bigint NOT NULL UNIQUE
-        REFERENCES derived.archive(id) ON DELETE RESTRICT,
-    source_collection text NOT NULL,
-    source_dat_name text NOT NULL,
-    source_dat_path text NOT NULL,
-    archive_name text NOT NULL,
-    extension text NOT NULL,
-    source_tree_path text,
-    path_mapping_id bigint REFERENCES ref.path_mapping(id) ON DELETE RESTRICT,
-    resolved_path text,
-    parse_status text NOT NULL,
-    parse_issues text[] NOT NULL,
-    staged_file_count bigint NOT NULL CHECK (staged_file_count > 0)
-);
-
 CREATE TABLE catalog.release_package (
     id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     release_id bigint NOT NULL REFERENCES catalog.release(id) ON DELETE CASCADE,
-    package_id bigint NOT NULL REFERENCES catalog.package(id) ON DELETE RESTRICT,
-    source_archive_name_record_id bigint NOT NULL
-        REFERENCES derived.archive_name_record(id) ON DELETE RESTRICT,
-    record_index integer NOT NULL CHECK (record_index > 0),
+    package_id bigint NOT NULL REFERENCES derived.package(id) ON DELETE RESTRICT,
+    source_archive_name_id bigint NOT NULL,
+    source_record_index integer NOT NULL,
     media_type text,
     media_part text,
     media_sequence integer CHECK (media_sequence > 0),
@@ -92,162 +58,32 @@ CREATE TABLE catalog.release_package (
     media_side text,
     media_label text,
     media_description text,
-    parse_status text NOT NULL,
-    parse_issues text[] NOT NULL,
-    classification_issues text[] NOT NULL,
-    UNIQUE (package_id, source_archive_name_record_id)
-);
-
-CREATE TABLE catalog.file (
-    id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    package_id bigint NOT NULL REFERENCES catalog.package(id) ON DELETE CASCADE,
-    source_run_id uuid NOT NULL,
-    source_exported_at timestamptz NOT NULL,
-    source_tree_path text NOT NULL,
-    source_full_path text NOT NULL,
-    member_path text NOT NULL,
-    file_name text NOT NULL,
-    size bigint,
-    crc_hex text,
-    sha1_hex text,
-    md5_hex text,
-    alt_size bigint,
-    alt_crc_hex text,
-    alt_sha1_hex text,
-    alt_md5_hex text,
-    sha1_verified boolean,
-    md5_verified boolean,
-    crc_verified boolean,
-    size_verified boolean,
-    deep_scanned boolean,
-    dat_status integer,
-    got_status integer,
-    rep_status integer,
-    source_game_id text,
-    source_game_description text
+    FOREIGN KEY (source_archive_name_id, source_record_index)
+        REFERENCES derived.record(archive_name_id, record_index)
+        ON DELETE RESTRICT,
+    UNIQUE (package_id, source_archive_name_id, source_record_index)
 );
 
 INSERT INTO catalog.system (
     source_canonical_system_id, manufacturer_name, system_name
 )
-SELECT id, canonical_manufacturer_name, canonical_system_name
+SELECT id, manufacturer_name, system_name
 FROM ref.canonical_system
-ORDER BY canonical_manufacturer_name, canonical_system_name;
+ORDER BY manufacturer_name, system_name;
 
--- One candidate is one parsed record as it occurs in one source DAT/archive.
--- The JSON signature intentionally includes every non-media tag, including
--- unknown tags and source order. Automatic grouping is therefore conservative.
-CREATE TEMP TABLE _catalog_candidate ON COMMIT DROP AS
-SELECT
-    a.id AS archive_id,
-    r.id AS record_id,
-    d.id AS dat_id,
-    d.canonical_system_id,
-    r.record_index,
-    r.title_candidate,
-    r.parse_status,
-    r.parse_issues,
-    r.classification_issues,
-    count(t.id) FILTER (WHERE t.category = 'media') AS media_count,
-    max(t.details ->> 'type') FILTER (WHERE t.category = 'media') AS media_type,
-    max(t.details ->> 'part') FILTER (WHERE t.category = 'media') AS media_part,
-    max((t.details ->> 'total')::integer)
-        FILTER (WHERE t.category = 'media' AND t.details ? 'total') AS media_total,
-    max(t.details ->> 'total_label')
-        FILTER (WHERE t.category = 'media') AS media_total_label,
-    max(t.details ->> 'side') FILTER (WHERE t.category = 'media') AS media_side,
-    max(t.details ->> 'label') FILTER (WHERE t.category = 'media') AS media_label,
-    max(t.details ->> 'description')
-        FILTER (WHERE t.category = 'media') AS media_description,
-    coalesce(
-        jsonb_agg(
-            jsonb_build_object(
-                'index', t.tag_index,
-                'raw', t.raw_value,
-                'identifier', t.identifier,
-                'value', t.value,
-                'category', t.category,
-                'status', t.classification_status,
-                'details', t.details
-            ) ORDER BY t.tag_index
-        ) FILTER (WHERE t.id IS NOT NULL AND t.category <> 'media'),
-        '[]'::jsonb
-    ) AS non_media_signature
-FROM derived.archive a
-JOIN derived.dat d ON d.id = a.dat_id
-JOIN derived.archive_name_record r ON r.archive_name_id = a.archive_name_id
-LEFT JOIN derived.archive_tag t ON t.archive_name_record_id = r.id
-GROUP BY a.id, r.id, d.id, d.canonical_system_id, r.record_index,
-    r.title_candidate, r.parse_status, r.parse_issues, r.classification_issues;
-
-CREATE TEMP TABLE _catalog_preliminary ON COMMIT DROP AS
-SELECT c.*,
-    count(*) OVER preliminary_group AS preliminary_member_count,
-    count(*) OVER preliminary_slot AS preliminary_slot_count
-FROM _catalog_candidate c
-WINDOW
-    preliminary_group AS (
-        PARTITION BY c.dat_id, c.canonical_system_id, c.title_candidate,
-            c.non_media_signature, c.media_type, c.media_total,
-            c.media_total_label,
-            CASE WHEN c.media_count = 1 AND c.media_part IS NOT NULL
-                THEN 0 ELSE c.archive_id END,
-            CASE WHEN c.media_count = 1 AND c.media_part IS NOT NULL
-                THEN 0 ELSE c.record_id END
-    ),
-    preliminary_slot AS (
-        PARTITION BY c.dat_id, c.canonical_system_id, c.title_candidate,
-            c.non_media_signature, c.media_type, c.media_total,
-            c.media_total_label,
-            CASE WHEN c.media_count = 1 AND c.media_part IS NOT NULL
-                THEN c.media_part END,
-            coalesce(c.media_side, ''),
-            CASE WHEN c.media_count = 1 AND c.media_part IS NOT NULL
-                THEN 0 ELSE c.archive_id END,
-            CASE WHEN c.media_count = 1 AND c.media_part IS NOT NULL
-                THEN 0 ELSE c.record_id END
-    );
-
--- A repeated part/side slot makes the proposed set ambiguous. In that case,
--- split every candidate into its own release rather than risk a false merge.
-CREATE TEMP TABLE _catalog_member ON COMMIT DROP AS
-SELECT p.*,
-    dense_rank() OVER (
-        PARTITION BY p.dat_id
-        ORDER BY p.title_candidate, p.non_media_signature, p.media_type,
-            p.media_total, p.media_total_label,
-            CASE
-                WHEN p.media_count = 1 AND p.media_part IS NOT NULL
-                     AND p.preliminary_slot_count = 1 THEN 0
-                ELSE p.archive_id
-            END,
-            CASE
-                WHEN p.media_count = 1 AND p.media_part IS NOT NULL
-                     AND p.preliminary_slot_count = 1 THEN 0
-                ELSE p.record_id
-            END
-    ) AS group_ordinal,
-    (p.media_count = 1 AND p.media_part IS NOT NULL
-        AND p.preliminary_slot_count > 1) AS ambiguous_slot
-FROM _catalog_preliminary p;
-
--- Exact-title clusters are browse/search buckets, not authoritative software
--- identities. cluster_key is deliberately separate from display_title so a
--- later reviewed override can split same-name software without changing the
--- visible title or referring to a rebuild-local bigint.
 INSERT INTO catalog.title (
     system_id, cluster_key, display_title, grouping_basis, needs_review
 )
 SELECT DISTINCT
-    s.id,
-    m.title_candidate,
-    m.title_candidate,
+    system.id,
+    source.title_text,
+    source.title_text,
     'exact_title',
     false
-FROM _catalog_member m
-JOIN catalog.system s
-  ON s.source_canonical_system_id = m.canonical_system_id
-ORDER BY s.id, m.title_candidate;
+FROM derived.source_release source
+JOIN catalog.system system
+  ON system.source_canonical_system_id = source.canonical_system_id
+ORDER BY system.id, source.title_text;
 
 INSERT INTO catalog.release (
     title_id, source_dat_id, source_group_ordinal, display_title,
@@ -255,76 +91,43 @@ INSERT INTO catalog.release (
 )
 SELECT
     title.id,
-    m.dat_id,
-    m.group_ordinal,
-    min(m.title_candidate),
-    CASE
-        WHEN bool_or(m.ambiguous_slot) THEN 'media_ambiguous'
-        WHEN bool_and(m.media_count = 1 AND m.media_part IS NOT NULL)
-             AND count(*) > 1
-             AND min(m.media_total) IS NOT NULL
-             AND bool_and(m.media_part ~ '^0*[1-9][0-9]*$')
-             AND count(DISTINCT m.media_part::integer)
-                 FILTER (WHERE m.media_part ~ '^0*[1-9][0-9]*$') = min(m.media_total)
-             AND min(m.media_part::integer)
-                 FILTER (WHERE m.media_part ~ '^0*[1-9][0-9]*$') = 1
-             AND max(m.media_part::integer)
-                 FILTER (WHERE m.media_part ~ '^0*[1-9][0-9]*$') = min(m.media_total)
-            THEN 'media_complete'
-        WHEN bool_and(m.media_count = 1 AND m.media_part IS NOT NULL)
-             AND count(*) > 1 THEN 'media_grouped'
-        WHEN bool_and(m.media_count = 1 AND m.media_part IS NOT NULL)
-            THEN 'media_singleton'
-        ELSE 'standalone'
-    END,
-    CASE WHEN bool_and(m.media_count = 1 AND m.media_part IS NOT NULL)
-        THEN min(m.media_total) END,
-    CASE WHEN bool_and(m.media_count = 1 AND m.media_part IS NOT NULL)
-        THEN count(DISTINCT m.media_part) END,
-    bool_or(
-        m.parse_status = 'review'
-        OR cardinality(m.classification_issues) > 0
-        OR m.ambiguous_slot
-    )
-FROM _catalog_member m
-JOIN catalog.system s
-  ON s.source_canonical_system_id = m.canonical_system_id
+    source.dat_id,
+    source.group_ordinal,
+    source.title_text,
+    source.grouping_status,
+    source.expected_media_parts,
+    source.available_media_parts,
+    source.needs_review
+FROM derived.source_release source
+JOIN catalog.system system
+  ON system.source_canonical_system_id = source.canonical_system_id
 JOIN catalog.title title
-  ON title.system_id = s.id
- AND title.cluster_key = m.title_candidate
+  ON title.system_id = system.id
+ AND title.cluster_key = source.title_text
  AND title.grouping_basis = 'exact_title'
-GROUP BY title.id, m.dat_id, m.group_ordinal
-ORDER BY m.dat_id, m.group_ordinal;
-
-INSERT INTO catalog.package (
-    source_archive_id, source_collection, source_dat_name, source_dat_path,
-    archive_name, extension, parse_status, parse_issues, staged_file_count
-)
-SELECT a.id, d.romset, d.dat_name, d.dat_path, n.archive_name, n.extension,
-    n.parse_status, n.parse_issues, a.staged_row_count
-FROM derived.archive a
-JOIN derived.dat d ON d.id = a.dat_id
-JOIN derived.archive_name n ON n.id = a.archive_name_id
-ORDER BY a.id;
+ORDER BY source.dat_id, source.group_ordinal;
 
 INSERT INTO catalog.release_package (
-    release_id, package_id, source_archive_name_record_id, record_index,
+    release_id, package_id, source_archive_name_id, source_record_index,
     media_type, media_part, media_sequence, media_total, media_total_label,
-    media_side, media_label, media_description, parse_status, parse_issues,
-    classification_issues
+    media_side, media_label, media_description
 )
-SELECT rel.id, p.id, m.record_id, m.record_index,
-    m.media_type, m.media_part,
-    CASE WHEN m.media_part ~ '^0*[1-9][0-9]*$' THEN m.media_part::integer END,
-    m.media_total, m.media_total_label, m.media_side, m.media_label,
-    m.media_description, m.parse_status, m.parse_issues,
-    m.classification_issues
-FROM _catalog_member m
-JOIN catalog.release rel
-  ON rel.source_dat_id = m.dat_id
- AND rel.source_group_ordinal = m.group_ordinal
-JOIN catalog.package p ON p.source_archive_id = m.archive_id
-ORDER BY rel.id,
-    CASE WHEN m.media_part ~ '^0*[1-9][0-9]*$' THEN m.media_part::integer END
-        NULLS LAST,
-    m.media_part, m.media_side, p.id, m.record_index;
+SELECT
+    release.id,
+    membership.package_id,
+    membership.archive_name_id,
+    membership.record_index,
+    membership.media_type,
+    membership.media_part,
+    membership.media_sequence,
+    membership.media_total,
+    membership.media_total_label,
+    membership.media_side,
+    membership.media_label,
+    membership.media_description
+FROM derived.source_release_package membership
+JOIN catalog.release release
+  ON release.source_dat_id = membership.source_dat_id
+ AND release.source_group_ordinal = membership.source_group_ordinal
+ORDER BY release.id, membership.media_sequence NULLS LAST,
+    membership.media_part, membership.media_side, membership.package_id;

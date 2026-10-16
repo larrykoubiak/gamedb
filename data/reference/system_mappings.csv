@@ -560,3 +560,35 @@ TOSEC-ISO,Tomy,KISS-Site,Tomy,KISS-Site,exact,
 TOSEC-ISO,VM Labs,Nuon,VM Labs,NUON,normalized,"Case, whitespace or separator variation."
 TOSEC-ISO,VTech,V.Flash Home Edutainment System,VTech,V.Flash Home Edutainment System,exact,
 TOSEC-ISO,ZAPiT Games,Game Wave Family Entertainment System,ZAPiT Games,Game Wave Family Entertainment System,exact,
+English Translations,English Translations,Bandai WonderSwan Color,Bandai,WonderSwan Color,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Fujitsu FM Towns,Fujitsu,FM Towns,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,MSX 2 (Cartridges),MSX,MSX2,alias,Media-specific Maybe-Intro DAT.
+English Translations,English Translations,MSX 2 (Disks),MSX,MSX2,alias,Media-specific Maybe-Intro DAT.
+English Translations,English Translations,MSX (Cartridges),MSX,MSX,alias,Media-specific Maybe-Intro DAT.
+English Translations,English Translations,MSX (Disks),MSX,MSX,alias,Media-specific Maybe-Intro DAT.
+English Translations,English Translations,MSX Turbo-R (Disks),MSX,TurboR,alias,Media-specific Maybe-Intro DAT.
+English Translations,English Translations,NEC PC-6001,NEC,PC-6001,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,NEC PC-8801,NEC,PC-8801,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,NEC PC-9801,NEC,PC-9801,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,NEC PC Engine CD,NEC,PC Engine CD / TurboGrafx-CD,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,NEC PC Engine,NEC,PC Engine / TurboGrafx-16,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Nintendo 64,Nintendo,Nintendo 64,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Nintendo DS,Nintendo,Nintendo DS,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Nintendo Famicom Disk System,Nintendo,Famicom Disk System,alias,Regional system name.
+English Translations,English Translations,Nintendo Famicom,Nintendo,Nintendo Entertainment System,alias,Regional system name.
+English Translations,English Translations,Nintendo Game Boy Advance,Nintendo,Game Boy Advance,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Nintendo Game Boy Color,Nintendo,Game Boy Color,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Nintendo Game Boy,Nintendo,Game Boy,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Nintendo Super Famicom,Nintendo,Super Nintendo Entertainment System,alias,Regional system name.
+English Translations,English Translations,Nintendo Virtual Boy,Nintendo,Virtual Boy,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Sega Dreamcast,Sega,Dreamcast,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Sega Game Gear,Sega,Game Gear,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Sega Master System,Sega,Master System,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Sega Mega-CD,Sega,Mega-CD,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Sega Mega Drive,Sega,Mega Drive,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Sega Saturn,Sega,Saturn,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Sega SG-1000,Sega,SG-1000,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Sharp X68000,Sharp,X68000,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,SNK Neo Geo Pocket Color,SNK,Neo Geo Pocket Color,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Sony PlayStation 2,Sony,PlayStation 2,alias,Maybe-Intro DAT system name.
+English Translations,English Translations,Sony PlayStation,Sony,PlayStation,alias,Maybe-Intro DAT system name.

@@ -23,7 +23,7 @@ SELECT
     count(file.id)::integer,
     md5(string_agg(file.sha1_hex, E'\n' ORDER BY file.sha1_hex))
 FROM package_owner owner
-JOIN catalog.file file ON file.package_id = owner.package_id
+JOIN derived.file file ON file.package_id = owner.package_id
 WHERE lower(file.file_name) !~ '\.pok$'
 GROUP BY owner.package_id, owner.release_id
 HAVING bool_and(file.sha1_hex IS NOT NULL)
