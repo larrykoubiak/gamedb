@@ -39,6 +39,23 @@ WITH exact_match AS (
     WHERE preference.enabled
       AND preference.match_operator = 'equals'
 ),
+presence_match AS (
+    SELECT
+        preference.id AS preference_id,
+        preference.user_id,
+        fact.release_id,
+        preference.fact_key,
+        min(fact.fact_value) AS matched_value,
+        preference.score,
+        preference.description
+    FROM app.user_preference preference
+    JOIN catalog.release_fact fact
+      ON fact.fact_key = preference.fact_key
+    WHERE preference.enabled
+      AND preference.match_operator = 'present'
+    GROUP BY preference.id, preference.user_id, fact.release_id,
+        preference.fact_key, preference.score, preference.description
+),
 relative_candidate AS (
     SELECT
         preference.id AS preference_id,
@@ -115,6 +132,8 @@ latest_match AS (
     WHERE relative_rank = 1
 )
 SELECT * FROM exact_match
+UNION ALL
+SELECT * FROM presence_match
 UNION ALL
 SELECT * FROM latest_match;
 

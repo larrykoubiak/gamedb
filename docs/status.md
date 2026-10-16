@@ -173,7 +173,7 @@ with `promoted` status for audit.
 
 ## Preference scoring
 
-The durable `default` user currently has eight enabled seed preferences:
+The durable `default` user currently has nine enabled seed preferences:
 
 | Preference | Score |
 | --- | ---: |
@@ -181,7 +181,8 @@ The durable `default` user currently has eight enabled seed preferences:
 | Explicit English language | +40 |
 | Latest explicit version, or revision when no versions exist | +20 |
 | Source-verified dump | +30 |
-| Beta release status | -100 |
+| Any explicit non-standard release status | -500 |
+| Any TOSEC demo classification | -500 |
 | Alternate dump (`[a]`, `[a2]`, …) | -50 |
 | Hacked dump modification | -200 |
 | No-Intro source collection | +50 |

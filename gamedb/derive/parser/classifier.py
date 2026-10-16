@@ -426,6 +426,16 @@ def _redump(tag, region_seen):
             _known("release_status", "redump.demo_status", code=REDUMP_DEMO_STATUS[value]),
             value, None,
         )
+    if re.search(r"\bpreviews?\b", value, re.IGNORECASE):
+        return _source(
+            _known("release_status", "redump.preview_keyword", code="preview"),
+            value, None,
+        )
+    if re.search(r"\bsampl(?:e|er|ing)s?\b", value, re.IGNORECASE):
+        return _source(
+            _known("release_status", "redump.sample_keyword", code="sample"),
+            value, None,
+        )
     if value in REDUMP_SYSTEMS:
         return _known("system_requirement", "redump.system", text=value)
     media = _media(value, "redump")

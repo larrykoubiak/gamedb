@@ -217,6 +217,22 @@ class TagClassificationTests(unittest.TestCase):
         self.assertEqual(result.tags[3]["details"], {"code": "trial"})
         self.assertEqual(result.issues, ())
 
+    def test_redump_descriptive_preview_and_sample_qualifiers(self):
+        cases = (
+            ("Square Soft on PlayStation Previews", "preview", "redump.preview_keyword"),
+            ("Playable Game Preview", "preview", "redump.preview_keyword"),
+            ("Interactive Sampler CD", "sample", "redump.sample_keyword"),
+            ("Sample-ban", "sample", "redump.sample_keyword"),
+        )
+        for qualifier, status, rule in cases:
+            with self.subTest(qualifier=qualifier):
+                _, result = classify("Redump", f"Example (USA) ({qualifier}).zip")
+                self.assertEqual(result.tags[-1]["category"], "release_status")
+                self.assertEqual(result.tags[-1]["details"], {"code": status})
+                self.assertEqual(result.tags[-1]["rule"], rule)
+                self.assertEqual(result.tags[-1]["identifier"], qualifier)
+                self.assertEqual(result.issues, ())
+
     def test_unknown_country_code_is_not_automatically_a_language(self):
         _, result = classify("TOSEC", "Example (1990)(Publisher)(UK)(zz).zip")
         self.assertEqual([t["category"] for t in result.tags[-2:]], ["unknown", "unknown"])
