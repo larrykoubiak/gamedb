@@ -99,6 +99,7 @@ Each assertion links to its exact raw tag.
 | `identity` | exact package/release signatures and accepted title aliases |
 | `software` | platform software and total accepted release membership |
 | `scoring` | `app`-owned per-user score cache and preferred-release view |
+| `media` | selected Libretro assets and explainable software associations |
 
 The catalog projects every release-visible package and member file, including
 its logical and resolved path, size, hashes and verification state. Consumers
@@ -111,7 +112,7 @@ build relations.
 preference requires only:
 
 ```sh
-python -m gamedb rebuild --layers scoring
+python -m gamedb rebuild --from-layer scoring
 ```
 
 `app.software_correction` likewise survives rebuilds and is the explorer's

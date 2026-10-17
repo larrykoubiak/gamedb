@@ -208,9 +208,10 @@ execution is rejected. `--layers paths` re-resolves only paths, while
 `--from-layer names` reinterprets stable names and reassembles releases.
 
 `pipeline.yml` begins at that contract and orders catalog, facts, title
-identity, software identity and scoring. `python -m gamedb rebuild --layers scoring` was verified as an
-isolated 43-second preference-cache refresh: it did not touch derivation,
-inventory, paths, parsing, catalog facts, or identity.
+identity, software identity, scoring and media. A scoring-only rebuild remains
+isolated from derivation, inventory, paths, parsing, catalog facts, and identity,
+but does not refresh preference-aware media. Use `python -m gamedb rebuild
+--from-layer scoring` to refresh both scores and artwork associations.
 
 Multi-file SQL steps report file-level progress and elapsed time while retaining
 one database transaction. Explorer queries live separately under

@@ -6,7 +6,7 @@ catalog. The code is split into three applications with distinct ownership:
 | Package | Owns | Command |
 | --- | --- | --- |
 | `gamedb.derive` | `ref` and `derived`: source interpretation and stable inventory | `python -m gamedb derive` |
-| `gamedb.catalog` | `catalog`: consumer projection, facts, identity and score cache | `python -m gamedb rebuild` |
+| `gamedb.catalog` | `catalog`: consumer projection, identity, scores and media | `python -m gamedb rebuild` |
 | `gamedb.explorer` | Read-only HTTP pages and queries | `python -m gamedb serve` |
 
 The data flow is deliberately one-way:
@@ -23,7 +23,7 @@ staging.rv_files + recovered history + reference
                   ▼
        SQL consumer projection
        catalog systems, titles, releases, facts,
-       software identity and cached ranking
+       software identity, cached ranking and selected media
                   │
                   ▼
              explorer
@@ -53,8 +53,8 @@ python -m gamedb derive --layers paths
 # Parser/classifier rules changed; stable inventory is reused
 python -m gamedb derive --from-layer names
 
-# A user preference changed; derived data is untouched
-python -m gamedb rebuild --layers scoring
+# A user preference changed; refresh scoring and preference-aware media
+python -m gamedb rebuild --from-layer scoring
 ```
 
 After a full derivation, build the complete consumer projection with
@@ -98,7 +98,7 @@ docker compose up --build -d
 
 # Run one-shot tools against that same database.
 docker compose run --build --rm deriver --from-layer names
-docker compose run --build --rm catalog-builder rebuild --layers scoring
+docker compose run --build --rm catalog-builder rebuild --from-layer scoring
 ```
 
 On `larry-tower`, where `COMPOSE_FILE` is not set, copy `.env.example` to `.env`,
@@ -112,6 +112,9 @@ PostgreSQL data is retained at `./data/pgdata`. Application containers connect
 to `db:5432`; `PGHOST` and `PGPORT` remain useful for commands run directly on
 the host. Set `GAMEDB_EXPLORER_PORT=8080` to change the explorer's host port and
 `GAMEDB_POSTGRES_PORT` to change the optional host database port.
+The Libretro checkout is expected at `./data/libretro-thumbnails`; the catalog
+builder caches its Git path index in `./data/media/cache` and the explorer
+serves only selected image files from that read-only checkout.
 
 The deployment stack also exposes the independent tool targets:
 
@@ -119,7 +122,7 @@ The deployment stack also exposes the independent tool targets:
 docker compose --profile tools run --build --rm deriver \
   python -m gamedb.derive --plan
 docker compose --profile tools run --build --rm catalog-builder \
-  python -m gamedb.catalog rebuild --layers scoring
+  python -m gamedb.catalog rebuild --from-layer scoring
 docker compose up --build explorer
 ```
 

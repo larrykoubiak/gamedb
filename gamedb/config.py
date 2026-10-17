@@ -15,6 +15,9 @@ class ProjectEnvironment:
     KEYS = frozenset({
         "GAMEDB_EXPLORER_PORT",
         "GAMEDB_ENABLE_CORRECTIONS",
+        "GAMEDB_LIBRETRO_THUMBNAILS",
+        "GAMEDB_MEDIA_INDEX",
+        "GAMEDB_MEDIA_USERNAME",
         "PGDATABASE",
         "PGHOST",
         "PGPASSWORD",

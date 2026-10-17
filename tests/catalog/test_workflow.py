@@ -6,7 +6,13 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 from gamedb.catalog.workflow import RebuildWorkflow, WorkflowConfig
-from gamedb.catalog.workflow.steps import RunSqlStep, WorkflowContext
+from gamedb.catalog.workflow.steps import (
+    BuildMediaStep,
+    RunSqlStep,
+    StepFactory,
+    WorkflowContext,
+)
+from gamedb.catalog.workflow.config import StepConfig
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -45,12 +51,13 @@ class WorkflowConfigTests(unittest.TestCase):
 
         self.assertEqual(
             config.layer_names,
-            ("catalog", "facts", "identity", "software", "scoring"),
+            ("catalog", "facts", "identity", "software", "scoring", "media"),
         )
         self.assertEqual(
-            config.layers[-2].steps[0].name, "build_software_identity"
+            config.layers[-3].steps[0].name, "build_software_identity"
         )
-        self.assertEqual(config.layers[-1].steps[0].name, "build_release_scores")
+        self.assertEqual(config.layers[-2].steps[0].name, "build_release_scores")
+        self.assertEqual(config.layers[-1].steps[0].name, "build_software_media")
 
     def test_exact_layer_selection_retains_pipeline_order(self):
         config = WorkflowConfig.load(PROJECT_ROOT / "pipeline.yml")
@@ -98,6 +105,11 @@ layers:
 
 
 class WorkflowStepTests(unittest.TestCase):
+    def test_media_step_has_a_dedicated_executor(self):
+        step = StepFactory.build(StepConfig("media", "build_media"))
+
+        self.assertIsInstance(step, BuildMediaStep)
+
     @patch("gamedb.catalog.workflow.steps.subprocess.Popen")
     def test_sql_step_executes_files_in_one_psql_process(self, popen):
         files = (PROJECT_ROOT / "first.sql", PROJECT_ROOT / "second.sql")

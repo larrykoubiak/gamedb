@@ -46,7 +46,8 @@ items AS (
         facts.revisions,
         facts.release_dates,
         facts.dump_modifications,
-        facts.dump_statuses
+        facts.dump_statuses,
+        media.items AS media
     FROM page
     LEFT JOIN LATERAL (
         SELECT
@@ -74,6 +75,19 @@ items AS (
         FROM catalog.release_fact f
         WHERE f.release_id = page.release_id
     ) facts ON true
+    LEFT JOIN LATERAL (
+        SELECT coalesce(jsonb_object_agg(
+            selected.media_kind,
+            jsonb_build_object(
+                'path', asset.relative_path,
+                'matchBasis', selected.match_basis,
+                'regionMatch', selected.region_match
+            ) ORDER BY selected.media_kind
+        ), '{}'::jsonb) AS items
+        FROM catalog.software_media selected
+        JOIN catalog.media asset ON asset.id = selected.media_id
+        WHERE selected.software_id = page.software_id
+    ) media ON true
 )
 SELECT jsonb_build_object(
     'total', (SELECT count(*) FROM chosen),
@@ -96,7 +110,8 @@ SELECT jsonb_build_object(
                 'revisions', items.revisions,
                 'releaseDates', items.release_dates,
                 'dumpModifications', items.dump_modifications,
-                'dumpStatuses', items.dump_statuses
+                'dumpStatuses', items.dump_statuses,
+                'media', items.media
             ) ORDER BY lower(items.title), items.title, items.software_id
         )
         FROM items

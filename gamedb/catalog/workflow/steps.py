@@ -72,6 +72,18 @@ class RunSqlStep(WorkflowStep):
             raise subprocess.CalledProcessError(return_code, process.args)
 
 
+class BuildMediaStep(WorkflowStep):
+    """Build selected external media after software scoring is available."""
+
+    def execute(self, context: WorkflowContext) -> None:
+        from gamedb.database import create_database_engine
+        from gamedb.catalog.media import MediaCatalogBuilder
+
+        MediaCatalogBuilder.from_environment(
+            create_database_engine(), context.project_root
+        ).execute()
+
+
 class SqlBatchProgress:
     """Report concrete SQL-file progress for a single transactional batch."""
 
@@ -99,4 +111,6 @@ class StepFactory:
     def build(config: StepConfig) -> WorkflowStep:
         if config.type == "run_sql":
             return RunSqlStep(config.name, config.files)
+        if config.type == "build_media":
+            return BuildMediaStep(config.name)
         raise ValueError(f"Cannot build pipeline step {config.name}: {config.type}")

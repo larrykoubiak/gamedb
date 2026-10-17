@@ -103,6 +103,39 @@ function scoreText(score) {
   return score > 0 ? `+${score}` : String(score);
 }
 
+function mediaUrl(path) {
+  return `/media/${path.split("/").map(encodeURIComponent).join("/")}`;
+}
+
+function artworkCell(game) {
+  const element = document.createElement("td");
+  element.className = "art-cell";
+  const candidates = ["boxart", "title", "snap", "logo"]
+    .map(kind => game.media?.[kind])
+    .filter(Boolean);
+  if (!candidates.length) {
+    const placeholder = document.createElement("span");
+    placeholder.className = "art-placeholder";
+    placeholder.textContent = "—";
+    element.append(placeholder);
+    return element;
+  }
+  const image = document.createElement("img");
+  image.className = "game-art";
+  image.alt = "";
+  image.loading = "lazy";
+  image.decoding = "async";
+  let index = 0;
+  image.src = mediaUrl(candidates[index].path);
+  image.addEventListener("error", () => {
+    index += 1;
+    if (index < candidates.length) image.src = mediaUrl(candidates[index].path);
+    else image.remove();
+  });
+  element.append(image);
+  return element;
+}
+
 function appendBreakdown(container, breakdown) {
   const list = document.createElement("ul");
   if (!breakdown?.length) {
@@ -121,8 +154,41 @@ function appendBreakdown(container, breakdown) {
   container.append(list);
 }
 
-function renderReleaseDetails(container, releases, softwareId) {
+function renderArtworkGallery(container, media, title) {
+  const available = [
+    ["boxart", "Box art"],
+    ["title", "Title screen"],
+    ["snap", "Gameplay"],
+    ["logo", "Logo"],
+  ].filter(([kind]) => media?.[kind]);
+  if (!available.length) return;
+
+  const gallery = document.createElement("section");
+  gallery.className = "art-gallery";
+  gallery.setAttribute("aria-label", `Artwork for ${title}`);
+  for (const [kind, label] of available) {
+    const item = media[kind];
+    const figure = document.createElement("figure");
+    const link = document.createElement("a");
+    link.href = mediaUrl(item.path);
+    link.target = "_blank";
+    link.rel = "noopener";
+    const image = document.createElement("img");
+    image.src = link.href;
+    image.alt = `${title} — ${label}`;
+    image.loading = "lazy";
+    link.append(image);
+    const caption = document.createElement("figcaption");
+    caption.textContent = `${label} · ${item.matchBasis.replaceAll("_", " ")} · region ${item.regionMatch}`;
+    figure.append(link, caption);
+    gallery.append(figure);
+  }
+  container.append(gallery);
+}
+
+function renderReleaseDetails(container, releases, softwareId, media, title) {
   container.replaceChildren();
+  renderArtworkGallery(container, media, title);
   const heading = document.createElement("div");
   heading.className = "release-detail-heading";
   heading.textContent = `${releases.length.toLocaleString()} ranked release${releases.length === 1 ? "" : "s"}`;
@@ -272,7 +338,7 @@ async function toggleReleaseDetails(game, row, detailRow, button) {
       releases = await requestJson(`/api/software/${game.softwareId}/releases`);
       state.releaseDetails.set(game.softwareId, releases);
     }
-    renderReleaseDetails(container, releases, game.softwareId);
+    renderReleaseDetails(container, releases, game.softwareId, game.media, game.title);
     detailRow.dataset.loaded = "true";
   } catch (error) {
     container.className = "release-details error-row";
@@ -416,7 +482,7 @@ function renderGames(payload) {
     expand.setAttribute("aria-label", `Show all ranked releases for ${game.title}`);
     expand.setAttribute("aria-expanded", "false");
     expandCell.append(expand);
-    row.append(expandCell);
+    row.append(expandCell, artworkCell(game));
     const titleCell = cell(game.title, "title-cell");
     const identity = document.createElement("span");
     identity.className = "cell-note";
@@ -488,7 +554,7 @@ function renderGames(payload) {
     detailRow.className = "detail-row";
     detailRow.hidden = true;
     const detailCell = document.createElement("td");
-    detailCell.colSpan = 11;
+    detailCell.colSpan = 12;
     const detailContainer = document.createElement("div");
     detailContainer.className = "release-details";
     detailCell.append(detailContainer);

@@ -51,3 +51,9 @@ layers:
           - sql/layers/scoring/010_preferences.sql
           - sql/layers/scoring/020_generate_scores.sql
           - sql/layers/scoring/030_preferred_releases.sql
+
+  - name: media
+    description: Match Libretro artwork to software using exact names, regions, and parsed titles.
+    steps:
+      - name: build_software_media
+        type: build_media

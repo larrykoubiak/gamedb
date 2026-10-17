@@ -3,12 +3,13 @@
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import mimetypes
 import os
 from pathlib import Path
 import re
 import subprocess
 import threading
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 
 from gamedb.config import ProjectEnvironment
 from gamedb.explorer.repository import CatalogRepository
@@ -22,6 +23,8 @@ SOFTWARE_RELEASES = re.compile(r"/api/software/([0-9]+)/releases")
 CORRECTION_TARGETS = re.compile(r"/api/systems/([0-9]+)/correction-targets")
 PAGE_SIZE_MAXIMUM = 200
 DEFAULT_PORT = 8000
+MEDIA_PREFIX = "/media/"
+MEDIA_EXTENSIONS = frozenset({".png", ".jpg", ".jpeg"})
 
 
 def _load_project_environment(path: Path = PROJECT_ENV) -> tuple[str, ...]:
@@ -44,6 +47,22 @@ def _corrections_enabled() -> bool:
     )
 
 
+def _resolve_media_path(root: Path, encoded_path: str) -> Path:
+    """Resolve one URL path below the configured thumbnail checkout."""
+    decoded = unquote(encoded_path)
+    if not decoded or "\x00" in decoded:
+        raise ValueError("Invalid media path")
+    resolved_root = root.resolve()
+    candidate = (resolved_root / decoded).resolve()
+    try:
+        candidate.relative_to(resolved_root)
+    except ValueError as error:
+        raise ValueError("Invalid media path") from error
+    if candidate.suffix.lower() not in MEDIA_EXTENSIONS:
+        raise ValueError("Unsupported media type")
+    return candidate
+
+
 def _database_error(stderr: str) -> str:
     if "connection to server" in stderr:
         return "Database connection failed. Check the project .env and that PostgreSQL is running."
@@ -64,6 +83,8 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return self._json_response({
                     "softwareCorrections": self.server.corrections_enabled,
                 })
+            if parsed.path.startswith(MEDIA_PREFIX):
+                return self._media_response(parsed.path[len(MEDIA_PREFIX):])
 
             match = SYSTEM_TITLES.fullmatch(parsed.path)
             if match:
@@ -182,6 +203,25 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def _media_response(self, encoded_path):
+        try:
+            path = _resolve_media_path(self.server.thumbnail_root, encoded_path)
+            handle = path.open("rb")
+        except (OSError, ValueError):
+            return self.send_error(HTTPStatus.NOT_FOUND)
+        with handle:
+            content_type = (
+                mimetypes.guess_type(path.name)[0] or "application/octet-stream"
+            )
+            self.send_response(HTTPStatus.OK)
+            self.send_header("Content-Type", content_type)
+            self.send_header("Content-Length", str(os.fstat(handle.fileno()).st_size))
+            self.send_header("Cache-Control", "public, max-age=604800, immutable")
+            self.send_header("X-Content-Type-Options", "nosniff")
+            self.end_headers()
+            while chunk := handle.read(1024 * 1024):
+                self.wfile.write(chunk)
+
     def log_message(self, format, *args):
         print(f"{self.address_string()} - {format % args}")
 
@@ -194,6 +234,9 @@ class ExplorerServer(ThreadingHTTPServer):
         self.repository = CatalogRepository(username)
         self.rebuild_lock = threading.Lock()
         self.corrections_enabled = _corrections_enabled()
+        self.thumbnail_root = Path(os.environ.get(
+            "GAMEDB_LIBRETRO_THUMBNAILS", "/data/libretro-thumbnails"
+        ))
 
     @staticmethod
     def rebuild_software():

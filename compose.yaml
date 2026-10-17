@@ -4,6 +4,8 @@ x-database-environment: &database-environment
   PGDATABASE: "${PGDATABASE:-${POSTGRES_DB:-gamedb}}"
   PGUSER: "${PGUSER:-${POSTGRES_USER:-gamedb}}"
   PGPASSWORD: "${PGPASSWORD:-${POSTGRES_PASSWORD:?Set PGPASSWORD in .env}}"
+  GAMEDB_LIBRETRO_THUMBNAILS: /data/libretro-thumbnails
+  GAMEDB_MEDIA_INDEX: /data/media/cache/libretro-thumbnail-index.paths.gz
 
 services:
   db:
@@ -43,6 +45,8 @@ services:
         aliases:
           # Preserve the origin name used by the existing managed tunnel.
           - web
+    volumes:
+      - ./data/libretro-thumbnails:/data/libretro-thumbnails:ro
 
   cloudflared:
     image: cloudflare/cloudflared:latest
@@ -75,4 +79,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    volumes:
+      - ./data/libretro-thumbnails:/data/libretro-thumbnails:ro
+      - ./data/media/cache:/data/media/cache
     profiles: [tools]

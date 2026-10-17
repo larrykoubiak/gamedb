@@ -5,6 +5,11 @@ These version-controlled files are the reviewed inputs to derivation:
 - `canonical_systems.csv` defines the canonical system list.
 - `system_mappings.csv` maps source system triples to canonical systems.
 - `path_mappings.csv` maps RomVault prefixes to host filesystem roots.
+- `libretro_thumbnail_systems.csv` maps canonical systems to reviewed
+  libretro-thumbnails directories. It is intentionally sparse: an absent
+  canonical system has no credible dedicated directory. `shared` rows reuse a
+  combined Libretro directory; `broad` rows are reviewed namespace-level
+  approximations rather than equivalent hardware names.
 - `source_formats.json` declares collection identity and filename grammars.
 - `tag_vocabulary.json` supplies maintained parsing/classification values.
 - `tag_categories.csv` documents classification output categories.

@@ -38,6 +38,8 @@ DROP TABLE IF EXISTS app.user_score_generation;
 DROP VIEW IF EXISTS catalog.user_preferred_release;
 DROP TABLE IF EXISTS catalog.user_release_score;
 DROP TABLE IF EXISTS catalog.user_score_generation;
+DROP TABLE IF EXISTS catalog.software_media;
+DROP TABLE IF EXISTS catalog.media;
 DROP TABLE IF EXISTS catalog.software_identity_candidate;
 DROP TABLE IF EXISTS catalog.software_release_evidence;
 DROP TABLE IF EXISTS _software_identity_candidate;

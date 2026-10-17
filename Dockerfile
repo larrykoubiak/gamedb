@@ -27,6 +27,7 @@ RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
 
 COPY gamedb/__init__.py gamedb/config.py gamedb/database.py /app/gamedb/
 COPY gamedb/catalog /app/gamedb/catalog
+COPY gamedb/derive /app/gamedb/derive
 COPY reference /app/reference
 COPY sql/layers /app/sql/layers
 COPY pipeline.yml /app/pipeline.yml
@@ -41,6 +42,7 @@ RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
 
 COPY gamedb/__init__.py gamedb/config.py gamedb/database.py /app/gamedb/
 COPY gamedb/catalog /app/gamedb/catalog
+COPY gamedb/derive /app/gamedb/derive
 COPY gamedb/explorer /app/gamedb/explorer
 COPY reference /app/reference
 COPY sql/layers /app/sql/layers

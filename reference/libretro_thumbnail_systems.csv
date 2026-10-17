@@ -1,0 +1,97 @@
+canonical_manufacturer_name,canonical_system_name,libretro_directory,match_method,notes
+Amstrad,CPC,Amstrad - CPC,exact,
+Amstrad,GX4000,Amstrad - GX4000,exact,
+Atari,2600,Atari - 2600,exact,
+Atari,5200,Atari - 5200,exact,
+Atari,7800,Atari - 7800,exact,
+Atari,8-bit computers,Atari - 8-bit Family,alias,Libretro calls the platform the Atari 8-bit Family.
+Atari,Jaguar,Atari - Jaguar,exact,
+Atari,Lynx,Atari - Lynx,exact,
+Atari,ST,Atari - ST,exact,
+Bandai,WonderSwan,Bandai - WonderSwan,exact,
+Bandai,WonderSwan Color,Bandai - WonderSwan Color,exact,
+Casio,Loopy,Casio - Loopy,exact,
+Casio,PV-1000,Casio - PV-1000,exact,
+Coleco,ColecoVision,Coleco - ColecoVision,exact,
+Commodore,264 series,Commodore - Plus-4,alias,Libretro represents the family by its Plus-4 member.
+Commodore,Amiga,Commodore - Amiga,exact,
+Commodore,Amiga CD32,Commodore - CD32,alias,Libretro omits Amiga from the directory name.
+Commodore,Amiga CDTV,Commodore - CDTV,alias,Libretro omits Amiga from the directory name.
+Commodore,C64,Commodore - 64,alias,Libretro uses 64 rather than C64.
+Commodore,PET,Commodore - PET,exact,
+Commodore,VIC-20,Commodore - VIC-20,exact,
+Emerson,Arcadia 2001,Emerson - Arcadia 2001,exact,
+Entex,Adventure Vision,Entex - Adventure Vision,exact,
+Epoch,Super Cassette Vision,Epoch - Super Cassette Vision,exact,
+Fairchild,Channel F,Fairchild - Channel F,exact,
+Funtech,Super A'can,Funtech - Super Acan,alias,Libretro omits the apostrophe.
+GamePark,GP32,GamePark - GP32,exact,
+GCE,Vectrex,GCE - Vectrex,exact,
+Hartung,Game Master,Hartung - Game Master,exact,
+IBM,PC Compatibles,DOS,broad,Libretro organizes DOS software by operating environment rather than hardware family.
+LeapFrog,Leapster,LeapFrog - Leapster Learning Game System,alias,Libretro uses the expanded product name.
+Magnavox,Odyssey 2,Magnavox - Odyssey2,alias,Libretro omits the space in Odyssey2.
+Mattel,Intellivision,Mattel - Intellivision,exact,
+MSX,MSX,Microsoft - MSX,alias,Libretro attributes the standard to Microsoft.
+MSX,MSX2,Microsoft - MSX2,alias,Libretro attributes the standard to Microsoft.
+NEC,PC Engine / TurboGrafx-16,NEC - PC Engine - TurboGrafx 16,alias,Regional names use Libretro separators.
+NEC,PC Engine CD / TurboGrafx-CD,NEC - PC Engine CD - TurboGrafx-CD,alias,Regional names use Libretro separators.
+NEC,PC-FX,NEC - PC-FX,exact,
+NEC,PC-8801,NEC - PC-88,alias,Libretro uses the broader PC-88 family name.
+NEC,PC-9801,NEC - PC-98,shared,Libretro combines the PC-98 family.
+NEC,PC-9821,NEC - PC-98,shared,Libretro combines the PC-98 family.
+NEC,SuperGrafx,NEC - PC Engine SuperGrafx,alias,Libretro prefixes the related PC Engine family.
+Nintendo,3DS,Nintendo - Nintendo 3DS,alias,Libretro includes Nintendo in the product name.
+Nintendo,Famicom Disk System,Nintendo - Family Computer Disk System,alias,Libretro expands Famicom.
+Nintendo,Game & Watch,Handheld Electronic Game,broad,Libretro groups Game & Watch with other handheld electronic games.
+Nintendo,Game Boy,Nintendo - Game Boy,exact,
+Nintendo,Game Boy Advance,Nintendo - Game Boy Advance,exact,
+Nintendo,Game Boy Color,Nintendo - Game Boy Color,exact,
+Nintendo,GameCube,Nintendo - GameCube,exact,
+Nintendo,Nintendo 64,Nintendo - Nintendo 64,exact,
+Nintendo,Nintendo 64DD,Nintendo - Nintendo 64DD,exact,
+Nintendo,Nintendo DS,Nintendo - Nintendo DS,exact,
+Nintendo,Nintendo DSi,Nintendo - Nintendo DSi,exact,
+Nintendo,Nintendo Entertainment System,Nintendo - Nintendo Entertainment System,exact,
+Nintendo,Pokemon Mini,Nintendo - Pokemon Mini,exact,
+Nintendo,Satellaview,Nintendo - Satellaview,exact,
+Nintendo,Sufami Turbo,Nintendo - Sufami Turbo,exact,
+Nintendo,Super Nintendo Entertainment System,Nintendo - Super Nintendo Entertainment System,exact,
+Nintendo,Virtual Boy,Nintendo - Virtual Boy,exact,
+Nintendo,Wii,Nintendo - Wii,exact,
+Philips,CD-i,Philips - CD-i,exact,
+Philips,Videopac+,Philips - Videopac+,exact,
+RCA,Studio II,RCA - Studio II,exact,
+Sega,32X,Sega - 32X,exact,
+Sega,Dreamcast,Sega - Dreamcast,exact,
+Sega,Game Gear,Sega - Game Gear,exact,
+Sega,Master System,Sega - Master System - Mark III,alias,Libretro includes the Japanese Mark III name.
+Sega,Mega-CD,Sega - Mega-CD - Sega CD,alias,Libretro includes both regional names.
+Sega,Mega Drive,Sega - Mega Drive - Genesis,alias,Libretro includes both regional names.
+Sega,NAOMI,Sega - Naomi,alias,Capitalization differs.
+Sega,NAOMI 2,Sega - Naomi 2,alias,Capitalization differs.
+Sega,Pico,Sega - PICO,alias,Capitalization differs.
+Sega,Saturn,Sega - Saturn,exact,
+Sega,SG-1000,Sega - SG-1000,exact,
+Sharp,X1,Sharp - X1,exact,
+Sharp,X68000,Sharp - X68000,exact,
+Sinclair,ZX Spectrum,Sinclair - ZX Spectrum,exact,
+Sinclair,ZX81,Sinclair - ZX 81,alias,Libretro inserts a space.
+SNK,Neo-Geo,SNK - Neo Geo,alias,Libretro omits the hyphen.
+SNK,Neo Geo CD,SNK - Neo Geo CD,exact,
+SNK,Neo Geo Pocket,SNK - Neo Geo Pocket,exact,
+SNK,Neo Geo Pocket Color,SNK - Neo Geo Pocket Color,exact,
+Sony,PlayStation,Sony - PlayStation,exact,
+Sony,PlayStation 2,Sony - PlayStation 2,exact,
+Sony,PlayStation Portable,Sony - PlayStation Portable,exact,
+Sony,PlayStation Vita,Sony - PlayStation Vita,exact,
+Spectravideo,SVI-318 / SVI-328,Spectravideo - SVI-318 - SVI-328,alias,Libretro uses separators instead of a slash.
+The 3DO Company,3DO Interactive Multiplayer,The 3DO Company - 3DO,alias,Libretro uses the short platform name.
+Thomson,MO5,Thomson - MOTO,shared,Libretro combines Thomson MOTO systems.
+Thomson,MO6,Thomson - MOTO,shared,Libretro combines Thomson MOTO systems.
+Thomson,TO7,Thomson - MOTO,shared,Libretro combines Thomson MOTO systems.
+Thomson,TO8 / TO9 family,Thomson - MOTO,shared,Libretro combines Thomson MOTO systems.
+Tiger Electronics,Game.com,Tiger - Game.com,alias,Libretro shortens the manufacturer name.
+VTech,CreatiVision,VTech - CreatiVision,exact,
+VTech,V.Smile,VTech - V.Smile,exact,
+Watara,Supervision,Watara - Supervision,exact,

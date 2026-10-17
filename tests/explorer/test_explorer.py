@@ -10,6 +10,7 @@ from gamedb.explorer.server import (
     _database_error,
     _load_project_environment,
     _resolve_explorer_port,
+    _resolve_media_path,
 )
 from gamedb.explorer.repository import (
     QUERY_DIRECTORY,
@@ -30,6 +31,28 @@ class ExplorerTests(unittest.TestCase):
         self.assertIn("LIMIT 100 OFFSET 200", query)
         self.assertIn("lower('Final Fantasy III')", query)
         self.assertIn("catalog.software_release", query)
+        self.assertIn("catalog.software_media", query)
+        self.assertIn("'media', items.media", query)
+
+    def test_media_paths_stay_below_the_thumbnail_root(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            expected = root / "Nintendo%" / "Named_Boxarts" / "A Game.png"
+
+            self.assertEqual(
+                _resolve_media_path(
+                    root, "Nintendo%25/Named_Boxarts/A%20Game.png"
+                ),
+                expected,
+            )
+            with self.assertRaisesRegex(ValueError, "Invalid media path"):
+                _resolve_media_path(root, "../outside.png")
+
+    def test_explorer_renders_catalog_artwork(self):
+        script = (ASSET_DIRECTORY / "app.js").read_text(encoding="utf-8")
+
+        self.assertIn('["boxart", "title", "snap", "logo"]', script)
+        self.assertIn("/media/", script)
 
     def test_static_assets_are_packaged_with_the_module(self):
         for name in ("index.html", "styles.css", "app.js"):
