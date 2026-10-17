@@ -6,7 +6,7 @@ conventions.
 
 | Schema | Owner | Responsibility |
 | --- | --- | --- |
-| `staging` | external intake | Untouched RomVault rows and immutable historical-source snapshots |
+| `staging` | external intake | Untouched RomVault rows, immutable historical snapshots, and revisioned Libretro RDB entries |
 | `ref` | deriver | Version-controlled mappings and vocabularies |
 | `derived` | deriver | Stable inventory plus source-faithful semantic interpretation |
 | `catalog` | catalog builder | Accepted browse facts: software, releases, packages and files |
@@ -28,6 +28,7 @@ derived source releases ─► catalog titles/releases
 derived assertions      ─► normalized facts + evidence
 derived file hashes     ─► exact-content identity/aliases
 history + file hashes   ─► software + release membership/evidence
+RDB + exact SHA-1       ─► ranked software facts + row-level evidence
 app preferences         ─► software-scoped scores/preferred releases
 ```
 
@@ -98,6 +99,7 @@ Each assertion links to its exact raw tag.
 | `facts` | accepted normalized `release_fact` rows |
 | `identity` | exact package/release signatures and accepted title aliases |
 | `software` | platform software and total accepted release membership |
+| `metadata` | ranked software facts and their exact RDB record/hash evidence |
 | `scoring` | `app`-owned per-user score cache and preferred-release view |
 | `media` | selected Libretro assets and explainable software associations |
 
@@ -114,6 +116,34 @@ preference requires only:
 ```sh
 python -m gamedb rebuild --from-layer scoring
 ```
+
+A preference with null `system_manufacturer` and `system_name` is global;
+setting both gives it an exact canonical-system scope. Global and scoped rules
+are additive, so a system rule can reinforce or offset the general policy.
+Translation scoring also derives a per-user contextual role: preferred-language
+fallback, redundant with an original matching a preferred locale, or
+non-preferred language.
+
+Compiled databases from a pinned `libretro-database` checkout are first
+imported without changing the consumer catalog:
+
+```sh
+python -m gamedb import-rdb data/libretro-database
+```
+
+`staging.libretro_rdb_import` records the Git revision,
+`staging.libretro_rdb_file` records each compiled database, and
+`staging.libretro_rdb_entry` retains every typed raw record plus normalized
+SHA-1, MD5, CRC, size and serial columns. Reimporting an existing revision is a
+no-op unless `--replace` is supplied.
+
+The `metadata` layer then accepts only exact SHA-1s that resolve to one current
+software identity. It publishes software-oriented claims in
+`catalog.software_fact` and retains every supporting RDB row and matched hash in
+`catalog.software_fact_evidence`. Conflicting values are not collapsed: support
+counts and `value_rank` make the leading candidate explicit while preserving
+the alternatives. Release-bound RDB fields such as region, serial, date and
+ratings are deliberately excluded from this software-level table.
 
 `app.software_correction` likewise survives rebuilds and is the explorer's
 working decision queue. Subjects and targets use complete release-content

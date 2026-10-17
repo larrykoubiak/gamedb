@@ -91,6 +91,16 @@ class CatalogRepository:
             software_id=sql_integer(software_id, "software_id", 1),
         )
 
+    def software_facts_sql(self, software_id: int) -> str:
+        return SqlTemplate(QUERY_DIRECTORY / "software_facts.sql").render(
+            software_id=sql_integer(software_id, "software_id", 1),
+        )
+
+    def system_software_facts_sql(self, system_id: int) -> str:
+        return SqlTemplate(
+            QUERY_DIRECTORY / "system_software_facts.sql"
+        ).render(system_id=sql_integer(system_id, "system_id", 1))
+
     def install_manifest_sql(self, release_signature: str) -> str:
         return SqlTemplate(QUERY_DIRECTORY / "install_manifest.sql").render(
             username=quote_sql_text(self.username),
@@ -171,6 +181,14 @@ class CatalogRepository:
         catalog = self.titles(
             int(system["id"]), max(1, int(system["gameCount"])), 0
         )
+        software_facts = self.system_software_facts(int(system["id"]))
+        items = []
+        for source_item in catalog["items"]:
+            item = dict(source_item)
+            item["softwareFacts"] = software_facts.get(
+                str(item["softwareId"]), []
+            )
+            items.append(item)
         return {
             "catalogRevision": revision or self.catalog_revision(),
             "system": {
@@ -179,7 +197,7 @@ class CatalogRepository:
                 "name": system["name"],
                 "softwareCount": system["gameCount"],
             },
-            "items": catalog["items"],
+            "items": items,
         }
 
     def titles(
@@ -191,6 +209,13 @@ class CatalogRepository:
 
     def software_releases(self, software_id: int):
         return self.client.query(self.software_releases_sql(software_id))
+
+    def software_facts(self, software_id: int):
+        return self.client.query(self.software_facts_sql(software_id))
+
+    def system_software_facts(self, system_id: int):
+        payload = self.client.query(self.system_software_facts_sql(system_id))
+        return payload if isinstance(payload, dict) else {}
 
     def install_manifest(self, release_signature: str):
         return self.client.query(self.install_manifest_sql(release_signature))

@@ -6,6 +6,7 @@ const state = {
   query: "",
   requestId: 0,
   releaseDetails: new Map(),
+  softwareFacts: new Map(),
   correction: null,
   targetRequestId: 0,
   correctionsEnabled: false,
@@ -186,9 +187,78 @@ function renderArtworkGallery(container, media, title) {
   container.append(gallery);
 }
 
-function renderReleaseDetails(container, releases, softwareId, media, title) {
+function renderSoftwareFacts(container, facts) {
+  const section = document.createElement("section");
+  section.className = "software-facts";
+  const heading = document.createElement("div");
+  heading.className = "release-detail-heading";
+  heading.textContent = "Software metadata";
+  section.append(heading);
+
+  if (!facts.length) {
+    const missing = document.createElement("p");
+    missing.className = "software-facts-empty";
+    missing.textContent = "No unambiguous exact-SHA-1 Libretro metadata match.";
+    section.append(missing);
+    container.append(section);
+    return;
+  }
+
+  const labels = {
+    description: "Description",
+    developer: "Developer",
+    publisher: "Publisher",
+    genre: "Genre",
+    franchise: "Franchise",
+    player_count: "Players",
+    rumble: "Rumble",
+    analog: "Analog",
+    enhancement_hardware: "Enhancement hardware",
+    tags: "Tags",
+    origin: "Origin",
+  };
+  const grid = document.createElement("dl");
+  grid.className = "software-fact-grid";
+  for (const fact of facts) {
+    const term = document.createElement("dt");
+    term.textContent = labels[fact.key] || fact.key.replaceAll("_", " ");
+    const definition = document.createElement("dd");
+    for (const candidate of fact.values) {
+      const item = document.createElement("div");
+      item.className = "software-fact-value";
+      if (candidate.candidateCount > 1) item.classList.add("conflicted");
+      const value = document.createElement("span");
+      value.className = "software-fact-text";
+      value.textContent = candidate.value;
+      item.append(value);
+      if (candidate.candidateCount > 1) {
+        const rank = document.createElement("span");
+        rank.className = "fact-rank-badge";
+        rank.textContent = `candidate ${candidate.rank}/${candidate.candidateCount}`;
+        item.append(rank);
+      }
+      const evidence = document.createElement("span");
+      evidence.className = "software-fact-evidence";
+      const contentLabel = candidate.matchedContentCount === 1 ? "content hash" : "content hashes";
+      const recordLabel = candidate.sourceRecordCount === 1 ? "RDB row" : "RDB rows";
+      const databases = candidate.sourceDatabases.length
+        ? ` · ${candidate.sourceDatabases.join(", ")}`
+        : "";
+      evidence.textContent = `${candidate.matchedContentCount} ${contentLabel} · ${candidate.sourceRecordCount} ${recordLabel}${databases}`;
+      evidence.title = `${candidate.sourceProvider} revision ${candidate.sourceRevision}`;
+      item.append(evidence);
+      definition.append(item);
+    }
+    grid.append(term, definition);
+  }
+  section.append(grid);
+  container.append(section);
+}
+
+function renderReleaseDetails(container, releases, facts, softwareId, media, title) {
   container.replaceChildren();
   renderArtworkGallery(container, media, title);
+  renderSoftwareFacts(container, facts);
   const heading = document.createElement("div");
   heading.className = "release-detail-heading";
   heading.textContent = `${releases.length.toLocaleString()} ranked release${releases.length === 1 ? "" : "s"}`;
@@ -331,14 +401,19 @@ async function toggleReleaseDetails(game, row, detailRow, button) {
   if (!opening || detailRow.dataset.loaded) return;
 
   const container = detailRow.querySelector(".release-details");
-  container.textContent = "Loading ranked releases and hashes…";
+  container.textContent = "Loading software metadata, ranked releases and hashes…";
   try {
     let releases = state.releaseDetails.get(game.softwareId);
-    if (!releases) {
-      releases = await requestJson(`/api/software/${game.softwareId}/releases`);
+    let facts = state.softwareFacts.get(game.softwareId);
+    if (!releases || !facts) {
+      [releases, facts] = await Promise.all([
+        releases || requestJson(`/api/software/${game.softwareId}/releases`),
+        facts || requestJson(`/api/software/${game.softwareId}/facts`),
+      ]);
       state.releaseDetails.set(game.softwareId, releases);
+      state.softwareFacts.set(game.softwareId, facts);
     }
-    renderReleaseDetails(container, releases, game.softwareId, game.media, game.title);
+    renderReleaseDetails(container, releases, facts, game.softwareId, game.media, game.title);
     detailRow.dataset.loaded = "true";
   } catch (error) {
     container.className = "release-details error-row";
@@ -446,6 +521,7 @@ correctionForm.addEventListener("submit", async event => {
     });
     correctionDialog.close();
     state.releaseDetails.clear();
+    state.softwareFacts.clear();
     await selectSystem(state.selectedSystem, state.page);
   } catch (error) {
     correctionStatus.textContent = error.message;

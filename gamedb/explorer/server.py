@@ -21,6 +21,7 @@ PROJECT_ENV = Path(__file__).resolve().parent.parent / ".env"
 USERNAME = re.compile(r"[A-Za-z0-9_.-]{1,64}")
 SYSTEM_TITLES = re.compile(r"/api/systems/([0-9]+)/titles")
 SOFTWARE_RELEASES = re.compile(r"/api/software/([0-9]+)/releases")
+SOFTWARE_FACTS = re.compile(r"/api/software/([0-9]+)/facts")
 INSTALL_MANIFEST = re.compile(r"/api/v1/releases/([0-9a-f]{32})/install-manifest")
 PACKAGE_DOWNLOAD = re.compile(
     r"/api/v1/releases/([0-9a-f]{32})/packages/([0-9a-f]{32})/download"
@@ -173,6 +174,12 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             if match:
                 return self._json_response(
                     self.server.repository.software_releases(int(match.group(1)))
+                )
+
+            match = SOFTWARE_FACTS.fullmatch(parsed.path)
+            if match:
+                return self._json_response(
+                    self.server.repository.software_facts(int(match.group(1)))
                 )
 
             match = CORRECTION_TARGETS.fullmatch(parsed.path)

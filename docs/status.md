@@ -43,8 +43,8 @@ The verified build contains:
 | Derived packages | 976,597 |
 | Derived files | 1,364,237 |
 
-The independent catalog, facts, title identity, software identity, and scoring
-transactions were replayed from the derived contract, and all 81 tests pass.
+The independent catalog, facts, title identity, software identity, metadata,
+and scoring transactions were replayed from the derived contract.
 Every release belongs to one title cluster and exactly one software identity.
 All five supported collection roots in
 `path_mappings.csv` resolve to the local Synology mount; every current package
@@ -173,7 +173,10 @@ with `promoted` status for audit.
 
 ## Preference scoring
 
-The durable `default` user currently has nine enabled seed preferences:
+The durable `default` user starts with global preferences plus an exact-system
+Atari ST override. Translation roles are computed in software context: a
+preferred-language translation is rewarded only when no unmodified release
+matches a positively weighted language or region.
 
 | Preference | Score |
 | --- | ---: |
@@ -186,18 +189,38 @@ The durable `default` user currently has nine enabled seed preferences:
 | Alternate dump (`[a]`, `[a2]`, …) | -50 |
 | Hacked dump modification | -200 |
 | No-Intro source collection | +50 |
+| Virtual Console distribution | -100 |
+| Preferred-language translation fallback | +30 |
+| Translation redundant with a preferred-locale original | -200 |
+| Translation into a non-preferred language | -100 |
+| Cracked Atari ST release | +10 |
 
 The disposable score cache contains every release, including zero-score rows,
-plus the matched-rule breakdown and a dense rank within its software. Scores
-currently range from -1,030 to 210. Of 337,225 software identities, 257,336 have
-one top-ranked release and 79,889 retain a tie. Preferences are illustrative
-rather than a claim that the weights are final.
+plus the matched-rule breakdown and a dense rank within its software. The
+system scope and contextual translation roles keep these choices explicit and
+independently tunable rather than relying on title-specific exceptions.
 
 `app.user_preferred_release` provides one convenient row per user/software.
 When top scores tie it selects the lowest rebuild-local release ID but reports
 `top_score_tie_count` and `tie_broken`, so consumers can distinguish a genuine
 unique winner from a deterministic fallback. Lower-ranked and tied releases
 remain available in `app.user_release_score`.
+
+## Libretro RDB staging
+
+The pinned `libretro-database` revision
+`12c21cf79f1e20eff6ac68b80875816c717d0a7a` contributes 146 compiled databases
+and 738,241 source-faithful staging entries. Of those, 684,839 carry SHA-1 and
+232,094 entries match the current inventory by exact SHA-1, reaching 226,407
+catalog releases and 80,084 software identities.
+
+Matched entries include 22,195 developer, 25,158 publisher, 24,179 genre,
+7,121 franchise and 186,415 release-year claims. The raw typed records remain
+in `staging.libretro_rdb_*`. A conservative exact-SHA-1 projection now exposes
+76,658 ranked `catalog.software_fact` values for 19,999 software identities,
+backed by 112,593 row-level evidence records. Conflicting developer, publisher,
+genre and other software-oriented values remain visible as ranked candidates;
+release-bound date, region, serial and ratings claims are not promoted there.
 
 ## Rebuild workflow
 
@@ -208,8 +231,8 @@ execution is rejected. `--layers paths` re-resolves only paths, while
 `--from-layer names` reinterprets stable names and reassembles releases.
 
 `pipeline.yml` begins at that contract and orders catalog, facts, title
-identity, software identity, scoring and media. A scoring-only rebuild remains
-isolated from derivation, inventory, paths, parsing, catalog facts, and identity,
+identity, software identity, software metadata, scoring and media. A scoring-only rebuild remains
+isolated from derivation, inventory, paths, parsing, catalog facts, identity and metadata,
 but does not refresh preference-aware media. Use `python -m gamedb rebuild
 --from-layer scoring` to refresh both scores and artwork associations.
 
@@ -235,10 +258,10 @@ database service and passes the local `.env` connection directly to the local
 explorer and one-shot tools. Setting `COMPOSE_FILE=compose.dev.yaml` locally
 keeps the usual `docker compose` commands while targeting the tower database.
 
-Core catalog, normalized facts, content identity, and software identity have
-separate transactions and validation scripts. Each can be rerun from its
-declared upstream state; rebuilding a layer removes its stale downstream
-catalog caches.
+Core catalog, normalized facts, content identity, software identity and
+software metadata have separate transactions and validation scripts. Each can
+be rerun from its declared upstream state; rebuilding a layer removes its stale
+downstream catalog caches.
 Temporary tables remain only as private scratch state inside one layer. The
 deriver uses focused parser, extractor, spool writer, persistence, and pipeline
 classes instead of the former procedural archive-name loader.

@@ -42,6 +42,16 @@ layers:
           - sql/layers/software/020_build.sql
           - sql/layers/software/090_indexes_and_validation.sql
 
+  - name: metadata
+    description: Project exact-content Libretro claims into attributed software facts.
+    steps:
+      - name: build_software_facts
+        type: run_sql
+        files:
+          - sql/layers/metadata/010_schema.sql
+          - sql/layers/metadata/020_build.sql
+          - sql/layers/metadata/090_indexes_and_validation.sql
+
   - name: scoring
     description: Apply user preferences and rank releases within software.
     steps:

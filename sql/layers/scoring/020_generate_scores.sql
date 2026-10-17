@@ -23,7 +23,81 @@ CREATE TABLE app.user_release_score (
 );
 
 CREATE TEMP TABLE _preference_match ON COMMIT DROP AS
-WITH exact_match AS (
+WITH scoped_preference AS (
+    SELECT preference.*, system.id AS system_id
+    FROM app.user_preference preference
+    LEFT JOIN catalog.system system
+      ON system.manufacturer_name = preference.system_manufacturer
+     AND system.system_name = preference.system_name
+    WHERE preference.enabled
+      AND (
+          preference.system_manufacturer IS NULL
+          OR system.id IS NOT NULL
+      )
+),
+locale_preference AS (
+    SELECT *
+    FROM scoped_preference
+    WHERE match_operator = 'equals'
+      AND fact_key IN ('language', 'region')
+      AND score > 0
+),
+clean_preferred_locale AS (
+    SELECT DISTINCT
+        preference.user_id,
+        membership.software_id
+    FROM locale_preference preference
+    JOIN catalog.release_fact locale
+      ON locale.fact_key = preference.fact_key
+     AND locale.fact_value = preference.fact_value
+    JOIN catalog.release release ON release.id = locale.release_id
+    JOIN catalog.title title ON title.id = release.title_id
+    JOIN catalog.software_release membership
+      ON membership.release_id = release.id
+    WHERE (preference.system_id IS NULL OR preference.system_id = title.system_id)
+      AND NOT EXISTS (
+          SELECT 1
+          FROM catalog.release_fact modification
+          WHERE modification.release_id = release.id
+            AND modification.fact_key = 'dump_modification'
+      )
+),
+translation_role AS (
+    SELECT DISTINCT
+        user_account.id AS user_id,
+        membership.software_id,
+        translated.release_id,
+        CASE
+            WHEN clean.user_id IS NOT NULL THEN 'redundant'
+            WHEN EXISTS (
+                SELECT 1
+                FROM locale_preference language_preference
+                JOIN catalog.release_fact language
+                  ON language.release_id = translated.release_id
+                 AND language.fact_key = 'language'
+                 AND language.fact_value = language_preference.fact_value
+                WHERE language_preference.user_id = user_account.id
+                  AND language_preference.fact_key = 'language'
+                  AND (
+                      language_preference.system_id IS NULL
+                      OR language_preference.system_id = title.system_id
+                  )
+            ) THEN 'preferred_language_fallback'
+            ELSE 'nonpreferred'
+        END AS role
+    FROM app.app_user user_account
+    JOIN catalog.release_fact translated
+      ON translated.fact_key = 'dump_modification'
+     AND translated.fact_value = 'translated'
+    JOIN catalog.release release ON release.id = translated.release_id
+    JOIN catalog.title title ON title.id = release.title_id
+    JOIN catalog.software_release membership
+      ON membership.release_id = release.id
+    LEFT JOIN clean_preferred_locale clean
+      ON clean.user_id = user_account.id
+     AND clean.software_id = membership.software_id
+),
+exact_match AS (
     SELECT DISTINCT
         preference.id AS preference_id,
         preference.user_id,
@@ -32,12 +106,33 @@ WITH exact_match AS (
         fact.fact_value AS matched_value,
         preference.score,
         preference.description
-    FROM app.user_preference preference
+    FROM scoped_preference preference
     JOIN catalog.release_fact fact
       ON fact.fact_key = preference.fact_key
      AND fact.fact_value = preference.fact_value
-    WHERE preference.enabled
-      AND preference.match_operator = 'equals'
+    JOIN catalog.release release ON release.id = fact.release_id
+    JOIN catalog.title title ON title.id = release.title_id
+    WHERE preference.match_operator = 'equals'
+      AND (preference.system_id IS NULL OR preference.system_id = title.system_id)
+),
+contextual_match AS (
+    SELECT DISTINCT
+        preference.id AS preference_id,
+        preference.user_id,
+        role.release_id,
+        preference.fact_key,
+        role.role AS matched_value,
+        preference.score,
+        preference.description
+    FROM scoped_preference preference
+    JOIN translation_role role
+      ON role.user_id = preference.user_id
+     AND role.role = preference.fact_value
+    JOIN catalog.release release ON release.id = role.release_id
+    JOIN catalog.title title ON title.id = release.title_id
+    WHERE preference.match_operator = 'equals'
+      AND preference.fact_key = 'translation_role'
+      AND (preference.system_id IS NULL OR preference.system_id = title.system_id)
 ),
 presence_match AS (
     SELECT
@@ -48,11 +143,13 @@ presence_match AS (
         min(fact.fact_value) AS matched_value,
         preference.score,
         preference.description
-    FROM app.user_preference preference
+    FROM scoped_preference preference
     JOIN catalog.release_fact fact
       ON fact.fact_key = preference.fact_key
-    WHERE preference.enabled
-      AND preference.match_operator = 'present'
+    JOIN catalog.release release ON release.id = fact.release_id
+    JOIN catalog.title title ON title.id = release.title_id
+    WHERE preference.match_operator = 'present'
+      AND (preference.system_id IS NULL OR preference.system_id = title.system_id)
     GROUP BY preference.id, preference.user_id, fact.release_id,
         preference.fact_key, preference.score, preference.description
 ),
@@ -72,7 +169,7 @@ relative_candidate AS (
             FROM regexp_matches(fact.fact_value, '([0-9]+)', 'g') part
         ) AS numeric_parts,
         regexp_replace(lower(fact.fact_value), '[^a-z]+', '', 'g') AS text_parts
-    FROM app.user_preference preference
+    FROM scoped_preference preference
     JOIN catalog.release_fact fact
       ON (
           preference.fact_key = 'release_iteration'
@@ -82,10 +179,11 @@ relative_candidate AS (
           AND fact.fact_key = preference.fact_key
       )
     JOIN catalog.release release ON release.id = fact.release_id
+    JOIN catalog.title title ON title.id = release.title_id
     JOIN catalog.software_release membership
       ON membership.release_id = release.id
-    WHERE preference.enabled
-      AND preference.match_operator = 'latest'
+    WHERE preference.match_operator = 'latest'
+      AND (preference.system_id IS NULL OR preference.system_id = title.system_id)
 ),
 relative_context AS (
     SELECT candidate.*,
@@ -132,6 +230,8 @@ latest_match AS (
     WHERE relative_rank = 1
 )
 SELECT * FROM exact_match
+UNION ALL
+SELECT * FROM contextual_match
 UNION ALL
 SELECT * FROM presence_match
 UNION ALL
@@ -187,9 +287,11 @@ SELECT user_account.id, transaction_timestamp(),
     md5(coalesce(
         string_agg(
             concat_ws('|', preference.fact_key, preference.match_operator,
-                preference.fact_value, preference.score::text),
+                preference.fact_value, preference.score::text,
+                preference.system_manufacturer, preference.system_name),
             E'\n' ORDER BY preference.fact_key, preference.match_operator,
-                preference.fact_value, preference.score
+                preference.fact_value, preference.score,
+                preference.system_manufacturer, preference.system_name
         ) FILTER (WHERE preference.enabled),
         ''
     ))

@@ -9,6 +9,7 @@ SQL begins after [`derive.yml`](../derive.yml) has produced a usable relational
 | [`layers/facts`](layers/facts/) | Copy typed derived assertions into normalized facts with evidence |
 | [`layers/identity`](layers/identity/) | Match complete exact-content signatures and build title aliases |
 | [`layers/software`](layers/software/) | Resolve platform software and retain release-assignment evidence |
+| [`layers/metadata`](layers/metadata/) | Attribute Libretro metadata to software through unambiguous exact SHA-1 matches |
 | [`layers/scoring`](layers/scoring/) | Preserve preferences and rank releases within software |
 | [`queries/explorer`](queries/explorer/) | Read-only explorer queries |
 

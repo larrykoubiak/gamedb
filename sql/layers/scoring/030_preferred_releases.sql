@@ -52,6 +52,19 @@ BEGIN
             actual_count;
     END IF;
 
+    SELECT count(*) INTO actual_count
+    FROM app.user_preference preference
+    LEFT JOIN catalog.system system
+      ON system.manufacturer_name = preference.system_manufacturer
+     AND system.system_name = preference.system_name
+    WHERE preference.enabled
+      AND preference.system_manufacturer IS NOT NULL
+      AND system.id IS NULL;
+    IF actual_count <> 0 THEN
+        RAISE EXCEPTION '% enabled score preferences have an unknown system scope',
+            actual_count;
+    END IF;
+
     SELECT count(*) INTO expected_count
     FROM app.app_user
     CROSS JOIN catalog.software;
@@ -66,7 +79,7 @@ $$;
 COMMENT ON TABLE app.app_user IS
     'Durable local users whose preferences survive catalog rebuilds.';
 COMMENT ON TABLE app.user_preference IS
-    'Durable additive fact preferences and supported relative scoring rules.';
+    'Durable global or exact-system additive fact preferences and supported relative scoring rules.';
 COMMENT ON TABLE app.user_score_generation IS
     'Timestamp and enabled-preference signature for the active score cache.';
 COMMENT ON TABLE app.user_release_score IS

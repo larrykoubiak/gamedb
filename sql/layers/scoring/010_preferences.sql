@@ -19,16 +19,32 @@ CREATE TABLE IF NOT EXISTS app.user_preference (
     score integer NOT NULL,
     enabled boolean NOT NULL DEFAULT true,
     description text NOT NULL CHECK (btrim(description) <> ''),
+    system_manufacturer text,
+    system_name text,
     CONSTRAINT user_preference_match_operator_check
         CHECK (match_operator IN ('equals', 'latest', 'present')),
     CONSTRAINT user_preference_operator_value_check CHECK (
         (match_operator = 'equals' AND nullif(btrim(fact_value), '') IS NOT NULL)
         OR (match_operator IN ('latest', 'present') AND fact_value IS NULL)
     ),
+    CONSTRAINT user_preference_system_scope_check CHECK (
+        (system_manufacturer IS NULL AND system_name IS NULL)
+        OR (
+            nullif(btrim(system_manufacturer), '') IS NOT NULL
+            AND nullif(btrim(system_name), '') IS NOT NULL
+        )
+    ),
     UNIQUE NULLS NOT DISTINCT (
-        user_id, fact_key, match_operator, fact_value
+        user_id, fact_key, match_operator, fact_value,
+        system_manufacturer, system_name
     )
 );
+
+-- Existing databases predate system-scoped preferences. Keep the durable
+-- rows, widen their uniqueness key, and treat their null scope as global.
+ALTER TABLE app.user_preference
+    ADD COLUMN IF NOT EXISTS system_manufacturer text,
+    ADD COLUMN IF NOT EXISTS system_name text;
 
 -- Existing databases predate the presence operator. Recreate these checks by
 -- name so durable preference rows can be migrated without rebuilding app.
@@ -39,11 +55,28 @@ ALTER TABLE app.user_preference
 ALTER TABLE app.user_preference
     DROP CONSTRAINT IF EXISTS user_preference_operator_value_check;
 ALTER TABLE app.user_preference
+    DROP CONSTRAINT IF EXISTS user_preference_system_scope_check;
+ALTER TABLE app.user_preference
+    DROP CONSTRAINT IF EXISTS user_preference_user_id_fact_key_match_operator_fact_value_key;
+ALTER TABLE app.user_preference
+    DROP CONSTRAINT IF EXISTS user_preference_rule_scope_key;
+ALTER TABLE app.user_preference
     ADD CONSTRAINT user_preference_match_operator_check
         CHECK (match_operator IN ('equals', 'latest', 'present')),
     ADD CONSTRAINT user_preference_operator_value_check CHECK (
         (match_operator = 'equals' AND nullif(btrim(fact_value), '') IS NOT NULL)
         OR (match_operator IN ('latest', 'present') AND fact_value IS NULL)
+    ),
+    ADD CONSTRAINT user_preference_system_scope_check CHECK (
+        (system_manufacturer IS NULL AND system_name IS NULL)
+        OR (
+            nullif(btrim(system_manufacturer), '') IS NOT NULL
+            AND nullif(btrim(system_name), '') IS NOT NULL
+        )
+    ),
+    ADD CONSTRAINT user_preference_rule_scope_key UNIQUE NULLS NOT DISTINCT (
+        user_id, fact_key, match_operator, fact_value,
+        system_manufacturer, system_name
     );
 
 INSERT INTO app.app_user (username)
@@ -51,25 +84,35 @@ VALUES ('default')
 ON CONFLICT (username) DO NOTHING;
 
 INSERT INTO app.user_preference (
-    user_id, fact_key, match_operator, fact_value, score, description
+    user_id, fact_key, match_operator, fact_value, score, description,
+    system_manufacturer, system_name
 )
 SELECT u.id, seed.fact_key, seed.match_operator, seed.fact_value,
-    seed.score, seed.description
+    seed.score, seed.description, seed.system_manufacturer, seed.system_name
 FROM app.app_user u
 CROSS JOIN (
     VALUES
-        ('language', 'equals', 'en', 40, 'Prefer explicit English releases'),
-        ('region', 'equals', 'US', 100, 'Prefer US releases'),
-        ('release_iteration', 'latest', NULL, 20, 'Prefer the latest explicit version or revision within software'),
-        ('dump_status', 'equals', 'verified', 30, 'Prefer source-verified dumps'),
-        ('release_status', 'present', NULL, -500, 'Demote non-standard release statuses'),
-        ('demo', 'present', NULL, -500, 'Demote TOSEC demo releases'),
-        ('dump_status', 'equals', 'alternate', -50, 'Demote alternate dumps'),
-        ('dump_modification', 'equals', 'hacked', -200, 'Demote hacked releases'),
-        ('source_collection', 'equals', 'No-Intro', 50, 'Prefer No-Intro over unweighted sources')
-) seed(fact_key, match_operator, fact_value, score, description)
+        ('language', 'equals', 'en', 40, 'Prefer explicit English releases', NULL, NULL),
+        ('region', 'equals', 'US', 100, 'Prefer US releases', NULL, NULL),
+        ('release_iteration', 'latest', NULL, 20, 'Prefer the latest explicit version or revision within software', NULL, NULL),
+        ('dump_status', 'equals', 'verified', 30, 'Prefer source-verified dumps', NULL, NULL),
+        ('release_status', 'present', NULL, -500, 'Demote non-standard release statuses', NULL, NULL),
+        ('demo', 'present', NULL, -500, 'Demote TOSEC demo releases', NULL, NULL),
+        ('dump_status', 'equals', 'alternate', -50, 'Demote alternate dumps', NULL, NULL),
+        ('dump_modification', 'equals', 'hacked', -200, 'Demote hacked releases', NULL, NULL),
+        ('source_collection', 'equals', 'No-Intro', 50, 'Prefer No-Intro over unweighted sources', NULL, NULL),
+        ('distribution_channel', 'equals', 'virtual_console', -100, 'Demote later Virtual Console distributions', NULL, NULL),
+        ('distribution_channel', 'equals', 'wii_u_virtual_console', -100, 'Demote later Wii U Virtual Console distributions', NULL, NULL),
+        ('translation_role', 'equals', 'preferred_language_fallback', 30, 'Prefer a translation when no original matches a preferred locale', NULL, NULL),
+        ('translation_role', 'equals', 'redundant', -200, 'Demote translations when an original already matches a preferred locale', NULL, NULL),
+        ('translation_role', 'equals', 'nonpreferred', -100, 'Demote translations into a non-preferred language', NULL, NULL),
+        ('dump_modification', 'equals', 'cracked', 10, 'Prefer copy-protection-free Atari ST releases', 'Atari', 'ST')
+) seed(
+    fact_key, match_operator, fact_value, score, description,
+    system_manufacturer, system_name
+)
 WHERE u.username = 'default'
-ON CONFLICT (user_id, fact_key, match_operator, fact_value) DO NOTHING;
+ON CONFLICT ON CONSTRAINT user_preference_rule_scope_key DO NOTHING;
 
 -- Supersede only the untouched beta seed. A customized beta preference is a
 -- deliberate additional rule and remains durable.

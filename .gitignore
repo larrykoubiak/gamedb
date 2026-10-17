@@ -9,6 +9,7 @@ __pycache__/
 
 data/pgdata/
 data/rdb/
+data/libretro-database/
 data/media/
 
 .DS_Store

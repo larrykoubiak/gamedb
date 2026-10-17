@@ -175,6 +175,34 @@ rather than a fuzzy title match. Remaining releases are grouped by exact title.
 Importing history alone never changes the consumer catalog. Rebuild with
 `python -m gamedb rebuild --from-layer software`.
 
+## Libretro database staging
+
+Keep a pinned upstream checkout beside the thumbnail checkout:
+
+```sh
+git clone --depth 1 https://github.com/libretro/libretro-database.git \
+  data/libretro-database
+python -m gamedb import-rdb data/libretro-database
+```
+
+The import records the Git revision, compiled RDB checksums and every raw typed
+entry in `staging.libretro_rdb_*`. Common identity fields are additionally
+normalized for matching, but no metadata is promoted to releases or software
+at import time. Running the same revision again is a no-op; use `--replace`
+only to repair that exact snapshot.
+
+After import, build the relational software projection with:
+
+```sh
+python -m gamedb rebuild --layers metadata
+```
+
+Only exact SHA-1s resolving to one current software identity are accepted.
+`catalog.software_fact` retains every competing value with support counts and a
+rank; `catalog.software_fact_evidence` traces it back to the RDB row and matched
+content. Region, serial, date and ratings remain release-level staging claims
+rather than being flattened onto software.
+
 The explorer treats recovered and generated groupings as accepted catalog
 facts and exposes **Correct…** when an exception is found. Working decisions
 are stored durably in `app.software_correction`, keyed by canonical
@@ -197,7 +225,8 @@ GET /api/v1/systems/{systemKey}/software
 
 The catalog manifest provides the current scoring generation and stable system
 keys. A system snapshot returns every preferred software row for that system,
-including the preferred release content signature and selected artwork. Both
+including the preferred release content signature, selected artwork, and a
+`softwareFacts` array of ranked metadata candidates with source support. Both
 routes provide an ETag and honor `If-None-Match` with `304 Not Modified`.
 Numeric database IDs remain present for compatibility but are rebuild-local;
 clients should persist the system key and release content signature instead.

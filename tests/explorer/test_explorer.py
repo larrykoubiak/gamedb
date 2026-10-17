@@ -73,6 +73,8 @@ class ExplorerTests(unittest.TestCase):
     def test_explorer_sql_is_kept_in_reviewable_query_files(self):
         for name in (
             "systems.sql", "titles.sql", "title_releases.sql",
+            "software_facts.sql",
+            "system_software_facts.sql",
             "install_manifest.sql",
             "catalog_revision.sql",
             "correction_targets.sql", "create_correction.sql",
@@ -98,6 +100,8 @@ class ExplorerTests(unittest.TestCase):
         titles = repository.titles_sql(269, 100, 0)
 
         self.assertIn("app.user_score_generation", revision)
+        self.assertIn("catalog.software_fact", revision)
+        self.assertIn("metadata.signature", revision)
         self.assertIn("'default'", revision)
         self.assertIn("preferredReleaseSignature", titles)
         self.assertIn("catalog.release_content_signature", titles)
@@ -111,6 +115,49 @@ class ExplorerTests(unittest.TestCase):
         self.assertIn("'sha1', file.sha1_hex", query)
         self.assertIn("score.rank_within_software", query)
         self.assertIn("release_content_signature", query)
+
+    def test_software_facts_include_conflicts_support_and_provenance(self):
+        query = CatalogRepository("default").software_facts_sql(267707)
+
+        self.assertIn("fact.software_id = 267707", query)
+        self.assertIn("catalog.software_fact_evidence", query)
+        self.assertIn("'candidateCount', value_count", query)
+        self.assertIn("'matchedContentCount', matched_content_count", query)
+        self.assertIn("'sourceDatabases', source_databases", query)
+
+        script = (ASSET_DIRECTORY / "app.js").read_text(encoding="utf-8")
+        self.assertIn("renderSoftwareFacts", script)
+        self.assertIn("candidate ${candidate.rank}/${candidate.candidateCount}", script)
+        self.assertIn("/facts`", script)
+
+    def test_launcher_snapshot_receives_software_facts(self):
+        query = CatalogRepository("default").system_software_facts_sql(269)
+
+        self.assertIn("software.system_id = 269", query)
+        self.assertIn("jsonb_object_agg(software_id::text", query)
+        self.assertIn("'sourceDatabases', source_databases", query)
+
+        class SnapshotRepository(CatalogRepository):
+            def systems(self):
+                return [{
+                    "id": 269,
+                    "key": "a" * 32,
+                    "manufacturer": "Nintendo",
+                    "name": "SNES",
+                    "gameCount": 1,
+                }]
+
+            def titles(self, system_id, limit, offset, title_filter=""):
+                return {"items": [{"softwareId": 42, "title": "Example"}]}
+
+            def system_software_facts(self, system_id):
+                return {"42": [{"key": "genre", "values": []}]}
+
+        payload = SnapshotRepository("default").system_software("a" * 32, "rev")
+        self.assertEqual(
+            payload["items"][0]["softwareFacts"],
+            [{"key": "genre", "values": []}],
+        )
 
     def test_install_manifest_requires_preferred_release_and_hides_paths_at_transport(self):
         query = CatalogRepository("default").install_manifest_sql("a" * 32)

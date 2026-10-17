@@ -11,9 +11,11 @@ FROM postgres-runtime AS deriver
 COPY requirements-derive.txt /app/requirements-derive.txt
 RUN pip install --no-cache-dir -r /app/requirements-derive.txt
 
-COPY gamedb/__init__.py gamedb/config.py gamedb/database.py /app/gamedb/
+COPY gamedb/__init__.py gamedb/__main__.py gamedb/cli.py \
+    gamedb/config.py gamedb/database.py /app/gamedb/
 COPY gamedb/derive /app/gamedb/derive
 COPY gamedb/history /app/gamedb/history
+COPY gamedb/rdb /app/gamedb/rdb
 COPY reference /app/reference
 COPY derive.yml /app/derive.yml
 

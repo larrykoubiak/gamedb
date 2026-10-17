@@ -69,6 +69,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    volumes:
+      - ./data/libretro-database:/data/libretro-database:ro
     profiles: [tools]
 
   catalog-builder:
