@@ -11,6 +11,8 @@ from gamedb.explorer.server import (
     _load_project_environment,
     _resolve_explorer_port,
     _resolve_media_path,
+    _resolve_rom_path,
+    _byte_range,
 )
 from gamedb.explorer.repository import (
     QUERY_DIRECTORY,
@@ -71,6 +73,7 @@ class ExplorerTests(unittest.TestCase):
     def test_explorer_sql_is_kept_in_reviewable_query_files(self):
         for name in (
             "systems.sql", "titles.sql", "title_releases.sql",
+            "install_manifest.sql",
             "catalog_revision.sql",
             "correction_targets.sql", "create_correction.sql",
             "disable_correction.sql",
@@ -108,6 +111,30 @@ class ExplorerTests(unittest.TestCase):
         self.assertIn("'sha1', file.sha1_hex", query)
         self.assertIn("score.rank_within_software", query)
         self.assertIn("release_content_signature", query)
+
+    def test_install_manifest_requires_preferred_release_and_hides_paths_at_transport(self):
+        query = CatalogRepository("default").install_manifest_sql("a" * 32)
+        self.assertIn("app.user_preferred_release", query)
+        self.assertIn("catalog.package_file", query)
+        self.assertIn("'resolvedPath', package.resolved_path", query)
+        self.assertIn("'packageSignature'", query)
+
+    def test_rom_paths_stay_below_configured_root(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            package = root / "game.zip"
+            package.write_bytes(b"zip")
+            self.assertEqual(_resolve_rom_path(root, str(package)), package)
+            with self.assertRaisesRegex(ValueError, "outside"):
+                _resolve_rom_path(root, "/tmp/outside.zip")
+
+    def test_single_byte_ranges_include_open_and_suffix_forms(self):
+        self.assertEqual(_byte_range(None, 100), None)
+        self.assertEqual(_byte_range("bytes=10-19", 100), (10, 19))
+        self.assertEqual(_byte_range("bytes=90-", 100), (90, 99))
+        self.assertEqual(_byte_range("bytes=-12", 100), (88, 99))
+        with self.assertRaises(ValueError):
+            _byte_range("bytes=100-", 100)
 
     def test_correction_target_search_is_system_scoped(self):
         query = CatalogRepository("default").correction_targets_sql(

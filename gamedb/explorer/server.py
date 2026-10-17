@@ -10,7 +10,7 @@ from pathlib import Path
 import re
 import subprocess
 import threading
-from urllib.parse import parse_qs, unquote, urlparse
+from urllib.parse import parse_qs, quote, unquote, urlparse
 
 from gamedb.config import ProjectEnvironment
 from gamedb.explorer.repository import CatalogRepository
@@ -21,6 +21,10 @@ PROJECT_ENV = Path(__file__).resolve().parent.parent / ".env"
 USERNAME = re.compile(r"[A-Za-z0-9_.-]{1,64}")
 SYSTEM_TITLES = re.compile(r"/api/systems/([0-9]+)/titles")
 SOFTWARE_RELEASES = re.compile(r"/api/software/([0-9]+)/releases")
+INSTALL_MANIFEST = re.compile(r"/api/v1/releases/([0-9a-f]{32})/install-manifest")
+PACKAGE_DOWNLOAD = re.compile(
+    r"/api/v1/releases/([0-9a-f]{32})/packages/([0-9a-f]{32})/download"
+)
 CORRECTION_TARGETS = re.compile(r"/api/systems/([0-9]+)/correction-targets")
 SYSTEM_SOFTWARE_SNAPSHOT = re.compile(
     r"/api/v1/systems/([0-9a-f]{32})/software"
@@ -29,6 +33,7 @@ PAGE_SIZE_MAXIMUM = 200
 DEFAULT_PORT = 8000
 MEDIA_PREFIX = "/media/"
 MEDIA_EXTENSIONS = frozenset({".png", ".jpg", ".jpeg"})
+STREAM_CHUNK_SIZE = 1024 * 1024
 
 
 def _load_project_environment(path: Path = PROJECT_ENV) -> tuple[str, ...]:
@@ -67,6 +72,39 @@ def _resolve_media_path(root: Path, encoded_path: str) -> Path:
     return candidate
 
 
+def _resolve_rom_path(root: Path, value: object) -> Path:
+    if not isinstance(value, str) or not value or "\x00" in value:
+        raise ValueError("Invalid package path")
+    resolved_root = root.resolve()
+    candidate = Path(value).resolve()
+    try:
+        candidate.relative_to(resolved_root)
+    except ValueError as error:
+        raise ValueError("Package is outside the configured ROM root") from error
+    if not candidate.is_file():
+        raise FileNotFoundError(candidate)
+    return candidate
+
+
+def _byte_range(value: str | None, size: int) -> tuple[int, int] | None:
+    """Parse one RFC 7233 byte range; multiple ranges are intentionally unsupported."""
+    if not value:
+        return None
+    match = re.fullmatch(r"bytes=(\d*)-(\d*)", value.strip())
+    if not match or (not match.group(1) and not match.group(2)):
+        raise ValueError("Invalid Range header")
+    if match.group(1):
+        start = int(match.group(1))
+        end = int(match.group(2)) if match.group(2) else size - 1
+        if start >= size or end < start:
+            raise ValueError("Unsatisfiable Range header")
+        return start, min(end, size - 1)
+    suffix = int(match.group(2))
+    if suffix <= 0:
+        raise ValueError("Unsatisfiable Range header")
+    return max(0, size - suffix), size - 1
+
+
 def _database_error(stderr: str) -> str:
     if "connection to server" in stderr:
         return "Database connection failed. Check the project .env and that PostgreSQL is running."
@@ -93,6 +131,14 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 )
             if parsed.path.startswith(MEDIA_PREFIX):
                 return self._media_response(parsed.path[len(MEDIA_PREFIX):])
+
+            match = INSTALL_MANIFEST.fullmatch(parsed.path)
+            if match:
+                return self._install_manifest_response(match.group(1))
+
+            match = PACKAGE_DOWNLOAD.fullmatch(parsed.path)
+            if match:
+                return self._package_response(match.group(1), match.group(2))
 
             match = SYSTEM_TITLES.fullmatch(parsed.path)
             if match:
@@ -268,6 +314,96 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             while chunk := handle.read(1024 * 1024):
                 self.wfile.write(chunk)
 
+    def _load_install_manifest(self, release_signature):
+        manifest = self.server.repository.install_manifest(release_signature)
+        if not isinstance(manifest, dict):
+            return None
+        packages = manifest.get("packages")
+        if not isinstance(packages, list) or not packages:
+            return None
+        enriched = []
+        for item in packages:
+            if not isinstance(item, dict):
+                raise ValueError("Invalid package metadata")
+            package = dict(item)
+            path = _resolve_rom_path(self.server.rom_root, package.pop("resolvedPath", None))
+            package["archiveSize"] = path.stat().st_size
+            package["downloadUrl"] = (
+                f"/api/v1/releases/{release_signature}/packages/"
+                f"{package['packageSignature']}/download"
+            )
+            package["_path"] = path
+            enriched.append(package)
+        result = dict(manifest)
+        result["packages"] = enriched
+        return result
+
+    def _install_manifest_response(self, release_signature):
+        manifest = self._load_install_manifest(release_signature)
+        if manifest is None:
+            return self.send_error(HTTPStatus.NOT_FOUND)
+        public = dict(manifest)
+        public["schemaVersion"] = 1
+        public["packages"] = [
+            {key: value for key, value in item.items() if key != "_path"}
+            for item in manifest["packages"]
+        ]
+        return self._json_response(public)
+
+    def _package_response(self, release_signature, package_signature):
+        manifest = self._load_install_manifest(release_signature)
+        if manifest is None:
+            return self.send_error(HTTPStatus.NOT_FOUND)
+        package = next(
+            (
+                item for item in manifest["packages"]
+                if item.get("packageSignature") == package_signature
+            ),
+            None,
+        )
+        if package is None:
+            return self.send_error(HTTPStatus.NOT_FOUND)
+        path = package["_path"]
+        size = int(package["archiveSize"])
+        try:
+            requested = _byte_range(self.headers.get("Range"), size)
+        except ValueError:
+            self.send_response(HTTPStatus.REQUESTED_RANGE_NOT_SATISFIABLE)
+            self.send_header("Content-Range", f"bytes */{size}")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+        start, end = requested or (0, size - 1)
+        length = end - start + 1
+        self.send_response(
+            HTTPStatus.PARTIAL_CONTENT if requested else HTTPStatus.OK
+        )
+        self.send_header("Content-Type", "application/zip")
+        self.send_header("Content-Length", str(length))
+        self.send_header("Accept-Ranges", "bytes")
+        self.send_header("ETag", f'"{package_signature}"')
+        self.send_header("Cache-Control", "private, max-age=31536000, immutable")
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header(
+            "Content-Disposition",
+            f"attachment; filename*=UTF-8''{quote(str(package['archiveName']))}",
+        )
+        if requested:
+            self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
+        self.end_headers()
+        try:
+            with path.open("rb") as handle:
+                handle.seek(start)
+                remaining = length
+                while remaining:
+                    chunk = handle.read(min(STREAM_CHUNK_SIZE, remaining))
+                    if not chunk:
+                        break
+                    self.wfile.write(chunk)
+                    remaining -= len(chunk)
+        except (BrokenPipeError, ConnectionResetError):
+            pass
+
     def log_message(self, format, *args):
         print(f"{self.address_string()} - {format % args}")
 
@@ -285,6 +421,7 @@ class ExplorerServer(ThreadingHTTPServer):
         self.thumbnail_root = Path(os.environ.get(
             "GAMEDB_LIBRETRO_THUMBNAILS", "/data/libretro-thumbnails"
         ))
+        self.rom_root = Path(os.environ.get("GAMEDB_ROM_ROOT", "/data/roms"))
 
     @staticmethod
     def rebuild_software():

@@ -91,6 +91,14 @@ class CatalogRepository:
             software_id=sql_integer(software_id, "software_id", 1),
         )
 
+    def install_manifest_sql(self, release_signature: str) -> str:
+        return SqlTemplate(QUERY_DIRECTORY / "install_manifest.sql").render(
+            username=quote_sql_text(self.username),
+            release_signature=quote_sql_text(
+                self._signature(release_signature, "release_signature")
+            ),
+        )
+
     def correction_targets_sql(
         self, system_id: int, exclude_software_id: int, title_filter: str
     ) -> str:
@@ -183,6 +191,9 @@ class CatalogRepository:
 
     def software_releases(self, software_id: int):
         return self.client.query(self.software_releases_sql(software_id))
+
+    def install_manifest(self, release_signature: str):
+        return self.client.query(self.install_manifest_sql(release_signature))
 
     def correction_targets(
         self, system_id: int, exclude_software_id: int, title_filter: str

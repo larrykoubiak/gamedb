@@ -6,6 +6,7 @@ x-database-environment: &database-environment
   PGPASSWORD: "${PGPASSWORD:-${POSTGRES_PASSWORD:?Set PGPASSWORD in .env}}"
   GAMEDB_LIBRETRO_THUMBNAILS: /data/libretro-thumbnails
   GAMEDB_MEDIA_INDEX: /data/media/cache/libretro-thumbnail-index.paths.gz
+  GAMEDB_ROM_ROOT: /mnt/synology/roms
 
 services:
   db:
@@ -47,6 +48,7 @@ services:
           - web
     volumes:
       - ./data/libretro-thumbnails:/data/libretro-thumbnails:ro
+      - /mnt/synology/roms:/mnt/synology/roms:ro
 
   cloudflared:
     image: cloudflare/cloudflared:latest
