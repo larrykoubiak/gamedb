@@ -69,6 +69,11 @@ class CatalogRepository:
             username=quote_sql_text(self.username)
         )
 
+    def catalog_revision_sql(self) -> str:
+        return SqlTemplate(QUERY_DIRECTORY / "catalog_revision.sql").render(
+            username=quote_sql_text(self.username)
+        )
+
     def titles_sql(
         self, system_id: int, limit: int, offset: int, title_filter: str = ""
     ) -> str:
@@ -133,6 +138,41 @@ class CatalogRepository:
 
     def systems(self):
         return self.client.query(self.systems_sql())
+
+    def catalog_revision(self) -> str:
+        payload = self.client.query(self.catalog_revision_sql())
+        if not isinstance(payload, dict) or not payload.get("catalogRevision"):
+            raise ValueError(f"No scoring generation exists for user {self.username!r}")
+        return str(payload["catalogRevision"])
+
+    def catalog_manifest(self, revision: str | None = None):
+        return {
+            "catalogRevision": revision or self.catalog_revision(),
+            "systems": self.systems(),
+        }
+
+    def system_software(self, system_key: str, revision: str | None = None):
+        if not re.fullmatch(r"[0-9a-f]{32}", system_key):
+            raise ValueError("system_key must be a 32-character lowercase hex key")
+        system = next(
+            (item for item in self.systems() if item.get("key") == system_key),
+            None,
+        )
+        if system is None:
+            return None
+        catalog = self.titles(
+            int(system["id"]), max(1, int(system["gameCount"])), 0
+        )
+        return {
+            "catalogRevision": revision or self.catalog_revision(),
+            "system": {
+                "key": system["key"],
+                "manufacturer": system["manufacturer"],
+                "name": system["name"],
+                "softwareCount": system["gameCount"],
+            },
+            "items": catalog["items"],
+        }
 
     def titles(
         self, system_id: int, limit: int, offset: int, title_filter: str = ""

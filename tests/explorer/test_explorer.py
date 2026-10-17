@@ -71,6 +71,7 @@ class ExplorerTests(unittest.TestCase):
     def test_explorer_sql_is_kept_in_reviewable_query_files(self):
         for name in (
             "systems.sql", "titles.sql", "title_releases.sql",
+            "catalog_revision.sql",
             "correction_targets.sql", "create_correction.sql",
             "disable_correction.sql",
         ):
@@ -85,6 +86,18 @@ class ExplorerTests(unittest.TestCase):
         query = CatalogRepository("default").systems_sql()
         self.assertIn("app.user_preferred_release", query)
         self.assertIn("user_account.username = 'default'", query)
+        self.assertIn("'key', systems.system_key", query)
+
+    def test_catalog_snapshot_uses_scoring_generation_and_stable_system_key(self):
+        repository = CatalogRepository("default")
+
+        revision = repository.catalog_revision_sql()
+        titles = repository.titles_sql(269, 100, 0)
+
+        self.assertIn("app.user_score_generation", revision)
+        self.assertIn("'default'", revision)
+        self.assertIn("preferredReleaseSignature", titles)
+        self.assertIn("catalog.release_content_signature", titles)
 
     def test_release_details_include_scores_packages_and_hashes(self):
         query = CatalogRepository("default").software_releases_sql(267707)

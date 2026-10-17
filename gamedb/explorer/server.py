@@ -2,6 +2,7 @@
 
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+import hashlib
 import json
 import mimetypes
 import os
@@ -21,6 +22,9 @@ USERNAME = re.compile(r"[A-Za-z0-9_.-]{1,64}")
 SYSTEM_TITLES = re.compile(r"/api/systems/([0-9]+)/titles")
 SOFTWARE_RELEASES = re.compile(r"/api/software/([0-9]+)/releases")
 CORRECTION_TARGETS = re.compile(r"/api/systems/([0-9]+)/correction-targets")
+SYSTEM_SOFTWARE_SNAPSHOT = re.compile(
+    r"/api/v1/systems/([0-9a-f]{32})/software"
+)
 PAGE_SIZE_MAXIMUM = 200
 DEFAULT_PORT = 8000
 MEDIA_PREFIX = "/media/"
@@ -83,6 +87,10 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return self._json_response({
                     "softwareCorrections": self.server.corrections_enabled,
                 })
+            if parsed.path == "/api/v1/catalog":
+                return self._catalog_response(
+                    "manifest", self.server.repository.catalog_manifest
+                )
             if parsed.path.startswith(MEDIA_PREFIX):
                 return self._media_response(parsed.path[len(MEDIA_PREFIX):])
 
@@ -104,6 +112,16 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 payload["page"] = page
                 payload["pageSize"] = page_size
                 return self._json_response(payload)
+
+            match = SYSTEM_SOFTWARE_SNAPSHOT.fullmatch(parsed.path)
+            if match:
+                system_key = match.group(1)
+                return self._catalog_response(
+                    f"system:{system_key}",
+                    lambda revision: self.server.repository.system_software(
+                        system_key, revision
+                    ),
+                )
 
             match = SOFTWARE_RELEASES.fullmatch(parsed.path)
             if match:
@@ -194,6 +212,34 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def _catalog_response(self, cache_key, loader):
+        revision = self.server.repository.catalog_revision()
+        entry = self.server.catalog_cache.get(cache_key)
+        if entry is None or entry[0] != revision:
+            payload = loader(revision)
+            if payload is None:
+                return self.send_error(HTTPStatus.NOT_FOUND)
+            body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+            suffix = hashlib.sha256(cache_key.encode("utf-8")).hexdigest()[:12]
+            entry = (revision, f'"{revision}-{suffix}"', body)
+            with self.server.catalog_cache_lock:
+                self.server.catalog_cache[cache_key] = entry
+        _, etag, body = entry
+        if self.headers.get("If-None-Match") == etag:
+            self.send_response(HTTPStatus.NOT_MODIFIED)
+            self.send_header("ETag", etag)
+            self.send_header("Cache-Control", "private, no-cache")
+            self.end_headers()
+            return
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "private, no-cache")
+        self.send_header("ETag", etag)
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.end_headers()
+        self.wfile.write(body)
+
     def _asset_response(self, name, content_type):
         body = (ASSET_DIRECTORY / name).read_bytes()
         self.send_response(HTTPStatus.OK)
@@ -233,6 +279,8 @@ class ExplorerServer(ThreadingHTTPServer):
         super().__init__(address, handler)
         self.repository = CatalogRepository(username)
         self.rebuild_lock = threading.Lock()
+        self.catalog_cache_lock = threading.Lock()
+        self.catalog_cache: dict[str, tuple[str, str, bytes]] = {}
         self.corrections_enabled = _corrections_enabled()
         self.thumbnail_root = Path(os.environ.get(
             "GAMEDB_LIBRETRO_THUMBNAILS", "/data/libretro-thumbnails"

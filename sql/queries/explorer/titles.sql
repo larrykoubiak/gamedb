@@ -47,7 +47,8 @@ items AS (
         facts.release_dates,
         facts.dump_modifications,
         facts.dump_statuses,
-        media.items AS media
+        media.items AS media,
+        signature.sha1_set_digest AS preferred_release_signature
     FROM page
     LEFT JOIN LATERAL (
         SELECT
@@ -88,6 +89,8 @@ items AS (
         JOIN catalog.media asset ON asset.id = selected.media_id
         WHERE selected.software_id = page.software_id
     ) media ON true
+    JOIN catalog.release_content_signature signature
+      ON signature.release_id = page.release_id
 )
 SELECT jsonb_build_object(
     'total', (SELECT count(*) FROM chosen),
@@ -95,6 +98,7 @@ SELECT jsonb_build_object(
         SELECT jsonb_agg(
             jsonb_build_object(
                 'softwareId', items.software_id,
+                'preferredReleaseSignature', items.preferred_release_signature,
                 'titleId', items.title_id,
                 'title', items.title,
                 'identityBasis', items.identity_basis,

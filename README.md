@@ -185,6 +185,23 @@ Mutation is gated by `GAMEDB_ENABLE_CORRECTIONS`; the workstation
 `compose.dev.yaml` enables it, while the public deployment remains read-only by
 default.
 
+### Consumer catalog snapshots
+
+Appliance clients can cache the preferred-release projection without replaying
+the explorer's paginated queries:
+
+```text
+GET /api/v1/catalog
+GET /api/v1/systems/{systemKey}/software
+```
+
+The catalog manifest provides the current scoring generation and stable system
+keys. A system snapshot returns every preferred software row for that system,
+including the preferred release content signature and selected artwork. Both
+routes provide an ETag and honor `If-None-Match` with `304 Not Modified`.
+Numeric database IDs remain present for compatibility but are rebuild-local;
+clients should persist the system key and release content signature instead.
+
 After reviewing working corrections, promote them into the version-controlled
 reference CSV and its `ref` materialization:
 
