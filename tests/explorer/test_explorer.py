@@ -13,6 +13,9 @@ from gamedb.explorer.server import (
     _resolve_media_path,
     _resolve_rom_path,
     _byte_range,
+    _api_authorized,
+    _api_key,
+    _request_client,
 )
 from gamedb.explorer.repository import (
     QUERY_DIRECTORY,
@@ -22,6 +25,26 @@ from gamedb.explorer.repository import (
 
 
 class ExplorerTests(unittest.TestCase):
+    def test_versioned_api_requires_an_exact_bearer_key(self):
+        key = "a" * 43
+
+        self.assertTrue(_api_authorized(f"Bearer {key}", key))
+        self.assertTrue(_api_authorized(f"bearer {key}", key))
+        self.assertFalse(_api_authorized(None, key))
+        self.assertFalse(_api_authorized(f"Bearer {key}x", key))
+        self.assertFalse(_api_authorized(f"Basic {key}", key))
+
+    def test_api_key_configuration_fails_closed(self):
+        with patch.dict(os.environ, {}, clear=True):
+            with self.assertRaisesRegex(SystemExit, "at least 32"):
+                _api_key()
+        with patch.dict(os.environ, {"GAMEDB_API_KEY": "b" * 43}, clear=True):
+            self.assertEqual(_api_key(), "b" * 43)
+
+    def test_access_log_accepts_only_a_valid_forwarded_ip(self):
+        self.assertEqual(_request_client("203.0.113.8", "172.20.0.1"), "203.0.113.8")
+        self.assertEqual(_request_client("bad\nlog", "172.20.0.1"), "172.20.0.1")
+
     def test_sql_text_escapes_quotes(self):
         self.assertEqual(quote_sql_text("Bob's"), "'Bob''s'")
 

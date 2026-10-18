@@ -3,6 +3,8 @@
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import hashlib
+import hmac
+import ipaddress
 import json
 import mimetypes
 import os
@@ -55,6 +57,30 @@ def _corrections_enabled() -> bool:
     return os.environ.get("GAMEDB_ENABLE_CORRECTIONS", "").lower() in (
         "1", "true", "yes",
     )
+
+
+def _api_key() -> str:
+    value = os.environ.get("GAMEDB_API_KEY", "").strip()
+    if len(value) < 32:
+        raise SystemExit("GAMEDB_API_KEY must contain at least 32 characters")
+    return value
+
+
+def _api_authorized(authorization: str | None, api_key: str) -> bool:
+    scheme, separator, credential = (authorization or "").partition(" ")
+    return (
+        bool(separator)
+        and scheme.lower() == "bearer"
+        and hmac.compare_digest(credential, api_key)
+    )
+
+
+def _request_client(forwarded: str | None, fallback: str) -> str:
+    candidate = (forwarded or "").split(",", 1)[0].strip()
+    try:
+        return str(ipaddress.ip_address(candidate)) if candidate else fallback
+    except ValueError:
+        return fallback
 
 
 def _resolve_media_path(root: Path, encoded_path: str) -> Path:
@@ -120,6 +146,10 @@ class ExplorerHandler(BaseHTTPRequestHandler):
     def do_GET(self):  # noqa: N802 - BaseHTTPRequestHandler API
         parsed = urlparse(self.path)
         try:
+            if parsed.path.startswith("/api/v1/") and not _api_authorized(
+                self.headers.get("Authorization"), self.server.api_key
+            ):
+                return self._unauthorized_response()
             if parsed.path == "/api/systems":
                 return self._json_response(self.server.repository.systems())
             if parsed.path == "/api/capabilities":
@@ -265,6 +295,17 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def _unauthorized_response(self):
+        body = b'{"error":"API key required"}'
+        self.send_response(HTTPStatus.UNAUTHORIZED)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("WWW-Authenticate", 'Bearer realm="gamedb"')
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.end_headers()
+        self.wfile.write(body)
+
     def _catalog_response(self, cache_key, loader):
         revision = self.server.repository.catalog_revision()
         entry = self.server.catalog_cache.get(cache_key)
@@ -398,6 +439,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         if requested:
             self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
         self.end_headers()
+        transferred = 0
         try:
             with path.open("rb") as handle:
                 handle.seek(start)
@@ -408,11 +450,24 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                         break
                     self.wfile.write(chunk)
                     remaining -= len(chunk)
+                    transferred += len(chunk)
         except (BrokenPipeError, ConnectionResetError):
             pass
+        finally:
+            self.log_message(
+                "download release=%s package=%s status=%d bytes=%d range=%s",
+                release_signature,
+                package_signature,
+                HTTPStatus.PARTIAL_CONTENT if requested else HTTPStatus.OK,
+                transferred,
+                self.headers.get("Range", "full"),
+            )
 
     def log_message(self, format, *args):
-        print(f"{self.address_string()} - {format % args}")
+        client = _request_client(
+            self.headers.get("CF-Connecting-IP"), self.client_address[0]
+        )
+        print(f"{client} - {format % args}", flush=True)
 
 
 class ExplorerServer(ThreadingHTTPServer):
@@ -421,6 +476,7 @@ class ExplorerServer(ThreadingHTTPServer):
     def __init__(self, address, handler, username):
         super().__init__(address, handler)
         self.repository = CatalogRepository(username)
+        self.api_key = _api_key()
         self.rebuild_lock = threading.Lock()
         self.catalog_cache_lock = threading.Lock()
         self.catalog_cache: dict[str, tuple[str, str, bytes]] = {}

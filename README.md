@@ -223,6 +223,9 @@ GET /api/v1/catalog
 GET /api/v1/systems/{systemKey}/software
 ```
 
+Versioned API requests require `Authorization: Bearer <GAMEDB_API_KEY>`. Keep
+the key in the deployment environment rather than source or launcher config.
+
 The catalog manifest provides the current scoring generation and stable system
 keys. A system snapshot returns every preferred software row for that system,
 including the preferred release content signature, selected artwork, and a

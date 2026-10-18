@@ -7,6 +7,7 @@ x-database-environment: &database-environment
   GAMEDB_LIBRETRO_THUMBNAILS: /data/libretro-thumbnails
   GAMEDB_MEDIA_INDEX: /data/media/cache/libretro-thumbnail-index.paths.gz
   GAMEDB_ROM_ROOT: /mnt/synology/roms
+  GAMEDB_API_KEY: "${GAMEDB_API_KEY:?Set GAMEDB_API_KEY in .env}"
 
 services:
   db:
