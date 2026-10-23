@@ -6,7 +6,7 @@ layers:
   - name: schema
     description: Recreate ref and derived, invalidate catalog, and retain staging and app preferences.
     extractor: schema_manager
-    reads: [staging.rv_files]
+    reads: [staging.rv_files, staging.integrated_package]
     writes: [ref, derived]
 
   - name: reference
@@ -18,7 +18,7 @@ layers:
   - name: dat
     description: Parse source DAT identity from staging paths and names.
     extractor: dat_extract
-    reads: [staging.rv_files]
+    reads: [staging.rv_files, staging.integrated_package]
     writes: [derived.dat_source]
 
   - name: system
@@ -30,7 +30,7 @@ layers:
   - name: inventory
     description: Materialize stable archive packages, files, member paths, and hashes.
     extractor: inventory_extract
-    reads: [staging.rv_files, derived.dat]
+    reads: [staging.rv_files, staging.integrated_package, staging.integrated_file, derived.dat]
     writes: [derived.archive_name, derived.package, derived.file]
 
   - name: translation_titles

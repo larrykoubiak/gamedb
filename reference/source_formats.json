@@ -24,6 +24,10 @@
       "dat_identity": "english_translations",
       "ignore_prefixes": ["_"]
     },
+    "Integrated": {
+      "inherits": "No-Intro",
+      "dat_identity": "path_components"
+    },
     "TOSEC": {
       "dat_identity": "path_components",
       "boundary": {

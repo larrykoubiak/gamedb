@@ -37,7 +37,11 @@ class DerivationPipelineTests(unittest.TestCase):
             self.pipeline.select(exact=("inventory",))
         )
 
-        self.assertIn("reads: staging.rv_files, derived.dat", description)
+        self.assertIn(
+            "reads: staging.rv_files, staging.integrated_package, "
+            "staging.integrated_file, derived.dat",
+            description,
+        )
         self.assertIn(
             "writes: derived.archive_name, derived.package, derived.file",
             description,

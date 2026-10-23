@@ -1,4 +1,9 @@
 romset,source_manufacturer,source_system,canonical_manufacturer,canonical_system,match_method,notes
+Integrated,Nintendo,3DS,Nintendo,3DS,manual,Maintained non-RomVault package inventory.
+Integrated,Sony,PlayStation,Sony,PlayStation,manual,Maintained non-RomVault package inventory.
+Integrated,Sony,PlayStation 2,Sony,PlayStation 2,manual,Maintained non-RomVault package inventory.
+Integrated,Sony,PlayStation 3,Sony,PlayStation 3,manual,Maintained non-RomVault package inventory.
+Integrated,Sony,PlayStation Portable,Sony,PlayStation Portable,manual,Maintained non-RomVault package inventory.
 No-Intro,Atari,2600,Atari,2600,exact,
 No-Intro,Atari,5200,Atari,5200,exact,
 No-Intro,Atari,7800,Atari,7800,exact,

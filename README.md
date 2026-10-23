@@ -12,7 +12,7 @@ catalog. The code is split into three applications with distinct ownership:
 The data flow is deliberately one-way:
 
 ```text
-staging.rv_files + recovered history + reference
+RomVault + reviewed integrated packages + recovered history + reference
                   │
                   ▼
        Python derivation pass
@@ -60,6 +60,23 @@ python -m gamedb rebuild --from-layer scoring
 After a full derivation, build the complete consumer projection with
 `python -m gamedb rebuild`. Use `--plan`, `--layers`, `--from-layer`, or
 `--through-layer` to inspect or select its SQL layers.
+
+## Integrated releases
+
+Reviewed ZIP packages that are intentionally outside RomVault can be imported
+without adding rows to `staging.rv_files`. The maintained manifest supplies the
+catalog title and system while every ZIP member is CRC-checked and SHA-1 hashed:
+
+```sh
+python -m gamedb import-integrated /mnt/synology/backup/games/Undub
+python -m gamedb derive --rebuild
+python -m gamedb rebuild
+```
+
+The Undub collection is described by
+[`reference/integrated_releases.csv`](reference/integrated_releases.csv). All
+of its releases use the `undub` modification tag, including packs whose source
+filename describes a narrower audio, video, or edit fix.
 
 ## Inspecting names
 

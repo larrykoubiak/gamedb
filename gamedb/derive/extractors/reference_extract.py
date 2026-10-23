@@ -56,14 +56,15 @@ class ReferenceExtractor:
         connection.execute(insert(path_mapping), self._rows("path_mappings.csv"))
         connection.execute(insert(tag_category), self._rows("tag_categories.csv"))
         corrections = self._rows("software_corrections.csv")
-        connection.execute(insert(software_correction), [
-            {
-                **row,
-                "target_content_signature":
-                    row["target_content_signature"] or None,
-            }
-            for row in corrections
-        ])
+        if corrections:
+            connection.execute(insert(software_correction), [
+                {
+                    **row,
+                    "target_content_signature":
+                        row["target_content_signature"] or None,
+                }
+                for row in corrections
+            ])
 
     def _rows(self, name: str) -> list[dict[str, str]]:
         path = self.reference_directory / name

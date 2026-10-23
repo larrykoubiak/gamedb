@@ -6,6 +6,21 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 class ScoringContractTests(unittest.TestCase):
+    def test_bonus_disc_is_an_explicit_media_label_penalty(self):
+        preferences = (
+            PROJECT_ROOT / "sql/layers/scoring/010_preferences.sql"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("'media_label', 'equals', 'Bonus Disc', -500", preferences)
+        self.assertNotIn("'media_label', 'present'", preferences)
+
+    def test_undubs_are_explicitly_preferred(self):
+        preferences = (
+            PROJECT_ROOT / "sql/layers/scoring/010_preferences.sql"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("'dump_modification', 'equals', 'undub', 150", preferences)
+
     def test_default_policy_names_contextual_translation_roles(self):
         preferences = (
             PROJECT_ROOT / "sql/layers/scoring/010_preferences.sql"

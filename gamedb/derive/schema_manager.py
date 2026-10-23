@@ -6,6 +6,7 @@ from sqlalchemy import text
 from sqlalchemy.engine import Engine
 
 from .schema import metadata
+from gamedb.integrated.schema import metadata as integrated_metadata
 
 
 class DerivedSchemaManager:
@@ -16,6 +17,8 @@ class DerivedSchemaManager:
 
     def reset(self) -> None:
         with self.engine.begin() as connection:
+            connection.execute(text("CREATE SCHEMA IF NOT EXISTS staging"))
+            integrated_metadata.create_all(connection)
             connection.execute(text("DROP SCHEMA IF EXISTS catalog CASCADE"))
             connection.execute(text("DROP SCHEMA IF EXISTS derived CASCADE"))
             connection.execute(text("DROP SCHEMA IF EXISTS ref CASCADE"))

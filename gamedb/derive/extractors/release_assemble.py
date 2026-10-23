@@ -249,9 +249,12 @@ class ReleaseAssembler:
             "FROM STDIN WITH (FORMAT CSV, NULL '\\N')"
         )
         with raw_connection.cursor() as cursor, path.open("r", encoding="utf-8") as source:
-            with cursor.copy(statement) as copy:
-                while block := source.read(1024 * 1024):
-                    copy.write(block)
+            if hasattr(cursor, "copy"):
+                with cursor.copy(statement) as copy:
+                    while block := source.read(1024 * 1024):
+                        copy.write(block)
+            else:
+                cursor.copy_expert(statement, source)
 
     @staticmethod
     def _csv_row(values):

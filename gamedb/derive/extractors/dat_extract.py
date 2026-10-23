@@ -33,7 +33,28 @@ class DatExtractor:
         rows = connection.execute(
             statement, {"collections": sorted(FORMATS)}
         )
-        return [self._parse(row.dat_root_full_name, row.dat_name) for row in rows]
+        sources = [
+            self._parse(row.dat_root_full_name, row.dat_name) for row in rows
+        ]
+        integrated = connection.execute(text("""
+            SELECT DISTINCT source_manufacturer, source_system
+            FROM staging.integrated_package
+            ORDER BY source_manufacturer, source_system
+        """))
+        sources.extend(SourceDat(
+            dat_path=(
+                f"Integrated/Undub/{row.source_manufacturer}/"
+                f"{row.source_system}"
+            ),
+            dat_name=(
+                f"{row.source_manufacturer} - {row.source_system} Undub"
+            ),
+            romset="Integrated",
+            source_manufacturer=row.source_manufacturer,
+            source_system=row.source_system,
+            additional=("Undub",),
+        ) for row in integrated)
+        return sources
 
     def execute(self, connection: Connection) -> int:
         connection.execute(text("DROP SCHEMA IF EXISTS catalog CASCADE"))

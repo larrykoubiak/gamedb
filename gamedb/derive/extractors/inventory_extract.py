@@ -29,6 +29,12 @@ class InventoryExtractor:
             ORDER BY d.romset, rf.game_display_name
         """))
         connection.execute(text("""
+            INSERT INTO derived.archive_name (romset, archive_name, extension)
+            SELECT DISTINCT 'Integrated', source.catalog_archive_name, '.zip'
+            FROM staging.integrated_package source
+            ORDER BY source.catalog_archive_name
+        """))
+        connection.execute(text("""
             INSERT INTO derived.package (
                 dat_id, archive_name_id, staged_file_count, source_tree_path
             )
@@ -50,6 +56,25 @@ class InventoryExtractor:
              AND n.archive_name = rf.game_display_name
             GROUP BY d.id, n.id
             ORDER BY d.id, n.id
+        """))
+        connection.execute(text("""
+            INSERT INTO derived.package (
+                dat_id, archive_name_id, staged_file_count, source_tree_path
+            )
+            SELECT dat.id, archive.id, count(file.member_index),
+                'Integrated/Undub/' || source.relative_path
+            FROM staging.integrated_package source
+            JOIN staging.integrated_file file
+              ON file.package_relative_path = source.relative_path
+            JOIN derived.dat dat
+              ON dat.romset = 'Integrated'
+             AND dat.source_manufacturer = source.source_manufacturer
+             AND dat.source_system = source.source_system
+            JOIN derived.archive_name archive
+              ON archive.romset = 'Integrated'
+             AND archive.archive_name = source.catalog_archive_name
+            GROUP BY dat.id, archive.id, source.relative_path
+            ORDER BY dat.id, archive.id
         """))
         connection.execute(text("""
             INSERT INTO derived.file (
@@ -76,4 +101,34 @@ class InventoryExtractor:
              AND rf.dat_name = d.dat_name
              AND rf.game_display_name = n.archive_name
             ORDER BY p.id, rf.full_path, rf.name, rf.size, rf.sha1_hex
+        """))
+        connection.execute(text("""
+            INSERT INTO derived.file (
+                package_id, source_run_id, source_exported_at,
+                source_full_path, member_path, file_name, size, crc_hex,
+                sha1_hex, md5_hex, alt_size, alt_crc_hex, alt_sha1_hex,
+                alt_md5_hex, sha1_verified, md5_verified, crc_verified,
+                size_verified, deep_scanned, dat_status, got_status,
+                rep_status, source_game_id, source_game_description
+            )
+            SELECT package.id, source.import_run_id, source.imported_at,
+                'Integrated/Undub/' || source.relative_path,
+                file.member_path, file.file_name, file.size, file.crc_hex,
+                file.sha1_hex, NULL, NULL, NULL, NULL, NULL,
+                false, false, file.crc_verified, true, true,
+                0, 0, 0, source.relative_path, source.title
+            FROM staging.integrated_package source
+            JOIN staging.integrated_file file
+              ON file.package_relative_path = source.relative_path
+            JOIN derived.dat dat
+              ON dat.romset = 'Integrated'
+             AND dat.source_manufacturer = source.source_manufacturer
+             AND dat.source_system = source.source_system
+            JOIN derived.archive_name archive
+              ON archive.romset = 'Integrated'
+             AND archive.archive_name = source.catalog_archive_name
+            JOIN derived.package package
+              ON package.dat_id = dat.id
+             AND package.archive_name_id = archive.id
+            ORDER BY package.id, file.member_index
         """))

@@ -5,12 +5,13 @@ from __future__ import annotations
 import sys
 
 
-HELP = """usage: gamedb {derive,parse-name,import-history,import-rdb,rebuild,promote-corrections,serve} ...
+HELP = """usage: gamedb {derive,parse-name,import-history,import-integrated,import-rdb,rebuild,promote-corrections,serve} ...
 
 GameDB commands:
   derive       Build or selectively refresh the stable derived schema.
   parse-name   Inspect one archive filename using derivation rules.
   import-history  Snapshot recovered identity sources into staging.
+  import-integrated  Snapshot reviewed non-RomVault ZIP packages into staging.
   import-rdb    Snapshot compiled Libretro databases into staging.
   rebuild      Project catalog, identity, and scores from derived data.
   promote-corrections  Move reviewed working corrections into reference.
@@ -42,6 +43,10 @@ def main(argv=None) -> int:
         from gamedb.history.__main__ import main as history_main
 
         return history_main(remaining)
+    if command == "import-integrated":
+        from gamedb.integrated.__main__ import main as integrated_main
+
+        return integrated_main(remaining)
     if command == "import-rdb":
         from gamedb.rdb.__main__ import main as rdb_main
 

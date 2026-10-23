@@ -130,6 +130,12 @@ class DerivedBulkWriter:
                     "FROM STDIN WITH (FORMAT CSV, NULL '\\N')"
                 )
                 with spool.paths[name].open("r", encoding="utf-8") as source:
-                    with cursor.copy(statement) as copy:
-                        while block := source.read(1024 * 1024):
-                            copy.write(block)
+                    if hasattr(cursor, "copy"):
+                        with cursor.copy(statement) as copy:
+                            while block := source.read(1024 * 1024):
+                                copy.write(block)
+                    else:
+                        # psycopg2 exposes the same PostgreSQL COPY operation
+                        # through copy_expert rather than psycopg 3's context
+                        # manager API.
+                        cursor.copy_expert(statement, source)

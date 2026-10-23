@@ -8,6 +8,22 @@ from gamedb.derive.extractors.translation_member_title_extract import (
 
 
 class ArchiveNameExtractorTests(unittest.TestCase):
+    def test_integrated_undub_has_typed_platform_and_media(self):
+        result = ArchiveNameExtractor().extract(
+            "Integrated",
+            "Grandia (USA) [Undub] [PlayStation] (Disc 1 of 2).zip",
+        )
+
+        record = result.records[0]
+        assertions = {(item.key, item.value) for item in record.assertions}
+
+        self.assertEqual(record.title, "Grandia")
+        self.assertIn(("region", "US"), assertions)
+        self.assertIn(("dump_modification", "undub"), assertions)
+        self.assertIn(("system_requirement", "PlayStation"), assertions)
+        self.assertEqual(record.media_parts[0].sequence, 1)
+        self.assertEqual(record.media_parts[0].total, 2)
+
     def test_maybe_intro_translation_is_typed_for_scoring(self):
         result = ArchiveNameExtractor().extract(
             "English Translations",

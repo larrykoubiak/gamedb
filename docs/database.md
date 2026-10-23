@@ -1,12 +1,12 @@
 # Database model and ownership
 
-GameDB has one retained input, one interpreted source model, and one disposable
+GameDB has retained inputs, one interpreted source model, and one disposable
 consumer model. The boundaries are ownership boundaries, not just naming
 conventions.
 
 | Schema | Owner | Responsibility |
 | --- | --- | --- |
-| `staging` | external intake | Untouched RomVault rows, immutable historical snapshots, and revisioned Libretro RDB entries |
+| `staging` | external intake | Untouched RomVault rows, reviewed integrated ZIP inventories, immutable historical snapshots, and revisioned Libretro RDB entries |
 | `ref` | deriver | Version-controlled mappings and vocabularies |
 | `derived` | deriver | Stable inventory plus source-faithful semantic interpretation |
 | `catalog` | catalog builder | Accepted browse facts: software, releases, packages and files |
@@ -14,9 +14,9 @@ conventions.
 
 ```text
                          DERIVATION PACKAGE
-staging.rv_files ──┬──► DAT identity ─► system resolution
-                   ├──► package/file inventory ─► resolved package paths
-reference files ───┴──► name parser/classifier
+staging.rv_files ───────────┬──► DAT identity ─► system resolution
+staging.integrated_* ───────┼──► package/file inventory ─► resolved package paths
+reference files ────────────┴──► name parser/classifier
                               │
                               ├── source title records
                               ├── lossless raw tags + classifications
@@ -181,9 +181,10 @@ normal tables.
 
 ## Recovery contract
 
-`staging.rv_files` plus version-controlled reference/rule files can recreate
-everything. Database IDs are rebuild-local, so maintained files identify
-systems and paths by source text rather than generated IDs. A full derivation
+`staging.rv_files`, reviewed integrated ZIPs, and version-controlled
+reference/rule files can recreate everything. Database IDs are rebuild-local,
+so maintained files identify systems and paths by source text rather than
+generated IDs. A full derivation
 invalidates the downstream catalog, which must then be rebuilt; routine selected
 layers preserve unrelated upstream work.
 

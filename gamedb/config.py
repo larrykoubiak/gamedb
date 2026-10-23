@@ -19,6 +19,8 @@ class ProjectEnvironment:
         "GAMEDB_LIBRETRO_THUMBNAILS",
         "GAMEDB_MEDIA_INDEX",
         "GAMEDB_MEDIA_USERNAME",
+        "GAMEDB_INTEGRATED_ROOT",
+        "GAMEDB_ROM_ROOT",
         "PGDATABASE",
         "PGHOST",
         "PGPASSWORD",
