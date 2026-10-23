@@ -15,6 +15,7 @@ COPY gamedb/__init__.py gamedb/__main__.py gamedb/cli.py \
     gamedb/config.py gamedb/database.py /app/gamedb/
 COPY gamedb/derive /app/gamedb/derive
 COPY gamedb/history /app/gamedb/history
+COPY gamedb/integrated /app/gamedb/integrated
 COPY gamedb/rdb /app/gamedb/rdb
 COPY reference /app/reference
 COPY derive.yml /app/derive.yml
