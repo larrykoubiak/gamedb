@@ -48,7 +48,8 @@ items AS (
         facts.dump_modifications,
         facts.dump_statuses,
         media.items AS media,
-        signature.sha1_set_digest AS preferred_release_signature
+        CASE WHEN arcade.release_id IS NOT NULL THEN jsonb_build_object('complete',(arcade.plan->>'complete')::boolean,'emulationStatus',arcade.plan->>'emulationStatus','preferredCore',arcade.plan->>'preferredCore','compatibleEmulators',arcade.plan->'compatibleEmulators','issues',(SELECT jsonb_agg(DISTINCT issue->>'reason') FROM jsonb_array_elements(arcade.plan->'missing') issue)) END AS arcade,
+        coalesce(arcade.install_signature, signature.sha1_set_digest) AS preferred_release_signature
     FROM page
     LEFT JOIN LATERAL (
         SELECT
@@ -89,8 +90,10 @@ items AS (
         JOIN catalog.media asset ON asset.id = selected.media_id
         WHERE selected.software_id = page.software_id
     ) media ON true
-    JOIN catalog.release_content_signature signature
+    LEFT JOIN catalog.arcade_release arcade ON arcade.release_id = page.release_id
+    LEFT JOIN catalog.release_content_signature signature
       ON signature.release_id = page.release_id
+    WHERE signature.release_id IS NOT NULL OR arcade.release_id IS NOT NULL
 )
 SELECT jsonb_build_object(
     'total', (SELECT count(*) FROM chosen),
@@ -103,6 +106,7 @@ SELECT jsonb_build_object(
                 'title', items.title,
                 'identityBasis', items.identity_basis,
                 'score', items.score,
+                'arcade', items.arcade,
                 'breakdown', items.breakdown,
                 'topScoreTieCount', items.top_score_tie_count,
                 'tieBroken', items.tie_broken,

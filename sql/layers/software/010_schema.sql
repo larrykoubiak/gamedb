@@ -133,7 +133,7 @@ CREATE TEMP TABLE _software_release_evidence (
     software_id bigint NOT NULL,
     release_id bigint NOT NULL,
     evidence_type text NOT NULL CHECK (evidence_type IN (
-        'exact_legacy_sha1', 'parent_clone_sha1',
+        'exact_legacy_sha1', 'parent_clone_sha1', 'arcade_family',
         'translation_member_title', 'anchored_title', 'manual_override',
         'manual_content_correction'
     )),

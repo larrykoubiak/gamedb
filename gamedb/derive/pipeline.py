@@ -18,6 +18,7 @@ from .extractors.release_assemble import ReleaseAssembler
 from .extractors.system_extract import SystemExtractor
 from .extractors.translation_member_title_extract import TranslationMemberTitleExtractor
 from .schema_manager import DerivedSchemaManager
+from .extractors.arcade_extract import ArcadeExtractor
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -59,6 +60,7 @@ class DerivationPipeline:
             "archive_path_extract": self._paths,
             "archive_name_extract": self._names,
             "release_assemble": self._releases,
+            "arcade_extract": self._arcade,
         }
         unknown = {
             layer.extractor for layer in self.layers
@@ -143,3 +145,7 @@ class DerivationPipeline:
 
     def _releases(self):
         return ReleaseAssembler().execute(self.engine)
+
+    def _arcade(self):
+        with self.engine.begin() as connection:
+            return f"releases={ArcadeExtractor().execute(connection):,}"

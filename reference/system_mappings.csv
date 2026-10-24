@@ -597,3 +597,5 @@ English Translations,English Translations,Sharp X68000,Sharp,X68000,alias,Maybe-
 English Translations,English Translations,SNK Neo Geo Pocket Color,SNK,Neo Geo Pocket Color,alias,Maybe-Intro DAT system name.
 English Translations,English Translations,Sony PlayStation 2,Sony,PlayStation 2,alias,Maybe-Intro DAT system name.
 English Translations,English Translations,Sony PlayStation,Sony,PlayStation,alias,Maybe-Intro DAT system name.
+MAME,Various,Arcade,Various,Arcade,reviewed,MAME arcade classification; hardware and emulator are separate.
+FBNeo,Various,Arcade,Various,Arcade,reviewed,FBNeo arcade definitions share the Arcade system.

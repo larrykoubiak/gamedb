@@ -259,8 +259,12 @@ class MediaCatalogBuilder:
                         "Duplicate canonical system in Libretro mapping: "
                         f"{system[0]} / {system[1]}"
                     )
-                folder_systems[folder].append(system)
-                system_folders[system] = folder
+                folders = tuple(part.strip() for part in folder.split("|"))
+                if not all(folders):
+                    raise ValueError("Blank thumbnail folder")
+                for entry in folders:
+                    folder_systems[entry].append(system)
+                system_folders[system] = folders
         if not system_folders:
             raise ValueError(f"Empty Libretro system mapping: {mapping_path}")
         return folder_systems, system_folders
@@ -372,6 +376,22 @@ class MediaCatalogBuilder:
                 )
 
         exact_names = set()
+        # Arcade thumbnails use full machine descriptions, including revisions.
+        for release_id, release in releases.items():
+            for folder in system_folders.get(release.system, ()):
+                if folder not in ("MAME", "FBNeo - Arcade Games"):
+                    continue
+                stem = release.title.translate(BAD_CHARS)
+                assets = images.get(folder, {}).get(stem, ())
+                if not assets:
+                    continue
+                exact_names.add((folder, stem))
+                basis = ("preferred_release_exact" if release.preferred
+                         else "software_release_exact")
+                for asset in assets:
+                    consider(release.software_id, asset, basis, release.regions,
+                             release_id, release.score)
+
         package_query = text("""
             SELECT membership.release_id, package.archive_name
             FROM catalog.release_package membership
@@ -383,24 +403,22 @@ class MediaCatalogBuilder:
                 release = releases.get(release_id)
                 if release is None:
                     continue
-                folder = system_folders.get(release.system)
-                if folder is None:
-                    continue
-                stem = os.path.splitext(archive_name)[0]
-                matched_stem = stem if stem in images[folder] else stem.translate(BAD_CHARS)
-                assets = images[folder].get(matched_stem)
-                if not assets:
-                    continue
-                exact_names.add((folder, matched_stem))
-                basis = (
-                    "preferred_release_exact" if release.preferred
-                    else "software_release_exact"
-                )
-                for asset in assets:
-                    consider(
-                        release.software_id, asset, basis, release.regions,
-                        release_id, release.score,
+                for folder in system_folders.get(release.system, ()):
+                    stem = os.path.splitext(archive_name)[0]
+                    matched_stem = stem if stem in images[folder] else stem.translate(BAD_CHARS)
+                    assets = images[folder].get(matched_stem)
+                    if not assets:
+                        continue
+                    exact_names.add((folder, matched_stem))
+                    basis = (
+                        "preferred_release_exact" if release.preferred
+                        else "software_release_exact"
                     )
+                    for asset in assets:
+                        consider(
+                            release.software_id, asset, basis, release.regions,
+                            release_id, release.score,
+                        )
 
         extractor = ArchiveNameExtractor()
         parsed_names = 0

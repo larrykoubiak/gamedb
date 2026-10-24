@@ -5,6 +5,7 @@ from __future__ import annotations
 from sqlalchemy import text
 from sqlalchemy.engine import Engine
 
+from gamedb.arcade.schema import metadata as arcade_metadata
 from .schema import metadata
 from gamedb.integrated.schema import metadata as integrated_metadata
 
@@ -19,6 +20,7 @@ class DerivedSchemaManager:
         with self.engine.begin() as connection:
             connection.execute(text("CREATE SCHEMA IF NOT EXISTS staging"))
             integrated_metadata.create_all(connection)
+            arcade_metadata.create_all(connection)
             connection.execute(text("DROP SCHEMA IF EXISTS catalog CASCADE"))
             connection.execute(text("DROP SCHEMA IF EXISTS derived CASCADE"))
             connection.execute(text("DROP SCHEMA IF EXISTS ref CASCADE"))

@@ -83,6 +83,17 @@ INSERT INTO app.app_user (username)
 VALUES ('default')
 ON CONFLICT (username) DO NOTHING;
 
+-- Readiness is a ranking tier, not a huge negative preference score.
+-- Remove only unchanged seeds; explicit user customizations remain durable.
+DELETE FROM app.user_preference p USING app.app_user u
+WHERE p.user_id=u.id AND u.username='default'
+  AND p.system_manufacturer='Various' AND p.system_name='Arcade'
+  AND p.match_operator='equals'
+  AND ((p.fact_key='install_status' AND p.fact_value='incomplete' AND p.score=-10000
+        AND p.description='Demote incomplete arcade installations')
+    OR (p.fact_key='emulation_status' AND p.fact_value='preliminary' AND p.score=-5000
+        AND p.description='Demote unsupported arcade machines'));
+
 INSERT INTO app.user_preference (
     user_id, fact_key, match_operator, fact_value, score, description,
     system_manufacturer, system_name
@@ -92,6 +103,7 @@ SELECT u.id, seed.fact_key, seed.match_operator, seed.fact_value,
 FROM app.app_user u
 CROSS JOIN (
     VALUES
+        ('emulator', 'equals', 'FBNeo', 200, 'Prefer FBNeo arcade packages', 'Various', 'Arcade'),
         ('language', 'equals', 'en', 40, 'Prefer explicit English releases', NULL, NULL),
         ('region', 'equals', 'US', 100, 'Prefer US releases', NULL, NULL),
         ('release_iteration', 'latest', NULL, 20, 'Prefer the latest explicit version or revision within software', NULL, NULL),

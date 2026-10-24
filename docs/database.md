@@ -197,3 +197,40 @@ unique legacy SHA-1 assignments and unambiguous Parent/Clone relationships;
 external mappings, synonyms, and manual reviews remain candidates for later
 reconciliation. Rerunning
 `gamedb import-history` atomically refreshes only the history-owned tables.
+
+## Arcade machine definitions and installation plans
+
+`staging.arcade_source` records a versioned MAME listxml/classification input pair
+and its hashes, together with explicit RomVault ROM/CHD DAT bindings.
+`staging.arcade_machine` retains machine definitions, including parent/clone,
+ROM-parent, device, BIOS, disk, sample and driver information. These inputs
+survive derivation and catalog rebuilds.
+
+The final `arcade` derivation layer emits ordinary source releases plus
+`derived.arcade_release`, whose installation plan resolves the machine's
+requirements against the matching version's inventory. A machine can have a
+release even when all of its ROMs live in a parent archive. Shared dependencies
+are not ordinary release-package memberships; the plan retains their physical
+locations and required members explicitly. CHD content hashes and physical file
+hashes remain distinct.
+
+`catalog.arcade_release` publishes this plan for consumers. Its install signature
+identifies a versioned machine definition, and is deliberately separate from
+`catalog.release_content_signature`: neither a split archive nor a shared chip
+establishes complete arcade software identity. MAME families use attributed
+`parent_clone` software identities with `arcade_family` evidence. Support-only
+BIOS/device packages remain inventory, and computer/console machines are excluded
+from the Arcade catalog by the imported classification DAT.
+
+The API validates physical availability before exposing a complete installation.
+A streaming ZIP64 bundle preserves ROM ZIPs and puts selected CHDs in the selected
+machine's directory. Missing dependencies produce an incomplete manifest and
+HTTP 409 for bundle requests. Emulator support status is independent of content
+completeness. See the README for the import command and API contract.
+
+`staging.arcade_samples` retains a version-matched FBNeo samples DAT, its hash
+and inventory DAT path. Sample dependencies resolve against `staging.rv_files`
+CRC/size records and retain inventory SHA-1 values for installation verification.
+Plans place sample ZIPs under `system/fbneo/samples`, with `systemDirectory=system`.
+The samples refresh updates derived and published plans plus install-status facts;
+rerun scoring afterward to include newly complete packages in preferred selection.

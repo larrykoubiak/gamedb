@@ -36,7 +36,7 @@ class NameDerivation:
                             archive_name.c.id,
                             archive_name.c.romset,
                             archive_name.c.archive_name,
-                        ).order_by(archive_name.c.id)
+                        ).where(archive_name.c.romset.not_in(("MAME", "FBNeo"))).order_by(archive_name.c.id)
                     )
                     for row in rows:
                         visited += 1

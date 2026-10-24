@@ -5,7 +5,7 @@ from __future__ import annotations
 import sys
 
 
-HELP = """usage: gamedb {derive,parse-name,import-history,import-integrated,import-rdb,rebuild,promote-corrections,serve} ...
+HELP = """usage: gamedb {derive,parse-name,import-history,import-integrated,import-rdb,import-arcade,rebuild,promote-corrections,serve} ...
 
 GameDB commands:
   derive       Build or selectively refresh the stable derived schema.
@@ -47,6 +47,10 @@ def main(argv=None) -> int:
         from gamedb.integrated.__main__ import main as integrated_main
 
         return integrated_main(remaining)
+    if command == "import-arcade":
+        from gamedb.arcade.__main__ import main as arcade_main
+
+        return arcade_main(remaining)
     if command == "import-rdb":
         from gamedb.rdb.__main__ import main as rdb_main
 

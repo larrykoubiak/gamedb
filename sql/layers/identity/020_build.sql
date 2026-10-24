@@ -25,6 +25,7 @@ SELECT
 FROM package_owner owner
 JOIN catalog.package_file file ON file.package_id = owner.package_id
 WHERE lower(file.file_name) !~ '\.pok$'
+  AND NOT EXISTS (SELECT 1 FROM catalog.arcade_release a WHERE a.release_id=owner.release_id)
 GROUP BY owner.package_id, owner.release_id
 HAVING bool_and(file.sha1_hex IS NOT NULL)
 ORDER BY owner.package_id;

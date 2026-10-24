@@ -143,7 +143,7 @@ FROM derived.package package
 JOIN derived.dat dat ON dat.id = package.dat_id
 JOIN derived.archive_name archive ON archive.id = package.archive_name_id
 LEFT JOIN derived.package_path path ON path.package_id = package.id
-WHERE EXISTS (
+WHERE dat.romset IN ('MAME','FBNeo') OR EXISTS (
     SELECT 1 FROM derived.source_release_package membership
     WHERE membership.package_id = package.id
 )
@@ -186,3 +186,20 @@ JOIN catalog.release release
  AND release.source_group_ordinal = membership.source_group_ordinal
 ORDER BY release.id, membership.media_sequence NULLS LAST,
     membership.media_part, membership.media_side, membership.package_id;
+
+CREATE TABLE catalog.arcade_release (
+    release_id bigint PRIMARY KEY REFERENCES catalog.release(id) ON DELETE CASCADE,
+    source_key text NOT NULL,
+    shortname text NOT NULL,
+    family text NOT NULL,
+    version text NOT NULL,
+    install_signature text NOT NULL UNIQUE,
+    plan jsonb NOT NULL
+);
+INSERT INTO catalog.arcade_release
+SELECT r.id, a.source_key, a.shortname, a.family, a.version, a.install_signature, a.plan
+FROM derived.arcade_release a JOIN catalog.release r
+ON r.source_dat_id=a.dat_id AND r.source_group_ordinal=a.group_ordinal;
+UPDATE catalog.release r SET display_title=a.description
+FROM derived.arcade_release a
+WHERE r.source_dat_id=a.dat_id AND r.source_group_ordinal=a.group_ordinal;

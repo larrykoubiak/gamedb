@@ -314,3 +314,22 @@ Index("derived_file_sha1_idx", file.c.sha1_hex, postgresql_where=file.c.sha1_hex
 Index("derived_translation_member_title_idx", translation_member_title.c.title_text)
 Index("derived_record_title_idx", record.c.title_text)
 Index("derived_assertion_key_value_idx", assertion.c.assertion_key, assertion.c.assertion_value)
+
+# Arcade interpretation is machine-scoped and independent of physical ZIP names.
+arcade_release = Table(
+    'arcade_release', metadata,
+    Column('dat_id', BigInteger, primary_key=True),
+    Column('group_ordinal', Integer, primary_key=True),
+    Column('source_key', Text, nullable=False),
+    Column('shortname', Text, nullable=False),
+    Column('family', Text, nullable=False),
+    Column('description', Text, nullable=False),
+    Column('version', Text, nullable=False),
+    Column('install_signature', Text, nullable=False, unique=True),
+    Column('plan', JSONB, nullable=False),
+    ForeignKeyConstraint(['dat_id', 'group_ordinal'],
+                         ['derived.source_release.dat_id', 'derived.source_release.group_ordinal'], ondelete='CASCADE'),
+    schema='derived',
+)
+
+Index("derived_release_package_record_idx", source_release_package.c.archive_name_id, source_release_package.c.record_index)

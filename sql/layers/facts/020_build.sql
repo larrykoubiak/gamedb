@@ -49,3 +49,15 @@ JOIN catalog.release_fact fact
  AND fact.fact_value = assertion.assertion_value
  AND fact.origin = 'source_tag'
 ORDER BY fact.id, membership.id, assertion.id;
+
+INSERT INTO catalog.release_fact (release_id,fact_key,fact_value,origin,confidence)
+SELECT a.release_id, v.key, v.value, 'catalog', 'computed'
+FROM catalog.arcade_release a CROSS JOIN LATERAL (VALUES
+    ('emulator',split_part(a.source_key,':',1)), ('emulator_version',a.version), ('machine',a.shortname),
+    ('install_status',CASE WHEN (a.plan->>'complete')::boolean THEN 'complete' ELSE 'incomplete' END),
+    ('emulation_status',a.plan->>'emulationStatus')
+) v(key,value);
+
+INSERT INTO catalog.release_fact (release_id,fact_key,fact_value,origin,confidence)
+SELECT a.release_id, f->>'key', f->>'value', 'catalog', 'computed'
+FROM catalog.arcade_release a CROSS JOIN LATERAL jsonb_array_elements(a.plan->'facts') f;

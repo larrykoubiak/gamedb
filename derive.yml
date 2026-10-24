@@ -56,3 +56,9 @@ layers:
     extractor: release_assemble
     reads: [derived.package, derived.record, derived.media_part]
     writes: [derived.source_release, derived.source_release_package]
+
+  - name: arcade
+    description: Resolve versioned MAME families and complete installation dependencies.
+    extractor: arcade_extract
+    reads: [staging.arcade_source, staging.arcade_machine, derived.file, derived.package_path]
+    writes: [derived.record, derived.source_release, derived.source_release_package, derived.arcade_release]

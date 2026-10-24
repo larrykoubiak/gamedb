@@ -4,13 +4,32 @@ import unittest
 from unittest.mock import MagicMock, patch
 
 from gamedb.catalog.media import (
+    Asset,
     MediaCatalogBuilder,
+    Release,
     ThumbnailPathIndex,
     region_compatibility,
 )
 
 
 class MediaSelectionTests(unittest.TestCase):
+    def test_mame_matches_full_description_with_revision_and_escaped_colon(self):
+        builder = MediaCatalogBuilder(
+            MagicMock(), Path("."), Path("/missing"), Path("/missing-index")
+        )
+        system = ("Various", "Arcade")
+        title = "Area 51: Site 4 (HD Rev 2.01, September 7, 1998)"
+        stem = title.replace(":", "_")
+        asset = Asset(f"MAME/Named_Snaps/{stem}.png", "MAME", stem + ".png", "snap", 0)
+        releases = {7: Release(3, system, title, frozenset(), 100, True)}
+        choices = builder._select(
+            {"MAME": {stem: [asset]}}, {"MAME": [system]},
+            {system: ("MAME",)}, releases, {3: frozenset()}, {},
+        )
+        self.assertEqual(choices[(3, "snap")].asset, asset)
+        self.assertEqual(choices[(3, "snap")].source_release_id, 7)
+        self.assertEqual(choices[(3, "snap")].basis, "preferred_release_exact")
+
     def test_regions_are_strong_match_evidence(self):
         self.assertEqual(
             region_compatibility(frozenset({"USA"}), frozenset({"USA"})),

@@ -78,7 +78,8 @@ END;
 $$;
 
 CREATE TEMP TABLE _software_excluded_release ON COMMIT DROP AS
-SELECT DISTINCT release_id FROM _software_override_match;
+SELECT DISTINCT release_id FROM _software_override_match
+UNION SELECT release_id FROM catalog.arcade_release;
 
 -- Strongest seed: a current release whose matching historical files all point
 -- to exactly one immutable legacy software record.
@@ -551,6 +552,29 @@ LEFT JOIN LATERAL (
 ) external ON true
 WHERE review.review_decision IN ('accepted', 'rejected')
 ORDER BY review.row_number;
+
+-- Versioned emulator families are explicit source evidence, never shared-ROM identity.
+INSERT INTO catalog.software (
+    system_id, preferred_title_id, display_name, identity_basis,
+    source_snapshot_key, source_group_key
+)
+SELECT t.system_id, min(t.id), min(t.display_title), 'parent_clone', a.plan->>'identitySource', a.plan->>'identityFamily'
+FROM catalog.arcade_release a JOIN catalog.release r ON r.id=a.release_id
+JOIN catalog.title t ON t.id=r.title_id
+WHERE NOT EXISTS (SELECT 1 FROM _software_override_match o WHERE o.release_id=a.release_id)
+GROUP BY t.system_id, a.plan->>'identitySource', a.plan->>'identityFamily';
+INSERT INTO catalog.software_release
+SELECT a.release_id, s.id, 'parent_clone', 1
+FROM catalog.arcade_release a JOIN catalog.software s
+ON s.identity_basis='parent_clone' AND s.source_snapshot_key=a.plan->>'identitySource' AND s.source_group_key=a.plan->>'identityFamily'
+WHERE NOT EXISTS (SELECT 1 FROM _software_override_match o WHERE o.release_id=a.release_id);
+INSERT INTO _software_release_evidence (
+    software_id, release_id, evidence_type, source_snapshot_key, source_record_key, details
+)
+SELECT sr.software_id, a.release_id, 'arcade_family', a.source_key, a.shortname,
+    jsonb_build_object('family',a.family,'version',a.version)
+FROM catalog.arcade_release a JOIN catalog.software_release sr ON sr.release_id=a.release_id
+WHERE NOT EXISTS (SELECT 1 FROM _software_override_match o WHERE o.release_id=a.release_id);
 
 -- Every remaining release gets an explicit unresolved title fallback.
 INSERT INTO catalog.software (

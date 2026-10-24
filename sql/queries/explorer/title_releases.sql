@@ -8,13 +8,16 @@ WITH scored AS MATERIALIZED (
         release.display_title AS source_title,
         membership.assignment_basis,
         membership.evidence_match_count,
-        signature.sha1_set_digest AS release_content_signature
+        signature.sha1_set_digest AS release_content_signature,
+        arcade.install_signature AS arcade_install_signature,
+        CASE WHEN arcade.release_id IS NOT NULL THEN jsonb_build_object('complete',(arcade.plan->>'complete')::boolean,'emulationStatus',arcade.plan->>'emulationStatus','preferredCore',arcade.plan->>'preferredCore','compatibleEmulators',arcade.plan->'compatibleEmulators','issues',(SELECT jsonb_agg(DISTINCT issue->>'reason') FROM jsonb_array_elements(arcade.plan->'missing') issue)) END AS arcade
     FROM app.user_release_score score
     JOIN app.app_user user_account ON user_account.id = score.user_id
     JOIN catalog.release release ON release.id = score.release_id
     JOIN catalog.software_release membership
       ON membership.release_id = score.release_id
      AND membership.software_id = score.software_id
+    LEFT JOIN catalog.arcade_release arcade ON arcade.release_id = score.release_id
     LEFT JOIN catalog.release_content_signature signature
       ON signature.release_id = score.release_id
     JOIN app.user_preferred_release preferred
@@ -90,9 +93,11 @@ SELECT coalesce(jsonb_agg(
     jsonb_build_object(
         'sourceTitle', release_rows.source_title,
         'releaseContentSignature', release_rows.release_content_signature,
+        'installSignature', coalesce(release_rows.arcade_install_signature, release_rows.release_content_signature),
         'assignmentBasis', release_rows.assignment_basis,
         'evidenceMatchCount', release_rows.evidence_match_count,
         'score', release_rows.score,
+        'arcade', release_rows.arcade,
         'rank', release_rows.rank_within_software,
         'breakdown', release_rows.breakdown,
         'selected', release_rows.selected,

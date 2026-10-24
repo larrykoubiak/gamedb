@@ -7,6 +7,7 @@ import re
 from sqlalchemy import bindparam, insert, text
 from sqlalchemy.engine import Connection
 
+from gamedb.arcade.schema import metadata as arcade_metadata
 from ..models import SourceDat
 from ..parser.config import FORMATS
 from ..schema import dat_source
@@ -36,6 +37,15 @@ class DatExtractor:
         sources = [
             self._parse(row.dat_root_full_name, row.dat_name) for row in rows
         ]
+        arcade_metadata.create_all(connection)
+        arcade_rows = connection.execute(text("""
+            SELECT DISTINCT rf.dat_root_full_name, rf.dat_name, src.version, split_part(src.source_key, ':', 1) AS emulator
+            FROM staging.arcade_source src JOIN staging.rv_files rf
+            ON rf.dat_root_full_name IN (src.rom_dat_path, src.chd_dat_path)
+            ORDER BY rf.dat_root_full_name
+        """))
+        sources.extend(SourceDat(row.dat_root_full_name, row.dat_name, row.emulator,
+                                 "Various", "Arcade", (row.version,)) for row in arcade_rows)
         integrated = connection.execute(text("""
             SELECT DISTINCT source_manufacturer, source_system
             FROM staging.integrated_package

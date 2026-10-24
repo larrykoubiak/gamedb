@@ -100,6 +100,29 @@ function values(values) {
   return values?.length ? values.join(", ") : "—";
 }
 
+function appendArcadeStatus(parent, arcade) {
+  if (!arcade) return;
+  const status = document.createElement("div");
+  const issueLabels = {
+    undumped: "DAT lists undumped components",
+    missing_sample_inventory: "Sample packaging not implemented",
+    missing_sample_definition: "Sample definition missing",
+    missing_hdd_definition: "HDD packaging not implemented",
+    missing_inventory: "Inventory file missing",
+    missing_hash: "Definition lacks a required hash",
+  };
+  const issues = (arcade.issues || []).map(reason => issueLabels[reason] || reason);
+  const readiness = arcade.complete ? "Complete package" : (issues.join(" · ") || "Package unavailable");
+  status.textContent = `${readiness} · ${arcade.emulationStatus}`;
+  parent.append(status);
+  const cores = (arcade.compatibleEmulators || []).map(item => item.name);
+  if (cores.length) {
+    const compatible = document.createElement("div");
+    compatible.textContent = `DAT validated: ${cores.join(", ")}`;
+    parent.append(compatible);
+  }
+}
+
 function scoreText(score) {
   return score > 0 ? `+${score}` : String(score);
 }
@@ -354,6 +377,7 @@ function renderReleaseDetails(container, releases, facts, softwareId, media, tit
       line.textContent = `${label}: ${factValues.join(", ")}`;
       facts.append(line);
     }
+    appendArcadeStatus(facts, release.arcade);
     if (!facts.childElementCount) facts.textContent = "—";
     row.append(facts);
 
@@ -369,6 +393,7 @@ function renderReleaseDetails(container, releases, facts, softwareId, media, tit
     summary.textContent = "Breakdown";
     explanation.append(summary);
     appendBreakdown(explanation, release.breakdown);
+    if (release.arcade) explanation.append("Completeness and emulation status rank before preference score.");
     score.append(explanation);
     row.append(score);
 
@@ -593,6 +618,7 @@ function renderGames(payload) {
     source.className = "source-badge";
     source.textContent = game.sourceCollection || "Unknown";
     sourceCell.append(source);
+    appendArcadeStatus(sourceCell, game.arcade);
     row.append(sourceCell);
 
     const scoreCell = document.createElement("td");
@@ -609,6 +635,7 @@ function renderGames(payload) {
     summary.textContent = "Breakdown";
     details.append(summary);
     appendBreakdown(details, game.breakdown);
+    if (game.arcade) details.append("Completeness and emulation status rank before preference score.");
     scoreCell.append(details);
     row.append(scoreCell);
 

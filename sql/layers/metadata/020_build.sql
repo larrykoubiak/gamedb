@@ -17,6 +17,7 @@ JOIN catalog.release_package release_package
 JOIN catalog.software_release software_release
   ON software_release.release_id = release_package.release_id
 WHERE package_file.sha1_hex IS NOT NULL
+  AND NOT EXISTS (SELECT 1 FROM catalog.arcade_release a WHERE a.release_id=release_package.release_id)
 GROUP BY package_file.sha1_hex
 HAVING count(DISTINCT software_release.software_id) = 1;
 

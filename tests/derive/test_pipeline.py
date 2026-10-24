@@ -16,7 +16,7 @@ class DerivationPipelineTests(unittest.TestCase):
             self.pipeline.layer_names,
             (
                 "schema", "reference", "dat", "system", "inventory",
-                "translation_titles", "paths", "names", "releases",
+                "translation_titles", "paths", "names", "releases", "arcade",
             ),
         )
 
@@ -29,7 +29,7 @@ class DerivationPipelineTests(unittest.TestCase):
         selected = self.pipeline.select(from_layer="names")
 
         self.assertEqual(
-            tuple(layer.name for layer in selected), ("names", "releases")
+            tuple(layer.name for layer in selected), ("names", "releases", "arcade")
         )
 
     def test_plan_exposes_reads_and_writes(self):

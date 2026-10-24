@@ -2,7 +2,7 @@
 -- validate the scoring layer, and commit the transaction opened by
 -- 010_preferences.sql.
 -- release_id is only a deterministic fallback when several releases share the
--- best score; consumers can use top_score_tie_count to surface that ambiguity.
+-- best readiness tier and score; consumers can use top_score_tie_count to surface that ambiguity.
 CREATE VIEW app.user_preferred_release AS
 WITH top_ranked AS (
     SELECT score.*,
@@ -85,7 +85,7 @@ COMMENT ON TABLE app.user_score_generation IS
 COMMENT ON TABLE app.user_release_score IS
     'Disposable per-user release scores, ranks within software identities and explanations.';
 COMMENT ON VIEW app.user_preferred_release IS
-    'One highest-scoring release per user/software, with deterministic tie metadata.';
+    'One preferred release per user/software; arcade readiness precedes preference score, with deterministic tie metadata.';
 
 ANALYZE app.app_user;
 ANALYZE app.user_preference;

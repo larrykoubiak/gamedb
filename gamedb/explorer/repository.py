@@ -217,6 +217,11 @@ class CatalogRepository:
         payload = self.client.query(self.system_software_facts_sql(system_id))
         return payload if isinstance(payload, dict) else {}
 
+    def arcade_install_manifest(self, release_signature: str):
+        return self.client.query(SqlTemplate(QUERY_DIRECTORY / "arcade_install_manifest.sql").render(
+            release_signature=quote_sql_text(self._signature(release_signature, "release_signature"))
+        ))
+
     def install_manifest(self, release_signature: str):
         return self.client.query(self.install_manifest_sql(release_signature))
 

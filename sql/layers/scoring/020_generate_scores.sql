@@ -269,9 +269,14 @@ ranked AS (
     SELECT scored.*,
         dense_rank() OVER (
             PARTITION BY user_id, software_id
-            ORDER BY score DESC
+            ORDER BY
+                CASE WHEN arcade.release_id IS NULL OR (arcade.plan->>'complete')::boolean
+                     THEN 0 ELSE 1 END,
+                CASE WHEN arcade.plan->>'emulationStatus'='preliminary' THEN 1 ELSE 0 END,
+                score DESC
         ) AS rank_within_software
     FROM scored
+    LEFT JOIN catalog.arcade_release arcade ON arcade.release_id=scored.release_id
 )
 INSERT INTO app.user_release_score (
     user_id, software_id, release_id, score, rank_within_software, breakdown

@@ -14,3 +14,6 @@ data/media/
 
 .DS_Store
 .~lock.*#
+
+# Retained large arcade metadata inputs
+data/arcade/

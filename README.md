@@ -269,3 +269,94 @@ resolve to exactly one current release or the software transaction stops.
 
 Connection settings live in the ignored `.env`; exported shell values take
 precedence.
+
+## Arcade import and installation
+
+MAME uses versioned machine definitions alongside RomVault storage inventory.
+Import matching full `-listxml` output and an arcade-only classification DAT:
+
+```sh
+python -m gamedb import-arcade data/arcade/mame-0.285/XML/mame_724_0.285.xml \
+  --arcade-dat 'data/arcade/mame-0.285/DATs/MAME 0.285 (arcade).dat' \
+  --rom-dat-path 'DatRoot/Arcade/MAME/ROMs/MAME 0.285 ROMs (split).xml' \
+  --chd-dat-path 'DatRoot/Arcade/MAME/CHDs/MAME 0.285 CHDs (merged).xml'
+python -m gamedb derive --from-layer reference
+python -m gamedb rebuild
+```
+
+The importer retains metadata and input SHA-256s in `staging.arcade_*`; replaying
+identical inputs is a no-op. One active version per emulator is currently supported;
+conflicting snapshots are rejected rather than mixing dependencies. Subsequent interpretation changes need only
+`derive --layers arcade` and a catalog rebuild. Inputs under `data/arcade/` are
+ignored by Git. Runtime containers need the retained database metadata, not the
+original XML files. The deriver and explorer include the arcade module.
+
+Arcade appears under `Various / Arcade`. MAME's explicit parent/clone families
+form software identities; BIOS/device definitions remain support inventory.
+Console/computer machines are excluded using the classification DAT. FBNeo uses
+its arcade-only DAT and the same canonical Arcade system. FinalBurn Alpha is not imported.
+Shared chips and split ZIP contents are excluded from automatic game identity
+and Libretro metadata matching.
+
+The authenticated `GET /api/v1/releases/{signature}/install-manifest` endpoint
+returns schema version 2 for arcade. Its signature identifies the versioned
+machine definition (`signatureKind=machine_definition`), not a complete ZIP
+content signature. The software snapshot's `preferredReleaseSignature` and the
+release listing's `installSignature` provide this value. Ordinary release
+manifests remain schema version 1.
+
+A complete arcade manifest includes a `bundleUrl`:
+`GET /api/v1/releases/{signature}/install-bundle`. Extract the ZIP64 bundle into
+an installation directory and launch `launchPath` with `preferredCore`.
+`compatibleEmulators` records core filenames, DAT versions, input SHA-256s, and
+`dat_validated` evidence. This validates requirements, not actual emulation.
+The bundle contains `gamedb-install.json`, `roms/<machine>.zip`, any required
+parent/BIOS/device ZIPs, and only the selected disks at
+`roms/<machine>/<disk>.chd`. CHDs stay outside the ROM ZIPs. Fully inherited and
+disk-only variants receive an empty launch ZIP while their content remains in
+the dependency ZIPs. Bundles stream without recompressing CHDs or making a
+multi-GB temporary copy; generated bundle downloads do not support resumption.
+
+Completeness is separate from MAME's reported emulation status. Missing ROMs,
+undumped requirements, samples, missing host files or changed ZIP member
+size/CRC produce an incomplete manifest and block bundle downloads with HTTP
+409. This first MAME implementation has no samples inventory importer, so
+sample-dependent machines explicitly remain incomplete. Disk requirements use
+RomVault's `alt_sha1_hex` content hash; `sha1_hex` remains the physical file hash.
+Manifest checks validate file presence, CHD size and ZIP member size/CRC against
+the inventory; they do not rehash large CHDs on every request or prove emulator
+execution. Keep the target core compatible with the manifest's emulator definitions.
+
+Import FBNeo after its ROM inventory has been exported to `rv_files`:
+
+```sh
+python -m gamedb import-arcade '/path/to/FinalBurn Neo v1.0.0.02 (ClrMame Pro XML).dat' \
+  --emulator FBNeo \
+  --rom-dat-path 'DatRoot/Arcade/FinalBurn Neo/roms/arcade/FinalBurn Neo v1.0.0.02 (ClrMame Pro XML).dat'
+python -m gamedb derive --from-layer reference
+python -m gamedb rebuild
+```
+
+FBNeo DAT CRC/size declarations resolve against version-scoped inventory. Cross-emulator
+family links require equality of the complete game-ROM SHA-1/size sets, excluding
+BIOS contents, and an unambiguous MAME family. Partial shared content never links
+families. A single unchanged bundle is marked compatible with both only if it
+satisfies both dependency graphs, hashes and member names with the same launch name.
+Arcade ranks complete packages first, then non-preliminary emulation, then user
+preference scores. The default FBNeo preference is +200; readiness does not distort
+the visible score with huge negative penalties. MAME remains the fallback.
+
+Both MAME and FBNeo thumbnail directories are searched. Neo Geo is retained as
+`hardware=SNK Neo Geo`, independently of the canonical Arcade system and selected
+core. AES/MVS mode selection is not inferred from shared ROM hashes; the launcher
+currently retains the user's core BIOS settings. FBNeo Killer Instinct HDD sets
+remain incomplete until their external HDD requirements are imported explicitly.
+
+FBNeo sample DATs can be imported with `--samples-dat` and
+`--samples-dat-path` alongside the ROM import. Samples resolve through `rv_files`
+using the sample DAT CRC/size and retained inventory SHA-1. Bundles include
+`system/fbneo/samples/<set>.zip`; `systemDirectory` tells the launcher to use that
+private directory through a per-game RetroArch append config. To update an
+existing catalog without rebuilding identities, add `--refresh-samples`, then
+run `python -m gamedb.catalog rebuild --layers scoring`. MAME samples still
+require a separate importer; FinalBurn Alpha inventory is not treated as FBNeo.

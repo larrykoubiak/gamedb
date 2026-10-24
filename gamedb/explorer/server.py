@@ -14,6 +14,7 @@ import subprocess
 import threading
 from urllib.parse import parse_qs, quote, unquote, urlparse
 
+from gamedb.arcade.bundle import prepare_manifest, public_manifest, write_bundle
 from gamedb.config import ProjectEnvironment
 from gamedb.explorer.repository import CatalogRepository
 
@@ -25,6 +26,7 @@ SYSTEM_TITLES = re.compile(r"/api/systems/([0-9]+)/titles")
 SOFTWARE_RELEASES = re.compile(r"/api/software/([0-9]+)/releases")
 SOFTWARE_FACTS = re.compile(r"/api/software/([0-9]+)/facts")
 INSTALL_MANIFEST = re.compile(r"/api/v1/releases/([0-9a-f]{32})/install-manifest")
+INSTALL_BUNDLE = re.compile(r"/api/v1/releases/([0-9a-f]{32})/install-bundle")
 PACKAGE_DOWNLOAD = re.compile(
     r"/api/v1/releases/([0-9a-f]{32})/packages/([0-9a-f]{32})/download"
 )
@@ -166,6 +168,10 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             match = INSTALL_MANIFEST.fullmatch(parsed.path)
             if match:
                 return self._install_manifest_response(match.group(1))
+
+            match = INSTALL_BUNDLE.fullmatch(parsed.path)
+            if match:
+                return self._install_bundle_response(match.group(1))
 
             match = PACKAGE_DOWNLOAD.fullmatch(parsed.path)
             if match:
@@ -387,6 +393,9 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         return result
 
     def _install_manifest_response(self, release_signature):
+        arcade = self.server.repository.arcade_install_manifest(release_signature)
+        if arcade is not None:
+            return self._json_response(public_manifest(prepare_manifest(arcade, self.server.rom_root)))
         manifest = self._load_install_manifest(release_signature)
         if manifest is None:
             return self.send_error(HTTPStatus.NOT_FOUND)
@@ -397,6 +406,28 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             for item in manifest["packages"]
         ]
         return self._json_response(public)
+
+    def _install_bundle_response(self, release_signature):
+        source = self.server.repository.arcade_install_manifest(release_signature)
+        if source is None:
+            return self.send_error(HTTPStatus.NOT_FOUND)
+        manifest = prepare_manifest(source, self.server.rom_root)
+        if not manifest['complete']:
+            return self._json_response(public_manifest(manifest), HTTPStatus.CONFLICT)
+        # Generated bundles stream without a temporary multi-GB CHD copy.
+        # Resumable downloads remain supported by the existing individual-package API.
+        self.send_response(HTTPStatus.OK)
+        self.send_header('Content-Type', 'application/zip')
+        self.send_header('Content-Disposition', f"attachment; filename*=UTF-8''{quote(manifest['shortname'])}-arcade.zip")
+        self.send_header('Cache-Control', 'private, no-store')
+        self.send_header('X-Content-Type-Options', 'nosniff')
+        self.send_header('Connection', 'close')
+        self.end_headers()
+        self.close_connection = True
+        try:
+            write_bundle(self.wfile, manifest)
+        except (BrokenPipeError, ConnectionResetError, OSError):
+            self.log_message('arcade bundle interrupted release=%s', release_signature)
 
     def _package_response(self, release_signature, package_signature):
         manifest = self._load_install_manifest(release_signature)
