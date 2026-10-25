@@ -84,6 +84,32 @@ class BuildMediaStep(WorkflowStep):
         ).execute()
 
 
+class BuildMetadataStep(WorkflowStep):
+    """Build both metadata providers in one database transaction."""
+
+    def execute(self, context: WorkflowContext) -> None:
+        from gamedb.database import create_database_engine
+        from gamedb.catalog.metadata import build_metadata
+
+        engine = create_database_engine()
+        try:
+            print(build_metadata(engine, context.project_root), flush=True)
+        finally:
+            engine.dispose()
+
+
+class BuildLaunchBoxMediaStep(WorkflowStep):
+    def execute(self, context: WorkflowContext) -> None:
+        import os
+        from gamedb.database import create_database_engine
+        from gamedb.catalog.launchbox_media import fill_launchbox_media
+        engine = create_database_engine()
+        try:
+            print(fill_launchbox_media(engine, os.environ.get("GAMEDB_MEDIA_USERNAME", "default")), flush=True)
+        finally:
+            engine.dispose()
+
+
 class SqlBatchProgress:
     """Report concrete SQL-file progress for a single transactional batch."""
 
@@ -111,6 +137,10 @@ class StepFactory:
     def build(config: StepConfig) -> WorkflowStep:
         if config.type == "run_sql":
             return RunSqlStep(config.name, config.files)
+        if config.type == "build_metadata":
+            return BuildMetadataStep(config.name)
+        if config.type == "build_launchbox_media":
+            return BuildLaunchBoxMediaStep(config.name)
         if config.type == "build_media":
             return BuildMediaStep(config.name)
         raise ValueError(f"Cannot build pipeline step {config.name}: {config.type}")

@@ -48,6 +48,7 @@ services:
           # Preserve the origin name used by the existing managed tunnel.
           - web
     volumes:
+      - ./data/media/launchbox:/data/media/launchbox
       - ./data/libretro-thumbnails:/data/libretro-thumbnails:ro
       - /mnt/synology/roms:/mnt/synology/roms:ro
       - /mnt/synology/backup/games/Undub:/mnt/synology/backup/games/Undub:ro

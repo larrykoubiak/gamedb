@@ -3,7 +3,7 @@ CREATE INDEX software_fact_key_rank_idx
         software_id, fact_key, value_rank, matched_content_count DESC, id
     );
 CREATE INDEX software_fact_value_idx
-    ON catalog.software_fact(fact_key, fact_value, software_id);
+    ON catalog.software_fact(fact_key, md5(fact_value), software_id);
 CREATE INDEX software_fact_evidence_source_idx
     ON catalog.software_fact_evidence(source_file_id, source_row_number);
 CREATE INDEX software_fact_evidence_sha1_idx
@@ -42,9 +42,9 @@ END;
 $$;
 
 COMMENT ON TABLE catalog.software_fact IS
-    'Attributed software-level metadata candidates projected through unambiguous exact content.';
+    'Attributed software-level metadata candidates from exact-content Libretro and selected LaunchBox title matches.';
 COMMENT ON TABLE catalog.software_fact_evidence IS
-    'Libretro RDB source records and SHA-1 matches supporting each software fact.';
+    'Source rows and matching evidence: source_file_id is an RDB file ID or LaunchBox import ID, scoped by fact provider.';
 
 ANALYZE catalog.software_fact;
 ANALYZE catalog.software_fact_evidence;

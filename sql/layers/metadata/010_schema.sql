@@ -1,5 +1,5 @@
 -- Project external metadata only after software identity is stable. The raw
--- RDB snapshot remains staging-owned; this layer publishes attributed values.
+-- source snapshots remain staging-owned; this layer publishes attributed values.
 \set ON_ERROR_STOP on
 BEGIN;
 
@@ -16,18 +16,24 @@ CREATE TABLE catalog.software_fact (
         'tags', 'origin'
     )),
     fact_value text NOT NULL CHECK (btrim(fact_value) <> ''),
-    source_provider text NOT NULL CHECK (source_provider = 'libretro-database'),
+    source_provider text NOT NULL CHECK (source_provider IN ('libretro-database', 'launchbox')),
     source_revision text NOT NULL
-        CHECK (source_revision ~ '^[0-9a-f]{40}$'),
+        CHECK ((source_provider = 'libretro-database' AND source_revision ~ '^[0-9a-f]{40}$')
+            OR (source_provider = 'launchbox' AND source_revision ~ '^[0-9a-f]{64}$')),
     source_record_count bigint NOT NULL CHECK (source_record_count > 0),
-    matched_content_count bigint NOT NULL CHECK (matched_content_count > 0),
+    matched_content_count bigint NOT NULL CHECK (matched_content_count >= 0),
     value_rank bigint NOT NULL CHECK (value_rank > 0),
     value_count bigint NOT NULL CHECK (value_count > 0),
-    UNIQUE (
-        software_id, fact_key, fact_value, source_provider, source_revision
-    ),
     CHECK (matched_content_count <= source_record_count),
+    CHECK ((source_provider = 'launchbox' AND matched_content_count = 0)
+        OR (source_provider = 'libretro-database' AND matched_content_count > 0)),
     CHECK (value_rank <= value_count)
+);
+
+-- Long descriptions exceed PostgreSQL's B-tree entry limit. Keep complete
+-- values in the table and use a compact equality key for duplicate detection.
+CREATE UNIQUE INDEX software_fact_source_value_idx ON catalog.software_fact (
+    software_id, fact_key, md5(fact_value), source_provider, source_revision
 );
 
 CREATE TABLE catalog.software_fact_evidence (
@@ -37,7 +43,12 @@ CREATE TABLE catalog.software_fact_evidence (
     source_row_number bigint NOT NULL CHECK (source_row_number > 0),
     source_database text NOT NULL CHECK (btrim(source_database) <> ''),
     source_relative_path text NOT NULL CHECK (btrim(source_relative_path) <> ''),
-    matched_sha1 text NOT NULL CHECK (matched_sha1 ~ '^[0-9a-f]{40}$'),
+    matched_sha1 text CHECK (matched_sha1 ~ '^[0-9a-f]{40}$'),
+    match_method text NOT NULL DEFAULT 'exact_sha1'
+        CHECK (match_method IN ('exact_sha1', 'unique', 'resolved_shared', 'resolved_source')),
+    match_details jsonb NOT NULL DEFAULT '{}'::jsonb,
+    CHECK ((match_method = 'exact_sha1' AND matched_sha1 IS NOT NULL)
+        OR (match_method <> 'exact_sha1' AND matched_sha1 IS NULL)),
     PRIMARY KEY (software_fact_id, source_file_id, source_row_number)
 );
 

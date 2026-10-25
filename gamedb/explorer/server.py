@@ -17,6 +17,7 @@ from urllib.parse import parse_qs, quote, unquote, urlparse
 from gamedb.arcade.bundle import prepare_manifest, public_manifest, write_bundle
 from gamedb.config import ProjectEnvironment
 from gamedb.explorer.repository import CatalogRepository
+from gamedb.launchbox.image_cache import LaunchBoxImageCache, valid_filename
 
 
 ASSET_DIRECTORY = Path(__file__).with_name("assets")
@@ -351,7 +352,20 @@ class ExplorerHandler(BaseHTTPRequestHandler):
 
     def _media_response(self, encoded_path):
         try:
-            path = _resolve_media_path(self.server.thumbnail_root, encoded_path)
+            decoded = unquote(encoded_path)
+            if decoded.startswith("launchbox/"):
+                parts = decoded.split("/")
+                if len(parts) != 3 or parts[1] not in {"boxart", "snap", "title", "logo"} or not valid_filename(parts[2]):
+                    raise ValueError("Invalid LaunchBox media path")
+                asset = self.server.repository.launchbox_image(decoded)
+                if not asset:
+                    return self.send_error(HTTPStatus.NOT_FOUND)
+                try:
+                    path = self.server.launchbox_cache.get(asset["fileName"], asset["crc32"])
+                except (OSError, ValueError):
+                    return self.send_error(HTTPStatus.BAD_GATEWAY, "LaunchBox image unavailable")
+            else:
+                path = _resolve_media_path(self.server.thumbnail_root, encoded_path)
             handle = path.open("rb")
         except (OSError, ValueError):
             return self.send_error(HTTPStatus.NOT_FOUND)
@@ -514,6 +528,9 @@ class ExplorerServer(ThreadingHTTPServer):
         self.corrections_enabled = _corrections_enabled()
         self.thumbnail_root = Path(os.environ.get(
             "GAMEDB_LIBRETRO_THUMBNAILS", "/data/libretro-thumbnails"
+        ))
+        self.launchbox_cache = LaunchBoxImageCache(os.environ.get(
+            "GAMEDB_LAUNCHBOX_IMAGE_CACHE", "/data/media/launchbox"
         ))
         self.rom_root = Path(os.environ.get("GAMEDB_ROM_ROOT", "/data/roms"))
 

@@ -145,6 +145,34 @@ counts and `value_rank` make the leading candidate explicit while preserving
 the alternatives. Release-bound RDB fields such as region, serial, date and
 ratings are deliberately excluded from this software-level table.
 
+LaunchBox source snapshots remain staging-owned. The ZIP checksum,
+source URL/path, import time and record counts live in `staging.launchbox_import`.
+`staging.launchbox_record` stores Game, GameAlternateName, Platform and
+PlatformAlternateName source records, including their top-level XML row numbers,
+raw fields and XML. Imports are atomic and identical ZIPs are idempotent.
+
+`python -m gamedb import-launchbox report --output data/launchbox/report-001`
+reads a consistent catalog/source snapshot in a read-only transaction, then
+writes coverage and candidate evidence to local files. Reporting does not
+promote facts or alter identity assignments.
+
+The metadata workflow now executes a single Python-owned transaction for RDB
+and LaunchBox projection. Selected LaunchBox links publish software facts with
+`source_provider='launchbox'`, a 64-character ZIP SHA-256 source revision and
+`matched_content_count=0`. Exact-content RDB claims retain their original
+40-character revision and nonzero hash counts, and rank ahead of title matches.
+
+In `catalog.software_fact_evidence`, `source_file_id` is provider-scoped: an RDB
+file ID for Libretro, or a LaunchBox import ID. LaunchBox evidence names
+`Metadata.xml` and its source row, leaves `matched_sha1` null, and records
+`match_method` plus JSON `match_details` with game ID, candidate IDs, source and
+catalog titles, corroborating facts, matcher version and platform-map checksum.
+The explorer query includes match method, LaunchBox ID and resolution basis.
+All links are recalculated on rebuild; LaunchBox is excluded from matching
+corroboration to prevent self-reinforcing decisions. Full description text is
+retained; value indexes use compact MD5 keys to avoid PostgreSQL B-tree size
+limits for long descriptions.
+
 `app.software_correction` likewise survives rebuilds and is the explorer's
 working decision queue. Subjects and targets use complete release-content
 signatures plus canonical system names rather than disposable numeric IDs.
@@ -234,3 +262,23 @@ CRC/size records and retain inventory SHA-1 values for installation verification
 Plans place sample ZIPs under `system/fbneo/samples`, with `systemDirectory=system`.
 The samples refresh updates derived and published plans plus install-status facts;
 rerun scoring afterward to include newly complete packages in preferred selection.
+
+
+## LaunchBox image references and fallback media
+
+`staging.launchbox_image` stores each GameImage source row, including game ID,
+filename, type, region and raw fields (including CRC32). A row in
+`staging.launchbox_image_import` marks a complete image import for a source ZIP.
+No image binaries are stored in PostgreSQL.
+
+The fallback joins published LaunchBox fact evidence to the exact source
+snapshot/game ID, then fills empty software media slots. LaunchBox media records
+carry source revision, XML row number, game ID and CRC32; software associations
+use `launchbox_metadata` and record preferred release/region compatibility.
+Libretro records and associations are unchanged. Repeating the fallback replaces
+only its own projection, in one transaction.
+
+`catalog.media_generation` stores a deterministic signature of selected media
+paths, providers and matching attributes. This enters API catalog revisions so
+artwork-only changes invalidate cached snapshots. Provider-local asset IDs are
+not included, keeping identical media rebuilds cache-stable.

@@ -17,3 +17,6 @@ data/media/
 
 # Retained large arcade metadata inputs
 data/arcade/
+
+# LaunchBox snapshots and candidate reports
+data/launchbox/

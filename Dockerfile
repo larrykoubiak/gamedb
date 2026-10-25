@@ -18,6 +18,8 @@ COPY gamedb/arcade /app/gamedb/arcade
 COPY gamedb/history /app/gamedb/history
 COPY gamedb/integrated /app/gamedb/integrated
 COPY gamedb/rdb /app/gamedb/rdb
+COPY gamedb/catalog/__init__.py gamedb/catalog/media.py gamedb/catalog/launchbox_media.py /app/gamedb/catalog/
+COPY gamedb/launchbox /app/gamedb/launchbox
 COPY reference /app/reference
 COPY derive.yml /app/derive.yml
 
@@ -31,6 +33,7 @@ RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
 
 COPY gamedb/__init__.py gamedb/config.py gamedb/database.py /app/gamedb/
 COPY gamedb/catalog /app/gamedb/catalog
+COPY gamedb/launchbox /app/gamedb/launchbox
 COPY gamedb/derive /app/gamedb/derive
 COPY gamedb/arcade /app/gamedb/arcade
 COPY reference /app/reference
@@ -47,6 +50,7 @@ RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
 
 COPY gamedb/__init__.py gamedb/config.py gamedb/database.py /app/gamedb/
 COPY gamedb/catalog /app/gamedb/catalog
+COPY gamedb/launchbox /app/gamedb/launchbox
 COPY gamedb/derive /app/gamedb/derive
 COPY gamedb/arcade /app/gamedb/arcade
 COPY gamedb/explorer /app/gamedb/explorer

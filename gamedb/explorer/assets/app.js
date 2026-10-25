@@ -267,7 +267,9 @@ function renderSoftwareFacts(container, facts) {
       const databases = candidate.sourceDatabases.length
         ? ` · ${candidate.sourceDatabases.join(", ")}`
         : "";
-      evidence.textContent = `${candidate.matchedContentCount} ${contentLabel} · ${candidate.sourceRecordCount} ${recordLabel}${databases}`;
+      evidence.textContent = candidate.sourceProvider === "launchbox"
+        ? `LaunchBox · title/platform match${databases}`
+        : `${candidate.matchedContentCount} ${contentLabel} · ${candidate.sourceRecordCount} ${recordLabel}${databases}`;
       evidence.title = `${candidate.sourceProvider} revision ${candidate.sourceRevision}`;
       item.append(evidence);
       definition.append(item);

@@ -582,3 +582,20 @@ class MediaCatalogBuilder:
                 ANALYZE catalog.media;
                 ANALYZE catalog.software_media;
             """))
+            refresh_media_revision(connection)
+
+
+def refresh_media_revision(connection):
+    """Materialize a content signature so artwork-only rebuilds invalidate ETags."""
+    connection.execute(text('''
+        CREATE TABLE IF NOT EXISTS catalog.media_generation (
+            singleton boolean PRIMARY KEY DEFAULT true CHECK (singleton),
+            signature text NOT NULL
+        );
+        INSERT INTO catalog.media_generation(singleton,signature)
+        SELECT true,md5(coalesce(string_agg(
+            md5(concat_ws('|',sm.software_id,sm.media_kind,m.provider,m.relative_path,
+                sm.match_basis,sm.region_match)), '' ORDER BY sm.software_id,sm.media_kind),''))
+        FROM catalog.software_media sm JOIN catalog.media m ON m.id=sm.media_id
+        ON CONFLICT (singleton) DO UPDATE SET signature=excluded.signature;
+    '''))

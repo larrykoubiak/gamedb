@@ -9,13 +9,19 @@ WITH fact_rows AS (
         fact.source_record_count,
         fact.source_provider,
         fact.source_revision,
-        coalesce(evidence.databases, '[]'::jsonb) AS source_databases
+        coalesce(evidence.databases, '[]'::jsonb) AS source_databases,
+        coalesce(evidence.matches, '[]'::jsonb) AS matches
     FROM catalog.software_fact fact
     JOIN catalog.software software ON software.id = fact.software_id
     LEFT JOIN LATERAL (
-        SELECT jsonb_agg(source_database ORDER BY source_database) AS databases
+        SELECT jsonb_agg(DISTINCT source_database ORDER BY source_database) AS databases,
+            jsonb_agg(DISTINCT jsonb_build_object(
+                'method', match_method,
+                'databaseId', match_details -> 'database_id',
+                'basis', match_details -> 'resolution_basis'
+            )) AS matches
         FROM (
-            SELECT DISTINCT source_database
+            SELECT DISTINCT source_database, match_method, match_details
             FROM catalog.software_fact_evidence
             WHERE software_fact_id = fact.id
         ) sources
@@ -34,7 +40,8 @@ WITH fact_rows AS (
                 'sourceRecordCount', source_record_count,
                 'sourceProvider', source_provider,
                 'sourceRevision', source_revision,
-                'sourceDatabases', source_databases
+                'sourceDatabases', source_databases,
+                'matches', matches
             ) ORDER BY value_rank, lower(fact_value), fact_value
         ) AS values
     FROM fact_rows

@@ -3,7 +3,7 @@ SELECT jsonb_build_object(
         user_account.username || '|' ||
         generation.generated_at::text || '|' ||
         generation.preference_signature || '|' ||
-        metadata.signature
+        metadata.signature || '|' || coalesce(media.signature, '')
     )
 )
 FROM app.user_score_generation generation
@@ -19,4 +19,5 @@ JOIN LATERAL (
         GROUP BY source_provider, source_revision
     ) revisions
 ) metadata ON true
+LEFT JOIN catalog.media_generation media ON media.singleton
 WHERE user_account.username = __USERNAME__;

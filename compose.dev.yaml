@@ -14,6 +14,7 @@ services:
     ports:
       - "${GAMEDB_EXPLORER_PORT:-8082}:8000"
     volumes:
+      - ./data/media/launchbox:/data/media/launchbox
       - /mnt/synology/roms:/mnt/synology/roms:ro
       - /mnt/synology/backup/games/Undub:/mnt/synology/backup/games/Undub:ro
 

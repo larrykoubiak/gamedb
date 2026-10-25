@@ -210,6 +210,12 @@ class CatalogRepository:
     def software_releases(self, software_id: int):
         return self.client.query(self.software_releases_sql(software_id))
 
+    def launchbox_image(self, relative_path):
+        return self.client.query("""
+            SELECT jsonb_build_object('fileName',file_name,'crc32',source_crc32)
+            FROM catalog.media WHERE provider='launchbox' AND relative_path=
+        """ + quote_sql_text(relative_path) + " LIMIT 1")
+
     def software_facts(self, software_id: int):
         return self.client.query(self.software_facts_sql(software_id))
 

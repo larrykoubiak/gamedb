@@ -10,6 +10,10 @@ These version-controlled files are the reviewed inputs to derivation:
   canonical system has no credible dedicated directory. `shared` rows reuse a
   combined Libretro directory; `broad` rows are reviewed namespace-level
   approximations rather than equivalent hardware names.
+- `launchbox_platforms.csv` explicitly maps canonical systems to LaunchBox
+  platform names for the candidate coverage report. Missing systems are left
+  unmapped; hardware families and unrelated PC operating systems are not
+  guessed from names at report time.
 - `source_formats.json` declares collection identity and filename grammars.
 - `tag_vocabulary.json` supplies maintained parsing/classification values.
 - `tag_categories.csv` documents classification output categories.

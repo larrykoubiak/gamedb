@@ -43,14 +43,10 @@ layers:
           - sql/layers/software/090_indexes_and_validation.sql
 
   - name: metadata
-    description: Project exact-content Libretro claims into attributed software facts.
+    description: Project attributed Libretro and selected LaunchBox metadata.
     steps:
       - name: build_software_facts
-        type: run_sql
-        files:
-          - sql/layers/metadata/010_schema.sql
-          - sql/layers/metadata/020_build.sql
-          - sql/layers/metadata/090_indexes_and_validation.sql
+        type: build_metadata
 
   - name: scoring
     description: Apply user preferences and rank releases within software.
@@ -63,7 +59,9 @@ layers:
           - sql/layers/scoring/030_preferred_releases.sql
 
   - name: media
-    description: Match Libretro artwork to software using exact names, regions, and parsed titles.
+    description: Select Libretro artwork and fill remaining gaps using LaunchBox metadata links.
     steps:
       - name: build_software_media
         type: build_media
+      - name: fill_launchbox_artwork
+        type: build_launchbox_media

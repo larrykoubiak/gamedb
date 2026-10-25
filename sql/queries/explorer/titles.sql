@@ -82,6 +82,7 @@ items AS (
             selected.media_kind,
             jsonb_build_object(
                 'path', asset.relative_path,
+                'provider', asset.provider,
                 'matchBasis', selected.match_basis,
                 'regionMatch', selected.region_match
             ) ORDER BY selected.media_kind

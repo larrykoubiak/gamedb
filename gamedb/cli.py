@@ -5,7 +5,7 @@ from __future__ import annotations
 import sys
 
 
-HELP = """usage: gamedb {derive,parse-name,import-history,import-integrated,import-rdb,import-arcade,rebuild,promote-corrections,serve} ...
+HELP = """usage: gamedb {derive,parse-name,import-history,import-integrated,import-rdb,import-launchbox,import-arcade,rebuild,promote-corrections,serve} ...
 
 GameDB commands:
   derive       Build or selectively refresh the stable derived schema.
@@ -13,6 +13,7 @@ GameDB commands:
   import-history  Snapshot recovered identity sources into staging.
   import-integrated  Snapshot reviewed non-RomVault ZIP packages into staging.
   import-rdb    Snapshot compiled Libretro databases into staging.
+  import-launchbox  Snapshot LaunchBox metadata and report matching coverage.
   rebuild      Project catalog, identity, and scores from derived data.
   promote-corrections  Move reviewed working corrections into reference.
   serve        Run the explorer.
@@ -55,6 +56,10 @@ def main(argv=None) -> int:
         from gamedb.rdb.__main__ import main as rdb_main
 
         return rdb_main(remaining)
+    if command == "import-launchbox":
+        from gamedb.launchbox.__main__ import main as launchbox_main
+
+        return launchbox_main(remaining)
     if command == "rebuild":
         from gamedb.catalog.cli import main as catalog_main
 

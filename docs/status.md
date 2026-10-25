@@ -222,6 +222,75 @@ backed by 112,593 row-level evidence records. Conflicting developer, publisher,
 genre and other software-oriented values remain visible as ranked candidates;
 release-bound date, region, serial and ratings claims are not promoted there.
 
+## LaunchBox candidate coverage
+
+The first LaunchBox experiment imports the official Metadata.zip by SHA-256
+(`d195ae79bf456b6d97fd8ab76a80147f53015e10a7a22253b23ce0781fd53d04`).
+It contains 189,895 games and 71,478 alternate-name records (71,048 distinct
+name/game pairs), with 126 explicit canonical-platform mappings.
+
+Against the current 348,968 software identities, the conservative platform/title
+report finds 53,987 unique candidates, 10,101 catalog-side ambiguities, 585
+source-side ambiguities, 250,750 unmatched titles and 33,545 software identities
+on unmapped platforms. Unique candidates could fill 46,524 missing descriptions,
+37,292 developers, 37,773 publishers, 39,360 genres and 37,130 player counts.
+These are potential field additions, not verified/promoted metadata.
+
+The importer preserves source games, alternate names and platforms in
+`staging.launchbox_*`. The read-only report uses exact normalized names, including
+aliases, and blocks collisions in either direction within a canonical system.
+The first report is under ignored `data/launchbox/report-reviewed/`; rerun the
+report after a catalog rebuild. That initial report did not publish LaunchBox facts.
+
+A second evidence pass (`platform-title-evidence-v2`) resolves 2,764 of the
+10,686 ambiguous entries: 2,636 shared enrichment links and 128 source choices.
+It requires date/company corroboration beyond a title match and leaves known
+conflicts or tied evidence unresolved. The remaining ambiguities are 7,542 on
+the catalog side and 380 on the source side. Catalog identities are not merged.
+Together with the original unique matches, 56,751 entries now have selected
+metadata candidates, potentially filling 48,841 descriptions, 39,247 developers,
+39,810 publishers, 41,422 genres and 39,123 player counts. The current evidence
+report is `data/launchbox/report-evidence-v2/`; its CSV records original status,
+selected LaunchBox ID, supporting facts and the resolution rule for each entry.
+
+The metadata layer now publishes these selections atomically with RDB facts.
+The live rebuild contains 264,366 LaunchBox facts for 56,572 software identities
+(179 selected records have none of the projected fields), alongside the unchanged
+76,658 RDB facts for 19,999 identities. LaunchBox adds 54,439 descriptions,
+51,774 developers, 52,837 publishers, 54,820 genres and 50,496 player-count
+claims, including claims overlapping existing RDB fields. Exact-content RDB
+claims rank first; competing values and source evidence remain available.
+
+All published LaunchBox links were checked against the evidence-v2 report and
+their staging source rows. The longest imported description (4,920 characters)
+was verified untruncated, and both explorer fact queries return the new metadata.
+The explorer assets label LaunchBox separately from RDB/hash-based evidence.
+
+## LaunchBox artwork fallback
+
+The retained ZIP contributes 1,343,990 image references in
+`staging.launchbox_image`, with a completion marker per snapshot. The fallback
+uses published LaunchBox game links and fills only missing Libretro media slots.
+It added 74,119 associations across 34,873 software identities: 17,123 box fronts,
+13,877 gameplay screenshots, 20,912 title screens and 22,207 clear logos.
+All 180,218 existing Libretro associations were preserved exactly, verified with
+a before/after selection signature.
+
+LaunchBox image paths use `/media/launchbox/<kind>/<filename>`. The explorer
+fetches only selected filenames from the fixed LaunchBox image origin, verifies
+image bytes and CRC32, and persists successful downloads in the mounted
+`data/media/launchbox` cache. Downloads are on demand; the whole image collection
+is not mirrored. Source revision, game ID, XML row and CRC remain in catalog
+media provenance. Launcher snapshots also include the media provider.
+
+The media layer reapplies this fallback after Libretro selection. The
+`catalog.media_generation` signature invalidates API ETags when artwork changes;
+repeating an identical fallback preserves the signature. The explorer was rebuilt
+and deployed on `larry-tower`, preserving the existing environment, database and
+ROM mounts. Live checks passed for all four image types, the persistent cache,
+API media provenance and conditional ETags. The Game Boy snapshot includes 364
+LaunchBox artwork links. The full local test suite passes 168 tests.
+
 ## Rebuild workflow
 
 There are now two explicit manifests. `derive.yml` orders schema, reference,

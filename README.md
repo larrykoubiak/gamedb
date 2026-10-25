@@ -192,6 +192,93 @@ rather than a fuzzy title match. Remaining releases are grouped by exact title.
 Importing history alone never changes the consumer catalog. Rebuild with
 `python -m gamedb rebuild --from-layer software`.
 
+## LaunchBox metadata
+
+Download and retain a source snapshot, then import it into staging:
+
+```sh
+mkdir -p data/launchbox
+curl -fL --retry 2 https://gamesdb.launchbox-app.com/Metadata.zip \
+  -o data/launchbox/Metadata.zip
+python -m gamedb import-launchbox import data/launchbox/Metadata.zip
+python -m gamedb import-launchbox report --output data/launchbox/report-001
+```
+
+The ZIP SHA-256 identifies the snapshot; importing identical bytes again is a
+no-op. Game, alternate-name and platform records retain their source fields and
+XML in `staging.launchbox_record`. Image references can be imported separately
+with the commands below; emulator rows remain only in the retained ZIP.
+
+The report uses explicit `reference/launchbox_platforms.csv` mappings and exact
+normalized names, including source aliases and catalog member titles. It keeps
+numbers, accents and edition qualifiers; there is no fuzzy matching. A candidate
+is `unique` only when both the catalog software and LaunchBox game have a single
+counterpart within that canonical system. Ambiguous candidates get a second pass
+using existing release dates and publisher/developer facts. A literal primary
+title needs a matching year or company; an alias needs both. Known conflicting
+companies/years and tied evidence leave the candidate unresolved. Multiple
+catalog entries may receive `resolved_shared` enrichment links to the same game
+without merging their identities; other resolutions use `resolved_source`.
+These are evidence-backed candidates, not manually verified identity links.
+
+Each new output directory contains `summary.json` (coverage and missing-field
+counts), `matches.csv` (all software, statuses, titles, candidate/selected IDs, corroborating facts and resolution rules), and
+`matched_games.jsonl` (source fields and aliases for selected candidates). Reports
+record the source and mapping checksums. Use `--revision ZIP_SHA256` to select an
+older import and `--platform-map PATH` to test another map. Numeric software IDs
+are build-local, so regenerate the report after rebuilding the catalog.
+
+Import and report commands leave the catalog unchanged. To publish selected
+matches alongside the RDB metadata:
+
+```sh
+python -m gamedb rebuild --layers metadata
+```
+
+The metadata layer recalculates matches against the current catalog and publishes
+both providers atomically. It retains competing values, ranks SHA-1-backed RDB
+claims first, and gives LaunchBox claims zero matched content hashes. Evidence
+includes the LaunchBox game ID, source row, matcher version, mapping checksum,
+match method and corroborating facts. LaunchBox claims are never used to
+corroborate their own future matches. Unresolved candidates stay excluded, and
+software identities are not merged. Missing optional sources are supported.
+
+The importer and reporter are included in the deriver image; mount the ZIP/report
+directory when running them in a container. The metadata builder is included in
+the catalog-builder and explorer images.
+
+### LaunchBox artwork fallback
+
+After metadata has been published, import the image references from the same ZIP
+and fill missing artwork slots:
+
+```sh
+python -m gamedb import-launchbox images data/launchbox/Metadata.zip
+python -m gamedb import-launchbox media
+```
+
+The image import is atomic and idempotent. `staging.launchbox_image` retains all
+image references; only Box - Front, Screenshot - Gameplay, Screenshot - Game
+Title and Clear Logo are selected. Selection follows published LaunchBox game
+links, prefers artwork compatible with the preferred release's region, and
+fills only missing `boxart`, `snap`, `title` and `logo` slots. Existing Libretro
+choices are preserved. The regular media rebuild runs this fallback after
+Libretro selection, so the additions survive catalog rebuilds.
+
+Images are fetched on demand from `https://images.launchbox-app.com/`, verified
+against the source CRC32 when available, and cached under
+`GAMEDB_LAUNCHBOX_IMAGE_CACHE` (default `/data/media/launchbox`). Both Compose
+explorers mount a persistent writable `data/media/launchbox` directory. A failed
+download leaves no cache entry and can be retried. Only selected image filenames
+can be fetched through the server; there is no arbitrary remote-URL proxy.
+
+Launcher snapshots retain the existing media shape: `media.<kind>.path` is used
+under `/media/`, including `launchbox/<kind>/<filename>` paths. A `provider` field
+identifies the source. Artwork changes contribute to the catalog revision/ETag;
+clients should revalidate cached snapshots. The explorer image must be rebuilt
+when introducing the LaunchBox route; no launcher-specific image downloader is
+needed.
+
 ## Libretro database staging
 
 Keep a pinned upstream checkout beside the thumbnail checkout:
@@ -248,6 +335,28 @@ keys. A system snapshot returns every preferred software row for that system,
 including the preferred release content signature, selected artwork, and a
 `softwareFacts` array of ranked metadata candidates with source support. Both
 routes provide an ETag and honor `If-None-Match` with `304 Not Modified`.
+For launcher metadata, read `items[].softwareFacts` on the system snapshot.
+LaunchBox contributes `description`, `developer`, `publisher`, `genre` and
+`player_count` through the same structure as RDB facts:
+
+```json
+{"key": "genre", "values": [{"value": "Platform", "rank": 1,
+  "sourceProvider": "launchbox", "matchedContentCount": 0}]}
+```
+
+This abbreviated example omits provenance fields. `values` are ordered by rank
+(best first); RDB exact-content claims rank ahead of LaunchBox title matches.
+A simple launcher can display `values[0].value` for each key. Values are strings,
+including player counts, and missing fields are absent (or `softwareFacts` is
+empty). Identical values may appear from both providers; `candidateCount` counts
+source claims, not distinct texts. Keep provenance if presenting alternatives.
+`matches` includes the match method, LaunchBox `databaseId` and corroboration
+`basis` when available. `sourceRevision` identifies the source snapshot.
+
+The metadata source revision/count and artwork content signature contribute to
+`catalogRevision`, so metadata imports and artwork changes invalidate snapshot ETags. Revalidate with
+`If-None-Match` as usual; no per-game metadata requests are needed.
+
 Numeric database IDs remain present for compatibility but are rebuild-local;
 clients should persist the system key and release content signature instead.
 
