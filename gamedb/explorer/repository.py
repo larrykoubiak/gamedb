@@ -8,11 +8,32 @@ import re
 import subprocess
 
 from gamedb.config import PROJECT_ROOT
+from gamedb.explorer.cache import JsonResponseCache
 
 
 QUERY_DIRECTORY = PROJECT_ROOT / "sql" / "queries" / "explorer"
 UNRESOLVED_TOKEN = re.compile(r"__[A-Z][A-Z0-9_]*__")
 CONTENT_SIGNATURE = re.compile(r"[0-9a-f]{32}")
+METADATA_FILTER_KEYS = frozenset({
+    "developer", "publisher", "genre", "franchise", "player_count",
+    "enhancement_hardware", "rumble", "analog", "origin", "tags",
+})
+
+
+def validate_metadata_filters(filters: dict | None) -> dict[str, list[str]]:
+    if filters is None:
+        return {}
+    if not isinstance(filters, dict) or filters.keys() - METADATA_FILTER_KEYS:
+        raise ValueError("Unknown metadata filter")
+    result = {}
+    for key, values in filters.items():
+        if (not isinstance(values, list) or len(values) > 25
+                or any(not isinstance(value, str) or not value or len(value) > 1000
+                       for value in values)):
+            raise ValueError("Metadata filters require up to 25 nonempty text values per field")
+        if values:
+            result[key] = sorted(set(values))
+    return result
 
 
 def quote_sql_text(value: str) -> str:
@@ -33,14 +54,15 @@ class SqlTemplate:
 
     def render(self, **values: str | int) -> str:
         sql = self.path.read_text(encoding="utf-8")
-        for name, value in values.items():
-            sql = sql.replace(f"__{name.upper()}__", str(value))
-        unresolved = sorted(set(UNRESOLVED_TOKEN.findall(sql)))
+        bindings = {f"__{name.upper()}__": str(value) for name, value in values.items()}
+        unresolved = sorted(set(UNRESOLVED_TOKEN.findall(sql)) - bindings.keys())
         if unresolved:
             raise ValueError(
                 f"Unbound SQL token(s) in {self.path.name}: {', '.join(unresolved)}"
             )
-        return sql
+        # Substitute only tokens from the template itself. Literal user text
+        # and already-rendered SQL fragments must never be reinterpreted.
+        return UNRESOLVED_TOKEN.sub(lambda match: bindings[match.group()], sql)
 
 
 class PsqlJsonClient:
@@ -63,6 +85,7 @@ class CatalogRepository:
     def __init__(self, username: str, client: PsqlJsonClient | None = None):
         self.username = username
         self.client = client or PsqlJsonClient()
+        self.metadata_options_cache = JsonResponseCache()
 
     def systems_sql(self) -> str:
         return SqlTemplate(QUERY_DIRECTORY / "systems.sql").render(
@@ -75,14 +98,51 @@ class CatalogRepository:
         )
 
     def titles_sql(
-        self, system_id: int, limit: int, offset: int, title_filter: str = ""
+        self, system_id: int | None, limit: int, offset: int, title_filter: str = "",
+        metadata_filters: dict | None = None,
     ) -> str:
         return SqlTemplate(QUERY_DIRECTORY / "titles.sql").render(
-            username=quote_sql_text(self.username),
-            system_id=sql_integer(system_id, "system_id", 1),
+            software_scope=self.software_scope_sql(system_id, title_filter, metadata_filters),
             limit=sql_integer(limit, "limit", 1),
             offset=sql_integer(offset, "offset"),
+        )
+
+    def software_scope_sql(
+        self, system_id: int | None, title_filter: str = "",
+        metadata_filters: dict | None = None,
+    ) -> str:
+        predicates = []
+        for key, values in validate_metadata_filters(metadata_filters).items():
+            literals = ", ".join(quote_sql_text(value) for value in values)
+            digests = ", ".join(f"md5({quote_sql_text(value)})" for value in values)
+            predicates.append(f"""AND EXISTS (
+                SELECT 1 FROM catalog.software_fact filter_fact
+                WHERE filter_fact.software_id = software.id
+                  AND filter_fact.is_selected
+                  AND filter_fact.fact_key = {quote_sql_text(key)}
+                  AND md5(filter_fact.fact_value) IN ({digests})
+                  AND filter_fact.fact_value IN ({literals})
+            )""")
+        return SqlTemplate(QUERY_DIRECTORY / "software_scope.sql").render(
+            username=quote_sql_text(self.username),
+            system_id="NULL" if system_id is None else sql_integer(system_id, "system_id", 1),
             title_filter=quote_sql_text(title_filter),
+            metadata_predicates="\n".join(predicates),
+        )
+
+    def metadata_options_sql(
+        self, key: str, system_id: int | None = None, title_filter: str = "",
+        metadata_filters: dict | None = None, search: str = "",
+    ) -> str:
+        if key not in METADATA_FILTER_KEYS:
+            raise ValueError("Unknown metadata field")
+        filters = validate_metadata_filters(metadata_filters)
+        filters.pop(key, None)
+        filters = {field: filters[field] for field in sorted(filters)}
+        return SqlTemplate(QUERY_DIRECTORY / "metadata_options.sql").render(
+            software_scope=self.software_scope_sql(system_id, title_filter, filters),
+            fact_key=quote_sql_text(key),
+            option_search=quote_sql_text(search[:100]),
         )
 
     def software_releases_sql(self, software_id: int) -> str:
@@ -201,11 +261,18 @@ class CatalogRepository:
         }
 
     def titles(
-        self, system_id: int, limit: int, offset: int, title_filter: str = ""
+        self, system_id: int | None, limit: int, offset: int, title_filter: str = "",
+        metadata_filters: dict | None = None,
     ):
         return self.client.query(
-            self.titles_sql(system_id, limit, offset, title_filter)
+            self.titles_sql(system_id, limit, offset, title_filter, metadata_filters)
         )
+
+    def metadata_options(self, key, system_id=None, title_filter="", metadata_filters=None, search=""):
+        sql = self.metadata_options_sql(
+            key, system_id, title_filter, metadata_filters, search
+        )
+        return self.metadata_options_cache.get_or_load(sql, lambda: self.client.query(sql))
 
     def software_releases(self, software_id: int):
         return self.client.query(self.software_releases_sql(software_id))

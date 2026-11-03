@@ -160,7 +160,20 @@ The metadata workflow now executes a single Python-owned transaction for RDB
 and LaunchBox projection. Selected LaunchBox links publish software facts with
 `source_provider='launchbox'`, a 64-character ZIP SHA-256 source revision and
 `matched_content_count=0`. Exact-content RDB claims retain their original
-40-character revision and nonzero hash counts, and rank ahead of title matches.
+40-character revision and nonzero hash counts. `030_rank.sql` assigns preference
+scores of 100 to LaunchBox and 50 to RDB. Source preference applies per field;
+RDB supplies missing LaunchBox fields. `source_score` records that preference,
+and `is_selected` marks the preferred value. Support counts and then alphabetical
+value order break ties within a source. For genres, every tag from the preferred
+available source is selected. Both API fact queries expose `preferredValues`
+alongside all ranked claims with `sourceScore` and `selected`.
+
+Genre facts are additive tags: one software may have several genres. The
+builder splits LaunchBox semicolon lists and RDB spaced-slash lists, then
+canonicalizes explicit aliases from `reference/genre_aliases.csv`. Claims that
+collapse to the same name within a provider are aggregated with distinct source
+row/hash counts. The providers retain separate attributed claims for the same
+canonical name. Evidence retains the original strings in `original_genres`.
 
 In `catalog.software_fact_evidence`, `source_file_id` is provider-scoped: an RDB
 file ID for Libretro, or a LaunchBox import ID. LaunchBox evidence names

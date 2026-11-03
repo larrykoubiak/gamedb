@@ -20,11 +20,23 @@ from gamedb.explorer.server import (
 from gamedb.explorer.repository import (
     QUERY_DIRECTORY,
     CatalogRepository,
+    SqlTemplate,
     quote_sql_text,
 )
 
 
 class ExplorerTests(unittest.TestCase):
+    def test_sql_templates_do_not_reinterpret_tokens_in_bound_literals(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "query.sql"
+            path.write_text("SELECT __VALUE__ LIMIT __LIMIT__")
+            self.assertEqual(
+                SqlTemplate(path).render(value="'__LIMIT__ __UNKNOWN__'", limit=10),
+                "SELECT '__LIMIT__ __UNKNOWN__' LIMIT 10",
+            )
+            with self.assertRaisesRegex(ValueError, "__LIMIT__"):
+                SqlTemplate(path).render(value="'text'")
+
     def test_versioned_api_requires_an_exact_bearer_key(self):
         key = "a" * 43
 
@@ -59,6 +71,16 @@ class ExplorerTests(unittest.TestCase):
         self.assertIn("catalog.software_media", query)
         self.assertIn("'media', items.media", query)
 
+    def test_global_title_search_keeps_paging_aliases_and_platform_context(self):
+        query = CatalogRepository("default").titles_sql(None, 50, 100, "Bob's Game")
+        self.assertIn("NULL IS NULL OR software.system_id = NULL", query)
+        self.assertIn("LIMIT 50 OFFSET 100", query)
+        self.assertIn("lower('Bob''s Game')", query)
+        self.assertIn("lower(member_title.display_title)", query)
+        self.assertIn("'systemId', items.system_id", query)
+        self.assertIn("'systemName', items.system_name", query)
+        self.assertIn("user_account.username = 'default'", query)
+
     def test_media_paths_stay_below_the_thumbnail_root(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -76,7 +98,8 @@ class ExplorerTests(unittest.TestCase):
     def test_explorer_renders_catalog_artwork(self):
         script = (ASSET_DIRECTORY / "app.js").read_text(encoding="utf-8")
 
-        self.assertIn('["boxart", "title", "snap", "logo"]', script)
+        for kind in ("boxart", "title", "snap", "logo"):
+            self.assertIn(f'["{kind}", ', script)
         self.assertIn("/media/", script)
 
     def test_static_assets_are_packaged_with_the_module(self):
@@ -115,6 +138,7 @@ class ExplorerTests(unittest.TestCase):
         self.assertIn("app.user_preferred_release", query)
         self.assertIn("user_account.username = 'default'", query)
         self.assertIn("'key', systems.system_key", query)
+        self.assertIn("'category', systems.category", query)
 
     def test_catalog_snapshot_uses_scoring_generation_and_stable_system_key(self):
         repository = CatalogRepository("default")
@@ -150,7 +174,8 @@ class ExplorerTests(unittest.TestCase):
 
         script = (ASSET_DIRECTORY / "app.js").read_text(encoding="utf-8")
         self.assertIn("renderSoftwareFacts", script)
-        self.assertIn("candidate ${candidate.rank}/${candidate.candidateCount}", script)
+        self.assertIn("fact.preferredValues", script)
+        self.assertIn("preferredValues.has(source.value)", script)
         self.assertIn("/facts`", script)
 
     def test_launcher_snapshot_receives_software_facts(self):

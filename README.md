@@ -91,6 +91,59 @@ See [the database model](docs/database.md), [archive-name rules](docs/archive_na
 
 ## Explorer
 
+The explorer opens on **All platforms**. Search titles across the whole library,
+including alternate release titles, with a dedicated Platform column showing the system and manufacturer.
+Simple pixel-art and silhouette platform icons appear in that column and the system tree; bundled artwork uses
+explicit `reference/system_icons.csv` mappings and needs no remote image service.
+Unmapped systems retain a neutral icon and their names. Artwork attribution is
+available through the sidebar’s **Platform icon credits** link.
+Click a table thumbnail or an image in the artwork gallery to enlarge it in a
+modal. Close it with Escape, the close button, or a click on the backdrop; focus
+returns to the image button and the current search stays in place.
+Previous/next buttons and the left/right arrow keys cycle through the current
+game's available artwork, wrapping at either end. A counter shows the position;
+navigation is hidden when there is only one image.
+Choosing a system narrows the current search; **All platforms** widens it again
+without clearing the search text. Results remain paginated, and release details
+and corrections stay attached to each result's actual system. The explorer's
+`GET /api/titles?q=...&page=1&page_size=100` endpoint searches all platforms;
+`GET /api/systems/{id}/titles` keeps the same payload scoped to a system.
+
+Use the sidebar category selector to narrow the system tree to consoles,
+handhelds, computers, arcade, or other devices. It combines with the tree's text
+filter and leaves the current game search scope unchanged. Categories are explicit
+values in `reference/canonical_systems.csv` and appear as `category` in the systems
+API. See [system classification policies](docs/system_mapping.md) for hybrids and
+the rebuild commands needed to publish category changes.
+
+Searchable metadata filters sit beside the game search: genre, developer,
+publisher, franchise, players, enhancement hardware, rumble, analog, origin, and
+tags. Description is excluded. Select multiple values within a field to match any
+of them; different fields must all match. Filters use the selected metadata shown
+in game details, combine with title/alternate-title search, and persist through
+paging and platform changes. Active chips remove individual values; **Clear
+filters** resets metadata filters while keeping the title search.
+
+Filter choices and software counts follow the current platform, title search,
+and other fields; a field ignores its own selection so additional choices stay
+available. Large lists show the first 100 matching values and support searching.
+The title endpoints accept a `filters` query parameter containing a JSON object
+such as `{"genre":["Action","Adventure"],"developer":["Nintendo"]}`.
+`GET /api/metadata-options?key=genre` accepts the same `q` and `filters`, optional
+`system_id`, and a `search` term for finding values. This feature reads existing
+metadata and only requires an explorer image update.
+
+Metadata dropdown responses use a process-local cache: up to 256 entries and
+8 MiB of serialized queries/responses, expiring five minutes after each load.
+The key covers the user, field, platform, title search, other metadata filters,
+and value search. Equivalent filter ordering shares an entry, and a field's own
+selection is ignored just as it is in its options query. Concurrent identical
+requests share one database query; query failures are retried on the next request.
+Least recently used entries are evicted when either limit is reached. Correction
+rebuilds clear this cache, and explorer restarts start empty. External metadata or
+catalog rebuilds may leave dropdown choices/counts stale for up to five minutes;
+restart the explorer to refresh immediately. Game results remain uncached.
+
 There are two Compose entry points with deliberately different database
 ownership:
 
@@ -236,12 +289,22 @@ python -m gamedb rebuild --layers metadata
 ```
 
 The metadata layer recalculates matches against the current catalog and publishes
-both providers atomically. It retains competing values, ranks SHA-1-backed RDB
-claims first, and gives LaunchBox claims zero matched content hashes. Evidence
+both providers atomically. It retains source claims, prefers LaunchBox (score 100) over RDB
+(score 50) per metadata field, and gives LaunchBox claims zero matched content hashes. Evidence
 includes the LaunchBox game ID, source row, matcher version, mapping checksum,
 match method and corroborating facts. LaunchBox claims are never used to
 corroborate their own future matches. Unresolved candidates stay excluded, and
 software identities are not merged. Missing optional sources are supported.
+
+Genres are multi-valued tags. The metadata rebuild splits LaunchBox semicolon
+lists and RDB spaced-slash lists, then applies the explicit aliases in
+[`reference/genre_aliases.csv`](reference/genre_aliases.csv). For example,
+`Action; Role-Playing` becomes two tags, and `Role-playing (RPG)` shares the
+canonical name `Role-Playing`. Distinct subgenres remain separate. Equivalent
+claims use the same name across providers while retaining separate provenance;
+the original strings remain in evidence `match_details.original_genres` and raw
+staging records. Edit the alias file and rerun the metadata layer to revise the
+vocabulary; no source reimport is needed.
 
 The importer and reporter are included in the deriver image; mount the ZIP/report
 directory when running them in a container. The metadata builder is included in
@@ -340,13 +403,21 @@ LaunchBox contributes `description`, `developer`, `publisher`, `genre` and
 `player_count` through the same structure as RDB facts:
 
 ```json
-{"key": "genre", "values": [{"value": "Platform", "rank": 1,
-  "sourceProvider": "launchbox", "matchedContentCount": 0}]}
+{"key": "genre", "preferredValues": ["Platform"],
+ "values": [{"value": "Platform", "rank": 1, "sourceScore": 100,
+  "selected": true, "sourceProvider": "launchbox", "matchedContentCount": 0}]}
 ```
 
 This abbreviated example omits provenance fields. `values` are ordered by rank
-(best first); RDB exact-content claims rank ahead of LaunchBox title matches.
-A simple launcher can display `values[0].value` for each key. Values are strings,
+(best first); LaunchBox claims rank ahead of RDB. Read each field's
+`preferredValues` array for display: one selected value for ordinary fields,
+or all genre tags from the preferred available provider. RDB supplies a field
+when LaunchBox has no nonblank matched claim for it. Each entry in `values`
+includes `sourceScore` (LaunchBox 100, RDB 50) and `selected`; these scores are
+source preferences, not confidence percentages. Within RDB, content support,
+row support and then alphabetical order break ties. All source claims remain
+available for provenance, including agreements and disagreements. The explorer
+shows preferred values once, with evidence from any agreeing provider. Values are strings,
 including player counts, and missing fields are absent (or `softwareFacts` is
 empty). Identical values may appear from both providers; `candidateCount` counts
 source claims, not distinct texts. Keep provenance if presenting alternatives.

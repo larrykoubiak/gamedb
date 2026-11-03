@@ -38,6 +38,18 @@ BEGIN
         RAISE EXCEPTION '% software fact groups have invalid ranks or counts',
             invalid_count;
     END IF;
+    SELECT count(*) INTO invalid_count
+    FROM (
+        SELECT software_id, fact_key
+        FROM catalog.software_fact
+        GROUP BY software_id, fact_key
+        HAVING count(*) FILTER (WHERE is_selected) = 0
+           OR (fact_key <> 'genre' AND count(*) FILTER (WHERE is_selected) <> 1)
+           OR min(source_score) FILTER (WHERE is_selected) <> max(source_score)
+    ) invalid_selection;
+    IF invalid_count <> 0 THEN
+        RAISE EXCEPTION '% software fact groups have invalid preferred values', invalid_count;
+    END IF;
 END;
 $$;
 

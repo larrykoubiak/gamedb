@@ -16,6 +16,8 @@ canonical_system = Table(
     Column("id", BigInteger, primary_key=True, autoincrement=True),
     Column("manufacturer_name", Text, nullable=False),
     Column("system_name", Text, nullable=False),
+    Column("category", Text, nullable=False),
+    CheckConstraint("category IN ('console', 'handheld', 'computer', 'arcade', 'other')"),
     UniqueConstraint("manufacturer_name", "system_name"),
     schema="ref",
 )

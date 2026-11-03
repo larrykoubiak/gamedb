@@ -21,19 +21,40 @@ class ReferenceExtractor:
         self.reference_directory = reference_directory
 
     def execute(self, connection: Connection) -> None:
+        systems = self._rows("canonical_systems.csv")
+        for row in systems:
+            if row.get("category") not in {
+                "console", "handheld", "computer", "arcade", "other"
+            }:
+                raise ValueError(
+                    "Invalid or missing system category for "
+                    f"{row['canonical_manufacturer_name']} / "
+                    f"{row['canonical_system_name']}: {row.get('category')!r}"
+                )
+        # Support rebuilding from reference against a pre-category schema.
+        # The transaction fills every row before making the column required.
+        connection.execute(text("""
+            ALTER TABLE ref.canonical_system ADD COLUMN IF NOT EXISTS category
+                text CHECK (category IN (
+                    'console', 'handheld', 'computer', 'arcade', 'other'
+                ))
+        """))
         connection.execute(text("""
             TRUNCATE ref.software_correction, ref.tag_category, ref.path_mapping,
                 ref.system_mapping, ref.canonical_system
             RESTART IDENTITY CASCADE
         """))
-        systems = self._rows("canonical_systems.csv")
         connection.execute(insert(canonical_system), [
             {
                 "manufacturer_name": row["canonical_manufacturer_name"],
                 "system_name": row["canonical_system_name"],
+                "category": row["category"],
             }
             for row in systems
         ])
+        connection.execute(text(
+            "ALTER TABLE ref.canonical_system ALTER COLUMN category SET NOT NULL"
+        ))
         system_ids = {
             (row.manufacturer_name, row.system_name): row.id
             for row in connection.execute(select(canonical_system))

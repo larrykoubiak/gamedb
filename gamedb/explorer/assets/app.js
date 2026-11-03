@@ -1,5 +1,6 @@
 const state = {
   systems: [],
+  systemIcons: {},
   selectedSystem: null,
   page: 1,
   pageSize: 100,
@@ -10,15 +11,167 @@ const state = {
   correction: null,
   targetRequestId: 0,
   correctionsEnabled: false,
+  metadataFilters: {},
 };
 
 const tree = document.querySelector("#system-tree");
 const filter = document.querySelector("#system-filter");
+const categoryFilter = document.querySelector("#system-category");
 const tableWrap = document.querySelector("#game-table-wrap");
 const tableBody = document.querySelector("#game-table-body");
 const empty = document.querySelector("#game-empty");
 const pagination = document.querySelector("#pagination");
 const gameFilter = document.querySelector("#game-filter");
+const metadataFields = {
+  genre: "Genre", developer: "Developer", publisher: "Publisher",
+  franchise: "Franchise", player_count: "Players",
+  enhancement_hardware: "Enhancement hardware", rumble: "Rumble",
+  analog: "Analog", origin: "Origin", tags: "Tags",
+};
+const metadataControls = new Map();
+
+function setMetadataValue(key, value, selected) {
+  const values = new Set(state.metadataFilters[key] || []);
+  if (selected) values.add(value);
+  else values.delete(value);
+  if (values.size) state.metadataFilters[key] = [...values];
+  else delete state.metadataFilters[key];
+  renderActiveMetadataFilters();
+  selectSystem(state.selectedSystem);
+}
+
+function renderActiveMetadataFilters() {
+  const active = document.querySelector("#active-metadata-filters");
+  active.replaceChildren();
+  for (const [key, control] of metadataControls) {
+    const values = state.metadataFilters[key] || [];
+    control.summary.textContent = `${metadataFields[key]}${values.length ? ` (${values.length})` : ""}`;
+    control.details.classList.toggle("has-selection", Boolean(values.length));
+    for (const checkbox of control.list.querySelectorAll('input[type="checkbox"]')) {
+      checkbox.checked = values.includes(checkbox.value);
+      checkbox.disabled = !checkbox.checked && values.length >= 25;
+    }
+    for (const value of values) {
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.textContent = `${metadataFields[key]}: ${value} ×`;
+      remove.setAttribute("aria-label", `Remove ${metadataFields[key]} filter: ${value}`);
+      remove.addEventListener("click", () => setMetadataValue(key, value, false));
+      active.append(remove);
+    }
+  }
+  document.querySelector("#clear-metadata-filters").hidden = !Object.keys(state.metadataFilters).length;
+}
+
+async function loadMetadataOptions(key) {
+  const control = metadataControls.get(key);
+  clearTimeout(control.timer);
+  const requestId = ++control.requestId;
+  control.context = metadataOptionContext(key);
+  control.note.textContent = "Loading values…";
+  control.list.replaceChildren();
+  const params = new URLSearchParams({key, q: state.query,
+    search: control.search.value.trim(), filters: JSON.stringify(state.metadataFilters)});
+  if (state.selectedSystem) params.set("system_id", state.selectedSystem.id);
+  try {
+    const payload = await requestJson(`/api/metadata-options?${params}`);
+    if (requestId !== control.requestId) return;
+    const selected = new Set(state.metadataFilters[key] || []);
+    for (const option of payload.items) {
+      const label = document.createElement("label");
+      label.className = "metadata-option";
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.value = option.value;
+      checkbox.checked = selected.has(option.value);
+      checkbox.disabled = !checkbox.checked && selected.size >= 25;
+      checkbox.addEventListener("change", () => setMetadataValue(key, option.value, checkbox.checked));
+      const value = document.createElement("span");
+      value.textContent = option.value;
+      const count = document.createElement("small");
+      count.textContent = option.count.toLocaleString();
+      label.append(checkbox, value, count);
+      control.list.append(label);
+    }
+    control.note.textContent = !payload.total ? "No matching values."
+      : payload.total > payload.items.length ? `First ${payload.items.length} of ${payload.total.toLocaleString()} values. Search to narrow.`
+      : "Any selected value matches. Different fields combine.";
+  } catch (error) {
+    if (requestId === control.requestId) control.note.textContent = error.message;
+  }
+}
+
+function metadataOptionContext(key) {
+  const filters = {...state.metadataFilters};
+  delete filters[key];
+  return JSON.stringify([state.selectedSystem?.id, state.query, filters]);
+}
+
+function refreshMetadataOptions() {
+  for (const [key, control] of metadataControls) {
+    if (control.context === metadataOptionContext(key)) continue;
+    ++control.requestId;
+    if (control.details.open) loadMetadataOptions(key);
+  }
+}
+
+function initializeMetadataFilters() {
+  const container = document.querySelector("#metadata-filters");
+  for (const [key, label] of Object.entries(metadataFields)) {
+    const details = document.createElement("details");
+    details.className = "metadata-filter";
+    details.dataset.key = key;
+    const summary = document.createElement("summary");
+    summary.textContent = label;
+    const panel = document.createElement("div");
+    panel.className = "metadata-filter-panel";
+    const search = document.createElement("input");
+    search.type = "search";
+    search.className = "metadata-option-search";
+    search.placeholder = `Search ${label.toLowerCase()}…`;
+    search.setAttribute("aria-label", `Search ${label.toLowerCase()} filter values`);
+    const list = document.createElement("div");
+    list.className = "metadata-option-list";
+    const note = document.createElement("p");
+    note.className = "metadata-option-note";
+    note.setAttribute("role", "status");
+    panel.append(search, list, note);
+    details.append(summary, panel);
+    const control = {details, summary, search, list, note, requestId: 0, timer: null};
+    metadataControls.set(key, control);
+    details.addEventListener("toggle", () => {
+      if (!details.open) return;
+      details.classList.toggle("align-end", window.innerWidth > 700 &&
+        summary.getBoundingClientRect().left + panel.offsetWidth > window.innerWidth - 16);
+      for (const other of metadataControls.values()) {
+        if (other !== control) other.details.open = false;
+      }
+      loadMetadataOptions(key);
+    });
+    search.addEventListener("input", () => {
+      clearTimeout(control.timer);
+      ++control.requestId;
+      control.timer = setTimeout(() => loadMetadataOptions(key), 250);
+    });
+    details.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        details.open = false;
+        summary.focus();
+      }
+    });
+    container.append(details);
+  }
+  document.addEventListener("click", event => {
+    for (const control of metadataControls.values()) {
+      if (!control.details.contains(event.target)) control.details.open = false;
+    }
+  });
+  document.querySelector("#clear-metadata-filters").addEventListener("click", () => {
+    state.metadataFilters = {};
+    renderActiveMetadataFilters();
+    selectSystem(state.selectedSystem);
+  });
+}
 
 async function requestJson(url, options = {}) {
   const response = await fetch(url, options);
@@ -37,6 +190,29 @@ async function requestJson(url, options = {}) {
   return payload;
 }
 
+function platformIcon(manufacturer, name) {
+  const frame = document.createElement("span");
+  frame.className = "platform-icon";
+  frame.setAttribute("aria-hidden", "true");
+  const fallback = document.createElement("span");
+  fallback.className = "platform-icon-fallback";
+  fallback.textContent = "◇";
+  const icon = state.systemIcons[`${manufacturer}\x1f${name}`];
+  if (!icon) {
+    frame.append(fallback);
+    return frame;
+  }
+  const image = document.createElement("img");
+  image.src = `/system-icons/${icon}`;
+  if (icon.startsWith("pixel-")) image.classList.add("pixel-art");
+  image.alt = "";
+  image.loading = "lazy";
+  image.decoding = "async";
+  image.addEventListener("error", () => frame.replaceChildren(fallback), { once: true });
+  frame.append(image);
+  return frame;
+}
+
 function groupSystems(systems) {
   return systems.reduce((groups, system) => {
     if (!groups.has(system.manufacturer)) groups.set(system.manufacturer, []);
@@ -48,8 +224,10 @@ function groupSystems(systems) {
 function renderTree(search = "") {
   const normalized = search.trim().toLowerCase();
   const visible = state.systems.filter(system =>
+    (!categoryFilter.value || system.category === categoryFilter.value) &&
     `${system.manufacturer} ${system.name}`.toLowerCase().includes(normalized)
   );
+  document.querySelector("#system-count").textContent = `${visible.length} / ${state.systems.length} systems`;
   const groups = groupSystems(visible);
   tree.replaceChildren();
 
@@ -70,10 +248,11 @@ function renderTree(search = "") {
       name.textContent = system.name;
       const count = document.createElement("span");
       count.textContent = system.gameCount.toLocaleString();
-      button.append(name, count);
+      const label = document.createElement("span");
+      label.className = "platform-identity";
+      label.append(platformIcon(system.manufacturer, system.name), name);
+      button.append(label, count);
       button.addEventListener("click", () => {
-        state.query = "";
-        gameFilter.value = "";
         selectSystem(system);
       });
       details.append(button);
@@ -131,12 +310,17 @@ function mediaUrl(path) {
   return `/media/${path.split("/").map(encodeURIComponent).join("/")}`;
 }
 
+function artworkEntries(media, title) {
+  return [["boxart", "Box art"], ["title", "Title screen"],
+    ["snap", "Gameplay"], ["logo", "Logo"]]
+    .filter(([kind]) => media?.[kind])
+    .map(([kind, label]) => ({kind, label, source: mediaUrl(media[kind].path), caption: `${title} — ${label}`}));
+}
+
 function artworkCell(game) {
   const element = document.createElement("td");
   element.className = "art-cell";
-  const candidates = ["boxart", "title", "snap", "logo"]
-    .map(kind => game.media?.[kind])
-    .filter(Boolean);
+  const candidates = artworkEntries(game.media, game.title);
   if (!candidates.length) {
     const placeholder = document.createElement("span");
     placeholder.className = "art-placeholder";
@@ -150,15 +334,81 @@ function artworkCell(game) {
   image.loading = "lazy";
   image.decoding = "async";
   let index = 0;
-  image.src = mediaUrl(candidates[index].path);
+  image.src = candidates[index].source;
+  const zoom = artworkButton(image, candidates, () => index, `${game.title} — Artwork`);
   image.addEventListener("error", () => {
     index += 1;
-    if (index < candidates.length) image.src = mediaUrl(candidates[index].path);
-    else image.remove();
+    if (index < candidates.length) image.src = candidates[index].source;
+    else zoom.remove();
   });
-  element.append(image);
+  element.append(zoom);
   return element;
 }
+
+const artworkDialog = document.querySelector("#artwork-dialog");
+const artworkImage = document.querySelector("#artwork-image");
+const artworkError = document.querySelector("#artwork-error");
+let artworkItems = [];
+let artworkIndex = 0;
+
+function renderArtworkImage() {
+  const item = artworkItems[artworkIndex];
+  document.querySelector("#artwork-caption").textContent = item.caption;
+  artworkError.hidden = true;
+  artworkImage.hidden = false;
+  artworkImage.alt = item.caption;
+  artworkImage.src = item.source;
+  document.querySelector("#artwork-navigation").hidden = artworkItems.length < 2;
+  document.querySelector("#artwork-position").textContent = `Image ${artworkIndex + 1} of ${artworkItems.length}`;
+}
+
+function moveArtwork(direction) {
+  if (!artworkDialog.open || artworkItems.length < 2) return;
+  artworkIndex = (artworkIndex + direction + artworkItems.length) % artworkItems.length;
+  renderArtworkImage();
+}
+
+function artworkButton(image, items, startIndex, caption = items[startIndex()].caption) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "artwork-zoom";
+  button.setAttribute("aria-label", `Enlarge ${caption}`);
+  button.setAttribute("aria-haspopup", "dialog");
+  button.append(image);
+  button.addEventListener("click", () => {
+    artworkItems = items;
+    artworkIndex = startIndex();
+    renderArtworkImage();
+    artworkDialog.showModal();
+  });
+  return button;
+}
+
+document.querySelector("#artwork-close").addEventListener("click", () => artworkDialog.close());
+document.querySelector("#artwork-previous").addEventListener("click", () => moveArtwork(-1));
+document.querySelector("#artwork-next").addEventListener("click", () => moveArtwork(1));
+artworkDialog.addEventListener("keydown", event => {
+  if (artworkItems.length > 1 && ["ArrowLeft", "ArrowRight"].includes(event.key)) {
+    event.preventDefault();
+    moveArtwork(event.key === "ArrowLeft" ? -1 : 1);
+  }
+});
+artworkDialog.addEventListener("click", event => {
+  if (event.target !== artworkDialog) return;
+  const rect = artworkDialog.getBoundingClientRect();
+  if (event.clientX < rect.left || event.clientX > rect.right ||
+      event.clientY < rect.top || event.clientY > rect.bottom) artworkDialog.close();
+});
+artworkDialog.addEventListener("close", () => {
+  artworkImage.removeAttribute("src");
+  artworkItems = [];
+  artworkIndex = 0;
+});
+artworkImage.addEventListener("error", () => {
+  if (!artworkDialog.open) return;
+  artworkImage.hidden = true;
+  artworkError.hidden = false;
+});
 
 function appendBreakdown(container, breakdown) {
   const list = document.createElement("ul");
@@ -179,32 +429,23 @@ function appendBreakdown(container, breakdown) {
 }
 
 function renderArtworkGallery(container, media, title) {
-  const available = [
-    ["boxart", "Box art"],
-    ["title", "Title screen"],
-    ["snap", "Gameplay"],
-    ["logo", "Logo"],
-  ].filter(([kind]) => media?.[kind]);
+  const available = artworkEntries(media, title);
   if (!available.length) return;
 
   const gallery = document.createElement("section");
   gallery.className = "art-gallery";
   gallery.setAttribute("aria-label", `Artwork for ${title}`);
-  for (const [kind, label] of available) {
+  for (const [index, {kind, label, source, caption: imageCaption}] of available.entries()) {
     const item = media[kind];
     const figure = document.createElement("figure");
-    const link = document.createElement("a");
-    link.href = mediaUrl(item.path);
-    link.target = "_blank";
-    link.rel = "noopener";
     const image = document.createElement("img");
-    image.src = link.href;
-    image.alt = `${title} — ${label}`;
+    image.src = source;
+    image.alt = imageCaption;
     image.loading = "lazy";
-    link.append(image);
+    const zoom = artworkButton(image, available, () => index);
     const caption = document.createElement("figcaption");
     caption.textContent = `${label} · ${item.matchBasis.replaceAll("_", " ")} · region ${item.regionMatch}`;
-    figure.append(link, caption);
+    figure.append(zoom, caption);
     gallery.append(figure);
   }
   container.append(gallery);
@@ -246,32 +487,35 @@ function renderSoftwareFacts(container, facts) {
     const term = document.createElement("dt");
     term.textContent = labels[fact.key] || fact.key.replaceAll("_", " ");
     const definition = document.createElement("dd");
-    for (const candidate of fact.values) {
+    const preferredValues = new Set(fact.preferredValues || fact.values.map(source => source.value));
+    const grouped = new Map();
+    for (const source of fact.values) {
+      if (!preferredValues.has(source.value)) continue;
+      if (!grouped.has(source.value)) grouped.set(source.value, { ...source, sources: [] });
+      grouped.get(source.value).sources.push(source);
+    }
+    const candidates = [...grouped.values()];
+    for (const candidate of candidates) {
       const item = document.createElement("div");
       item.className = "software-fact-value";
-      if (candidate.candidateCount > 1) item.classList.add("conflicted");
       const value = document.createElement("span");
       value.className = "software-fact-text";
       value.textContent = candidate.value;
       item.append(value);
-      if (candidate.candidateCount > 1) {
-        const rank = document.createElement("span");
-        rank.className = "fact-rank-badge";
-        rank.textContent = `candidate ${candidate.rank}/${candidate.candidateCount}`;
-        item.append(rank);
+      for (const source of candidate.sources) {
+        const evidence = document.createElement("span");
+        evidence.className = "software-fact-evidence";
+        const contentLabel = source.matchedContentCount === 1 ? "content hash" : "content hashes";
+        const recordLabel = source.sourceRecordCount === 1 ? "RDB row" : "RDB rows";
+        const databases = source.sourceDatabases.length
+          ? ` · ${source.sourceDatabases.join(", ")}`
+          : "";
+        evidence.textContent = source.sourceProvider === "launchbox"
+          ? `LaunchBox · title/platform match${databases}`
+          : `${source.matchedContentCount} ${contentLabel} · ${source.sourceRecordCount} ${recordLabel}${databases}`;
+        evidence.title = `${source.sourceProvider} revision ${source.sourceRevision}`;
+        item.append(evidence);
       }
-      const evidence = document.createElement("span");
-      evidence.className = "software-fact-evidence";
-      const contentLabel = candidate.matchedContentCount === 1 ? "content hash" : "content hashes";
-      const recordLabel = candidate.sourceRecordCount === 1 ? "RDB row" : "RDB rows";
-      const databases = candidate.sourceDatabases.length
-        ? ` · ${candidate.sourceDatabases.join(", ")}`
-        : "";
-      evidence.textContent = candidate.sourceProvider === "launchbox"
-        ? `LaunchBox · title/platform match${databases}`
-        : `${candidate.matchedContentCount} ${contentLabel} · ${candidate.sourceRecordCount} ${recordLabel}${databases}`;
-      evidence.title = `${candidate.sourceProvider} revision ${candidate.sourceRevision}`;
-      item.append(evidence);
       definition.append(item);
     }
     grid.append(term, definition);
@@ -280,7 +524,7 @@ function renderSoftwareFacts(container, facts) {
   container.append(section);
 }
 
-function renderReleaseDetails(container, releases, facts, softwareId, media, title) {
+function renderReleaseDetails(container, releases, facts, softwareId, media, title, systemId) {
   container.replaceChildren();
   renderArtworkGallery(container, media, title);
   renderSoftwareFacts(container, facts);
@@ -405,7 +649,7 @@ function renderReleaseDetails(container, releases, facts, softwareId, media, tit
       button.type = "button";
       button.className = "correction-button";
       button.textContent = "Correct…";
-      button.addEventListener("click", () => openCorrectionDialog(release, softwareId));
+      button.addEventListener("click", () => openCorrectionDialog(release, softwareId, systemId));
       correction.append(button);
     } else if (state.correctionsEnabled) {
       correction.textContent = "No complete signature";
@@ -440,7 +684,7 @@ async function toggleReleaseDetails(game, row, detailRow, button) {
       state.releaseDetails.set(game.softwareId, releases);
       state.softwareFacts.set(game.softwareId, facts);
     }
-    renderReleaseDetails(container, releases, facts, game.softwareId, game.media, game.title);
+    renderReleaseDetails(container, releases, facts, game.softwareId, game.media, game.title, game.systemId);
     detailRow.dataset.loaded = "true";
   } catch (error) {
     container.className = "release-details error-row";
@@ -455,8 +699,8 @@ const correctionTargetFilter = document.querySelector("#correction-target-filter
 const correctionTargets = document.querySelector("#correction-targets");
 const correctionStatus = document.querySelector("#correction-status");
 
-function openCorrectionDialog(release, softwareId) {
-  state.correction = { release, softwareId, target: null };
+function openCorrectionDialog(release, softwareId, systemId) {
+  state.correction = { release, softwareId, systemId, target: null };
   document.querySelector("#correction-subject").textContent = release.sourceTitle;
   document.querySelector("#correction-signature").textContent = release.releaseContentSignature;
   document.querySelector("#correction-note").value = "";
@@ -509,7 +753,7 @@ correctionTargetFilter.addEventListener("input", () => {
   correctionSearchTimer = setTimeout(async () => {
     try {
       const targets = await requestJson(
-        `/api/systems/${state.selectedSystem.id}/correction-targets?exclude_software_id=${state.correction.softwareId}&q=${encodeURIComponent(query)}`
+        `/api/systems/${state.correction.systemId}/correction-targets?exclude_software_id=${state.correction.softwareId}&q=${encodeURIComponent(query)}`
       );
       if (requestId === state.targetRequestId) renderCorrectionTargets(targets);
     } catch (error) {
@@ -539,7 +783,7 @@ correctionForm.addEventListener("submit", async event => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        systemId: state.selectedSystem.id,
+        systemId: state.correction.systemId,
         subjectContentSignature: state.correction.release.releaseContentSignature,
         action,
         targetContentSignature: action === "assign" ? state.correction.target.targetContentSignature : null,
@@ -597,7 +841,18 @@ function renderGames(payload) {
     };
     identity.textContent = identityLabels[game.identityBasis] || game.identityBasis;
     titleCell.append(identity);
-    row.append(titleCell);
+    const platform = cell("", "platform-cell");
+    const label = document.createElement("span");
+    label.textContent = game.systemName || "Unknown platform";
+    const manufacturer = document.createElement("span");
+    manufacturer.className = "cell-note";
+    manufacturer.textContent = game.manufacturer || "";
+    label.append(manufacturer);
+    const platformIdentity = document.createElement("div");
+    platformIdentity.className = "platform-identity";
+    platformIdentity.append(platformIcon(game.manufacturer, game.systemName), label);
+    platform.append(platformIdentity);
+    row.append(titleCell, platform);
 
     const archive = cell(game.archiveName || "No package name", "archive-cell");
     if (game.packageCount > 1) {
@@ -659,7 +914,7 @@ function renderGames(payload) {
     detailRow.className = "detail-row";
     detailRow.hidden = true;
     const detailCell = document.createElement("td");
-    detailCell.colSpan = 12;
+    detailCell.colSpan = 13;
     const detailContainer = document.createElement("div");
     detailContainer.className = "release-details";
     detailCell.append(detailContainer);
@@ -675,32 +930,39 @@ function renderGames(payload) {
 
   tableWrap.hidden = !payload.items.length;
   empty.hidden = Boolean(payload.items.length);
-  if (!payload.items.length) showMessage("No preferred releases found for this system.");
+  if (!payload.items.length) showMessage(state.query || Object.keys(state.metadataFilters).length ? "No games match your search and filters." : "No preferred releases found.");
 
   const pageCount = Math.max(1, Math.ceil(payload.total / payload.pageSize));
   pagination.hidden = payload.total <= payload.pageSize;
   document.querySelector("#page-label").textContent = `Page ${payload.page} of ${pageCount}`;
   document.querySelector("#previous-page").disabled = payload.page <= 1;
   document.querySelector("#next-page").disabled = payload.page >= pageCount;
-  document.querySelector("#system-summary").textContent = state.query
+  document.querySelector("#system-summary").textContent = state.query || Object.keys(state.metadataFilters).length
     ? `${payload.total.toLocaleString()} matching software titles · preferred release per software`
-    : `${state.selectedSystem.gameCount.toLocaleString()} software titles · preferred release per software`;
+    : `${payload.total.toLocaleString()} software titles · preferred release per software`;
 }
 
 async function selectSystem(system, page = 1) {
+  clearTimeout(gameFilterTimer);
   state.selectedSystem = system;
   state.page = page;
+  refreshMetadataOptions();
   const requestId = ++state.requestId;
   renderTree(filter.value);
-  document.querySelector("#manufacturer-name").textContent = system.manufacturer;
-  document.querySelector("#system-name").textContent = system.name;
-  document.querySelector("#system-summary").textContent = `${system.gameCount.toLocaleString()} software titles · preferred release per software`;
+  document.querySelector("#manufacturer-name").textContent = system?.manufacturer || "Your library";
+  document.querySelector("#system-name").textContent = system?.name || "All platforms";
+  document.querySelector("#system-summary").textContent = "Search games across your library, or choose a platform to narrow the results.";
   gameFilter.disabled = false;
+  gameFilter.placeholder = system ? `Search games on ${system.name}…` : "Search games across all platforms…";
+  document.querySelector("#all-platforms").classList.toggle("active", !system);
   showMessage("Loading preferred releases…");
 
   try {
     const query = encodeURIComponent(state.query);
-    const payload = await requestJson(`/api/systems/${system.id}/titles?page=${page}&page_size=${state.pageSize}&q=${query}`);
+    const path = system ? `/api/systems/${system.id}/titles` : "/api/titles";
+    const metadata = Object.keys(state.metadataFilters).length
+      ? `&filters=${encodeURIComponent(JSON.stringify(state.metadataFilters))}` : "";
+    const payload = await requestJson(`${path}?page=${page}&page_size=${state.pageSize}&q=${query}${metadata}`);
     if (requestId !== state.requestId) return;
     renderGames(payload);
   } catch (error) {
@@ -710,7 +972,10 @@ async function selectSystem(system, page = 1) {
   }
 }
 
+document.querySelector("#all-platforms").addEventListener("click", () => selectSystem(null));
+
 filter.addEventListener("input", () => renderTree(filter.value));
+categoryFilter.addEventListener("change", () => renderTree(filter.value));
 document.querySelector("#previous-page").addEventListener("click", () => selectSystem(state.selectedSystem, state.page - 1));
 document.querySelector("#next-page").addEventListener("click", () => selectSystem(state.selectedSystem, state.page + 1));
 
@@ -718,22 +983,24 @@ let gameFilterTimer;
 gameFilter.addEventListener("input", () => {
   clearTimeout(gameFilterTimer);
   state.query = gameFilter.value.trim();
+  state.requestId += 1;
   gameFilterTimer = setTimeout(() => {
-    if (state.selectedSystem) selectSystem(state.selectedSystem, 1);
+    selectSystem(state.selectedSystem, 1);
   }, 250);
 });
 
 async function initialize() {
   try {
-    const [systems, capabilities] = await Promise.all([
+    const [systems, capabilities, icons] = await Promise.all([
       requestJson("/api/systems"),
       requestJson("/api/capabilities"),
+      requestJson("/system-icons.json").catch(() => ({})),
     ]);
     state.systems = systems;
+    state.systemIcons = icons;
     state.correctionsEnabled = Boolean(capabilities.softwareCorrections);
-    document.querySelector("#system-count").textContent = `${state.systems.length} systems`;
     renderTree();
-    if (state.systems.length) selectSystem(state.systems[0]);
+    await selectSystem(null);
   } catch (error) {
     tree.replaceChildren();
     const message = document.createElement("div");
@@ -743,4 +1010,5 @@ async function initialize() {
   }
 }
 
+initializeMetadataFilters();
 initialize();

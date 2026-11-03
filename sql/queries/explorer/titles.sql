@@ -1,34 +1,4 @@
-WITH chosen AS MATERIALIZED (
-    SELECT
-        software.id AS software_id,
-        software.preferred_title_id AS title_id,
-        software.display_name AS title,
-        software.identity_basis,
-        preferred.release_id,
-        preferred.score,
-        preferred.breakdown,
-        preferred.top_score_tie_count,
-        preferred.tie_broken
-    FROM catalog.software software
-    JOIN app.user_preferred_release preferred
-      ON preferred.software_id = software.id
-    JOIN app.app_user user_account
-      ON user_account.id = preferred.user_id
-    WHERE software.system_id = __SYSTEM_ID__
-      AND user_account.username = __USERNAME__
-      AND (
-          __TITLE_FILTER__ = ''
-          OR position(lower(__TITLE_FILTER__) in lower(software.display_name)) > 0
-          OR EXISTS (
-              SELECT 1
-              FROM catalog.software_release membership
-              JOIN catalog.release release ON release.id = membership.release_id
-              JOIN catalog.title member_title ON member_title.id = release.title_id
-              WHERE membership.software_id = software.id
-                AND position(lower(__TITLE_FILTER__) in lower(member_title.display_title)) > 0
-          )
-      )
-),
+WITH __SOFTWARE_SCOPE__,
 page AS (
     SELECT *
     FROM chosen
@@ -102,6 +72,9 @@ SELECT jsonb_build_object(
         SELECT jsonb_agg(
             jsonb_build_object(
                 'softwareId', items.software_id,
+                'systemId', items.system_id,
+                'manufacturer', items.manufacturer_name,
+                'systemName', items.system_name,
                 'preferredReleaseSignature', items.preferred_release_signature,
                 'titleId', items.title_id,
                 'title', items.title,

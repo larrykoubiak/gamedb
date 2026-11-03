@@ -4,6 +4,8 @@ WITH fact_rows AS (
         fact.fact_value,
         fact.value_rank,
         fact.value_count,
+        fact.source_score,
+        fact.is_selected,
         fact.matched_content_count,
         fact.source_record_count,
         fact.source_provider,
@@ -33,6 +35,8 @@ WITH fact_rows AS (
                 'value', fact_value,
                 'rank', value_rank,
                 'candidateCount', value_count,
+                'sourceScore', source_score,
+                'selected', is_selected,
                 'matchedContentCount', matched_content_count,
                 'sourceRecordCount', source_record_count,
                 'sourceProvider', source_provider,
@@ -40,14 +44,16 @@ WITH fact_rows AS (
                 'sourceDatabases', source_databases,
                 'matches', matches
             ) ORDER BY value_rank, lower(fact_value), fact_value
-        ) AS values
+        ) AS values,
+        jsonb_agg(DISTINCT fact_value ORDER BY fact_value) FILTER (WHERE is_selected) AS preferred_values
     FROM fact_rows
     GROUP BY fact_key
 )
 SELECT coalesce(jsonb_agg(
     jsonb_build_object(
         'key', fact_key,
-        'values', values
+        'values', values,
+        'preferredValues', preferred_values
     ) ORDER BY
         CASE fact_key
             WHEN 'developer' THEN 1

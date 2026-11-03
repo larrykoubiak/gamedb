@@ -13,6 +13,9 @@ CREATE TABLE catalog.system (
         REFERENCES ref.canonical_system(id) ON DELETE RESTRICT,
     manufacturer_name text NOT NULL,
     system_name text NOT NULL,
+    category text NOT NULL CHECK (category IN (
+        'console', 'handheld', 'computer', 'arcade', 'other'
+    )),
     UNIQUE (manufacturer_name, system_name)
 );
 
@@ -92,9 +95,9 @@ CREATE TABLE catalog.release_package (
 );
 
 INSERT INTO catalog.system (
-    source_canonical_system_id, manufacturer_name, system_name
+    source_canonical_system_id, manufacturer_name, system_name, category
 )
-SELECT id, manufacturer_name, system_name
+SELECT id, manufacturer_name, system_name, category
 FROM ref.canonical_system
 ORDER BY manufacturer_name, system_name;
 

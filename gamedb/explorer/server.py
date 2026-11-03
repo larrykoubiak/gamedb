@@ -16,7 +16,7 @@ from urllib.parse import parse_qs, quote, unquote, urlparse
 
 from gamedb.arcade.bundle import prepare_manifest, public_manifest, write_bundle
 from gamedb.config import ProjectEnvironment
-from gamedb.explorer.repository import CatalogRepository
+from gamedb.explorer.repository import CatalogRepository, validate_metadata_filters
 from gamedb.launchbox.image_cache import LaunchBoxImageCache, valid_filename
 
 
@@ -40,6 +40,13 @@ DEFAULT_PORT = 8000
 MEDIA_PREFIX = "/media/"
 MEDIA_EXTENSIONS = frozenset({".png", ".jpg", ".jpeg"})
 STREAM_CHUNK_SIZE = 1024 * 1024
+
+
+def _metadata_filters(query):
+    raw = query.get("filters", ["{}"])[0]
+    if len(raw) > 16000:
+        raise ValueError("Metadata filters are too large")
+    return validate_metadata_filters(json.loads(raw))
 
 
 def _load_project_environment(path: Path = PROJECT_ENV) -> tuple[str, ...]:
@@ -159,6 +166,16 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return self._json_response({
                     "softwareCorrections": self.server.corrections_enabled,
                 })
+            if parsed.path == "/api/metadata-options":
+                query = parse_qs(parsed.query)
+                system_id = query.get("system_id", [""])[0]
+                return self._json_response(self.server.repository.metadata_options(
+                    query.get("key", [""])[0],
+                    int(system_id) if system_id else None,
+                    query.get("q", [""])[0].strip()[:100],
+                    _metadata_filters(query),
+                    query.get("search", [""])[0].strip()[:100],
+                ))
             if parsed.path == "/api/v1/catalog":
                 return self._catalog_response(
                     "manifest", self.server.repository.catalog_manifest
@@ -179,7 +196,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return self._package_response(match.group(1), match.group(2))
 
             match = SYSTEM_TITLES.fullmatch(parsed.path)
-            if match:
+            if match or parsed.path == "/api/titles":
                 query = parse_qs(parsed.query)
                 page = max(1, int(query.get("page", ["1"])[0]))
                 page_size = min(
@@ -188,10 +205,11 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 )
                 title_filter = query.get("q", [""])[0].strip()[:100]
                 payload = self.server.repository.titles(
-                    int(match.group(1)),
+                    int(match.group(1)) if match else None,
                     page_size,
                     (page - 1) * page_size,
                     title_filter,
+                    _metadata_filters(query),
                 )
                 payload["page"] = page
                 payload["pageSize"] = page_size
@@ -237,6 +255,16 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return self._asset_response("index.html", "text/html; charset=utf-8")
             if parsed.path == "/app.js":
                 return self._asset_response("app.js", "text/javascript; charset=utf-8")
+            if parsed.path == "/system-icons.json":
+                return self._asset_response("system-icons.json", "application/json; charset=utf-8")
+            if parsed.path == "/system-icon-credits.txt":
+                return self._asset_response("system-icon-credits.txt", "text/plain; charset=utf-8")
+            icon = re.fullmatch(r"/system-icons/([a-z0-9-]+\.png)", parsed.path)
+            if icon:
+                asset = f"system-icons/{icon.group(1)}"
+                if not (ASSET_DIRECTORY / asset).is_file():
+                    return self.send_error(HTTPStatus.NOT_FOUND)
+                return self._asset_response(asset, "image/png")
             if parsed.path == "/styles.css":
                 return self._asset_response("styles.css", "text/css; charset=utf-8")
             self.send_error(HTTPStatus.NOT_FOUND)
@@ -534,12 +562,15 @@ class ExplorerServer(ThreadingHTTPServer):
         ))
         self.rom_root = Path(os.environ.get("GAMEDB_ROM_ROOT", "/data/roms"))
 
-    @staticmethod
-    def rebuild_software():
-        subprocess.run(
-            ["python", "-m", "gamedb.catalog", "rebuild", "--from-layer", "software"],
-            check=True, capture_output=True, text=True,
-        )
+    def rebuild_software(self):
+        self.repository.metadata_options_cache.clear()
+        try:
+            subprocess.run(
+                ["python", "-m", "gamedb.catalog", "rebuild", "--from-layer", "software"],
+                check=True, capture_output=True, text=True,
+            )
+        finally:
+            self.repository.metadata_options_cache.clear()
 
 
 def serve_explorer(host: str, port: int | None, username: str) -> int:

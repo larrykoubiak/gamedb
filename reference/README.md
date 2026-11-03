@@ -2,7 +2,9 @@
 
 These version-controlled files are the reviewed inputs to derivation:
 
-- `canonical_systems.csv` defines the canonical system list.
+- `canonical_systems.csv` defines the canonical system list and each system's
+  required category (`console`, `handheld`, `computer`, `arcade`, or `other`).
+  See [classification policies](../docs/system_mapping.md).
 - `system_mappings.csv` maps source system triples to canonical systems.
 - `path_mappings.csv` maps RomVault prefixes to host filesystem roots.
 - `libretro_thumbnail_systems.csv` maps canonical systems to reviewed
@@ -14,6 +16,12 @@ These version-controlled files are the reviewed inputs to derivation:
   platform names for the candidate coverage report. Missing systems are left
   unmapped; hardware families and unrelated PC operating systems are not
   guessed from names at report time.
+- `system_icons.csv` maps canonical systems to bundled RetroArch platform icons.
+  `python scripts/sync_system_icons.py` refreshes pinned assets and the runtime
+  manifest; unmatched systems keep a neutral icon and their text label.
+- `genre_aliases.csv` maps equivalent RDB and LaunchBox genre spellings to
+  canonical names during the metadata rebuild. Unlisted names are preserved;
+  subgenres are not automatically merged into their parent genres.
 - `source_formats.json` declares collection identity and filename grammars.
 - `tag_vocabulary.json` supplies maintained parsing/classification values.
 - `tag_categories.csv` documents classification output categories.

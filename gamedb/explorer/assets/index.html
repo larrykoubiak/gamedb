@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GameDB Explorer</title>
-  <meta name="description" content="Browse preferred GameDB releases by manufacturer and system.">
-  <link rel="stylesheet" href="/styles.css?v=3">
+  <meta name="description" content="Search GameDB across all platforms or browse by system.">
+  <link rel="stylesheet" href="/styles.css?v=10">
 </head>
 <body>
   <header class="topbar">
@@ -25,22 +25,35 @@
         </div>
         <span id="system-count" class="quiet-count">…</span>
       </div>
+      <label class="category-field" for="system-category">
+        <span>Category</span>
+        <select id="system-category">
+          <option value="">All categories</option>
+          <option value="console">Console</option>
+          <option value="handheld">Handheld</option>
+          <option value="computer">Computer</option>
+          <option value="arcade">Arcade</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
       <label class="filter-field">
         <span class="sr-only">Filter systems</span>
         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
         <input id="system-filter" type="search" placeholder="Filter manufacturers or systems…">
       </label>
+      <button id="all-platforms" class="system-button active" type="button">All platforms</button>
       <nav id="system-tree" class="system-tree" aria-live="polite">
         <div class="loading-row">Loading catalog…</div>
       </nav>
+      <a class="icon-credits" href="/system-icon-credits.txt" target="_blank" rel="noopener">Platform icon credits</a>
     </aside>
 
     <section class="content" aria-live="polite">
       <div class="content-heading">
         <div>
-          <p id="manufacturer-name" class="eyebrow">Choose a system</p>
-          <h2 id="system-name">Preferred games</h2>
-          <p id="system-summary" class="summary">Select a system from the tree to inspect its ranked choices.</p>
+          <p id="manufacturer-name" class="eyebrow">Your library</p>
+          <h2 id="system-name">All platforms</h2>
+          <p id="system-summary" class="summary">Search games across your library, or choose a platform to narrow the results.</p>
         </div>
         <div class="legend" aria-label="Score legend">
           <span><i class="legend-dot positive"></i> preference match</span>
@@ -48,11 +61,16 @@
         </div>
       </div>
 
+      <div class="game-search-toolbar">
       <label class="filter-field game-filter-field">
-        <span class="sr-only">Filter titles in the selected system</span>
+        <span class="sr-only">Search games</span>
         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
-        <input id="game-filter" type="search" placeholder="Filter titles in this system…" disabled>
+        <input id="game-filter" type="search" placeholder="Search games across all platforms…">
       </label>
+      <div id="metadata-filters" class="metadata-filters" role="group" aria-label="Filter games by metadata"></div>
+      <button id="clear-metadata-filters" type="button" hidden>Clear filters</button>
+      </div>
+      <div id="active-metadata-filters" class="active-metadata-filters" aria-label="Active metadata filters"></div>
 
       <div id="game-table-wrap" class="table-wrap" hidden>
         <table class="game-table">
@@ -61,6 +79,7 @@
               <th scope="col" class="expand-heading"><span class="sr-only">Release details</span></th>
               <th scope="col" class="art-heading"><span class="sr-only">Artwork</span></th>
               <th scope="col">Title</th>
+              <th scope="col">Platform</th>
               <th scope="col">Preferred archive</th>
               <th scope="col">Region</th>
               <th scope="col">Language</th>
@@ -88,6 +107,22 @@
       </footer>
     </section>
   </main>
+
+  <dialog id="artwork-dialog" class="artwork-dialog" aria-labelledby="artwork-caption">
+    <div class="artwork-heading">
+      <h2 id="artwork-caption"></h2>
+      <button id="artwork-close" class="icon-button" type="button" aria-label="Close artwork" autofocus>×</button>
+    </div>
+    <div class="artwork-stage">
+      <img id="artwork-image" alt="">
+      <p id="artwork-error" role="status" hidden>This image could not be loaded.</p>
+    </div>
+    <div id="artwork-navigation" class="artwork-navigation" hidden>
+      <button id="artwork-previous" class="secondary-button" type="button" aria-label="Previous image">← Previous</button>
+      <span id="artwork-position" role="status"></span>
+      <button id="artwork-next" class="secondary-button" type="button" aria-label="Next image">Next →</button>
+    </div>
+  </dialog>
 
   <dialog id="correction-dialog" class="correction-dialog">
     <form id="correction-form" method="dialog">
@@ -123,6 +158,6 @@
     </form>
   </dialog>
 
-  <script src="/app.js?v=4" defer></script>
+  <script src="/app.js?v=12" defer></script>
 </body>
 </html>

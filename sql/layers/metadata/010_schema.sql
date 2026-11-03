@@ -22,6 +22,8 @@ CREATE TABLE catalog.software_fact (
             OR (source_provider = 'launchbox' AND source_revision ~ '^[0-9a-f]{64}$')),
     source_record_count bigint NOT NULL CHECK (source_record_count > 0),
     matched_content_count bigint NOT NULL CHECK (matched_content_count >= 0),
+    source_score integer NOT NULL DEFAULT 0 CHECK (source_score >= 0),
+    is_selected boolean NOT NULL DEFAULT false,
     value_rank bigint NOT NULL CHECK (value_rank > 0),
     value_count bigint NOT NULL CHECK (value_count > 0),
     CHECK (matched_content_count <= source_record_count),

@@ -15,7 +15,7 @@ class MetadataBuilderTests(unittest.TestCase):
         self.assertIsInstance(StepFactory.build(config.layers[0].steps[0]), BuildMetadataStep)
 
     def test_sql_scripts_leave_transaction_and_optional_sources_to_builder(self):
-        for name in ('010_schema.sql', '020_build.sql', '090_indexes_and_validation.sql'):
+        for name in ('010_schema.sql', '020_build.sql', '030_rank.sql', '090_indexes_and_validation.sql'):
             sql = sql_body(ROOT / 'sql/layers/metadata' / name)
             self.assertNotIn('\\if', sql)
             self.assertNotIn('\\gset', sql)

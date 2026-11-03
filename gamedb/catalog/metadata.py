@@ -5,6 +5,7 @@ from pathlib import Path
 from sqlalchemy import BigInteger, Column, MetaData, Table, Text, insert, text
 from sqlalchemy.dialects.postgresql import JSONB
 
+from gamedb.catalog.genres import normalize_genres
 from gamedb.launchbox.inputs import load_inputs
 from gamedb.launchbox.importer import sha256_file
 from gamedb.launchbox.matching import FACT_FIELDS, MATCHER_VERSION, match_candidates, read_platform_map
@@ -35,19 +36,8 @@ def build_metadata(engine, root):
             has_import = c.execute(text('SELECT EXISTS (SELECT 1 FROM staging.launchbox_import)')).scalar_one()
             if has_import:
                 counts = project_launchbox(c, root)
-        # Exact-content evidence ranks ahead of title-based evidence. Both
-        # sources remain visible, including disagreements, without overwrites.
-        c.exec_driver_sql('''
-            WITH ranked AS (
-                SELECT id,
-                    dense_rank() OVER (PARTITION BY software_id, fact_key
-                        ORDER BY matched_content_count DESC, source_record_count DESC) AS rank,
-                    count(*) OVER (PARTITION BY software_id, fact_key) AS total
-                FROM catalog.software_fact
-            )
-            UPDATE catalog.software_fact f SET value_rank=r.rank, value_count=r.total
-            FROM ranked r WHERE f.id=r.id
-        ''')
+        normalize_genres(c, root)
+        c.execute(text(sql_body(sql / '030_rank.sql')))
         c.execute(text(sql_body(sql / '090_indexes_and_validation.sql')))
     return dict(counts)
 
@@ -119,6 +109,7 @@ def project_launchbox(c, root):
             'Metadata.xml',NULL,claim.match_method,claim.match_details
         FROM _launchbox_claim claim JOIN catalog.software_fact f
           ON f.software_id=claim.software_id AND f.fact_key=claim.fact_key
+         AND f.fact_value=claim.fact_value
          AND f.source_provider='launchbox' AND f.source_revision=:revision
     '''), {'import_id': snapshot['id'], 'revision': snapshot['source_revision']})
     return counts
