@@ -91,18 +91,30 @@ See [the database model](docs/database.md), [archive-name rules](docs/archive_na
 
 ## Explorer
 
-The explorer opens on **All platforms**. Search titles across the whole library,
-including alternate release titles, with a dedicated Platform column showing the system and manufacturer.
-Simple pixel-art and silhouette platform icons appear in that column and the system tree; bundled artwork uses
-explicit `reference/system_icons.csv` mappings and needs no remote image service.
+The explorer opens on **All platforms** in Tiles view. Select a title to see its
+metadata and ranked releases, or switch to **Table** to compare archives, scores
+and regions. The browser remembers the layout. Both views search alternate
+release titles and keep the current filters and page when you switch.
+Platform icons identify systems in the sidebar and the table's Platform column.
+The bundled artwork uses the mappings in `reference/system_icons.csv`.
 Unmapped systems retain a neutral icon and their names. Artwork attribution is
 available through the sidebar’s **Platform icon credits** link.
-Click a table thumbnail or an image in the artwork gallery to enlarge it in a
-modal. Close it with Escape, the close button, or a click on the backdrop; focus
+Click a cover or an image in the artwork gallery to enlarge the original in a
+modal. Close it with Escape, the close button, or a click on the backdrop. Focus
 returns to the image button and the current search stays in place.
 Previous/next buttons and the left/right arrow keys cycle through the current
-game's available artwork, wrapping at either end. A counter shows the position;
-navigation is hidden when there is only one image.
+game's available artwork, wrapping at either end. A counter shows the position
+when a game has multiple images.
+
+The Explorer requests artwork near the visible results. Table previews fit
+within 128 × 128 pixels and tile and gallery previews within 320 × 320. The
+first request generates a WebP from the catalog's selected Libretro or LaunchBox
+image. Subsequent requests reuse the file in `data/media/previews`, which both
+Compose configurations mount at `/data/media/previews`. For a host process,
+`GAMEDB_PREVIEW_CACHE` can override the cache directory. The cache survives
+Explorer restarts and regenerates previews when source files change. Browsers
+can reuse previews for an hour and revalidate them by ETag. The original
+`/media/` URLs continue to serve full-resolution artwork to zoom and launchers.
 Choosing a system narrows the current search; **All platforms** widens it again
 without clearing the search text. Results remain paginated, and release details
 and corrections stay attached to each result's actual system. The explorer's

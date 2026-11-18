@@ -94,6 +94,7 @@ h2 { font-size: 1.55rem; letter-spacing: -.025em; }
   color: var(--muted);
   font: .75rem var(--font-mono);
 }
+#system-browser-toggle { display: none; padding: .4rem .65rem; border: 1px solid var(--line); border-radius: .35rem; background: var(--panel); color: var(--text); cursor: pointer; }
 
 .filter-field {
   display: flex;
@@ -203,6 +204,31 @@ h2 { font-size: 1.55rem; letter-spacing: -.025em; }
 .legend-dot { display: inline-block; width: .48rem; height: .48rem; margin-right: .3rem; border-radius: 50%; }
 .legend-dot.positive { background: var(--accent); }
 .legend-dot.tie { background: var(--amber); }
+
+.layout-switch { display: inline-flex; flex-shrink: 0; padding: .2rem; border: 1px solid var(--line); border-radius: .5rem; background: #0d1219; }
+.layout-switch button { padding: .4rem .75rem; border: 0; border-radius: .3rem; color: var(--muted); background: transparent; cursor: pointer; font-size: .78rem; }
+.layout-switch button[aria-pressed="true"] { color: var(--accent-strong); background: #21352f; }
+.layout-switch button:focus-visible, .card-details:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 10.5rem), 1fr)); align-items: stretch; gap: .9rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+.game-card { position: relative; display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: .55rem; background: var(--panel); }
+.game-card:hover, .game-card:focus-within { border-color: #547a68; }
+.card-art { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 5 / 4; background: radial-gradient(ellipse at top, #23303a, #10151d 85%); }
+.card-art .artwork-zoom { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; margin: 0; padding: .45rem; }
+.card-art .artwork-zoom:focus-visible { outline-offset: -3px; }
+.card-art .game-art { width: 100%; height: 100%; border-radius: 0; background: transparent; }
+.card-art > .platform-icon { width: 43%; height: auto; aspect-ratio: 1; opacity: .68; }
+.card-art .platform-icon-fallback { font-size: 2.4rem; }
+.card-details { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: .32rem; width: 100%; padding: .7rem .8rem .85rem; border: 0; border-top: 1px solid var(--line-soft); color: var(--text); background: transparent; text-align: left; cursor: pointer; }
+.card-details::after { position: absolute; inset: 0; content: ""; }
+.card-details:hover .card-title { color: var(--accent-strong); }
+.card-platform { color: var(--accent); font: .64rem/1.3 var(--font-mono); }
+.card-title { overflow-wrap: anywhere; font-size: .92rem; font-weight: 650; line-height: 1.32; }
+.game-dialog { width: min(78rem, 96vw); max-width: 96vw; max-height: 90dvh; padding: 0; border: 1px solid var(--line); border-radius: .6rem; background: var(--panel); color: var(--text); }
+.game-dialog::backdrop { background: rgba(5, 8, 12, .84); }
+.game-dialog-heading { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .95rem 1rem; border-bottom: 1px solid var(--line); background: var(--panel); }
+.game-dialog-heading h2 { font-size: 1.15rem; overflow-wrap: anywhere; }
+.game-dialog-heading button { flex-shrink: 0; }
+body:has(#game-dialog[open]) { overflow: hidden; }
 
 .table-wrap {
   margin-top: .9rem;
@@ -401,11 +427,18 @@ h2 { font-size: 1.55rem; letter-spacing: -.025em; }
 
 @media (max-width: 760px) {
   .topbar { min-height: 72px; padding: .9rem 1rem; }
+  .profile-chip { display: none; }
   .workspace { grid-template-columns: 1fr; }
-  .sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
+  .sidebar { padding: .75rem 1rem; border-right: 0; border-bottom: 1px solid var(--line); }
+  .sidebar-heading .eyebrow { display: none; }
+  .sidebar-heading h2 { font-size: 1rem; }
+  .sidebar-heading .quiet-count { margin-right: auto; }
+  #system-browser-toggle { display: block; }
+  .sidebar:has(#system-browser-toggle[aria-expanded="false"]) #system-browser { display: none; }
   .system-tree { max-height: 18rem; }
   .content { padding: 1.2rem 1rem; }
   .content-heading { align-items: flex-start; }
+  .game-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 8.5rem), 1fr)); gap: .65rem; }
   .legend { display: none; }
   .game-table { min-width: 1040px; }
 }

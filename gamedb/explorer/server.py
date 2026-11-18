@@ -15,7 +15,8 @@ import threading
 from urllib.parse import parse_qs, quote, unquote, urlparse
 
 from gamedb.arcade.bundle import prepare_manifest, public_manifest, write_bundle
-from gamedb.config import ProjectEnvironment
+from gamedb.config import PROJECT_ROOT, ProjectEnvironment
+from gamedb.explorer.previews import ArtworkPreviewCache
 from gamedb.explorer.repository import CatalogRepository, validate_metadata_filters
 from gamedb.launchbox.image_cache import LaunchBoxImageCache, valid_filename
 
@@ -38,6 +39,7 @@ SYSTEM_SOFTWARE_SNAPSHOT = re.compile(
 PAGE_SIZE_MAXIMUM = 200
 DEFAULT_PORT = 8000
 MEDIA_PREFIX = "/media/"
+PREVIEW_PATH = re.compile(r"/previews/(128|320)/(.+)")
 MEDIA_EXTENSIONS = frozenset({".png", ".jpg", ".jpeg"})
 STREAM_CHUNK_SIZE = 1024 * 1024
 
@@ -182,6 +184,9 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 )
             if parsed.path.startswith(MEDIA_PREFIX):
                 return self._media_response(parsed.path[len(MEDIA_PREFIX):])
+            preview = PREVIEW_PATH.fullmatch(parsed.path)
+            if preview:
+                return self._media_response(preview[2], int(preview[1]))
 
             match = INSTALL_MANIFEST.fullmatch(parsed.path)
             if match:
@@ -264,7 +269,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 asset = f"system-icons/{icon.group(1)}"
                 if not (ASSET_DIRECTORY / asset).is_file():
                     return self.send_error(HTTPStatus.NOT_FOUND)
-                return self._asset_response(asset, "image/png")
+                return self._asset_response(asset, "image/png", "public, max-age=3600")
             if parsed.path == "/styles.css":
                 return self._asset_response("styles.css", "text/css; charset=utf-8")
             self.send_error(HTTPStatus.NOT_FOUND)
@@ -369,16 +374,16 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
-    def _asset_response(self, name, content_type):
+    def _asset_response(self, name, content_type, cache_control="no-store"):
         body = (ASSET_DIRECTORY / name).read_bytes()
         self.send_response(HTTPStatus.OK)
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(body)))
-        self.send_header("Cache-Control", "no-store")
+        self.send_header("Cache-Control", cache_control)
         self.end_headers()
         self.wfile.write(body)
 
-    def _media_response(self, encoded_path):
+    def _media_response(self, encoded_path, preview_size=None):
         try:
             decoded = unquote(encoded_path)
             if decoded.startswith("launchbox/"):
@@ -394,6 +399,28 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                     return self.send_error(HTTPStatus.BAD_GATEWAY, "LaunchBox image unavailable")
             else:
                 path = _resolve_media_path(self.server.thumbnail_root, encoded_path)
+            cache_control = "public, max-age=604800, immutable"
+            etag = None
+            if preview_size is not None:
+                try:
+                    path = self.server.preview_cache.get(path, preview_size)
+                except (OSError, ValueError, SyntaxError):
+                    if not path.is_file():
+                        return self.send_error(HTTPStatus.NOT_FOUND)
+                    self.send_response(HTTPStatus.TEMPORARY_REDIRECT)
+                    self.send_header("Location", MEDIA_PREFIX + quote(decoded, safe="/"))
+                    self.send_header("Cache-Control", "no-store")
+                    self.send_header("Content-Length", "0")
+                    self.end_headers()
+                    return
+                etag = f'W/"{ArtworkPreviewCache.VERSION}-{path.stem}"'
+                cache_control = "public, max-age=3600"
+                if self.headers.get("If-None-Match") == etag:
+                    self.send_response(HTTPStatus.NOT_MODIFIED)
+                    self.send_header("ETag", etag)
+                    self.send_header("Cache-Control", cache_control)
+                    self.end_headers()
+                    return
             handle = path.open("rb")
         except (OSError, ValueError):
             return self.send_error(HTTPStatus.NOT_FOUND)
@@ -404,7 +431,9 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             self.send_response(HTTPStatus.OK)
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(os.fstat(handle.fileno()).st_size))
-            self.send_header("Cache-Control", "public, max-age=604800, immutable")
+            self.send_header("Cache-Control", cache_control)
+            if etag:
+                self.send_header("ETag", etag)
             self.send_header("X-Content-Type-Options", "nosniff")
             self.end_headers()
             while chunk := handle.read(1024 * 1024):
@@ -559,6 +588,9 @@ class ExplorerServer(ThreadingHTTPServer):
         ))
         self.launchbox_cache = LaunchBoxImageCache(os.environ.get(
             "GAMEDB_LAUNCHBOX_IMAGE_CACHE", "/data/media/launchbox"
+        ))
+        self.preview_cache = ArtworkPreviewCache(os.environ.get(
+            "GAMEDB_PREVIEW_CACHE", PROJECT_ROOT / "data/media/previews"
         ))
         self.rom_root = Path(os.environ.get("GAMEDB_ROM_ROOT", "/data/roms"))
 

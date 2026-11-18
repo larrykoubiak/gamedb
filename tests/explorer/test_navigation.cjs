@@ -7,6 +7,7 @@ const path = require('node:path');
 
 (async () => {
   const requests = [];
+  const images = [];
   const systems = [
     {id: 1, manufacturer: 'Example', name: 'Tiny Platform', category: 'computer', gameCount: 1},
     {id: 42, manufacturer: 'Nintendo', name: 'NES', category: 'console', gameCount: 201},
@@ -47,7 +48,8 @@ const path = require('node:path');
       const icons = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../gamedb/explorer/assets/system-icons.json'), 'utf8'));
       return res.end(JSON.stringify({...icons, 'Nintendo\x1fNES': icons['Nintendo\x1fNintendo Entertainment System']}));
     }
-    if (url.pathname.startsWith('/media/test/')) {
+    if (/^\/(?:media|previews\/(?:128|320))\/test\//.test(url.pathname)) {
+      images.push(url.pathname);
       if (url.pathname.endsWith('broken.png')) { res.statusCode = 404; return res.end(); }
       res.setHeader('Content-Type', 'image/png');
       return res.end(fs.readFileSync(path.resolve(__dirname,
@@ -66,7 +68,37 @@ const path = require('node:path');
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.goto(`http://127.0.0.1:${server.address().port}`);
+    await page.waitForFunction(() => document.querySelector('.game-card .game-art')?.naturalWidth > 0);
+    assert.equal(await page.getByRole('button', {name: 'Tiles', exact: true}).getAttribute('aria-pressed'), 'true');
+    assert(images.includes('/previews/320/test/box%20art.png'));
+    assert(!images.some(url => url.startsWith('/media/')));
+    const cardDetails = page.getByRole('button', {name: 'Show details for Mario on NES'});
+    await cardDetails.click();
+    const gameDialog = page.locator('#game-dialog');
+    await gameDialog.getByRole('button', {name: 'Enlarge Mario — Gameplay'}).click();
+    await page.waitForFunction(() => document.querySelector('#artwork-image').naturalWidth > 0);
+    assert(images.includes('/media/test/gameplay.png'));
+    await page.keyboard.press('Escape');
+    assert.equal(await gameDialog.isVisible(), true);
+    await page.keyboard.press('Escape');
+    assert(await cardDetails.evaluate(element => element === document.activeElement));
+    await page.setViewportSize({width: 390, height: 844});
+    assert.equal(await page.locator('#system-browser').isVisible(), false);
+    assert((await page.locator('.game-card').boundingBox()).y < 844);
+    await page.getByRole('button', {name: 'Browse systems'}).click();
+    assert.equal(await page.locator('#system-browser').isVisible(), true);
+    await page.getByRole('button', {name: 'Hide systems'}).click();
+    await page.setViewportSize({width: 1280, height: 720});
+    assert.equal(await page.locator('#system-browser').isVisible(), true);
+    const titleRequests = () => requests.filter(url => url.includes('/titles?')).length;
+    const beforeSwitch = titleRequests();
+    await page.getByRole('button', {name: 'Table', exact: true}).click();
+    await page.waitForFunction(() => document.querySelector('.game-row .game-art')?.naturalWidth > 0);
+    assert(images.includes('/previews/128/test/box%20art.png'));
+    assert.equal(titleRequests(), beforeSwitch);
+    await page.reload();
     await page.locator('.game-row').waitFor();
+    assert.equal(await page.getByRole('button', {name: 'Table', exact: true}).getAttribute('aria-pressed'), 'true');
     assert.equal(await page.locator('#system-name').innerText(), 'All platforms');
     assert(requests.some(url => url.startsWith('/api/titles?')));
     assert(!requests.some(url => url.startsWith('/api/systems/1/titles')));
@@ -205,6 +237,28 @@ const path = require('node:path');
     await page.locator('#clear-metadata-filters').click();
     assert.equal(await page.locator('#active-metadata-filters button').count(), 0);
     await page.waitForFunction(() => !Object.keys(state.metadataFilters).length);
+    await page.getByRole('button', {name: 'Tiles', exact: true}).click();
+    await page.locator('.game-card').waitFor();
+    await page.evaluate(() => {
+      const payload = state.results;
+      const game = payload.items[0];
+      const items = Array.from({length: 80}, (_, i) => ({
+        ...game, media: {boxart: {...game.media.boxart, path: `test/lazy-${i}.png`}},
+      }));
+      items[79].media = {boxart: {...game.media.boxart, path: 'test/distant-broken.png'}, snap: game.media.snap};
+      renderGames({...payload, items});
+    });
+    await page.waitForFunction(() => document.querySelector('.game-card .game-art')?.naturalWidth > 0);
+    assert(!images.includes('/previews/320/test/distant-broken.png'));
+    const distant = page.locator('.game-card').last();
+    await distant.scrollIntoViewIfNeeded();
+    await page.waitForFunction(() => {
+      const img = document.querySelector('.game-card:last-child .game-art');
+      return img?.naturalWidth > 0 && img.currentSrc.endsWith('/previews/320/test/gameplay.png');
+    });
+    await distant.locator('.artwork-zoom').click();
+    assert.equal(await page.locator('#artwork-caption').innerText(), 'Mario — Gameplay');
+    await page.keyboard.press('Escape');
     await page.evaluate(() => openCorrectionDialog({sourceTitle: 'Mario', releaseContentSignature: 'test'}, 123, 42));
     await page.locator('#correction-target-filter').fill('Luigi');
     await page.waitForResponse(response => response.url().includes('/api/systems/42/correction-targets'));

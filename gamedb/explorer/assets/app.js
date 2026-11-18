@@ -4,6 +4,8 @@ const state = {
   selectedSystem: null,
   page: 1,
   pageSize: 100,
+  layout: "tiles",
+  results: null,
   query: "",
   requestId: 0,
   releaseDetails: new Map(),
@@ -17,8 +19,11 @@ const state = {
 const tree = document.querySelector("#system-tree");
 const filter = document.querySelector("#system-filter");
 const categoryFilter = document.querySelector("#system-category");
+const systemBrowserToggle = document.querySelector("#system-browser-toggle");
 const tableWrap = document.querySelector("#game-table-wrap");
 const tableBody = document.querySelector("#game-table-body");
+const gameGrid = document.querySelector("#game-grid");
+const gameDialog = document.querySelector("#game-dialog");
 const empty = document.querySelector("#game-empty");
 const pagination = document.querySelector("#pagination");
 const gameFilter = document.querySelector("#game-filter");
@@ -252,9 +257,7 @@ function renderTree(search = "") {
       label.className = "platform-identity";
       label.append(platformIcon(system.manufacturer, system.name), name);
       button.append(label, count);
-      button.addEventListener("click", () => {
-        selectSystem(system);
-      });
+      button.addEventListener("click", () => chooseSystem(system));
       details.append(button);
     }
     tree.append(details);
@@ -306,43 +309,50 @@ function scoreText(score) {
   return score > 0 ? `+${score}` : String(score);
 }
 
-function mediaUrl(path) {
-  return `/media/${path.split("/").map(encodeURIComponent).join("/")}`;
-}
-
 function artworkEntries(media, title) {
   return [["boxart", "Box art"], ["title", "Title screen"],
     ["snap", "Gameplay"], ["logo", "Logo"]]
-    .filter(([kind]) => media?.[kind])
-    .map(([kind, label]) => ({kind, label, source: mediaUrl(media[kind].path), caption: `${title} — ${label}`}));
+    .filter(([kind]) => media?.[kind]?.path)
+    .map(([kind, label]) => {
+      const path = media[kind].path.split("/").map(encodeURIComponent).join("/");
+      return {kind, label, path, source: `/media/${path}`, caption: `${title} — ${label}`};
+    });
 }
 
-function artworkCell(game) {
-  const element = document.createElement("td");
-  element.className = "art-cell";
-  const candidates = artworkEntries(game.media, game.title);
-  if (!candidates.length) {
-    const placeholder = document.createElement("span");
-    placeholder.className = "art-placeholder";
-    placeholder.textContent = "—";
-    element.append(placeholder);
-    return element;
+const coverObserver = window.IntersectionObserver && new IntersectionObserver(entries => {
+  for (const {target, isIntersecting} of entries) {
+    if (isIntersecting) {
+      coverObserver.unobserve(target);
+      target.src = target.dataset.preview;
+    }
   }
+}, {rootMargin: "240px 0px"});
+
+function renderCover(element, game, size) {
+  const candidates = artworkEntries(game.media, game.title);
+  const showFallback = () => element.replaceChildren(platformIcon(game.manufacturer, game.systemName));
+  if (!candidates.length) return showFallback();
   const image = document.createElement("img");
   image.className = "game-art";
   image.alt = "";
   image.loading = "lazy";
   image.decoding = "async";
   let index = 0;
-  image.src = candidates[index].source;
+  const preview = () => `/previews/${size}/${candidates[index].path}`;
   const zoom = artworkButton(image, candidates, () => index, `${game.title} — Artwork`);
   image.addEventListener("error", () => {
+    if (!image.isConnected) return;
     index += 1;
-    if (index < candidates.length) image.src = candidates[index].source;
-    else zoom.remove();
+    if (index < candidates.length) image.src = preview();
+    else showFallback();
   });
   element.append(zoom);
-  return element;
+  if (coverObserver) {
+    image.dataset.preview = preview();
+    coverObserver.observe(image);
+  } else {
+    image.src = preview();
+  }
 }
 
 const artworkDialog = document.querySelector("#artwork-dialog");
@@ -435,11 +445,11 @@ function renderArtworkGallery(container, media, title) {
   const gallery = document.createElement("section");
   gallery.className = "art-gallery";
   gallery.setAttribute("aria-label", `Artwork for ${title}`);
-  for (const [index, {kind, label, source, caption: imageCaption}] of available.entries()) {
+  for (const [index, {kind, label, path, caption: imageCaption}] of available.entries()) {
     const item = media[kind];
     const figure = document.createElement("figure");
     const image = document.createElement("img");
-    image.src = source;
+    image.src = `/previews/320/${path}`;
     image.alt = imageCaption;
     image.loading = "lazy";
     const zoom = artworkButton(image, available, () => index);
@@ -663,15 +673,19 @@ function renderReleaseDetails(container, releases, facts, softwareId, media, tit
   container.append(wrap);
 }
 
-async function toggleReleaseDetails(game, row, detailRow, button) {
+function toggleReleaseDetails(game, row, detailRow, button) {
   const opening = detailRow.hidden;
   detailRow.hidden = !opening;
   button.textContent = opening ? "⌄" : "›";
   button.setAttribute("aria-expanded", String(opening));
   row.classList.toggle("expanded", opening);
-  if (!opening || detailRow.dataset.loaded) return;
+  if (opening) loadReleaseDetails(game, detailRow.querySelector(".release-details"));
+}
 
-  const container = detailRow.querySelector(".release-details");
+async function loadReleaseDetails(game, container) {
+  if (container.dataset.loaded) return;
+  container.dataset.loaded = "loading";
+  container.className = "release-details";
   container.textContent = "Loading software metadata, ranked releases and hashes…";
   try {
     let releases = state.releaseDetails.get(game.softwareId);
@@ -685,12 +699,24 @@ async function toggleReleaseDetails(game, row, detailRow, button) {
       state.softwareFacts.set(game.softwareId, facts);
     }
     renderReleaseDetails(container, releases, facts, game.softwareId, game.media, game.title, game.systemId);
-    detailRow.dataset.loaded = "true";
+    container.dataset.loaded = "true";
   } catch (error) {
+    delete container.dataset.loaded;
     container.className = "release-details error-row";
     container.textContent = error.message;
   }
 }
+
+function showGameDialog(game) {
+  document.querySelector("#game-dialog-title").textContent = game.title;
+  document.querySelector("#game-dialog-platform").textContent = game.systemName;
+  const container = document.createElement("div");
+  document.querySelector("#game-dialog-body").replaceChildren(container);
+  gameDialog.showModal();
+  loadReleaseDetails(game, container);
+}
+
+document.querySelector("#game-dialog-close").addEventListener("click", () => gameDialog.close());
 
 const correctionDialog = document.querySelector("#correction-dialog");
 const correctionForm = document.querySelector("#correction-form");
@@ -791,6 +817,7 @@ correctionForm.addEventListener("submit", async event => {
       }),
     });
     correctionDialog.close();
+    if (gameDialog.open) gameDialog.close();
     state.releaseDetails.clear();
     state.softwareFacts.clear();
     await selectSystem(state.selectedSystem, state.page);
@@ -804,8 +831,13 @@ document.querySelector("#correction-close").addEventListener("click", () => corr
 document.querySelector("#correction-cancel").addEventListener("click", () => correctionDialog.close());
 
 function showMessage(message, className = "empty-state") {
+  state.results = null;
+  coverObserver?.disconnect();
   tableWrap.hidden = true;
   tableBody.replaceChildren();
+  gameGrid.hidden = true;
+  gameGrid.replaceChildren();
+  pagination.hidden = true;
   empty.className = className;
   empty.replaceChildren();
   const text = document.createElement("p");
@@ -814,10 +846,8 @@ function showMessage(message, className = "empty-state") {
   empty.hidden = false;
 }
 
-function renderGames(payload) {
-  tableBody.replaceChildren();
-
-  for (const game of payload.items) {
+function renderTableRows(items) {
+  for (const game of items) {
     const row = document.createElement("tr");
     row.className = "game-row";
     const expandCell = document.createElement("td");
@@ -829,7 +859,10 @@ function renderGames(payload) {
     expand.setAttribute("aria-label", `Show all ranked releases for ${game.title}`);
     expand.setAttribute("aria-expanded", "false");
     expandCell.append(expand);
-    row.append(expandCell, artworkCell(game));
+    const art = document.createElement("td");
+    art.className = "art-cell";
+    renderCover(art, game, 128);
+    row.append(expandCell, art);
     const titleCell = cell(game.title, "title-cell");
     const identity = document.createElement("span");
     identity.className = "cell-note";
@@ -927,8 +960,43 @@ function renderGames(payload) {
     });
     tableBody.append(row, detailRow);
   }
+}
 
-  tableWrap.hidden = !payload.items.length;
+function gameCard(game) {
+  const card = document.createElement("li");
+  card.className = "game-card";
+  const art = document.createElement("div");
+  art.className = "card-art";
+  renderCover(art, game, 320);
+  const details = document.createElement("button");
+  details.type = "button";
+  details.className = "card-details";
+  details.setAttribute("aria-label", `Show details for ${game.title} on ${game.systemName}`);
+  details.setAttribute("aria-haspopup", "dialog");
+  details.addEventListener("click", () => showGameDialog(game));
+  const platform = document.createElement("span");
+  platform.className = "card-platform";
+  platform.textContent = state.selectedSystem ? (game.regions || []).join(" · ") : game.systemName;
+  const title = document.createElement("span");
+  title.className = "card-title";
+  title.textContent = game.title;
+  if (platform.textContent) details.append(platform);
+  details.append(title);
+  card.append(art, details);
+  return card;
+}
+
+function renderGames(payload) {
+  state.results = payload;
+  coverObserver?.disconnect();
+  tableBody.replaceChildren();
+  gameGrid.replaceChildren();
+  const tiles = state.layout === "tiles";
+  if (tiles) gameGrid.append(...payload.items.map(gameCard));
+  else renderTableRows(payload.items);
+
+  gameGrid.hidden = !tiles || !payload.items.length;
+  tableWrap.hidden = tiles || !payload.items.length;
   empty.hidden = Boolean(payload.items.length);
   if (!payload.items.length) showMessage(state.query || Object.keys(state.metadataFilters).length ? "No games match your search and filters." : "No preferred releases found.");
 
@@ -942,13 +1010,33 @@ function renderGames(payload) {
     : `${payload.total.toLocaleString()} software titles · preferred release per software`;
 }
 
-async function selectSystem(system, page = 1) {
+function setLayout(layout) {
+  state.layout = layout;
+  for (const button of document.querySelectorAll(".layout-switch button")) {
+    button.setAttribute("aria-pressed", String(button.dataset.layout === layout));
+  }
+  document.querySelector(".legend").hidden = layout !== "table";
+  if (state.results) renderGames(state.results);
+}
+
+try {
+  if (localStorage.getItem("gamedb-layout") === "table") setLayout("table");
+} catch { /* Storage is optional. */ }
+for (const button of document.querySelectorAll(".layout-switch button")) {
+  button.addEventListener("click", () => {
+    if (state.layout === button.dataset.layout) return;
+    setLayout(button.dataset.layout);
+    try { localStorage.setItem("gamedb-layout", state.layout); } catch { /* Storage is optional. */ }
+  });
+}
+
+async function selectSystem(system, page = 1, platformsReady) {
   clearTimeout(gameFilterTimer);
   state.selectedSystem = system;
   state.page = page;
   refreshMetadataOptions();
   const requestId = ++state.requestId;
-  renderTree(filter.value);
+  if (state.systems.length) renderTree(filter.value);
   document.querySelector("#manufacturer-name").textContent = system?.manufacturer || "Your library";
   document.querySelector("#system-name").textContent = system?.name || "All platforms";
   document.querySelector("#system-summary").textContent = "Search games across your library, or choose a platform to narrow the results.";
@@ -962,7 +1050,10 @@ async function selectSystem(system, page = 1) {
     const path = system ? `/api/systems/${system.id}/titles` : "/api/titles";
     const metadata = Object.keys(state.metadataFilters).length
       ? `&filters=${encodeURIComponent(JSON.stringify(state.metadataFilters))}` : "";
-    const payload = await requestJson(`${path}?page=${page}&page_size=${state.pageSize}&q=${query}${metadata}`);
+    const [payload] = await Promise.all([
+      requestJson(`${path}?page=${page}&page_size=${state.pageSize}&q=${query}${metadata}`),
+      platformsReady,
+    ]);
     if (requestId !== state.requestId) return;
     renderGames(payload);
   } catch (error) {
@@ -972,7 +1063,21 @@ async function selectSystem(system, page = 1) {
   }
 }
 
-document.querySelector("#all-platforms").addEventListener("click", () => selectSystem(null));
+function setSystemBrowserOpen(open) {
+  systemBrowserToggle.setAttribute("aria-expanded", String(open));
+  systemBrowserToggle.textContent = open ? "Hide systems" : "Browse systems";
+}
+systemBrowserToggle.addEventListener("click", () => {
+  setSystemBrowserOpen(systemBrowserToggle.getAttribute("aria-expanded") !== "true");
+});
+function chooseSystem(system) {
+  if (systemBrowserToggle.offsetWidth) {
+    systemBrowserToggle.focus();
+    setSystemBrowserOpen(false);
+  }
+  selectSystem(system);
+}
+document.querySelector("#all-platforms").addEventListener("click", () => chooseSystem(null));
 
 filter.addEventListener("input", () => renderTree(filter.value));
 categoryFilter.addEventListener("change", () => renderTree(filter.value));
@@ -989,7 +1094,7 @@ gameFilter.addEventListener("input", () => {
   }, 250);
 });
 
-async function initialize() {
+async function loadPlatforms() {
   try {
     const [systems, capabilities, icons] = await Promise.all([
       requestJson("/api/systems"),
@@ -999,8 +1104,7 @@ async function initialize() {
     state.systems = systems;
     state.systemIcons = icons;
     state.correctionsEnabled = Boolean(capabilities.softwareCorrections);
-    renderTree();
-    await selectSystem(null);
+    renderTree(filter.value);
   } catch (error) {
     tree.replaceChildren();
     const message = document.createElement("div");
@@ -1011,4 +1115,4 @@ async function initialize() {
 }
 
 initializeMetadataFilters();
-initialize();
+selectSystem(null, 1, loadPlatforms());

@@ -36,7 +36,9 @@ services:
     container_name: gamedb-explorer
     restart: unless-stopped
     env_file: .env
-    environment: *database-environment
+    environment:
+      <<: *database-environment
+      GAMEDB_PREVIEW_CACHE: /data/media/previews
     depends_on:
       db:
         condition: service_healthy
@@ -49,6 +51,7 @@ services:
           - web
     volumes:
       - ./data/media/launchbox:/data/media/launchbox
+      - ./data/media/previews:/data/media/previews
       - ./data/libretro-thumbnails:/data/libretro-thumbnails:ro
       - /mnt/synology/roms:/mnt/synology/roms:ro
       - /mnt/synology/backup/games/Undub:/mnt/synology/backup/games/Undub:ro
