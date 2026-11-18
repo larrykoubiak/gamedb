@@ -64,7 +64,8 @@ class PreviewTests(unittest.TestCase):
                         client.close()
 
                 path = "/previews/320/Box%20art.png"
-                status, headers, body = get(path)
+                with patch("gamedb.explorer.server.mimetypes.guess_type", return_value=(None, None)):
+                    status, headers, body = get(path)
                 self.assertEqual((status, headers["Content-Type"]), (200, "image/webp"))
                 with Image.open(BytesIO(body)) as cover:
                     self.assertEqual(cover.size, (320, 160))

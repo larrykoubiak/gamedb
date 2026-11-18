@@ -425,7 +425,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         except (OSError, ValueError):
             return self.send_error(HTTPStatus.NOT_FOUND)
         with handle:
-            content_type = (
+            content_type = "image/webp" if preview_size is not None else (
                 mimetypes.guess_type(path.name)[0] or "application/octet-stream"
             )
             self.send_response(HTTPStatus.OK)
