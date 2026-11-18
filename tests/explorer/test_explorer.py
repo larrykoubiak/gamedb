@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 from gamedb.explorer.server import (
     ASSET_DIRECTORY,
@@ -147,8 +147,9 @@ class ExplorerTests(unittest.TestCase):
         titles = repository.titles_sql(269, 100, 0)
 
         self.assertIn("app.user_score_generation", revision)
-        self.assertIn("catalog.software_fact", revision)
-        self.assertIn("metadata.signature", revision)
+        self.assertIn("catalog.listing_generation", revision)
+        self.assertIn("catalog.media_generation", revision)
+        self.assertNotIn("catalog.software_fact", revision)
         self.assertIn("'default'", revision)
         self.assertIn("preferredReleaseSignature", titles)
         self.assertIn("catalog.release_content_signature", titles)
@@ -186,7 +187,7 @@ class ExplorerTests(unittest.TestCase):
         self.assertIn("'sourceDatabases', source_databases", query)
 
         class SnapshotRepository(CatalogRepository):
-            def systems(self):
+            def systems(self, revision=None):
                 return [{
                     "id": 269,
                     "key": "a" * 32,
@@ -195,13 +196,12 @@ class ExplorerTests(unittest.TestCase):
                     "gameCount": 1,
                 }]
 
-            def titles(self, system_id, limit, offset, title_filter=""):
-                return {"items": [{"softwareId": 42, "title": "Example"}]}
-
             def system_software_facts(self, system_id):
                 return {"42": [{"key": "genre", "values": []}]}
 
-        payload = SnapshotRepository("default").system_software("a" * 32, "rev")
+        client = Mock()
+        client.query.return_value = {"items": [{"softwareId": 42, "title": "Example"}]}
+        payload = SnapshotRepository("default", client).system_software("a" * 32, "rev")
         self.assertEqual(
             payload["items"][0]["softwareFacts"],
             [{"key": "genre", "values": []}],

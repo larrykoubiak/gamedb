@@ -142,19 +142,27 @@ available. Large lists show the first 100 matching values and support searching.
 The title endpoints accept a `filters` query parameter containing a JSON object
 such as `{"genre":["Action","Adventure"],"developer":["Nintendo"]}`.
 `GET /api/metadata-options?key=genre` accepts the same `q` and `filters`, optional
-`system_id`, and a `search` term for finding values. This feature reads existing
-metadata and only requires an explorer image update.
+`system_id`, and a `search` term for finding values.
 
-Metadata dropdown responses use a process-local cache: up to 256 entries and
-8 MiB of serialized queries/responses, expiring five minutes after each load.
-The key covers the user, field, platform, title search, other metadata filters,
-and value search. Equivalent filter ordering shares an entry, and a field's own
-selection is ignored just as it is in its options query. Concurrent identical
-requests share one database query; query failures are retried on the next request.
-Least recently used entries are evicted when either limit is reached. Correction
-rebuilds clear this cache, and explorer restarts start empty. External metadata or
-catalog rebuilds may leave dropdown choices/counts stale for up to five minutes;
-restart the explorer to refresh immediately. Game results remain uncached.
+The Explorer caches the system list, title pages, searches and metadata dropdowns
+as they are opened. Requests share a result when the user, system, page, search
+and filters match. Each request checks a small database revision that tracks
+published scores, metadata, release facts, arcade plans and selected artwork.
+The first request after a change loads fresh results. Concurrent requests for the
+same result share the work. The cache holds up to 512 entries or 64 MiB, evicts
+the least recently used entries and starts empty when the Explorer restarts.
+
+The scoring build stores the preferred release and tie count for each user's
+games in PostgreSQL. Even the first visit to a system uses those stored choices.
+The metadata build publishes the listing revision. To upgrade an existing catalog
+in place, run the following command once before starting the updated Explorer.
+
+```sh
+docker compose run --rm --no-deps --build --entrypoint psql catalog-builder \
+  -X -v ON_ERROR_STOP=1 --single-transaction \
+  -f sql/layers/metadata/095_listing_generation.sql \
+  -f sql/layers/scoring/025_cache_preferred_releases.sql
+```
 
 There are two Compose entry points with deliberately different database
 ownership:
@@ -438,9 +446,11 @@ source claims, not distinct texts. Keep provenance if presenting alternatives.
 `matches` includes the match method, LaunchBox `databaseId` and corroboration
 `basis` when available. `sourceRevision` identifies the source snapshot.
 
-The metadata source revision/count and artwork content signature contribute to
-`catalogRevision`, so metadata imports and artwork changes invalidate snapshot ETags. Revalidate with
-`If-None-Match` as usual; no per-game metadata requests are needed.
+The scoring generation, catalog listing revision and artwork signature contribute
+to `catalogRevision`. The server caches up to 128 complete snapshot responses or
+128 MiB in memory. A launcher with a current ETag can reuse its own copy even
+after the server has evicted the snapshot or restarted. Revalidate with
+`If-None-Match` when opening a system.
 
 Numeric database IDs remain present for compatibility but are rebuild-local;
 clients should persist the system key and release content signature instead.

@@ -2,12 +2,15 @@ import subprocess
 import threading
 import unittest
 from concurrent.futures import Future, ThreadPoolExecutor
+from http.client import HTTPConnection
+from http.server import ThreadingHTTPServer
+import json
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
 from gamedb.explorer.cache import JsonResponseCache
-from gamedb.explorer.repository import CatalogRepository
-from gamedb.explorer.server import ExplorerServer
+from gamedb.explorer.repository import CatalogChanged, CatalogRepository
+from gamedb.explorer.server import ExplorerHandler, ExplorerServer
 
 
 class JsonResponseCacheTests(unittest.TestCase):
@@ -108,11 +111,43 @@ class JsonResponseCacheTests(unittest.TestCase):
                          {'generation': 'new'})
 
 
-class MetadataOptionsCacheTests(unittest.TestCase):
+class ListingCacheTests(unittest.TestCase):
+    def test_pages_are_scoped_to_the_query_and_published_revision(self):
+        client = Mock()
+        client.query.return_value = {'items': ['original']}
+        repository = CatalogRepository('default', client)
+        repository._published_revision = Mock(return_value='first')
+        filters = {'genre': ['RPG', 'Action'], 'developer': ['Nintendo']}
+        repository.titles(259, 100, 0, 'Wonder', filters)['items'].clear()
+        reordered = {'developer': ['Nintendo'], 'genre': ['Action', 'RPG', 'RPG']}
+        self.assertEqual(repository.titles(259, 100, 0, 'Wonder', reordered)['items'], ['original'])
+        self.assertEqual(client.query.call_count, 1)
+        for args in [(260, 100, 0, 'Wonder', filters), (259, 50, 0, 'Wonder', filters),
+                     (259, 100, 100, 'Wonder', filters), (259, 100, 0, 'Mario', filters),
+                     (259, 100, 0, 'Wonder', {}), (None, 100, 0, 'Wonder', filters)]:
+            repository.titles(*args)
+        self.assertEqual(client.query.call_count, 7)
+        repository._published_revision.return_value = 'second'
+        client.query.return_value = {'items': ['new preferred release']}
+        self.assertEqual(repository.titles(259, 100, 0, 'Wonder', filters)['items'], ['new preferred release'])
+        self.assertEqual(client.query.call_count, 8)
+
+    def test_refresh_during_a_load_discards_the_response(self):
+        client = Mock()
+        client.query.side_effect = [['old'], ['new']]
+        repository = CatalogRepository('default', client)
+        repository._published_revision = Mock(side_effect=['one', 'two', 'two', 'two', 'two'])
+        with self.assertRaises(CatalogChanged):
+            repository.systems()
+        self.assertEqual(repository.systems(), ['new'])
+        self.assertEqual(repository.systems(), ['new'])
+        self.assertEqual(client.query.call_count, 2)
+
     def test_equivalent_filter_order_and_own_field_selection_share_an_entry(self):
         client = Mock()
         client.query.return_value = {'total': 1, 'items': [{'value': 'Action', 'count': 2}]}
         repository = CatalogRepository('default', client)
+        repository._published_revision = Mock(return_value='first')
         first = repository.metadata_options('genre', 1, 'Mario', {
             'genre': ['Action'], 'developer': ['Nintendo', 'Nintendo'],
             'publisher': ['B', 'A'],
@@ -139,7 +174,7 @@ class MetadataOptionsCacheTests(unittest.TestCase):
         for failure in (None, subprocess.CalledProcessError(1, ['rebuild'])):
             with self.subTest(failure=failure):
                 cache = Mock()
-                server = SimpleNamespace(repository=SimpleNamespace(metadata_options_cache=cache))
+                server = SimpleNamespace(repository=SimpleNamespace(listing_cache=cache))
 
                 def rebuild(*args, **kwargs):
                     self.assertEqual(cache.clear.call_count, 1)
@@ -153,3 +188,62 @@ class MetadataOptionsCacheTests(unittest.TestCase):
                     else:
                         ExplorerServer.rebuild_software(server)
                 self.assertEqual(cache.clear.call_count, 2)
+
+
+class LauncherSnapshotCacheTests(unittest.TestCase):
+    def test_conditional_requests_eviction_and_refresh_during_assembly(self):
+        class QuietHandler(ExplorerHandler):
+            def log_message(self, *args):
+                pass
+
+        key = 'a' * 32
+        path = f'/api/v1/systems/{key}/software'
+        repository = CatalogRepository('default')
+        repository._published_revision = Mock(return_value='initial')
+        repository.systems = Mock(return_value=[{'key': key}])
+
+        def build(system_key, revision):
+            if revision == 'changing':
+                repository._published_revision.return_value = 'published'
+            return {'catalogRevision': revision, 'items': [system_key]}
+
+        repository.system_software = Mock(side_effect=build)
+        with ThreadingHTTPServer(('127.0.0.1', 0), QuietHandler) as server:
+            server.repository = repository
+            server.api_key = 'test-key'
+            server.catalog_cache = JsonResponseCache(ttl=None)
+            thread = threading.Thread(target=server.serve_forever)
+            thread.start()
+
+            def get(url=path, etag=None, authorized=True):
+                headers = {'Authorization': 'Bearer test-key'} if authorized else {}
+                if etag:
+                    headers['If-None-Match'] = etag
+                connection = HTTPConnection(*server.server_address)
+                try:
+                    connection.request('GET', url, headers=headers)
+                    response = connection.getresponse()
+                    return response.status, response.getheader('ETag'), response.read()
+                finally:
+                    connection.close()
+
+            try:
+                status, etag, body = get()
+                self.assertEqual((status, json.loads(body)['catalogRevision']), (200, 'initial'))
+                self.assertEqual(get(), (status, etag, body))
+                server.catalog_cache.clear()
+                self.assertEqual(get(etag=etag), (304, etag, b''))
+                self.assertEqual(get(etag=etag, authorized=False)[0], 401)
+                repository.system_software.assert_called_once()
+                repository.systems.return_value = []
+                self.assertEqual(get(etag=etag)[0], 404)
+                repository.systems.return_value = [{'key': key}]
+                repository._published_revision.return_value = 'changing'
+                status, new_etag, body = get(etag=etag)
+                self.assertEqual((status, json.loads(body)['catalogRevision']), (200, 'published'))
+                self.assertNotEqual(new_etag, etag)
+                self.assertEqual(get(etag=new_etag), (304, new_etag, b''))
+                self.assertEqual(repository.system_software.call_count, 3)
+            finally:
+                server.shutdown()
+                thread.join()

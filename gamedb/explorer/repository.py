@@ -33,7 +33,7 @@ def validate_metadata_filters(filters: dict | None) -> dict[str, list[str]]:
             raise ValueError("Metadata filters require up to 25 nonempty text values per field")
         if values:
             result[key] = sorted(set(values))
-    return result
+    return dict(sorted(result.items()))
 
 
 def quote_sql_text(value: str) -> str:
@@ -79,13 +79,17 @@ class PsqlJsonClient:
         return json.loads(payload or "null")
 
 
+class CatalogChanged(Exception):
+    """A publication committed while a listing was being assembled."""
+
+
 class CatalogRepository:
     """Provide catalog reads and validated working-correction writes."""
 
     def __init__(self, username: str, client: PsqlJsonClient | None = None):
         self.username = username
         self.client = client or PsqlJsonClient()
-        self.metadata_options_cache = JsonResponseCache()
+        self.listing_cache = JsonResponseCache(max_entries=512, max_bytes=64 * 1024 * 1024, ttl=None)
 
     def systems_sql(self) -> str:
         return SqlTemplate(QUERY_DIRECTORY / "systems.sql").render(
@@ -138,7 +142,6 @@ class CatalogRepository:
             raise ValueError("Unknown metadata field")
         filters = validate_metadata_filters(metadata_filters)
         filters.pop(key, None)
-        filters = {field: filters[field] for field in sorted(filters)}
         return SqlTemplate(QUERY_DIRECTORY / "metadata_options.sql").render(
             software_scope=self.software_scope_sql(system_id, title_filter, filters),
             fact_key=quote_sql_text(key),
@@ -214,33 +217,59 @@ class CatalogRepository:
             correction_id=sql_integer(correction_id, "correction_id", 1)
         )
 
-    def systems(self):
-        return self.client.query(self.systems_sql())
+    def _published_revision(self):
+        payload = self.client.query(self.catalog_revision_sql())
+        return payload.get("catalogRevision") if isinstance(payload, dict) else None
 
     def catalog_revision(self) -> str:
-        payload = self.client.query(self.catalog_revision_sql())
-        if not isinstance(payload, dict) or not payload.get("catalogRevision"):
+        revision = self._published_revision()
+        if not revision:
             raise ValueError(f"No scoring generation exists for user {self.username!r}")
-        return str(payload["catalogRevision"])
+        return revision
+
+    def load_at_revision(self, revision, loader):
+        payload = loader()
+        if self._published_revision() != revision:
+            raise CatalogChanged()
+        return payload
+
+    def _listing_query(self, sql, revision=None):
+        revision = revision or self._published_revision()
+        if not revision:
+            return self.client.query(sql)
+        return self.listing_cache.get_or_load(
+            revision + "\n" + sql,
+            lambda: self.load_at_revision(revision, lambda: self.client.query(sql)),
+        )
+
+    def systems(self, revision=None):
+        return self._listing_query(self.systems_sql(), revision)
 
     def catalog_manifest(self, revision: str | None = None):
+        revision = revision or self.catalog_revision()
         return {
-            "catalogRevision": revision or self.catalog_revision(),
-            "systems": self.systems(),
+            "catalogRevision": revision,
+            "systems": self.systems(revision),
         }
 
-    def system_software(self, system_key: str, revision: str | None = None):
+    def system_by_key(self, system_key: str, revision: str):
         if not re.fullmatch(r"[0-9a-f]{32}", system_key):
             raise ValueError("system_key must be a 32-character lowercase hex key")
-        system = next(
-            (item for item in self.systems() if item.get("key") == system_key),
+        return next(
+            (item for item in self.systems(revision) if item.get("key") == system_key),
             None,
         )
+
+    def system_software(self, system_key: str, revision: str | None = None):
+        revision = revision or self.catalog_revision()
+        system = self.system_by_key(system_key, revision)
         if system is None:
             return None
-        catalog = self.titles(
+        # Cache the complete snapshot at the HTTP boundary. A second copy of
+        # all titles for a large system would displace ordinary browse pages.
+        catalog = self.client.query(self.titles_sql(
             int(system["id"]), max(1, int(system["gameCount"])), 0
-        )
+        ))
         software_facts = self.system_software_facts(int(system["id"]))
         items = []
         for source_item in catalog["items"]:
@@ -250,7 +279,7 @@ class CatalogRepository:
             )
             items.append(item)
         return {
-            "catalogRevision": revision or self.catalog_revision(),
+            "catalogRevision": revision,
             "system": {
                 "key": system["key"],
                 "manufacturer": system["manufacturer"],
@@ -264,7 +293,7 @@ class CatalogRepository:
         self, system_id: int | None, limit: int, offset: int, title_filter: str = "",
         metadata_filters: dict | None = None,
     ):
-        return self.client.query(
+        return self._listing_query(
             self.titles_sql(system_id, limit, offset, title_filter, metadata_filters)
         )
 
@@ -272,7 +301,7 @@ class CatalogRepository:
         sql = self.metadata_options_sql(
             key, system_id, title_filter, metadata_filters, search
         )
-        return self.metadata_options_cache.get_or_load(sql, lambda: self.client.query(sql))
+        return self._listing_query(sql)
 
     def software_releases(self, software_id: int):
         return self.client.query(self.software_releases_sql(software_id))

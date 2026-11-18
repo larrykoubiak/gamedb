@@ -16,8 +16,9 @@ from urllib.parse import parse_qs, quote, unquote, urlparse
 
 from gamedb.arcade.bundle import prepare_manifest, public_manifest, write_bundle
 from gamedb.config import PROJECT_ROOT, ProjectEnvironment
+from gamedb.explorer.cache import JsonResponseCache
 from gamedb.explorer.previews import ArtworkPreviewCache
-from gamedb.explorer.repository import CatalogRepository, validate_metadata_filters
+from gamedb.explorer.repository import CatalogChanged, CatalogRepository, validate_metadata_filters
 from gamedb.launchbox.image_cache import LaunchBoxImageCache, valid_filename
 
 
@@ -156,6 +157,17 @@ class ExplorerHandler(BaseHTTPRequestHandler):
     server_version = "GameDBExplorer/1"
 
     def do_GET(self):  # noqa: N802 - BaseHTTPRequestHandler API
+        for _ in range(2):
+            try:
+                return self._get()
+            except CatalogChanged:
+                continue
+        return self._json_response(
+            {"error": "The catalog is being refreshed. Retry the request."},
+            HTTPStatus.SERVICE_UNAVAILABLE,
+        )
+
+    def _get(self):
         parsed = urlparse(self.path)
         try:
             if parsed.path.startswith("/api/v1/") and not _api_authorized(
@@ -179,9 +191,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                     query.get("search", [""])[0].strip()[:100],
                 ))
             if parsed.path == "/api/v1/catalog":
-                return self._catalog_response(
-                    "manifest", self.server.repository.catalog_manifest
-                )
+                return self._catalog_response()
             if parsed.path.startswith(MEDIA_PREFIX):
                 return self._media_response(parsed.path[len(MEDIA_PREFIX):])
             preview = PREVIEW_PATH.fullmatch(parsed.path)
@@ -222,13 +232,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
 
             match = SYSTEM_SOFTWARE_SNAPSHOT.fullmatch(parsed.path)
             if match:
-                system_key = match.group(1)
-                return self._catalog_response(
-                    f"system:{system_key}",
-                    lambda revision: self.server.repository.system_software(
-                        system_key, revision
-                    ),
-                )
+                return self._catalog_response(match.group(1))
 
             match = SOFTWARE_RELEASES.fullmatch(parsed.path)
             if match:
@@ -346,25 +350,29 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
-    def _catalog_response(self, cache_key, loader):
-        revision = self.server.repository.catalog_revision()
-        entry = self.server.catalog_cache.get(cache_key)
-        if entry is None or entry[0] != revision:
-            payload = loader(revision)
-            if payload is None:
-                return self.send_error(HTTPStatus.NOT_FOUND)
-            body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
-            suffix = hashlib.sha256(cache_key.encode("utf-8")).hexdigest()[:12]
-            entry = (revision, f'"{revision}-{suffix}"', body)
-            with self.server.catalog_cache_lock:
-                self.server.catalog_cache[cache_key] = entry
-        _, etag, body = entry
+    def _catalog_response(self, system_key=None):
+        repository = self.server.repository
+        revision = repository.catalog_revision()
+        cache_key = f"system:{system_key}" if system_key else "manifest"
+        suffix = hashlib.sha256(cache_key.encode("utf-8")).hexdigest()[:12]
+        etag = f'"{revision}-{suffix}"'
+        if system_key and repository.system_by_key(system_key, revision) is None:
+            return self.send_error(HTTPStatus.NOT_FOUND)
         if self.headers.get("If-None-Match") == etag:
             self.send_response(HTTPStatus.NOT_MODIFIED)
             self.send_header("ETag", etag)
             self.send_header("Cache-Control", "private, no-cache")
             self.end_headers()
             return
+
+        def load():
+            if system_key:
+                return repository.system_software(system_key, revision)
+            return repository.catalog_manifest(revision)
+
+        body = self.server.catalog_cache.get_bytes(
+            etag, lambda: repository.load_at_revision(revision, load)
+        )
         self.send_response(HTTPStatus.OK)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
@@ -580,8 +588,7 @@ class ExplorerServer(ThreadingHTTPServer):
         self.repository = CatalogRepository(username)
         self.api_key = _api_key()
         self.rebuild_lock = threading.Lock()
-        self.catalog_cache_lock = threading.Lock()
-        self.catalog_cache: dict[str, tuple[str, str, bytes]] = {}
+        self.catalog_cache = JsonResponseCache(max_entries=128, max_bytes=128 * 1024 * 1024, ttl=None)
         self.corrections_enabled = _corrections_enabled()
         self.thumbnail_root = Path(os.environ.get(
             "GAMEDB_LIBRETRO_THUMBNAILS", "/data/libretro-thumbnails"
@@ -595,14 +602,14 @@ class ExplorerServer(ThreadingHTTPServer):
         self.rom_root = Path(os.environ.get("GAMEDB_ROM_ROOT", "/data/roms"))
 
     def rebuild_software(self):
-        self.repository.metadata_options_cache.clear()
+        self.repository.listing_cache.clear()
         try:
             subprocess.run(
                 ["python", "-m", "gamedb.catalog", "rebuild", "--from-layer", "software"],
                 check=True, capture_output=True, text=True,
             )
         finally:
-            self.repository.metadata_options_cache.clear()
+            self.repository.listing_cache.clear()
 
 
 def serve_explorer(host: str, port: int | None, username: str) -> int:

@@ -1,32 +1,4 @@
--- Expose one convenient default per user/software without hiding unresolved ties,
--- validate the scoring layer, and commit the transaction opened by
--- 010_preferences.sql.
--- release_id is only a deterministic fallback when several releases share the
--- best readiness tier and score; consumers can use top_score_tie_count to surface that ambiguity.
-CREATE VIEW app.user_preferred_release AS
-WITH top_ranked AS (
-    SELECT score.*,
-        count(*) OVER (
-            PARTITION BY score.user_id, score.software_id
-        ) AS top_score_tie_count,
-        row_number() OVER (
-            PARTITION BY score.user_id, score.software_id
-            ORDER BY score.release_id
-        ) AS tie_break_order
-    FROM app.user_release_score score
-    WHERE score.rank_within_software = 1
-)
-SELECT
-    user_id,
-    software_id,
-    release_id,
-    score,
-    breakdown,
-    top_score_tie_count,
-    (top_score_tie_count > 1) AS tie_broken
-FROM top_ranked
-WHERE tie_break_order = 1;
-
+-- Validate the published scoring results and commit the scoring transaction.
 DO $$
 DECLARE
     expected_count bigint;

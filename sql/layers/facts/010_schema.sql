@@ -3,6 +3,7 @@
 BEGIN;
 
 DROP VIEW IF EXISTS app.user_preferred_release;
+DROP MATERIALIZED VIEW IF EXISTS app.user_preferred_release_cache;
 DROP TABLE IF EXISTS app.user_release_score;
 DROP TABLE IF EXISTS app.user_score_generation;
 DROP VIEW IF EXISTS catalog.user_preferred_release;

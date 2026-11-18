@@ -1,4 +1,4 @@
-"""Bounded process-local JSON responses with expiry and shared concurrent loads."""
+"""Bounded process-local JSON responses with shared concurrent loads."""
 
 from collections import OrderedDict
 from concurrent.futures import Future
@@ -21,13 +21,16 @@ class JsonResponseCache:
         self._lock = threading.Lock()
 
     def get_or_load(self, key, loader):
+        return json.loads(self.get_bytes(key, loader))
+
+    def get_bytes(self, key, loader):
         with self._lock:
             entry = self._entries.get(key)
             if entry is not None:
                 expires, body, size = entry
-                if self.clock() < expires:
+                if expires is None or self.clock() < expires:
                     self._entries.move_to_end(key)
-                    return json.loads(body)
+                    return body
                 del self._entries[key]
                 self._bytes -= size
             pending = self._inflight.get(key)
@@ -38,13 +41,14 @@ class JsonResponseCache:
             generation = self._generation
 
         if not owner:
-            return json.loads(pending.result())
+            return pending.result()
         try:
             body = json.dumps(loader(), ensure_ascii=False, separators=(',', ':')).encode('utf-8')
             size = len(body) + len(key.encode('utf-8'))
             with self._lock:
                 if generation == self._generation and size <= self.max_bytes:
-                    self._entries[key] = (self.clock() + self.ttl, body, size)
+                    expires = None if self.ttl is None else self.clock() + self.ttl
+                    self._entries[key] = (expires, body, size)
                     self._bytes += size
                     while len(self._entries) > self.max_entries or self._bytes > self.max_bytes:
                         _, (_, _, evicted_size) = self._entries.popitem(last=False)
@@ -52,7 +56,7 @@ class JsonResponseCache:
                 if self._inflight.get(key) is pending:
                     del self._inflight[key]
             pending.set_result(body)
-            return json.loads(body)
+            return body
         except BaseException as error:
             with self._lock:
                 if self._inflight.get(key) is pending:

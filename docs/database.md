@@ -209,8 +209,10 @@ promoted reference files.
 The scoring cache includes every release, its additive score, dense rank within
 software, and a JSON explanation. `release_iteration=latest` prefers the
 highest explicit version where any exists for that software; otherwise it
-compares revisions. The preferred view exposes unresolved top-score ties rather
-than claiming the deterministic fallback is semantically unique.
+compares revisions. The scoring transaction materializes one winner per user
+and software in `app.user_preferred_release_cache`, indexed by software and
+release. The public view `app.user_preferred_release` exposes the winning row,
+the number of tied top releases and the deterministic tie-break result.
 
 ## Temporary SQL relations
 

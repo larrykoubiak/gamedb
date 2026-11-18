@@ -39,6 +39,7 @@ def build_metadata(engine, root):
         normalize_genres(c, root)
         c.execute(text(sql_body(sql / '030_rank.sql')))
         c.execute(text(sql_body(sql / '090_indexes_and_validation.sql')))
+        c.execute(text(sql_body(sql / '095_listing_generation.sql')))
     return dict(counts)
 
 
