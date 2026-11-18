@@ -284,12 +284,14 @@ filename, type, region and raw fields (including CRC32). A row in
 `staging.launchbox_image_import` marks a complete image import for a source ZIP.
 No image binaries are stored in PostgreSQL.
 
-The fallback joins published LaunchBox fact evidence to the exact source
-snapshot/game ID, then fills empty software media slots. LaunchBox media records
-carry source revision, XML row number, game ID and CRC32; software associations
-use `launchbox_metadata` and record preferred release/region compatibility.
-Libretro records and associations are unchanged. Repeating the fallback replaces
-only its own projection, in one transaction.
+After Libretro selection, the fallback fills empty artwork slots. A
+`launchbox_metadata` association follows published fact evidence to its
+source snapshot and game ID. For software without a published link,
+`launchbox_reviewed` uses a release-content signature within the same system
+and checks the source platform, game ID and title in the latest snapshot.
+LaunchBox media records carry the source revision, XML row number, game ID
+and CRC32. Each association records its preferred release and regional
+compatibility. Rebuilding replaces the LaunchBox projection in one transaction.
 
 `catalog.media_generation` stores a deterministic signature of selected media
 paths, providers and matching attributes. This enters API catalog revisions so

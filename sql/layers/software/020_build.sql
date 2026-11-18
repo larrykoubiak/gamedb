@@ -629,6 +629,34 @@ WHERE correction.status = 'active'
         AND reviewed.subject_content_signature
             = correction.subject_content_signature
   );
+ANALYZE _active_content_correction;
+
+-- Resolve each requested digest once, including target releases shared by
+-- many corrections. Keep all same-system occurrences for the ambiguity checks.
+CREATE TEMP TABLE _correction_release ON COMMIT DROP AS
+WITH requested AS (
+    SELECT manufacturer_name, system_name,
+        subject_content_signature AS content_signature
+    FROM _active_content_correction
+    UNION
+    SELECT manufacturer_name, system_name, target_content_signature
+    FROM _active_content_correction WHERE action = 'assign'
+)
+SELECT system.id AS system_id, requested.content_signature,
+    release.id AS release_id, release.title_id, membership.software_id
+FROM requested
+JOIN catalog.system system
+  ON system.manufacturer_name = requested.manufacturer_name
+ AND system.system_name = requested.system_name
+JOIN catalog.release_content_signature signature
+  ON signature.sha1_set_digest = requested.content_signature
+JOIN catalog.release release ON release.id = signature.release_id
+JOIN catalog.title title ON title.id = release.title_id
+ AND title.system_id = system.id
+JOIN catalog.software_release membership ON membership.release_id = release.id;
+
+CREATE INDEX ON _correction_release(system_id, content_signature);
+ANALYZE _correction_release;
 
 DO $$
 DECLARE invalid_count bigint;
@@ -651,12 +679,9 @@ BEGIN
      AND system.system_name = correction.system_name
     WHERE NOT EXISTS (
         SELECT 1
-        FROM catalog.release_content_signature signature
-        JOIN catalog.release release ON release.id = signature.release_id
-        JOIN catalog.title title ON title.id = release.title_id
-        WHERE title.system_id = system.id
-          AND signature.sha1_set_digest
-              = correction.subject_content_signature
+        FROM _correction_release match
+        WHERE match.system_id = system.id
+          AND match.content_signature = correction.subject_content_signature
     );
     IF invalid_count <> 0 THEN
         RAISE EXCEPTION '% software correction subjects do not resolve',
@@ -670,12 +695,9 @@ BEGIN
      AND system.system_name = correction.system_name
     WHERE correction.action = 'assign' AND NOT EXISTS (
         SELECT 1
-        FROM catalog.release_content_signature signature
-        JOIN catalog.release release ON release.id = signature.release_id
-        JOIN catalog.title title ON title.id = release.title_id
-        WHERE title.system_id = system.id
-          AND signature.sha1_set_digest
-              = correction.target_content_signature
+        FROM _correction_release match
+        WHERE match.system_id = system.id
+          AND match.content_signature = correction.target_content_signature
     );
     IF invalid_count <> 0 THEN
         RAISE EXCEPTION '% software correction targets do not resolve',
@@ -707,15 +729,11 @@ JOIN catalog.system system
   ON system.manufacturer_name = correction.manufacturer_name
  AND system.system_name = correction.system_name
 LEFT JOIN LATERAL (
-    SELECT min(membership.software_id) AS target_software_id,
-        count(DISTINCT membership.software_id) AS software_count
-    FROM catalog.release_content_signature signature
-    JOIN catalog.release release ON release.id = signature.release_id
-    JOIN catalog.title title
-      ON title.id = release.title_id AND title.system_id = system.id
-    JOIN catalog.software_release membership
-      ON membership.release_id = release.id
-    WHERE signature.sha1_set_digest = correction.target_content_signature
+    SELECT min(match.software_id) AS target_software_id,
+        count(DISTINCT match.software_id) AS software_count
+    FROM _correction_release match
+    WHERE match.system_id = system.id
+      AND match.content_signature = correction.target_content_signature
 ) target ON correction.action = 'assign'
 WHERE correction.action = 'separate' OR target.software_count = 1;
 
@@ -733,14 +751,12 @@ END;
 $$;
 
 CREATE TEMP TABLE _content_correction_subject ON COMMIT DROP AS
-SELECT correction.*, release.id AS release_id,
+SELECT correction.*, release.release_id,
     coalesce(alias.preferred_title_id, release.title_id) AS effective_title_id
 FROM _resolved_content_correction correction
-JOIN catalog.release_content_signature signature
-  ON signature.sha1_set_digest = correction.subject_content_signature
-JOIN catalog.release release ON release.id = signature.release_id
-JOIN catalog.title title
-  ON title.id = release.title_id AND title.system_id = correction.system_id
+JOIN _correction_release release
+  ON release.system_id = correction.system_id
+ AND release.content_signature = correction.subject_content_signature
 LEFT JOIN catalog.title_alias alias ON alias.alias_title_id = release.title_id;
 
 INSERT INTO catalog.software (

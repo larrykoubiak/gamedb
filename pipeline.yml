@@ -59,7 +59,7 @@ layers:
           - sql/layers/scoring/030_preferred_releases.sql
 
   - name: media
-    description: Select Libretro artwork and fill remaining gaps using LaunchBox metadata links.
+    description: Select Libretro artwork and fill remaining gaps using published or reviewed LaunchBox links.
     steps:
       - name: build_software_media
         type: build_media

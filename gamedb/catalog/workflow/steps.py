@@ -105,7 +105,11 @@ class BuildLaunchBoxMediaStep(WorkflowStep):
         from gamedb.catalog.launchbox_media import fill_launchbox_media
         engine = create_database_engine()
         try:
-            print(fill_launchbox_media(engine, os.environ.get("GAMEDB_MEDIA_USERNAME", "default")), flush=True)
+            result = fill_launchbox_media(
+                engine, os.environ.get("GAMEDB_MEDIA_USERNAME", "default"),
+                context.project_root,
+            )
+            print(result, flush=True)
         finally:
             engine.dispose()
 

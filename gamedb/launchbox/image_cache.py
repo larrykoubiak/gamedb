@@ -8,7 +8,7 @@ from urllib.request import Request, urlopen
 import zlib
 
 ORIGIN = 'https://images.launchbox-app.com/'
-FILENAME = re.compile(r'[0-9a-fA-F]{8}-(?:[0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}\.(?:png|jpg|jpeg)', re.I)
+FILENAME = re.compile(r'(?:r2_)?[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}\.(?:png|jpg|jpeg)', re.I)
 MAX_BYTES = 32 * 1024 * 1024
 
 

@@ -322,11 +322,13 @@ python -m gamedb import-launchbox media
 
 The image import is atomic and idempotent. `staging.launchbox_image` retains all
 image references; only Box - Front, Screenshot - Gameplay, Screenshot - Game
-Title and Clear Logo are selected. Selection follows published LaunchBox game
-links, prefers artwork compatible with the preferred release's region, and
-fills only missing `boxart`, `snap`, `title` and `logo` slots. Existing Libretro
-choices are preserved. The regular media rebuild runs this fallback after
-Libretro selection, so the additions survive catalog rebuilds.
+Title and Clear Logo are selected. After Libretro selection, the media rebuild
+fills empty `boxart`, `snap`, `title` and `logo` slots, preferring images from
+the preferred release's region. It follows published LaunchBox metadata links
+first. For games without one, a reviewed release signature can identify the
+LaunchBox artwork record by platform, database ID and title. The API reports
+these image associations as `launchbox_reviewed`. The reviewed links live in
+[launchbox_artwork.csv](reference/launchbox_artwork.csv).
 
 Images are fetched on demand from `https://images.launchbox-app.com/`, verified
 against the source CRC32 when available, and cached under

@@ -21,6 +21,14 @@ class Response(io.BytesIO):
 
 
 class ImageCacheTests(unittest.TestCase):
+    def test_prefixed_image_uses_the_imported_filename_and_checksum(self):
+        name = 'r2_' + NAME
+        with tempfile.TemporaryDirectory() as directory:
+            with patch('gamedb.launchbox.image_cache.urlopen', return_value=Response()) as fetch:
+                path = LaunchBoxImageCache(directory).get(name, zlib.crc32(JPEG))
+            self.assertEqual(path.name, name)
+            self.assertEqual(fetch.call_args.args[0].full_url, 'https://images.launchbox-app.com/' + name)
+
     def test_fixed_origin_validated_filename_and_cached_second_request(self):
         with tempfile.TemporaryDirectory() as directory:
             cache = LaunchBoxImageCache(directory)
