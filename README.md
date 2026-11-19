@@ -78,6 +78,36 @@ The Undub collection is described by
 of its releases use the `undub` modification tag, including packs whose source
 filename describes a narrower audio, video, or edit fix.
 
+## eXo staging
+
+On `larry-tower`, inventory the read-only eXo library with the deriver image.
+
+```sh
+docker compose run --rm --no-deps -v /mnt/exo:/mnt/exo:ro deriver \
+  python -m gamedb import-exo /mnt/exo --dry-run
+```
+
+Omit `--dry-run` to publish the complete inventory in a single transaction.
+An identical revision reuses its snapshot. Source changes create a new
+snapshot. The importer reads game ZIP names, media pack directories and
+original artwork checksums. The game packages and media stay on the share.
+
+The `staging.exo_document` and `exo_record` tables retain the XML lists,
+playlist rules, aliases and runtime indexes. A primary game record belongs to
+one platform and one local game ID. `exo_asset` identifies each relative
+library path. `exo_location` preserves its loose, packed and URL locations,
+including original ZIP member names, positions and available CRCs.
+
+`exo_asset_link` records how a game owns a manual, extra, launch file or
+image. Multiple games can display the same artwork. The importer follows
+explicit XML paths, per-game folders, media pack membership, eXoGUI's
+per-platform primary-title and title-plus-ID lookup, and LaunchBox's local
+image and thumbnail IDs. `exo_image_evidence` retains matching rows from the
+bundled LaunchBox image databases. A shared public database ID cannot extend
+an existing local artwork association to another game. Conflicting copies,
+ambiguous associations and missing source references are recorded in
+`exo_issue`. Coverage counts are stored in `exo_snapshot.counts`.
+
 ## Inspecting names
 
 The parser can be exercised without changing the database:

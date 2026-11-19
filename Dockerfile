@@ -17,6 +17,7 @@ COPY gamedb/derive /app/gamedb/derive
 COPY gamedb/arcade /app/gamedb/arcade
 COPY gamedb/history /app/gamedb/history
 COPY gamedb/integrated /app/gamedb/integrated
+COPY gamedb/exo /app/gamedb/exo
 COPY gamedb/rdb /app/gamedb/rdb
 COPY gamedb/catalog/__init__.py gamedb/catalog/media.py gamedb/catalog/launchbox_media.py /app/gamedb/catalog/
 COPY gamedb/launchbox /app/gamedb/launchbox

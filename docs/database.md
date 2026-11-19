@@ -6,7 +6,7 @@ conventions.
 
 | Schema | Owner | Responsibility |
 | --- | --- | --- |
-| `staging` | external intake | Untouched RomVault rows, reviewed integrated ZIP inventories, immutable historical snapshots, and revisioned Libretro RDB entries |
+| `staging` | external intake | Untouched RomVault rows, reviewed integrated ZIP inventories, historical and Libretro snapshots, and eXo manifests, packages and media associations |
 | `ref` | deriver | Version-controlled mappings and vocabularies |
 | `derived` | deriver | Stable inventory plus source-faithful semantic interpretation |
 | `catalog` | catalog builder | Accepted browse facts: software, releases, packages and files |
