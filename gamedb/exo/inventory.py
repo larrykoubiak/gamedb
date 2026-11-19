@@ -191,6 +191,14 @@ def scan(root, jobs=8, progress=lambda msg: None):
     progress('Linking source records to assets')
     link_assets(inventory, root, jobs, digest, progress)
     inventory.compare_locations()
+    # Corrected launcher interpretation can change independently of the
+    # preserved files. Keep those revisions distinct on a later reimport.
+    for asset in inventory.assets.values():
+        source.fingerprint(digest, ('asset', asset.path, asset.kind, asset.category, asset.region))
+    for link in sorted(inventory.links):
+        source.fingerprint(digest, ('link', *link))
+    for issue in sorted(inventory.issues, key=repr):
+        source.fingerprint(digest, ('issue', *issue))
     progress('Verifying the source inventory')
     if signature != source.file_revision(source.files_on_disk(root)):
         raise ValueError('The eXo inventory changed during the scan. Retry when the source is stable.')
