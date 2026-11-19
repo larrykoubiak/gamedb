@@ -3,10 +3,15 @@ facet_values AS (
     SELECT fact.fact_value, fact.software_id
     FROM catalog.software_fact fact
     JOIN chosen ON chosen.software_id = fact.software_id
+    LEFT JOIN catalog.exo_entry e USING(entry_key)
     WHERE fact.fact_key = __FACT_KEY__ AND fact.is_selected
+      AND (NOT chosen.exo_preferred OR NOT coalesce(e.facts ? __FACT_KEY__,false))
     UNION ALL
     SELECT value,chosen.software_id FROM chosen JOIN catalog.exo_entry e USING(entry_key)
     CROSS JOIN LATERAL jsonb_array_elements_text(e.facts -> __FACT_KEY__) AS v(value)
+    WHERE chosen.exo_preferred OR NOT EXISTS (
+        SELECT FROM catalog.software_fact f WHERE f.software_id=chosen.software_id
+        AND f.fact_key=__FACT_KEY__ AND f.is_selected)
 ), option_values AS MATERIALIZED (
     SELECT fact_value,count(DISTINCT software_id) AS software_count FROM facet_values
     WHERE (__OPTION_SEARCH__ = '' OR position(lower(__OPTION_SEARCH__) in lower(fact_value)) > 0)

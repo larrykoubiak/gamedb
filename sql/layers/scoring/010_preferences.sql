@@ -2,6 +2,7 @@
 -- score cache. Run after the catalog layer.
 \set ON_ERROR_STOP on
 BEGIN;
+SELECT pg_advisory_xact_lock(hashtext('gamedb:exo:catalog'));
 
 CREATE SCHEMA IF NOT EXISTS app;
 
@@ -147,3 +148,6 @@ SET description = 'Prefer the latest explicit version or revision within softwar
 WHERE fact_key = 'release_iteration'
   AND match_operator = 'latest'
   AND description = 'Prefer the latest explicit version or revision within a title';
+
+\ir ../exo/schema.sql
+\ir ../exo/scoring.sql

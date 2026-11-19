@@ -264,7 +264,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             match = SOFTWARE_FACTS.fullmatch(parsed.path)
             if match:
                 return self._json_response(
-                    self.server.repository.software_facts(int(match.group(1)))
+                    self.server.repository.software_facts(int(match.group(1)), _hide_rom_hacks(query))
                 )
 
             match = CORRECTION_TARGETS.fullmatch(parsed.path)

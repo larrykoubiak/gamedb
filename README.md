@@ -134,9 +134,18 @@ Manuals, maps, books, music, videos, artwork and collection guides have public
 Shared supplements verified by SHA-256 can appear once with multiple credited owners. The TV
 launcher shows title details and offers browser links and QR codes for these items.
 
-An eXo edition key identifies its source list, local game ID and edition selection. Installation
-requires a release content signature. Existing matched DAT releases retain their installation
-identities and preferred choices.
+The default scoring profile adds 75 points for eXo and another 75 for an edition identified as
+**IBM / PC Compatibles**. The hardware evidence determines the PC bonus, including for games
+packaged with ScummVM. Edit the two weights in `app.user_preference` and rebuild the `scoring` layer
+to refresh the rankings. Other applicable
+preferences, including gameplay hack penalties, still contribute to each edition's score.
+The catalog caches the winner per user, platform or collection, and hack-filter setting.
+
+When eXo wins, `preferredEditionKey` identifies the selected source edition and the catalog uses
+its artwork and metadata. An exact score tie favors the existing DAT release. For a matched
+installable release, `preferredReleaseSignature`, `installSourceCollection`, `installReleaseTitle`
+and `installScore` identify what the launcher can install. Entries available only through eXo
+support browsing and media.
 
 ## Inspecting names
 

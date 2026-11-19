@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS catalog.exo_edition (
     runner text, engine_game text, runner_version text, is_mod boolean NOT NULL,
     UNIQUE (entry_key, selection)
 );
+ALTER TABLE catalog.exo_entry ADD COLUMN IF NOT EXISTS tile_media jsonb NOT NULL DEFAULT '{}';
 CREATE INDEX IF NOT EXISTS exo_edition_work_idx ON catalog.exo_edition(work_key);
 CREATE INDEX IF NOT EXISTS exo_edition_entry_idx ON catalog.exo_edition(entry_key);
 CREATE TABLE IF NOT EXISTS catalog.related_asset (

@@ -542,7 +542,7 @@ function renderSoftwareFacts(container, facts) {
   container.append(section);
 }
 
-function renderReleaseDetails(container, releases, facts, softwareId, media, title, systemId) {
+function renderReleaseDetails(container, releases, facts, softwareId, media, title, systemId, installChoice = false) {
   container.replaceChildren();
   renderArtworkGallery(container, media, title);
   renderSoftwareFacts(container, facts);
@@ -573,7 +573,7 @@ function renderReleaseDetails(container, releases, facts, softwareId, media, tit
     const result = document.createElement("td");
     const resultBadge = document.createElement("span");
     resultBadge.className = release.selected ? "winner-badge" : "rank-badge";
-    resultBadge.textContent = release.selected ? "Selected" : `Rank ${release.rank}`;
+    resultBadge.textContent = release.selected ? (installChoice ? "Install choice" : "Selected") : `Rank ${release.rank}`;
     result.append(resultBadge);
     const sourceTitle = cell(release.sourceTitle, "release-title-cell");
     const identity = document.createElement("span");
@@ -681,7 +681,7 @@ function renderReleaseDetails(container, releases, facts, softwareId, media, tit
   container.append(wrap);
 }
 
-function renderSourceDetails(container, detail, preferredEntry, showMetadata) {
+function renderSourceDetails(container, detail, preferredEntry, showMetadata, game = {}) {
   const entries = [...detail.entries].sort((a, b) => Number(b.key === preferredEntry) - Number(a.key === preferredEntry));
   if (showMetadata) {
     const facts = Object.entries(entries[0].facts).map(([key, values]) => ({
@@ -697,10 +697,22 @@ function renderSourceDetails(container, detail, preferredEntry, showMetadata) {
   for (const edition of detail.editions) {
     const item = document.createElement("li");
     const source = entries.find(entry => entry.key === edition.entryKey);
-    item.textContent = [edition.label, edition.environment, source.sourceList, edition.engineGame].filter(Boolean).join(" · ");
+    const labels = [edition.label, edition.environment, source.sourceList, edition.runner, edition.engineGame];
+    if (edition.score != null) labels.push(scoreText(edition.score));
+    if (game.preferredEditionKey === edition.key) labels.push("Preferred catalog edition");
+    item.textContent = labels.filter(Boolean).join(" · ");
+    if (edition.breakdown?.length) {
+      const reasons = document.createElement("details");
+      reasons.append(cellText("summary", "Score breakdown"));
+      appendBreakdown(reasons, edition.breakdown);
+      item.append(reasons);
+    }
     list.append(item);
   }
   container.append(list);
+  if (game.preferredEditionKey && game.installSourceCollection) {
+    container.append(cellText("p", `Available to install: ${game.installReleaseTitle} · ${game.installSourceCollection} · ${scoreText(game.installScore)}`));
+  }
   const groups = new Map();
   const labels = {manual: "Manuals", extra: "Extras", video: "Videos", music: "Music",
     artwork: "Artwork", url: "Links", collection_document: "Collection guides", file: "Files"};
@@ -770,23 +782,24 @@ async function loadReleaseDetails(game, container) {
     if (game.sourceOnly && source) {
       container.replaceChildren();
       renderArtworkGallery(container, game.media, game.title);
-      renderSourceDetails(container, source, game.sourceEntryKey, true);
+      renderSourceDetails(container, source, game.sourceEntryKey, true, game);
       container.dataset.loaded = "true";
       return;
     }
     const releaseKey = browseUrl(`/api/software/${game.softwareId}/releases`);
+    const factsKey = browseUrl(`/api/software/${game.softwareId}/facts`);
     let releases = state.releaseDetails.get(releaseKey);
-    let facts = state.softwareFacts.get(game.softwareId);
+    let facts = state.softwareFacts.get(factsKey);
     if (!releases || !facts) {
       [releases, facts] = await Promise.all([
         releases || requestJson(releaseKey),
-        facts || requestJson(`/api/software/${game.softwareId}/facts`),
+        facts || requestJson(factsKey),
       ]);
       state.releaseDetails.set(releaseKey, releases);
-      state.softwareFacts.set(game.softwareId, facts);
+      state.softwareFacts.set(factsKey, facts);
     }
-    renderReleaseDetails(container, releases, facts, game.softwareId, game.media, game.title, game.systemId);
-    if (source) renderSourceDetails(container, source, game.sourceEntryKey, facts.length === 0);
+    renderReleaseDetails(container, releases, facts, game.softwareId, game.media, game.title, game.systemId, Boolean(game.preferredEditionKey));
+    if (source) renderSourceDetails(container, source, game.sourceEntryKey, facts.length === 0, game);
     container.dataset.loaded = "true";
   } catch (error) {
     delete container.dataset.loaded;

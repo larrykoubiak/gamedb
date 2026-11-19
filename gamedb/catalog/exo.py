@@ -29,6 +29,7 @@ FACTS = {
     "PlayMode": "play_mode",
     "Rating": "rating",
     "Region": "region",
+    "Language": "language",
     "ReleaseDate": "release_date",
     "ReleaseYear": "release_year",
     "ReleaseType": "release_type",
@@ -41,14 +42,14 @@ FACTS = {
     "CommunityStarRating": "community_rating",
     "CommunityStarRatingTotalVotes": "community_rating_votes",
 }
-MULTIPLE = {"Genre", "Series", "PlayMode", "Region"}
+MULTIPLE = {"Genre", "Series", "PlayMode", "Region", "Language"}
 ART = {
     "Box - Front": "boxart",
     "Screenshot - Gameplay": "snap",
     "Screenshot - Game Title": "title",
     "Clear Logo": "logo",
 }
-BUILD_VERSION = "exo-browse-1"
+BUILD_VERSION = "exo-browse-2"
 
 
 def source_facts(fields, aliases):
@@ -307,6 +308,12 @@ def compile_browse(db, entries, editions, systems, revision):
         art[owner].setdefault(
             ART[category], {"path": f"exo/{revision}/{asset}", "provider": "exo"}
         )
+    if art:
+        db.execute(
+            text("""UPDATE catalog.exo_entry e SET tile_media=a.value
+                 FROM jsonb_each(CAST(:media AS jsonb)) a WHERE e.entry_key=a.key"""),
+            {"media": json.dumps(art)},
+        )
     groups = defaultdict(list)
     for e in editions:
         g = games[e["entry_key"]]
@@ -520,6 +527,8 @@ def publish_catalog(engine, root=None, *, dry_run=False):
             "exo_asset_link",
         ):
             db.exec_driver_sql("ANALYZE catalog." + table)
+        db.exec_driver_sql((SQL / "scoring.sql").read_text())
+        db.execute(text("SELECT app.refresh_exo_scores()"))
         result = {
             "entries": len(entries),
             "editions": len(editions),

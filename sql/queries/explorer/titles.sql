@@ -8,27 +8,31 @@ page AS (
 items AS (
     SELECT
         page.*,
-        coalesce(package.source_collection, CASE entry.source_list
+        CASE WHEN page.exo_preferred THEN CASE entry.source_list
             WHEN 'MS-DOS' THEN 'eXoDOS' WHEN 'Windows 9x' THEN 'eXoWin9x'
-            WHEN 'ScummVM' THEN 'eXoScummVM' WHEN 'ScummVM SVN' THEN 'eXoScummVM SVN' END) AS source_collection,
-        entry.source_list,
-        coalesce(package.archive_name, regexp_replace(entry.package_path,'^.*/','')) AS archive_name,
-        CASE WHEN page.source_only THEN 1 ELSE package.package_count END AS package_count,
-        facts.languages,
-        CASE WHEN page.source_only THEN coalesce(entry.facts->'region','[]'::jsonb) ELSE facts.regions END AS regions,
-        facts.revisions,
-        CASE WHEN page.source_only AND entry.fields ? 'ReleaseDate'
-             THEN jsonb_build_array(left(entry.fields->>'ReleaseDate',10)) ELSE facts.release_dates END AS release_dates,
-        facts.dump_modifications,
-        CASE WHEN page.source_only THEN page.all_mods ELSE facts.is_rom_hack END AS is_rom_hack,
-        facts.dump_statuses,
-        coalesce(page.exo_media,'{}'::jsonb) || media.items AS media,
+            WHEN 'ScummVM' THEN 'eXoScummVM' WHEN 'ScummVM SVN' THEN 'eXoScummVM SVN' END ELSE package.source_collection END AS source_collection,
+        entry.source_list, package.source_collection AS install_source, install_release.display_title AS install_title,
+        CASE WHEN page.exo_preferred THEN regexp_replace(entry.package_path,'^.*/','') ELSE package.archive_name END AS archive_name,
+        CASE WHEN page.exo_preferred THEN 1 ELSE package.package_count END AS package_count,
+        CASE WHEN page.exo_preferred THEN coalesce(entry.facts->'language','[]'::jsonb) ELSE facts.languages END AS languages,
+        CASE WHEN page.exo_preferred THEN coalesce(entry.facts->'region','[]'::jsonb) ELSE facts.regions END AS regions,
+        CASE WHEN page.exo_preferred THEN '[]'::jsonb ELSE facts.revisions END AS revisions,
+        CASE WHEN page.exo_preferred THEN CASE WHEN entry.fields ? 'ReleaseDate'
+             THEN jsonb_build_array(left(entry.fields->>'ReleaseDate',10)) ELSE '[]'::jsonb END
+             ELSE facts.release_dates END AS release_dates,
+        CASE WHEN page.exo_preferred THEN CASE WHEN page.source_mod THEN '["hacked"]'::jsonb ELSE '[]'::jsonb END
+             ELSE facts.dump_modifications END AS dump_modifications,
+        CASE WHEN page.exo_preferred THEN page.source_mod ELSE facts.is_rom_hack END AS is_rom_hack,
+        CASE WHEN page.exo_preferred THEN '[]'::jsonb ELSE facts.dump_statuses END AS dump_statuses,
+        CASE WHEN page.exo_preferred THEN media.items || coalesce(page.exo_media,'{}'::jsonb) || entry.tile_media
+             ELSE coalesce(page.exo_media,'{}'::jsonb) || coalesce(entry.tile_media,'{}'::jsonb) || media.items END AS media,
         CASE WHEN entry.entry_key IS NOT NULL THEN jsonb_strip_nulls(jsonb_build_object(
             'genre',entry.facts->'genre','developer',entry.facts->'developer','publisher',entry.facts->'publisher',
             'franchise',entry.facts->'franchise','player_count',entry.facts->'player_count')) END AS browse_facts,
         CASE WHEN arcade.release_id IS NOT NULL THEN jsonb_build_object('complete',(arcade.plan->>'complete')::boolean,'emulationStatus',arcade.plan->>'emulationStatus','preferredCore',arcade.plan->>'preferredCore','compatibleEmulators',arcade.plan->'compatibleEmulators','issues',(SELECT jsonb_agg(DISTINCT issue->>'reason') FROM jsonb_array_elements(arcade.plan->'missing') issue)) END AS arcade,
         coalesce(arcade.install_signature, signature.sha1_set_digest) AS preferred_release_signature
     FROM page
+    LEFT JOIN catalog.release install_release ON install_release.id=page.release_id
     LEFT JOIN catalog.exo_entry entry ON entry.entry_key=page.entry_key
     LEFT JOIN LATERAL (
         SELECT
@@ -107,6 +111,10 @@ SELECT jsonb_build_object(
                 'media', items.media
             ) || CASE WHEN items.work_key IS NULL THEN '{}'::jsonb ELSE jsonb_build_object(
                 'sourceDetailKey', items.work_key,
+                'preferredEditionKey', CASE WHEN items.exo_preferred THEN items.edition_key END,
+                'installSourceCollection', CASE WHEN items.preferred_release_signature IS NOT NULL THEN items.install_source END,
+                'installReleaseTitle', CASE WHEN items.preferred_release_signature IS NOT NULL THEN items.install_title END,
+                'installScore', CASE WHEN items.preferred_release_signature IS NOT NULL THEN items.install_score END,
                 'sourceEntryKey', items.entry_key,
                 'sourceList',items.source_list,
                 'sourceRevision',CASE WHEN items.entry_key IS NOT NULL THEN

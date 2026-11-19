@@ -3,6 +3,10 @@ WITH owners AS (
     UNION ALL
     SELECT record_no, 'collection:' || label FROM staging.exo_record
     WHERE snapshot_id=:snapshot AND record_type='Platform'
+    UNION ALL
+    SELECT r.record_no,'collection:'||r.platform FROM staging.exo_record r
+    WHERE r.snapshot_id=:snapshot AND r.primary_game AND NOT EXISTS
+        (SELECT FROM catalog.exo_entry e WHERE e.record_no=r.record_no)
 ), links AS (
     SELECT o.owner_key,l.asset_no,l.role,l.label,l.basis
     FROM staging.exo_asset_link l JOIN owners o USING(record_no)

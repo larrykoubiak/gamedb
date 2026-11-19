@@ -41,6 +41,9 @@ class MetadataFilterQueryTests(unittest.TestCase):
                 work_key text,entry_key text,edition_count int,media jsonb,all_mods boolean,search_names text[],
                 work_title text, system_id bigint,manufacturer text,system_name text) ON COMMIT DROP;
             CREATE TEMP TABLE exo_entry (entry_key text, facts jsonb) ON COMMIT DROP;
+            CREATE TEMP TABLE exo_browse_choice (user_id bigint, scope_id bigint, software_id bigint,
+                hide_mods boolean, edition_key text, entry_key text, score bigint,
+                breakdown jsonb, tie_count int, is_mod boolean) ON COMMIT DROP;
             CREATE TEMP TABLE system (id bigint, manufacturer_name text, system_name text) ON COMMIT DROP;
             CREATE TEMP TABLE software (id bigint, system_id bigint, preferred_title_id bigint,
                 display_name text, identity_basis text) ON COMMIT DROP;
@@ -92,6 +95,22 @@ class MetadataFilterQueryTests(unittest.TestCase):
         self.assertEqual(self.ids({'genre': ['Adventure'], 'developer': ['Nintendo']}), [2])
         self.assertEqual(self.ids({'publisher': ["Bob's Studio"]}), [1])
         self.assertEqual(self.ids({'genre': ['action']}), [])
+
+    def test_facets_follow_the_selected_edition_and_fill_missing_fields(self):
+        self.c.exec_driver_sql("""
+            INSERT INTO exo_entry VALUES ('edition','{"genre":["Puzzle"]}');
+            INSERT INTO exo_browse (scope_id,software_id,linked_software_id,entry_key,work_key)
+                VALUES (1,1,1,'edition','work');
+            INSERT INTO exo_browse_choice (user_id,scope_id,software_id,entry_key,edition_key,hide_mods,score)
+                VALUES (1,1,1,'edition','edition',false,150);
+        """)
+        self.assertEqual(self.ids({'genre': ['Puzzle'], 'developer': ['Nintendo']}, 1, 'Mario'), [1])
+        self.assertEqual(self.ids({'genre': ['Action']}, 1, 'Mario'), [])
+        facets = self.execute(self.repository.metadata_options_sql('genre', 1, 'Mario'))
+        self.assertEqual({i['value'] for i in facets['items']}, {'Adventure', 'Puzzle'})
+        self.c.exec_driver_sql("UPDATE pg_temp.exo_browse_choice SET score=-10")
+        self.assertEqual(self.ids({'genre': ['Action']}, 1, 'Mario'), [1])
+        self.assertEqual(self.ids({'genre': ['Puzzle']}, 1, 'Mario'), [])
 
     def test_platform_and_alternate_title_search_combine_with_metadata(self):
         self.assertEqual(self.ids({'genre': ['Action']}, 1, 'Mario'), [1])

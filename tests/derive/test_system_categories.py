@@ -93,6 +93,8 @@ class SystemCategoryTests(unittest.TestCase):
                     CREATE TEMP TABLE software (id bigint, system_id bigint) ON COMMIT DROP;
                     CREATE TEMP TABLE user_preferred_release (software_id bigint, user_id bigint, release_id bigint) ON COMMIT DROP;
                     CREATE TEMP TABLE app_user (id bigint, username text) ON COMMIT DROP;
+                    CREATE TEMP TABLE exo_browse (scope_id bigint, linked_software_id bigint, all_mods boolean) ON COMMIT DROP;
+                    CREATE TEMP TABLE exo_shelf (id bigint, shelf_key text, name text) ON COMMIT DROP;
                     INSERT INTO app_user VALUES (1, 'test'), (2, 'someone-else');
                 '''))
                 connection.execute(text(f'''
@@ -100,8 +102,8 @@ class SystemCategoryTests(unittest.TestCase):
                     INSERT INTO user_preferred_release SELECT id, 1, id FROM software;
                 '''))
                 query = CatalogRepository('test').systems_sql()
-                query = query.replace('catalog.system ', catalog_schema + '.system ')
-                query = query.replace('catalog.software ', 'pg_temp.software ').replace('app.', 'pg_temp.')
+                query = query.replace('catalog.', 'pg_temp.').replace('app.', 'pg_temp.')
+                query = query.replace('pg_temp.system ', catalog_schema + '.system ')
                 systems = connection.execute(text(query)).scalar_one()
                 expected = extractor._rows('canonical_systems.csv')
                 self.assertEqual(len(systems), len(expected))

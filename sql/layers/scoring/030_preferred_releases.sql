@@ -64,4 +64,6 @@ ANALYZE app.user_preference;
 ANALYZE app.user_score_generation;
 ANALYZE app.user_release_score;
 
+SELECT app.refresh_exo_scores();
+
 COMMIT;

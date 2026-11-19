@@ -33,6 +33,8 @@ class ListingGenerationTests(unittest.TestCase):
                 CREATE TEMP TABLE media_generation (singleton boolean, signature text);
                 CREATE TEMP TABLE exo_publication (singleton boolean, revision text);
                 INSERT INTO exo_publication VALUES (true, 'first eXo');
+                CREATE TEMP TABLE exo_score_generation (user_id bigint, signature text);
+                INSERT INTO exo_score_generation VALUES (1, 'first eXo scores');
                 CREATE TEMP TABLE software_fact (value text);
                 CREATE TEMP TABLE software_fact_evidence (value text);
                 CREATE TEMP TABLE arcade_release (value text);
@@ -63,6 +65,7 @@ class ListingGenerationTests(unittest.TestCase):
                 "UPDATE pg_temp.user_score_generation SET generated_at=now()",
                 "UPDATE pg_temp.media_generation SET signature='new art'",
                 "UPDATE pg_temp.exo_publication SET revision='another eXo snapshot'",
+                "UPDATE pg_temp.exo_score_generation SET signature='other eXo weights'",
                 install,
             ):
                 with self.subTest(change=change[:60]):

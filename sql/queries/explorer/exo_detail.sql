@@ -1,6 +1,9 @@
 WITH editions AS MATERIALIZED (
-    SELECT e.*, s.system_name,s.manufacturer_name FROM catalog.exo_edition e
-    LEFT JOIN catalog.system s ON s.id=e.system_id WHERE e.work_key=__WORK_KEY__
+    SELECT e.*, s.system_name,s.manufacturer_name,score.score,score.breakdown FROM catalog.exo_edition e
+    LEFT JOIN catalog.system s ON s.id=e.system_id
+    LEFT JOIN app.exo_edition_score score ON score.edition_key=e.edition_key AND
+        score.user_id=(SELECT id FROM app.app_user WHERE username=__USERNAME__)
+    WHERE e.work_key=__WORK_KEY__
 ), entries AS MATERIALIZED (
     SELECT g.* FROM catalog.exo_entry g WHERE g.entry_key IN (SELECT entry_key FROM editions)
 ), owners AS (
@@ -28,7 +31,7 @@ SELECT jsonb_build_object(
     'editions',(SELECT jsonb_agg(jsonb_build_object('key',edition_key,'entryKey',entry_key,'title',work_title,
         'label',label,'selection',selection,'environment',environment,'system',system_name,
         'manufacturer',manufacturer_name,'platformEvidence',platform_basis,'runner',runner,
-        'engineGame',engine_game,'runnerVersion',runner_version,'isRomHack',is_mod,'installable',false)
+        'score',score,'breakdown',breakdown,'engineGame',engine_game,'runnerVersion',runner_version,'isRomHack',is_mod,'installable',false)
         ORDER BY environment,label,edition_key) FROM editions),
     'assets',coalesce((SELECT jsonb_agg(jsonb_build_object('key',asset_key,'kind',kind,'category',category,
         'region',region,'role',role,'label',name,'url','/related-media/'||asset_key,'sources',sources)
