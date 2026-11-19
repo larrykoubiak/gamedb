@@ -52,7 +52,8 @@ def with_source_facts(native, fields, source_list, revision):
         for value in values:
             claims.append({"value": value, "rank": rank, "selected": value in group["preferredValues"],
                 "sourceProvider": "exo", "sourceDatabases": [source_list], "sourceRevision": revision,
-                "sourceRecordCount": 1, "matchedContentCount": 0, "candidateCount": len(values)})
+                "sourceRecordCount": 1, "matchedContentCount": 0, "sourceScore": 0,
+                "candidateCount": len(values)})
         group["values"] = claims
     return list(groups.values())
 

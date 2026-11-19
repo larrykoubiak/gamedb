@@ -77,3 +77,47 @@ class CatalogEditionsTests(unittest.TestCase):
                     open_location(root, {**row, **change}),
                 ):
                     pass
+
+
+class RelatedMediaHttpTests(unittest.TestCase):
+    def test_public_pdf_ranges_and_active_html_downloads(self):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from unittest.mock import Mock
+
+        from gamedb.explorer.related_media import serve
+
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name, content, disposition in (
+                ("Guide.pdf", b"%PDF-test", "inline"),
+                ("Guide.html", b"<body>archived page", "attachment"),
+            ):
+                path = root / name
+                path.write_bytes(content)
+                metadata = {
+                    "kind": "extra",
+                    "path": name,
+                    "revision": "source",
+                    "locations": [
+                        {
+                            "source_path": name,
+                            "member_no": 0,
+                            "size_bytes": len(content),
+                            "mtime_ns": path.stat().st_mtime_ns,
+                        }
+                    ],
+                }
+                handler = Mock()
+                handler.headers = {"Range": "bytes=0-4"}
+                handler.server = SimpleNamespace(exo_root=root, repository=Mock())
+                handler.server.repository.exo_asset.return_value = metadata
+                handler.wfile = BytesIO()
+                serve(handler, "a" * 64)
+                handler.send_response.assert_called_once_with(206)
+                headers = dict(call.args for call in handler.send_header.call_args_list)
+                self.assertTrue(headers["Content-Disposition"].startswith(disposition))
+                self.assertEqual(
+                    "Content-Security-Policy" in headers, disposition == "attachment"
+                )
+                self.assertEqual(handler.wfile.getvalue(), content[:5])

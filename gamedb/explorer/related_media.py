@@ -115,7 +115,8 @@ def serve(handler, key, *, revision=None, preview_size=None):
             f"{disposition}; filename*=UTF-8''{quote(name, safe='')}",
         )
         handler.send_header("X-Content-Type-Options", "nosniff")
-        handler.send_header("Content-Security-Policy", "sandbox; default-src 'none'")
+        if not inline:
+            handler.send_header("Content-Security-Policy", "sandbox; default-src 'none'")
         handler.send_header(
             "Cache-Control", "public, max-age=3600" if revision else "public, no-cache"
         )
