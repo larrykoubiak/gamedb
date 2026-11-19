@@ -16,6 +16,7 @@ items AS (
         facts.revisions,
         facts.release_dates,
         facts.dump_modifications,
+        facts.is_rom_hack,
         facts.dump_statuses,
         media.items AS media,
         CASE WHEN arcade.release_id IS NOT NULL THEN jsonb_build_object('complete',(arcade.plan->>'complete')::boolean,'emulationStatus',arcade.plan->>'emulationStatus','preferredCore',arcade.plan->>'preferredCore','compatibleEmulators',arcade.plan->'compatibleEmulators','issues',(SELECT jsonb_agg(DISTINCT issue->>'reason') FROM jsonb_array_elements(arcade.plan->'missing') issue)) END AS arcade,
@@ -42,6 +43,8 @@ items AS (
                 FILTER (WHERE f.fact_key = 'release_date'), '[]'::jsonb) AS release_dates,
             coalesce(jsonb_agg(f.fact_value ORDER BY f.fact_value)
                 FILTER (WHERE f.fact_key = 'dump_modification'), '[]'::jsonb) AS dump_modifications,
+            catalog.is_rom_hack(array_agg(f.fact_value)
+                FILTER (WHERE f.fact_key = 'dump_modification')) AS is_rom_hack,
             coalesce(jsonb_agg(f.fact_value ORDER BY f.fact_value)
                 FILTER (WHERE f.fact_key = 'dump_status'), '[]'::jsonb) AS dump_statuses
         FROM catalog.release_fact f
@@ -92,6 +95,7 @@ SELECT jsonb_build_object(
                 'revisions', items.revisions,
                 'releaseDates', items.release_dates,
                 'dumpModifications', items.dump_modifications,
+                'isRomHack', items.is_rom_hack,
                 'dumpStatuses', items.dump_statuses,
                 'media', items.media
             ) ORDER BY lower(items.title), items.title, items.software_id

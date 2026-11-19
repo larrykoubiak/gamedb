@@ -115,6 +115,8 @@ h2 { font-size: 1.55rem; letter-spacing: -.025em; }
 .game-filter-field { max-width: 34rem; margin: 1rem 0 .35rem; }
 .game-search-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
 .game-search-toolbar .game-filter-field { flex: 1 1 22rem; margin: 0; }
+.rom-hack-filter { display: inline-flex; align-items: center; gap: .35rem; padding: .4rem; font-size: .85rem; cursor: pointer; }
+.rom-hack-filter input { margin: 0; accent-color: var(--accent); }
 .metadata-filters { display: flex; flex-wrap: wrap; gap: .4rem; }
 .metadata-filter { position: relative; }
 .metadata-filter summary { list-style: none; cursor: pointer; padding: .55rem .65rem; border: 1px solid var(--line); border-radius: .45rem; color: var(--muted); font-size: .75rem; }

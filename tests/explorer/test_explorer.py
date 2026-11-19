@@ -187,7 +187,7 @@ class ExplorerTests(unittest.TestCase):
         self.assertIn("'sourceDatabases', source_databases", query)
 
         class SnapshotRepository(CatalogRepository):
-            def systems(self, revision=None):
+            def systems(self, revision=None, hide_rom_hacks=False):
                 return [{
                     "id": 269,
                     "key": "a" * 32,

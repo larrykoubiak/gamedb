@@ -32,6 +32,8 @@ CREATE UNIQUE INDEX IF NOT EXISTS software_correction_active_subject_idx
         manufacturer_name, system_name, subject_content_signature
     ) WHERE status = 'active';
 
+DROP VIEW IF EXISTS app.user_preferred_release_without_hacks;
+DROP MATERIALIZED VIEW IF EXISTS app.user_rom_hack_fallback;
 DROP VIEW IF EXISTS app.user_preferred_release;
 DROP MATERIALIZED VIEW IF EXISTS app.user_preferred_release_cache;
 DROP TABLE IF EXISTS app.user_release_score;

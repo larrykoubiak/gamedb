@@ -12,10 +12,10 @@ FROM (
     SELECT system.id,
         md5(system.manufacturer_name || E'\x1f' || system.system_name) AS system_key,
         system.manufacturer_name, system.system_name, system.category,
-        count(software.id) AS game_count
+        count(preferred.release_id) AS game_count
     FROM catalog.system system
     JOIN catalog.software software ON software.system_id = system.id
-    JOIN app.user_preferred_release preferred
+    JOIN __PREFERRED_VIEW__ preferred
       ON preferred.software_id = software.id
     JOIN app.app_user user_account
       ON user_account.id = preferred.user_id

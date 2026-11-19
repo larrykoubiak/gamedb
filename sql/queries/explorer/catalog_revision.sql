@@ -1,6 +1,6 @@
 SELECT jsonb_build_object(
     'catalogRevision', md5(
-        user_account.username || '|' ||
+        'rom-hack-filter-v1|' || user_account.username || '|' ||
         generation.generated_at::text || '|' ||
         generation.preference_signature || '|' ||
         listing.revision::text || '|' || coalesce(media.signature, '')

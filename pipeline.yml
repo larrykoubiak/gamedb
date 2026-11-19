@@ -57,6 +57,7 @@ layers:
           - sql/layers/scoring/010_preferences.sql
           - sql/layers/scoring/020_generate_scores.sql
           - sql/layers/scoring/025_cache_preferred_releases.sql
+          - sql/layers/scoring/027_rom_hack_filter.sql
           - sql/layers/scoring/030_preferred_releases.sql
 
   - name: media

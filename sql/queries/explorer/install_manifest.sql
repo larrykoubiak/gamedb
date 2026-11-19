@@ -11,13 +11,16 @@ WITH selected AS MATERIALIZED (
     JOIN catalog.software_release membership ON membership.release_id = release.id
     JOIN catalog.software software ON software.id = membership.software_id
     JOIN catalog.system system ON system.id = software.system_id
-    JOIN app.user_preferred_release preferred
-      ON preferred.software_id = software.id
-     AND preferred.release_id = release.id
+    JOIN (
+        SELECT user_id, software_id, release_id, 0 AS priority FROM app.user_preferred_release
+        UNION ALL
+        SELECT user_id, software_id, release_id, 1 FROM app.user_rom_hack_fallback
+        WHERE release_id IS NOT NULL
+    ) preferred ON preferred.software_id = software.id AND preferred.release_id = release.id
     JOIN app.app_user user_account ON user_account.id = preferred.user_id
     WHERE signature.sha1_set_digest = __RELEASE_SIGNATURE__
       AND user_account.username = __USERNAME__
-    ORDER BY software.id
+    ORDER BY preferred.priority, software.id, release.id
     LIMIT 1
 ),
 packages AS (

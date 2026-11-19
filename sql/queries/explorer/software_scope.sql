@@ -27,8 +27,8 @@ matching_software AS MATERIALIZED (
     FROM catalog.software software
     LEFT JOIN matching_software matched ON matched.software_id = software.id
     JOIN catalog.system system ON system.id = software.system_id
-    JOIN app.user_preferred_release preferred
-      ON preferred.software_id = software.id
+    JOIN __PREFERRED_VIEW__ preferred
+      ON preferred.software_id = software.id AND preferred.release_id IS NOT NULL
     JOIN app.app_user user_account
       ON user_account.id = preferred.user_id
     WHERE (__SYSTEM_ID__ IS NULL OR software.system_id = __SYSTEM_ID__)

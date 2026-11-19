@@ -144,6 +144,21 @@ such as `{"genre":["Action","Adventure"],"developer":["Nintendo"]}`.
 `GET /api/metadata-options?key=genre` accepts the same `q` and `filters`, optional
 `system_id`, and a `search` term for finding values.
 
+**Hide ROM hacks** starts enabled in the Explorer and remembers your choice in
+this browser. It hides releases tagged `hacked`, `modified` or `trained`.
+Translations and undubs stay eligible even with one of those tags. Fixes and
+copy-protection cracks alone also stay eligible. When the preferred release is
+hidden, the catalog uses the highest-ranked eligible release. Games whose
+releases are all hidden drop out of the results.
+
+API clients can request this view with `hide_rom_hacks=1` on the system list,
+title searches, metadata options, release details, and both versioned catalog
+endpoints. Omitting the parameter returns the full catalog. Title and release
+rows expose the boolean `isRomHack` alongside the source `dumpModifications`.
+Release details include the alternatives and identify the selected release for
+the requested view. Each versioned view has its own ETag. Both preferred
+release signatures can be used with the install API.
+
 The Explorer caches the system list, title pages, searches and metadata dropdowns
 as they are opened. Requests share a result when the user, system, page, search
 and filters match. Each request checks a small database revision that tracks
@@ -161,7 +176,8 @@ in place, run the following command once before starting the updated Explorer.
 docker compose run --rm --no-deps --build --entrypoint psql catalog-builder \
   -X -v ON_ERROR_STOP=1 --single-transaction \
   -f sql/layers/metadata/095_listing_generation.sql \
-  -f sql/layers/scoring/025_cache_preferred_releases.sql
+  -f sql/layers/scoring/025_cache_preferred_releases.sql \
+  -f sql/layers/scoring/027_rom_hack_filter.sql
 ```
 
 There are two Compose entry points with deliberately different database

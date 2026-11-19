@@ -202,10 +202,10 @@ class LauncherSnapshotCacheTests(unittest.TestCase):
         repository._published_revision = Mock(return_value='initial')
         repository.systems = Mock(return_value=[{'key': key}])
 
-        def build(system_key, revision):
+        def build(system_key, revision, hide_rom_hacks=False):
             if revision == 'changing':
                 repository._published_revision.return_value = 'published'
-            return {'catalogRevision': revision, 'items': [system_key]}
+            return {'catalogRevision': revision, 'items': [] if hide_rom_hacks else [system_key]}
 
         repository.system_software = Mock(side_effect=build)
         with ThreadingHTTPServer(('127.0.0.1', 0), QuietHandler) as server:
@@ -244,6 +244,13 @@ class LauncherSnapshotCacheTests(unittest.TestCase):
                 self.assertNotEqual(new_etag, etag)
                 self.assertEqual(get(etag=new_etag), (304, new_etag, b''))
                 self.assertEqual(repository.system_software.call_count, 3)
+                filtered = path + '?hide_rom_hacks=1'
+                status, filtered_etag, body = get(filtered, etag=new_etag)
+                self.assertEqual((status, json.loads(body)['items']), (200, []))
+                self.assertNotEqual(filtered_etag, new_etag)
+                self.assertEqual(get(filtered, etag=filtered_etag), (304, filtered_etag, b''))
+                self.assertEqual(get(path, etag=filtered_etag)[0], 200)
+                self.assertEqual(get(path + '?hide_rom_hacks=invalid')[0], 400)
             finally:
                 server.shutdown()
                 thread.join()

@@ -11,6 +11,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.sql.elements import TextClause
 
 from gamedb.database import create_database_engine
+from gamedb.explorer.repository import CatalogRepository
 from gamedb.derive.extractors.reference_extract import ReferenceExtractor
 from gamedb.derive.schema import metadata
 
@@ -90,18 +91,17 @@ class SystemCategoryTests(unittest.TestCase):
                                 connection.execute(text(f'UPDATE {table} SET category = :category'), {'category': category})
                 connection.execute(text('''
                     CREATE TEMP TABLE software (id bigint, system_id bigint) ON COMMIT DROP;
-                    CREATE TEMP TABLE user_preferred_release (software_id bigint, user_id bigint) ON COMMIT DROP;
+                    CREATE TEMP TABLE user_preferred_release (software_id bigint, user_id bigint, release_id bigint) ON COMMIT DROP;
                     CREATE TEMP TABLE app_user (id bigint, username text) ON COMMIT DROP;
                     INSERT INTO app_user VALUES (1, 'test'), (2, 'someone-else');
                 '''))
                 connection.execute(text(f'''
                     INSERT INTO software SELECT id, id FROM {catalog_schema}.system;
-                    INSERT INTO user_preferred_release SELECT id, 1 FROM software;
+                    INSERT INTO user_preferred_release SELECT id, 1, id FROM software;
                 '''))
-                query = (ROOT / 'sql/queries/explorer/systems.sql').read_text()
+                query = CatalogRepository('test').systems_sql()
                 query = query.replace('catalog.system ', catalog_schema + '.system ')
                 query = query.replace('catalog.software ', 'pg_temp.software ').replace('app.', 'pg_temp.')
-                query = query.replace('__USERNAME__', "'test'")
                 systems = connection.execute(text(query)).scalar_one()
                 expected = extractor._rows('canonical_systems.csv')
                 self.assertEqual(len(systems), len(expected))

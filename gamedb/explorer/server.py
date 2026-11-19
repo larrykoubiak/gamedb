@@ -55,6 +55,13 @@ def _metadata_filters(query):
     return validate_metadata_filters(json.loads(raw))
 
 
+def _hide_rom_hacks(query):
+    values = query.get("hide_rom_hacks", ["0"])
+    if values not in (["0"], ["1"]):
+        raise ValueError("hide_rom_hacks must be 0 or 1")
+    return values == ["1"]
+
+
 def _load_project_environment(path: Path = PROJECT_ENV) -> tuple[str, ...]:
     return ProjectEnvironment(path).load()
 
@@ -177,14 +184,14 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 self.headers.get("Authorization"), self.server.api_key
             ):
                 return self._unauthorized_response()
+            query = parse_qs(parsed.query)
             if parsed.path == "/api/systems":
-                return self._json_response(self.server.repository.systems())
+                return self._json_response(self.server.repository.systems(hide_rom_hacks=_hide_rom_hacks(query)))
             if parsed.path == "/api/capabilities":
                 return self._json_response({
                     "softwareCorrections": self.server.corrections_enabled,
                 })
             if parsed.path == "/api/metadata-options":
-                query = parse_qs(parsed.query)
                 system_id = query.get("system_id", [""])[0]
                 return self._json_response(self.server.repository.metadata_options(
                     query.get("key", [""])[0],
@@ -192,9 +199,10 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                     query.get("q", [""])[0].strip()[:100],
                     _metadata_filters(query),
                     query.get("search", [""])[0].strip()[:100],
+                    _hide_rom_hacks(query),
                 ))
             if parsed.path == "/api/v1/catalog":
-                return self._catalog_response()
+                return self._catalog_response(hide_rom_hacks=_hide_rom_hacks(query))
             if parsed.path.startswith(MEDIA_PREFIX):
                 return self._media_response(parsed.path[len(MEDIA_PREFIX):])
             preview = PREVIEW_PATH.fullmatch(parsed.path)
@@ -215,7 +223,6 @@ class ExplorerHandler(BaseHTTPRequestHandler):
 
             match = SYSTEM_TITLES.fullmatch(parsed.path)
             if match or parsed.path == "/api/titles":
-                query = parse_qs(parsed.query)
                 page = max(1, int(query.get("page", ["1"])[0]))
                 page_size = min(
                     PAGE_SIZE_MAXIMUM,
@@ -228,6 +235,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                     (page - 1) * page_size,
                     title_filter,
                     _metadata_filters(query),
+                    _hide_rom_hacks(query),
                 )
                 payload["page"] = page
                 payload["pageSize"] = page_size
@@ -235,12 +243,12 @@ class ExplorerHandler(BaseHTTPRequestHandler):
 
             match = SYSTEM_SOFTWARE_SNAPSHOT.fullmatch(parsed.path)
             if match:
-                return self._catalog_response(match.group(1))
+                return self._catalog_response(match.group(1), _hide_rom_hacks(query))
 
             match = SOFTWARE_RELEASES.fullmatch(parsed.path)
             if match:
                 return self._json_response(
-                    self.server.repository.software_releases(int(match.group(1)))
+                    self.server.repository.software_releases(int(match.group(1)), _hide_rom_hacks(query))
                 )
 
             match = SOFTWARE_FACTS.fullmatch(parsed.path)
@@ -256,7 +264,6 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                         {"error": "Software corrections are disabled"},
                         HTTPStatus.FORBIDDEN,
                     )
-                query = parse_qs(parsed.query)
                 software_id = int(query.get("exclude_software_id", ["0"])[0])
                 title_filter = query.get("q", [""])[0].strip()[:100]
                 return self._json_response(self.server.repository.correction_targets(
@@ -356,13 +363,15 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
-    def _catalog_response(self, system_key=None):
+    def _catalog_response(self, system_key=None, hide_rom_hacks=False):
         repository = self.server.repository
         revision = repository.catalog_revision()
         cache_key = f"system:{system_key}" if system_key else "manifest"
+        if hide_rom_hacks:
+            cache_key += ":without-rom-hacks"
         suffix = hashlib.sha256(cache_key.encode("utf-8")).hexdigest()[:12]
         etag = f'"{revision}-{suffix}"'
-        if system_key and repository.system_by_key(system_key, revision) is None:
+        if system_key and repository.system_by_key(system_key, revision, hide_rom_hacks) is None:
             return self.send_error(HTTPStatus.NOT_FOUND)
         if self.headers.get("If-None-Match") == etag:
             self.send_response(HTTPStatus.NOT_MODIFIED)
@@ -373,8 +382,8 @@ class ExplorerHandler(BaseHTTPRequestHandler):
 
         def load():
             if system_key:
-                return repository.system_software(system_key, revision)
-            return repository.catalog_manifest(revision)
+                return repository.system_software(system_key, revision, hide_rom_hacks)
+            return repository.catalog_manifest(revision, hide_rom_hacks)
 
         body = self.server.catalog_cache.get_bytes(
             etag, lambda: repository.load_at_revision(revision, load)

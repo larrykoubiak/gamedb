@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GameDB Explorer</title>
   <meta name="description" content="Search GameDB across all platforms or browse by system.">
-  <link rel="stylesheet" href="/styles.css?v=11">
+  <link rel="stylesheet" href="/styles.css?v=12">
 </head>
 <body>
   <header class="topbar">
@@ -73,6 +73,9 @@
         <span class="sr-only">Search games</span>
         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
         <input id="game-filter" type="search" placeholder="Search games across all platforms…">
+      </label>
+      <label class="rom-hack-filter" title="Keep translations and undubs in the results">
+        <input id="hide-rom-hacks" type="checkbox" checked> Hide ROM hacks
       </label>
       <div id="metadata-filters" class="metadata-filters" role="group" aria-label="Filter games by metadata"></div>
       <button id="clear-metadata-filters" type="button" hidden>Clear filters</button>
@@ -177,6 +180,6 @@
     </form>
   </dialog>
 
-  <script src="/app.js?v=13" defer></script>
+  <script src="/app.js?v=14" defer></script>
 </body>
 </html>

@@ -14,6 +14,7 @@ const state = {
   targetRequestId: 0,
   correctionsEnabled: false,
   metadataFilters: {},
+  hideRomHacks: true,
 };
 
 const tree = document.querySelector("#system-tree");
@@ -34,6 +35,11 @@ const metadataFields = {
   analog: "Analog", origin: "Origin", tags: "Tags",
 };
 const metadataControls = new Map();
+
+function browseUrl(path) {
+  if (!state.hideRomHacks) return path;
+  return path + (path.includes("?") ? "&" : "?") + "hide_rom_hacks=1";
+}
 
 function setMetadataValue(key, value, selected) {
   const values = new Set(state.metadataFilters[key] || []);
@@ -79,7 +85,7 @@ async function loadMetadataOptions(key) {
     search: control.search.value.trim(), filters: JSON.stringify(state.metadataFilters)});
   if (state.selectedSystem) params.set("system_id", state.selectedSystem.id);
   try {
-    const payload = await requestJson(`/api/metadata-options?${params}`);
+    const payload = await requestJson(browseUrl(`/api/metadata-options?${params}`));
     if (requestId !== control.requestId) return;
     const selected = new Set(state.metadataFilters[key] || []);
     for (const option of payload.items) {
@@ -109,7 +115,7 @@ async function loadMetadataOptions(key) {
 function metadataOptionContext(key) {
   const filters = {...state.metadataFilters};
   delete filters[key];
-  return JSON.stringify([state.selectedSystem?.id, state.query, filters]);
+  return JSON.stringify([state.selectedSystem?.id, state.query, filters, state.hideRomHacks]);
 }
 
 function refreshMetadataOptions() {
@@ -688,14 +694,15 @@ async function loadReleaseDetails(game, container) {
   container.className = "release-details";
   container.textContent = "Loading software metadata, ranked releases and hashes…";
   try {
-    let releases = state.releaseDetails.get(game.softwareId);
+    const releaseKey = browseUrl(`/api/software/${game.softwareId}/releases`);
+    let releases = state.releaseDetails.get(releaseKey);
     let facts = state.softwareFacts.get(game.softwareId);
     if (!releases || !facts) {
       [releases, facts] = await Promise.all([
-        releases || requestJson(`/api/software/${game.softwareId}/releases`),
+        releases || requestJson(releaseKey),
         facts || requestJson(`/api/software/${game.softwareId}/facts`),
       ]);
-      state.releaseDetails.set(game.softwareId, releases);
+      state.releaseDetails.set(releaseKey, releases);
       state.softwareFacts.set(game.softwareId, facts);
     }
     renderReleaseDetails(container, releases, facts, game.softwareId, game.media, game.title, game.systemId);
@@ -977,6 +984,7 @@ function gameCard(game) {
   const platform = document.createElement("span");
   platform.className = "card-platform";
   platform.textContent = state.selectedSystem ? (game.regions || []).join(" · ") : game.systemName;
+  if (game.isRomHack) platform.textContent = [platform.textContent, "ROM hack"].filter(Boolean).join(" · ");
   const title = document.createElement("span");
   title.className = "card-title";
   title.textContent = game.title;
@@ -1051,7 +1059,7 @@ async function selectSystem(system, page = 1, platformsReady) {
     const metadata = Object.keys(state.metadataFilters).length
       ? `&filters=${encodeURIComponent(JSON.stringify(state.metadataFilters))}` : "";
     const [payload] = await Promise.all([
-      requestJson(`${path}?page=${page}&page_size=${state.pageSize}&q=${query}${metadata}`),
+      requestJson(browseUrl(`${path}?page=${page}&page_size=${state.pageSize}&q=${query}${metadata}`)),
       platformsReady,
     ]);
     if (requestId !== state.requestId) return;
@@ -1094,14 +1102,22 @@ gameFilter.addEventListener("input", () => {
   }, 250);
 });
 
+async function loadSystemCounts() {
+  const mode = state.hideRomHacks;
+  const systems = await requestJson(browseUrl("/api/systems"));
+  if (state.hideRomHacks !== mode) return;
+  state.systems = systems;
+  if (state.selectedSystem) state.selectedSystem = systems.find(system => system.id === state.selectedSystem.id);
+  renderTree(filter.value);
+}
+
 async function loadPlatforms() {
   try {
-    const [systems, capabilities, icons] = await Promise.all([
-      requestJson("/api/systems"),
+    const [, capabilities, icons] = await Promise.all([
+      loadSystemCounts(),
       requestJson("/api/capabilities"),
       requestJson("/system-icons.json").catch(() => ({})),
     ]);
-    state.systems = systems;
     state.systemIcons = icons;
     state.correctionsEnabled = Boolean(capabilities.softwareCorrections);
     renderTree(filter.value);
@@ -1113,6 +1129,17 @@ async function loadPlatforms() {
     tree.append(message);
   }
 }
+
+const hideRomHacks = document.querySelector("#hide-rom-hacks");
+try {
+  state.hideRomHacks = localStorage.getItem("gamedb-hide-rom-hacks") !== "0";
+} catch { /* Storage is optional. */ }
+hideRomHacks.checked = state.hideRomHacks;
+hideRomHacks.addEventListener("change", () => {
+  state.hideRomHacks = hideRomHacks.checked;
+  try { localStorage.setItem("gamedb-hide-rom-hacks", state.hideRomHacks ? "1" : "0"); } catch { /* Storage is optional. */ }
+  selectSystem(state.selectedSystem, 1, loadSystemCounts());
+});
 
 initializeMetadataFilters();
 selectSystem(null, 1, loadPlatforms());

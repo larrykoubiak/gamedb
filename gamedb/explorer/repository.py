@@ -40,6 +40,10 @@ def quote_sql_text(value: str) -> str:
     return "'" + value.replace("'", "''") + "'"
 
 
+def preferred_view(hide_rom_hacks: bool) -> str:
+    return "app.user_preferred_release_without_hacks" if hide_rom_hacks else "app.user_preferred_release"
+
+
 def sql_integer(value: int, name: str, minimum: int = 0) -> int:
     if type(value) is not int or value < minimum:
         raise ValueError(f"{name} must be an integer greater than or equal to {minimum}")
@@ -92,9 +96,9 @@ class CatalogRepository:
         self.listing_engine = listing_engine
         self.listing_cache = JsonResponseCache(max_entries=512, max_bytes=64 * 1024 * 1024, ttl=None)
 
-    def systems_sql(self) -> str:
+    def systems_sql(self, hide_rom_hacks=False) -> str:
         return SqlTemplate(QUERY_DIRECTORY / "systems.sql").render(
-            username=quote_sql_text(self.username)
+            username=quote_sql_text(self.username), preferred_view=preferred_view(hide_rom_hacks),
         )
 
     def catalog_revision_sql(self) -> str:
@@ -104,17 +108,17 @@ class CatalogRepository:
 
     def titles_sql(
         self, system_id: int | None, limit: int, offset: int, title_filter: str = "",
-        metadata_filters: dict | None = None,
+        metadata_filters: dict | None = None, hide_rom_hacks: bool = False,
     ) -> str:
         return SqlTemplate(QUERY_DIRECTORY / "titles.sql").render(
-            software_scope=self.software_scope_sql(system_id, title_filter, metadata_filters),
+            software_scope=self.software_scope_sql(system_id, title_filter, metadata_filters, hide_rom_hacks),
             limit=sql_integer(limit, "limit", 1),
             offset=sql_integer(offset, "offset"),
         )
 
     def software_scope_sql(
         self, system_id: int | None, title_filter: str = "",
-        metadata_filters: dict | None = None,
+        metadata_filters: dict | None = None, hide_rom_hacks: bool = False,
     ) -> str:
         predicates = []
         for key, values in validate_metadata_filters(metadata_filters).items():
@@ -129,6 +133,7 @@ class CatalogRepository:
                   AND filter_fact.fact_value IN ({literals})
             )""")
         return SqlTemplate(QUERY_DIRECTORY / "software_scope.sql").render(
+            preferred_view=preferred_view(hide_rom_hacks),
             username=quote_sql_text(self.username),
             system_id="NULL" if system_id is None else sql_integer(system_id, "system_id", 1),
             title_filter=quote_sql_text(title_filter),
@@ -137,20 +142,21 @@ class CatalogRepository:
 
     def metadata_options_sql(
         self, key: str, system_id: int | None = None, title_filter: str = "",
-        metadata_filters: dict | None = None, search: str = "",
+        metadata_filters: dict | None = None, search: str = "", hide_rom_hacks: bool = False,
     ) -> str:
         if key not in METADATA_FILTER_KEYS:
             raise ValueError("Unknown metadata field")
         filters = validate_metadata_filters(metadata_filters)
         filters.pop(key, None)
         return SqlTemplate(QUERY_DIRECTORY / "metadata_options.sql").render(
-            software_scope=self.software_scope_sql(system_id, title_filter, filters),
+            software_scope=self.software_scope_sql(system_id, title_filter, filters, hide_rom_hacks),
             fact_key=quote_sql_text(key),
             option_search=quote_sql_text(search[:100]),
         )
 
-    def software_releases_sql(self, software_id: int) -> str:
+    def software_releases_sql(self, software_id: int, hide_rom_hacks=False) -> str:
         return SqlTemplate(QUERY_DIRECTORY / "title_releases.sql").render(
+            preferred_view=preferred_view(hide_rom_hacks),
             username=quote_sql_text(self.username),
             software_id=sql_integer(software_id, "software_id", 1),
         )
@@ -252,35 +258,35 @@ class CatalogRepository:
             lambda: self.load_at_revision(revision, lambda: self._read_listing(sql)),
         )
 
-    def systems(self, revision=None):
-        return self._listing_query(self.systems_sql(), revision)
+    def systems(self, revision=None, hide_rom_hacks=False):
+        return self._listing_query(self.systems_sql(hide_rom_hacks), revision)
 
-    def catalog_manifest(self, revision: str | None = None):
+    def catalog_manifest(self, revision: str | None = None, hide_rom_hacks=False):
         revision = revision or self.catalog_revision()
         return {
             "catalogRevision": revision,
-            "systems": self.systems(revision),
+            "systems": self.systems(revision, hide_rom_hacks),
         }
 
-    def system_by_key(self, system_key: str, revision: str):
+    def system_by_key(self, system_key: str, revision: str, hide_rom_hacks=False):
         if not re.fullmatch(r"[0-9a-f]{32}", system_key):
             raise ValueError("system_key must be a 32-character lowercase hex key")
         return next(
-            (item for item in self.systems(revision) if item.get("key") == system_key),
+            (item for item in self.systems(revision, hide_rom_hacks) if item.get("key") == system_key),
             None,
         )
 
-    def system_software(self, system_key: str, revision: str | None = None):
+    def system_software(self, system_key: str, revision: str | None = None, hide_rom_hacks=False):
         revision = revision or self.catalog_revision()
-        system = self.system_by_key(system_key, revision)
+        system = self.system_by_key(system_key, revision, hide_rom_hacks)
         if system is None:
             return None
         # Cache the complete snapshot at the HTTP boundary. A second copy of
         # all titles for a large system would displace ordinary browse pages.
         catalog = self._read_listing(self.titles_sql(
-            int(system["id"]), max(1, int(system["gameCount"])), 0
+            int(system["id"]), max(1, int(system["gameCount"])), 0, hide_rom_hacks=hide_rom_hacks,
         ))
-        software_facts = self.system_software_facts(int(system["id"]))
+        software_facts = self.system_software_facts(int(system["id"])) if catalog["items"] else {}
         items = []
         for source_item in catalog["items"]:
             item = dict(source_item)
@@ -301,20 +307,20 @@ class CatalogRepository:
 
     def titles(
         self, system_id: int | None, limit: int, offset: int, title_filter: str = "",
-        metadata_filters: dict | None = None,
+        metadata_filters: dict | None = None, hide_rom_hacks: bool = False,
     ):
         return self._listing_query(
-            self.titles_sql(system_id, limit, offset, title_filter, metadata_filters)
+            self.titles_sql(system_id, limit, offset, title_filter, metadata_filters, hide_rom_hacks)
         )
 
-    def metadata_options(self, key, system_id=None, title_filter="", metadata_filters=None, search=""):
+    def metadata_options(self, key, system_id=None, title_filter="", metadata_filters=None, search="", hide_rom_hacks=False):
         sql = self.metadata_options_sql(
-            key, system_id, title_filter, metadata_filters, search
+            key, system_id, title_filter, metadata_filters, search, hide_rom_hacks
         )
         return self._listing_query(sql)
 
-    def software_releases(self, software_id: int):
-        return self.client.query(self.software_releases_sql(software_id))
+    def software_releases(self, software_id: int, hide_rom_hacks=False):
+        return self.client.query(self.software_releases_sql(software_id, hide_rom_hacks))
 
     def launchbox_image(self, relative_path):
         return self.client.query("""

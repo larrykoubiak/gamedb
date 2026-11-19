@@ -4,7 +4,7 @@ WITH scored AS MATERIALIZED (
         score.score,
         score.rank_within_software,
         score.breakdown,
-        (preferred.release_id = score.release_id) AS selected,
+        (preferred.release_id IS NOT NULL AND preferred.release_id = score.release_id) AS selected,
         release.display_title AS source_title,
         membership.assignment_basis,
         membership.evidence_match_count,
@@ -20,7 +20,7 @@ WITH scored AS MATERIALIZED (
     LEFT JOIN catalog.arcade_release arcade ON arcade.release_id = score.release_id
     LEFT JOIN catalog.release_content_signature signature
       ON signature.release_id = score.release_id
-    JOIN app.user_preferred_release preferred
+    JOIN __PREFERRED_VIEW__ preferred
      ON preferred.user_id = score.user_id
      AND preferred.software_id = score.software_id
     WHERE user_account.username = __USERNAME__
@@ -35,6 +35,7 @@ release_rows AS (
         facts.versions,
         facts.release_dates,
         facts.dump_modifications,
+        facts.is_rom_hack,
         facts.dump_statuses,
         packages.items AS packages
     FROM scored
@@ -52,6 +53,8 @@ release_rows AS (
                 FILTER (WHERE f.fact_key = 'release_date'), '[]'::jsonb) AS release_dates,
             coalesce(jsonb_agg(f.fact_value ORDER BY f.fact_value)
                 FILTER (WHERE f.fact_key = 'dump_modification'), '[]'::jsonb) AS dump_modifications,
+            catalog.is_rom_hack(array_agg(f.fact_value)
+                FILTER (WHERE f.fact_key = 'dump_modification')) AS is_rom_hack,
             coalesce(jsonb_agg(f.fact_value ORDER BY f.fact_value)
                 FILTER (WHERE f.fact_key = 'dump_status'), '[]'::jsonb) AS dump_statuses
         FROM catalog.release_fact f
@@ -107,6 +110,7 @@ SELECT coalesce(jsonb_agg(
         'versions', release_rows.versions,
         'releaseDates', release_rows.release_dates,
         'dumpModifications', release_rows.dump_modifications,
+        'isRomHack', release_rows.is_rom_hack,
         'dumpStatuses', release_rows.dump_statuses,
         'packages', release_rows.packages
     ) ORDER BY release_rows.rank_within_software,

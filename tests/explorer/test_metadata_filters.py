@@ -113,6 +113,18 @@ class MetadataFilterQueryTests(unittest.TestCase):
         self.assertEqual(self.execute(self.repository.metadata_options_sql('genre', 2, 'Mario')),
                          {'total': 0, 'items': []})
 
+    def test_hidden_games_are_excluded_before_metadata_counts_and_title_paging(self):
+        self.c.exec_driver_sql('''
+            CREATE TEMP TABLE user_preferred_release_without_hacks
+                ON COMMIT DROP AS SELECT * FROM pg_temp.user_preferred_release;
+            UPDATE pg_temp.user_preferred_release_without_hacks SET release_id=NULL WHERE software_id=1;
+            UPDATE pg_temp.user_preferred_release_without_hacks SET release_id=6 WHERE software_id=2;
+        ''')
+        scope = self.repository.software_scope_sql(1, 'Mario', hide_rom_hacks=True)
+        self.assertEqual(self.execute('WITH ' + scope + ' SELECT array_agg(release_id) FROM chosen'), [6])
+        options = self.repository.metadata_options_sql('genre', 1, 'Mario', hide_rom_hacks=True)
+        self.assertEqual(self.execute(options), {'total': 1, 'items': [{'value': 'Adventure', 'count': 1}]})
+
     def test_value_search_is_bounded_for_large_lists(self):
         self.c.exec_driver_sql("INSERT INTO software_fact SELECT 1,'developer','Studio ' || n,true FROM generate_series(1,150) n")
         options = self.execute(self.repository.metadata_options_sql('developer', search='Studio '))
