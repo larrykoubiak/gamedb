@@ -312,6 +312,7 @@ function appendArcadeStatus(parent, arcade) {
 }
 
 function scoreText(score) {
+  if (score == null) return "—";
   return score > 0 ? `+${score}` : String(score);
 }
 
@@ -526,10 +527,11 @@ function renderSoftwareFacts(container, facts) {
         const databases = source.sourceDatabases.length
           ? ` · ${source.sourceDatabases.join(", ")}`
           : "";
-        evidence.textContent = source.sourceProvider === "launchbox"
+        evidence.textContent = source.sourceProvider === "exo" ? "eXo" + databases
+          : source.sourceProvider === "launchbox"
           ? `LaunchBox · title/platform match${databases}`
           : `${source.matchedContentCount} ${contentLabel} · ${source.sourceRecordCount} ${recordLabel}${databases}`;
-        evidence.title = `${source.sourceProvider} revision ${source.sourceRevision}`;
+        if (source.sourceRevision) evidence.title = `${source.sourceProvider} revision ${source.sourceRevision}`;
         item.append(evidence);
       }
       definition.append(item);
@@ -679,6 +681,76 @@ function renderReleaseDetails(container, releases, facts, softwareId, media, tit
   container.append(wrap);
 }
 
+function renderSourceDetails(container, detail, preferredEntry, showMetadata) {
+  const entries = [...detail.entries].sort((a, b) => Number(b.key === preferredEntry) - Number(a.key === preferredEntry));
+  if (showMetadata) {
+    const facts = Object.entries(entries[0].facts).map(([key, values]) => ({
+      key, preferredValues: values,
+      values: values.map(value => ({value, sourceProvider: "exo", sourceDatabases: [entries[0].sourceList]})),
+    }));
+    renderSoftwareFacts(container, facts);
+  }
+  const heading = document.createElement("h3");
+  heading.textContent = "eXo editions";
+  container.append(heading);
+  const list = document.createElement("ul");
+  for (const edition of detail.editions) {
+    const item = document.createElement("li");
+    const source = entries.find(entry => entry.key === edition.entryKey);
+    item.textContent = [edition.label, edition.environment, source.sourceList, edition.engineGame].filter(Boolean).join(" · ");
+    list.append(item);
+  }
+  container.append(list);
+  const groups = new Map();
+  const labels = {manual: "Manuals", extra: "Extras", video: "Videos", music: "Music",
+    artwork: "Artwork", url: "Links", collection_document: "Collection guides", file: "Files"};
+  for (const asset of detail.assets) {
+    const label = labels[asset.kind] || asset.kind;
+    if (!groups.has(label)) groups.set(label, []);
+    groups.get(label).push(asset);
+  }
+  for (const [label, assets] of groups) {
+    const section = document.createElement("details");
+    section.open = label === "Manuals" || label === "Extras";
+    const summary = document.createElement("summary");
+    summary.textContent = label + " (" + assets.length + ")";
+    const items = document.createElement("ul");
+    for (const asset of assets) {
+      const row = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = asset.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = asset.label;
+      row.append(link, " · " + [...new Set(asset.sources.map(s => s.sourceList))].join(", "));
+      items.append(row);
+    }
+    section.append(summary, items);
+    container.append(section);
+  }
+  for (const entry of entries) {
+    const section = document.createElement("details");
+    const summary = document.createElement("summary");
+    summary.textContent = "Source record · " + entry.sourceList + " · " + entry.title;
+    const fields = document.createElement("dl");
+    fields.className = "software-fact-grid";
+    for (const [key, value] of Object.entries(entry.fields)) {
+      fields.append(cellText("dt", key), cellText("dd", value));
+    }
+    for (const alias of entry.alternateNames) {
+      fields.append(cellText("dt", "Alternate title"), cellText("dd", [alias.Name, alias.Region].filter(Boolean).join(" · ")));
+    }
+    section.append(summary, fields);
+    container.append(section);
+  }
+}
+
+function cellText(tag, text) {
+  const element = document.createElement(tag);
+  element.textContent = text;
+  return element;
+}
+
 function toggleReleaseDetails(game, row, detailRow, button) {
   const opening = detailRow.hidden;
   detailRow.hidden = !opening;
@@ -694,6 +766,14 @@ async function loadReleaseDetails(game, container) {
   container.className = "release-details";
   container.textContent = "Loading software metadata, ranked releases and hashes…";
   try {
+    const source = game.sourceDetailKey ? await requestJson("/api/exo/" + game.sourceDetailKey) : null;
+    if (game.sourceOnly && source) {
+      container.replaceChildren();
+      renderArtworkGallery(container, game.media, game.title);
+      renderSourceDetails(container, source, game.sourceEntryKey, true);
+      container.dataset.loaded = "true";
+      return;
+    }
     const releaseKey = browseUrl(`/api/software/${game.softwareId}/releases`);
     let releases = state.releaseDetails.get(releaseKey);
     let facts = state.softwareFacts.get(game.softwareId);
@@ -706,6 +786,7 @@ async function loadReleaseDetails(game, container) {
       state.softwareFacts.set(game.softwareId, facts);
     }
     renderReleaseDetails(container, releases, facts, game.softwareId, game.media, game.title, game.systemId);
+    if (source) renderSourceDetails(container, source, game.sourceEntryKey, facts.length === 0);
     container.dataset.loaded = "true";
   } catch (error) {
     delete container.dataset.loaded;
@@ -863,7 +944,7 @@ function renderTableRows(items) {
     expand.type = "button";
     expand.className = "expand-button";
     expand.textContent = "›";
-    expand.setAttribute("aria-label", `Show all ranked releases for ${game.title}`);
+    expand.setAttribute("aria-label", `Show details for ${game.title}`);
     expand.setAttribute("aria-expanded", "false");
     expandCell.append(expand);
     const art = document.createElement("td");
@@ -878,6 +959,7 @@ function renderTableRows(items) {
       parent_clone: "Recovered identity · Parent/Clone",
       manual: "Maintained manual identity",
       title_fallback: "Grouped by title",
+      exo: "eXo source edition",
     };
     identity.textContent = identityLabels[game.identityBasis] || game.identityBasis;
     titleCell.append(identity);
@@ -1143,3 +1225,19 @@ hideRomHacks.addEventListener("change", () => {
 
 initializeMetadataFilters();
 selectSystem(null, 1, loadPlatforms());
+
+const sourceLink = new URLSearchParams(globalThis.location?.search || "").get("exo");
+if (sourceLink && /^[0-9a-f]{64}$/.test(sourceLink)) {
+  requestJson("/api/exo/" + sourceLink).then(detail => {
+    document.querySelector("#game-dialog-title").textContent = detail.editions[0].title;
+    document.querySelector("#game-dialog-platform").textContent = "eXo";
+    const body = document.querySelector("#game-dialog-body");
+    body.replaceChildren();
+    renderSourceDetails(body, detail, null, true);
+    gameDialog.showModal();
+  }).catch(error => {
+    const body = document.querySelector("#game-dialog-body");
+    body.textContent = error.message;
+    gameDialog.showModal();
+  });
+}

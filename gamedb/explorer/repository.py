@@ -40,6 +40,23 @@ def quote_sql_text(value: str) -> str:
     return "'" + value.replace("'", "''") + "'"
 
 
+def with_source_facts(native, fields, source_list, revision):
+    """Keep existing selections and attribute direct, edition-scoped eXo claims."""
+    groups = {fact["key"]: dict(fact) for fact in native}
+    for name, values in (fields or {}).items():
+        if not values:
+            continue
+        group = groups.setdefault(name, {"key": name, "preferredValues": list(values), "values": []})
+        claims = list(group["values"])
+        rank = max((claim["rank"] for claim in claims), default=0) + 1
+        for value in values:
+            claims.append({"value": value, "rank": rank, "selected": value in group["preferredValues"],
+                "sourceProvider": "exo", "sourceDatabases": [source_list], "sourceRevision": revision,
+                "sourceRecordCount": 1, "matchedContentCount": 0, "candidateCount": len(values)})
+        group["values"] = claims
+    return list(groups.values())
+
+
 def preferred_view(hide_rom_hacks: bool) -> str:
     return "app.user_preferred_release_without_hacks" if hide_rom_hacks else "app.user_preferred_release"
 
@@ -99,6 +116,7 @@ class CatalogRepository:
     def systems_sql(self, hide_rom_hacks=False) -> str:
         return SqlTemplate(QUERY_DIRECTORY / "systems.sql").render(
             username=quote_sql_text(self.username), preferred_view=preferred_view(hide_rom_hacks),
+            hide_mods="true" if hide_rom_hacks else "false",
         )
 
     def catalog_revision_sql(self) -> str:
@@ -121,23 +139,27 @@ class CatalogRepository:
         metadata_filters: dict | None = None, hide_rom_hacks: bool = False,
     ) -> str:
         predicates = []
+        exo_predicates = []
         for key, values in validate_metadata_filters(metadata_filters).items():
             literals = ", ".join(quote_sql_text(value) for value in values)
             digests = ", ".join(f"md5({quote_sql_text(value)})" for value in values)
-            predicates.append(f"""AND EXISTS (
+            exo_facts = f"(entry.facts -> {quote_sql_text(key)}) ?| ARRAY[{literals}]"
+            exo_predicates.append(f"AND ({exo_facts})")
+            predicates.append(f"""AND (EXISTS (
                 SELECT 1 FROM catalog.software_fact filter_fact
                 WHERE filter_fact.software_id = software.id
                   AND filter_fact.is_selected
                   AND filter_fact.fact_key = {quote_sql_text(key)}
                   AND md5(filter_fact.fact_value) IN ({digests})
                   AND filter_fact.fact_value IN ({literals})
-            )""")
+            ) OR {exo_facts})""")
         return SqlTemplate(QUERY_DIRECTORY / "software_scope.sql").render(
             preferred_view=preferred_view(hide_rom_hacks),
             username=quote_sql_text(self.username),
             system_id="NULL" if system_id is None else sql_integer(system_id, "system_id", 1),
             title_filter=quote_sql_text(title_filter),
-            metadata_predicates="\n".join(predicates),
+            metadata_predicates="\n".join(predicates), exo_predicates="\n".join(exo_predicates),
+            hide_mods="true" if hide_rom_hacks else "false",
         )
 
     def metadata_options_sql(
@@ -290,8 +312,9 @@ class CatalogRepository:
         items = []
         for source_item in catalog["items"]:
             item = dict(source_item)
-            item["softwareFacts"] = software_facts.get(
-                str(item["softwareId"]), []
+            item["softwareFacts"] = with_source_facts(
+                software_facts.get(str(item["softwareId"]), []), item.pop("sourceFacts", None),
+                item.get("sourceList"), item.get("sourceRevision"),
             )
             items.append(item)
         return {
@@ -322,6 +345,18 @@ class CatalogRepository:
     def software_releases(self, software_id: int, hide_rom_hacks=False):
         return self.client.query(self.software_releases_sql(software_id, hide_rom_hacks))
 
+    def exo_detail(self, key):
+        if not re.fullmatch(r"[a-f0-9]{64}", key):
+            raise ValueError("Invalid source work key")
+        return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "exo_detail.sql").render(
+            work_key=quote_sql_text(key)))
+
+    def exo_asset(self, key):
+        if not re.fullmatch(r"[a-f0-9]{64}", key):
+            raise ValueError("Invalid source asset key")
+        return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "exo_location.sql").render(
+            asset_key=quote_sql_text(key)))
+
     def launchbox_image(self, relative_path):
         return self.client.query("""
             SELECT jsonb_build_object('fileName',file_name,'crc32',source_crc32)
@@ -329,7 +364,13 @@ class CatalogRepository:
         """ + quote_sql_text(relative_path) + " LIMIT 1")
 
     def software_facts(self, software_id: int):
-        return self.client.query(self.software_facts_sql(software_id))
+        native = self.client.query(self.software_facts_sql(software_id))
+        source = self._read_listing("""
+            SELECT jsonb_build_array(e.facts,e.source_list,p.source_revision)
+            FROM catalog.exo_browse b JOIN catalog.exo_entry e USING(entry_key)
+            CROSS JOIN catalog.exo_publication p WHERE b.software_id=""" + str(sql_integer(software_id,"software_id",1)) +
+            " ORDER BY b.scope_id LIMIT 1")
+        return with_source_facts(native, *source) if source else native
 
     def system_software_facts(self, system_id: int):
         payload = self._read_listing(self.system_software_facts_sql(system_id))

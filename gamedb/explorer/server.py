@@ -21,6 +21,7 @@ from gamedb.config import PROJECT_ROOT, ProjectEnvironment
 from gamedb.database import create_database_engine
 from gamedb.explorer.cache import JsonResponseCache
 from gamedb.explorer.previews import ArtworkPreviewCache
+from gamedb.explorer.related_media import serve as serve_related_media
 from gamedb.explorer.repository import CatalogChanged, CatalogRepository, validate_metadata_filters
 from gamedb.launchbox.image_cache import LaunchBoxImageCache, valid_filename
 
@@ -185,6 +186,15 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             ):
                 return self._unauthorized_response()
             query = parse_qs(parsed.query)
+            source = re.fullmatch(r"/api/(?:v1/)?exo/([0-9a-f]{64})", parsed.path)
+            if source:
+                detail = self.server.repository.exo_detail(source[1])
+                if detail is None:
+                    return self.send_error(HTTPStatus.NOT_FOUND)
+                return self._json_response(detail)
+            attachment = re.fullmatch(r"/related-media/([0-9a-f]{64})", parsed.path)
+            if attachment:
+                return serve_related_media(self, attachment[1])
             if parsed.path == "/api/systems":
                 return self._json_response(self.server.repository.systems(hide_rom_hacks=_hide_rom_hacks(query)))
             if parsed.path == "/api/capabilities":
@@ -409,6 +419,11 @@ class ExplorerHandler(BaseHTTPRequestHandler):
     def _media_response(self, encoded_path, preview_size=None):
         try:
             decoded = unquote(encoded_path)
+            if decoded.startswith("exo/"):
+                source = re.fullmatch(r"exo/([0-9a-f]{64})/([0-9a-f]{64})",decoded)
+                if not source:
+                    return self.send_error(HTTPStatus.NOT_FOUND)
+                return serve_related_media(self,source[2],revision=source[1],preview_size=preview_size)
             if decoded.startswith("launchbox/"):
                 parts = decoded.split("/")
                 if len(parts) != 3 or parts[1] not in {"boxart", "snap", "title", "logo"} or not valid_filename(parts[2]):
@@ -615,6 +630,7 @@ class ExplorerServer(ThreadingHTTPServer):
         self.preview_cache = ArtworkPreviewCache(os.environ.get(
             "GAMEDB_PREVIEW_CACHE", PROJECT_ROOT / "data/media/previews"
         ))
+        self.exo_root = Path(os.environ.get("GAMEDB_EXO_ROOT", "/mnt/exo"))
         self.rom_root = Path(os.environ.get("GAMEDB_ROM_ROOT", "/data/roms"))
 
     def server_close(self):

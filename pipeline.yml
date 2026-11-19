@@ -67,3 +67,9 @@ layers:
         type: build_media
       - name: fill_launchbox_artwork
         type: build_launchbox_media
+
+  - name: exo
+    description: Publish eXo editions, collection browsing, source metadata and related media.
+    steps:
+      - name: publish_exo_catalog
+        type: build_exo

@@ -118,7 +118,7 @@ def _load_step(raw: object, root: Path) -> StepConfig:
             raise ValueError(f"run_sql step {name} requires a non-empty files list")
         files = tuple(_resolve_file(root, value, name) for value in raw_files)
         return StepConfig(name=name, type=step_type, files=files)
-    if step_type in {"build_media", "build_metadata", "build_launchbox_media"}:
+    if step_type in {"build_media", "build_metadata", "build_launchbox_media", "build_exo"}:
         if raw.get("files") is not None:
             raise ValueError(f"{step_type} step {name} does not accept files")
         return StepConfig(name=name, type=step_type)

@@ -59,14 +59,16 @@ class WorkflowConfigTests(unittest.TestCase):
                 "metadata",
                 "scoring",
                 "media",
+                "exo",
             ),
         )
         self.assertEqual(
-            config.layers[-4].steps[0].name, "build_software_identity"
+            config.layers[-5].steps[0].name, "build_software_identity"
         )
-        self.assertEqual(config.layers[-3].steps[0].name, "build_software_facts")
-        self.assertEqual(config.layers[-2].steps[0].name, "build_release_scores")
-        self.assertEqual(config.layers[-1].steps[0].name, "build_software_media")
+        self.assertEqual(config.layers[-4].steps[0].name, "build_software_facts")
+        self.assertEqual(config.layers[-3].steps[0].name, "build_release_scores")
+        self.assertEqual(config.layers[-2].steps[0].name, "build_software_media")
+        self.assertEqual(config.layers[-1].steps[0].name, "publish_exo_catalog")
 
     def test_exact_layer_selection_retains_pipeline_order(self):
         config = WorkflowConfig.load(PROJECT_ROOT / "pipeline.yml")

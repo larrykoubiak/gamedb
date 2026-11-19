@@ -34,6 +34,7 @@ RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
 
 COPY gamedb/__init__.py gamedb/config.py gamedb/database.py /app/gamedb/
 COPY gamedb/catalog /app/gamedb/catalog
+COPY gamedb/exo /app/gamedb/exo
 COPY gamedb/launchbox /app/gamedb/launchbox
 COPY gamedb/derive /app/gamedb/derive
 COPY gamedb/arcade /app/gamedb/arcade
@@ -51,6 +52,7 @@ RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
 
 COPY gamedb/__init__.py gamedb/config.py gamedb/database.py /app/gamedb/
 COPY gamedb/catalog /app/gamedb/catalog
+COPY gamedb/exo /app/gamedb/exo
 COPY gamedb/launchbox /app/gamedb/launchbox
 COPY gamedb/derive /app/gamedb/derive
 COPY gamedb/arcade /app/gamedb/arcade

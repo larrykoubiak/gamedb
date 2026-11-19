@@ -114,6 +114,17 @@ class BuildLaunchBoxMediaStep(WorkflowStep):
             engine.dispose()
 
 
+class BuildExoStep(WorkflowStep):
+    def execute(self, context: WorkflowContext) -> None:
+        from gamedb.catalog.exo import publish_catalog
+        from gamedb.database import create_database_engine
+        engine = create_database_engine()
+        try:
+            print(publish_catalog(engine), flush=True)
+        finally:
+            engine.dispose()
+
+
 class SqlBatchProgress:
     """Report concrete SQL-file progress for a single transactional batch."""
 
@@ -145,6 +156,8 @@ class StepFactory:
             return BuildMetadataStep(config.name)
         if config.type == "build_launchbox_media":
             return BuildLaunchBoxMediaStep(config.name)
+        if config.type == "build_exo":
+            return BuildExoStep(config.name)
         if config.type == "build_media":
             return BuildMediaStep(config.name)
         raise ValueError(f"Cannot build pipeline step {config.name}: {config.type}")

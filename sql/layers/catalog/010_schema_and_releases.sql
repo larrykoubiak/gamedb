@@ -206,3 +206,5 @@ ON r.source_dat_id=a.dat_id AND r.source_group_ordinal=a.group_ordinal;
 UPDATE catalog.release r SET display_title=a.description
 FROM derived.arcade_release a
 WHERE r.source_dat_id=a.dat_id AND r.source_group_ordinal=a.group_ordinal;
+
+\ir ../exo/schema.sql

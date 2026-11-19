@@ -31,6 +31,8 @@ class ListingGenerationTests(unittest.TestCase):
                 CREATE TEMP TABLE app_user (id int, username text);
                 CREATE TEMP TABLE user_score_generation (user_id int, generated_at timestamptz, preference_signature text);
                 CREATE TEMP TABLE media_generation (singleton boolean, signature text);
+                CREATE TEMP TABLE exo_publication (singleton boolean, revision text);
+                INSERT INTO exo_publication VALUES (true, 'first eXo');
                 CREATE TEMP TABLE software_fact (value text);
                 CREATE TEMP TABLE software_fact_evidence (value text);
                 CREATE TEMP TABLE arcade_release (value text);
@@ -60,6 +62,7 @@ class ListingGenerationTests(unittest.TestCase):
                 "UPDATE pg_temp.user_score_generation SET preference_signature='changed'",
                 "UPDATE pg_temp.user_score_generation SET generated_at=now()",
                 "UPDATE pg_temp.media_generation SET signature='new art'",
+                "UPDATE pg_temp.exo_publication SET revision='another eXo snapshot'",
                 install,
             ):
                 with self.subTest(change=change[:60]):

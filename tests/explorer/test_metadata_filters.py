@@ -37,6 +37,10 @@ class MetadataFilterQueryTests(unittest.TestCase):
         self.transaction = self.c.begin()
         self.repository = CatalogRepository('test')
         self.c.exec_driver_sql('''
+            CREATE TEMP TABLE exo_browse (scope_id bigint, software_id bigint, linked_software_id bigint,
+                work_key text,entry_key text,edition_count int,media jsonb,all_mods boolean,search_names text[],
+                work_title text, system_id bigint,manufacturer text,system_name text) ON COMMIT DROP;
+            CREATE TEMP TABLE exo_entry (entry_key text, facts jsonb) ON COMMIT DROP;
             CREATE TEMP TABLE system (id bigint, manufacturer_name text, system_name text) ON COMMIT DROP;
             CREATE TEMP TABLE software (id bigint, system_id bigint, preferred_title_id bigint,
                 display_name text, identity_basis text) ON COMMIT DROP;

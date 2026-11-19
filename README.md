@@ -108,6 +108,36 @@ an existing local artwork association to another game. Conflicting copies,
 ambiguous associations and missing source references are recorded in
 `exo_issue`. Coverage counts are stored in `exo_snapshot.counts`.
 
+## Browsing eXo
+
+After staging a new snapshot, publish its editions and attachments on `larry-tower`.
+The catalog builder and Explorer both read the library at `/mnt/exo`.
+
+```sh
+docker compose run --rm --no-deps catalog-builder python -m gamedb.catalog rebuild --layers exo
+```
+
+The MS-DOS, Windows 9x and ScummVM collections appear under **eXo** in the Explorer and in
+**Computers** in the TV launcher. An edition can appear under its original hardware and in multiple
+collections. ScummVM editions retain their game directory, original platform hint, engine/game ID
+and bundled runtime version. An unmapped platform stays discoverable through its collection.
+The MS-DOS list includes eXoDOS PC booters and identified DOS editions from eXoScummVM.
+
+A source entry keeps its original LaunchBox fields and regional alternate titles. System snapshots
+carry genre, developer, publisher, series and player count through `softwareFacts`. For a row with a
+`sourceDetailKey`, `GET /api/v1/exo/{sourceDetailKey}` returns the entries, edition choices and assets.
+The entries include full descriptions, dates, ratings, play modes and all remaining source fields.
+The public Explorer uses `/api/exo/{sourceDetailKey}` and opens a record directly at `/?exo={sourceDetailKey}`.
+
+Manuals, maps, books, music, videos, artwork and collection guides have public
+`/related-media/{assetKey}` links. Files stay on the share, including items inside companion ZIPs.
+Shared supplements verified by SHA-256 can appear once with multiple credited owners. The TV
+launcher shows title details and offers browser links and QR codes for these items.
+
+An eXo edition key identifies its source list, local game ID and edition selection. Installation
+requires a release content signature. Existing matched DAT releases retain their installation
+identities and preferred choices.
+
 ## Inspecting names
 
 The parser can be exercised without changing the database:

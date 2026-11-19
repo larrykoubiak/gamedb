@@ -474,3 +474,8 @@ body:has(#game-dialog[open]) { overflow: hidden; }
 .artwork-navigation[hidden] { display: none; }
 .artwork-navigation span { color: var(--muted); font-size: .75rem; }
 body:has(#artwork-dialog[open]) { overflow: hidden; }
+
+.release-details > details, #game-dialog-body > details { margin: .65rem 0; }
+.release-details summary, #game-dialog-body summary { cursor: pointer; font-weight: 600; }
+.release-details li, #game-dialog-body li { margin: .3rem 0; overflow-wrap: anywhere; }
+.release-details dd, #game-dialog-body dd { overflow-wrap: anywhere; white-space: pre-line; }

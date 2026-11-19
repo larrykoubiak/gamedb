@@ -8,20 +8,28 @@ page AS (
 items AS (
     SELECT
         page.*,
-        package.source_collection,
-        package.archive_name,
-        package.package_count,
+        coalesce(package.source_collection, CASE entry.source_list
+            WHEN 'MS-DOS' THEN 'eXoDOS' WHEN 'Windows 9x' THEN 'eXoWin9x'
+            WHEN 'ScummVM' THEN 'eXoScummVM' WHEN 'ScummVM SVN' THEN 'eXoScummVM SVN' END) AS source_collection,
+        entry.source_list,
+        coalesce(package.archive_name, regexp_replace(entry.package_path,'^.*/','')) AS archive_name,
+        CASE WHEN page.source_only THEN 1 ELSE package.package_count END AS package_count,
         facts.languages,
-        facts.regions,
+        CASE WHEN page.source_only THEN coalesce(entry.facts->'region','[]'::jsonb) ELSE facts.regions END AS regions,
         facts.revisions,
-        facts.release_dates,
+        CASE WHEN page.source_only AND entry.fields ? 'ReleaseDate'
+             THEN jsonb_build_array(left(entry.fields->>'ReleaseDate',10)) ELSE facts.release_dates END AS release_dates,
         facts.dump_modifications,
-        facts.is_rom_hack,
+        CASE WHEN page.source_only THEN page.all_mods ELSE facts.is_rom_hack END AS is_rom_hack,
         facts.dump_statuses,
-        media.items AS media,
+        coalesce(page.exo_media,'{}'::jsonb) || media.items AS media,
+        CASE WHEN entry.entry_key IS NOT NULL THEN jsonb_strip_nulls(jsonb_build_object(
+            'genre',entry.facts->'genre','developer',entry.facts->'developer','publisher',entry.facts->'publisher',
+            'franchise',entry.facts->'franchise','player_count',entry.facts->'player_count')) END AS browse_facts,
         CASE WHEN arcade.release_id IS NOT NULL THEN jsonb_build_object('complete',(arcade.plan->>'complete')::boolean,'emulationStatus',arcade.plan->>'emulationStatus','preferredCore',arcade.plan->>'preferredCore','compatibleEmulators',arcade.plan->'compatibleEmulators','issues',(SELECT jsonb_agg(DISTINCT issue->>'reason') FROM jsonb_array_elements(arcade.plan->'missing') issue)) END AS arcade,
         coalesce(arcade.install_signature, signature.sha1_set_digest) AS preferred_release_signature
     FROM page
+    LEFT JOIN catalog.exo_entry entry ON entry.entry_key=page.entry_key
     LEFT JOIN LATERAL (
         SELECT
             min(p.source_collection) AS source_collection,
@@ -67,7 +75,6 @@ items AS (
     LEFT JOIN catalog.arcade_release arcade ON arcade.release_id = page.release_id
     LEFT JOIN catalog.release_content_signature signature
       ON signature.release_id = page.release_id
-    WHERE signature.release_id IS NOT NULL OR arcade.release_id IS NOT NULL
 )
 SELECT jsonb_build_object(
     'total', (SELECT count(*) FROM chosen),
@@ -98,7 +105,16 @@ SELECT jsonb_build_object(
                 'isRomHack', items.is_rom_hack,
                 'dumpStatuses', items.dump_statuses,
                 'media', items.media
-            ) ORDER BY lower(items.title), items.title, items.software_id
+            ) || CASE WHEN items.work_key IS NULL THEN '{}'::jsonb ELSE jsonb_build_object(
+                'sourceDetailKey', items.work_key,
+                'sourceEntryKey', items.entry_key,
+                'sourceList',items.source_list,
+                'sourceRevision',CASE WHEN items.entry_key IS NOT NULL THEN
+                    (SELECT source_revision FROM catalog.exo_publication WHERE singleton) END,
+                'sourceOnly', items.source_only,
+                'sourceFacts', items.browse_facts,
+                'editionCount', items.edition_count
+            ) END ORDER BY lower(items.title), items.title, items.software_id
         )
         FROM items
     ), '[]'::jsonb)
