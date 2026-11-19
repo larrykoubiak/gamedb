@@ -1,9 +1,16 @@
-WITH editions AS MATERIALIZED (
+WITH requested AS (
+    SELECT coalesce(
+        (SELECT work_key FROM catalog.exo_edition WHERE work_key=__WORK_KEY__ LIMIT 1),
+        (SELECT work_key FROM catalog.exo_work_alias WHERE alias_key=__WORK_KEY__),
+        (SELECT min(work_key) FROM catalog.exo_edition WHERE entry_key=__WORK_KEY__
+         HAVING count(DISTINCT work_key)=1)
+    ) AS work_key
+), editions AS MATERIALIZED (
     SELECT e.*, s.system_name,s.manufacturer_name,score.score,score.breakdown FROM catalog.exo_edition e
     LEFT JOIN catalog.system s ON s.id=e.system_id
     LEFT JOIN app.exo_edition_score score ON score.edition_key=e.edition_key AND
         score.user_id=(SELECT id FROM app.app_user WHERE username=__USERNAME__)
-    WHERE e.work_key=__WORK_KEY__
+    WHERE e.work_key=(SELECT work_key FROM requested)
 ), entries AS MATERIALIZED (
     SELECT g.* FROM catalog.exo_entry g WHERE g.entry_key IN (SELECT entry_key FROM editions)
 ), owners AS (
@@ -24,7 +31,7 @@ WITH editions AS MATERIALIZED (
     FROM assets GROUP BY 1,2
 )
 SELECT jsonb_build_object(
-    'key',__WORK_KEY__,
+    'key',(SELECT work_key FROM requested),
     'entries',(SELECT jsonb_agg(jsonb_build_object('key',entry_key,'title',title,'sourceList',source_list,
         'gameId',game_id,'document',document_path,'package',package_path,'facts',facts,'fields',fields,
         'alternateNames',aliases) ORDER BY source_list,entry_key) FROM entries),

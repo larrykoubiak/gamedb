@@ -16,6 +16,12 @@ from sqlalchemy import MetaData, Table, text
 from gamedb.config import PROJECT_ROOT
 from gamedb.exo.editions import SUFFIX, key, runtime_index, source_editions
 from gamedb.exo.media import open_location
+from gamedb.exo.works import (
+    name_key,
+    publisher_key,
+    read_reviewed_matches,
+    source_work_aliases,
+)
 
 SQL = PROJECT_ROOT / "sql/layers/exo"
 SHELVES = {"MS-DOS": 1_000_001, "Windows 9x": 1_000_002, "ScummVM": 1_000_003}
@@ -49,7 +55,7 @@ ART = {
     "Screenshot - Game Title": "title",
     "Clear Logo": "logo",
 }
-BUILD_VERSION = "exo-browse-2"
+BUILD_VERSION = "exo-browse-3"
 
 
 def source_facts(fields, aliases):
@@ -69,13 +75,6 @@ def source_facts(fields, aliases):
     return result
 
 
-def name_key(name):
-    name = name.casefold().strip()
-    if name.endswith(", the"):
-        name = "the " + name[:-5]
-    return " ".join(re.findall(r"\w+", name))
-
-
 def work_evidence(game, entry_key):
     fields = game["fields"]
     # All four pieces must agree; the source demonstrably reuses database IDs.
@@ -86,14 +85,6 @@ def work_evidence(game, entry_key):
         name_key(fields.get("Developer", "")),
     ]
     return key("exo:work", *evidence) if all(evidence) else entry_key
-
-
-def publisher_key(value):
-    return re.sub(
-        r"(?: (?:incorporated|inc|corporation|corp|limited|ltd|llc|gmbh))+$",
-        "",
-        name_key(value),
-    )
 
 
 def public_id(work, namespace):
@@ -342,6 +333,7 @@ def compile_browse(db, entries, editions, systems, revision):
                 e["is_mod"],
                 games[e["entry_key"]]["source_list"].endswith(" SVN"),
                 games[e["entry_key"]]["source_list"].startswith("ScummVM"),
+                e["entry_key"] != e["work_key"],
                 e["selection"].casefold(),
                 e["edition_key"],
             ),
@@ -466,12 +458,20 @@ def publish_catalog(engine, root=None, *, dry_run=False):
         ).resolve(strict=True)
         print("Reading eXo edition menus and game metadata", flush=True)
         entries, editions, systems = read_editions(db, snap["id"], root)
+        reviewed = read_reviewed_matches(
+            PROJECT_ROOT / "reference/exo_work_matches.csv"
+        )
+        aliases = source_work_aliases(entries, editions, reviewed)
+        targets = {r["alias_key"]: r["work_key"] for r in aliases}
+        for edition in editions:
+            edition["work_key"] = targets.get(edition["work_key"], edition["work_key"])
         if len(entries) != snap["counts"]["game_packages"]:
             raise ValueError("Incomplete game-package coverage")
         # One transaction replaces this small, independent projection; native
         # scores, content signatures and installed release IDs are never allocated here.
         for table in (
             "exo_browse",
+            "exo_work_alias",
             "exo_asset_link",
             "related_location",
             "related_asset",
@@ -483,13 +483,14 @@ def publish_catalog(engine, root=None, *, dry_run=False):
             db.exec_driver_sql("DELETE FROM catalog." + table)
         insert_rows(db, "exo_entry", entries)
         insert_rows(db, "exo_edition", editions)
+        insert_rows(db, "exo_work_alias", aliases)
         for statement in (SQL / "assets.sql").read_text().strip().split(";\n\n"):
             db.execute(text(statement), {"snapshot": snap["id"]})
         print("Verifying shared attachments", flush=True)
         verified = verify_shared_media(db, root)
         browse = compile_browse(db, entries, editions, systems, snap["source_revision"])
         digest = hashlib.sha256((BUILD_VERSION + snap["source_revision"]).encode())
-        for records in (entries, editions, browse):
+        for records in (entries, editions, browse, aliases):
             for record in records:
                 digest.update(
                     json.dumps(record, sort_keys=True, ensure_ascii=False).encode()
@@ -540,6 +541,7 @@ def publish_catalog(engine, root=None, *, dry_run=False):
         result = {
             "entries": len(entries),
             "editions": len(editions),
+            "merged_source_works": len(aliases),
             "verified_shared_files": verified,
             "matched_catalog_titles": sum(
                 b["linked_software_id"] is not None

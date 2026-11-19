@@ -123,6 +123,12 @@ collections. ScummVM editions retain their game directory, original platform hin
 and bundled runtime version. An unmapped platform stays discoverable through its collection.
 The MS-DOS list includes eXoDOS PC booters and identified DOS editions from eXoScummVM.
 
+The IBM PC list groups verified DOS, Windows and ScummVM editions of a game under one title.
+The builder checks names and documented aliases against credits, dates and source identifiers.
+Reviewed matches use evidence such as identical game data from the selected edition inside a
+bundle. Each edition keeps its own source credits, score and attachments. Earlier eXo detail
+links open the grouped game.
+
 A source entry keeps its original LaunchBox fields and regional alternate titles. System snapshots
 carry genre, developer, publisher, series and player count through `softwareFacts`. For a row with a
 `sourceDetailKey`, `GET /api/v1/exo/{sourceDetailKey}` returns the entries, edition choices and assets.

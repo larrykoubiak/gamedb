@@ -25,6 +25,9 @@ DO $$ BEGIN
 END $$;
 CREATE INDEX IF NOT EXISTS exo_edition_work_idx ON catalog.exo_edition(work_key);
 CREATE INDEX IF NOT EXISTS exo_edition_entry_idx ON catalog.exo_edition(entry_key);
+CREATE TABLE IF NOT EXISTS catalog.exo_work_alias (
+    alias_key text PRIMARY KEY, work_key text NOT NULL CHECK (alias_key <> work_key), match_basis text NOT NULL
+);
 CREATE TABLE IF NOT EXISTS catalog.related_asset (
     asset_key text PRIMARY KEY, asset_no integer NOT NULL UNIQUE, logical_path text UNIQUE NOT NULL,
     kind text NOT NULL, category text, region text, content_sha256 text

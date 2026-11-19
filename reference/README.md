@@ -40,6 +40,9 @@ These version-controlled files are the reviewed inputs to derivation:
   Each `assign` points directly to content in the destination game. A
   `separate` row creates an independent identity. Working web corrections
   remain in `app` until promoted.
+- `exo_work_matches.csv` joins verified eXo game identities across collections and
+  edition menus. Each row maps an earlier work key directly to the chosen game and
+  records the supporting evidence. Edition keys still identify each playable choice.
 
 The title reconciliation notes give both catalog names and the evidence for
 each move. Some English Translations archives retain the original title in a
