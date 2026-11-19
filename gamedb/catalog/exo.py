@@ -439,9 +439,17 @@ def verify_shared_media(db, root):
 
 
 def publish_catalog(engine, root=None, *, dry_run=False):
+    lock = text("SELECT pg_advisory_xact_lock(hashtext('gamedb:exo:catalog'))")
+    schema = (SQL / "schema.sql").read_text()
+    if not dry_run:
+        # Readers can continue using the last complete catalog during the long source scan.
+        with engine.connect() as db, db.begin():
+            db.execute(lock)
+            db.exec_driver_sql(schema)
     with engine.connect() as db, db.begin() as transaction:
-        db.execute(text("SELECT pg_advisory_xact_lock(hashtext('gamedb:exo:catalog'))"))
-        db.exec_driver_sql((SQL / "schema.sql").read_text())
+        db.execute(lock)
+        if dry_run:
+            db.exec_driver_sql(schema)
         if not db.scalar(text("SELECT to_regclass('staging.exo_snapshot')")):
             return {"entries": 0}
         snap = (
