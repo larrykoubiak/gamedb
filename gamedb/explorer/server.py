@@ -14,8 +14,11 @@ import subprocess
 import threading
 from urllib.parse import parse_qs, quote, unquote, urlparse
 
+from sqlalchemy.exc import SQLAlchemyError
+
 from gamedb.arcade.bundle import prepare_manifest, public_manifest, write_bundle
 from gamedb.config import PROJECT_ROOT, ProjectEnvironment
+from gamedb.database import create_database_engine
 from gamedb.explorer.cache import JsonResponseCache
 from gamedb.explorer.previews import ArtworkPreviewCache
 from gamedb.explorer.repository import CatalogChanged, CatalogRepository, validate_metadata_filters
@@ -281,6 +284,9 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             self._json_response(
                 {"error": "Invalid request parameters"}, HTTPStatus.BAD_REQUEST
             )
+        except SQLAlchemyError as error:
+            message = _database_error(str(getattr(error, "orig", error)))
+            self._json_response({"error": message}, HTTPStatus.INTERNAL_SERVER_ERROR)
         except subprocess.CalledProcessError as error:
             self._json_response(
                 {"error": _database_error(error.stderr or error.stdout)},
@@ -584,8 +590,9 @@ class ExplorerServer(ThreadingHTTPServer):
     """Own the repository shared by explorer request handlers."""
 
     def __init__(self, address, handler, username):
+        self.listing_engine = create_database_engine(pool_pre_ping=True)
         super().__init__(address, handler)
-        self.repository = CatalogRepository(username)
+        self.repository = CatalogRepository(username, listing_engine=self.listing_engine)
         self.api_key = _api_key()
         self.rebuild_lock = threading.Lock()
         self.catalog_cache = JsonResponseCache(max_entries=128, max_bytes=128 * 1024 * 1024, ttl=None)
@@ -600,6 +607,10 @@ class ExplorerServer(ThreadingHTTPServer):
             "GAMEDB_PREVIEW_CACHE", PROJECT_ROOT / "data/media/previews"
         ))
         self.rom_root = Path(os.environ.get("GAMEDB_ROM_ROOT", "/data/roms"))
+
+    def server_close(self):
+        super().server_close()
+        self.listing_engine.dispose()
 
     def rebuild_software(self):
         self.repository.listing_cache.clear()

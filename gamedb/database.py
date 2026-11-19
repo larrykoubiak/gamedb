@@ -31,6 +31,6 @@ def database_url() -> URL:
     )
 
 
-def create_database_engine() -> Engine:
+def create_database_engine(*, pool_pre_ping: bool = False) -> Engine:
     """Create the explicit database boundary used by derivation services."""
-    return create_engine(database_url(), future=True)
+    return create_engine(database_url(), future=True, pool_pre_ping=pool_pre_ping)

@@ -12,6 +12,15 @@ ROOT = Path(__file__).resolve().parents[2]
 
 @unittest.skipUnless(os.environ.get('GAMEDB_TEST_POSTGRES') == '1', 'requires PostgreSQL')
 class ListingGenerationTests(unittest.TestCase):
+    def test_pooled_listing_reads_reuse_a_connection_and_preserve_literal_percents(self):
+        engine = create_database_engine(pool_pre_ping=True)
+        self.addCleanup(engine.dispose)
+        repository = CatalogRepository('test', listing_engine=engine)
+        query = "SELECT jsonb_build_object('title', '100% %(name)s', 'pid', pg_backend_pid())"
+        first = repository._read_listing(query)
+        self.assertEqual(first['title'], '100% %(name)s')
+        self.assertEqual(repository._read_listing(query), first)
+
     def test_publications_invalidate_listings_and_rolled_back_edits_do_not(self):
         install = sql_body(ROOT / 'sql/layers/metadata/095_listing_generation.sql').replace('catalog.', 'pg_temp.')
         revision = CatalogRepository('test').catalog_revision_sql().replace('catalog.', 'pg_temp.').replace('app.', 'pg_temp.')

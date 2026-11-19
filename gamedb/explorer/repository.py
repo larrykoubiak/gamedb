@@ -86,9 +86,10 @@ class CatalogChanged(Exception):
 class CatalogRepository:
     """Provide catalog reads and validated working-correction writes."""
 
-    def __init__(self, username: str, client: PsqlJsonClient | None = None):
+    def __init__(self, username: str, client: PsqlJsonClient | None = None, *, listing_engine=None):
         self.username = username
         self.client = client or PsqlJsonClient()
+        self.listing_engine = listing_engine
         self.listing_cache = JsonResponseCache(max_entries=512, max_bytes=64 * 1024 * 1024, ttl=None)
 
     def systems_sql(self) -> str:
@@ -217,8 +218,17 @@ class CatalogRepository:
             correction_id=sql_integer(correction_id, "correction_id", 1)
         )
 
+    def _read_listing(self, sql):
+        if self.listing_engine is None:
+            return self.client.query(sql)
+        with self.listing_engine.connect() as connection:
+            # Templates already contain quoted literals. A '%' in a game title
+            # or search must reach PostgreSQL unchanged.
+            result = connection.exec_driver_sql(sql, execution_options={"no_parameters": True})
+            return result.scalar_one_or_none()
+
     def _published_revision(self):
-        payload = self.client.query(self.catalog_revision_sql())
+        payload = self._read_listing(self.catalog_revision_sql())
         return payload.get("catalogRevision") if isinstance(payload, dict) else None
 
     def catalog_revision(self) -> str:
@@ -236,10 +246,10 @@ class CatalogRepository:
     def _listing_query(self, sql, revision=None):
         revision = revision or self._published_revision()
         if not revision:
-            return self.client.query(sql)
+            return self._read_listing(sql)
         return self.listing_cache.get_or_load(
             revision + "\n" + sql,
-            lambda: self.load_at_revision(revision, lambda: self.client.query(sql)),
+            lambda: self.load_at_revision(revision, lambda: self._read_listing(sql)),
         )
 
     def systems(self, revision=None):
@@ -267,7 +277,7 @@ class CatalogRepository:
             return None
         # Cache the complete snapshot at the HTTP boundary. A second copy of
         # all titles for a large system would displace ordinary browse pages.
-        catalog = self.client.query(self.titles_sql(
+        catalog = self._read_listing(self.titles_sql(
             int(system["id"]), max(1, int(system["gameCount"])), 0
         ))
         software_facts = self.system_software_facts(int(system["id"]))
@@ -316,7 +326,7 @@ class CatalogRepository:
         return self.client.query(self.software_facts_sql(software_id))
 
     def system_software_facts(self, system_id: int):
-        payload = self.client.query(self.system_software_facts_sql(system_id))
+        payload = self._read_listing(self.system_software_facts_sql(system_id))
         return payload if isinstance(payload, dict) else {}
 
     def arcade_install_manifest(self, release_signature: str):
