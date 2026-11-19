@@ -461,7 +461,11 @@ function renderArtworkGallery(container, media, title) {
     image.loading = "lazy";
     const zoom = artworkButton(image, available, () => index);
     const caption = document.createElement("figcaption");
-    caption.textContent = `${label} · ${item.matchBasis.replaceAll("_", " ")} · region ${item.regionMatch}`;
+    const credits = [label];
+    if (item.provider === "exo") credits.push("eXo");
+    if (item.matchBasis) credits.push(item.matchBasis.replaceAll("_", " "));
+    if (item.regionMatch) credits.push(`region ${item.regionMatch}`);
+    caption.textContent = credits.join(" · ");
     figure.append(zoom, caption);
     gallery.append(figure);
   }

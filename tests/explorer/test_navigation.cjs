@@ -18,7 +18,7 @@ const path = require('node:path');
     regions: [], languages: [], revisions: [], releaseDates: [],
     dumpStatuses: [], dumpModifications: [], breakdown: [], media: {
       boxart: {path: 'test/box art.png', matchBasis: 'preferred_release_exact', regionMatch: 'exact'},
-      snap: {path: 'test/gameplay.png', matchBasis: 'preferred_release_exact', regionMatch: 'exact'},
+      snap: {path: 'test/gameplay.png', provider: 'exo'},
       logo: {path: 'test/broken.png', matchBasis: 'preferred_release_exact', regionMatch: 'exact'},
     },
   };
@@ -75,6 +75,7 @@ const path = require('node:path');
     const cardDetails = page.getByRole('button', {name: 'Show details for Mario on NES'});
     await cardDetails.click();
     const gameDialog = page.locator('#game-dialog');
+    await gameDialog.getByText('Gameplay · eXo', {exact: true}).waitFor();
     await gameDialog.getByRole('button', {name: 'Enlarge Mario — Gameplay'}).click();
     await page.waitForFunction(() => document.querySelector('#artwork-image').naturalWidth > 0);
     assert(images.includes('/media/test/gameplay.png'));
