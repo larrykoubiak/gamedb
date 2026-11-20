@@ -17,6 +17,8 @@ from gamedb.config import PROJECT_ROOT
 from gamedb.exo.editions import SUFFIX, key, runtime_index, source_editions
 from gamedb.exo.media import open_location
 from gamedb.exo.works import (
+    VARIANT,
+    credit,
     name_key,
     publisher_key,
     read_reviewed_matches,
@@ -55,7 +57,42 @@ ART = {
     "Screenshot - Game Title": "title",
     "Clear Logo": "logo",
 }
-BUILD_VERSION = "exo-browse-3"
+BUILD_VERSION = "exo-browse-5"
+
+# TOSEC often records the abbreviated company name shown on the release.
+PC_CREDIT_ALIASES = {
+    "access software": "access",
+    "bomico entertainment software": "bomico",
+    "capcom u s a": "capcom",
+    "domark software": "domark",
+    "gremlin interactive": "gremlin",
+    "interplay productions": "interplay",
+    "legend entertainment company": "legend",
+    "lucasarts entertainment company": "lucasarts",
+    "max design gesmbh": "max design",
+    "maxis software": "maxis",
+    "microprose software": "microprose",
+    "mindcraft software": "mindcraft",
+    "muse software": "muse",
+    "nova logic": "novalogic",
+    "ocean software": "ocean",
+    "origin systems": "origin",
+    "philips interactive media": "philips",
+    "sierra on line": "sierra",
+    "strategic simulations": "ssi",
+    "team 17": "team17",
+    "team17 software": "team17",
+    "the avalon hill game company": "avalon hill",
+    "topware interactive": "topware",
+    "tsunami media": "tsunami",
+    "ubi soft entertainment software": "ubisoft",
+    "virgin interactive entertainment": "virgin",
+}
+
+
+def pc_credit(value):
+    normalized = credit(value)
+    return PC_CREDIT_ALIASES.get(normalized, normalized)
 
 
 def source_facts(fields, aliases):
@@ -116,9 +153,10 @@ def existing_pc_releases(db):
            AND count(DISTINCT f.fact_value) FILTER (WHERE f.fact_key='release_date')=1
     """
     for sw, name, display, date, publisher in db.execute(text(sql)):
+        company = publisher_key(publisher)
         for alias in {name_key(name), name_key(display)}:
-            if publisher_key(publisher) not in ("", "unknown", "various"):
-                candidates[alias, date[:4], publisher_key(publisher)].add(sw)
+            if company not in ("", "unknown", "various"):
+                candidates[alias, date[:4], company].add(sw)
     return candidates
 
 
@@ -251,12 +289,38 @@ def read_editions(db, snapshot, root):
     return entries, editions, {i: (m, n) for (m, n), i in systems.items()}
 
 
+def unique_matches(matches):
+    reverse = Counter(next(iter(ids)) for ids in matches.values() if len(ids) == 1)
+    return {
+        group: next(iter(ids))
+        for group, ids in matches.items()
+        if len(ids) == 1 and reverse[next(iter(ids))] == 1
+    }
+
+
+def browse_title(edition, anchor):
+    label = edition["label"]
+    suffix = SUFFIX.search(label)
+    if suffix and VARIANT.search(suffix[1]):
+        return anchor["title"] if anchor else label
+    return edition["work_title"]
+
+
 def compile_browse(db, entries, editions, systems, revision):
     games = {g["entry_key"]: g for g in entries}
+    entry_works = defaultdict(set)
+    for edition in editions:
+        entry_works[edition["entry_key"]].add(edition["work_key"])
     pc = next(i for i, s in systems.items() if s == ("IBM", "PC Compatibles"))
     candidates = existing_pc_releases(db)
+    alternate_credits = defaultdict(set)
+    for (title, year, publisher), ids in candidates.items():
+        company = pc_credit(publisher)
+        if title and company:
+            alternate_credits[title, year, company].update(ids)
     external = launchbox_matches(db)
     matches = defaultdict(set)
+    alternate_matches = defaultdict(set)
     bases = defaultdict(set)
     for e in editions:
         game = games[e["entry_key"]]
@@ -274,19 +338,32 @@ def compile_browse(db, entries, editions, systems, revision):
             if ids:
                 matches[group].update(ids)
                 bases[group].add("PC release title, year and publisher")
+            companies = {
+                pc_credit(value)
+                for field in ("Publisher", "Developer")
+                for value in facts.get(field, "").split(";")
+            } - {""}
+            ids = {
+                sw
+                for company in companies
+                for sw in alternate_credits.get((title, year, company), ())
+            }
+            if ids:
+                alternate_matches[group].update(ids)
         for sw, years, publishers, developers in external[
             e["system_id"], facts.get("DatabaseID"), title
         ]:
             if year in years and (publisher in publishers or developer in developers):
                 matches[group].add(sw)
                 bases[group].add("platform, LaunchBox ID, title, year and credits")
-    # Reconcile independent records only when each side has a single candidate.
-    reverse = Counter(next(iter(ids)) for ids in matches.values() if len(ids) == 1)
-    resolved = {
-        wk: next(iter(ids))
-        for wk, ids in matches.items()
-        if len(ids) == 1 and reverse[next(iter(ids))] == 1
-    }
+    # Preserve confirmed publisher and LaunchBox matches, and leave conflicting
+    # claims unresolved even if a company alias supports one of the candidates.
+    resolved = unique_matches(matches)
+    claimed = {sw for ids in matches.values() for sw in ids}
+    for group, sw in unique_matches(alternate_matches).items():
+        if group not in matches and sw not in claimed:
+            resolved[group] = sw
+            bases[group].add("PC release title, year and company credit")
     art = defaultdict(dict)
     for owner, asset, category in db.execute(
         text("""
@@ -299,12 +376,25 @@ def compile_browse(db, entries, editions, systems, revision):
         art[owner].setdefault(
             ART[category], {"path": f"exo/{revision}/{asset}", "provider": "exo"}
         )
-    if art:
+    # Artwork on a multi-game entry is shared by its menu. Only artwork from
+    # a single-work entry can override the selected work's browse artwork.
+    dedicated_art = {
+        owner: media for owner, media in art.items() if len(entry_works[owner]) == 1
+    }
+    if dedicated_art:
         db.execute(
             text("""UPDATE catalog.exo_entry e SET tile_media=a.value
                  FROM jsonb_each(CAST(:media AS jsonb)) a WHERE e.entry_key=a.key"""),
-            {"media": json.dumps(art)},
+            {"media": json.dumps(dedicated_art)},
         )
+    work_art = defaultdict(dict)
+    for owner, media in sorted(dedicated_art.items()):
+        work = next(iter(entry_works[owner]))
+        if owner == work:
+            work_art[work].update(media)
+        else:
+            for kind, value in media.items():
+                work_art[work].setdefault(kind, value)
     groups = defaultdict(list)
     for e in editions:
         g = games[e["entry_key"]]
@@ -343,7 +433,9 @@ def compile_browse(db, entries, editions, systems, revision):
         if any(c["work_key"] != work for c in choices):
             raise ValueError("Ambiguous source software ID")
         g = games[e["entry_key"]]
-        media, names = {}, set()
+        anchor = games.get(work) if entry_works.get(work) == {work} else None
+        title = browse_title(e, anchor)
+        shared_media, local_media, names = {}, {}, {title}
         for choice in order:
             owner = games[choice["entry_key"]]
             names.update(
@@ -354,6 +446,7 @@ def compile_browse(db, entries, editions, systems, revision):
                     *owner["facts"].get("alternate_title", []),
                 ]
             )
+            media = local_media if len(entry_works[owner["entry_key"]]) == 1 else shared_media
             for kind, value in art[owner["entry_key"]].items():
                 media.setdefault(kind, value)
         m, n = systems.get(e["system_id"], ("eXo", e["environment"]))
@@ -368,7 +461,7 @@ def compile_browse(db, entries, editions, systems, revision):
                 "software_id": software_id,
                 "work_key": work,
                 "entry_key": g["entry_key"],
-                "work_title": e["work_title"],
+                "work_title": title,
                 "system_id": e["system_id"],
                 "system_name": n,
                 "manufacturer": m,
@@ -379,7 +472,7 @@ def compile_browse(db, entries, editions, systems, revision):
                 "edition_count": len(choices),
                 "all_mods": all(c["is_mod"] for c in choices),
                 "search_names": sorted(names),
-                "media": media,
+                "media": shared_media | work_art[work] | local_media,
             }
         )
     return result

@@ -1,14 +1,71 @@
+import json
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from unittest.mock import Mock
 from zipfile import ZipFile
 
-from gamedb.catalog.exo import source_facts, work_evidence
+from gamedb.catalog.exo import SHELVES, compile_browse, source_facts, work_evidence
 from gamedb.exo.editions import platform, scumm_editions
 from gamedb.exo.media import open_location
 
 
 class CatalogEditionsTests(unittest.TestCase):
+    def test_remakes_in_a_shared_menu_have_distinct_titles_and_dedicated_art(self):
+        base_title = "Quest for the Crown"
+        original, sci, fan = "original", "sci", "fan"
+        entries = [
+            {
+                "entry_key": key,
+                "source_list": source,
+                "title": title,
+                "facts": {},
+                "fields": {},
+            }
+            for key, source, title in (
+                ("menu", "ScummVM", base_title),
+                (sci, "MS-DOS", base_title + " (SCI Remake)"),
+            )
+        ]
+        editions = [
+            {
+                "entry_key": owner,
+                "work_key": work,
+                "work_title": base_title,
+                "edition_key": owner + work,
+                "label": label,
+                "selection": label,
+                "system_id": 1,
+                "environment": "MS-DOS",
+                "is_mod": False,
+            }
+            for owner, work, label in (
+                ("menu", original, base_title + " (DOS)"),
+                ("menu", sci, base_title + " (DOS Remake)"),
+                ("menu", fan, base_title + " (2001 Remake)"),
+                (sci, sci, base_title + " (SCI Remake)"),
+            )
+        ]
+        db = Mock()
+        db.execute.side_effect = [
+            [],
+            [],
+            [("menu", "shared-cover", "Box - Front"), (sci, "sci-cover", "Box - Front")],
+            None,
+        ]
+        browse = compile_browse(db, entries, editions, {1: ("IBM", "PC Compatibles")}, "rev")
+        tile_media = json.loads(db.execute.call_args.args[1]["media"])
+        self.assertEqual(set(tile_media), {sci})
+        scumm = {
+            row["work_key"]: (row["work_title"], row["media"]["boxart"]["path"])
+            for row in browse if row["scope_id"] == SHELVES["ScummVM"]
+        }
+        self.assertEqual(scumm, {
+            original: (base_title, "exo/rev/shared-cover"),
+            sci: (base_title + " (SCI Remake)", "exo/rev/sci-cover"),
+            fan: (base_title + " (2001 Remake)", "exo/rev/shared-cover"),
+        })
+
     def test_launch_choices_keep_specific_platforms_and_distinct_games_in_one_archive(
         self,
     ):
