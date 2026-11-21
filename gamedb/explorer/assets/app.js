@@ -976,6 +976,7 @@ document.querySelector("#correction-cancel").addEventListener("click", () => cor
 function showMessage(message, className = "empty-state") {
   state.results = null;
   coverObserver?.disconnect();
+  pauseAudio(tableBody);
   tableWrap.hidden = true;
   tableBody.replaceChildren();
   gameGrid.hidden = true;
@@ -1146,6 +1147,7 @@ function gameCard(game) {
 function renderGames(payload) {
   state.results = payload;
   coverObserver?.disconnect();
+  pauseAudio(tableBody);
   tableBody.replaceChildren();
   gameGrid.replaceChildren();
   const tiles = state.layout === "tiles";

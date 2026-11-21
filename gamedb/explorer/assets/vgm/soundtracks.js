@@ -5,7 +5,6 @@ let soundtrackVolume = 1;
 
 function pauseAudio(container) {
   if (activeSoundtrack && container.contains(activeSoundtrack.root)) activeSoundtrack.stop();
-  for (const audio of container.querySelectorAll("audio")) audio.pause();
 }
 
 window.addEventListener("pagehide", () => pauseAudio(document));

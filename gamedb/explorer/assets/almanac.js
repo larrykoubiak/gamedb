@@ -216,7 +216,7 @@ orientTabs();
 narrowBook.addEventListener("change", orientTabs);
 
 async function openSoftwarePage(path, focus) {
-  pauseAudio(almanacView);
+  pauseAudio(document);
   const page = {path, requests: new Map(), sequence: 0};
   entry = page;
   catalogView.hidden = true;
@@ -284,7 +284,6 @@ catalogView.addEventListener("click", event => {
   const link = event.target.closest("a.software-link");
   if (!link || !ordinaryClick(event)) return;
   event.preventDefault();
-  pauseAudio(catalogView);
   catalogPosition = {link, scroll: window.scrollY};
   history.pushState({fromCatalog: true}, "", link.href);
   routePage(true);

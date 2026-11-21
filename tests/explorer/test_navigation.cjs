@@ -371,6 +371,21 @@ function wavTone() {
     await page.keyboard.press('Escape');
     await artwork.waitFor({state: 'hidden'});
     await page.evaluate(() => document.querySelector('#single-artwork-fixture').remove());
+    await page.evaluate(() => {
+      const start = AudioBufferSourceNode.prototype.start;
+      AudioBufferSourceNode.prototype.start = function (...args) {
+        window.tablePlayback = this.context;
+        return start.apply(this, args);
+      };
+    });
+    const tablePlayer = page.getByRole('region', {name: 'Soundtrack player'});
+    await page.getByRole('button', {name: 'Play Test tone'}).click();
+    await tablePlayer.getByText('Playing', {exact: true}).waitFor();
+    const tablePlayback = await page.evaluateHandle(() => window.tablePlayback);
+    await page.getByRole('button', {name: 'Tiles', exact: true}).click();
+    await page.waitForFunction(audio => audio.state === 'closed', tablePlayback, {timeout: 1000});
+    await tablePlayback.dispose();
+    await page.getByRole('button', {name: 'Table', exact: true}).click();
     await page.locator('#system-category').selectOption('console');
     assert.equal(await page.locator('#system-tree .system-button').count(), 1);
     assert.equal(await page.locator('#system-tree summary').innerText(), 'Nintendo');
