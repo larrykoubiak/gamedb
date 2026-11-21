@@ -1,7 +1,7 @@
 """Index and serve individual recordings from LHA and 7-Zip archives."""
 
 import os
-from contextlib import contextmanager
+from contextlib import closing, contextmanager
 from pathlib import PurePosixPath
 from tempfile import SpooledTemporaryFile
 
@@ -36,38 +36,47 @@ def members(path, format_name):
                 yield number, name, entry.size
 
 
-@contextmanager
-def open_vgm_location(root, location):
-    format_name = location.get("archive_format")
-    if not format_name or not location["member_no"]:
-        with open_location(root, location) as stream:
-            yield stream
-        return
-
-    path = location_path(root, location["source_path"])
-    expected_size = location["size_bytes"]
-    with path.open("rb") as source, SpooledTemporaryFile(max_size=1024 * 1024) as member:
+def packed_locations(root, locations):
+    """Read selected members from one archive in order, opening it once."""
+    first = locations[0]
+    path = location_path(root, first["source_path"])
+    positions = {location["member_no"]: location for location in locations}
+    with path.open("rb") as source:
         stat = os.fstat(source.fileno())
-        if stat.st_mtime_ns != location["mtime_ns"] or stat.st_size != location["archive_size_bytes"]:
+        if stat.st_mtime_ns != first["mtime_ns"] or stat.st_size != first["archive_size_bytes"]:
             raise ValueError("Soundtrack archive changed")
         try:
-            with fd_reader(source.fileno(), format_name=ARCHIVE_FORMATS[format_name]) as archive:
+            with fd_reader(source.fileno(), format_name=ARCHIVE_FORMATS[first["archive_format"]]) as archive:
                 for number, entry in enumerate(archive, 1):
-                    if number != location["member_no"]:
+                    location = positions.pop(number, None)
+                    if location is None:
                         continue
+                    expected_size = location["size_bytes"]
                     if (not entry.isfile or member_name(entry) != location["member_name"]
                             or entry.size != expected_size):
                         raise ValueError("Soundtrack archive member changed")
-                    for block in entry.get_blocks():
-                        if member.tell() + len(block) > expected_size:
-                            raise ValueError("Incorrect soundtrack archive member size")
-                        member.write(block)
-                    break
-                else:
-                    raise ValueError("Soundtrack archive member unavailable")
+                    with SpooledTemporaryFile(max_size=1024 * 1024) as member:
+                        for block in entry.get_blocks():
+                            if member.tell() + len(block) > expected_size:
+                                raise ValueError("Incorrect soundtrack archive member size")
+                            member.write(block)
+                        if member.tell() != expected_size:
+                            raise ValueError("Incomplete soundtrack archive member")
+                        member.seek(0)
+                        yield location, member
+                    if not positions:
+                        return
         except ArchiveError as error:
             raise ValueError("Could not read the soundtrack archive member") from error
-        if member.tell() != expected_size:
-            raise ValueError("Incomplete soundtrack archive member")
-        member.seek(0)
-        yield member
+        raise ValueError("Soundtrack archive member unavailable")
+
+
+@contextmanager
+def open_vgm_location(root, location):
+    if not location.get("archive_format") or not location["member_no"]:
+        with open_location(root, location) as stream:
+            yield stream
+        return
+    with closing(packed_locations(root, [location])) as members:
+        _, stream = next(members)
+        yield stream

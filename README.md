@@ -160,7 +160,7 @@ GameDB inventories the music share in place, retaining each source collection,
 track, archive and supported companion file. Extracted sets and same-named
 archive copies within a collection share a soundtrack entry. ZIPs can supply a
 track list when there is no extracted copy. The importer also lists individual
-members of UnExoticA LHA and Game Boy 7-Zip packages. It preserves Amiga module
+members of UnExoticA LHA and JoshW 7-Zip packages. It preserves Amiga module
 names such as `MOD.Title` and keeps sample banks in the same album. The original
 packages are available as downloads. SPC ID666 labels, NSF, SID and GBS credits
 and subsong counts, and PSF track names and credits appear when available.
@@ -194,6 +194,14 @@ filenames in composer and game folders. The import report retains uncertain
 matches for review. Install system libarchive when running the importer or
 Explorer directly. Both Compose images include it.
 
+Refresh the cartridge and handheld sets from the HCS64 index with
+`python -m gamedb.vgm.fetch_joshw --root "/mnt/synology/music/VGM/By Format"`.
+Add `--download` to save the packages under `JoshW/` in that library. Use
+`--bucket` to refresh a single index subdomain, such as `spc`. Packages with
+the same size and index revision are reused. The VGM importer reads the full
+package names and platform tags, then lists tracks and shared libraries from
+the 7-Zip archives. Ambiguous titles stay in the matching report.
+
 Add `--publish` to atomically replace the VGM inventory. In Compose the catalog
 builder sees the share at `/mnt/vgm`.
 
@@ -205,9 +213,9 @@ docker compose run --rm --no-deps --entrypoint python catalog-builder \
 Set `GAMEDB_VGM_ROOT=/mnt/vgm` for the Compose Explorer, or set it to the NAS
 path when running Explorer directly. Matched games then show their music on the
 **Soundtracks** tab in the Almanac. The player handles browser audio and
-emulates SPC, SID, PSF, MiniPSF, NSF, GBS, SNDH, VGM and common Amiga tracker
-formats in the browser. The song picker selects a tune within a GBS file.
-MiniPSF tracks can load shared libraries from the same soundtrack.
+emulates SPC, SID, PSF, NSF, GBS, GSF, 2SF, NCSF, USF, HES, SNDH, VGM and common
+Amiga tracker formats in the browser. The song picker selects a tune within a
+GBS file. Tracks can load shared libraries from the same soundtrack.
 Download links provide the original tracks and archives.
 Downloads follow the Explorer's existing public related-media access model.
 

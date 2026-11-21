@@ -1,12 +1,19 @@
 """Read source labels without decoding chiptune audio."""
 
 import re
+from collections import defaultdict
+from contextlib import closing
 from struct import unpack_from
 from zipfile import BadZipFile
 
-from .archives import open_vgm_location
+from .archives import open_vgm_location, packed_locations
 
 PSF_VERSIONS = {"psf": 1, "minipsf": 1, "psf2": 2, "minipsf2": 2}
+RELATED_PSF_VERSIONS = {
+    "usf": 0x21, "miniusf": 0x21, "gsf": 0x22, "minigsf": 0x22, "snsf": 0x23, "minisnsf": 0x23,
+    "2sf": 0x24, "mini2sf": 0x24, "ncsf": 0x25, "minincsf": 0x25,
+}
+TRACK_TAG_FORMATS = {"spc", "nsf", "sid", "gbs", *PSF_VERSIONS, *RELATED_PSF_VERSIONS}
 PSF_FIELDS = {"game": "album", "title": "title", "artist": "artist",
               "year": "year", "copyright": "copyright"}
 JAPANESE = re.compile(r"[\u3041-\u30fa\u3400-\u9fff]")
@@ -79,16 +86,40 @@ def sid_tags(header):
 
 
 def read_tags(root, asset):
-    format_name = asset["format"]
-    if format_name not in {"spc", "nsf", "sid", "gbs"} and format_name not in PSF_VERSIONS:
+    if asset["format"] not in TRACK_TAG_FORMATS:
         return {}
     try:
         with open_vgm_location(root, asset) as stream:
-            if format_name in PSF_VERSIONS:
-                return psf_tags(stream, PSF_VERSIONS[format_name], asset["size_bytes"])
-            header = stream.read(0x100)
+            return stream_tags(stream, asset)
     except (OSError, ValueError, BadZipFile, NotImplementedError, EOFError):
         return {}
+
+
+def add_track_tags(root, assets, formats):
+    packed = defaultdict(list)
+    for asset in assets:
+        if asset["format"] not in formats:
+            continue
+        if asset.get("archive_format"):
+            packed[asset["source_path"]].append(asset)
+        else:
+            asset.update(read_tags(root, asset))
+    for locations in packed.values():
+        try:
+            with closing(packed_locations(root, locations)) as members:
+                for asset, stream in members:
+                    asset.update(stream_tags(stream, asset))
+        except (OSError, ValueError, NotImplementedError, EOFError):
+            # An unavailable member should not prevent importing the other sets.
+            continue
+
+
+def stream_tags(stream, asset):
+    format_name = asset["format"]
+    version = PSF_VERSIONS.get(format_name) or RELATED_PSF_VERSIONS.get(format_name)
+    if version is not None:
+        return psf_tags(stream, version, asset["size_bytes"])
+    header = stream.read(0x100)
     if format_name == "sid":
         return sid_tags(header)
     if format_name == "nsf" and len(header) >= 0x80 and header[:5] == b"NESM\x1a":

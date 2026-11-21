@@ -14,6 +14,7 @@ from gamedb.launchbox.matching import literal_title_key
 
 from .amiga import AMIGA, apply_game_notes, module_format
 from .archives import members as archive_members, safe_member
+from .joshw import COLLECTION as JOSHW_COLLECTION, platform as joshw_platform, soundtrack_name
 
 NES = ("Nintendo", "Nintendo Entertainment System")
 GB = ("Nintendo", "Game Boy")
@@ -44,6 +45,11 @@ SET_FOLDERS = {
 ARCHIVES = {".zip", ".rar", ".7z", ".rsn", ".vgm7z", ".lha", ".iso", ".d64", ".d71", ".d81", ".dfi"}
 BROWSER_AUDIO = {".mp3", ".flac", ".ogg", ".opus", ".wav", ".m4a", ".aac"}
 DEPENDENCIES = {".psflib", ".psf2lib", ".snsflib", ".m3u", ".m3u8", ".cue", ".wd", ".wi", ".sep", ".seb"}
+JOSHW_TRACKS = {
+    ".2sf", ".adx", ".gsf", ".gym", ".hes", ".hwas", ".kss", ".mgb", ".mini2sf", ".minigsf",
+    ".minincsf", ".miniusf", ".ncsf", ".strm", ".swav", ".usf", ".wsr",
+}
+JOSHW_LIBRARIES = {".2sflib", ".gsflib", ".ncsflib", ".usflib"}
 NATIVE_AUDIO = {
     ".nsf", ".nsfe", ".sid", ".gbs", ".ay", ".ym", ".snd", ".sndh", ".sc68", ".vgm", ".vgz",
     ".spc", ".sgc", ".psf", ".minipsf", ".psf2", ".minipsf2", ".snsf", ".minisnsf", ".vsv",
@@ -98,6 +104,11 @@ def identify(path: Path):
         group = label
         if collection == "spcsets_tmp":
             collection = "spcsets"
+    elif collection == JOSHW_COLLECTION and len(parts) > 2:
+        platform = joshw_platform(parts[1], PurePosixPath(*parts[2:]))
+        group = PurePosixPath(*parts[1:]).with_suffix("").as_posix()
+        review = ("zzz_homebrew" in parts or "(Cover)" in path.stem
+                  or (platform == ("Various", "Arcade")))
     elif collection in {"GBS", "Akumu_nsf_archive"}:
         platform = NES if collection == "Akumu_nsf_archive" else GB
         if collection == "GBS":
@@ -127,6 +138,8 @@ def identify(path: Path):
 
 
 def describe(path: Path, collection: str, group: str):
+    if collection == JOSHW_COLLECTION:
+        return soundtrack_name(path.parts[1], path) if len(path.parts) > 2 else (path.stem, ())
     label = group if collection in SET_FOLDERS or group in path.parts else path.stem
     if collection == "spcsets":
         # The long archive/directory name is the evidence. The bracketed code
@@ -151,7 +164,12 @@ def describe(path: Path, collection: str, group: str):
 def asset_for(path: str, stat, *, member_no=0, member_name=None, size=None, crc=None):
     name = PurePosixPath(member_name or path).name
     suffix = Path(name).suffix.strip().lower()
-    kind = "archive" if suffix in ARCHIVES else "support" if suffix in DEPENDENCIES or suffix == ".txt" else "track"
+    if suffix in ARCHIVES:
+        kind = "archive"
+    elif suffix in DEPENDENCIES | JOSHW_LIBRARIES or suffix == ".txt":
+        kind = "support"
+    else:
+        kind = "track"
     return {
         "key": key_for(path, str(member_no), member_name or ""),
         "name": name,
@@ -167,7 +185,7 @@ def asset_for(path: str, stat, *, member_no=0, member_name=None, size=None, crc=
     }
 
 
-def zip_tracks(root: Path, asset: dict):
+def zip_tracks(root: Path, asset: dict, *, formats=SUFFIXES - ARCHIVES):
     path = asset["source_path"]
     stat = (root / path).stat()
     with ZipFile(root / path) as archive:
@@ -175,18 +193,18 @@ def zip_tracks(root: Path, asset: dict):
             name = PurePosixPath(member.filename)
             if member.is_dir() or member.flag_bits & 1 or not safe_member(member.filename):
                 continue
-            if name.suffix.lower() in (SUFFIXES - ARCHIVES) or name.name.lower() == "info.txt":
+            if name.suffix.lower() in formats or name.name.lower() == "info.txt":
                 yield asset_for(path, stat, member_no=number, member_name=member.filename,
                                 size=member.file_size, crc=f"{member.CRC:08x}")
 
 
-def packed_tracks(root, asset, *, amiga):
+def packed_tracks(root, asset, *, amiga=False, formats=None):
     path = asset["source_path"]
     archive = root / path
     stat = archive.stat()
     for number, name, size in archive_members(archive, asset["format"]):
         suffix = PurePosixPath(name).suffix.strip().lower()
-        if not amiga and suffix not in {".gbs", ".m3u", ".txt"}:
+        if formats is not None and suffix not in formats:
             continue
         track = asset_for(path, stat, member_no=number, member_name=name, size=size)
         if amiga:
@@ -201,16 +219,21 @@ def packed_tracks(root, asset, *, amiga):
 
 def tracks_for_set(root, album):
     assets = album.assets
-    if any(asset["kind"] == "track" for asset in assets):
+    if album.collection != JOSHW_COLLECTION and any(asset["kind"] == "track" for asset in assets):
         return
+    formats = SUFFIXES - ARCHIVES
+    if album.collection == JOSHW_COLLECTION:
+        formats = formats | JOSHW_TRACKS | JOSHW_LIBRARIES | {".txt"}
     for asset in assets[:]:
         try:
             if asset["format"] == "zip":
-                tracks = list(zip_tracks(root, asset))
+                tracks = list(zip_tracks(root, asset, formats=formats))
             elif asset["format"] == "lha" and album.collection == "UnExotica" and album.system == AMIGA:
                 tracks = list(packed_tracks(root, asset, amiga=True))
             elif asset["format"] == "7z" and album.collection == "GBS":
-                tracks = list(packed_tracks(root, asset, amiga=False))
+                tracks = list(packed_tracks(root, asset, formats={".gbs", ".m3u", ".txt"}))
+            elif asset["format"] == "7z" and album.collection == JOSHW_COLLECTION:
+                tracks = list(packed_tracks(root, asset, formats=formats))
             else:
                 continue
         except (BadZipFile, ArchiveError):
@@ -236,16 +259,23 @@ def scan(root: Path) -> list[Soundtrack]:
             relative = path.relative_to(root)
             suffix = path.suffix.lower()
             is_note = suffix == ".txt" and relative.parts[0] in NOTES_COLLECTIONS
-            if name.startswith((".", "@")) or not (suffix in SUFFIXES or is_note):
+            joshw = relative.parts[0] == JOSHW_COLLECTION
+            if name.startswith(".") or (name.startswith("@") and not joshw):
+                continue
+            if suffix not in SUFFIXES and not is_note and not (joshw and suffix in JOSHW_TRACKS):
                 continue
             stat = path.lstat()
             if not S_ISREG(stat.st_mode):
                 continue
             collection, group, system, review = identify(relative)
-            key = key_for(collection, literal_title_key(group), *(system or ()))
+            if joshw and not system:
+                continue
+            key = key_for(collection, group if joshw else literal_title_key(group), *(system or ()))
             if key not in sets:
                 title, aliases = describe(relative, collection, group)
                 sets[key] = Soundtrack(key, collection or "By Format", group, title, system, aliases, review)
+                if joshw:
+                    sets[key].match_basis = "joshw_filename"
             sets[key].assets.append(asset_for(relative.as_posix(), stat))
     for key, soundtrack in list(sets.items()):
         if soundtrack.collection != "By Format":
@@ -267,6 +297,9 @@ def scan(root: Path) -> list[Soundtrack]:
     for soundtrack in sets.values():
         tracks_for_set(root, soundtrack)
         assets = soundtrack.assets
+        if soundtrack.collection == JOSHW_COLLECTION:
+            package = next((asset for asset in assets if asset["kind"] == "archive"), assets[0])
+            soundtrack.source_evidence = {"joshwPath": package["source_path"].partition("/")[2]}
         if (soundtrack.collection == "UnExotica" and soundtrack.system == AMIGA
                 and any(asset.get("archive_format") == "lha" for asset in assets)):
             apply_game_notes(root, soundtrack)

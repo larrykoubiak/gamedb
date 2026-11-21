@@ -12,14 +12,12 @@ from gamedb.database import create_database_engine
 
 from .importer import publish, resolve, summarize
 from .inventory import C64, PLAYSTATION, PS2, scan
-from .tags import PSF_VERSIONS, read_tags
+from .tags import PSF_VERSIONS, RELATED_PSF_VERSIONS, add_track_tags
 
 
 def enrich(root, library, formats):
     def read_item(item):
-        for asset in item.assets:
-            if asset["format"] in formats:
-                asset.update(read_tags(root, asset))
+        add_track_tags(root, item.assets, formats)
 
     items = iter(library)
     with ThreadPoolExecutor(max_workers=8) as pool:
@@ -50,7 +48,7 @@ def main(argv=None):
 
         matched = (item for item, row in zip(library, resolved, strict=True)
                    if row["status"] == "matched")
-        enrich(args.root, matched, {"spc", "nsf", "gbs"})
+        enrich(args.root, matched, {"spc", "nsf", "gbs", *RELATED_PSF_VERSIONS})
         if args.publish:
             with engine.begin() as connection:
                 publish(connection, library, resolved)

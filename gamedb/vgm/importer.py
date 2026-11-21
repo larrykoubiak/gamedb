@@ -10,6 +10,7 @@ from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.config import PROJECT_ROOT
 
 from .inventory import C64
+from .joshw import COLLECTION as JOSHW_COLLECTION
 from .matching import (
     EXTENDED_SYSTEMS,
     YEAR,
@@ -74,8 +75,8 @@ INSERT_ASSET = text("""
 """)
 
 
-def catalog_index(connection, names):
-    index = TitleIndex(names)
+def catalog_index(connection, names, *, spelling_systems=()):
+    index = TitleIndex(names, spelling_systems=spelling_systems)
     systems = sorted({platform for platform, _ in names})
     if not systems:
         return index
@@ -118,12 +119,15 @@ def resolve(connection, soundtracks):
     reviewed = reviewed_titles()
     names = set()
     sources = []
+    joshw_systems = set()
     for item in soundtracks:
         album = psf_album(item)
         sid = sid_claim(item) if item.system == C64 else None
         review = reviewed.get((item.collection, item.source_name))
         sources.append((item, album, sid, review))
         if item.system:
+            if item.collection == JOSHW_COLLECTION:
+                joshw_systems.add(item.system)
             names.update((item.system, name) for name in
                          (item.title, *item.aliases, *snes_filename_titles(item)))
             if album:
@@ -133,7 +137,7 @@ def resolve(connection, soundtracks):
             if review and review["catalog_title"]:
                 names.add((item.system, review["catalog_title"]))
 
-    index = catalog_index(connection, names)
+    index = catalog_index(connection, names, spelling_systems=joshw_systems)
     pending = []
     sid_ids = set()
     for item, album, sid, review in sources:

@@ -10,6 +10,7 @@ from gamedb.launchbox.matching import title_key
 
 from .amiga import AMIGA, AMIGA_CD32, AMIGA_CDTV
 from .inventory import PLAYSTATION, PSF_COLLECTION, SNES, ST
+from .joshw import COLLECTION as JOSHW_COLLECTION
 
 REVIEWED_TITLES = PROJECT_ROOT / "reference/vgm_titles.csv"
 EXTENDED_SYSTEMS = frozenset({PLAYSTATION, SNES})
@@ -98,20 +99,21 @@ def sid_claim(item):
 class TitleIndex:
     """Index requested titles against canonical software and attributed aliases."""
 
-    def __init__(self, names):
+    def __init__(self, names, *, spelling_systems=()):
         self.exact = defaultdict(dict)
         self.spellings = defaultdict(dict)
         self.metadata = defaultdict(dict)
+        self.spelling_systems = SPELLING_SYSTEMS.union(spelling_systems)
         self.names = {(platform, title_key(name)) for platform, name in names}
         self.spelled_names = {(platform, spelling_key(name)) for platform, name in names
-                              if platform in SPELLING_SYSTEMS}
+                              if platform in self.spelling_systems}
         self.names = {key for key in self.names if key[1]}
         self.spelled_names = {key for key in self.spelled_names if key[1]}
 
     def add(self, platform, row, *, database_id=None):
         name = row["name"]
         exact_key = (platform, title_key(name))
-        spelled_key = (platform, spelling_key(name)) if platform in SPELLING_SYSTEMS else None
+        spelled_key = (platform, spelling_key(name)) if platform in self.spelling_systems else None
         if exact_key not in self.names and spelled_key not in self.spelled_names:
             return
         candidate = {
@@ -128,10 +130,10 @@ class TitleIndex:
             if spelled_key in self.spelled_names:
                 self.spellings[spelled_key].setdefault(row["id"], candidate)
 
-    def lookup(self, platform, names, *, catalog_only=False):
+    def lookup(self, platform, names, *, catalog_only=False, spelling=False):
         """Prefer full catalog titles before using equivalent spellings and attributed aliases."""
         tiers = [(self.exact, title_key, "catalog_title")]
-        if platform in SPELLING_SYSTEMS:
+        if platform in SPELLING_SYSTEMS or spelling:
             tiers.append((self.spellings, spelling_key, "catalog_spelling"))
         if platform in EXTENDED_SYSTEMS and not catalog_only:
             tiers.append((self.metadata, spelling_key, "launchbox_title"))
@@ -149,7 +151,7 @@ def match_titles(index, item, reviewed, album, sid):
     if reviewed and reviewed["catalog_title"]:
         hits = index.lookup(item.system, (reviewed["catalog_title"],), catalog_only=True)
         return {ident: {**hit, "reviewNote": reviewed["evidence"]} for ident, hit in hits.items()}
-    hits = index.lookup(item.system, (item.title, *item.aliases))
+    hits = index.lookup(item.system, (item.title, *item.aliases), spelling=item.collection == JOSHW_COLLECTION)
     parts = snes_filename_titles(item)
     if parts and not hits:
         left, right = (index.lookup(item.system, (part,)) for part in parts)

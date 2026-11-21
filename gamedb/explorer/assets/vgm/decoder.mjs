@@ -1,4 +1,4 @@
-import createZXTune from "./zxtune-f59403a/zxtune.mjs";
+import createZXTune from "./zxtune-f59403a-2/zxtune.mjs";
 
 let decoder;
 let render;
@@ -43,6 +43,8 @@ async function loadLibraries(track, libraries) {
 function loadTrack(bytes, format, subsong) {
   return withDecoderBytes(bytes, (pointer, size) => {
     if (subsong) return decoder.load(pointer, size, `#${subsong}`);
+    // HES stores the zero-based starting track at offset five.
+    if (format === "hes" && size >= 6) return decoder.load(pointer, size, `#${bytes[5] + 1}`);
     try {
       return decoder.load(pointer, size, "");
     } catch (error) {

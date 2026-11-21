@@ -1,6 +1,7 @@
 const vgmFormats = new Set([
-  "ay", "gbs", "gym", "hes", "it", "kss", "med", "minipsf", "mod", "nsf", "nsfe", "okt",
-  "psf", "sap", "sfx", "sid", "sndh", "spc", "vgm", "vgz", "xm",
+  "2sf", "adx", "ay", "gbs", "gsf", "gym", "hes", "hwas", "it", "kss", "med", "mini2sf", "minigsf",
+  "minincsf", "minipsf", "miniusf", "mod", "ncsf", "nsf", "nsfe", "okt", "psf", "s3m", "sap", "sfx",
+  "sid", "sndh", "spc", "strm", "swav", "usf", "vgm", "vgz", "xm",
 ]);
 const vgmAudioContext = window.AudioContext || window.webkitAudioContext;
 
@@ -54,7 +55,7 @@ function startVgmPlayback(asset, libraries, {started, ended, subsong}) {
   }
 
   try {
-    worker = new Worker("/vgm/decoder.mjs?v=2", {type: "module"});
+    worker = new Worker("/vgm/decoder.mjs?v=3", {type: "module"});
     const resumed = audio.resume().catch(() => finish("Browser audio could not start."));
     worker.addEventListener("error", () => finish("The playback engine could not load."));
     worker.addEventListener("messageerror", () => finish("The playback engine returned unreadable audio."));

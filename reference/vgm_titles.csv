@@ -73,3 +73,9 @@ spcsets,Sküljagger [skjg],Skuljagger - Revolt of the Westicans,The SNESMusic se
 spcsets,Super Romance of the Three Kingdoms 2 (Super Sangokushi 2) [rtk2],Romance of the Three Kingdoms II,The long set name gives the SNES names of the second installment.
 spcsets,Super Sangokushi 2 (Super Romance of the Three Kingdoms 2) [rtk2],Romance of the Three Kingdoms II,The long set name gives the SNES names of the second installment.
 spcsets,Tazmania [taz],Taz-Mania,The SNESMusic RSN naming DAT uses Taz-Mania for the same long-name set. https://snesmusic.org/v2/players.php
+JoshW,spc/b/BS Buster's Digital Magazine (1998-04-12)(-)(Nintendo)[SNES],Digital Magazine Busters BS - 4-12 Gou,The Satellaview catalog title uses the broadcast date from the archive name.
+JoshW,spc/b/BS Nintama Rantarou 2 (1996-03)(-)(Culture Brain)[SNES],Nintama Rantarou 2,The Satellaview catalog title drops the BS broadcast prefix.
+JoshW,spc/b/BS Nintendo HP 5-17 (1997-05-17)(-)(Nintendo)[SNES],BS Nintendo HP - 5-17 Gou,The archive names the May 17 issue in both the title and the broadcast date.
+JoshW,spc/b/BS Nintendo HP 5-31 (1997-05-31)(-)(Nintendo)[SNES],BS Nintendo HP - 5-31 Gou,The archive names the May 31 issue in both the title and the broadcast date.
+JoshW,spc/b/BS Satelawalker 2 - Sate Bou wo Sukuidase (1995)(-)(Nintendo)[SNES],Satella Walker 2 - Sate Bou o Sukuidase!,The same Satellaview installment and subtitle use different romanization.
+JoshW,usf/s/Super Mario 64 (64DD)(Nintendo EAD)(Nintendo)[N64],Super Mario 64 - Disk Version,The full archive name explicitly identifies the Nintendo 64DD release.
