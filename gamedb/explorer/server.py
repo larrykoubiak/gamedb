@@ -50,6 +50,7 @@ PREVIEW_PATH = re.compile(r"/previews/(128|320)/(.+)")
 MEDIA_EXTENSIONS = frozenset({".png", ".jpg", ".jpeg"})
 STREAM_CHUNK_SIZE = 1024 * 1024
 VGM_DECODER_PREFIX = "/vgm/zxtune-f59403a/"
+SNDH_DECODER_PREFIX = "/vgm/ym2149-0.8.1/"
 VGM_STATIC_TYPES = {
     "/vgm/player.js": "text/javascript; charset=utf-8",
     "/vgm/decoder.mjs": "text/javascript; charset=utf-8",
@@ -57,6 +58,9 @@ VGM_STATIC_TYPES = {
     VGM_DECODER_PREFIX + "zxtune.mjs": "text/javascript; charset=utf-8",
     VGM_DECODER_PREFIX + "zxtune.wasm": "application/wasm",
     VGM_DECODER_PREFIX + "licenses.txt": "text/plain; charset=utf-8",
+    SNDH_DECODER_PREFIX + "ym2149_wasm.js": "text/javascript; charset=utf-8",
+    SNDH_DECODER_PREFIX + "ym2149_wasm_bg.wasm": "application/wasm",
+    SNDH_DECODER_PREFIX + "LICENSE.txt": "text/plain; charset=utf-8",
 }
 
 
@@ -325,7 +329,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             if content_type := VGM_STATIC_TYPES.get(parsed.path):
                 cache = (
                     "public, max-age=31536000, immutable"
-                    if parsed.path.startswith(VGM_DECODER_PREFIX) else "no-store"
+                    if parsed.path.startswith((VGM_DECODER_PREFIX, SNDH_DECODER_PREFIX)) else "no-store"
                 )
                 return self._asset_response(parsed.path[1:], content_type, cache)
             if parsed.path == "/system-icons.json":

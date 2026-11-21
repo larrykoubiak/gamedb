@@ -1,9 +1,7 @@
 import createZXTune from "./zxtune-f59403a/zxtune.mjs";
 
 let decoder;
-let player;
-let buffer;
-let frames;
+let render;
 
 async function readAudioFile(url) {
   const response = await fetch(url, {mode: "same-origin"});
@@ -42,8 +40,9 @@ async function loadLibraries(track, libraries) {
   }
 }
 
-function loadTrack(bytes, format) {
+function loadTrack(bytes, format, subsong) {
   return withDecoderBytes(bytes, (pointer, size) => {
+    if (subsong) return decoder.load(pointer, size, `#${subsong}`);
     try {
       return decoder.load(pointer, size, "");
     } catch (error) {
@@ -53,35 +52,63 @@ function loadTrack(bytes, format) {
       let firstSong = 1;
       if (format === "sid" && bytes.length >= 18) firstSong = (bytes[16] << 8) | bytes[17];
       if (format === "nsf") firstSong = bytes[7];
+      if (format === "gbs") firstSong = bytes[5];
       const track = tracks.find(item => item.subpath === `#${firstSong}`) || tracks[0];
       return decoder.load(pointer, size, track.subpath);
     }
   });
 }
 
-async function openTrack({url, format, libraries, sampleRate}) {
+async function openZXTune({url, format, libraries, sampleRate, subsong}) {
   const [module, bytes] = await Promise.all([createZXTune(), readAudioFile(url)]);
   decoder = module;
-  const track = loadTrack(bytes, format);
+  const track = loadTrack(bytes, format, subsong);
+  let player;
   try {
     await loadLibraries(track, libraries);
     player = track.createPlayer(sampleRate);
   } finally {
     track.delete();
   }
-  frames = Math.round(sampleRate / 4);
-  buffer = decoder._malloc(frames * 4);
+  const frames = Math.round(sampleRate / 4);
+  const buffer = decoder._malloc(frames * 4);
   if (!buffer) throw new Error("The playback engine ran out of memory.");
+  return () => {
+    const done = !player.render(buffer, frames);
+    const offset = buffer / 2;
+    const samples = decoder.HEAP16.slice(offset, offset + frames * 2);
+    return {samples, done, sampleRate};
+  };
+}
+
+async function openSndh({url, subsong}) {
+  const [module, bytes] = await Promise.all([
+    import("./ym2149-0.8.1/ym2149_wasm.js"), readAudioFile(url),
+  ]);
+  await module.default();
+  const player = new module.Ym2149Player(bytes);
+  if (subsong && !player.setSubsong(subsong)) throw new Error("This song is unavailable.");
+  player.play();
+  const sampleRate = 44100; // The WASM player outputs mono PCM at 44.1 kHz.
+  return () => {
+    const mono = player.generateSamples(sampleRate / 4);
+    const samples = new Int16Array(mono.length * 2);
+    for (let frame = 0; frame < mono.length; frame++) {
+      const value = Math.max(-32768, Math.min(32767, Math.round(mono[frame] * 32768)));
+      samples[2 * frame] = samples[2 * frame + 1] = value;
+    }
+    return {samples, done: !player.is_playing(), sampleRate};
+  };
 }
 
 self.addEventListener("message", async ({data}) => {
   try {
-    if (data.type === "open") await openTrack(data);
-    const done = !player.render(buffer, frames);
-    const offset = buffer / 2;
-    const samples = decoder.HEAP16.slice(offset, offset + frames * 2);
-    self.postMessage({samples, done}, [samples.buffer]);
+    if (data.type === "open") {
+      render = await (data.format === "sndh" ? openSndh(data) : openZXTune(data));
+    }
+    const chunk = render();
+    self.postMessage(chunk, [chunk.samples.buffer]);
   } catch (error) {
-    self.postMessage({error: error.message || "The playback engine could not decode this track."});
+    self.postMessage({error: error?.message || "The playback engine could not decode this track."});
   }
 });

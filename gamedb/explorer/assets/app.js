@@ -809,29 +809,45 @@ function pauseAudio(container, keepPlaying) {
 
 window.addEventListener("pagehide", () => pauseAudio(document));
 
-function playVgm(section, button, status, asset, libraries, label) {
+function playVgm(section, button, status, asset, libraries, label, subsong) {
+  const selected = subsong ? `${label} (song ${subsong})` : label;
   button.textContent = "Stop";
   button.setAttribute("aria-label", `Stop ${label}`);
   status.hidden = false;
-  status.textContent = `Loading ${label}…`;
+  status.textContent = `Loading ${selected}…`;
 
   function reset(error) {
     activeVgmPlayback = null;
     button.textContent = "Play";
     button.setAttribute("aria-label", `Play ${label}`);
-    status.textContent = error ? `Could not play ${label}. ${error}` : "";
+    status.textContent = error ? `Could not play ${selected}. ${error}` : "";
     status.hidden = !error;
   }
 
   try {
     const stop = startVgmPlayback(asset, libraries, {
-      started: () => { status.textContent = `Playing ${label}`; },
+      started: () => { status.textContent = `Playing ${selected}`; },
       ended: reset,
+      subsong,
     });
     activeVgmPlayback = {section, button, stop() { stop(); reset(); }};
   } catch {
     reset("The playback engine could not start.");
   }
+}
+
+function gameBoySongPicker(asset, label, play) {
+  const select = document.createElement("select");
+  select.className = "soundtrack-song";
+  select.setAttribute("aria-label", `Song for ${label}`);
+  select.add(new Option("Default song", ""));
+  for (let number = 1; number <= asset.subsongs; number++) {
+    select.add(new Option(`Song ${number}`, String(number)));
+  }
+  select.addEventListener("change", () => {
+    if (activeVgmPlayback?.button === play) activeVgmPlayback.stop();
+  });
+  return select;
 }
 
 function renderSoundtracks(container, soundtracks) {
@@ -870,6 +886,8 @@ function renderSoundtracks(container, soundtracks) {
         const play = cellText("button", "Play");
         play.type = "button";
         play.setAttribute("aria-label", `Play ${label}`);
+        const song = emulated && asset.format === "gbs" && asset.subsongs > 1
+          ? gameBoySongPicker(asset, label, play) : null;
         play.addEventListener("click", () => {
           if (activeVgmPlayback?.button === play) {
             activeVgmPlayback.stop();
@@ -879,7 +897,7 @@ function renderSoundtracks(container, soundtracks) {
           pauseAudio(document);
           if (!asset.playable) {
             player.hidden = true;
-            playVgm(section, play, nowPlaying, asset, libraries, label);
+            playVgm(section, play, nowPlaying, asset, libraries, label, Number(song?.value || 0));
             return;
           }
           nowPlaying.textContent = label;
@@ -890,6 +908,7 @@ function renderSoundtracks(container, soundtracks) {
             if (request === playRequest) nowPlaying.textContent = `Could not play ${label}`;
           });
         });
+        if (song) row.append(" ", song);
         row.append(" ", play);
       }
       groups[asset.kind][1].append(row);

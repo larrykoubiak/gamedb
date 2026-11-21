@@ -155,14 +155,14 @@ def resolve(connection, soundtracks):
             elif "psfGameTag" in matched:
                 basis = "psf_game_tag"
             else:
-                basis = "source_title"
+                basis = item.match_basis
         candidates = {
             ident: {key: value for key, value in hits[ident].items() if key != "target_key"}
             for ident in sorted(hits)
         }
         if chosen is not None:
             target = hits[chosen]["target_key"]
-            evidence = {**candidates[chosen], "basis": basis}
+            evidence = {**candidates[chosen], **item.source_evidence, "basis": basis}
             if sid:
                 evidence.update(sidAlbum=sid["album"], sidCopyright=sid["copyright"])
         if not item.system:

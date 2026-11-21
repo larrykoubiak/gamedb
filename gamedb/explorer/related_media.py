@@ -10,6 +10,7 @@ from urllib.parse import quote, urlsplit
 from zipfile import BadZipFile
 
 from gamedb.exo.media import location_path, open_location
+from gamedb.vgm.archives import open_vgm_location
 
 
 def serve(handler, key, *, revision=None, preview_size=None):
@@ -47,17 +48,18 @@ def serve_vgm(handler, key):
         "path": location["name"],
         "revision": location["mtime_ns"],
         "locations": [location],
-    }, force_download=not location["playable"])
+    }, force_download=not location["playable"], open_media=open_vgm_location)
 
 
-def _serve_file(handler, key, root, asset, revision=None, preview_size=None, *, force_download=False):
+def _serve_file(handler, key, root, asset, revision=None, preview_size=None, *,
+                force_download=False, open_media=open_location):
     from gamedb.explorer.server import _byte_range
 
     name = Path(asset["path"]).name
     with ExitStack() as stack:
         for location in asset["locations"] or ():
             try:
-                stream = stack.enter_context(open_location(root, location))
+                stream = stack.enter_context(open_media(root, location))
                 break
             except (OSError, ValueError, BadZipFile, NotImplementedError):
                 continue

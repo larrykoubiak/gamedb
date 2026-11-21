@@ -27,7 +27,14 @@ COPY derive.yml /app/derive.yml
 CMD ["python", "-m", "gamedb.derive", "--plan"]
 
 
-FROM postgres-runtime AS catalog-builder
+FROM postgres-runtime AS catalog-runtime
+
+RUN apt-get update \
+    && apt-get install --yes --no-install-recommends libarchive13t64 \
+    && rm -rf /var/lib/apt/lists/*
+
+
+FROM catalog-runtime AS catalog-builder
 
 COPY requirements-catalog.txt /app/requirements-catalog.txt
 RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
@@ -46,7 +53,7 @@ COPY pipeline.yml /app/pipeline.yml
 CMD ["python", "-m", "gamedb.catalog", "rebuild", "--plan"]
 
 
-FROM postgres-runtime AS explorer
+FROM catalog-runtime AS explorer
 
 COPY requirements-catalog.txt /app/requirements-catalog.txt
 RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
@@ -54,6 +61,7 @@ RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
 COPY gamedb/__init__.py gamedb/config.py gamedb/database.py /app/gamedb/
 COPY gamedb/catalog /app/gamedb/catalog
 COPY gamedb/exo /app/gamedb/exo
+COPY gamedb/vgm /app/gamedb/vgm
 COPY gamedb/launchbox /app/gamedb/launchbox
 COPY gamedb/derive /app/gamedb/derive
 COPY gamedb/arcade /app/gamedb/arcade

@@ -50,7 +50,7 @@ def main(argv=None):
 
         matched = (item for item, row in zip(library, resolved, strict=True)
                    if row["status"] == "matched")
-        enrich(args.root, matched, {"spc", "nsf"})
+        enrich(args.root, matched, {"spc", "nsf", "gbs"})
         if args.publish:
             with engine.begin() as connection:
                 publish(connection, library, resolved)

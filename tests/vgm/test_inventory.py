@@ -1,16 +1,91 @@
 import tempfile
 import unittest
 from pathlib import Path
-from struct import pack_into
+from struct import pack, pack_into
 from zipfile import ZipFile
 
+from gamedb.vgm.amiga import AMIGA_CD32
+from gamedb.vgm.archives import open_vgm_location
 from gamedb.vgm.importer import resolve
-from gamedb.vgm.inventory import C64, GB, GBC, SNES, scan
+from gamedb.vgm.inventory import C64, GB, GBC, SNES, ST, identify, scan
 from gamedb.vgm.matching import match_sid, psf_album, reviewed_titles, sid_claim
 from gamedb.vgm.tags import read_tags
 
 
+def stored_lha_member(name, contents):
+    # Level-zero LHA header, stored payload and the CRC-16 of that payload.
+    filename = name.encode("ascii")
+    crc = 0
+    for byte in contents:
+        crc ^= byte
+        for _ in range(8):
+            crc = (crc >> 1) ^ (0xA001 if crc & 1 else 0)
+    header = pack("<5sIIIBBB", b"-lh0-", len(contents), len(contents),
+                  0x210000, 0x20, 0, len(filename)) + filename + pack("<H", crc)
+    return bytes((len(header), sum(header) % 256)) + header + contents
+
+
 class InventoryTests(unittest.TestCase):
+    def test_unexotica_readable_tracks_keep_prefix_names_and_disc_platform(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / "UnExotica/Game/Composer/Test_CD32.lha"
+            path.parent.mkdir(parents=True)
+            path.write_bytes(
+                stored_lha_member("Music/MOD.Menu ", b"module")
+                + stored_lha_member("Music/smpl.Menu", b"samples")
+                + stored_lha_member("../mod.outside", b"outside")
+                + b"\0"
+            )
+            path.with_suffix(".txt").write_bytes(
+                "source type\nGame\nsource title\nActual Game (CD³²)\n"
+                "alternative titles\nAnother Name\nformat\nProTracker\n".encode("cp1252")
+            )
+            album, = scan(root)
+            self.assertEqual(album.system, AMIGA_CD32)
+            self.assertEqual(album.title, "Actual Game")
+            self.assertEqual(album.aliases, ("Another Name",))
+            self.assertFalse(album.review_only)
+            self.assertEqual(album.match_basis, "unexotica_game_notes")
+            self.assertEqual(album.source_evidence["unexoticaSourceTitle"], "Actual Game (CD³²)")
+            track, = [asset for asset in album.assets if asset["kind"] == "track"]
+            self.assertEqual((track["name"], track["format"]), ("MOD.Menu ", "mod"))
+            self.assertNotIn("mod.outside", [asset["name"] for asset in album.assets])
+            self.assertIn(("smpl.Menu", "support"), [(asset["name"], asset["kind"]) for asset in album.assets])
+            with open_vgm_location(root, track) as stream:
+                stream.seek(1)
+                self.assertEqual(stream.read(3), b"odu")
+            changed = {**track, "archive_size_bytes": track["archive_size_bytes"] + 1}
+            with self.assertRaisesRegex(ValueError, "Soundtrack archive changed"):
+                with open_vgm_location(root, changed):
+                    self.fail("A changed archive must not be opened")
+
+    def test_sndh_matching_uses_long_names_outside_demo_folders(self):
+        for relative, review in (
+            ("sndh_lf/Author/Example.sndh", False),
+            ("sndh_lf/Author/Games/Example.sndh", False),
+            ("sndh_lf/Author/Demos/Example.sndh", True),
+            ("sndh_sf/author/example.snd", True),
+        ):
+            _, _, platform, review_only = identify(Path(relative))
+            self.assertEqual(platform, ST)
+            self.assertEqual(review_only, review)
+
+    def test_game_boy_tags_read_the_subsong_count(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / "The GameBoy Music Collection/Example.gbs"
+            path.parent.mkdir()
+            header = bytearray(112)
+            header[:6] = b"GBS\x01\x03\x01"
+            header[16:23] = b"Example"
+            header[48:54] = b"Author"
+            path.write_bytes(header)
+            album, = scan(root)
+            self.assertEqual(read_tags(root, album.assets[0]), {
+                "album": "Example", "artist": "Author", "copyright": "", "subsongs": 3,
+            })
+
     def test_loose_spc_and_archive_copies_form_one_soundtrack(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

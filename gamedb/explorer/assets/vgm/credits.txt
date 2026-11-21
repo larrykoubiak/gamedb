@@ -27,3 +27,12 @@ Compile with Emscripten 4.0.21:
 Copy bin/emscripten/release/zxtune.mjs and zxtune.wasm into Explorer's
 vgm/zxtune-f59403a directory. Explorer loads the decoder as a separate
 module and works with an interface-compatible replacement.
+
+Atari ST SNDH playback
+
+The SNDH module uses ym2149-wasm 0.8.1 by the YM2149 Contributors.
+It is distributed under the MIT license.
+
+/vgm/ym2149-0.8.1/LICENSE.txt
+https://registry.npmjs.org/ym2149-wasm/-/ym2149-wasm-0.8.1.tgz
+https://github.com/slippyex/ym2149-rs/tree/309e9439d47aafca81b546c62eefc267c00fb53f

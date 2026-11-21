@@ -4,7 +4,7 @@ import re
 from struct import unpack_from
 from zipfile import BadZipFile
 
-from gamedb.exo.media import open_location
+from .archives import open_vgm_location
 
 PSF_VERSIONS = {"psf": 1, "minipsf": 1, "psf2": 2, "minipsf2": 2}
 PSF_FIELDS = {"game": "album", "title": "title", "artist": "artist",
@@ -80,10 +80,10 @@ def sid_tags(header):
 
 def read_tags(root, asset):
     format_name = asset["format"]
-    if format_name not in {"spc", "nsf", "sid"} and format_name not in PSF_VERSIONS:
+    if format_name not in {"spc", "nsf", "sid", "gbs"} and format_name not in PSF_VERSIONS:
         return {}
     try:
-        with open_location(root, asset) as stream:
+        with open_vgm_location(root, asset) as stream:
             if format_name in PSF_VERSIONS:
                 return psf_tags(stream, PSF_VERSIONS[format_name], asset["size_bytes"])
             header = stream.read(0x100)
@@ -94,6 +94,13 @@ def read_tags(root, asset):
     if format_name == "nsf" and len(header) >= 0x80 and header[:5] == b"NESM\x1a":
         return {"album": tag_text(header[14:46]), "artist": tag_text(header[46:78]),
                 "subsongs": header[6]}
+    if format_name == "gbs" and len(header) >= 0x70 and header[:4] == b"GBS\x01":
+        return {
+            "album": tag_text(header[16:48]),
+            "artist": tag_text(header[48:80]),
+            "copyright": tag_text(header[80:112]),
+            "subsongs": header[4],
+        }
     if (format_name == "spc" and len(header) == 0x100
             and header.startswith(b"SNES-SPC700 Sound File Data") and header[35] == 0x1a):
         # The binary layout starts the author one byte earlier than the text layout.

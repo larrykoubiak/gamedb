@@ -8,10 +8,12 @@ from gamedb.config import PROJECT_ROOT
 from gamedb.exo.works import credit as publisher_key
 from gamedb.launchbox.matching import title_key
 
-from .inventory import PLAYSTATION, PSF_COLLECTION, SNES
+from .amiga import AMIGA, AMIGA_CD32, AMIGA_CDTV
+from .inventory import PLAYSTATION, PSF_COLLECTION, SNES, ST
 
 REVIEWED_TITLES = PROJECT_ROOT / "reference/vgm_titles.csv"
 EXTENDED_SYSTEMS = frozenset({PLAYSTATION, SNES})
+SPELLING_SYSTEMS = EXTENDED_SYSTEMS | {AMIGA, AMIGA_CD32, AMIGA_CDTV, ST}
 ARTICLES = {"a", "an", "the"}
 ROMAN_NUMERALS = dict(zip(
     ("ii", "iii", "iv", "vi", "vii", "viii", "ix", "xi", "xii"),
@@ -102,14 +104,14 @@ class TitleIndex:
         self.metadata = defaultdict(dict)
         self.names = {(platform, title_key(name)) for platform, name in names}
         self.spelled_names = {(platform, spelling_key(name)) for platform, name in names
-                              if platform in EXTENDED_SYSTEMS}
+                              if platform in SPELLING_SYSTEMS}
         self.names = {key for key in self.names if key[1]}
         self.spelled_names = {key for key in self.spelled_names if key[1]}
 
     def add(self, platform, row, *, database_id=None):
         name = row["name"]
         exact_key = (platform, title_key(name))
-        spelled_key = (platform, spelling_key(name)) if platform in EXTENDED_SYSTEMS else None
+        spelled_key = (platform, spelling_key(name)) if platform in SPELLING_SYSTEMS else None
         if exact_key not in self.names and spelled_key not in self.spelled_names:
             return
         candidate = {
@@ -129,10 +131,10 @@ class TitleIndex:
     def lookup(self, platform, names, *, catalog_only=False):
         """Prefer full catalog titles before using equivalent spellings and attributed aliases."""
         tiers = [(self.exact, title_key, "catalog_title")]
-        if platform in EXTENDED_SYSTEMS:
+        if platform in SPELLING_SYSTEMS:
             tiers.append((self.spellings, spelling_key, "catalog_spelling"))
-            if not catalog_only:
-                tiers.append((self.metadata, spelling_key, "launchbox_title"))
+        if platform in EXTENDED_SYSTEMS and not catalog_only:
+            tiers.append((self.metadata, spelling_key, "launchbox_title"))
         for index, normalize, basis in tiers:
             hits = {}
             for name in names:

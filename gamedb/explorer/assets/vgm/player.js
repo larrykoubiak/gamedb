@@ -1,6 +1,6 @@
 const vgmFormats = new Set([
-  "ay", "gbs", "gym", "hes", "it", "kss", "minipsf", "nsf", "nsfe", "psf",
-  "sap", "sid", "spc", "vgm", "vgz",
+  "ay", "gbs", "gym", "hes", "it", "kss", "med", "minipsf", "mod", "nsf", "nsfe", "okt",
+  "psf", "sap", "sfx", "sid", "sndh", "spc", "vgm", "vgz", "xm",
 ]);
 const vgmAudioContext = window.AudioContext || window.webkitAudioContext;
 
@@ -9,7 +9,7 @@ function canPlayVgm(asset) {
     asset.kind === "track" && vgmFormats.has(asset.format));
 }
 
-function startVgmPlayback(asset, libraries, {started, ended}) {
+function startVgmPlayback(asset, libraries, {started, ended, subsong}) {
   const audio = new vgmAudioContext();
   let worker;
   let timer;
@@ -30,8 +30,8 @@ function startVgmPlayback(asset, libraries, {started, ended}) {
     ended(message);
   }
 
-  function queueAudio(samples, done) {
-    const buffer = audio.createBuffer(2, samples.length / 2, audio.sampleRate);
+  function queueAudio({samples, done, sampleRate}) {
+    const buffer = audio.createBuffer(2, samples.length / 2, sampleRate);
     for (let channel = 0; channel < 2; channel++) {
       const output = buffer.getChannelData(channel);
       for (let frame = 0; frame < output.length; frame++) {
@@ -54,7 +54,7 @@ function startVgmPlayback(asset, libraries, {started, ended}) {
   }
 
   try {
-    worker = new Worker("/vgm/decoder.mjs?v=1", {type: "module"});
+    worker = new Worker("/vgm/decoder.mjs?v=2", {type: "module"});
     const resumed = audio.resume().catch(() => finish("Browser audio could not start."));
     worker.addEventListener("error", () => finish("The playback engine could not load."));
     worker.addEventListener("messageerror", () => finish("The playback engine returned unreadable audio."));
@@ -66,13 +66,13 @@ function startVgmPlayback(asset, libraries, {started, ended}) {
         return;
       }
       try {
-        queueAudio(data.samples, data.done);
+        queueAudio(data);
       } catch {
         finish("The decoded audio could not be played.");
       }
     });
     worker.postMessage({
-      type: "open", url: asset.url, format: asset.format, libraries, sampleRate: audio.sampleRate,
+      type: "open", url: asset.url, format: asset.format, libraries, sampleRate: audio.sampleRate, subsong,
     });
   } catch (error) {
     stop();

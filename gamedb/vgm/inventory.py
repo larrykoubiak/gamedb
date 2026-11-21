@@ -8,7 +8,12 @@ from pathlib import Path, PurePosixPath
 from stat import S_ISREG
 from zipfile import BadZipFile, ZipFile
 
+from libarchive.exception import ArchiveError
+
 from gamedb.launchbox.matching import literal_title_key
+
+from .amiga import AMIGA, apply_game_notes, module_format
+from .archives import members as archive_members, safe_member
 
 NES = ("Nintendo", "Nintendo Entertainment System")
 GB = ("Nintendo", "Game Boy")
@@ -18,7 +23,6 @@ GENESIS = ("Sega", "Mega Drive")
 CPC = ("Amstrad", "CPC")
 C64 = ("Commodore", "C64")
 ST = ("Atari", "ST")
-AMIGA = ("Commodore", "Amiga")
 PLAYSTATION = ("Sony", "PlayStation")
 PS2 = ("Sony", "PlayStation 2")
 PSF_COLLECTION = "The PlayStation Music Collection PSF"
@@ -44,7 +48,7 @@ NATIVE_AUDIO = {
     ".nsf", ".nsfe", ".sid", ".gbs", ".ay", ".ym", ".snd", ".sndh", ".sc68", ".vgm", ".vgz",
     ".spc", ".sgc", ".psf", ".minipsf", ".psf2", ".minipsf2", ".snsf", ".minisnsf", ".vsv",
     ".mib", ".ss2", ".genh", ".xa", ".str", ".bgm", ".mod", ".xm", ".stx", ".sa", ".mid",
-    ".mmf", ".ape", ".it", ".s3m",
+    ".mmf", ".ape", ".it", ".s3m", ".med", ".okt",
 }
 SUFFIXES = ARCHIVES | BROWSER_AUDIO | NATIVE_AUDIO | DEPENDENCIES
 NOTES_COLLECTIONS = frozenset({
@@ -66,6 +70,8 @@ class Soundtrack:
     review_only: bool = False
     assets: list[dict] = field(default_factory=list)
     issues: list[str] = field(default_factory=list)
+    match_basis: str = "source_title"
+    source_evidence: dict = field(default_factory=dict)
 
 
 def key_for(*parts: str) -> str:
@@ -109,12 +115,12 @@ def identify(path: Path):
               and path.suffix.lower() == ".sid"):
             platform, review = C64, True
         elif collection == "UnExotica" and parts[1] == "Game":
-            # This archive also contains CD32/CDTV tracks. Keep it reviewable
-            # until there is explicit platform evidence per set.
+            # The notes provide the title and exact machine after grouping.
             platform, review = AMIGA, True
     elif collection in {"CPC-ym", "ST-ym", "sndh_lf", "sndh_sf"}:
         platform = CPC if collection == "CPC-ym" else ST
-        review = True
+        game_scope = len(parts) == 3 or (len(parts) > 3 and parts[2].casefold() == "games")
+        review = collection != "sndh_lf" or not game_scope or path.suffix.lower() != ".sndh"
     elif collection in {"MP3", "flac", "Midis", "sc68files_20031118"} and len(parts) > 2:
         label = group = parts[1]
     return collection, group, platform, review
@@ -144,7 +150,7 @@ def describe(path: Path, collection: str, group: str):
 
 def asset_for(path: str, stat, *, member_no=0, member_name=None, size=None, crc=None):
     name = PurePosixPath(member_name or path).name
-    suffix = Path(name).suffix.lower()
+    suffix = Path(name).suffix.strip().lower()
     kind = "archive" if suffix in ARCHIVES else "support" if suffix in DEPENDENCIES or suffix == ".txt" else "track"
     return {
         "key": key_for(path, str(member_no), member_name or ""),
@@ -167,12 +173,52 @@ def zip_tracks(root: Path, asset: dict):
     with ZipFile(root / path) as archive:
         for number, member in enumerate(archive.infolist(), 1):
             name = PurePosixPath(member.filename)
-            if (member.is_dir() or member.flag_bits & 1 or name.is_absolute()
-                    or any(part == ".." or part.startswith((".", "@")) for part in name.parts)):
+            if member.is_dir() or member.flag_bits & 1 or not safe_member(member.filename):
                 continue
             if name.suffix.lower() in (SUFFIXES - ARCHIVES) or name.name.lower() == "info.txt":
                 yield asset_for(path, stat, member_no=number, member_name=member.filename,
                                 size=member.file_size, crc=f"{member.CRC:08x}")
+
+
+def packed_tracks(root, asset, *, amiga):
+    path = asset["source_path"]
+    archive = root / path
+    stat = archive.stat()
+    for number, name, size in archive_members(archive, asset["format"]):
+        suffix = PurePosixPath(name).suffix.strip().lower()
+        if not amiga and suffix not in {".gbs", ".m3u", ".txt"}:
+            continue
+        track = asset_for(path, stat, member_no=number, member_name=name, size=size)
+        if amiga:
+            prefix, sample = module_format(name)
+            if prefix:
+                track.update(format=prefix, kind="support" if sample else "track", playable=False)
+            elif suffix not in BROWSER_AUDIO | NATIVE_AUDIO:
+                track.update(kind="support", playable=False)
+        track.update(archive_format=asset["format"], archive_size_bytes=stat.st_size)
+        yield track
+
+
+def tracks_for_set(root, album):
+    assets = album.assets
+    if any(asset["kind"] == "track" for asset in assets):
+        return
+    for asset in assets[:]:
+        try:
+            if asset["format"] == "zip":
+                tracks = list(zip_tracks(root, asset))
+            elif asset["format"] == "lha" and album.collection == "UnExotica" and album.system == AMIGA:
+                tracks = list(packed_tracks(root, asset, amiga=True))
+            elif asset["format"] == "7z" and album.collection == "GBS":
+                tracks = list(packed_tracks(root, asset, amiga=False))
+            else:
+                continue
+        except (BadZipFile, ArchiveError):
+            album.issues.append(f"Invalid {asset['format'].upper()}: {asset['source_path']}")
+            continue
+        assets.extend(tracks)
+        if any(track["kind"] == "track" for track in tracks):
+            break
 
 
 def scan(root: Path) -> list[Soundtrack]:
@@ -219,21 +265,13 @@ def scan(root: Path) -> list[Soundtrack]:
             spc_set.assets.append(archive)
             del sets[key]
     for soundtrack in sets.values():
+        tracks_for_set(root, soundtrack)
         assets = soundtrack.assets
-        if not any(asset["kind"] == "track" for asset in assets):
-            # Prefer loose tracks when the same set also has an archive copy.
-            # Otherwise the first readable ZIP supplies the track list.
-            for asset in assets[:]:
-                if asset["format"] != "zip":
-                    continue
-                try:
-                    tracks = list(zip_tracks(root, asset))
-                except BadZipFile:
-                    soundtrack.issues.append(f"Invalid ZIP: {asset['source_path']}")
-                    continue
-                assets.extend(tracks)
-                if any(track["kind"] == "track" for track in tracks):
-                    break
+        if (soundtrack.collection == "UnExotica" and soundtrack.system == AMIGA
+                and any(asset.get("archive_format") == "lha" for asset in assets)):
+            apply_game_notes(root, soundtrack)
+        if soundtrack.collection == "sndh_lf" and not soundtrack.review_only:
+            soundtrack.match_basis = "sndh_long_filename"
         if soundtrack.collection == "flac" and not any(asset["kind"] == "track" for asset in assets):
             soundtrack.issues.append("Album has cue sheets but no audio files")
         assets.sort(key=lambda asset: (asset["kind"], asset["source_path"].casefold(),
