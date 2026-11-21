@@ -1,0 +1,29 @@
+Explorer soundtrack playback
+
+The emulation engine is ZXTune Web by hhungry2, based on ZXTune by
+Vitamin/CAIG. It includes the third-party decoders listed in the
+component notices and corresponding source.
+
+Component notices
+/vgm/zxtune-f59403a/licenses.txt
+
+Corresponding source
+https://github.com/hhungry2/zxtune-web/tree/f59403aa92cd798cadc3a8de4b5ea3f174659614
+https://github.com/hhungry2/zxtune-web/archive/f59403aa92cd798cadc3a8de4b5ea3f174659614.tar.gz
+
+Build used for Explorer
+
+GameDB disabled the Saturn and Dreamcast decoder on 2026-11-21. After
+checking out f59403aa92cd798cadc3a8de4b5ea3f174659614, apply these two
+source changes in the ZXTune directory:
+
+  sed -i 's/ gme he ht hvl / gme he hvl /' apps/zxtune-web/Makefile
+  sed -i '/RegisterSDSFSupport/d' src/core/plugins/players/plugins_list.cpp
+
+Compile with Emscripten 4.0.21:
+
+  make platform=emscripten -C apps/zxtune-web
+
+Copy bin/emscripten/release/zxtune.mjs and zxtune.wasm into Explorer's
+vgm/zxtune-f59403a directory. Explorer loads the decoder as a separate
+module and works with an interface-compatible replacement.

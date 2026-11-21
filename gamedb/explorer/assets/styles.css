@@ -277,21 +277,27 @@ h2 { font-size: 1.55rem; letter-spacing: -.025em; }
 .layout-switch { display: inline-flex; margin-top: .45rem; padding: .2rem; border: 1px solid var(--line); border-radius: .35rem; background: #ebdfc5; }
 .layout-switch button { padding: .4rem .75rem; border: 0; border-radius: .3rem; color: var(--muted); background: transparent; cursor: pointer; font-size: .78rem; }
 .layout-switch button[aria-pressed="true"] { color: var(--book-paper); background: var(--accent); }
-.card-details:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 10.6rem), 1fr)); align-items: stretch; gap: .95rem; margin: 1.15rem 0 0; padding: 0; list-style: none; }
-.game-card { position: relative; display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: .28rem; background: var(--panel); }
+.game-card { display: flex; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: .28rem; background: var(--panel); }
 .game-card:hover, .game-card:focus-within { border-color: #71856a; box-shadow: 0 3px 8px #47381e16; }
-.card-art { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 5 / 4; background: var(--art-mat); }
-.card-art .artwork-zoom { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; margin: 0; padding: .6rem; }
-.card-art .artwork-zoom:focus-visible { outline-offset: -3px; }
+.card-link { display: flex; flex: 1; flex-direction: column; min-width: 0; }
+.card-link:focus-visible { outline-offset: -2px; }
+.card-art {
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  padding: .6rem;
+  background: var(--art-mat);
+}
 .card-art .game-art { width: auto; height: auto; max-width: 100%; max-height: 100%; border-radius: 0; background: transparent; }
 .card-art > .platform-icon { width: 43%; height: auto; aspect-ratio: 1; opacity: .68; }
 .card-art .platform-icon-fallback { font-size: 2.4rem; }
-.card-details { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: .26rem; width: 100%; padding: .65rem .72rem .78rem; border: 0; border-top: 1px solid var(--line-soft); color: var(--text); background: transparent; text-align: left; cursor: pointer; }
+.card-details { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: .26rem; padding: .65rem .72rem .78rem; border-top: 1px solid var(--line-soft); }
 .software-link { color: inherit; text-decoration: none; }
 .title-cell .software-link:hover { color: var(--accent-strong); text-decoration: underline; }
-.card-details::after { position: absolute; inset: 0; content: ""; }
-.card-details:hover .card-title { color: var(--accent-strong); }
+.card-link:hover .card-title { color: var(--accent-strong); }
 .card-platform { color: var(--accent); font: 600 .59rem/1.35 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; }
 .card-title { overflow-wrap: anywhere; font: 600 1.025rem/1.2 var(--book-serif); letter-spacing: -.013em; }
 
@@ -384,6 +390,8 @@ h2 { font-size: 1.55rem; letter-spacing: -.025em; }
 .detail-row > td { max-width: none; padding: 0 !important; background: #f0e7d2; }
 .detail-row:hover > td { background: #f0e7d2 !important; }
 .release-details { padding: .85rem 1rem 1rem; color: var(--muted); }
+.soundtrack-credits { margin-top: .75rem; color: var(--muted); font-size: .72rem; }
+.soundtrack-credits a { color: inherit; }
 .art-gallery { display: flex; align-items: flex-end; gap: .75rem; margin: 0 0 1rem; overflow-x: auto; }
 .art-gallery figure { flex: 0 0 auto; width: min(12rem, 24vw); margin: 0; }
 .art-gallery .artwork-zoom { display: flex; width: 100%; height: 9rem; align-items: center; justify-content: center; border: 1px solid var(--line-soft); border-radius: .35rem; background: #eee3cd; }

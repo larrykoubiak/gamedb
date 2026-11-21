@@ -49,6 +49,15 @@ MEDIA_PREFIX = "/media/"
 PREVIEW_PATH = re.compile(r"/previews/(128|320)/(.+)")
 MEDIA_EXTENSIONS = frozenset({".png", ".jpg", ".jpeg"})
 STREAM_CHUNK_SIZE = 1024 * 1024
+VGM_DECODER_PREFIX = "/vgm/zxtune-f59403a/"
+VGM_STATIC_TYPES = {
+    "/vgm/player.js": "text/javascript; charset=utf-8",
+    "/vgm/decoder.mjs": "text/javascript; charset=utf-8",
+    "/vgm/credits.txt": "text/plain; charset=utf-8",
+    VGM_DECODER_PREFIX + "zxtune.mjs": "text/javascript; charset=utf-8",
+    VGM_DECODER_PREFIX + "zxtune.wasm": "application/wasm",
+    VGM_DECODER_PREFIX + "licenses.txt": "text/plain; charset=utf-8",
+}
 
 
 def _metadata_filters(query):
@@ -313,6 +322,12 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return self._asset_response("index.html", "text/html; charset=utf-8")
             if parsed.path in ("/app.js", "/almanac.js"):
                 return self._asset_response(parsed.path[1:], "text/javascript; charset=utf-8")
+            if content_type := VGM_STATIC_TYPES.get(parsed.path):
+                cache = (
+                    "public, max-age=31536000, immutable"
+                    if parsed.path.startswith(VGM_DECODER_PREFIX) else "no-store"
+                )
+                return self._asset_response(parsed.path[1:], content_type, cache)
             if parsed.path == "/system-icons.json":
                 return self._asset_response("system-icons.json", "application/json; charset=utf-8")
             if parsed.path == "/system-icon-credits.txt":

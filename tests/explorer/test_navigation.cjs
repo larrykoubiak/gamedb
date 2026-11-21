@@ -5,9 +5,24 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 
+function vgmTone() {
+  const header = Buffer.alloc(0x100);
+  // One SN76489 tone followed by three one-second waits.
+  const commands = Buffer.from([0x50, 0x8e, 0x50, 0x1f, 0x50, 0x90,
+    0x61, 0x44, 0xac, 0x61, 0x44, 0xac, 0x61, 0x44, 0xac, 0x66]);
+  header.write('Vgm ');
+  header.writeUInt32LE(header.length + commands.length - 4, 0x04);
+  header.writeUInt32LE(0x150, 0x08);
+  header.writeUInt32LE(3579545, 0x0c);
+  header.writeUInt32LE(44100 * 3, 0x18);
+  header.writeUInt32LE(header.length - 0x34, 0x34);
+  return Buffer.concat([header, commands]);
+}
+
 (async () => {
   const requests = [];
   const images = [];
+  const vgmRequests = [];
   const systems = [
     {id: 1, manufacturer: 'Example', name: 'Tiny Platform', category: 'computer', gameCount: 1},
     {id: 42, manufacturer: 'Nintendo', name: 'NES', category: 'console', gameCount: 201},
@@ -64,8 +79,9 @@ const path = require('node:path');
       }
       else if (url.pathname.endsWith('/soundtracks')) payload = [{
         title: 'Mario', collection: 'Test soundtrack collection', assets: [
-          {kind: 'track', name: '01.spc', title: 'Opening Theme', playable: false, url: '/related-media/vgm/spc'},
+          {kind: 'track', format: 'spc', name: '01.spc', title: 'Opening Theme', playable: false, url: '/related-media/vgm/spc'},
           {kind: 'track', name: '02.mp3', playable: true, url: '/related-media/vgm/mp3'},
+          {kind: 'track', format: 'vgm', name: 'tone.vgm', title: 'Test tone', playable: false, url: '/related-media/vgm/tone'},
         ],
       }];
       else if (url.pathname.endsWith('/correction-targets')) payload = [];
@@ -86,6 +102,16 @@ const path = require('node:path');
       return res.end(fs.readFileSync(path.resolve(__dirname,
         '../../gamedb/explorer/assets/system-icons/pixel-nintendo-nintendo-entertainment-system-a9c58d62.png')));
     }
+    if (url.pathname === '/related-media/vgm/spc') {
+      vgmRequests.push(url.pathname);
+      res.statusCode = 404;
+      return res.end();
+    }
+    if (url.pathname === '/related-media/vgm/tone') {
+      vgmRequests.push(url.pathname);
+      res.setHeader('Content-Type', 'application/octet-stream');
+      return res.end(vgmTone());
+    }
     if (url.pathname === '/favicon.ico') { res.statusCode = 404; return res.end(); }
     if (url.pathname === '/' && url.searchParams.get('exo') === sourceKey) {
       res.writeHead(302, {Location: sourcePath});
@@ -93,7 +119,11 @@ const path = require('node:path');
     }
     const name = ['/', softwarePath, sourcePath].includes(url.pathname) ? 'index.html' : url.pathname.slice(1);
     const file = path.resolve(__dirname, '../../gamedb/explorer/assets', name);
-    res.setHeader('Content-Type', name.endsWith('.js') ? 'text/javascript' : name.endsWith('.css') ? 'text/css' : name.endsWith('.png') ? 'image/png' : 'text/html');
+    const mimeTypes = {
+      '.js': 'text/javascript', '.mjs': 'text/javascript', '.wasm': 'application/wasm',
+      '.css': 'text/css', '.png': 'image/png',
+    };
+    res.setHeader('Content-Type', mimeTypes[path.extname(name)] || 'text/html');
     res.end(fs.readFileSync(file));
   });
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
@@ -117,8 +147,9 @@ const path = require('node:path');
     assert.equal(await cardDetails.getAttribute('href'), softwarePath);
     await page.locator('#game-filter').fill('Mario');
     await page.waitForResponse(res => res.url().includes('q=Mario'));
-    await cardDetails.click();
+    await cardDetails.locator('.card-art img').click();
     await page.waitForURL('**' + softwarePath);
+    assert.equal(await page.locator('#artwork-dialog').isVisible(), false);
     await page.getByRole('heading', {name: 'Mario', exact: true}).waitFor();
     await page.getByText('Mario explores the Mushroom Kingdom.', {exact: true}).filter({visible: true}).waitFor();
     assert.equal(await page.locator('#catalog-view').isVisible(), false);
@@ -143,7 +174,16 @@ const path = require('node:path');
     assert.equal(await soundtrack.getAttribute('href'), '/related-media/vgm/spc');
     assert.equal(await soundtrack.getAttribute('download'), '');
     await page.getByRole('button', {name: 'Play 02.mp3'}).waitFor();
-    assert.equal(await page.getByRole('button', {name: 'Play Opening Theme'}).count(), 0);
+    assert.equal(vgmRequests.length, 0);
+    await page.getByRole('button', {name: 'Play Opening Theme', exact: true}).click();
+    await page.getByText('Could not play Opening Theme. A soundtrack file could not be fetched.').waitFor();
+    assert.deepEqual(vgmRequests, ['/related-media/vgm/spc']);
+    await page.getByRole('button', {name: 'Play Opening Theme', exact: true}).waitFor();
+    await page.getByRole('button', {name: 'Play Test tone', exact: true}).click();
+    await page.getByText('Playing Test tone', {exact: true}).waitFor();
+    await page.getByRole('button', {name: 'Stop Test tone', exact: true}).click();
+    await page.getByRole('button', {name: 'Play Test tone', exact: true}).waitFor();
+    assert.deepEqual(vgmRequests, ['/related-media/vgm/spc', '/related-media/vgm/tone']);
     await page.setViewportSize({width: 390, height: 844});
     await page.waitForFunction(() => document.querySelector('.book-tabs').getAttribute('aria-orientation') === 'horizontal');
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
@@ -375,9 +415,7 @@ const path = require('node:path');
       const img = document.querySelector('.game-card:last-child .game-art');
       return img?.naturalWidth > 0 && img.currentSrc.endsWith('/previews/320/test/gameplay.png');
     });
-    await distant.locator('.artwork-zoom').click();
-    assert.equal(await page.locator('#artwork-caption').innerText(), 'Mario — Gameplay');
-    await page.keyboard.press('Escape');
+    assert.equal(await distant.getByRole('button').count(), 0);
     await page.evaluate(() => openCorrectionDialog({sourceTitle: 'Mario', releaseContentSignature: 'test'}, 123, 42));
     await page.locator('#correction-target-filter').fill('Luigi');
     await page.waitForResponse(response => response.url().includes('/api/systems/42/correction-targets'));

@@ -338,7 +338,7 @@ const coverObserver = window.IntersectionObserver && new IntersectionObserver(en
   }
 }, {rootMargin: "240px 0px"});
 
-function renderCover(element, game, size, eager = false) {
+function renderCover(element, game, size, {eager = false, enlarge = true} = {}) {
   const candidates = artworkEntries(game.media, game.title);
   const showFallback = () => element.replaceChildren(platformIcon(game.manufacturer, game.systemName));
   if (!candidates.length) return showFallback();
@@ -349,14 +349,13 @@ function renderCover(element, game, size, eager = false) {
   image.decoding = "async";
   let index = 0;
   const preview = () => `/previews/${size}/${candidates[index].path}`;
-  const zoom = artworkButton(image, candidates, () => index, `${game.title} — Artwork`);
   image.addEventListener("error", () => {
     if (!image.isConnected) return;
     index += 1;
     if (index < candidates.length) image.src = preview();
     else showFallback();
   });
-  element.append(zoom);
+  element.append(enlarge ? artworkButton(image, candidates, () => index, `${game.title} — Artwork`) : image);
   if (coverObserver && !eager) {
     image.dataset.preview = preview();
     coverObserver.observe(image);
@@ -799,7 +798,44 @@ function renderSourceRecords(container, detail, preferredEntry) {
   }
 }
 
+let activeVgmPlayback;
+
+function pauseAudio(container, keepPlaying) {
+  if (activeVgmPlayback && container.contains(activeVgmPlayback.section)) activeVgmPlayback.stop();
+  for (const audio of container.querySelectorAll("audio")) {
+    if (audio !== keepPlaying) audio.pause();
+  }
+}
+
+window.addEventListener("pagehide", () => pauseAudio(document));
+
+function playVgm(section, button, status, asset, libraries, label) {
+  button.textContent = "Stop";
+  button.setAttribute("aria-label", `Stop ${label}`);
+  status.hidden = false;
+  status.textContent = `Loading ${label}…`;
+
+  function reset(error) {
+    activeVgmPlayback = null;
+    button.textContent = "Play";
+    button.setAttribute("aria-label", `Play ${label}`);
+    status.textContent = error ? `Could not play ${label}. ${error}` : "";
+    status.hidden = !error;
+  }
+
+  try {
+    const stop = startVgmPlayback(asset, libraries, {
+      started: () => { status.textContent = `Playing ${label}`; },
+      ended: reset,
+    });
+    activeVgmPlayback = {section, button, stop() { stop(); reset(); }};
+  } catch {
+    reset("The playback engine could not start.");
+  }
+}
+
 function renderSoundtracks(container, soundtracks) {
+  let hasVgmPlayback = false;
   for (const soundtrack of soundtracks) {
     const section = document.createElement("details");
     section.className = "soundtrack-album";
@@ -808,11 +844,17 @@ function renderSoundtracks(container, soundtracks) {
     player.controls = true;
     player.hidden = true;
     player.preload = "none";
+    player.addEventListener("play", () => {
+      if (!player.paused) pauseAudio(document, player);
+    });
     const nowPlaying = document.createElement("p");
     nowPlaying.hidden = true;
     nowPlaying.setAttribute("aria-live", "polite");
     const groups = { track: ["Tracks"], archive: ["Archives"], support: ["Supporting files"] };
     for (const group of Object.values(groups)) group.push(document.createElement("ul"));
+    const libraries = soundtrack.assets.filter(file => file.kind !== "archive")
+      .map(({name, url}) => ({name, url}));
+    let playRequest = 0;
     for (const asset of soundtrack.assets) {
       const row = document.createElement("li");
       const label = asset.title || asset.name;
@@ -822,17 +864,30 @@ function renderSoundtracks(container, soundtracks) {
       row.append(link);
       if (asset.artist) row.append(` · ${asset.artist}`);
       if (asset.subsongs > 1) row.append(` · ${asset.subsongs} subsongs`);
-      if (asset.playable) {
+      const emulated = canPlayVgm(asset);
+      if (asset.playable || emulated) {
+        hasVgmPlayback ||= emulated;
         const play = cellText("button", "Play");
         play.type = "button";
         play.setAttribute("aria-label", `Play ${label}`);
         play.addEventListener("click", () => {
+          if (activeVgmPlayback?.button === play) {
+            activeVgmPlayback.stop();
+            return;
+          }
+          const request = ++playRequest;
+          pauseAudio(document);
+          if (!asset.playable) {
+            player.hidden = true;
+            playVgm(section, play, nowPlaying, asset, libraries, label);
+            return;
+          }
           nowPlaying.textContent = label;
           nowPlaying.hidden = false;
           player.hidden = false;
           player.src = asset.url;
           player.play().catch(() => {
-            nowPlaying.textContent = `Could not play ${label}`;
+            if (request === playRequest) nowPlaying.textContent = `Could not play ${label}`;
           });
         });
         row.append(" ", play);
@@ -841,7 +896,7 @@ function renderSoundtracks(container, soundtracks) {
     }
     section.append(nowPlaying, player);
     section.addEventListener("toggle", () => {
-      if (!section.open) player.pause();
+      if (!section.open) pauseAudio(section);
     });
     for (const [label, group] of Object.values(groups)) {
       if (!group.childElementCount) continue;
@@ -851,6 +906,16 @@ function renderSoundtracks(container, soundtracks) {
       section.append(files);
     }
     container.append(section);
+  }
+  if (hasVgmPlayback) {
+    const credits = document.createElement("p");
+    credits.className = "soundtrack-credits";
+    const link = cellText("a", "Playback engine credits");
+    link.href = "/vgm/credits.txt";
+    link.target = "_blank";
+    link.rel = "noopener";
+    credits.append(link);
+    container.append(credits);
   }
 }
 
@@ -867,7 +932,7 @@ function toggleReleaseDetails(game, row, detailRow, button) {
   button.setAttribute("aria-expanded", String(opening));
   row.classList.toggle("expanded", opening);
   if (opening) loadReleaseDetails(game, detailRow.querySelector(".release-details"));
-  else detailRow.querySelectorAll("audio").forEach(player => player.pause());
+  else pauseAudio(detailRow);
 }
 
 async function loadReleaseDetails(game, container) {
@@ -1178,11 +1243,13 @@ function softwareLink(game) {
 function gameCard(game) {
   const card = document.createElement("li");
   card.className = "game-card";
+  const link = softwareLink(game);
+  link.classList.add("card-link");
   const art = document.createElement("div");
   art.className = "card-art";
-  renderCover(art, game, 320);
-  const details = softwareLink(game);
-  details.classList.add("card-details");
+  renderCover(art, game, 320, {enlarge: false});
+  const details = document.createElement("div");
+  details.className = "card-details";
   const platform = document.createElement("span");
   platform.className = "card-platform";
   platform.textContent = state.selectedSystem ? (game.regions || []).join(" · ") : game.systemName;
@@ -1192,7 +1259,8 @@ function gameCard(game) {
   title.textContent = game.title;
   if (platform.textContent) details.append(platform);
   details.append(title);
-  card.append(art, details);
+  link.append(art, details);
+  card.append(link);
   return card;
 }
 

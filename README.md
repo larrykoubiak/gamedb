@@ -197,8 +197,10 @@ docker compose run --rm --no-deps --entrypoint python catalog-builder \
 
 Set `GAMEDB_VGM_ROOT=/mnt/vgm` for the Compose Explorer, or set it to the NAS
 path when running Explorer directly. Matched games then show their music on the
-**Soundtracks** tab in the Almanac. Browser audio plays inline. Native
-music files and archives can be downloaded for use in a compatible player.
+**Soundtracks** tab in the Almanac. The player handles browser audio and
+emulates SPC, SID, PSF, MiniPSF, NSF, VGM and related formats in the browser.
+MiniPSF tracks can load shared libraries from the same soundtrack. Download
+links provide the original tracks and archives.
 Downloads follow the Explorer's existing public related-media access model.
 
 ## Inspecting names

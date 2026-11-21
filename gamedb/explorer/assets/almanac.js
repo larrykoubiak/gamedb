@@ -149,10 +149,6 @@ async function sectionContent(page, section) {
   return content;
 }
 
-function pauseAudio(container) {
-  container.querySelectorAll("audio").forEach(player => player.pause());
-}
-
 async function selectBookTab(tab) {
   const page = entry;
   if (!page?.game || page.tab === tab) return;
@@ -242,7 +238,7 @@ async function openSoftwarePage(path, focus) {
       cellText("span", [game.manufacturer, game.systemName].filter(Boolean).join(" · ")));
     bookCover.replaceChildren();
     bookGlance.replaceChildren();
-    renderCover(bookCover, game, 320, true);
+    renderCover(bookCover, game, 320, {eager: true});
     bookStatus.hidden = true;
     book.hidden = false;
     selectBookTab(activeBookTab());
