@@ -23,6 +23,7 @@ class ProjectEnvironment:
         "GAMEDB_MEDIA_USERNAME",
         "GAMEDB_INTEGRATED_ROOT",
         "GAMEDB_ROM_ROOT",
+        "GAMEDB_VGM_ROOT",
         "PGDATABASE",
         "PGHOST",
         "PGPASSWORD",

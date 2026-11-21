@@ -13,6 +13,7 @@ const state = {
   correction: null,
   targetRequestId: 0,
   correctionsEnabled: false,
+  vgmEnabled: false,
   metadataFilters: {},
   hideRomHacks: true,
 };
@@ -24,7 +25,6 @@ const systemBrowserToggle = document.querySelector("#system-browser-toggle");
 const tableWrap = document.querySelector("#game-table-wrap");
 const tableBody = document.querySelector("#game-table-body");
 const gameGrid = document.querySelector("#game-grid");
-const gameDialog = document.querySelector("#game-dialog");
 const empty = document.querySelector("#game-empty");
 const pagination = document.querySelector("#pagination");
 const gameFilter = document.querySelector("#game-filter");
@@ -335,14 +335,14 @@ const coverObserver = window.IntersectionObserver && new IntersectionObserver(en
   }
 }, {rootMargin: "240px 0px"});
 
-function renderCover(element, game, size) {
+function renderCover(element, game, size, eager = false) {
   const candidates = artworkEntries(game.media, game.title);
   const showFallback = () => element.replaceChildren(platformIcon(game.manufacturer, game.systemName));
   if (!candidates.length) return showFallback();
   const image = document.createElement("img");
   image.className = "game-art";
   image.alt = "";
-  image.loading = "lazy";
+  image.loading = eager ? "eager" : "lazy";
   image.decoding = "async";
   let index = 0;
   const preview = () => `/previews/${size}/${candidates[index].path}`;
@@ -354,7 +354,7 @@ function renderCover(element, game, size) {
     else showFallback();
   });
   element.append(zoom);
-  if (coverObserver) {
+  if (coverObserver && !eager) {
     image.dataset.preview = preview();
     coverObserver.observe(image);
   } else {
@@ -445,24 +445,33 @@ function appendBreakdown(container, breakdown) {
   container.append(list);
 }
 
-function renderArtworkGallery(container, media, title) {
+function renderArtworkGallery(container, media, title, attachments = []) {
   const available = artworkEntries(media, title);
+  const existing = new Set(available.map(item => item.path.split("/").at(-1)));
+  for (const asset of attachments) {
+    if (existing.has(asset.key)) continue;
+    const label = asset.category || asset.label;
+    available.push({label, path: asset.artworkPath, source: asset.url,
+      caption: `${title} — ${label}`, credit: sourceCredit(asset), region: asset.region});
+  }
   if (!available.length) return;
 
   const gallery = document.createElement("section");
   gallery.className = "art-gallery";
   gallery.setAttribute("aria-label", `Artwork for ${title}`);
-  for (const [index, {kind, label, path, caption: imageCaption}] of available.entries()) {
-    const item = media[kind];
+  for (const [index, {kind, label, path, source, credit, region, caption: imageCaption}] of available.entries()) {
+    const item = media?.[kind] || {};
     const figure = document.createElement("figure");
     const image = document.createElement("img");
-    image.src = `/previews/320/${path}`;
+    image.src = path ? `/previews/320/${path}` : source;
     image.alt = imageCaption;
     image.loading = "lazy";
     const zoom = artworkButton(image, available, () => index);
     const caption = document.createElement("figcaption");
     const credits = [label];
-    if (item.provider === "exo") credits.push("eXo");
+    if (credit || item.provider === "exo") credits.push(credit || "eXo");
+    if (item.provider === "launchbox") credits.push("LaunchBox");
+    if (region) credits.push(region);
     if (item.matchBasis) credits.push(item.matchBasis.replaceAll("_", " "));
     if (item.regionMatch) credits.push(`region ${item.regionMatch}`);
     caption.textContent = credits.join(" · ");
@@ -550,6 +559,10 @@ function renderReleaseDetails(container, releases, facts, softwareId, media, tit
   container.replaceChildren();
   renderArtworkGallery(container, media, title);
   renderSoftwareFacts(container, facts);
+  renderRankedReleases(container, releases, softwareId, systemId, installChoice);
+}
+
+function renderRankedReleases(container, releases, softwareId, systemId, installChoice) {
   const heading = document.createElement("div");
   heading.className = "release-detail-heading";
   heading.textContent = `${releases.length.toLocaleString()} ranked release${releases.length === 1 ? "" : "s"}`;
@@ -686,22 +699,30 @@ function renderReleaseDetails(container, releases, facts, softwareId, media, tit
 }
 
 function renderSourceDetails(container, detail, preferredEntry, showMetadata, game = {}) {
-  const entries = [...detail.entries].sort((a, b) => Number(b.key === preferredEntry) - Number(a.key === preferredEntry));
-  if (showMetadata) {
-    const facts = Object.entries(entries[0].facts).map(([key, values]) => ({
-      key, preferredValues: values,
-      values: values.map(value => ({value, sourceProvider: "exo", sourceDatabases: [entries[0].sourceList]})),
-    }));
-    renderSoftwareFacts(container, facts);
-  }
+  if (showMetadata) renderSoftwareFacts(container, sourceFacts(detail, preferredEntry));
+  renderSourceEditions(container, detail, game);
+  renderSourceAssets(container, detail.assets);
+  renderSourceRecords(container, detail, preferredEntry);
+}
+
+function sourceFacts(detail, preferredEntry) {
+  const entry = detail?.entries.find(item => item.key === preferredEntry) || detail?.entries[0];
+  return Object.entries(entry?.facts || {}).map(([key, values]) => ({
+    key, preferredValues: values,
+    values: values.map(value => ({value, sourceProvider: "exo", sourceDatabases: [entry.sourceList]})),
+  }));
+}
+
+function renderSourceEditions(container, detail, game) {
   const heading = document.createElement("h3");
   heading.textContent = "eXo editions";
   container.append(heading);
   const list = document.createElement("ul");
+  list.className = "source-editions";
   for (const edition of detail.editions) {
     const item = document.createElement("li");
-    const source = entries.find(entry => entry.key === edition.entryKey);
-    const labels = [edition.label, edition.environment, source.sourceList, edition.runner, edition.engineGame];
+    const source = detail.entries.find(entry => entry.key === edition.entryKey);
+    const labels = [edition.label, edition.environment, source?.sourceList, edition.runner, edition.engineGame];
     if (edition.score != null) labels.push(scoreText(edition.score));
     if (game.preferredEditionKey === edition.key) labels.push("Preferred catalog edition");
     item.textContent = labels.filter(Boolean).join(" · ");
@@ -717,16 +738,24 @@ function renderSourceDetails(container, detail, preferredEntry, showMetadata, ga
   if (game.preferredEditionKey && game.installSourceCollection) {
     container.append(cellText("p", `Available to install: ${game.installReleaseTitle} · ${game.installSourceCollection} · ${scoreText(game.installScore)}`));
   }
+}
+
+function sourceCredit(asset) {
+  return [...new Set((asset.sources || []).map(source => source.sourceList))].join(", ");
+}
+
+function renderSourceAssets(container, attachments) {
   const groups = new Map();
   const labels = {manual: "Manuals", extra: "Extras", video: "Videos", music: "Music",
     artwork: "Artwork", url: "Links", collection_document: "Collection guides", file: "Files"};
-  for (const asset of detail.assets) {
+  for (const asset of attachments) {
     const label = labels[asset.kind] || asset.kind;
     if (!groups.has(label)) groups.set(label, []);
     groups.get(label).push(asset);
   }
   for (const [label, assets] of groups) {
     const section = document.createElement("details");
+    section.className = "source-asset-group";
     section.open = label === "Manuals" || label === "Extras";
     const summary = document.createElement("summary");
     summary.textContent = label + " (" + assets.length + ")";
@@ -738,12 +767,18 @@ function renderSourceDetails(container, detail, preferredEntry, showMetadata, ga
       link.target = "_blank";
       link.rel = "noopener noreferrer";
       link.textContent = asset.label;
-      row.append(link, " · " + [...new Set(asset.sources.map(s => s.sourceList))].join(", "));
+      row.append(link);
+      const credit = [sourceCredit(asset), asset.region].filter(Boolean).join(" · ");
+      if (credit) row.append(cellText("small", credit));
       items.append(row);
     }
     section.append(summary, items);
     container.append(section);
   }
+}
+
+function renderSourceRecords(container, detail, preferredEntry) {
+  const entries = [...detail.entries].sort((a, b) => Number(b.key === preferredEntry) - Number(a.key === preferredEntry));
   for (const entry of entries) {
     const section = document.createElement("details");
     const summary = document.createElement("summary");
@@ -761,6 +796,61 @@ function renderSourceDetails(container, detail, preferredEntry, showMetadata, ga
   }
 }
 
+function renderSoundtracks(container, soundtracks) {
+  for (const soundtrack of soundtracks) {
+    const section = document.createElement("details");
+    section.className = "soundtrack-album";
+    section.append(cellText("summary", `${soundtrack.title} · ${soundtrack.collection}`));
+    const player = document.createElement("audio");
+    player.controls = true;
+    player.hidden = true;
+    player.preload = "none";
+    const nowPlaying = document.createElement("p");
+    nowPlaying.hidden = true;
+    nowPlaying.setAttribute("aria-live", "polite");
+    const groups = { track: ["Tracks"], archive: ["Archives"], support: ["Supporting files"] };
+    for (const group of Object.values(groups)) group.push(document.createElement("ul"));
+    for (const asset of soundtrack.assets) {
+      const row = document.createElement("li");
+      const label = asset.title || asset.name;
+      const link = cellText("a", label);
+      link.href = asset.url;
+      link.download = "";
+      row.append(link);
+      if (asset.artist) row.append(` · ${asset.artist}`);
+      if (asset.subsongs > 1) row.append(` · ${asset.subsongs} subsongs`);
+      if (asset.playable) {
+        const play = cellText("button", "Play");
+        play.type = "button";
+        play.setAttribute("aria-label", `Play ${label}`);
+        play.addEventListener("click", () => {
+          nowPlaying.textContent = label;
+          nowPlaying.hidden = false;
+          player.hidden = false;
+          player.src = asset.url;
+          player.play().catch(() => {
+            nowPlaying.textContent = `Could not play ${label}`;
+          });
+        });
+        row.append(" ", play);
+      }
+      groups[asset.kind][1].append(row);
+    }
+    section.append(nowPlaying, player);
+    section.addEventListener("toggle", () => {
+      if (!section.open) player.pause();
+    });
+    for (const [label, group] of Object.values(groups)) {
+      if (!group.childElementCount) continue;
+      const files = document.createElement("details");
+      files.open = label !== "Supporting files";
+      files.append(cellText("summary", `${label} (${group.childElementCount})`), group);
+      section.append(files);
+    }
+    container.append(section);
+  }
+}
+
 function cellText(tag, text) {
   const element = document.createElement(tag);
   element.textContent = text;
@@ -774,6 +864,7 @@ function toggleReleaseDetails(game, row, detailRow, button) {
   button.setAttribute("aria-expanded", String(opening));
   row.classList.toggle("expanded", opening);
   if (opening) loadReleaseDetails(game, detailRow.querySelector(".release-details"));
+  else detailRow.querySelectorAll("audio").forEach(player => player.pause());
 }
 
 async function loadReleaseDetails(game, container) {
@@ -790,6 +881,9 @@ async function loadReleaseDetails(game, container) {
       container.dataset.loaded = "true";
       return;
     }
+    const soundtrackRequest = state.vgmEnabled
+      ? requestJson(`/api/software/${game.softwareId}/soundtracks`).catch(() => null)
+      : Promise.resolve([]);
     const releaseKey = browseUrl(`/api/software/${game.softwareId}/releases`);
     const factsKey = browseUrl(`/api/software/${game.softwareId}/facts`);
     let releases = state.releaseDetails.get(releaseKey);
@@ -804,6 +898,15 @@ async function loadReleaseDetails(game, container) {
     }
     renderReleaseDetails(container, releases, facts, game.softwareId, game.media, game.title, game.systemId, Boolean(game.preferredEditionKey));
     if (source) renderSourceDetails(container, source, game.sourceEntryKey, facts.length === 0, game);
+    const soundtracks = await soundtrackRequest;
+    if (!soundtracks || soundtracks.length) {
+      const section = document.createElement("section");
+      section.className = "software-facts";
+      section.append(cellText("h3", "Soundtracks"));
+      if (soundtracks) renderSoundtracks(section, soundtracks);
+      else section.append(cellText("p", "Soundtracks are temporarily unavailable."));
+      container.insertBefore(section, container.querySelector(":scope > .release-detail-heading"));
+    }
     container.dataset.loaded = "true";
   } catch (error) {
     delete container.dataset.loaded;
@@ -811,17 +914,6 @@ async function loadReleaseDetails(game, container) {
     container.textContent = error.message;
   }
 }
-
-function showGameDialog(game) {
-  document.querySelector("#game-dialog-title").textContent = game.title;
-  document.querySelector("#game-dialog-platform").textContent = game.systemName;
-  const container = document.createElement("div");
-  document.querySelector("#game-dialog-body").replaceChildren(container);
-  gameDialog.showModal();
-  loadReleaseDetails(game, container);
-}
-
-document.querySelector("#game-dialog-close").addEventListener("click", () => gameDialog.close());
 
 const correctionDialog = document.querySelector("#correction-dialog");
 const correctionForm = document.querySelector("#correction-form");
@@ -922,10 +1014,9 @@ correctionForm.addEventListener("submit", async event => {
       }),
     });
     correctionDialog.close();
-    if (gameDialog.open) gameDialog.close();
     state.releaseDetails.clear();
     state.softwareFacts.clear();
-    await selectSystem(state.selectedSystem, state.page);
+    document.dispatchEvent(new Event("catalog-rebuilt"));
   } catch (error) {
     correctionStatus.textContent = error.message;
     save.disabled = false;
@@ -968,7 +1059,10 @@ function renderTableRows(items) {
     art.className = "art-cell";
     renderCover(art, game, 128);
     row.append(expandCell, art);
-    const titleCell = cell(game.title, "title-cell");
+    const titleCell = cell("", "title-cell");
+    const title = softwareLink(game);
+    title.textContent = game.title;
+    titleCell.append(title);
     const identity = document.createElement("span");
     identity.className = "cell-note";
     const identityLabels = {
@@ -1061,11 +1155,21 @@ function renderTableRows(items) {
     const toggle = () => toggleReleaseDetails(game, row, detailRow, expand);
     expand.addEventListener("click", toggle);
     row.addEventListener("click", event => {
-      if (event.target.closest("button, details")) return;
+      if (event.target.closest("a, button, details")) return;
       toggle();
     });
     tableBody.append(row, detailRow);
   }
+}
+
+function softwareLink(game) {
+  const link = document.createElement("a");
+  link.href = game.softwareKey
+    ? `/software/${game.softwareId}-${game.softwareKey}`
+    : `/software/exo/${game.sourceDetailKey}`;
+  link.className = "software-link";
+  link.setAttribute("aria-label", `Open ${game.title} on ${game.systemName}`);
+  return link;
 }
 
 function gameCard(game) {
@@ -1074,12 +1178,8 @@ function gameCard(game) {
   const art = document.createElement("div");
   art.className = "card-art";
   renderCover(art, game, 320);
-  const details = document.createElement("button");
-  details.type = "button";
-  details.className = "card-details";
-  details.setAttribute("aria-label", `Show details for ${game.title} on ${game.systemName}`);
-  details.setAttribute("aria-haspopup", "dialog");
-  details.addEventListener("click", () => showGameDialog(game));
+  const details = softwareLink(game);
+  details.classList.add("card-details");
   const platform = document.createElement("span");
   platform.className = "card-platform";
   platform.textContent = state.selectedSystem ? (game.regions || []).join(" · ") : game.systemName;
@@ -1210,15 +1310,25 @@ async function loadSystemCounts() {
   renderTree(filter.value);
 }
 
+let optionsRequest;
+
+function loadInterfaceOptions() {
+  if (!optionsRequest) {
+    optionsRequest = Promise.allSettled([
+      requestJson("/api/capabilities"),
+      requestJson("/system-icons.json"),
+    ]).then(([capabilities, icons]) => {
+      state.systemIcons = icons.value || {};
+      state.correctionsEnabled = Boolean(capabilities.value?.softwareCorrections);
+      state.vgmEnabled = Boolean(capabilities.value?.vgm);
+    });
+  }
+  return optionsRequest;
+}
+
 async function loadPlatforms() {
   try {
-    const [, capabilities, icons] = await Promise.all([
-      loadSystemCounts(),
-      requestJson("/api/capabilities"),
-      requestJson("/system-icons.json").catch(() => ({})),
-    ]);
-    state.systemIcons = icons;
-    state.correctionsEnabled = Boolean(capabilities.softwareCorrections);
+    await Promise.all([loadSystemCounts(), loadInterfaceOptions()]);
     renderTree(filter.value);
   } catch (error) {
     tree.replaceChildren();
@@ -1240,21 +1350,7 @@ hideRomHacks.addEventListener("change", () => {
   selectSystem(state.selectedSystem, 1, loadSystemCounts());
 });
 
-initializeMetadataFilters();
-selectSystem(null, 1, loadPlatforms());
-
-const sourceLink = new URLSearchParams(globalThis.location?.search || "").get("exo");
-if (sourceLink && /^[0-9a-f]{64}$/.test(sourceLink)) {
-  requestJson("/api/exo/" + sourceLink).then(detail => {
-    document.querySelector("#game-dialog-title").textContent = detail.editions[0].title;
-    document.querySelector("#game-dialog-platform").textContent = "eXo";
-    const body = document.querySelector("#game-dialog-body");
-    body.replaceChildren();
-    renderSourceDetails(body, detail, null, true);
-    gameDialog.showModal();
-  }).catch(error => {
-    const body = document.querySelector("#game-dialog-body");
-    body.textContent = error.message;
-    gameDialog.showModal();
-  });
+function startCatalog() {
+  initializeMetadataFilters();
+  selectSystem(null, 1, loadPlatforms());
 }

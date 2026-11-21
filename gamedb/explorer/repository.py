@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 import subprocess
 
+from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.config import PROJECT_ROOT
 from gamedb.explorer.cache import JsonResponseCache
 
@@ -136,9 +137,14 @@ class CatalogRepository:
     def titles_sql(
         self, system_id: int | None, limit: int, offset: int, title_filter: str = "",
         metadata_filters: dict | None = None, hide_rom_hacks: bool = False,
+        *, software_id: int | None = None, work_key: str | None = None,
     ) -> str:
         return SqlTemplate(QUERY_DIRECTORY / "titles.sql").render(
-            software_scope=self.software_scope_sql(system_id, title_filter, metadata_filters, hide_rom_hacks),
+            software_scope=self.software_scope_sql(
+                system_id, title_filter, metadata_filters, hide_rom_hacks,
+                software_id=software_id, work_key=work_key,
+            ),
+            software_key_sql=SOFTWARE_KEY_SQL,
             limit=sql_integer(limit, "limit", 1),
             offset=sql_integer(offset, "offset"),
         )
@@ -146,7 +152,14 @@ class CatalogRepository:
     def software_scope_sql(
         self, system_id: int | None, title_filter: str = "",
         metadata_filters: dict | None = None, hide_rom_hacks: bool = False,
+        *, software_id: int | None = None, work_key: str | None = None,
     ) -> str:
+        native_selection = source_selection = ""
+        if software_id is not None:
+            ident = sql_integer(software_id, "software_id", 1)
+            native_selection, source_selection = f"AND software.id = {ident}", f"AND exo.software_id = {ident}"
+        elif work_key is not None:
+            native_selection = source_selection = f"AND exo.work_key = {quote_sql_text(work_key)}"
         predicates = []
         exo_predicates = []
         for key, values in validate_metadata_filters(metadata_filters).items():
@@ -172,6 +185,7 @@ class CatalogRepository:
             system_id="NULL" if system_id is None else sql_integer(system_id, "system_id", 1),
             title_filter=quote_sql_text(title_filter),
             metadata_predicates="\n".join(predicates), exo_predicates="\n".join(exo_predicates),
+            native_selection=native_selection, source_selection=source_selection,
             hide_mods="true" if hide_rom_hacks else "false",
         )
 
@@ -358,6 +372,46 @@ class CatalogRepository:
     def software_releases(self, software_id: int, hide_rom_hacks=False):
         return self.client.query(self.software_releases_sql(software_id, hide_rom_hacks))
 
+    def _page_listing(self, hide_rom_hacks, *, software_key=None, **selection):
+        modes = (True, False) if hide_rom_hacks else (False,)
+        for mode in modes:
+            payload = self._read_listing(self.titles_sql(None, 16, 0, hide_rom_hacks=mode, **selection))
+            items = payload["items"]
+            if software_key:
+                items = [item for item in items if item.get("softwareKey") == software_key]
+            if items:
+                game = max(items, key=lambda item: (not item.get("sourceOnly"), item["score"]))
+                return {"game": game, "hideRomHacks": mode}
+        return None
+
+    def software_page(self, hint, key, hide_rom_hacks=False):
+        if not re.fullmatch(r"[0-9a-f]{32}", key):
+            raise ValueError("Invalid software key")
+        software_id = self._read_listing(SqlTemplate(QUERY_DIRECTORY / "software_lookup.sql").render(
+            software_id=sql_integer(hint, "software_id", 1), key=quote_sql_text(key),
+            software_key_sql=SOFTWARE_KEY_SQL,
+        ))
+        if software_id is None:
+            return None
+        return self._page_listing(hide_rom_hacks, software_id=software_id, software_key=key)
+
+    def exo_page(self, key, hide_rom_hacks=False):
+        source = self.exo_detail(key)
+        if source is None:
+            return None
+        page = self._page_listing(hide_rom_hacks, work_key=source["key"])
+        if page is None:
+            edition = source["editions"][0]
+            page = {"game": {
+                "title": edition["title"],
+                "systemName": edition["system"] or edition["environment"],
+                "manufacturer": edition["manufacturer"] or "eXo",
+                "sourceOnly": True,
+                "sourceDetailKey": source["key"],
+                "sourceEntryKey": edition["entryKey"],
+            }, "hideRomHacks": False}
+        return {**page, "source": source}
+
     def exo_detail(self, key):
         if not re.fullmatch(r"[a-f0-9]{64}", key):
             raise ValueError("Invalid source work key")
@@ -369,6 +423,22 @@ class CatalogRepository:
             raise ValueError("Invalid source asset key")
         return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "exo_location.sql").render(
             asset_key=quote_sql_text(key)))
+
+    def vgm_soundtracks(self, software_id: int):
+        if not self._read_listing("SELECT to_jsonb(to_regclass('vgm.soundtrack') IS NOT NULL)"):
+            return []
+        return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "vgm_soundtracks.sql").render(
+            software_id=sql_integer(software_id, "software_id", 1), software_key_sql=SOFTWARE_KEY_SQL,
+        ))
+
+    def vgm_asset(self, key):
+        if not re.fullmatch(r"[a-f0-9]{64}", key):
+            raise ValueError("Invalid VGM asset key")
+        if not self._read_listing("SELECT to_jsonb(to_regclass('vgm.asset') IS NOT NULL)"):
+            return None
+        return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "vgm_location.sql").render(
+            asset_key=quote_sql_text(key)
+        ))
 
     def launchbox_image(self, relative_path):
         return self.client.query("""

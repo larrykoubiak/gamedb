@@ -221,16 +221,12 @@ h2 { font-size: 1.55rem; letter-spacing: -.025em; }
 .card-art > .platform-icon { width: 43%; height: auto; aspect-ratio: 1; opacity: .68; }
 .card-art .platform-icon-fallback { font-size: 2.4rem; }
 .card-details { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: .32rem; width: 100%; padding: .7rem .8rem .85rem; border: 0; border-top: 1px solid var(--line-soft); color: var(--text); background: transparent; text-align: left; cursor: pointer; }
+.software-link { color: inherit; text-decoration: none; }
+.title-cell .software-link:hover { color: var(--accent-strong); text-decoration: underline; }
 .card-details::after { position: absolute; inset: 0; content: ""; }
 .card-details:hover .card-title { color: var(--accent-strong); }
 .card-platform { color: var(--accent); font: .64rem/1.3 var(--font-mono); }
 .card-title { overflow-wrap: anywhere; font-size: .92rem; font-weight: 650; line-height: 1.32; }
-.game-dialog { width: min(78rem, 96vw); max-width: 96vw; max-height: 90dvh; padding: 0; border: 1px solid var(--line); border-radius: .6rem; background: var(--panel); color: var(--text); }
-.game-dialog::backdrop { background: rgba(5, 8, 12, .84); }
-.game-dialog-heading { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .95rem 1rem; border-bottom: 1px solid var(--line); background: var(--panel); }
-.game-dialog-heading h2 { font-size: 1.15rem; overflow-wrap: anywhere; }
-.game-dialog-heading button { flex-shrink: 0; }
-body:has(#game-dialog[open]) { overflow: hidden; }
 
 .table-wrap {
   margin-top: .9rem;
@@ -475,7 +471,7 @@ body:has(#game-dialog[open]) { overflow: hidden; }
 .artwork-navigation span { color: var(--muted); font-size: .75rem; }
 body:has(#artwork-dialog[open]) { overflow: hidden; }
 
-.release-details > details, #game-dialog-body > details { margin: .65rem 0; }
-.release-details summary, #game-dialog-body summary { cursor: pointer; font-weight: 600; }
-.release-details li, #game-dialog-body li { margin: .3rem 0; overflow-wrap: anywhere; }
-.release-details dd, #game-dialog-body dd { overflow-wrap: anywhere; white-space: pre-line; }
+.release-details > details { margin: .65rem 0; }
+.release-details summary { cursor: pointer; font-weight: 600; }
+.release-details li { margin: .3rem 0; overflow-wrap: anywhere; }
+.release-details dd { overflow-wrap: anywhere; white-space: pre-line; }

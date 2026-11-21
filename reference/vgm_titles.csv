@@ -1,0 +1,73 @@
+collection,source_name,catalog_title,evidence
+The PlayStation Music Collection PSF,Alundra 2,Alundra 2 - A New Legend Begins,The PSF game tags use Alundra 2 and identify the 2000 local release whose catalog title includes the subtitle.
+The PlayStation Music Collection PSF,Arc the Lad,Arc the Lad Collection - Arc the Lad,The PSF game tag identifies the first game and GameDB lists it as a separate game in Arc the Lad Collection.
+The PlayStation Music Collection PSF,Arc the Lad 2,Arc the Lad Collection - Arc the Lad II,The PSF game tag reads Arc the Lad II and GameDB lists it separately in Arc the Lad Collection.
+The PlayStation Music Collection PSF,Arc the Lad 3,Arc the Lad Collection - Arc the Lad III,The PSF game tag identifies the third game and GameDB lists it separately in Arc the Lad Collection.
+The PlayStation Music Collection PSF,Biohazard Resident Evil 2 Dual Shock Version,Resident Evil 2 - Dual Shock Ver.,The PSF tags give BioHazard 2 Dual Shock. GameDB has the western Dual Shock release as a separate entry.
+The PlayStation Music Collection PSF,Biohazard Resident Evil Director's Cut,Resident Evil - Director's Cut,The rip README identifies the Director's Cut. GameDB has that edition separately.
+The PlayStation Music Collection PSF,Biohazard Resident Evil Director's Cut Dual Shock Version,Resident Evil - Director's Cut - Dual Shock Ver.,The PSF game tags identify the Director's Cut Dual Shock release.
+The PlayStation Music Collection PSF,Castlevania,Castlevania - Symphony of the Night,The embedded PSF game tags explicitly give Symphony of the Night.
+The PlayStation Music Collection PSF,Croc,Croc - Legend of the Gobbos,The embedded PSF game tags identify Legend of the Gobbos.
+The PlayStation Music Collection PSF,Dew Prism,Threads of Fate,The embedded PSF game tags give both Dewprism and Threads of Fate.
+The PlayStation Music Collection PSF,Final Fantasy 1,Final Fantasy Origins,The PSF game tags identify the Final Fantasy I portion of the PlayStation compilation.
+The PlayStation Music Collection PSF,Final Fantasy 2,Final Fantasy Origins,The PSF game tags identify the Final Fantasy II portion of the PlayStation compilation.
+The PlayStation Music Collection PSF,Final Fantasy 5,Final Fantasy Anthology - Final Fantasy V,The game tag gives Final Fantasy V. GameDB lists the PlayStation port as its own disc in Final Fantasy Anthology.
+The PlayStation Music Collection PSF,Hyper Olympic,International Track & Field,The PSF game tag says Hyper Olympic in Atlanta. The catalog's LaunchBox claim lists it as the Japanese title of International Track & Field.
+The PlayStation Music Collection PSF,Kartia,Kartia - The Word of Fate,The PSF game tag abbreviates the PlayStation title to Kartia and the GameDB package supplies its subtitle.
+The PlayStation Music Collection PSF,Kaze no Klonoa - Door to phantmile,Klonoa - Door to Phantomile,The PSF game tag identifies Kaze no Klonoa and GameDB supplies the correct spelling of Phantomile.
+The PlayStation Music Collection PSF,Kings Field,,The rip notes identify the 1994 original as SLPS-00017. GameDB groups that translation with the US release of the Japanese sequel. https://www.fromsoftware.jp/ww/detail.html?csm=001
+The PlayStation Music Collection PSF,Kings Field 2,,The rip notes identify SLPS-00069. GameDB groups the western release of this game with a translation of the previous installment. https://media.fromsoftware.jp/fromsoftware/jp/static/pdf/002_KING_S_FIELD_II.pdf
+The PlayStation Music Collection PSF,Kings Field 3,King's Field II,The rip notes identify SLPS-00377. The GameDB King's Field II package is the western release of this third installment. https://www.fromsoftware.jp/ww/detail.html?csm=003
+The PlayStation Music Collection PSF,Lunar 1 - Silver Star Story Complete,Lunar - Silver Star Story Complete,The PSF game tags give Silver Star Story Complete without the number.
+The PlayStation Music Collection PSF,Megaman 8,Mega Man 8,The PSF game tags use the spaced spelling.
+The PlayStation Music Collection PSF,Persona 2EP,Persona 2 - Eternal Punishment,The embedded game tags spell out Eternal Punishment.
+The PlayStation Music Collection PSF,Raiden 1 and 2,"Raiden Project, The",The PSF game tags identify both games as part of The Raiden Project.
+The PlayStation Music Collection PSF,Resident Evil - Dual Shock Version,Resident Evil - Director's Cut - Dual Shock Ver.,The PSF tags give BioHazard Director's Cut Dual Shock Version with no sequel number.
+The PlayStation Music Collection PSF,Ridge Racer - Type 4,R4 - Ridge Racer Type 4,The PSF game tags identify the full R4 title.
+The PlayStation Music Collection PSF,Sim City 2000,SimCity 2000,The embedded PSF game tags and the catalog use the joined spelling.
+The PlayStation Music Collection PSF,Threads of Fate  Dewprisim,Threads of Fate,The embedded PSF game tags correct the spelling to Dewprism and include the localized title.
+spcsets,7th Saga 2 - Mystic Ark [mark],Mystic Ark,The long filename includes the proper game title. The translation team documents 7th Saga 2 as an informal name. https://aeongenesis.net/projects/mysticark
+spcsets,7th Saga [7sg],"7th Saga, The",The full SNESMusic title and catalog title differ in placement of the article.
+spcsets,Air Management - Ozora ni Kakeru (Aerobiz) [airm],Aerobiz,The long SNESMusic filename includes the North American title.
+spcsets,Air Management 2 - Koukuu Ou wo Mezase (Aerobiz Supersonic) [airm2],Aerobiz Supersonic,The long SNESMusic filename includes the North American title of the sequel.
+spcsets,Arabian Nights [an],Arabian Nights - Sabaku no Seirei Ou,The extracted SNESMusic set and its info.txt use the full subtitle.
+spcsets,Brainlord [brld],Brain Lord,The SNESMusic RSN naming DAT uses the two-word title for this set. https://snesmusic.org/v2/players.php
+spcsets,Cardmaster (Arcana) [card],Arcana,The long set name includes the US title and the original Japanese title.
+spcsets,Dai Koukai Jidai 2 (Uncharted Waters - New Horizons) [uw2],New Horizons,The long set name includes the North American subtitle used by GameDB.
+spcsets,Diddy's Kong Quest [dkq],Donkey Kong Country 2 - Diddy's Kong Quest,Nintendo's full title confirms that this subtitle identifies Donkey Kong Country 2. https://www.nintendo.com/en-gb/Games/Super-Nintendo/Donkey-Kong-Country-2-Diddy-s-Kong-Quest-276907.html
+spcsets,Donkey Kong Country 2 [dkq],Donkey Kong Country 2 - Diddy's Kong Quest,Nintendo's full title includes the subtitle. https://www.nintendo.com/en-gb/Games/Super-Nintendo/Donkey-Kong-Country-2-Diddy-s-Kong-Quest-276907.html
+spcsets,Donkey Kong Country 3 [dkdt],Donkey Kong Country 3 - Dixie Kong's Double Trouble!,The number and full title identify the third SNES game.
+spcsets,Dragon View (Drakkhen 2) [dv],Dragon View,The first SNESMusic title is the western release title used by GameDB.
+spcsets,Earthbound (Mother 2) [mo2],EarthBound,The long set name explicitly includes both the North American and Japanese titles.
+spcsets,Final Fantasy 6 [ff6],Final Fantasy III,The original SNESMusic info.txt says the rip came from the English FF3 edition.
+spcsets,Fire Striker (Holy Striker) [fsr],FireStriker,The long set name gives the Japanese Holy Striker title and the spaced spelling of FireStriker.
+spcsets,Fire Striker [fsr],FireStriker,The companion SNESMusic filename identifies Holy Striker as the Japanese title. GameDB uses the unspaced western title.
+spcsets,Ganbare Goemon (Legend of the Mystical Ninja) [gg],"Legend of the Mystical Ninja, The",The long set name and its info.txt include the English title of the original SNES game.
+spcsets,Ganbare Goemon 3 - Shishi Juroku Hyoe no Karakuri Manji Katame! [gg3],Ganbare Goemon 3 - Shishi Juurokubee no Karakuri Manjigatame,The SNES release and long filename use different romanizations of the same subtitle.
+spcsets,Ganbare Goemon 4 - Kirakira Douchuu [gg4],Ganbare Goemon Kirakira Douchuu - Boku ga Dancer ni Natta Wake,The long SNESMusic name identifies Kirakira Douchuu and GameDB supplies the subtitle.
+spcsets,Gokujyo Parodius (Parodius 2) [gp],Gokujou Parodius,The alternate romanizations share the same Parodius installment.
+spcsets,Hansei Zarujirou Kun no Daibouken (Spanky's Quest) [hzkd],Spanky's Quest,The long set name includes the localized title.
+spcsets,Hokuto no Ken 5 - Tenma Ryuuseiden ~ Ai Zesshou [hk5],Hokuto no Ken 5 - Tenma Ryuuseiden Ai Zetsu Shou,The full SNES title and number agree. The subtitle is romanized differently.
+spcsets,Jikkyou Oshaberi Parodius (Parodius 3) [jop],Jikkyou Oshaberi Parodius,The long filename gives the full original title plus an informal series number.
+spcsets,Kiki Kaikai (Pocky & Rocky) [kiki],Pocky & Rocky,The long set name includes the localized title.
+spcsets,Kiki Kaikai 3 (Pocky & Rocky 2) [kiki3],Pocky & Rocky 2,The long set name and its info.txt explicitly identify the western sequel.
+spcsets,Lufia 2 - Rise of the Sinistrals [ed2],Lufia,The software's US and Japanese catalog packages are Lufia II - Rise of the Sinistrals and Estpolis Denki II.
+spcsets,Mahou Kishi Reiasu (Magic Knight Rayearth) [mkr],Magic Knight Rayearth,The long filename includes the English title used by GameDB.
+spcsets,Might and Magic 2 (European Version) [mm2],Might and Magic II,The long filename identifies the European edition. The GameDB target includes the European Might and Magic II release.
+spcsets,Might and Magic 2 (Japanese Version) [mm2j],Might and Magic - Book II,The long filename identifies the Japanese edition. The GameDB target includes Might and Magic - Book II (Japan).
+spcsets,Might and Magic 3 [mm3],Might and Magic III - Isles of Terra,The long filename names the third installment and GameDB includes its subtitle.
+spcsets,Newman-Haas Indy Car Racing [nhic],Newman-Haas IndyCar featuring Nigel Mansell,The publisher and subject of the long title identify the same licensed SNES game. The game packages add Nigel Mansell to the title.
+spcsets,Newman-Hass Indy Car Racing [nhic],Newman-Haas IndyCar featuring Nigel Mansell,The SNESMusic companion filename spells Haas. The game packages add Nigel Mansell to the title.
+spcsets,Ninja Gaiden Triology [ngt],Ninja Gaiden Trilogy,The SNESMusic spelling differs from the title of the SNES compilation in the catalog.
+spcsets,Nobunaga no Yabou Zenkokuban (Nobunaga's Ambition) [nbz],Nobunaga's Ambition,The long filename explicitly includes the localized title.
+spcsets,Paladin's Quest (Lennus) [ln],Paladin's Quest,The long set name explicitly includes the localized title and Japanese series name.
+spcsets,Parodius Da! (Parodius 1) [pd],Parodius,The full set name gives the original title of the SNES port cataloged as Parodius.
+spcsets,Parodius Da! [pd],Parodius,The companion SNES set name identifies the first Parodius game.
+spcsets,Sangokushi 3 (Romance of the Three Kingdoms 3) [rtk3],Romance of the Three Kingdoms III - Dragon of Destiny,The long set name identifies the third game under both language titles.
+spcsets,Sangokushi 4 (Romance of the Three Kingdoms 4) [rtk4],Romance of the Three Kingdoms IV - Wall of Fire,The long set name identifies the fourth game under both language titles.
+spcsets,Sangokushi Eiketsu Den [eikt],Sangokushi Eiketsuden,The same romanized subtitle appears with a word break in the long set name.
+spcsets,Skuljagger [skjg],Skuljagger - Revolt of the Westicans,The GameDB entry uses the full subtitle.
+spcsets,Sküljagger [skjg],Skuljagger - Revolt of the Westicans,The SNESMusic set decorates the spelling with an umlaut. The GameDB entry uses the full subtitle.
+spcsets,Super Romance of the Three Kingdoms 2 (Super Sangokushi 2) [rtk2],Romance of the Three Kingdoms II,The long set name gives the SNES names of the second installment.
+spcsets,Super Sangokushi 2 (Super Romance of the Three Kingdoms 2) [rtk2],Romance of the Three Kingdoms II,The long set name gives the SNES names of the second installment.
+spcsets,Tazmania [taz],Taz-Mania,The SNESMusic RSN naming DAT uses Taz-Mania for the same long-name set. https://snesmusic.org/v2/players.php

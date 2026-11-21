@@ -133,7 +133,8 @@ A source entry keeps its original LaunchBox fields and regional alternate titles
 carry genre, developer, publisher, series and player count through `softwareFacts`. For a row with a
 `sourceDetailKey`, `GET /api/v1/exo/{sourceDetailKey}` returns the entries, edition choices and assets.
 The entries include full descriptions, dates, ratings, play modes and all remaining source fields.
-The public Explorer uses `/api/exo/{sourceDetailKey}` and opens a record directly at `/?exo={sourceDetailKey}`.
+The public Explorer uses `/api/exo/{sourceDetailKey}` and opens an eXo entry at
+`/software/exo/{sourceDetailKey}`. Earlier `/?exo={sourceDetailKey}` bookmarks redirect there.
 
 Manuals, maps, books, music, videos, artwork and collection guides have public
 `/related-media/{assetKey}` links. Files stay on the share, including items inside companion ZIPs.
@@ -153,6 +154,53 @@ installable release, `preferredReleaseSignature`, `installSourceCollection`, `in
 and `installScore` identify what the launcher can install. Entries available only through eXo
 support browsing and media.
 
+## Video game soundtracks
+
+GameDB inventories the music share in place, retaining each source collection,
+track, archive and supported companion file. Extracted sets and same-named
+archive copies within a collection share a soundtrack entry. ZIPs can supply a
+track list when there is no extracted copy. Other archives remain available as
+whole packages, including formats that use shared sound banks or libraries.
+SPC ID666 labels, NSF and SID credits and subsong counts, and PSF track names
+and credits appear when available.
+
+Run a read-only match against the configured catalog before publishing.
+
+```sh
+python -m gamedb import-vgm \
+  --root "/mnt/synology/music/VGM/By Format" --report /tmp/gamedb-vgm.jsonl
+```
+
+The report records source paths, accepted evidence and candidates for ambiguous
+matches. SNES matching starts with the full archive or directory name. The
+bracketed SNESMusic code and embedded SPC track labels are kept for provenance
+and display. PlayStation sets also use consistent PSF game tags when they
+preserve the full title and edition in the filename. Both platforms can use
+same-platform LaunchBox aliases already associated with the catalog. The
+[reviewed title file](reference/vgm_titles.csv) records verified spelling,
+regional titles and edition conflicts.
+
+For C64, the SID title must agree with the filename. Composer-folder links
+also require the SID year and publisher to agree with a release in GameDB.
+The HVSC game folder can corroborate a unique title when the release credits
+are missing. Conflicts and remaining mixed collections stay in the inventory
+for review. A catalog identity change may require another import to refresh
+the matches.
+
+Add `--publish` to atomically replace the VGM inventory. In Compose the catalog
+builder sees the share at `/mnt/vgm`.
+
+```sh
+docker compose run --rm --no-deps --entrypoint python catalog-builder \
+  -m gamedb.vgm --root /mnt/vgm --publish
+```
+
+Set `GAMEDB_VGM_ROOT=/mnt/vgm` for the Compose Explorer, or set it to the NAS
+path when running Explorer directly. Matched games then show their music on the
+**Soundtracks** tab in the Almanac. Browser audio plays inline. Native
+music files and archives can be downloaded for use in a compatible player.
+Downloads follow the Explorer's existing public related-media access model.
+
 ## Inspecting names
 
 The parser can be exercised without changing the database:
@@ -166,10 +214,16 @@ See [the database model](docs/database.md), [archive-name rules](docs/archive_na
 
 ## Explorer
 
-The explorer opens on **All platforms** in Tiles view. Select a title to see its
-metadata and ranked releases, or switch to **Table** to compare archives, scores
-and regions. The browser remembers the layout. Both views search alternate
-release titles and keep the current filters and page when you switch.
+The Explorer opens on **All platforms** in Tiles view. A title opens its
+**Almanac** page. Tabs give access to the overview, artwork, releases, related
+media and soundtracks. Each tab can be shared using its URL. Back to catalog
+returns to the current search, filters and page. Native permalinks verify the
+software identity key and use the numeric ID as a lookup hint.
+
+Switch to **Table** to compare archives, scores and regions. Rows still expand
+for a quick release comparison. The browser remembers the layout. Both views
+search alternate release titles and keep the current filters and page when
+you switch.
 Platform icons identify systems in the sidebar and the table's Platform column.
 The bundled artwork uses the mappings in `reference/system_icons.csv`.
 Unmapped systems retain a neutral icon and their names. Artwork attribution is

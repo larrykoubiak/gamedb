@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GameDB Explorer</title>
   <meta name="description" content="Search GameDB across all platforms or browse by system.">
-  <link rel="stylesheet" href="/styles.css?v=12">
+  <link rel="stylesheet" href="/styles.css?v=13">
+  <link rel="stylesheet" href="/almanac.css?v=1">
 </head>
 <body>
+  <div id="catalog-view" hidden>
   <header class="topbar">
     <div>
       <p class="eyebrow">Personal catalog</p>
@@ -118,17 +120,33 @@
       </footer>
     </section>
   </main>
+  </div>
 
-  <dialog id="game-dialog" class="game-dialog" aria-labelledby="game-dialog-title">
-    <div class="game-dialog-heading">
-      <div>
-        <p id="game-dialog-platform" class="eyebrow"></p>
-        <h2 id="game-dialog-title"></h2>
-      </div>
-      <button id="game-dialog-close" class="icon-button" type="button" aria-label="Close game details" autofocus>×</button>
-    </div>
-    <div id="game-dialog-body"></div>
-  </dialog>
+  <div id="almanac-view" class="almanac-view" hidden>
+    <header class="almanac-topbar">
+      <div class="almanac-brand">GameDB <span>Almanac</span></div>
+      <a id="back-to-catalog" href="/"><span aria-hidden="true">←</span> Back to catalog</a>
+    </header>
+    <main class="almanac-main">
+      <p id="almanac-status" class="almanac-status" role="status" tabindex="-1">Opening software entry…</p>
+      <article id="software-book" class="software-book" data-section="overview" aria-labelledby="software-title" hidden>
+        <header class="book-front">
+          <p id="software-platform" class="book-platform"></p>
+          <h1 id="software-title" tabindex="-1"></h1>
+          <figure id="software-cover" class="book-cover"></figure>
+          <div id="software-glance"></div>
+        </header>
+        <div class="book-tabs" role="tablist" aria-label="Software sections" aria-orientation="vertical">
+          <button type="button" role="tab" id="tab-overview" aria-controls="software-section" aria-selected="true" data-section="overview">Overview</button>
+          <button type="button" role="tab" id="tab-artwork" aria-controls="software-section" aria-selected="false" tabindex="-1" data-section="artwork">Artwork</button>
+          <button type="button" role="tab" id="tab-releases" aria-controls="software-section" aria-selected="false" tabindex="-1" data-section="releases">Releases</button>
+          <button type="button" role="tab" id="tab-media" aria-controls="software-section" aria-selected="false" tabindex="-1" data-section="media">Related media</button>
+          <button type="button" role="tab" id="tab-soundtracks" aria-controls="software-section" aria-selected="false" tabindex="-1" data-section="soundtracks">Soundtracks</button>
+        </div>
+        <section id="software-section" class="book-panel" role="tabpanel" aria-labelledby="tab-overview" tabindex="0"></section>
+      </article>
+    </main>
+  </div>
 
   <dialog id="artwork-dialog" class="artwork-dialog" aria-labelledby="artwork-caption">
     <div class="artwork-heading">
@@ -180,6 +198,7 @@
     </form>
   </dialog>
 
-  <script src="/app.js?v=15" defer></script>
+  <script src="/app.js?v=16" defer></script>
+  <script src="/almanac.js?v=1" defer></script>
 </body>
 </html>

@@ -8,6 +8,7 @@ page AS (
 items AS (
     SELECT
         page.*,
+        __SOFTWARE_KEY_SQL__ AS software_key,
         CASE WHEN page.exo_preferred THEN CASE entry.source_list
             WHEN 'MS-DOS' THEN 'eXoDOS' WHEN 'Windows 9x' THEN 'eXoWin9x'
             WHEN 'ScummVM' THEN 'eXoScummVM' WHEN 'ScummVM SVN' THEN 'eXoScummVM SVN' END ELSE package.source_collection END AS source_collection,
@@ -32,6 +33,9 @@ items AS (
         CASE WHEN arcade.release_id IS NOT NULL THEN jsonb_build_object('complete',(arcade.plan->>'complete')::boolean,'emulationStatus',arcade.plan->>'emulationStatus','preferredCore',arcade.plan->>'preferredCore','compatibleEmulators',arcade.plan->'compatibleEmulators','issues',(SELECT jsonb_agg(DISTINCT issue->>'reason') FROM jsonb_array_elements(arcade.plan->'missing') issue)) END AS arcade,
         coalesce(arcade.install_signature, signature.sha1_set_digest) AS preferred_release_signature
     FROM page
+    LEFT JOIN catalog.software software ON NOT page.source_only AND software.id = page.software_id
+    LEFT JOIN catalog.system system ON system.id = software.system_id
+    LEFT JOIN catalog.title title ON title.id = software.preferred_title_id
     LEFT JOIN catalog.release install_release ON install_release.id=page.release_id
     LEFT JOIN catalog.exo_entry entry ON entry.entry_key=page.entry_key
     LEFT JOIN LATERAL (
@@ -86,6 +90,7 @@ SELECT jsonb_build_object(
         SELECT jsonb_agg(
             jsonb_build_object(
                 'softwareId', items.software_id,
+                'softwareKey', CASE WHEN NOT items.source_only THEN items.software_key END,
                 'systemId', items.system_id,
                 'manufacturer', items.manufacturer_name,
                 'systemName', items.system_name,

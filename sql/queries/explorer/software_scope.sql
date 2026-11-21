@@ -46,6 +46,7 @@ matching_software AS MATERIALIZED (
     LEFT JOIN catalog.exo_entry entry ON entry.entry_key=choice.entry_key
     WHERE (__SYSTEM_ID__ IS NULL OR software.system_id = __SYSTEM_ID__)
       AND user_account.username = __USERNAME__
+      __NATIVE_SELECTION__
       __METADATA_PREDICATES__
       AND (
           __TITLE_FILTER__ = ''
@@ -61,6 +62,7 @@ matching_software AS MATERIALIZED (
     JOIN app.app_user u ON u.id=choice.user_id AND u.username=__USERNAME__
     JOIN catalog.exo_entry entry ON entry.entry_key=choice.entry_key
     WHERE exo.scope_id=coalesce(__SYSTEM_ID__,0) AND choice.hide_mods=__HIDE_MODS__
+      __SOURCE_SELECTION__
       AND (exo.linked_software_id IS NULL OR NOT EXISTS (
           SELECT FROM __PREFERRED_VIEW__ p JOIN app.app_user u ON u.id=p.user_id WHERE u.username=__USERNAME__
           AND p.software_id=exo.linked_software_id AND p.release_id IS NOT NULL))

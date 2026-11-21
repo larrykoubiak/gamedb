@@ -17,6 +17,7 @@ services:
     volumes:
       - ./data/media/launchbox:/data/media/launchbox
       - ./data/media/previews:/data/media/previews
+      - "${GAMEDB_VGM_HOST_ROOT:-/mnt/synology/music/VGM/By Format}:/mnt/vgm:ro"
       - /mnt/synology/roms:/mnt/synology/roms:ro
       - /mnt/synology/backup/games/Undub:/mnt/synology/backup/games/Undub:ro
 
@@ -38,4 +39,6 @@ services:
     env_file: .env
     entrypoint: ["python", "-m", "gamedb.catalog"]
     command: ["rebuild", "--plan"]
+    volumes:
+      - "${GAMEDB_VGM_HOST_ROOT:-/mnt/synology/music/VGM/By Format}:/mnt/vgm:ro"
     profiles: [tools]

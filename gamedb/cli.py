@@ -5,7 +5,7 @@ from __future__ import annotations
 import sys
 
 
-HELP = """usage: gamedb {derive,parse-name,import-history,import-integrated,import-exo,import-rdb,import-launchbox,import-arcade,rebuild,promote-corrections,serve} ...
+HELP = """usage: gamedb {derive,parse-name,import-history,import-integrated,import-exo,import-vgm,import-rdb,import-launchbox,import-arcade,rebuild,promote-corrections,serve} ...
 
 GameDB commands:
   derive       Build or selectively refresh the stable derived schema.
@@ -13,6 +13,7 @@ GameDB commands:
   import-history  Snapshot recovered identity sources into staging.
   import-integrated  Snapshot reviewed non-RomVault ZIP packages into staging.
   import-exo    Inventory eXo games, manuals and media into staging.
+  import-vgm    Inventory and match video game soundtracks.
   import-rdb    Snapshot compiled Libretro databases into staging.
   import-launchbox  Snapshot LaunchBox metadata and report matching coverage.
   rebuild      Project catalog, identity, and scores from derived data.
@@ -53,6 +54,10 @@ def main(argv=None) -> int:
         from gamedb.exo.__main__ import main as exo_main
 
         return exo_main(remaining)
+    if command == "import-vgm":
+        from gamedb.vgm.__main__ import main as vgm_main
+
+        return vgm_main(remaining)
     if command == "import-arcade":
         from gamedb.arcade.__main__ import main as arcade_main
 

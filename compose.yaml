@@ -53,6 +53,7 @@ services:
       - ./data/media/launchbox:/data/media/launchbox
       - /mnt/exo:/mnt/exo:ro
       - ./data/media/previews:/data/media/previews
+      - "${GAMEDB_VGM_HOST_ROOT:-/mnt/synology/music/VGM/By Format}:/mnt/vgm:ro"
       - ./data/libretro-thumbnails:/data/libretro-thumbnails:ro
       - /mnt/synology/roms:/mnt/synology/roms:ro
       - /mnt/synology/backup/games/Undub:/mnt/synology/backup/games/Undub:ro
@@ -95,4 +96,5 @@ services:
       - ./data/libretro-thumbnails:/data/libretro-thumbnails:ro
       - ./data/media/cache:/data/media/cache
       - /mnt/exo:/mnt/exo:ro
+      - "${GAMEDB_VGM_HOST_ROOT:-/mnt/synology/music/VGM/By Format}:/mnt/vgm:ro"
     profiles: [tools]

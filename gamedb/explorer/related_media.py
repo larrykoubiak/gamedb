@@ -1,7 +1,6 @@
 """Serve source-owned catalog attachments and their artwork previews."""
 
 import mimetypes
-import os
 import shutil
 import tempfile
 from contextlib import ExitStack
@@ -14,8 +13,6 @@ from gamedb.exo.media import location_path, open_location
 
 
 def serve(handler, key, *, revision=None, preview_size=None):
-    from gamedb.explorer.server import _byte_range
-
     asset = handler.server.repository.exo_asset(key)
     if (
         not asset
@@ -23,7 +20,6 @@ def serve(handler, key, *, revision=None, preview_size=None):
         and (asset["revision"] != revision or asset["kind"] != "artwork")
     ):
         return handler.send_error(HTTPStatus.NOT_FOUND)
-    name = Path(asset["path"]).name
     if asset["kind"] == "url":
         target = asset["path"]
         if (
@@ -37,13 +33,33 @@ def serve(handler, key, *, revision=None, preview_size=None):
         handler.send_header("Content-Length", "0")
         handler.end_headers()
         return
-    root = handler.server.exo_root
+    return _serve_file(handler, key, handler.server.exo_root, asset, revision, preview_size)
+
+
+def serve_vgm(handler, key):
+    root = handler.server.vgm_root
+    if root is None:
+        return handler.send_error(HTTPStatus.NOT_FOUND)
+    location = handler.server.repository.vgm_asset(key)
+    if not location:
+        return handler.send_error(HTTPStatus.NOT_FOUND)
+    return _serve_file(handler, key, root, {
+        "path": location["name"],
+        "revision": location["mtime_ns"],
+        "locations": [location],
+    }, force_download=not location["playable"])
+
+
+def _serve_file(handler, key, root, asset, revision=None, preview_size=None, *, force_download=False):
+    from gamedb.explorer.server import _byte_range
+
+    name = Path(asset["path"]).name
     with ExitStack() as stack:
         for location in asset["locations"] or ():
             try:
                 stream = stack.enter_context(open_location(root, location))
                 break
-            except (OSError, ValueError, BadZipFile):
+            except (OSError, ValueError, BadZipFile, NotImplementedError):
                 continue
         else:
             return handler.send_error(HTTPStatus.NOT_FOUND, "Archived item unavailable")
@@ -103,7 +119,7 @@ def serve(handler, key, *, revision=None, preview_size=None):
         handler.send_header("Content-Type", mime)
         # A source HTML supplement can be downloaded without running active
         # content under the Explorer origin.
-        inline = (
+        inline = not force_download and (
             mime in ("application/pdf", "text/plain")
             or mime.startswith(("video/", "audio/"))
             or mime

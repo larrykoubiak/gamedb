@@ -12,8 +12,23 @@ const path = require('node:path');
     {id: 1, manufacturer: 'Example', name: 'Tiny Platform', category: 'computer', gameCount: 1},
     {id: 42, manufacturer: 'Nintendo', name: 'NES', category: 'console', gameCount: 201},
   ];
+  const softwareKey = 'a'.repeat(32);
+  const softwarePath = `/software/123-${softwareKey}`;
+  const sourceKey = 'b'.repeat(64);
+  const sourcePath = `/software/exo/${sourceKey}`;
+  const source = {
+    key: sourceKey, entries: [{
+      key: 'entry', title: 'DOS Adventure', sourceList: 'MS-DOS',
+      facts: {description: ['An adventure for DOS.']},
+      fields: {Title: 'DOS Adventure'}, alternateNames: [],
+    }],
+    editions: [{key: 'edition', entryKey: 'entry', title: 'DOS Adventure', label: 'Original',
+      environment: 'MS-DOS', system: 'PC Compatibles', manufacturer: 'IBM'}],
+    assets: [{kind: 'manual', label: 'Adventure Manual.pdf', url: '/related-media/manual',
+      sources: [{sourceList: 'MS-DOS'}]}],
+  };
   const game = {
-    softwareId: 123, systemId: 42, manufacturer: 'Nintendo', systemName: 'NES',
+    softwareId: 123, softwareKey, systemId: 42, manufacturer: 'Nintendo', systemName: 'NES',
     title: 'Mario', identityBasis: 'title_fallback', score: 0, packageCount: 1,
     regions: [], languages: [], revisions: [], releaseDates: [],
     dumpStatuses: [], dumpModifications: [], breakdown: [], media: {
@@ -28,7 +43,17 @@ const path = require('node:path');
       requests.push(req.url);
       let payload;
       if (url.pathname === '/api/systems') payload = systems;
-      else if (url.pathname === '/api/capabilities') payload = {softwareCorrections: true};
+      else if (url.pathname === '/api/capabilities') payload = {softwareCorrections: true, vgm: true};
+      else if (url.pathname === '/api' + softwarePath) payload = {game, hideRomHacks: true};
+      else if (url.pathname === '/api' + sourcePath) payload = {
+        game: {title: 'DOS Adventure', systemName: 'PC Compatibles', manufacturer: 'IBM',
+          sourceOnly: true, sourceDetailKey: sourceKey, sourceEntryKey: 'entry'}, source,
+      };
+      else if (url.pathname === '/api/software/123/facts') payload = [{
+        key: 'description', preferredValues: ['Mario explores the Mushroom Kingdom.'],
+        values: [{value: 'Mario explores the Mushroom Kingdom.', sourceProvider: 'launchbox',
+          sourceDatabases: ['Nintendo NES']}],
+      }];
       else if (url.pathname === '/api/metadata-options') {
         const values = url.searchParams.get('key') === 'genre' ? ['Action', 'Adventure']
           : ['Nintendo', "Bob's Studio"];
@@ -37,6 +62,12 @@ const path = require('node:path');
           .map(value => ({value, count: 201}));
         payload = {items, total: items.length};
       }
+      else if (url.pathname.endsWith('/soundtracks')) payload = [{
+        title: 'Mario', collection: 'Test soundtrack collection', assets: [
+          {kind: 'track', name: '01.spc', title: 'Opening Theme', playable: false, url: '/related-media/vgm/spc'},
+          {kind: 'track', name: '02.mp3', playable: true, url: '/related-media/vgm/mp3'},
+        ],
+      }];
       else if (url.pathname.endsWith('/correction-targets')) payload = [];
       else if (/\/api\/software\/\d+\/(releases|facts)$/.test(url.pathname)) payload = [];
       else payload = {items: [game], total: 201, page: Number(url.searchParams.get('page') || 1), pageSize: 100};
@@ -55,7 +86,12 @@ const path = require('node:path');
       return res.end(fs.readFileSync(path.resolve(__dirname,
         '../../gamedb/explorer/assets/system-icons/pixel-nintendo-nintendo-entertainment-system-a9c58d62.png')));
     }
-    const name = url.pathname === '/' ? 'index.html' : url.pathname.slice(1);
+    if (url.pathname === '/favicon.ico') { res.statusCode = 404; return res.end(); }
+    if (url.pathname === '/' && url.searchParams.get('exo') === sourceKey) {
+      res.writeHead(302, {Location: sourcePath});
+      return res.end();
+    }
+    const name = ['/', softwarePath, sourcePath].includes(url.pathname) ? 'index.html' : url.pathname.slice(1);
     const file = path.resolve(__dirname, '../../gamedb/explorer/assets', name);
     res.setHeader('Content-Type', name.endsWith('.js') ? 'text/javascript' : name.endsWith('.css') ? 'text/css' : name.endsWith('.png') ? 'image/png' : 'text/html');
     res.end(fs.readFileSync(file));
@@ -64,7 +100,8 @@ const path = require('node:path');
   let browser;
   try {
     browser = await chromium.launch({headless: true});
-    const page = await browser.newPage();
+    const context = await browser.newContext();
+    const page = await context.newPage();
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.goto(`http://127.0.0.1:${server.address().port}`);
@@ -72,17 +109,64 @@ const path = require('node:path');
     assert.equal(await page.getByRole('button', {name: 'Tiles', exact: true}).getAttribute('aria-pressed'), 'true');
     assert(images.includes('/previews/320/test/box%20art.png'));
     assert(!images.some(url => url.startsWith('/media/')));
-    const cardDetails = page.getByRole('button', {name: 'Show details for Mario on NES'});
+    const cardDetails = page.getByRole('link', {name: 'Open Mario on NES'});
+    assert.equal(await cardDetails.getAttribute('href'), softwarePath);
+    await page.locator('#game-filter').fill('Mario');
+    await page.waitForResponse(res => res.url().includes('q=Mario'));
     await cardDetails.click();
-    const gameDialog = page.locator('#game-dialog');
-    await gameDialog.getByText('Gameplay · eXo', {exact: true}).waitFor();
-    await gameDialog.getByRole('button', {name: 'Enlarge Mario — Gameplay'}).click();
+    await page.waitForURL('**' + softwarePath);
+    await page.getByRole('heading', {name: 'Mario', exact: true}).waitFor();
+    await page.getByText('Mario explores the Mushroom Kingdom.', {exact: true}).filter({visible: true}).waitFor();
+    assert.equal(await page.locator('#catalog-view').isVisible(), false);
+    assert.equal(await page.getByRole('tablist').getAttribute('aria-orientation'), 'vertical');
+    assert.equal(await page.getByRole('tab', {name: 'Overview'}).getAttribute('aria-selected'), 'true');
+    await page.getByRole('tab', {name: 'Overview'}).focus();
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await page.waitForURL('**#artwork');
+    await page.getByText('Gameplay · eXo', {exact: true}).waitFor();
+    await page.getByRole('button', {name: 'Enlarge Mario — Gameplay'}).click();
     await page.waitForFunction(() => document.querySelector('#artwork-image').naturalWidth > 0);
     assert(images.includes('/media/test/gameplay.png'));
     await page.keyboard.press('Escape');
-    assert.equal(await gameDialog.isVisible(), true);
-    await page.keyboard.press('Escape');
+    await page.getByRole('tab', {name: 'Soundtracks'}).click();
+    await page.waitForURL('**#soundtracks');
+    await page.getByText('Mario · Test soundtrack collection', {exact: true}).click();
+    const soundtrack = page.getByRole('link', {name: 'Opening Theme'});
+    await soundtrack.waitFor();
+    assert.equal(await soundtrack.getAttribute('href'), '/related-media/vgm/spc');
+    assert.equal(await soundtrack.getAttribute('download'), '');
+    await page.getByRole('button', {name: 'Play 02.mp3'}).waitFor();
+    assert.equal(await page.getByRole('button', {name: 'Play Opening Theme'}).count(), 0);
+    await page.setViewportSize({width: 390, height: 844});
+    await page.waitForFunction(() => document.querySelector('.book-tabs').getAttribute('aria-orientation') === 'horizontal');
+    assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    await page.getByRole('link', {name: 'Back to catalog'}).click();
+    await page.waitForURL(url => url.pathname === '/');
+    assert.equal(await page.locator('#game-filter').inputValue(), 'Mario');
     assert(await cardDetails.evaluate(element => element === document.activeElement));
+    await page.locator('#game-filter').fill('');
+    await page.waitForResponse(res => res.url().includes('/api/titles?') && !res.url().includes('q=Mario'));
+    await page.setViewportSize({width: 1280, height: 720});
+    const direct = await context.newPage();
+    const catalogRequests = () => requests.filter(url => /\/api\/(titles|systems)\?/.test(url)).length;
+    const beforeDirect = catalogRequests();
+    const origin = `http://127.0.0.1:${server.address().port}`;
+    await direct.goto(origin + softwarePath + '#soundtracks');
+    await direct.getByRole('tab', {name: 'Soundtracks', selected: true}).waitFor();
+    await direct.reload();
+    await direct.getByText('Mario · Test soundtrack collection', {exact: true}).waitFor();
+    assert.equal(catalogRequests(), beforeDirect);
+    await direct.goto(origin + '/?exo=' + sourceKey);
+    await direct.waitForURL('**' + sourcePath);
+    await direct.getByRole('heading', {name: 'DOS Adventure', exact: true}).waitFor();
+    await direct.getByRole('tab', {name: 'Related media'}).click();
+    const manual = direct.getByRole('link', {name: 'Adventure Manual.pdf'});
+    await manual.waitFor();
+    assert.equal(await manual.getAttribute('href'), '/related-media/manual');
+    await direct.getByRole('tab', {name: 'Releases'}).click();
+    await direct.getByRole('heading', {name: 'eXo editions'}).waitFor();
+    await direct.close();
     await page.setViewportSize({width: 390, height: 844});
     assert.equal(await page.locator('#system-browser').isVisible(), false);
     assert((await page.locator('.game-card').boundingBox()).y < 844);
@@ -276,7 +360,7 @@ const path = require('node:path');
     await page.locator('#correction-target-filter').fill('Luigi');
     await page.waitForResponse(response => response.url().includes('/api/systems/42/correction-targets'));
     assert.deepEqual(errors, []);
-    console.log('Browser navigation passed: categories, combined tree filters, global default, search, paging, platform scope, preserved query, correction platform.');
+    console.log('Browser navigation and almanac passed: categories, combined tree filters, global default, search, paging, platform scope, preserved query, correction platform.');
   } finally {
     if (browser) await browser.close();
     await new Promise(resolve => server.close(resolve));

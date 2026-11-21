@@ -41,6 +41,8 @@ SELECT jsonb_build_object(
         'score',score,'breakdown',breakdown,'engineGame',engine_game,'runnerVersion',runner_version,'isRomHack',is_mod,'installable',false)
         ORDER BY environment,label,edition_key) FROM editions),
     'assets',coalesce((SELECT jsonb_agg(jsonb_build_object('key',asset_key,'kind',kind,'category',category,
-        'region',region,'role',role,'label',name,'url','/related-media/'||asset_key,'sources',sources)
+        'region',region,'role',role,'label',name,'url','/related-media/'||asset_key,'sources',sources,
+        'artworkPath',CASE WHEN kind='artwork' THEN
+            'exo/'||(SELECT revision FROM catalog.exo_publication WHERE singleton)||'/'||asset_key END)
         ORDER BY kind,name,asset_key) FROM attached),'[]'::jsonb)
 ) WHERE EXISTS (SELECT FROM entries);
