@@ -1,7 +1,7 @@
 const vgmFormats = new Set([
-  "2sf", "adx", "ay", "gbs", "gsf", "gym", "hes", "hwas", "it", "kss", "med", "mini2sf", "minigsf",
+  "2sf", "adx", "ay", "gbs", "genh", "gsf", "gym", "hes", "hwas", "it", "kss", "med", "mini2sf", "minigsf",
   "minincsf", "minipsf", "miniusf", "mod", "ncsf", "nsf", "nsfe", "okt", "psf", "s3m", "sap", "sfx",
-  "sid", "sndh", "spc", "strm", "swav", "usf", "vgm", "vgz", "xm",
+  "sid", "sndh", "spc", "strm", "swav", "usf", "vgm", "vgz", "xa", "xm",
 ]);
 const vgmAudioContext = window.AudioContext || window.webkitAudioContext;
 
