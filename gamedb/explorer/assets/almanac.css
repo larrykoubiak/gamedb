@@ -227,7 +227,7 @@
 .book-panel .score { color: var(--book-green); }
 .book-panel .score.negative { color: var(--danger); }
 .book-panel :is(.winner-badge, .rank-badge) { color: var(--book-green); border-color: #a6ad8d; }
-.book-panel .correction-button, .book-panel .soundtrack-album button {
+.book-panel .correction-button {
   border: 1px solid #ac9b7b;
   border-radius: .28rem;
   background: #eee4cd;
@@ -241,7 +241,7 @@
 .book-panel details > dl { margin: .65rem 0; }
 
 .source-asset-group small { margin-left: .5rem; }
-.book-panel .source-asset-group, .book-panel .soundtrack-album {
+.book-panel .source-asset-group {
   margin: .6rem 0;
   padding: .85rem 1rem;
   border: 1px solid var(--book-rule);
@@ -249,14 +249,11 @@
   background: #faf6eb;
 }
 
-.book-panel .source-asset-group summary, .book-panel .soundtrack-album > summary { font-weight: 700; }
-.book-panel .source-asset-group ul, .book-panel .soundtrack-album ul { margin: .55rem 0 0; padding: 0; list-style: none; }
-.book-panel .source-asset-group li, .book-panel .soundtrack-album li { padding: .5rem 0; border-top: 1px solid var(--book-rule); line-height: 1.45; }
+.book-panel .source-asset-group summary { font-weight: 700; }
+.book-panel .source-asset-group ul { margin: .55rem 0 0; padding: 0; list-style: none; }
+.book-panel .source-asset-group li { padding: .5rem 0; border-top: 1px solid var(--book-rule); line-height: 1.45; }
 .book-panel .source-asset-group small { color: var(--book-muted); }
-.book-panel .soundtrack-album > details, .book-panel .soundtrack-album audio { margin-top: .75rem; }
-.book-panel .soundtrack-album audio { display: block; max-width: 100%; }
-.book-panel .soundtrack-album p { margin-top: .6rem; color: var(--book-muted); }
-.book-panel .soundtrack-album button { padding: .2rem .5rem; }
+.book-panel .soundtrack-player { position: sticky; top: .65rem; z-index: 1; }
 
 @media (max-width: 960px) {
   .almanac-main { padding: 1.35rem 1.5rem 3.5rem; }
@@ -301,7 +298,10 @@
 @media (max-width: 620px) {
   .almanac-main { padding: .7rem .85rem 2.5rem; }
   .software-book { grid-template: auto auto 1fr / minmax(0, 1fr); min-height: 27rem; }
-  .book-tabs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .book-tabs, .software-book:not([data-section="overview"]) .book-tabs {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
   .book-tabs button { grid-column: span 2; width: 100%; white-space: normal; }
   .book-tabs button:nth-last-child(-n+2) { grid-column: span 3; }
   .book-front {

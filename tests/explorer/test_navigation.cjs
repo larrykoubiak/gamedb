@@ -19,6 +19,29 @@ function vgmTone() {
   return Buffer.concat([header, commands]);
 }
 
+function wavTone() {
+  const sampleRate = 8000;
+  const frames = sampleRate * 4;
+  const header = Buffer.alloc(44);
+  const samples = Buffer.alloc(frames * 2);
+  header.write('RIFF');
+  header.writeUInt32LE(header.length + samples.length - 8, 4);
+  header.write('WAVEfmt ', 8);
+  header.writeUInt32LE(16, 16);
+  header.writeUInt16LE(1, 20);
+  header.writeUInt16LE(1, 22);
+  header.writeUInt32LE(sampleRate, 24);
+  header.writeUInt32LE(sampleRate * 2, 28);
+  header.writeUInt16LE(2, 32);
+  header.writeUInt16LE(16, 34);
+  header.write('data', 36);
+  header.writeUInt32LE(samples.length, 40);
+  for (let frame = 0; frame < frames; frame++) {
+    samples.writeInt16LE(Math.round(Math.sin(frame * Math.PI * 2 * 220 / sampleRate) * 2000), frame * 2);
+  }
+  return Buffer.concat([header, samples]);
+}
+
 (async () => {
   const requests = [];
   const images = [];
@@ -39,8 +62,10 @@ function vgmTone() {
     }],
     editions: [{key: 'edition', entryKey: 'entry', title: 'DOS Adventure', label: 'Original',
       environment: 'MS-DOS', system: 'PC Compatibles', manufacturer: 'IBM'}],
-    assets: [{kind: 'manual', label: 'Adventure Manual.pdf', url: '/related-media/manual',
-      sources: [{sourceList: 'MS-DOS'}]}],
+    assets: [
+      {kind: 'manual', label: 'Adventure Manual.pdf', url: '/related-media/manual', sources: [{sourceList: 'MS-DOS'}]},
+      {kind: 'music', label: 'Adventure Overture.wav', url: '/related-media/vgm/closing', sources: [{sourceList: 'MS-DOS'}]},
+    ],
   };
   const game = {
     softwareId: 123, softwareKey, systemId: 42, manufacturer: 'Nintendo', systemName: 'NES',
@@ -80,8 +105,15 @@ function vgmTone() {
       else if (url.pathname.endsWith('/soundtracks')) payload = [{
         title: 'Mario', collection: 'Test soundtrack collection', assets: [
           {kind: 'track', format: 'spc', name: '01.spc', title: 'Opening Theme', playable: false, url: '/related-media/vgm/spc'},
-          {kind: 'track', name: '02.mp3', playable: true, url: '/related-media/vgm/mp3'},
-          {kind: 'track', format: 'vgm', name: 'tone.vgm', title: 'Test tone', playable: false, url: '/related-media/vgm/tone'},
+          {kind: 'track', format: 'vgm', name: '02.vgm', title: 'Test tone', playable: false, url: '/related-media/vgm/tone'},
+          {kind: 'track', format: 'wav', name: '03.wav', title: 'Closing tune', playable: true, url: '/related-media/vgm/closing'},
+          {kind: 'track', format: 'wsr', name: '04.wsr', title: 'Bonus recording', playable: false, url: '/related-media/vgm/wsr'},
+          {kind: 'archive', format: '7z', name: 'Original set.7z', playable: false, url: '/related-media/vgm/archive'},
+        ],
+      }, {
+        title: 'Mario', collection: 'Alternate set', assets: [
+          {kind: 'track', format: 'sid', name: 'game.sid', title: 'Commodore tunes', subsongs: 3, playable: false,
+            url: '/related-media/vgm/sid'},
         ],
       }];
       else if (url.pathname.endsWith('/correction-targets')) payload = [];
@@ -111,6 +143,11 @@ function vgmTone() {
       vgmRequests.push(url.pathname);
       res.setHeader('Content-Type', 'application/octet-stream');
       return res.end(vgmTone());
+    }
+    if (url.pathname === '/related-media/vgm/closing') {
+      vgmRequests.push(url.pathname);
+      res.setHeader('Content-Type', 'audio/wav');
+      return res.end(wavTone());
     }
     if (url.pathname === '/favicon.ico') { res.statusCode = 404; return res.end(); }
     if (url.pathname === '/' && url.searchParams.get('exo') === sourceKey) {
@@ -168,22 +205,45 @@ function vgmTone() {
     await page.keyboard.press('Escape');
     await page.getByRole('tab', {name: 'Soundtracks'}).click();
     await page.waitForURL('**#soundtracks');
-    await page.getByText('Mario · Test soundtrack collection', {exact: true}).click();
-    const soundtrack = page.getByRole('link', {name: 'Opening Theme'});
+    await page.getByRole('heading', {name: 'Playlist'}).waitFor();
+    const soundtrack = page.getByRole('link', {name: 'Download 01.spc'});
     await soundtrack.waitFor();
     assert.equal(await soundtrack.getAttribute('href'), '/related-media/vgm/spc');
     assert.equal(await soundtrack.getAttribute('download'), '');
-    await page.getByRole('button', {name: 'Play 02.mp3'}).waitFor();
+    await page.getByRole('button', {name: 'Play Closing tune'}).waitFor();
+    assert.equal(await page.getByRole('button', {name: 'Play Bonus recording'}).count(), 0);
+    await page.getByRole('link', {name: 'Download 04.wsr'}).waitFor();
+    await page.getByText('Set downloads', {exact: true}).click();
+    assert.equal(await page.getByRole('link', {name: 'Original set.7z'}).getAttribute('download'), '');
+    await page.getByText('Set downloads', {exact: true}).click();
     assert.equal(vgmRequests.length, 0);
     await page.getByRole('button', {name: 'Play Opening Theme', exact: true}).click();
     await page.getByText('Could not play Opening Theme. A soundtrack file could not be fetched.').waitFor();
     assert.deepEqual(vgmRequests, ['/related-media/vgm/spc']);
     await page.getByRole('button', {name: 'Play Opening Theme', exact: true}).waitFor();
     await page.getByRole('button', {name: 'Play Test tone', exact: true}).click();
-    await page.getByText('Playing Test tone', {exact: true}).waitFor();
-    await page.getByRole('button', {name: 'Stop Test tone', exact: true}).click();
-    await page.getByRole('button', {name: 'Play Test tone', exact: true}).waitFor();
-    assert.deepEqual(vgmRequests, ['/related-media/vgm/spc', '/related-media/vgm/tone']);
+    const player = page.getByRole('region', {name: 'Soundtrack player'});
+    await player.getByText('Playing', {exact: true}).waitFor();
+    await player.getByRole('button', {name: 'Pause', exact: true}).click();
+    await player.getByText('Paused', {exact: true}).waitFor();
+    const position = player.getByRole('slider', {name: 'Playback position'});
+    assert(await position.isEnabled());
+    await position.evaluate(input => {
+      input.value = '1.5';
+      input.dispatchEvent(new Event('change', {bubbles: true}));
+    });
+    assert.equal(await position.inputValue(), '1.5');
+    await player.getByRole('button', {name: 'Play', exact: true}).click();
+    await player.getByText('Closing tune', {exact: true}).waitFor();
+    await player.getByText('Playing', {exact: true}).waitFor();
+    assert(vgmRequests.includes('/related-media/vgm/closing'));
+    assert.equal(vgmRequests.filter(url => url.endsWith('/tone')).length, 1);
+    const sources = page.getByRole('combobox', {name: 'Soundtrack source'});
+    await sources.selectOption('1');
+    await page.getByRole('button', {name: 'Play Commodore tunes'}).waitFor();
+    assert.equal(await player.getByRole('combobox', {name: 'Subtune'}).locator('option').count(), 4);
+    await player.getByRole('button', {name: 'Next track'}).click();
+    assert.equal(await player.getByRole('combobox', {name: 'Subtune'}).inputValue(), '2');
     await page.setViewportSize({width: 390, height: 844});
     await page.waitForFunction(() => document.querySelector('.book-tabs').getAttribute('aria-orientation') === 'horizontal');
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
@@ -201,7 +261,7 @@ function vgmTone() {
     await direct.goto(origin + softwarePath + '#soundtracks');
     await direct.getByRole('tab', {name: 'Soundtracks', selected: true}).waitFor();
     await direct.reload();
-    await direct.getByText('Mario · Test soundtrack collection', {exact: true}).waitFor();
+    await direct.getByRole('button', {name: 'Play Opening Theme'}).waitFor();
     assert.equal(catalogRequests(), beforeDirect);
     await direct.goto(origin + '/?exo=' + sourceKey);
     await direct.waitForURL('**' + sourcePath);
@@ -212,6 +272,8 @@ function vgmTone() {
     assert.equal(await manual.getAttribute('href'), '/related-media/manual');
     await direct.getByRole('tab', {name: 'Releases'}).click();
     await direct.getByRole('heading', {name: 'eXo editions'}).waitFor();
+    await direct.getByRole('tab', {name: 'Soundtracks'}).click();
+    await direct.getByRole('button', {name: 'Play Adventure Overture'}).waitFor();
     await direct.close();
     await page.setViewportSize({width: 390, height: 844});
     assert.equal(await page.locator('#system-browser').isVisible(), false);

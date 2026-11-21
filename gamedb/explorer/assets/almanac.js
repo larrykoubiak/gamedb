@@ -129,8 +129,10 @@ async function sectionContent(page, section) {
   if (section === "artwork") {
     renderArtworkGallery(content, game.media, game.title, attachments.filter(asset => asset.kind === "artwork"));
   } else if (section === "soundtracks") {
-    renderSoundtracks(content, music.value || []);
-    renderSourceAssets(content, attachments.filter(asset => asset.kind === "music"));
+    const albums = [...(music.value || [])];
+    const sourceMusic = attachments.filter(asset => asset.kind === "music");
+    if (sourceMusic.length) albums.push(sourceMusicAlbum(game.title, sourceMusic));
+    renderSoundtracks(content, albums);
   } else {
     renderSourceAssets(content, attachments.filter(asset => asset.kind !== "artwork" && asset.kind !== "music"));
   }

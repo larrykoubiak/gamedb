@@ -215,9 +215,11 @@ path when running Explorer directly. Matched games then show their music on the
 **Soundtracks** tab in the Almanac. The player handles browser audio and
 emulates SPC, SID, PSF, NSF, GBS, GSF, 2SF, NCSF, USF, HES, SNDH, VGM and common
 Amiga tracker formats in the browser. ZXTune's bundled vgmstream decoder plays
-GENH and PlayStation XA streams. The song picker selects a tune within a GBS
-file. Tracks can load shared libraries from the same soundtrack.
-Download links provide the original tracks and archives.
+GENH and PlayStation XA streams. The Soundtracks tab shows a playlist with a
+shared player and a source selector for games with several sets. The player
+can move between subtunes in GBS, NSF, SID and SNDH. SNDH subtunes appear when
+the decoder opens the file. Tracks can load shared libraries from the same
+soundtrack. Download links provide the original tracks and archives.
 Downloads follow the Explorer's existing public related-media access model.
 
 ## Inspecting names

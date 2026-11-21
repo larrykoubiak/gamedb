@@ -53,6 +53,7 @@ VGM_DECODER_PREFIX = "/vgm/zxtune-f59403a-2/"
 SNDH_DECODER_PREFIX = "/vgm/ym2149-0.8.1/"
 VGM_STATIC_TYPES = {
     "/vgm/player.js": "text/javascript; charset=utf-8",
+    "/vgm/soundtracks.js": "text/javascript; charset=utf-8",
     "/vgm/decoder.mjs": "text/javascript; charset=utf-8",
     "/vgm/credits.txt": "text/plain; charset=utf-8",
     VGM_DECODER_PREFIX + "zxtune.mjs": "text/javascript; charset=utf-8",
