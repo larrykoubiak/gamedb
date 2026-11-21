@@ -10,7 +10,7 @@ from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.config import PROJECT_ROOT
 
 from .inventory import C64
-from .joshw import COLLECTION as JOSHW_COLLECTION, DEFAULT_SYSTEMS, title_revision
+from .joshw import COLLECTION as JOSHW_COLLECTION, supports_version, title_revision
 from .matching import (
     EXTENDED_SYSTEMS,
     YEAR,
@@ -129,17 +129,8 @@ def release_versions(connection, software_ids):
     versions = defaultdict(set)
     if software_ids:
         for ident, kind, value in connection.execute(RELEASE_VERSIONS, {"software_ids": sorted(software_ids)}):
-            versions[ident].add((kind, value.casefold().removeprefix("v")))
+            versions[ident].add((kind, value))
     return versions
-
-
-def supports_version(system, version, facts):
-    if ("version", version) in facts or ("revision", version) in facts:
-        return True
-    # USF's v1.x describes the Nintendo 64 ROM revision; catalog DATs also name it Rev x.
-    if system == DEFAULT_SYSTEMS["usf"] and version.startswith("1.") and version.count(".") == 1:
-        return ("revision", version.partition(".")[2]) in facts
-    return False
 
 
 def resolve(connection, soundtracks):

@@ -223,7 +223,9 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return serve_vgm(self, vgm_asset[1])
             soundtrack = SOFTWARE_VGM.fullmatch(parsed.path)
             if soundtrack:
-                items = self.server.repository.vgm_soundtracks(int(soundtrack[1])) if self.server.vgm_root else []
+                items = self.server.repository.vgm_soundtracks(
+                    int(soundtrack[1]), _hide_rom_hacks(query)
+                ) if self.server.vgm_root else []
                 return self._json_response(items)
             attachment = re.fullmatch(r"/related-media/([0-9a-f]{64})", parsed.path)
             if attachment:

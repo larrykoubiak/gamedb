@@ -14,7 +14,7 @@ from time import sleep
 from urllib.parse import quote
 from urllib.request import urlopen
 
-from .joshw import COLLECTION, DOMAINS, INDEX_URL, parse_path, platform
+from .joshw import COLLECTION, DOMAINS, INDEX_URL, parse_path, platform, superseded_sources
 
 
 def packages(index):
@@ -41,6 +41,9 @@ def packages(index):
         # treating it as UTC because the index carries no timezone.
         revision = int(datetime.fromisoformat(row["md"]).replace(tzinfo=timezone.utc).timestamp())
         buckets[domain].append((path, size, revision))
+    for entries in buckets.values():
+        superseded = superseded_sources(path.as_posix() for path, _, _ in entries)
+        entries[:] = [entry for entry in entries if entry[0].as_posix() not in superseded]
     return buckets
 
 

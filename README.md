@@ -198,7 +198,8 @@ Refresh the cartridge and handheld sets from the HCS64 index with
 `python -m gamedb.vgm.fetch_joshw --root "/mnt/synology/music/VGM/By Format"`.
 Add `--download` to save the packages under `JoshW/` in that library. Use
 `--bucket` to refresh a single index subdomain, such as `spc`. Packages with
-the same size and index revision are reused. The VGM importer reads the full
+the same size and index revision are reused. Downloads prefer a `[fixed]`
+archive when both copies share a version. The VGM importer reads the full
 package names and platform tags, then lists tracks and shared libraries from
 the 7-Zip archives. Place individual JoshW Amiga or CD32 archives under
 `JoshW/cdi/amiga/` with their source filenames. The importer can link regional
@@ -220,8 +221,10 @@ path when running Explorer directly. Matched games then show their music on the
 emulates SPC, SID, PSF, NSF, GBS, GSF, 2SF, NCSF, USF, HES, SNDH, VGM and common
 Amiga tracker formats in the browser. ZXTune's bundled vgmstream decoder plays
 GENH and PlayStation XA streams. The Soundtracks tab shows a playlist with a
-shared player and a source selector for games with several sets. The player
-can move between subtunes in GBS, NSF, SID and SNDH. SNDH subtunes appear when
+shared player and a source selector for games with several sets. The tab
+shows the soundtrack for the preferred release when it has a matching version
+and prefers the fixed copy when JoshW publishes a correction. The player can
+move between subtunes in GBS, NSF, SID and SNDH. SNDH subtunes appear when
 the decoder opens the file. Tracks can load shared libraries from the same
 soundtrack. Download links provide the original tracks and archives.
 Downloads follow the Explorer's existing public related-media access model.

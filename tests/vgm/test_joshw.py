@@ -41,6 +41,12 @@ class JoshWTests(unittest.TestCase):
             "cdi": ["Defender 2000 (1996)(Atari)[Jaguar].7z"],
         })
 
+    def test_fetch_uses_the_fixed_copy_of_each_version(self):
+        names = [f"z/Example (v{version}){fix} (1998)(Nintendo)[N64].7z"
+                 for version, fix in (("1.0", ""), ("1.0", " [fixed]"), ("1.2", ""))]
+        index = [{"sd": "usf", "nm": name, "sz": 256, "md": "2026-11-17 10:47"} for name in names]
+        self.assertEqual([str(path) for path, _, _ in packages(index)["usf"]], names[1:])
+
     def test_versioned_title_matches_both_catalog_names_only_with_revision_evidence(self):
         system = DEFAULT_SYSTEMS["usf"]
         english = "Legend of Zelda, The - Ocarina of Time"

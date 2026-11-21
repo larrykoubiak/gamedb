@@ -829,7 +829,7 @@ async function loadReleaseDetails(game, container) {
       return;
     }
     const soundtrackRequest = state.vgmEnabled
-      ? requestJson(`/api/software/${game.softwareId}/soundtracks`).catch(() => null)
+      ? requestJson(browseUrl(`/api/software/${game.softwareId}/soundtracks`)).catch(() => null)
       : Promise.resolve([]);
     const releaseKey = browseUrl(`/api/software/${game.softwareId}/releases`);
     const factsKey = browseUrl(`/api/software/${game.softwareId}/facts`);

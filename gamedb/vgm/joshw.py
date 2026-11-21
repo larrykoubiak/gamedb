@@ -28,6 +28,7 @@ VARIANTS = re.compile(r"(?:\s*\((?:conv|[a-d]|SGB|SMS|SG-1000|64DD|DSiWare|Repai
 EDITION = re.compile(r"\s*\((?:alpha|beta|demo|milestone|preview|prototype|sample|trial|unreleased)\b[^()]*\)$", re.IGNORECASE)
 REVISION = re.compile(r"\s*\(v(\d+(?:\.\d+)+)\)$", re.IGNORECASE)
 AMIGA_DISC = re.compile(r"\((cd32|cdtv)\)", re.IGNORECASE)
+FIX_LABEL = re.compile(r"\s+\[fixed\]", re.IGNORECASE)
 PLATFORM_NOTES = {
     "spc": {"snes", "snsf", "sgb"}, "nsf": {"nes", "fds", "vs", "arcade"},
     "gbs": {"gb", "gbc", "sgb"}, "usf": {"n64", "64dd", "n64dd"}, "gsf": {"gba"},
@@ -107,6 +108,21 @@ def title_revision(title):
     if version := REVISION.search(title):
         return title[:version.start()], version[1]
     return title, None
+
+
+def superseded_sources(names):
+    """Find the exact source filenames replaced by an upstream fix."""
+    return {original for name in names if (original := FIX_LABEL.sub("", name)) != name}
+
+
+def supports_version(system, version, facts):
+    facts = {(kind, value.strip().casefold().removeprefix("v")) for kind, value in facts}
+    if ("version", version) in facts or ("revision", version) in facts:
+        return True
+    # USF labels the Nintendo 64 ROM revision v1.x. Catalog DATs also call it Rev x.
+    if system == DEFAULT_SYSTEMS["usf"] and version.startswith("1.") and version.count(".") == 1:
+        return ("revision", version.partition(".")[2]) in facts
+    return False
 
 
 def parse_path(value):

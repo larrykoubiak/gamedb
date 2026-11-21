@@ -22,6 +22,7 @@ from gamedb.explorer.repository import (
     CatalogRepository,
     SqlTemplate,
     quote_sql_text,
+    select_soundtracks,
 )
 
 
@@ -80,6 +81,37 @@ class ExplorerTests(unittest.TestCase):
         self.assertIn("'systemId', items.system_id", query)
         self.assertIn("'systemName', items.system_name", query)
         self.assertIn("user_account.username = 'default'", query)
+
+    def test_soundtracks_use_the_preferred_release_and_fixed_archive(self):
+        def rip(version, fix="", assets=None):
+            return {
+                "title": f"Ocarina of Time (v{version}){fix}", "collection": "JoshW",
+                "sourceName": f"usf/o/Ocarina of Time (v{version}){fix} (1998)[N64]",
+                "assets": assets if assets is not None else [{"name": "Title Theme.miniusf"}],
+            }
+
+        original = rip("1.0")
+        fixed = rip("1.0", " [fixed]")
+        later = rip("1.2")
+        later_fixed = rip("1.2", " [fixed]")
+        response = {
+            "platform": ["Nintendo", "Nintendo 64"], "releaseVersions": [["revision", "2"]],
+            "albums": [fixed, later_fixed, original, later],
+        }
+        client = Mock()
+        client.query.side_effect = [True, response]
+        repository = CatalogRepository("default", client)
+        soundtracks = repository.vgm_soundtracks(42, hide_rom_hacks=True)
+        self.assertEqual(soundtracks, [{key: later_fixed[key] for key in ("title", "collection", "assets")}])
+        self.assertIn("FROM app.user_preferred_release_without_hacks", client.query.call_args.args[0])
+        self.assertIn("account.username = 'default'", client.query.call_args.args[0])
+
+        platform = tuple(response["platform"])
+        fallback = select_soundtracks(platform, [("revision", "1")], response["albums"])
+        self.assertEqual([album["title"] for album in fallback], [fixed["title"], later_fixed["title"]])
+        unavailable = rip("1.2", " [fixed]", assets=[])
+        fallback = select_soundtracks(platform, [("revision", "2")], [fixed, unavailable, later])
+        self.assertEqual([album["title"] for album in fallback], [later["title"]])
 
     def test_media_paths_stay_below_the_thumbnail_root(self):
         with tempfile.TemporaryDirectory() as directory:

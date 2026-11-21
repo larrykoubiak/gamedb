@@ -10,6 +10,7 @@ import subprocess
 from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.config import PROJECT_ROOT
 from gamedb.explorer.cache import JsonResponseCache
+from gamedb.vgm.joshw import COLLECTION as JOSHW_COLLECTION, superseded_sources, supports_version, title_revision
 
 
 QUERY_DIRECTORY = PROJECT_ROOT / "sql" / "queries" / "explorer"
@@ -69,6 +70,21 @@ def with_source_facts(native, fields, source_list, revision, prefer_source=False
 
 def preferred_view(hide_rom_hacks: bool) -> str:
     return "app.user_preferred_release_without_hacks" if hide_rom_hacks else "app.user_preferred_release"
+
+
+def select_soundtracks(platform, release_versions, albums):
+    """Keep corrected copies and select music for the preferred release when available."""
+    available = [album for album in albums if album["assets"]]
+    superseded = superseded_sources(album["sourceName"] for album in available
+                                    if album["collection"] == JOSHW_COLLECTION)
+    available = [album for album in available if album["collection"] != JOSHW_COLLECTION
+                 or album["sourceName"] not in superseded]
+    matching = []
+    for album in available:
+        _, version = title_revision(album["title"])
+        if version and supports_version(platform, version, release_versions):
+            matching.append(album)
+    return [{field: album[field] for field in ("title", "collection", "assets")} for album in matching or available]
 
 
 def sql_integer(value: int, name: str, minimum: int = 0) -> int:
@@ -424,7 +440,7 @@ class CatalogRepository:
         return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "exo_location.sql").render(
             asset_key=quote_sql_text(key)))
 
-    def vgm_soundtracks(self, software_id: int):
+    def vgm_soundtracks(self, software_id: int, hide_rom_hacks=False):
         has_additional_targets = self._read_listing("""
             SELECT CASE WHEN to_regclass('vgm.soundtrack') IS NULL THEN 'null'::jsonb
                    ELSE to_jsonb(EXISTS (
@@ -435,10 +451,12 @@ class CatalogRepository:
         if has_additional_targets is None:
             return []
         additional_targets = "OR soundtrack.additional_target_keys @> ARRAY[target.key]" if has_additional_targets else ""
-        return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "vgm_soundtracks.sql").render(
+        payload = self._read_listing(SqlTemplate(QUERY_DIRECTORY / "vgm_soundtracks.sql").render(
             software_id=sql_integer(software_id, "software_id", 1), software_key_sql=SOFTWARE_KEY_SQL,
-            additional_targets_sql=additional_targets,
+            additional_targets_sql=additional_targets, preferred_view=preferred_view(hide_rom_hacks),
+            username=quote_sql_text(self.username),
         ))
+        return select_soundtracks(tuple(payload["platform"]), payload["releaseVersions"], payload["albums"]) if payload else []
 
     def vgm_asset(self, key):
         if not re.fullmatch(r"[a-f0-9]{64}", key):
