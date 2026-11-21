@@ -49,11 +49,44 @@ def read_notes(raw):
         text = raw.decode("cp1252", errors="replace")
     lines = text.splitlines()
     fields = {}
+    short_fields = {"type": "source type", "title": "source title"}
+    for line in lines:
+        field, separator, value = line.partition(":")
+        field = field.strip().casefold()
+        key = short_fields.get(field, field)
+        if separator and key in NOTE_FIELDS:
+            fields.setdefault(key, value.strip())
     for field, value in zip(lines, lines[1:]):
         field = field.strip().casefold()
         if field in NOTE_FIELDS:
             fields.setdefault(field, value.strip())
     return fields
+
+
+def note_fields(root, asset):
+    with open_vgm_location(root, asset) as stream:
+        return read_notes(stream.read(64 * 1024))
+
+
+def archived_game_alias(root, album):
+    """Use the rip's own shorter game title when its CD machine agrees."""
+    for asset in album.assets:
+        if asset["format"] != "txt" or not asset.get("archive_format"):
+            continue
+        try:
+            info = note_fields(root, asset)
+        except (OSError, ValueError):
+            continue
+        title = unicodedata.normalize("NFKC", info.get("source title", ""))
+        if info.get("source type", "").casefold() != "game":
+            continue
+        markers = set(MACHINE_MARKER.findall(title.casefold()))
+        if len(markers) != 1 or AMIGA_PLATFORMS[next(iter(markers))] != album.system:
+            continue
+        short = DISC_SUFFIX.sub("", title).strip()
+        if short and album.title.casefold().startswith((f"{short.casefold()} - ", f"{short.casefold()}: ")):
+            return short, asset["member_name"]
+    return None
 
 
 def apply_game_notes(root, album):
@@ -62,8 +95,7 @@ def apply_game_notes(root, album):
     if notes is None:
         return
     try:
-        with open_vgm_location(root, notes) as stream:
-            info = read_notes(stream.read(64 * 1024))
+        info = note_fields(root, notes)
     except (OSError, ValueError):
         album.issues.append("UnExoticA source notes could not be read")
         return

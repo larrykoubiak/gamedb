@@ -1,13 +1,17 @@
 import tempfile
 import unittest
+from collections import defaultdict
 from pathlib import Path
+from unittest.mock import patch
 
 from libarchive import file_writer
 
 from gamedb.vgm.archives import open_vgm_location
 from gamedb.vgm.fetch_joshw import packages
-from gamedb.vgm.inventory import scan
-from gamedb.vgm.joshw import soundtrack_name
+from gamedb.vgm.importer import resolve
+from gamedb.vgm.inventory import Soundtrack, scan
+from gamedb.vgm.joshw import DEFAULT_SYSTEMS, soundtrack_name
+from gamedb.vgm.matching import TitleIndex
 from gamedb.vgm.tags import add_track_tags
 
 
@@ -26,6 +30,7 @@ class JoshWTests(unittest.TestCase):
                 ("kss", "MSX/a/Aleste.7z", {}),
                 ("kss", "Master System/a/After Burner (SMS)(1987)(Sega).kss", {}),
                 ("cdi", "atari_st/c/Example [AtariST].7z", {}),
+                ("cdi", "amiga/h/Heimdall 2 (CD32) (1994)(Core Design)[Amiga].7z", {}),
                 ("cdi", "jaguar/d/Defender 2000 (1996)(Atari)[Jaguar].7z", {}),
                 ("spc", "h/Example (1994)(Data East)[SNES][old].7z", {"old": True}),
             )
@@ -35,6 +40,46 @@ class JoshWTests(unittest.TestCase):
             "kss": ["After Burner (SMS)(1987)(Sega).kss"],
             "cdi": ["Defender 2000 (1996)(Atari)[Jaguar].7z"],
         })
+
+    def test_versioned_title_matches_both_catalog_names_only_with_revision_evidence(self):
+        system = DEFAULT_SYSTEMS["usf"]
+        english = "Legend of Zelda, The - Ocarina of Time"
+        japanese = "Zelda no Densetsu - Toki no Ocarina"
+        title, aliases = soundtrack_name("usf", Path(
+            f"{english} [{japanese}] (v1.2) [fixed] (1998-11-21)(Nintendo)[N64].7z"
+        ))
+        self.assertEqual((title, aliases), (f"{english} (v1.2) [fixed]", (japanese,)))
+        album = Soundtrack("set", "JoshW", "ocarina", title, system, aliases)
+        index = TitleIndex([(system, name) for name in (english, japanese)], spelling_systems={system})
+        for ident, name in enumerate((english, japanese, f"{english} - Master Quest"), 1):
+            index.add(system, {"id": ident, "name": name, "display_name": name, "target_key": str(ident)})
+
+        versions = defaultdict(set, {1: {("revision", "2")}, 2: {("revision", "0")}})
+        with (patch("gamedb.vgm.importer.catalog_index", return_value=index),
+              patch("gamedb.vgm.importer.release_versions", return_value=versions)):
+            row, = resolve(None, [album])
+            self.assertEqual((row["target_key"], row["additional_target_keys"]), ("1", []))
+            versions[2].add(("revision", "2"))
+            row, = resolve(None, [album])
+            self.assertEqual((row["target_key"], row["additional_target_keys"]), ("1", ["2"]))
+            self.assertEqual(row["match_evidence"]["joshwVersion"], "1.2")
+
+    def test_joshw_cd32_archive_keeps_disc_audio_modules_and_short_title(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "JoshW/cdi/amiga/h/Heimdall 2 - Into the Hall of Worlds (CD32)(1994)[Amiga].7z"
+            source.parent.mkdir(parents=True)
+            tracks = {"02_title.ogg": b"disc audio", "mod.title": b"tracked intro",
+                      "archive.txt": "type: Game\ntitle: Heimdall 2 (CD³²)\n".encode("cp1252")}
+            with file_writer(str(source), "7zip") as archive:
+                for name, data in tracks.items():
+                    archive.add_file_from_memory(name, len(data), data)
+            album, = scan(root)
+            self.assertEqual(album.system, ("Commodore", "Amiga CD32"))
+            self.assertEqual(album.title, "Heimdall 2 - Into the Hall of Worlds")
+            self.assertEqual(album.source_evidence["joshwDiscTitle"], "Heimdall 2")
+            self.assertEqual(album.aliases, ("Heimdall 2",))
+            self.assertEqual([asset["format"] for asset in album.assets if asset["kind"] == "track"], ["ogg", "mod"])
 
     def test_7zip_album_keeps_title_and_shared_2sf_library(self):
         with tempfile.TemporaryDirectory() as directory:

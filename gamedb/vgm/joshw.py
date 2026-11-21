@@ -26,18 +26,20 @@ TRAILING_TAGS = re.compile(r"(?:\s*\[[^\[\]]+\])+$")
 RELEASE_DATE = re.compile(r"\s*\((?:19|20)[0-9x]{2}(?:-\d{1,2}){0,2}\)", re.IGNORECASE)
 VARIANTS = re.compile(r"(?:\s*\((?:conv|[a-d]|SGB|SMS|SG-1000|64DD|DSiWare|Repaired)\))+$", re.IGNORECASE)
 EDITION = re.compile(r"\s*\((?:alpha|beta|demo|milestone|preview|prototype|sample|trial|unreleased)\b[^()]*\)$", re.IGNORECASE)
+REVISION = re.compile(r"\s*\(v(\d+(?:\.\d+)+)\)$", re.IGNORECASE)
+AMIGA_DISC = re.compile(r"\((cd32|cdtv)\)", re.IGNORECASE)
 PLATFORM_NOTES = {
     "spc": {"snes", "snsf", "sgb"}, "nsf": {"nes", "fds", "vs", "arcade"},
     "gbs": {"gb", "gbc", "sgb"}, "usf": {"n64", "64dd", "n64dd"}, "gsf": {"gba"},
     "2sf": {"nds", "dsi", "dsiware", "ncsf"}, "smd": {*CARTRIDGES["smd"], "scd"},
     "hes": {*CARTRIDGES["hes"], "tcd", "pc-fx", "pc-fxga"}, "wsr": set(CARTRIDGES["wsr"]),
-    "kss": {"gg", "sms", "sg-1000"}, "cdi": {"jaguar"},
+    "kss": {"gg", "sms", "sg-1000"}, "cdi": {"jaguar", "amiga", "cd32", "cdtv"},
 }
-OTHER_NOTES = {"a", "ab", "alt", "en", "eu", "jp", "mod", "rr", "tagged", "us", "ut", "z0", "z1"}
+OTHER_NOTES = {"a", "ab", "alt", "en", "eu", "fixed", "jp", "mod", "rr", "tagged", "us", "ut", "z0", "z1"}
 
 
 def platform(domain, path):
-    """Select the non-optical console and handheld collections."""
+    """Read the machine from a supported archive's platform tags and folder."""
     stem = path.stem.casefold()
     tags = {tag.casefold() for tag in BRACKET.findall(path.stem)}
     if ((domain == "smd" and "scd" in tags)
@@ -52,6 +54,12 @@ def platform(domain, path):
             return "Sega", "SG-1000"
         return KSS_SYSTEMS.get(path.parts[0])
     if domain == "cdi":
+        if path.parts[0] == "amiga" and "amiga" in tags:
+            discs = (tags & {"cd32", "cdtv"}) | set(AMIGA_DISC.findall(stem))
+            if len(discs) > 1:
+                return None
+            disc = next(iter(discs), "")
+            return "Commodore", f"Amiga {disc.upper()}" if disc else "Amiga"
         return ("Atari", "Jaguar") if path.parts[0] == "jaguar" and "jaguar" in tags else None
     if domain == "gbs" and "gbc" in tags:
         return "Nintendo", "Game Boy Color"
@@ -84,9 +92,21 @@ def soundtrack_name(domain, path):
     aliases = tuple(value for tag in BRACKET.findall(label) if (value := tag.strip()) and value.casefold() not in notes)
     title = " ".join(BRACKET.sub("", label).split())
     title = VARIANTS.sub("", title).strip() or stem
+    if domain == "cdi":
+        title = AMIGA_DISC.sub("", title).strip()
     if edition := EDITION.search(title):
         aliases = tuple(alias if EDITION.search(alias) else f"{alias} {edition[0].strip()}" for alias in aliases)
+    if "fixed" in {tag.casefold() for tag in BRACKET.findall(stem)}:
+        title += " [fixed]"
     return title, aliases
+
+
+def title_revision(title):
+    """Separate a rip label and explicit version from the full game title."""
+    title = title.removesuffix(" [fixed]")
+    if version := REVISION.search(title):
+        return title[:version.start()], version[1]
+    return title, None
 
 
 def parse_path(value):

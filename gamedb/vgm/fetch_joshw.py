@@ -25,6 +25,8 @@ def packages(index):
         if domain not in DOMAINS or row.get("old"):
             continue
         path = parse_path(name)
+        if domain == "cdi" and path.parts[0] != "jaguar":
+            continue
         if not platform(domain, path):
             continue
         if path.suffix.casefold() not in {".7z", ".zip", ".gbs", ".mgb", ".sgc", ".kss", ".m3u"}:

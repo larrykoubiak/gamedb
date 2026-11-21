@@ -2,13 +2,14 @@ import tempfile
 import unittest
 from pathlib import Path
 from struct import pack, pack_into
+from unittest.mock import patch
 from zipfile import ZipFile
 
 from gamedb.vgm.amiga import AMIGA_CD32
 from gamedb.vgm.archives import open_vgm_location
 from gamedb.vgm.importer import resolve
-from gamedb.vgm.inventory import C64, GB, GBC, SNES, ST, identify, scan
-from gamedb.vgm.matching import match_sid, psf_album, reviewed_titles, sid_claim
+from gamedb.vgm.inventory import C64, GB, GBC, SNES, ST, Soundtrack, identify, scan
+from gamedb.vgm.matching import TitleIndex, match_sid, psf_album, reviewed_titles, sid_claim
 from gamedb.vgm.tags import read_tags
 
 
@@ -183,6 +184,17 @@ class InventoryTests(unittest.TestCase):
         self.assertEqual(match_sid(hits, claim, credits), (1, "sid_year_and_publisher"))
         self.assertEqual(match_sid(hits, claim, {}), (None, None))
         self.assertEqual(match_sid({2: {}}, claim, credits), (None, None))
+
+    def test_reviewed_hvsc_relocation_can_keep_the_existing_game_link(self):
+        title = "Old Tower"
+        path = "C64Music/MUSICIANS/N/Nikitin_Oleg/Old_Tower"
+        album = Soundtrack("set", "C64Music", path, title, C64, review_only=True)
+        candidates = TitleIndex([(C64, title)])
+        candidates.add(C64, {"id": 1, "name": title, "display_name": title, "target_key": "old-tower"})
+        with patch("gamedb.vgm.importer.catalog_index", return_value=candidates):
+            row, = resolve(None, [album])
+        self.assertEqual(row["target_key"], "old-tower")
+        self.assertEqual(row["match_evidence"]["basis"], "reviewed_title")
 
     def test_psf_game_tag_preserves_trial_title_and_decodes_japanese(self):
         with tempfile.TemporaryDirectory() as directory:

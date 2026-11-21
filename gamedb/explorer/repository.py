@@ -425,10 +425,19 @@ class CatalogRepository:
             asset_key=quote_sql_text(key)))
 
     def vgm_soundtracks(self, software_id: int):
-        if not self._read_listing("SELECT to_jsonb(to_regclass('vgm.soundtrack') IS NOT NULL)"):
+        has_additional_targets = self._read_listing("""
+            SELECT CASE WHEN to_regclass('vgm.soundtrack') IS NULL THEN 'null'::jsonb
+                   ELSE to_jsonb(EXISTS (
+                       SELECT FROM pg_attribute WHERE attrelid = to_regclass('vgm.soundtrack')
+                       AND attname = 'additional_target_keys' AND NOT attisdropped
+                   )) END
+        """)
+        if has_additional_targets is None:
             return []
+        additional_targets = "OR soundtrack.additional_target_keys @> ARRAY[target.key]" if has_additional_targets else ""
         return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "vgm_soundtracks.sql").render(
             software_id=sql_integer(software_id, "software_id", 1), software_key_sql=SOFTWARE_KEY_SQL,
+            additional_targets_sql=additional_targets,
         ))
 
     def vgm_asset(self, key):

@@ -9,8 +9,10 @@ SELECT coalesce(jsonb_agg(jsonb_build_object(
     'title', soundtrack.title,
     'collection', soundtrack.collection,
     'assets', assets.items
-) ORDER BY (soundtrack.collection = 'JoshW') DESC, soundtrack.collection, soundtrack.source_name, soundtrack.key), '[]')
+) ORDER BY (soundtrack.collection = 'JoshW') DESC, (soundtrack.title LIKE '% [fixed]') DESC,
+    soundtrack.collection, soundtrack.source_name, soundtrack.key), '[]')
 FROM target JOIN vgm.soundtrack soundtrack ON soundtrack.target_key = target.key
+    __ADDITIONAL_TARGETS_SQL__
 CROSS JOIN LATERAL (
     SELECT jsonb_agg(jsonb_build_object(
         'name', asset.detail->'name', 'format', asset.detail->'format',

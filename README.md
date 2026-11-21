@@ -200,7 +200,11 @@ Add `--download` to save the packages under `JoshW/` in that library. Use
 `--bucket` to refresh a single index subdomain, such as `spc`. Packages with
 the same size and index revision are reused. The VGM importer reads the full
 package names and platform tags, then lists tracks and shared libraries from
-the 7-Zip archives. Ambiguous titles stay in the matching report.
+the 7-Zip archives. Place individual JoshW Amiga or CD32 archives under
+`JoshW/cdi/amiga/` with their source filenames. The importer can link regional
+names when the catalog supports the same soundtrack version, and disc titles
+when a rip's notes confirm the name and platform. Ambiguous titles stay in
+the matching report.
 
 Add `--publish` to atomically replace the VGM inventory. In Compose the catalog
 builder sees the share at `/mnt/vgm`.

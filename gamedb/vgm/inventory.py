@@ -12,7 +12,7 @@ from libarchive.exception import ArchiveError
 
 from gamedb.launchbox.matching import literal_title_key
 
-from .amiga import AMIGA, apply_game_notes, module_format
+from .amiga import AMIGA, AMIGA_CD32, AMIGA_CDTV, apply_game_notes, archived_game_alias, module_format
 from .archives import members as archive_members, safe_member
 from .joshw import COLLECTION as JOSHW_COLLECTION, platform as joshw_platform, soundtrack_name
 
@@ -233,7 +233,8 @@ def tracks_for_set(root, album):
             elif asset["format"] == "7z" and album.collection == "GBS":
                 tracks = list(packed_tracks(root, asset, formats={".gbs", ".m3u", ".txt"}))
             elif asset["format"] == "7z" and album.collection == JOSHW_COLLECTION:
-                tracks = list(packed_tracks(root, asset, formats=formats))
+                amiga = album.system in {AMIGA, AMIGA_CD32, AMIGA_CDTV}
+                tracks = list(packed_tracks(root, asset, amiga=amiga, formats=None if amiga else formats))
             else:
                 continue
         except (BadZipFile, ArchiveError):
@@ -300,6 +301,10 @@ def scan(root: Path) -> list[Soundtrack]:
         if soundtrack.collection == JOSHW_COLLECTION:
             package = next((asset for asset in assets if asset["kind"] == "archive"), assets[0])
             soundtrack.source_evidence = {"joshwPath": package["source_path"].partition("/")[2]}
+            if soundtrack.system in {AMIGA_CD32, AMIGA_CDTV} and (alias := archived_game_alias(root, soundtrack)):
+                title, entry = alias
+                soundtrack.aliases = tuple(dict.fromkeys((*soundtrack.aliases, title)))
+                soundtrack.source_evidence.update(joshwDiscTitle=title, joshwDiscNotes=entry)
         if (soundtrack.collection == "UnExotica" and soundtrack.system == AMIGA
                 and any(asset.get("archive_format") == "lha" for asset in assets)):
             apply_game_notes(root, soundtrack)

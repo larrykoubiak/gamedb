@@ -10,7 +10,7 @@ from gamedb.launchbox.matching import title_key
 
 from .amiga import AMIGA, AMIGA_CD32, AMIGA_CDTV
 from .inventory import PLAYSTATION, PSF_COLLECTION, SNES, ST
-from .joshw import COLLECTION as JOSHW_COLLECTION
+from .joshw import COLLECTION as JOSHW_COLLECTION, title_revision
 
 REVIEWED_TITLES = PROJECT_ROOT / "reference/vgm_titles.csv"
 EXTENDED_SYSTEMS = frozenset({PLAYSTATION, SNES})
@@ -151,7 +151,16 @@ def match_titles(index, item, reviewed, album, sid):
     if reviewed and reviewed["catalog_title"]:
         hits = index.lookup(item.system, (reviewed["catalog_title"],), catalog_only=True)
         return {ident: {**hit, "reviewNote": reviewed["evidence"]} for ident, hit in hits.items()}
-    hits = index.lookup(item.system, (item.title, *item.aliases), spelling=item.collection == JOSHW_COLLECTION)
+    if item.collection == JOSHW_COLLECTION:
+        name, revision = title_revision(item.title)
+        if revision or item.source_evidence.get("joshwDiscTitle"):
+            for title in dict.fromkeys((item.title.removesuffix(" [fixed]"), name)):
+                if hits := index.lookup(item.system, (title,), spelling=True):
+                    return hits
+        hits = index.lookup(item.system, (name, *item.aliases), spelling=True)
+        primary = {ident: hit for ident, hit in hits.items() if hit["sourceTitle"] == name}
+        return primary if len(primary) == 1 else hits
+    hits = index.lookup(item.system, (item.title, *item.aliases))
     parts = snes_filename_titles(item)
     if parts and not hits:
         left, right = (index.lookup(item.system, (part,)) for part in parts)
@@ -164,6 +173,18 @@ def match_titles(index, item, reviewed, album, sid):
     if album:
         for ident, hit in index.lookup(item.system, (album,)).items():
             hits.setdefault(ident, {**hit, "psfGameTag": album})
+    return hits
+
+
+def joshw_regional_hits(index, item, revision):
+    """Identify other catalog entries with independently attributed names."""
+    disc_title = item.source_evidence.get("joshwDiscTitle")
+    names = (disc_title,) if disc_title else item.aliases if revision else ()
+    hits = {}
+    for name in names:
+        candidates = index.lookup(item.system, (name,), catalog_only=True, spelling=True)
+        if len(candidates) == 1:
+            hits.update(candidates)
     return hits
 
 

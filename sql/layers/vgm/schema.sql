@@ -26,6 +26,8 @@ BEGIN
 END $$;
 CREATE INDEX IF NOT EXISTS vgm_soundtrack_target_idx ON vgm.soundtrack (target_key)
     WHERE target_key IS NOT NULL;
+ALTER TABLE vgm.soundtrack ADD COLUMN IF NOT EXISTS additional_target_keys text[] NOT NULL DEFAULT '{}';
+CREATE INDEX IF NOT EXISTS vgm_soundtrack_additional_target_idx ON vgm.soundtrack USING gin (additional_target_keys);
 CREATE TABLE IF NOT EXISTS vgm.asset (
     key text PRIMARY KEY,
     soundtrack_key text NOT NULL REFERENCES vgm.soundtrack(key) ON DELETE CASCADE,
