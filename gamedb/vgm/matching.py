@@ -176,7 +176,7 @@ def match_titles(index, item, reviewed, album, sid):
     return hits
 
 
-def joshw_regional_hits(index, item, revision):
+def joshw_regional_hits(index, item, revision, review):
     """Identify other catalog entries with independently attributed names."""
     disc_title = item.source_evidence.get("joshwDiscTitle")
     names = (disc_title,) if disc_title else item.aliases if revision else ()
@@ -185,6 +185,10 @@ def joshw_regional_hits(index, item, revision):
         candidates = index.lookup(item.system, (name,), catalog_only=True, spelling=True)
         if len(candidates) == 1:
             hits.update(candidates)
+    if review and (name := review.get("regional_catalog_title")):
+        candidates = index.lookup(item.system, (name,), catalog_only=True)
+        if len(candidates) == 1:
+            hits.update({ident: {**hit, "reviewNote": review["evidence"]} for ident, hit in candidates.items()})
     return hits
 
 

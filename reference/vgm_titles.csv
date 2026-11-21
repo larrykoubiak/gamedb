@@ -1,4 +1,4 @@
-collection,source_name,catalog_title,evidence
+collection,source_name,catalog_title,evidence,regional_catalog_title
 sndh_lf,sndh_lf/4-Mat/Beastbusters,Beast Buster,The SNDH tags give Beastbusters and credit 4-Mat. Atari Legend lists the same rip under Beast Busters. https://www.atarilegend.com/games/beast-busters
 sndh_lf,sndh_lf/Phelan_Patrick/Lotus_3_Ultimate_Challenge,Lotus III - The Ultimate Challenge,The SNDH tags give the full game title and credit Patrick Phelan.
 The PlayStation Music Collection PSF,Alundra 2,Alundra 2 - A New Legend Begins,The PSF game tags use Alundra 2 and identify the 2000 local release whose catalog title includes the subtitle.
@@ -73,6 +73,7 @@ spcsets,Sküljagger [skjg],Skuljagger - Revolt of the Westicans,The SNESMusic se
 spcsets,Super Romance of the Three Kingdoms 2 (Super Sangokushi 2) [rtk2],Romance of the Three Kingdoms II,The long set name gives the SNES names of the second installment.
 spcsets,Super Sangokushi 2 (Super Romance of the Three Kingdoms 2) [rtk2],Romance of the Three Kingdoms II,The long set name gives the SNES names of the second installment.
 spcsets,Tazmania [taz],Taz-Mania,The SNESMusic RSN naming DAT uses Taz-Mania for the same long-name set. https://snesmusic.org/v2/players.php
+JoshW,gbs/g/Game & Watch Gallery [Game Boy Gallery] [Game Boy Gallery 2] (1997-02-01)(Tose)(Nintendo)[SGB],Game & Watch Gallery,The February 1997 DMG-AGAJ rip is from the game released as Game Boy Gallery 2 in Australia (DMG-AGAU). Nintendo lists the distinct Japanese Game Boy Gallery 2 (DMG-AGIJ) in September. https://www.nintendo.co.jp/n02/dmg/index.html,Game Boy Gallery 2
 JoshW,spc/b/BS Buster's Digital Magazine (1998-04-12)(-)(Nintendo)[SNES],Digital Magazine Busters BS - 4-12 Gou,The Satellaview catalog title uses the broadcast date from the archive name.
 JoshW,spc/b/BS Nintama Rantarou 2 (1996-03)(-)(Culture Brain)[SNES],Nintama Rantarou 2,The Satellaview catalog title drops the BS broadcast prefix.
 JoshW,spc/b/BS Nintendo HP 5-17 (1997-05-17)(-)(Nintendo)[SNES],BS Nintendo HP - 5-17 Gou,The archive names the May 17 issue in both the title and the broadcast date.

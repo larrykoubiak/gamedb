@@ -155,8 +155,9 @@ def resolve(connection, soundtracks):
                 names.add((item.system, album))
             if sid:
                 names.add((item.system, sid["album"]))
-            if review and review["catalog_title"]:
-                names.add((item.system, review["catalog_title"]))
+            if review:
+                names.update((item.system, name) for field in ("catalog_title", "regional_catalog_title")
+                             if (name := review.get(field)))
 
     index = catalog_index(connection, names, spelling_systems=joshw_systems)
     pending = []
@@ -164,7 +165,8 @@ def resolve(connection, soundtracks):
     version_ids = set()
     for item, album, sid, review, revision in sources:
         hits = match_titles(index, item, review, album, sid) if item.system else {}
-        alternates = joshw_regional_hits(index, item, revision) if len(hits) == 1 and item.collection == JOSHW_COLLECTION else {}
+        alternates = (joshw_regional_hits(index, item, revision, review)
+                      if len(hits) == 1 and item.collection == JOSHW_COLLECTION else {})
         if revision:
             version_ids.update(hits.keys() | alternates.keys())
         if sid and sid["year"] and sid["publisher"]:

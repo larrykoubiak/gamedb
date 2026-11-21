@@ -70,6 +70,21 @@ class JoshWTests(unittest.TestCase):
             self.assertEqual((row["target_key"], row["additional_target_keys"]), ("1", ["2"]))
             self.assertEqual(row["match_evidence"]["joshwVersion"], "1.2")
 
+    def test_reviewed_game_boy_gallery_rip_keeps_the_australian_title(self):
+        source = "gbs/g/Game & Watch Gallery [Game Boy Gallery] [Game Boy Gallery 2] (1997-02-01)(Tose)(Nintendo)[SGB]"
+        system = DEFAULT_SYSTEMS["gbs"]
+        title, aliases = soundtrack_name("gbs", Path(f"{source}.7z"))
+        names = (title, *aliases)
+        index = TitleIndex([(system, name) for name in names], spelling_systems={system})
+        for ident, name in enumerate(names, 1):
+            index.add(system, {"id": ident, "name": name, "display_name": name, "target_key": str(ident)})
+        album = Soundtrack("set", "JoshW", source, title, system, aliases)
+
+        with patch("gamedb.vgm.importer.catalog_index", return_value=index):
+            row, = resolve(None, [album])
+        self.assertEqual((row["target_key"], row["additional_target_keys"]), ("1", ["3"]))
+        self.assertIn("DMG-AGAU", row["match_evidence"]["additionalTitles"][0]["reviewNote"])
+
     def test_joshw_cd32_archive_keeps_disc_audio_modules_and_short_title(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
