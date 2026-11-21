@@ -1,60 +1,3 @@
-.almanac-view {
-  --book-paper: #f6efdf;
-  --book-left: #eee2c9;
-  --book-ink: #282b20;
-  --book-muted: #665d4b;
-  --book-rule: #d5c7ad;
-  --book-green: #355540;
-  --book-rust: #854e35;
-  --book-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  min-height: 100dvh;
-  color: #f6efdf;
-  background:
-    radial-gradient(ellipse at 43% 10%, #2c392f 0, transparent 64%),
-    #141e19;
-}
-
-.almanac-topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  min-height: 5rem;
-  padding: .9rem max(1.35rem, calc((100vw - 84rem) / 2));
-  border-bottom: 1px solid #d8ceb22e;
-}
-
-.almanac-brand {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-  flex-wrap: wrap;
-  font: 600 1.65rem/1 var(--book-serif);
-  letter-spacing: -.025em;
-}
-
-.almanac-brand span {
-  padding-left: .75rem;
-  border-left: 1px solid #b6a58769;
-  color: #d8c7a5;
-  font: 600 .69rem/1.45 var(--font-mono);
-  letter-spacing: .13em;
-  text-transform: uppercase;
-}
-
-.almanac-topbar a {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  padding: .45rem 0;
-  color: #eaddc3;
-  font-size: .84rem;
-  text-decoration: none;
-}
-
-.almanac-topbar a:hover { text-decoration: underline; text-underline-offset: .25em; }
-.almanac-topbar a span { color: #d7ae76; font-size: 1.15rem; }
-
 .almanac-main { max-width: 88rem; margin: 0 auto; padding: clamp(1.5rem, 5vw, 4.25rem) 2.45rem 5rem; }
 .almanac-status { max-width: 52rem; margin: 3rem auto; color: #eaddc3; font: 1.45rem var(--book-serif); }
 
@@ -65,18 +8,12 @@
   align-items: stretch;
   min-height: 36rem;
   margin-right: 9.4rem;
-  border: 1px solid #cbb790;
+  border: 1px solid var(--book-edge);
   border-radius: .5rem .32rem .3rem .5rem;
   color: var(--book-ink);
   color-scheme: light;
   background: var(--book-paper);
-  box-shadow:
-    4px 4px 0 -1px #c2ac87,
-    8px 7px 0 -2px #e1cba1,
-    9px 8px 0 -1px #927753,
-    13px 14px 0 -3px #3c4a38,
-    13px 18px 0 -3px #111810,
-    0 1.8rem 3rem #070e0a75;
+  box-shadow: var(--book-shadow);
 }
 
 .book-front {
@@ -121,9 +58,7 @@
   margin: 1.65rem 0 0;
   padding: .85rem;
   border: 1px solid #b9a782;
-  background:
-    repeating-linear-gradient(135deg, transparent 0 5px, #9f865916 6px 7px),
-    #e5d7ba;
+  background: var(--art-mat);
 }
 
 .book-cover .artwork-zoom { max-width: 100%; border-radius: 0; }
@@ -188,8 +123,10 @@
   font-weight: 750;
 }
 
-.book-tabs button:focus-visible, .book-panel :focus-visible, .book-cover .artwork-zoom:focus-visible,
-.almanac-topbar a:focus-visible { outline: 2px solid #a9693f; outline-offset: 3px; }
+.book-tabs button:focus-visible, .book-panel :focus-visible, .book-cover .artwork-zoom:focus-visible {
+  outline: 2px solid #a9693f;
+  outline-offset: 3px;
+}
 
 .book-panel {
   grid-area: 1 / 2;
@@ -283,16 +220,12 @@
 .book-panel .release-table { min-width: 53rem; }
 .book-panel .packages-cell { min-width: 19rem; }
 .book-panel .release-table-wrap, .book-panel .software-fact-grid { border-color: var(--book-rule); }
-.book-panel .release-table th, .book-panel .software-fact-grid dt { background: #eae0c9; color: var(--book-muted); }
 .book-panel .release-table td, .book-panel .software-fact-grid :is(dt, dd) { border-color: var(--book-rule); }
-.book-panel .release-table tr.selected-release td { background: #dce4d644; }
-.book-panel .software-fact-grid dd { color: var(--book-ink); white-space: pre-line; }
-.book-panel .software-fact-evidence, .book-panel .cell-note, .book-panel .source-path,
-.book-panel .signature-line, .book-panel .file-hash span, .book-panel .score-details { color: var(--book-muted); }
-.book-panel .release-title-cell, .book-panel .release-facts { color: var(--book-ink) !important; }
-.book-panel .package-name { color: var(--book-ink); }
-.book-panel .file-hash code, .book-panel .score.negative, .book-panel .negative-score { color: #953e2e; }
-.book-panel .score, .book-panel .positive-score { color: var(--book-green); }
+.book-panel .software-fact-grid dd { white-space: pre-line; }
+.book-panel .release-facts { color: var(--book-ink) !important; }
+.book-panel .file-hash code { color: var(--danger); }
+.book-panel .score { color: var(--book-green); }
+.book-panel .score.negative { color: var(--danger); }
 .book-panel :is(.winner-badge, .rank-badge) { color: var(--book-green); border-color: #a6ad8d; }
 .book-panel .correction-button, .book-panel .soundtrack-album button {
   border: 1px solid #ac9b7b;
@@ -366,10 +299,6 @@
 }
 
 @media (max-width: 620px) {
-  .almanac-topbar { min-height: 4.15rem; padding-inline: 1rem; }
-  .almanac-brand { gap: .45rem; font-size: 1.4rem; }
-  .almanac-brand span { padding-left: .45rem; font-size: .6rem; }
-  .almanac-topbar a { gap: .3rem; font-size: .75rem; }
   .almanac-main { padding: .7rem .85rem 2.5rem; }
   .software-book { grid-template: auto auto 1fr / minmax(0, 1fr); min-height: 27rem; }
   .book-tabs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }

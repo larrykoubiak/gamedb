@@ -128,6 +128,7 @@ function refreshMetadataOptions() {
 
 function initializeMetadataFilters() {
   const container = document.querySelector("#metadata-filters");
+  const clearFilters = document.querySelector("#clear-metadata-filters");
   for (const [key, label] of Object.entries(metadataFields)) {
     const details = document.createElement("details");
     details.className = "metadata-filter";
@@ -152,7 +153,7 @@ function initializeMetadataFilters() {
     metadataControls.set(key, control);
     details.addEventListener("toggle", () => {
       if (!details.open) return;
-      details.classList.toggle("align-end", window.innerWidth > 700 &&
+      details.classList.toggle("align-end",
         summary.getBoundingClientRect().left + panel.offsetWidth > window.innerWidth - 16);
       for (const other of metadataControls.values()) {
         if (other !== control) other.details.open = false;
@@ -170,14 +171,14 @@ function initializeMetadataFilters() {
         summary.focus();
       }
     });
-    container.append(details);
+    container.insertBefore(details, clearFilters);
   }
   document.addEventListener("click", event => {
     for (const control of metadataControls.values()) {
       if (!control.details.contains(event.target)) control.details.open = false;
     }
   });
-  document.querySelector("#clear-metadata-filters").addEventListener("click", () => {
+  clearFilters.addEventListener("click", () => {
     state.metadataFilters = {};
     renderActiveMetadataFilters();
     selectSystem(state.selectedSystem);
@@ -238,7 +239,9 @@ function renderTree(search = "") {
     (!categoryFilter.value || system.category === categoryFilter.value) &&
     `${system.manufacturer} ${system.name}`.toLowerCase().includes(normalized)
   );
-  document.querySelector("#system-count").textContent = `${visible.length} / ${state.systems.length} systems`;
+  const shown = visible.length.toLocaleString();
+  const total = state.systems.length.toLocaleString();
+  document.querySelector("#system-count").textContent = shown === total ? total : `${shown} / ${total}`;
   const groups = groupSystems(visible);
   tree.replaceChildren();
 
@@ -272,7 +275,7 @@ function renderTree(search = "") {
   if (!groups.size) {
     const empty = document.createElement("div");
     empty.className = "loading-row";
-    empty.textContent = "No matching systems.";
+    empty.textContent = "No matching platforms.";
     tree.append(empty);
   }
 }
@@ -1212,9 +1215,9 @@ function renderGames(payload) {
   document.querySelector("#page-label").textContent = `Page ${payload.page} of ${pageCount}`;
   document.querySelector("#previous-page").disabled = payload.page <= 1;
   document.querySelector("#next-page").disabled = payload.page >= pageCount;
-  document.querySelector("#system-summary").textContent = state.query || Object.keys(state.metadataFilters).length
-    ? `${payload.total.toLocaleString()} matching software titles · preferred release per software`
-    : `${payload.total.toLocaleString()} software titles · preferred release per software`;
+  const match = state.query || Object.keys(state.metadataFilters).length ? " matching" : "";
+  const titles = payload.total === 1 ? "title" : "titles";
+  document.querySelector("#system-summary").textContent = `${payload.total.toLocaleString()}${match} ${titles}`;
 }
 
 function setLayout(layout) {
@@ -1222,7 +1225,6 @@ function setLayout(layout) {
   for (const button of document.querySelectorAll(".layout-switch button")) {
     button.setAttribute("aria-pressed", String(button.dataset.layout === layout));
   }
-  document.querySelector(".legend").hidden = layout !== "table";
   if (state.results) renderGames(state.results);
 }
 
@@ -1244,9 +1246,9 @@ async function selectSystem(system, page = 1, platformsReady) {
   refreshMetadataOptions();
   const requestId = ++state.requestId;
   if (state.systems.length) renderTree(filter.value);
-  document.querySelector("#manufacturer-name").textContent = system?.manufacturer || "Your library";
+  document.querySelector("#manufacturer-name").textContent = system?.manufacturer || "Catalog index";
   document.querySelector("#system-name").textContent = system?.name || "All platforms";
-  document.querySelector("#system-summary").textContent = "Search games across your library, or choose a platform to narrow the results.";
+  document.querySelector("#system-summary").textContent = "";
   gameFilter.disabled = false;
   gameFilter.placeholder = system ? `Search games on ${system.name}…` : "Search games across all platforms…";
   document.querySelector("#all-platforms").classList.toggle("active", !system);
@@ -1272,7 +1274,7 @@ async function selectSystem(system, page = 1, platformsReady) {
 
 function setSystemBrowserOpen(open) {
   systemBrowserToggle.setAttribute("aria-expanded", String(open));
-  systemBrowserToggle.textContent = open ? "Hide systems" : "Browse systems";
+  systemBrowserToggle.textContent = open ? "Hide platforms" : "Browse platforms";
 }
 systemBrowserToggle.addEventListener("click", () => {
   setSystemBrowserOpen(systemBrowserToggle.getAttribute("aria-expanded") !== "true");

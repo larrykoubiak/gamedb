@@ -1,5 +1,7 @@
 const catalogView = document.querySelector("#catalog-view");
 const almanacView = document.querySelector("#almanac-view");
+const catalogHome = document.querySelector("#catalog-home");
+const backToCatalog = document.querySelector("#back-to-catalog");
 const book = document.querySelector("#software-book");
 const bookTitle = document.querySelector("#software-title");
 const bookPlatform = document.querySelector("#software-platform");
@@ -221,6 +223,8 @@ async function openSoftwarePage(path, focus) {
   entry = page;
   catalogView.hidden = true;
   almanacView.hidden = false;
+  catalogHome.removeAttribute("aria-current");
+  backToCatalog.hidden = false;
   book.hidden = true;
   bookStatus.hidden = false;
   bookStatus.textContent = "Opening software entry…";
@@ -259,6 +263,8 @@ function routePage(focus = false) {
   entry = null;
   catalogView.hidden = false;
   almanacView.hidden = true;
+  catalogHome.setAttribute("aria-current", "page");
+  backToCatalog.hidden = true;
   document.title = "GameDB Explorer";
   if (!catalogStarted) {
     catalogStarted = true;
@@ -286,11 +292,13 @@ catalogView.addEventListener("click", event => {
   routePage(true);
 });
 
-document.querySelector("#back-to-catalog").addEventListener("click", event => {
-  if (!ordinaryClick(event) || !history.state?.fromCatalog) return;
-  event.preventDefault();
-  history.back();
-});
+for (const link of [catalogHome, backToCatalog]) {
+  link.addEventListener("click", event => {
+    if (!entry || !ordinaryClick(event) || !history.state?.fromCatalog) return;
+    event.preventDefault();
+    history.back();
+  });
+}
 
 document.addEventListener("catalog-rebuilt", () => {
   if (catalogStarted) selectSystem(state.selectedSystem, state.page);
