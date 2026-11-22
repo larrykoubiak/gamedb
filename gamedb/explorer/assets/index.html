@@ -11,6 +11,7 @@
 <body>
   <header class="almanac-topbar">
     <a id="catalog-home" class="almanac-brand" href="/" aria-label="GameDB Almanac home">GameDB <span>Almanac</span></a>
+    <a id="snes-retail-link" href="/catalog/snes" hidden>SNES retail catalog</a>
     <a id="back-to-catalog" href="/" hidden><span aria-hidden="true">←</span> Back to catalog</a>
   </header>
 
@@ -134,60 +135,6 @@
     </main>
   </div>
 
-  <template id="soundtrack-playlist-template">
-    <div class="soundtrack-playlist">
-      <section class="soundtrack-player" aria-label="Soundtrack player">
-        <div class="soundtrack-player-header">
-          <div>
-            <p class="soundtrack-current-title"></p>
-            <p class="soundtrack-current-credit"></p>
-          </div>
-          <p class="soundtrack-player-status" role="status"></p>
-        </div>
-        <div class="soundtrack-timeline">
-          <span>0:00</span>
-          <input type="range" min="0" step="0.1" aria-label="Playback position" disabled>
-          <span>–:––</span>
-        </div>
-        <div class="soundtrack-controls">
-          <div class="soundtrack-transport">
-            <button type="button" class="soundtrack-button" data-icon="previous" aria-label="Previous track" title="Previous track"></button>
-            <button type="button" class="soundtrack-button soundtrack-main-play" data-icon="play" aria-label="Play" title="Play"></button>
-            <button type="button" class="soundtrack-button" data-icon="next" aria-label="Next track" title="Next track"></button>
-          </div>
-          <label class="soundtrack-subtunes">Subtune <select></select></label>
-          <label class="soundtrack-volume">Volume <input type="range" min="0" max="1" step="0.01" value="1"></label>
-        </div>
-      </section>
-      <div class="soundtrack-playlist-bar">
-        <div class="soundtrack-playlist-label"><h3>Playlist</h3><span></span></div>
-        <div class="soundtrack-playlist-tools">
-          <select aria-label="Soundtrack source"></select>
-          <details class="soundtrack-files"><summary>Set downloads</summary><ul></ul></details>
-        </div>
-      </div>
-      <p class="soundtrack-download-note">This set is available to download.</p>
-      <ol class="soundtrack-tracks" role="list" aria-label="Tracks"></ol>
-      <p class="soundtrack-credits"><a href="/vgm/credits.txt" target="_blank" rel="noopener">Playback engine credits</a></p>
-    </div>
-  </template>
-
-  <dialog id="artwork-dialog" class="artwork-dialog" aria-labelledby="artwork-caption">
-    <div class="artwork-heading">
-      <h2 id="artwork-caption"></h2>
-      <button id="artwork-close" class="icon-button" type="button" aria-label="Close artwork" autofocus>×</button>
-    </div>
-    <div class="artwork-stage">
-      <img id="artwork-image" alt="">
-      <p id="artwork-error" role="status" hidden>This image could not be loaded.</p>
-    </div>
-    <div id="artwork-navigation" class="artwork-navigation" hidden>
-      <button id="artwork-previous" class="secondary-button" type="button" aria-label="Previous image">← Previous</button>
-      <span id="artwork-position" role="status"></span>
-      <button id="artwork-next" class="secondary-button" type="button" aria-label="Next image">Next →</button>
-    </div>
-  </dialog>
-
   <dialog id="correction-dialog" class="correction-dialog">
     <form id="correction-form" method="dialog">
       <div class="dialog-heading">
@@ -224,7 +171,8 @@
 
   <script src="/vgm/player.js?v=5" defer></script>
   <script src="/vgm/soundtracks.js" defer></script>
-  <script src="/app.js?v=22" defer></script>
+  <script src="/artwork-viewer.js" defer></script>
+  <script src="/app.js?v=23" defer></script>
   <script src="/almanac.js?v=5" defer></script>
 </body>
 </html>

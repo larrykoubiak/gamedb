@@ -1,0 +1,209 @@
+{
+  "editions": {
+    "Final Fantasy IV Easy Type": "Final Fantasy IV"
+  },
+  "metadata": {
+    "Angelique: Premium Box": {
+      "description": {
+        "text": "Koei’s 1995 Super Famicom boxed edition of Angelique. Angelique Limoges and her rival Rosalia compete to become the next queen, enlisting the Guardians to develop the lands they oversee.",
+        "source": {
+          "name": "Koei",
+          "url": "https://www.gamecity.ne.jp/neoromance/angelique/stories.htm"
+        }
+      }
+    },
+    "Casper": {
+      "descriptionId": 2834,
+      "marketIds": {"NA": 2834, "PAL": 2834}
+    },
+    "Casper (Japanese game)": {
+      "descriptionId": 162207,
+      "marketIds": {"JP": 162207}
+    },
+    "Kachō Kōsaku Shima: The Super Business Adventure": {
+      "descriptionId": 123697,
+      "marketIds": {"JP": 123697}
+    },
+    "Kyūyaku Megami Tensei": {
+      "descriptionId": 23760,
+      "marketIds": {"JP": 23760}
+    },
+    "Monopoly": {
+      "descriptionId": 5614,
+      "marketIds": {"NA": 5614}
+    },
+    "Monopoly (Japanese game)": {
+      "descriptionId": 189202,
+      "marketIds": {"JP": 189202}
+    },
+    "Operation Europe: Path to Victory 1939–1945": {
+      "descriptionId": 5721,
+      "marketIds": {"JP": 5721, "NA": 5721}
+    },
+    "Super Tetris 2 + Bombliss: Gentei-ban": {
+      "descriptionId": 132634,
+      "marketIds": {"JP": 132634}
+    },
+    "Tetris Attack": {
+      "description": {
+        "text": "Swap adjacent panels to make matches while new rows rise from below. The Japanese Panel de Pon features Lip and the fairies of Popples. Tetris Attack uses the same puzzle mechanics with characters from Yoshi’s Island.",
+        "source": {
+          "name": "Nintendo",
+          "url": "https://www.nintendo.co.jp/clvs/manuals/ja/pdf/CLV-P-VADZJ.pdf"
+        }
+      },
+      "marketIds": {"JP": 455522, "NA": 3281, "PAL": 3281}
+    }
+  },
+  "artworkRegions": [
+    {
+      "archiveName": "Super Metroid (Japan, USA) (En,Ja).zip",
+      "market": "NA",
+      "kind": "boxart",
+      "regions": ["US"],
+      "source": {
+        "name": "SNES Central",
+        "url": "https://snescentral.com/article.php?id=0885"
+      }
+    }
+  ],
+  "manualAliases": [
+    {"edition": "Doom Troopers", "market": "NA", "title": "Doom Troopers - Mutant Chronicles"},
+    {"edition": "The Sporting News: Power Baseball", "market": "NA", "title": "Sporting News Baseball, The"},
+    {"edition": "The Sporting News: Power Baseball", "market": "NA", "title": "Sporting News Baseball"}
+  ],
+  "cartridgeAliases": [
+    {"edition": "Earth Defense Force", "market": "PAL", "title": "Earth Defence Force"},
+    {"edition": "Star Trek: Deep Space Nine – Crossroads of Time", "market": "PAL", "title": "Star Trek: Deep Space 9: Crossroads of Time"},
+    {"edition": "Star Trek: Starfleet Academy - Starship Bridge Simulator", "market": "PAL", "title": "Star Trek Starfleet Academy"}
+  ],
+  "cartridges": [
+    {
+      "edition": "FIFA 97: Gold Edition", "market": "NA",
+      "serials": ["SNS-A7IE-USA"], "boards": ["EA-1A3M-30"], "romChip": "FIFA97B1",
+      "source": {"name": "SNES Central", "url": "https://snescentral.com/article.php?id=0346"}
+    },
+    {
+      "edition": "Kyōraku Sanyō Maruhon Parlor! Parlor! 5", "market": "JP",
+      "serials": ["SHVC-AVVJ-JPN"], "sha1": "244c67e0d47c61b278aa81721fcd304b64c06570",
+      "source": {"name": "SuperFamicom.org", "url": "https://superfamicom.org/info/kyoraku-sanyo-maruhon-parlor-parlor-5"}
+    }
+  ],
+  "manuals": [
+    {
+      "edition": "Monopoly (Japanese game)", "market": "JP", "name": "Monopoly (SHVC-ML)",
+      "regions": ["JPN"], "language": "Japanese", "format": "PDF", "source": "Gaming Alexandria",
+      "url": "https://www.gamingalexandria.com/highquality/sfc/Monopoly/Monopoly%20-%20Manual.pdf"
+    },
+    {
+      "edition": "Kachō Kōsaku Shima: The Super Business Adventure", "market": "JP",
+      "name": "Kachō Kōsaku Shima (SHVC-UK)",
+      "regions": ["JPN"], "language": "Japanese", "format": "PDF", "source": "Gaming Alexandria",
+      "url": "https://www.gamingalexandria.com/highquality/sfc/Kachou%20Shima%20Kousaku%20-%20The%20Super%20Business%20Adventure/Kachou%20Shima%20Kousaku%20-%20The%20Super%20Business%20Adventure%20-%20Manual.pdf"
+    },
+    {
+      "edition": "Tetris Attack", "market": "JP", "name": "Panel de Pon (SHVC-AYLJ-JPN)",
+      "regions": ["JPN"], "language": "Japanese", "format": "PDF", "source": "Nintendo",
+      "url": "https://www.nintendo.co.jp/clvs/manuals/ja/pdf/CLV-P-VADZJ.pdf"
+    },
+    {
+      "edition": "Mega Man X", "market": "JP", "name": "Rockman X",
+      "regions": ["JPN"], "language": "Japanese", "format": "PDF", "source": "Nintendo",
+      "url": "https://www.nintendo.co.jp/clvs/manuals/ja/pdf/CLV-P-VABCJ.pdf"
+    },
+    {
+      "edition": "Secret of Mana", "market": "JP", "name": "Seiken Densetsu 2",
+      "regions": ["JPN"], "language": "Japanese", "format": "PDF", "source": "Nintendo",
+      "url": "https://www.nintendo.co.jp/clvs/manuals/ja/pdf/CLV-P-VABRJ.pdf"
+    },
+    {
+      "edition": "Super Mario RPG: Legend of the Seven Stars", "market": "JP", "name": "Super Mario RPG",
+      "regions": ["JPN"], "language": "Japanese", "format": "PDF", "source": "Nintendo",
+      "url": "https://www.nintendo.co.jp/clvs/manuals/ja/pdf/CLV-P-VABQJ.pdf"
+    },
+    {
+      "edition": "Super Mario World", "market": "JP", "name": "Super Mario World",
+      "regions": ["JPN"], "language": "Japanese", "format": "PDF", "source": "Nintendo",
+      "url": "https://www.nintendo.co.jp/clvs/manuals/ja/pdf/CLV-P-VAAAJ.pdf"
+    },
+    {
+      "edition": "Super Metroid", "market": "JP", "name": "Super Metroid",
+      "regions": ["JPN"], "language": "Japanese", "format": "PDF", "source": "Nintendo",
+      "url": "https://www.nintendo.co.jp/clvs/manuals/ja/pdf/CLV-P-VAAHJ.pdf"
+    },
+    {
+      "edition": "Super Soccer", "market": "JP", "name": "Super Formation Soccer",
+      "regions": ["JPN"], "language": "Japanese", "format": "PDF", "source": "Nintendo",
+      "url": "https://www.nintendo.co.jp/clvs/manuals/ja/pdf/CLV-P-VADFJ.pdf"
+    }
+  ],
+  "verifiedArchives": [
+    {
+      "edition": "FIFA: Road to World Cup 98",
+      "market": "PAL",
+      "signature": "de298e41678703e27a02948ecbba2932",
+      "archiveName": "FIFA - Road to World Cup 98 (Europe) (En,Fr,De,Es,It,Sv) (A8FE).zip",
+      "evidence": "MAME 0.285 snes:fifa98 and Libretro RDB match the program ROM SHA-1. A8FE is the cartridge product code recorded by Libretro."
+    },
+    {
+      "edition": "FIFA: Road to World Cup 98",
+      "market": "PAL",
+      "signature": "d34fb4f782041e430bc7cbed2cd5c83f",
+      "archiveName": "FIFA - Road to World Cup 98 (Europe) (En,Fr,De,Es,It,Sv) (A8FP).zip",
+      "evidence": "Libretro RDB matches this No-Intro ROM SHA-1 to the A8FP cartridge product code, also found on European retail labels."
+    },
+    {
+      "edition": "Monopoly",
+      "market": "NA",
+      "signature": "6b8f7b262daec1162913692c1b44069d",
+      "evidence": "MAME 0.285 snes:monopolya matches the program ROM SHA-1 for the original SNS-ML-USA cartridge."
+    },
+    {
+      "edition": "Monopoly",
+      "market": "NA",
+      "signature": "e44c9ed24a1c7ad9b37664172916f8b6",
+      "evidence": "MAME 0.285 snes:monopoly matches the program ROM SHA-1 for revision A of SNS-ML-USA."
+    },
+    {
+      "edition": "Shanghai II: Dragon's Eye",
+      "market": "JP",
+      "signature": "ac6ff6770d5abed975d1b688f1a5195a",
+      "archiveName": "Super Shanghai - Dragon's Eye (Japan) (HOT B).zip",
+      "evidence": "MAME 0.285 snes:sshangh matches the program ROM SHA-1 for the Hot-B SHVC-DE cartridge."
+    },
+    {
+      "edition": "Shanghai II: Dragon's Eye",
+      "market": "JP",
+      "signature": "001010a38861ef2c1543ec705c8eb546",
+      "archiveName": "Super Shanghai - Dragon's Eye (Japan) (Activision).zip",
+      "evidence": "MAME 0.285 snes:sshangha matches the program ROM SHA-1 for the Activision SHVC-IE cartridge."
+    },
+    {
+      "edition": "Tecmo Super NBA Basketball",
+      "market": "NA",
+      "signature": "a9c7eb3bbc49899136bfed20afb98ea2",
+      "archiveName": "Tecmo Super NBA Basketball (USA) (SNS-XM).zip",
+      "evidence": "MAME 0.285 snes:tecmonbau matches the program ROM SHA-1 for the SNS-XM-USA cartridge. SNES Central has a scan of the retail label."
+    }
+  ],
+  "releaseNotes": [
+    {
+      "edition": "Power Moves",
+      "market": "PAL",
+      "text": "The Wikipedia list gives a PAL release date. The No-Intro inventory and documented retail cartridges confirm the US and Japanese releases.",
+      "url": "https://snescentral.com/article.php?id=0557"
+    },
+    {
+      "edition": "The Ren & Stimpy Show: Fire Dogs",
+      "market": "PAL",
+      "text": "The Wikipedia list gives a PAL release date. The available No-Intro dump and retail cartridge scans are from North America.",
+      "url": "https://snescentral.com/article.php?id=0577"
+    },
+    {
+      "edition": "Street Combat",
+      "market": "PAL",
+      "text": "SNES Central lists the PAL build as unreleased. No-Intro labels the available PAL dump as a possible prototype.",
+      "url": "https://snescentral.com/unreleased.php"
+    }
+  ]
+}

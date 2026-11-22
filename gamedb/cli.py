@@ -5,7 +5,7 @@ from __future__ import annotations
 import sys
 
 
-HELP = """usage: gamedb {derive,parse-name,import-history,import-integrated,import-exo,import-vgm,import-rdb,import-launchbox,import-arcade,rebuild,promote-corrections,serve} ...
+HELP = """usage: gamedb {derive,parse-name,import-history,import-integrated,import-exo,import-vgm,import-rdb,import-launchbox,import-arcade,rebuild,seed-snes,sync-snes-manuals,promote-corrections,serve} ...
 
 GameDB commands:
   derive       Build or selectively refresh the stable derived schema.
@@ -17,6 +17,8 @@ GameDB commands:
   import-rdb    Snapshot compiled Libretro databases into staging.
   import-launchbox  Snapshot LaunchBox metadata and report matching coverage.
   rebuild      Project catalog, identity, and scores from derived data.
+  seed-snes    Match the pinned SNES retail list against the catalog.
+  sync-snes-manuals  Download the manuals linked by the SNES retail catalog.
   promote-corrections  Move reviewed working corrections into reference.
   serve        Run the explorer.
 
@@ -70,11 +72,7 @@ def main(argv=None) -> int:
         from gamedb.launchbox.__main__ import main as launchbox_main
 
         return launchbox_main(remaining)
-    if command == "rebuild":
-        from gamedb.catalog.cli import main as catalog_main
-
-        return catalog_main([command, *remaining])
-    if command == "promote-corrections":
+    if command in {"rebuild", "seed-snes", "sync-snes-manuals", "promote-corrections"}:
         from gamedb.catalog.cli import main as catalog_main
 
         return catalog_main([command, *remaining])

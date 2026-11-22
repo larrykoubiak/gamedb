@@ -3,6 +3,7 @@ from http.client import HTTPConnection
 from http.server import ThreadingHTTPServer
 from io import BytesIO
 from pathlib import Path
+from shutil import which
 import tempfile
 import threading
 import unittest
@@ -41,6 +42,44 @@ class PreviewTests(unittest.TestCase):
         self.assertNotEqual(changed, paths[0])
         with Image.open(changed) as updated:
             self.assertEqual(updated.size, (20, 30))
+
+    @unittest.skipUnless(which("pdftoppm"), "requires Poppler")
+    def test_manual_cover_renders_first_page_and_is_cached(self):
+        source = self.root / "Manual.pdf"
+        first = Image.new("RGB", (200, 300), "red")
+        second = Image.new("RGB", (300, 200), "blue")
+        first.save(source, save_all=True, append_images=[second])
+        path = self.cache.get(source, 128)
+        with Image.open(path) as preview:
+            self.assertEqual((preview.format, preview.height), ("WEBP", 128))
+            self.assertAlmostEqual(preview.width / preview.height, 2 / 3, delta=.01)
+            red, _, blue = preview.getpixel((50, 50))
+            self.assertGreater(red, 200)
+            self.assertLess(blue, 30)
+        with patch("gamedb.explorer.previews.subprocess.run") as render:
+            self.assertEqual(self.cache.get(source, 128), path)
+            render.assert_not_called()
+
+    @unittest.skipUnless(which("pdftoppm") and which("pdfinfo"), "requires Poppler")
+    def test_manual_reader_uses_the_requested_page_and_its_dimensions(self):
+        source = self.root / "Booklet.pdf"
+        first = Image.new("RGB", (200, 300), "red")
+        second = Image.new("RGB", (400, 300), "blue")
+        first.save(source, save_all=True, append_images=[second])
+        revision = source.stat().st_mtime_ns
+        self.assertEqual(self.cache.manual_pages(source, revision), ((200, 300), (400, 300)))
+        size = self.cache.MANUAL_PAGE_SIZE
+        cover = self.cache.get(source, size, page=1)
+        inside = self.cache.get(source, size, page=2)
+        self.assertNotEqual(cover, inside)
+        with Image.open(inside) as page:
+            self.assertEqual((page.format, page.size), ("WEBP", (1600, 1200)))
+            red, _, blue = page.getpixel((50, 50))
+            self.assertLess(red, 30)
+            self.assertGreater(blue, 200)
+        with patch("gamedb.explorer.previews.subprocess.run") as render:
+            self.assertEqual(self.cache.get(source, size, page=2), inside)
+            render.assert_not_called()
 
     def test_http_previews_revalidate_and_originals_remain_zoomable(self):
         class QuietHandler(ExplorerHandler):

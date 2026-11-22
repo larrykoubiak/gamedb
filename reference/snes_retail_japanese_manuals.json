@@ -1,0 +1,2512 @@
+{
+  "url": "https://www.gamingalexandria.com/wp/scans/super-famicom/",
+  "indexSha256": "7b4fd9705d5c02adb540798a2e27a7b852c78c6cad88983518c7bb91133ff828",
+  "records": [
+    {
+      "title": "Bokujou Monogatari",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/05/bokujou-monogatari/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Bokujou%20Monogatari/Bokujou%20Monogatari%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Battle Grand Prix",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/battle-grand-prix/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Battle%20Grand%20Prix/Battle%20Grand%20Prix%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Breath of Fire II – Shimei no Ko",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/breath-of-fire-ii-shimei-no-ko/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Breath%20of%20Fire%20II%20-%20Shimei%20no%20Ko/Breath%20of%20Fire%20II%20-%20Shimei%20no%20Ko%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Chou Makaimura",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/12/chou-makaimura/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Chou%20Makaimura/Chou%20Makaimura%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Amazing Tennis",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/12/amazing-tennis/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Amazing%20Tennis/Amazing%20Tennis%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Breath of Fire – Ryuu no Senshi",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/breath-of-fire-ryuu-no-senshi/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Breath%20of%20Fire%20-%20Ryuu%20no%20Senshi/Breath%20of%20Fire%20-%20Ryuu%20no%20Senshi%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Burai – Hachigyoku no Yuushi Densetsu",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/burai-hachigyoku-no-yuushi-densetsu/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Burai%20-%20Hachigyoku%20no%20Yuushi%20Densetsu/Burai%20-%20Hachigyoku%20no%20Yuushi%20Densetsu%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Bakukyuu Renpatsu!! Super B-Daman",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/bakukyuu-renpatsu-super-b-daman/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Bakukyuu%20Renpatsu!!%20Super%20B-Daman/Bakukyuu%20Renpatsu!!%20Super%20B-Daman%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Captain Tsubasa IV – Pro no Rival-tachi",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/captain-tsubasa-iv-pro-no-rival-tachi/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Captain%20Tsubasa%20IV%20-%20Pro%20no%20Rival-tachi/Captain%20Tsubasa%20IV%20-%20Pro%20no%20Rival-tachi%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Big Ichigeki! Pachi-Slot Daikouryaku",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/big-ichigeki-pachi-slot-daikouryaku/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Big%20Ichigeki!%20Pachi-Slot%20Daikouryaku/Big%20Ichigeki!%20Pachi-Slot%20Daikouryaku%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Battle Dodgeball",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/08/battle-dodgeball/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Battle%20Dodgeball/Battle%20Dodgeball%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Alcahest",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/12/alcahest/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Alcahest/Alcahest%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Captain Tsubasa V – Hasha no Shougou Campione",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/08/captain-tsubasa-v-hasha-no-shougou-campione/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Captain%20Tsubasa%20V%20-%20Hasha%20no%20Shougou%20Campione/Captain%20Tsubasa%20V%20-%20Hasha%20no%20Shougou%20Campione%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Cameltry",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/08/cameltry/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Cameltry/Cameltry%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Bishoujo Senshi Sailor Moon R",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/08/bishoujo-senshi-sailor-moon-r/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Bishoujo%20Senshi%20Sailor%20Moon%20R/Bishoujo%20Senshi%20Sailor%20Moon%20R%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Bastard!! Ankoku no Hakaishin",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/08/bastard-ankoku-no-hakaishin/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Bastard!!%20Ankoku%20no%20Hakaishin/Bastard!!%20Ankoku%20no%20Hakaishin%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Battle Dodge Ball 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/04/battle-dodge-ball-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Battle%20Dodge%20Ball%202/Battle%20Dodge%20Ball%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Battle Soccer – Field no Hasha",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/02/battle-soccer-field-no-hasha/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Battle%20Soccer%20-%20Field%20no%20Hasha/Battle%20Soccer%20-%20Field%20no%20Hasha%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Battle Commander – Hachibushu Shura No Heihou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/02/battle-commander-hachibushu-shura-no-heihou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Battle%20Commander%20-%20Hachibushu%20Shura%20no%20Heihou/Battle%20Commander%20-%20Hachibushu%20Shura%20no%20Heihou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Aladdin",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/02/aladdin/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Aladdin/Aladdin%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Card Master – Rimusaria no Fuuin",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/card-master-rimusaria-no-fuuin/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Card%20Master%20-%20Rimusaria%20no%20Fuuin/Card%20Master%20-%20Rimusaria%20no%20Fuuin%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "ActRaiser",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/actraiser/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/ActRaiser/Actraiser%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Bishoujo Senshi Sailor Moon",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/bishoujo-senshi-sailor-moon/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Bishoujo%20Senshi%20Sailor%20Moon/Bishoujo%20Senshi%20Sailor%20Moon%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Bombuzal",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/07/bombuzal/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Bombuzal/Bombuzal%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Battle Tycoon – Flash Hiders SFX",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/07/battle-tycoon-flash-hiders-sfx/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Battle%20Tycoon%20%e2%80%93%20Flash%20Hiders%20SFX/Battle%20Tycoon%20%e2%80%93%20Flash%20Hiders%20SFX%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "46 Okunen Monogatari – Harukanaru Eden e",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/04/46-okunen-monogatari-harukanaru-eden-e/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/46%20Okunen%20Monogatari%20-%20Harukanaru%20Eden%20e/46%20Okunen%20Monogatari%20-%20Harukanaru%20Eden%20e%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "AIII S.V. – A Ressha de Ikou 3 – Super Version",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/03/aiii-s-v-a-ressha-de-ikou-3-super-version/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/AIII%20S.V.%20-%20A%20Ressha%20de%20Ikou%203%20-%20Super%20Version/AIII%20S.V.%20-%20A%20Ressha%20de%20Ikou%203%20-%20Super%20Version%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Bishin Densetsu Zoku",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/03/bishin-densetsu-zoku/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Bishin%20Densetsu%20Zoku/Bishin%20Densetsu%20Zoku%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "3×3 Eyes – Sazanaizu Seima Kourinden",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/3x3-eyes-sazanaizu-seima-kourinden/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/3x3%20Eyes%20-%20Sazanaizu%20Seima%20Kourinden/3x3%20Eyes%20-%20Sazanaizu%20Seima%20Kourinden%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Bishoujo Senshi Sailor Moon S Kondo wa Puzzle de Oshioki yo!!",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/bishoujo-senshi-sailor-moon-s-kondo-wa-puzzle-de-oshioki-yo/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Bishoujo%20Senshi%20Sailor%20Moon%20S%20Kondo%20wa%20Puzzle%20de%20Oshioki%20yo!!/Bishoujo%20Senshi%20Sailor%20Moon%20S%20Kondo%20wa%20Puzzle%20de%20Oshioki%20yo!!%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Chrono Trigger",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/chrono-trigger-jp/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Chrono%20Trigger%20(JP)/Chrono%20Trigger%20(JP)%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Bing Bing! Bingo",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/07/bing-bing-bingo/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Bing%20Bing%20Bingo/Bing%20Bing%20Bingo%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Bahamut Lagoon",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/07/bahamut-lagoon/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Bahamut%20Lagoon/Bahamut%20Lagoon%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Ace o Nerae!",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/07/ace-o-nerae/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Ace%20o%20Nerae/Ace%20o%20Nerae%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Albert Odyssey",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/albert-odyssey/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Albert%20Odyssey/Albert%20Odyssey%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Angelique",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/05/angelique/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Angelique/Angelique%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Derby Stallion III",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/derby-stallion-iii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Derby%20Stallion%20III/Derby%20Stallion%20III%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Derby Stallion II",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/derby-stallion-ii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Derby%20Stallion%20II/Derby%20Stallion%20II%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Darius Twin",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/12/darius-twin/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Darius%20Twin/Darius%20Twin%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Down the World – Mervil’s Ambition",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/12/down-the-world-mervils-ambition/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Down%20the%20World%20-%20Mervil's%20Ambition/Down%20the%20World%20-%20Mervil's%20Ambition%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Conveni Wars Barcode Battler Senki – Super Senshi Shutsugeki seyo!",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/conveni-wars-barcode-battler-senki-super-senshi-shutsugeki-seyo/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Conveni%20Wars%20Barcode%20Battler%20Senki%20-%20Super%20Senshi%20Shutsugeki%20seyo!/Conveni%20Wars%20Barcode%20Battler%20Senki%20-%20Super%20Senshi%20Shutsugeki%20seyo!%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dai-4-ji Super Robot Taisen",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/dai-4-ji-super-robot-taisen/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Dai-4-ji%20Super%20Robot%20Taisen/Dai-4-ji%20Super%20Robot%20Taisen%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Derby Stallion 96",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/derby-stallion-96/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Derby%20Stallion%2096/Derby%20Stallion%2096%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Derby Jockey – Kishu Ou e no Michi",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/derby-jockey-kishu-ou-e-no-michi/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Derby%20Jockey%20-%20Kishu%20Ou%20e%20no%20Michi/Derby%20Jockey%20-%20Kishu%20Ou%20e%20no%20Michi%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Daibakushou Jinsei Gekijou – Zukkoke Salaryman Hen",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/daibakushou-jinsei-gekijou-zukkoke-salaryman-hen/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Daibakushou%20Jinsei%20Gekijou%20-%20Zukkoke%20Salaryman%20Hen/Daibakushou%20Jinsei%20Gekijou%20-%20Zukkoke%20Salaryman%20Hen%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dekitate High School",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/08/dekitate-high-school/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Dekitate%20High%20School/Dekitate%20High%20School%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Daikaijuu Monogatari II",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/12/daikaijuu-monogatari-ii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Daikaijuu%20Monogatari%20II/Daikaijuu%20Monogatari%20II%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Earth Light",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/10/earth-light/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Earth%20Light/Earth%20Light%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Drift King Shutokou Battle 2 – Tsuchiya Keiichi and Bandou Masaaki",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/drift-king-shutokou-battle-2-tsuchiya-keiichi-and-bandou-masaaki/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Drift%20King%20Shutokou%20Battle%202%20-%20Tsuchiya%20Keiichi%20and%20Bandou%20Masaaki/Drift%20King%20Shutokou%20Battle%202%20-%20Tsuchiya%20Keiichi%20and%20Bandou%20Masaaki%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Daikaijuu Monogatari",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/daikaijuu-monogatari/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Daikaijuu%20Monogatari/Daikaijuu%20Monogatari%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Daisenryaku Expert (Great Strategy Expert)",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/02/daisenryaku-expert-great-strategy-expert/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Daisenryaku%20Expert%20(Great%20Strategy%20Expert)/Daisenryaku%20Expert%20(Great%20Strategy%20Expert)%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dai-3-Ji Super Robot Taisen",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/02/dai-3-ji-super-robot-taisen/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Dai-3-Ji%20Super%20Robot%20Taisen/Dai-3-Ji%20Super%20Robot%20Taisen%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dokapon Gaiden – Honoo no Audition",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/12/dokapon-gaiden-honoo-no-audition/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Dokapon%20Gaiden%20-%20Honoo%20no%20Audition/Dokapon%20Gaiden%20-%20Honoo%20no%20Audition%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Contra Spirits",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/11/contra-spirits/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Contra%20Spirits/Contra%20Spirits%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Combatribes, The",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/10/combatribes-the/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Combatribes,%20The/Combatribes,%20The%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Densetsu no Ogre Battle – The March of the Black Queen",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/densetsu-no-ogre-battle-the-march-of-the-black-queen/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Densetsu%20no%20Ogre%20Battle%20-%20The%20March%20of%20the%20Black%20Queen/Densetsu%20no%20Ogre%20Battle%20-%20The%20March%20of%20the%20Black%20Queen%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dragon Ball Z – Super Gokuu Den Totsugeki Hen",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/07/dragon-ball-z-super-gokuu-den-totsugeki-hen/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Dragon%20Ball%20Z%20-%20Super%20Gokuu%20Den%20Totsugeki%20Hen/Dragon%20Ball%20Z%20-%20Super%20Gokuu%20Den%20-%20Totsugeki%20Hen%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Estpolis Denki",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/04/estpolis-denki/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Estpolis%20Denki/Estpolis%20Denki%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Crayon Shin-chan – Arashi wo Yobu Enji",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/03/crayon-shin-chan-arashi-wo-yobu-enji/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Crayon%20Shin-chan%20-%20Arashi%20wo%20Yobu%20Enji/Crayon%20Shin-chan%20-%20Arashi%20wo%20Yobu%20Enji%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dungeon Master",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/03/dungeon-master/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Dungeon%20Master/Dungeon%20Master%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dragon Slayer – Eiyuu Densetsu 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/dragon-slayer-eiyuu-densetsu-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Dragon%20Slayer%20-%20Eiyuu%20Densetsu%202/Dragon%20Slayer%20-%20Eiyuu%20Densetsu%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dragon Slayer – Eiyuu Densetsu",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/dragon-slayer-eiyuu-densetsu/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Dragon%20Slayer%20-%20Eiyuu%20Densetsu/Dragon%20Slayer%20-%20Eiyuu%20Densetsu%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dolucky no Kusayakiu",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/dolucky-no-kusayakiu/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Dolucky%20no%20Kusayakiu/Dolucky%20no%20Kusayakiu%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dragon Quest VI – Realms of Revelation",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/dragon-quest-vi-realms-of-revelation/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Dragon%20Quest%20VI/Dragon%20Quest%20VI%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dragon Quest V – Hand of the Heavenly Bride",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/dragon-quest-v-hand-of-the-heavenly-bride/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Dragon%20Quest%20V/Dragon%20Quest%20V%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dragon Quest III – And thus into Legend…",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/dragon-quest-iii-and-thus-into-legend/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Dragon%20Quest%20III/Dragon%20Quest%20III%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dragon Quest I & II",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/dragon-quest-i-ii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Dragon%20Quest%20I%20and%20II/Dragon%20Quest%20I%20and%20II%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Crayon Shin-Chan 2 – Dai Maou no Gyakushu",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/crayon-shin-chan-2-dai-maou-no-gyakushu/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Crayon%20Shin-Chan%202%20-%20Dai%20Maou%20no%20Gyakushu/Crayon%20Shin-Chan%202%20-%20Dai%20Maou%20no%20Gyakushu%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dark Half",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/dark-half/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Dark%20Half/Dark%20Half%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dual Orb II",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/dual-orb-ii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Dual%20Orb%20II/Dual%20Orb%20II%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dragon Knight 4",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/dragon-knight-4/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Dragon%20Knight%204/Dragon%20Knight%204%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Dai Bakushou Jinsei Gekijou Ooedo Nikki",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/05/dai-bakushou-jinsei-gekijou-ooedo-nikki/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Dai%20Bakushou%20Jinsei%20Gekijou%20-%20Ooedo%20Nikki/Dai%20Bakushou%20Jinsei%20Gekijou%20-%20Ooedo%20Nikki%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "GP-1 RS – Rapid Stream",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/02/gp-1-rs-rapid-stream/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/GP-1%20RS%20-%20Rapid%20Stream/GP-1%20RS%20-%20Rapid%20Stream%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "F-1 Grand Prix – Part II",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/f-1-grand-prix-part-ii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/F-1%20Grand%20Prix%20-%20Part%20II/F-1%20Grand%20Prix%20-%20Part%20II%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "F-1 Grand Prix",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/f-1-grand-prix/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/F-1%20Grand%20Prix/F-1%20Grand%20Prix%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Exhaust Heat II – F1 Driver e no Michi",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/exhaust-heat-ii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Exhaust%20Heat%20II%20-%20F1%20Driver%20e%20no%20Michi/Exhaust%20Heat%20II%20-%20F1%20Driver%20e%20no%20Michi%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Gambler Jiko Chuushinha – Mahjong Ooisen",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/gambler-jiko-chuushinha-mahjong-ooisen/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Gambler%20Jiko%20Chuushinha%20-%20Mahjong%20Ooisen/Gambler%20Jiko%20Chuushinha%20-%20Mahjong%20Ooisen%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Heiwa Pachinko World",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/09/heiwa-pachinko-world/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Heiwa%20Pachinko%20World/Heiwa%20Pachinko%20World%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Gindama Oyakata no Pachinko Hisshouhou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/09/gindama-oyakata-no-pachinko-hisshouhou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Gindama%20Oyakata%20no%20Pachinko%20Hisshouhou/Gindama%20Oyakata%20no%20Pachinko%20Hisshouhou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Gakkou de Atta Kowai Hanashi",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/08/gakkou-de-atta-kowai-hanashi/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Gakkou%20de%20Atta%20Kowai%20Hanashi/Gakkou%20de%20Atta%20Kowai%20Hanashi%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Gokujou Parodius",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/01/gokujou-parodius/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Gokujou%20Parodius/Gokujou%20Parodius%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "From TV animation – Slam Dunk SD Heat Up!!",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/12/from-tv-animation-slam-dunk-sd-heat-up/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/From%20TV%20animation%20-%20Slam%20Dunk%20SD%20Heat%20Up!!/From%20TV%20animation%20-%20Slam%20Dunk%20SD%20Heat%20Up!!%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Granhistoria – Genshi Sekaiki",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/12/granhistoria-genshi-sekaiki/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Granhistoria%20-%20Genshi%20Sekaiki/Granhistoria%20-%20Genshi%20Sekaiki%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Harukanaru Augusta 3 – Masters New",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/harukanaru-augusta-3-masters-new/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Harukanaru%20Augusta%203%20-%20Masters%20New/Harukanaru%20Augusta%203%20-%20Masters%20New%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "F-1 Grand Prix Part III",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/f-1-grand-prix-part-iii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/F-1%20Grand%20Prix%20Part%20III/F-1%20Grand%20Prix%20Part%20III%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "From TV Animation Slam Dunk – Shikyou Gekitotsu!!",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/from-tv-animation-slam-dunk-shikyou-gekitotsu/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/From%20TV%20Animation%20Slam%20Dunk%20-%20Shikyou%20Gekitotsu!!/From%20TV%20Animation%20Slam%20Dunk%20-%20Shikyou%20Gekitotsu!!%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Final Fight",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/final-fight/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Final%20Fight/Final%20Fight%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Gradius III",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/11/gradius-iii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Gradius%20III/Gradius%20III%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Final Fight Guy",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/10/final-fight-guy/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Final%20Fight%20Guy/Final%20Fight%20Guy%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Estpolis Denki II",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/estpolis-denki-ii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Estpolis%20Denki%20II/Estpolis%20Denki%20II%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Ganbare Goemon – Yuki Hime Kyuushutsu Emaki",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/ganbare-goemon-yuki-hime-kyuushutsu-emaki/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Ganbare%20Goemon%20-%20Yuki%20Hime%20Kyuushutsu%20Emaki/Ganbare%20Goemon%20-%20Yuki%20Hime%20Kyuushutsu%20Emaki%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Final Fight 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/final-fight-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Final%20Fight%202/Final%20Fight%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Galaxy Wars",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/03/galaxy-wars/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Galaxy%20Wars/Galaxy%20Wars%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "F-15 Super Strike Eagle",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/f-15-super-strike-eagle/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/F-15%20Super%20Strike%20Eagle/F-15%20Super%20Strike%20Eagle%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "F-Zero",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/f-zero-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/F-Zero/F-Zero%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Garou Densetsu 2 – Aratanaru Tatakai",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/garou-densetsu-2-aratanaru-tatakai/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Garou%20Densetsu%202%20-%20Aratanaru%20Tatakai/Garou%20Densetsu%202%20-%20Aratanaru%20Tatakai%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Hakunetsu Pro Yakyuu Ganba League",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/hakunetsu-pro-yakyuu-ganba-league/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Hakunetsu%20Pro%20Yakyuu%20Ganba%20League/Hakunetsu%20Pro%20Yakyuu%20Ganba%20League%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Hagane",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/hagane/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Hagane/Hagane%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Final Fantasy IV",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2022/12/final-fantasy-iv-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Final%20Fantasy%20IV/Final%20Fantasy%20IV%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Final Fantasy VI",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/final-fantasy-vi/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Final%20Fantasy%20VI/Final%20Fantasy%20VI%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Front Mission – Gun Hazard",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/front-mission-gun-hazard/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Front%20Mission%20-%20Gun%20Hazard/Front%20Mission%20-%20Gun%20Hazard%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Final Fantasy V",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/07/final-fantasy-v/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Final%20Fantasy%20V/Final%20Fantasy%20V%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Gaia Gensouki (Illusion of Gaia)",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/07/gaia-gensouki-illusion-of-gaia/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Gaia%20Gensouki/Gaia%20Gensouki%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Final Fantasy USA – Mystic Quest",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/07/final-fantasy-usa-mystic-quest/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Final%20Fantasy%20USA%20-%20Mystic%20Quest/Final%20Fantasy%20USA%20-%20Mystic%20Quest%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "GD Leen",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/gd-leen/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/GD%20Leen/GD%20Leen%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Feda – The Emblem of Justice",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/feda-the-emblem-of-justice/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Feda%20-%20The%20Emblem%20of%20Justice/Feda%20-%20The%20Emblem%20of%20Justice%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Front Mission",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/front-mission/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Front%20Mission/Front%20Mission%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Hanjuku Hero – Aa Sekaiyo Hanjukunare",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/05/hanjuku-hero-aa-sekaiyo-hanjukunare/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Hanjuku%20Hero%20-%20Aa%20Sekaiyo%20Hanjukunare/Hanjuku%20Hero%20-%20Aa%20Sekaiyo%20Hanjukunare%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Farland Story",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/05/farland-story/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Farland%20Story/Farland%20Story%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Fushigi No Dungeon 2 – Fuurai No Shiren",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/05/fushigi-no-dungeon-2-fuurai-no-shiren/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Fushigi%20no%20Dungeon%202%20-%20Fuurai%20no%20Shiren/Fushigi%20no%20Dungeon%202%20-%20Fuurai%20no%20Shiren%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Jumbo Ozaki no Hole in One",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/jumbo-ozaki-no-hole-in-one/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Jumbo%20Ozaki%20no%20Hole%20in%20One/Jumbo%20Ozaki%20no%20Hole%20in%20One%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "J.League Super Soccer ’95 – Jikkyou Stadium",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/j-league-super-soccer-95-jikkyou-stadium/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/J.League%20Super%20Soccer%20'95%20-%20Jikkyou%20Stadium/J.League%20Super%20Soccer%20'95%20-%20Jikkyou%20Stadium%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "J.League Super Soccer",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/j-league-super-soccer/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/J.League%20Super%20Soccer/J.League%20Super%20Soccer%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Jutei Senki",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/jutei-senki/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Jutei%20Senki/Jutei%20Senki%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "J.League Excite Stage ’95",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/j-league-excite-stage-95/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/J.League%20Excite%20Stage%20'95/J.League%20Excite%20Stage%20'95%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "J.League Excite Stage ’94",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/j-league-excite-stage-94/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/J.League%20Excite%20Stage%20'94/J.League%20Excite%20Stage%20'94%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "J.League Soccer – Prime Goal 3",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/j-league-soccer-prime-goal-3/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/J.League%20Soccer%20-%20Prime%20Goal%203/J.League%20Soccer%20-%20Prime%20Goal%203%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "J.League Soccer – Prime Goal 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/j-league-soccer-prime-goal-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/J.League%20Soccer%20-%20Prime%20Goal%202/J.League%20Soccer%20-%20Prime%20Goal%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Hoshi no Kirby 3",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/12/hoshi-no-kirby-3/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Hoshi%20no%20Kirby%203/Hoshi%20no%20Kirby%203%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Honoo no Toukyuuji – Dodge Danpei",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/honoo-no-toukyuuji-dodge-danpei-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Honoo%20no%20Toukyuuji%20-%20Dodge%20Danpei/Honoo%20no%20Toukyuuji%20-%20Dodge%20Danpei%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Hiryuu no Ken S – Golden Fighter",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/hiryuu-no-ken-s-golden-fighter/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Hiryuu%20no%20Ken%20S%20-%20Golden%20Fighter/Hiryuu%20no%20Ken%20S%20-%20Golden%20Fighter%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "International Tennis Tour",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/international-tennis-tour/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/International%20Tennis%20Tour/International%20Tennis%20Tour%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "J.League Soccer – Prime Goal",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/j-league-soccer-prime-goal/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/J.League%20Soccer%20-%20Prime%20Goal/J.League%20Soccer%20-%20Prime%20Goal%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Hisshou Pachi-Slot Fun",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/hisshou-pachi-slot-fun/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Hisshou%20Pachi-Slot%20Fun/Hisshou%20Pachi-Slot%20Fun%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Hisshou 777 Fighter II – Pachi-Slot Maruhi Jouhou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/hisshou-777-fighter-ii-pachi-slot-maruhi-jouhou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Hisshou%20777%20Fighter%20II%20-%20Pachi-Slot%20Maruhi%20Jouhou/Hisshou%20777%20Fighter%20II%20-%20Pachi-Slot%20Maruhi%20Jouhou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Honke Sankyo Fever 2 – Jikki Simulation",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/honke-sankyo-fever-2-jikki-simulation/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Honke%20Sankyo%20Fever%202%20-%20Jikki%20Simulation/Honke%20Sankyo%20Fever%202%20-%20Jikki%20Simulation%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Jissen! Pachi-Slot Hisshouhou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/jissen-pachi-slot-hisshouhou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Jissen!%20Pachi-Slot%20Hisshouhou/Jissen!%20Pachi-Slot%20Hisshouhou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Jissen! Pachi-Slot Hisshouhou! Classic",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/jissen-pachi-slot-hisshouhou-classic/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Jissen!%20Pachi-Slot%20Hisshouhou!%20Classic/Jissen!%20Pachi-Slot%20Hisshouhou!%20Classic%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Honke Sankyo Fever 3 – Jikki Simulation",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/honke-sankyo-fever-3-jikki-simulation/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Honke%20Sankyo%20Fever%203%20-%20Jikki%20Simulation/Honke%20Sankyo%20Fever%203%20-%20Jikki%20Simulation%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Heiwa Pachinko World 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/09/heiwa-pachinko-world-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Heiwa%20Pachinko%20World%202/Heiwa%20Pachinko%20World%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Heiwa Pachinko World 3",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/09/heiwa-pachinko-world-3/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Heiwa%20Pachinko%20World%203/Heiwa%20Pachinko%20World%203%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Jikkyou Powerful Pro Yakyuu 3 ’97-Haru",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/08/jikkyou-powerful-pro-yakyuu-3-97-haru/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Jikkyou%20Powerful%20Pro%20Yakyuu%203%20'97-Haru/Jikkyou%20Powerful%20Pro%20Yakyuu%203%20'97-Haru%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Human Grand Prix II",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/08/human-grand-prix-ii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Human%20Grand%20Prix%20II/Human%20Grand%20Prix%20II%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Jikkyou World Soccer 2 – Fighting Eleven",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/12/jikkyou-world-soccer-2-fighting-eleven/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Jikkyou%20World%20Soccer%202%20-%20Fighting%20Eleven/Jikkyou%20World%20Soccer%202%20-%20Fighting%20Eleven%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Jaleco Rally – Big Run – The Supreme 4WD Challenge",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/08/jaleco-rally-big-run-the-supreme-4wd-challenge/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Jaleco%20Rally%20-%20Big%20Run%20-%20The%20Supreme%204WD%20Challenge/Jaleco%20Rally%20-%20Big%20Run%20-%20The%20Supreme%204WD%20Challenge%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Iso Zuri Ritou Hen",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/iso-zuri-ritou-hen/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Iso%20Zuri%20Ritou%20Hen/Iso%20Zuri%20Ritou%20Hen%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Kabuki Chou Reach Mahjong",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/kabuki-chou-reach-mahjong/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Kabuki%20Chou%20Reach%20Mahjong/Kabuki%20Chou%20Reach%20Mahjong%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Jikkyou Powerful Pro Yakyuu 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/jikkyou-powerful-pro-yakyuu-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Jikkyou%20Powerful%20Pro%20Yakyuu%202/Jikkyou%20Powerful%20Pro%20Yakyuu%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Jikkyou Powerful Pro Yakyuu ’94",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/jikkyou-powerful-pro-yakyuu-94/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Jikkyou%20Powerful%20Pro%20Yakyuu%20'94/Jikkyou%20Powerful%20Pro%20Yakyuu%20'94%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Human Baseball",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/human-baseball/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Human%20Baseball/Human%20Baseball%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Hello! Pac-Man",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/02/hello-pac-man/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Hello!%20Pac-Man/Hello!%20Pac-Man%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Hokuto no Ken 6 – Gekitou Denshou Ken Haou heno Michi",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/hokuto-no-ken-6-gekitou-denshou-ken-haou-heno-michi/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Hokuto%20no%20Ken%206%20-%20Gekitou%20Denshou%20Ken%20Haou%20heno%20Michi/Hokuto%20no%20Ken%206%20-%20Gekitou%20Denshou%20Ken%20Haou%20heno%20Michi%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Hokuto no Ken 5 – Tenma Ryuuseiden Ai Zetsu Shou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/hokuto-no-ken-5-tenma-ryuuseiden-ai-zetsu-shou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Hokuto%20no%20Ken%205%20-%20Tenma%20Ryuuseiden%20Ai%20Zetsu%20Shou/Hokuto%20no%20Ken%205%20-%20Tenma%20Ryuuseiden%20Ai%20Zetsu%20Shou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Jerry Boy",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/jerry-boy/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Jerry%20Boy/Jerry%20Boy%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Hoshi no Kirby – Super Deluxe",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/hoshi-no-kirby-super-deluxe/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Hoshi%20no%20Kirby%20-%20Super%20Deluxe/Hoshi%20no%20Kirby%20-%20Super%20Deluxe%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Jikkyou Powerful Pro Yakyuu 3",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/jikkyou-powerful-pro-yakyuu-3/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Jikkyou%20Powerful%20Pro%20Yakyuu%203/Jikkyou%20Powerful%20Pro%20Yakyuu%203%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Itadaki Street 2 – Neon Sign wa Bara Iro ni",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/itadaki-street-2-neon-sign-wa-bara-iro-ni/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Itadaki%20Street%202%20-%20Neon%20Sign%20wa%20Bara%20Iro%20ni/Itadaki%20Street%202%20-%20Neon%20Sign%20wa%20Bara%20Iro%20ni%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Heracles no Eikou IV – Kamigami-kara no Okurimono",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/heracles-no-eikou-iv-kamigami-kara-no-okurimono/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Heracles%20no%20Eikou%20IV%20-%20Kamigami-kara%20no%20Okurimono/Heracles%20no%20Eikou%20IV%20-%20Kamigami-kara%20no%20Okurimono%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Hiouden Mamonotachi to no Chikai",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/07/hiouden-mamonotachi-to-no-chikai/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Hiouden%20Mamonotachi%20to%20no%20Chikai/Hiouden%20Mamonotachi%20to%20no%20Chikai%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Lennus – Kodai Kikai no Kioku",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/05/lennus-kodai-kikai-no-kioku/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Lennus%20-%20Kodai%20Kikai%20no%20Kioku/Lennus%20-%20Kodai%20Kikai%20no%20Kioku%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Mario and Wario",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/02/mario-and-wario/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Mario%20and%20Wario/Mario%20and%20Wario%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Kouryuu Densetsu Villgust – Kieta Shoujo",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/kouryuu-densetsu-villgust-kieta-shoujo/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Kouryuu%20Densetsu%20Villgust%20-%20Kieta%20Shoujo/Kouryuu%20Densetsu%20Villgust%20-%20Kieta%20Shoujo%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Kirby Bowl",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/12/kirby-bowl/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Kirby%20Bowl/Kirby%20Bowl%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Lemmings",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/12/lemmings/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Lemmings/Lemmings%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Live A Live",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/live-a-live/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Live%20A%20Live/Live%20A%20Live%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Kamai-tachi no Yoru",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/kamai-tachi-no-yoru/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Kamai-tachi%20no%20Yoru/Kamai-tachi%20no%20Yoru%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Mahjong Touhaiden, The",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/mahjong-touhaiden-the/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Mahjong%20Touhaiden,%20The/Mahjong%20Touhaiden,%20The%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Mini Yonku Shining Scorpion – Let’s and Go!!",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/mini-yonku-shining-scorpion-lets-and-go/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Mini%20Yonku%20Shining%20Scorpion%20-%20Let's%20and%20Go!!/Mini%20Yonku%20Shining%20Scorpion%20-%20Let's%20and%20Go!!%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Momotarou Dentetsu Happy",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/momotarou-dentetsu-happy/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Momotarou%20Dentetsu%20Happy/Momotarou%20Dentetsu%20Happy%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Monopoly",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/monopoly-3/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Monopoly/Monopoly%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Kyoraku Sanyo Toyomaru Parlor! Parlor!",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/09/kyoraku-sanyo-toyomaru-parlor-parlor/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Kyoraku%20Sanyo%20Toyomaru%20Parlor!%20Parlor!/Kyoraku%20Sanyo%20Toyomaru%20Parlor!%20Parlor!%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Metal Max Returns",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/02/metal-max-returns/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Metal%20Max%20Returns/Metal%20Max%20Returns%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Kidou Senshi Gundam F91 – Formula Senki 0122",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/01/kidou-senshi-gundam-f91-formula-senki-0122/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Kidou%20Senshi%20Gundam%20F91%20-%20Formula%20Senki%200122/Kidou%20Senshi%20Gundam%20F91%20-%20Formula%20Senki%200122%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Mahoujin Guru Guru 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/12/mahoujin-guru-guru-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Mahoujin%20Guru%20Guru%202/Mahoujin%20Guru%20Guru%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Mahoujin Guru Guru",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/12/mahoujin-guru-guru/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Mahoujin%20Guru%20Guru/Mahoujin%20Guru%20Guru%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Kid Klown no Crazy Chase",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/12/kid-klown-no-crazy-chase/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Kid%20Klown%20no%20Crazy%20Chase/Kid%20Klown%20no%20Crazy%20Chase%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Kunio-Kun no Dodge Ball Dayo Zenin Shuugou!",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/10/kunio-kun-no-dodge-ball-dayo-zenin-shuugou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Kunio-kun%20no%20Dodge%20Ball%20dayo%20Zenin%20Shuugou!/Kunio-kun%20no%20Dodge%20Ball%20dayo%20Zenin%20Shuugou!%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Mahjong Club",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/08/mahjong-club/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Mahjong%20Club/Mahjong%20Club%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Lodoss Tou Senki",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/08/lodoss-tou-senki/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Lodoss%20Tou%20Senki/Lodoss%20Tou%20Senki%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Kachou Shima Kousaku – The Super Business Adventure",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/kachou-shima-kousaku-the-super-business-adventure/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Kachou%20Shima%20Kousaku%20-%20The%20Super%20Business%20Adventure/Kachou%20Shima%20Kousaku%20-%20The%20Super%20Business%20Adventure%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Kikuni Masahiko no Jantoushi Dora Ou 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/kikuni-masahiko-no-jantoushi-dora-ou-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Kikuni%20Masahiko%20no%20Jantoushi%20Dora%20Ou%202/Kikuni%20Masahiko%20no%20Jantoushi%20Dora%20Ou%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Mickey no Magical Adventure 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/mickey-no-magical-adventure-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Mickey%20no%20Magical%20Adventure%202/Mickey%20no%20Magical%20Adventure%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Metal Max 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/02/metal-max-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Metal%20Max%202/Metal%20Max%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Mickey no Magical Adventure",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/mickey-no-magical-adventure/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Mickey%20no%20Magical%20Adventure/Mickey%20no%20Magical%20Adventure%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Kidou Senshi Gundam – Cross Dimension 0079",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/03/kidou-senshi-gundam-cross-dimension-0079/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Kidou%20Senshi%20Gundam%20-%20Cross%20Dimension%200079/Kidou%20Senshi%20Gundam%20-%20Cross%20Dimension%200079%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Mario no Super Picross",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/03/mario-no-super-picross/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Mario%20no%20Super%20Picross/Mario%20no%20Super%20Picross%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Lord Monarch",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/lord-monarch-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Lord%20Monarch/Lord%20Monarch%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Lady Stalker – Challenge from the Past",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/lady-stalker/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Lady%20Stalker/Lady%20Stalker%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Monster Maker III",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/07/monster-maker-iii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Monster%20Maker%20III/Monster%20Maker%20III%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Magic Knight Rayearth – Mahou Kishi",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/magic-knight-rayearth-mahou-kishi/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Magic%20Knight%20Rayearth%20-%20Mahou%20Kishi/Magic%20Knight%20Rayearth%20-%20Mahou%20Kishi%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Last Battle, The",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/last-battle-the/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Last%20Battle,%20The/Last%20Battle,%20The%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Mega Lo Mania",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/mega-lo-mania-sfc/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Mega%20Lo%20Mania%20(SFC)/Mega%20Lo%20Mania%20(SFC)%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Milandra",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/milandra/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Milandra/Milandra%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Kouryuuki",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/kouryuuki/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Kouryuuki/Kouryuuki%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Lagoon",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/05/lagoon/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Lagoon%20(SFC)/Lagoon%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Marvelous Mouhitotsu no Takarajima",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/02/marvelous-mouhitotsu-no-takarajima/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Marvelous%20Mouhitotsu%20no%20Takarajima/Marvelous%20Mouhitotsu%20no%20Takarajima%20(Super%20Nintendo)%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "RPG Tsukuru 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/05/rpg-tsukuru-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/RPG%20Tsukuru%202/RPG%20Tsukuru%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Puzzle Bobble",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/02/puzzle-bobble/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Puzzle%20Bobble/Puzzle%20Bobble%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "New 3D Golf Simulation – Pebble Beach no Hatou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/new-3d-golf-simulation-pebble-beach-no-hatou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/New%203D%20Golf%20Simulation%20-%20Pebble%20Beach%20no%20Hatou/New%203D%20Golf%20Simulation%20-%20Pebble%20Beach%20no%20Hatou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Pilotwings",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/12/pilotwings/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Pilotwings/Pilotwings%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Raiden Densetsu",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/raiden-densetsu/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Raiden%20Densetsu/Raiden%20Densetsu%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Pachi-Slot Monogatari – Universal Special",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/pachi-slot-monogatari-universal-special-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Pachi-Slot%20Monogatari%20-%20Universal%20Special/Pachi-Slot%20Monogatari%20-%20Universal%20Special%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Nobunaga no Yabou – Haouden",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/nobunaga-no-yabou-haouden/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Nobunaga%20no%20Yabou%20-%20Haouden/Nobunaga%20no%20Yabou%20-%20Haouden%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Nishijin Pachinko Monogatari 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/nishijin-pachinko-monogatari-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Nishijin%20Pachinko%20Monogatari%202/Nishijin%20Pachinko%20Monogatari%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Pachi-Slot Monogatari – PAL Kougyou Special",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/pachi-slot-monogatari-pal-kougyou-special/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Pachi-Slot%20Monogatari%20-%20PAL%20Kougyou%20Special/Pachi-Slot%20Monogatari%20-%20PAL%20Kougyou%20Special%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Pro Mahjong Kiwame III",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/pro-mahjong-kiwame-iii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Pro%20Mahjong%20Kiwame%20III/Pro%20Mahjong%20Kiwame%20III%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Pachi-Slot Love Story",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/09/pachi-slot-love-story/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Pachi-Slot%20Love%20Story/Pachi-Slot%20Love%20Story%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Parlor! Mini – Pachinko Jikki Simulation Game",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/09/parlor-mini-pachinko-jikki-simulation-game/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Parlor!%20Mini%20-%20Pachinko%20Jikki%20Simulation%20Game/Parlor!%20Mini%20-%20Pachinko%20Jikki%20Simulation%20Game%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Parlor! Mini 4 – Pachinko Jikki Simulation Game",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/09/parlor-mini-4-pachinko-jikki-simulation-game/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Parlor!%20Mini%204%20-%20Pachinko%20Jikki%20Simulation%20Game/Parlor!%20Mini%204%20-%20Pachinko%20Jikki%20Simulation%20Game%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Othello World",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/09/othello-world/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Othello%20World/Othello%20World%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "NBA Jam",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/08/nba-jam/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/NBA%20Jam/NBA%20Jam%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Ranma 1-2 – Akanekodan Teki Hihou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/12/ranma-1-2-akanekodan-teki-hihou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Ranma%201-2%20-%20Akanekodan%20Teki%20Hihou/Ranma%201-2%20-%20Akanekodan%20Teki%20Hihou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Ranma 1/2 – Chougi Ranbu Hen",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/10/ranma-1-2-chougi-ranbu-hen/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Ranma%201-2%20-%20Chougi%20Ranbu-Hen/Ranma%201-2%20-%20Chougi%20Ranbu-Hen%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Popful Mail",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/08/popful-mail/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Popful%20Mail/Popful%20Mail%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Populous",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/populous/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Populous/Populous%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Parodius Da! – Shinwa kara Owarai e",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/parodius-da-shinwa-kara-owarai-e/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Parodius%20Da!%20-%20Shinwa%20kara%20Owarai%20e/Parodius%20Da!%20-%20Shinwa%20kara%20Owarai%20e%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Rudra no Hihou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/rudra-no-hihou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Rudra%20no%20Hihou/Rudra%20no%20Hihou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Rockman X2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/07/rockman-x2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Rockman%20X2/Rockman%20X2%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Outer World",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/07/outer-world-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Outer%20World/Outer%20World%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Ranma 1-2 – Bakuretsu Rantou Hen",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/05/ranma-1-2-bakuretsu-rantou-hen/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Ranma%201-2%20-%20Bakuretsu%20Rantou%20Hen/Ranma%201-2%20-%20Bakuretsu%20Rantou%20Hen%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Ranma 1/2 – Chounai Gekitou Hen",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/ranma-1-2-chounai-gekitou-hen/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Ranma%201-2%20-%20Chounai%20Gekitou%20Hen/Ranma%201-2%20-%20Chounai%20Gekitou%20Hen%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Princess Minerva",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/princess-minerva/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Princess%20Minerva/Princess%20Minerva%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Muscle Bomber – The Body Explosion",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/muscle-bomber-the-body-explosion/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Muscle%20Bomber%20-%20The%20Body%20Explosion/Muscle%20Bomber%20-%20The%20Body%20Explosion%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Mouryou Senki Madara 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/mouryou-senki-madara-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Madara%202/Madara%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Nintama Rantarou 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/nintama-rantarou-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Nintama%20Rantarou%202/Nintama%20Rantarou%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Mother 2 (Earthbound)",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/07/mother-2-earthbound/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Mother%202/Mother%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "RPG Tsukuru Super Dante",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/07/rpg-tsukuru-super-dante/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/RPG%20Tsukuru%20Super%20Dante/RPG%20Tsukuru%20Super%20Dante%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Mystic Ark",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/mystic-ark/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Mystic%20Ark/Mystic%20Ark%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Romancing Saga",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/romancing-saga/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Romancing%20Saga/Romancing%20Saga%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Otogirisou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/otogirisou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Otogirisou/Otogirisou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Populous II Trials of the Olympian Gods",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/populous-ii-trials-of-the-olympian-gods/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Populous%20II%20Trials%20of%20the%20Olympian%20Gods/Populous%20II%20Trials%20of%20the%20Olymian%20Gods%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Powermonger",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/05/powermonger/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Powermonger%20(SFC)/Powermonger%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Romancing Saga 3",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/05/romancing-saga-3/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Romancing%20Saga%203/Romancing%20Saga%203%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "SD Gundam Gaiden – Knight Gundam Monogatari – Ooinaru Isan",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/sd-gundam-gaiden-knight-gundam-monogatari-ooinaru-isan/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/SD%20Gundam%20Gaiden%20-%20Knight%20Gundam%20Monogatari%20-%20Ooinaru%20Isan/SD%20Gundam%20Gaiden%20-%20Knight%20Gundam%20Monogatari%20-%20Ooinaru%20Isan%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Sangokushi Seishi – Tenbu Spirits",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/sangokushi-seishi-tenbu-spirits/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Sangokushi%20Seishi%20-%20Tenbu%20Spirits/Sangokushi%20Seishi%20-%20Tenbu%20Spirits%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "SD Gundam G Next",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/sd-gundam-g-next/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/SD%20Gundam%20G%20Next/SD%20Gundam%20G%20Next%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Space Invaders – The Original Game",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/space-invaders-the-original-game/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Space%20Invaders%20-%20The%20Original%20Game/Space%20Invaders%20-%20The%20Original%20Game%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Sky Mission",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/sky-mission/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Sky%20Mission/Sky%20Mission%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "SD Gundam GX",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/sd-gundam-gx/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/SD%20Gundam%20GX/SD%20Gundam%20GX%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "SD The Great Battle – Aratanaru Chousen",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/sd-the-great-battle-aratanaru-chousen/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/SD%20The%20Great%20Battle%20-%20Aratanaru%20Chousen/SD%20The%20Great%20Battle%20-%20Aratanaru%20Chousen%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Shin Momotarou Densetsu",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/shin-momotarou-densetsu/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Shin%20Momotarou%20Densetsu/Shin%20Momotarou%20Densetsu%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Shougi Saikyou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/shougi-saikyou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Shougi%20Saikyou/Shougi%20Saikyou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Serizawa Nobuo no Birdie Try",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/serizawa-nobuo-no-birdie-try/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Serizawa%20Nobuo%20no%20Birdie%20Try/Serizawa%20Nobuo%20no%20Birdie%20Try%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Sangokushi III",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/sangokushi-iii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Sangokushi%20III/Sangokushi%20III%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Shanghai III",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/shanghai-iii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Shanghai%20III/Shanghai%20III%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Sankyo Fever! Fever! – Pachinko Jikki Simulation Game",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/sankyo-fever-fever-pachinko-jikki-simulation-game/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Sankyo%20Fever!%20Fever!%20-%20Pachinko%20Jikki%20Simulation%20Game/Sankyo%20Fever!%20Fever!%20-%20Pachinko%20Jikki%20Simulation%20Game%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Smash T.V.",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/08/smash-t-v/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Smash%20T.V./Smash%20T.V.%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "SD Kidou Senshi Gundam – V Sakusen Shidou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/12/sd-kidou-senshi-gundam-v-sakusen-shidou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/SD%20Kidou%20Senshi%20Gundam%20-%20V%20Sakusen%20Shidou/SD%20Kidou%20Senshi%20Gundam%20-%20V%20Sakusen%20Shidou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Soul & Sword",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/08/soul-sword/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Soul%20and%20Sword/Soul%20and%20Sword%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "SimEarth",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/11/simearth/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/SimEarth/SimEarth%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Star Ocean",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/star-ocean/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Star%20Ocean/Star%20Ocean%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Shodai Nekketsu Kouha Kunio-Kun",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/shodai-nekketsu-kouha-kunio-kun/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Shodai%20Nekketsu%20Kouha%20Kunio-Kun/Shodai%20Nekketsu%20Kouha%20Kunio-Kun%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Space Bazooka",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/05/space-bazooka/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Space%20Bazooka/Space%20Bazooka%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Sotsugyou Bangai Hen – Nee Mahjong Shiyo!",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/03/sotsugyou-bangai-hen-nee-mahjong-shiyo/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Sotsugyou%20Bangai%20Hen%20-%20Nee%20Mahjong%20Shiyo!/Sotsugyou%20Bangai%20Hen%20-%20Nee%20Mahjong%20Shiyo!%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Sanrio Shanghai",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/sanrio-shanghai/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Sanrio%20Shanghai/Sanrio%20Shanghai%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Street Fighter II",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/street-fighter-ii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Street%20Fighter%20II/Street%20Fighter%20II%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Star Fox",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/star-fox/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Star%20Fox/Star%20Fox%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Soreyuke Ebisumaru Karakuri Meiro – Kieta Goemon no Nazo!!",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/soreyuke-ebisumaru-karakuri-meiro-kieta-goemon-no-nazo/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Soreyuke%20Ebisumaru%20Karakuri%20Meiro%20-%20Kieta%20Goemon%20no%20Nazo!!/Soreyuke%20Ebisumaru%20Karakuri%20Meiro%20-%20Kieta%20Goemon%20no%20Nazo!!%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Samurai Spirits",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/samurai-spirits/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Samurai%20Spirits/Samurai%20Spirits%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Silva Saga II – The Legend of Light and Darkness",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/silva-saga-ii-the-legend-of-light-and-darkness/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Silva%20Saga%20II/Silva%20Saga%20II%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Sansara Naga 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/sansara-naga-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Sansara%20Naga%202/Sansara%20Naga%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Seiken Densetsu 3",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/seiken-densetsu-3-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Seiken%20Densetsu%203/Seiken%20Densetsu%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Shin Megami Tensei if…",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/shin-megami-tensei-if/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Shin%20Megami%20Tensei%20if/Shin%20Megami%20Tensei%20if...%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Shin Megami Tensei II",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/shin-megami-tensei-ii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Shin%20Megami%20Tensei%20II/Shin%20Megami%20Tensei%20II%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Seiken Densetsu 2 (Secret of Mana)",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/seiken-densetsu-2-secret-of-mana/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Seiken%20Densetsu%202/Seiken%20Densetsu%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Slapstick",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/07/slapstick-robotrek/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Slapstick/Slapstick%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Ryuuki Heidan Danzarb",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/ryuuki-heidan-danzarb/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Ryuuki%20Heidan%20Danzarb/Ryuuki%20Heidan%20Danzarb%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Soul Blader",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/soul-blader/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Soul%20Blader/Soul%20Blader%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Sound Novel Tsukuru",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/sound-novel-tsukuru/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Sound%20Novel%20Tsukuru/Sound%20Novel%20Tsukuru%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Sim City Jr.",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/05/sim-city-jr/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Sim%20City%20Jr/Sim%20City%20Jr.%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Slayers",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/05/slayers/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Slayers/Slayers%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Chinese World 2 – Uchuuichi Butou Taikai",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/05/super-chinese-world-2-uchuuichi-butou-taikai/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Chinese%20World%202%20-%20Uchuuichi%20Butou%20Taikai/Super%20Chinese%20World%202%20-%20Uchuuichi%20Butou%20Taikai%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Mario Collection",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/05/super-mario-collection/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Mario%20Collection/Super%20Mario%20Collection%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Keiba 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/05/super-keiba-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Keiba%202/Super%20Keiba%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Black Bass",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/super-black-bass/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Black%20Bass/Super%20Black%20Bass%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Daikoukai Jidai",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/super-daikoukai-jidai/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Daikoukai%20Jidai/Super%20Daikoukai%20Jidai%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Jinsei Game 3",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/super-jinsei-game-3/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Jinsei%20Game%203/Super%20Jinsei%20Game%203%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Linearball",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/super-linearball/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Linearball/Super%20Linearball%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Famista 5",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-famista-5/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Famista%205/Super%20Famista%205%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Famista 4",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-famista-4/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Famista%204/Super%20Famista%204%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Famista 3",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-famista-3/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Famista%203/Super%20Famista%203%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Famista 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-famista-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Famista%202/Super%20Famista%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Famista",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-famista/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Famista/Super%20Famista%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Kyuukyoku Harikiri Stadium 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-kyuukyoku-harikiri-stadium-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Kyuukyoku%20Harikiri%20Stadium%202/Super%20Kyuukyoku%20Harikiri%20Stadium%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Kick Off",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-kick-off/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Kick%20Off/Super%20Kick%20Off%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Formation Soccer 96 – World Club Edition",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-formation-soccer-96-world-club-edition/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Formation%20Soccer%2096%20-%20World%20Club%20Edition/Super%20Formation%20Soccer%2096%20-%20World%20Club%20Edition%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Formation Soccer 94 – World Cup Edition",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-formation-soccer-94-world-cup-edition/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Formation%20Soccer%2094%20-%20World%20Cup%20Edition/Super%20Formation%20Soccer%2094%20-%20World%20Cup%20Edition%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Mahjong Taikai",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-mahjong-taikai-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Mahjong%20Taikai/Super%20Mahjong%20Taikai%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Cup Soccer",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-cup-soccer/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Cup%20Soccer/Super%20Cup%20Soccer%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Jinsei Game",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-jinsei-game/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Jinsei%20Game/Super%20Jinsei%20Game%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Gachapon World – SD Gundam X",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/08/super-gachapon-world-sd-gundam-x/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Gachapon%20World%20-%20SD%20Gundam%20X/Super%20Gachapon%20World%20-%20SD%20Gundam%20X%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Street Fighter II Turbo",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/street-fighter-ii-turbo/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Street%20Fighter%20II%20Turbo/Street%20Fighter%20II%20Turbo%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Bomberman – Panic Bomber W",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/super-bomberman-panic-bomber-w-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Bomberman%20-%20Panic%20Bomber%20W/Super%20Bomberman%20-%20Panic%20Bomber%20W%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Bomberman",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/super-bomberman/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Bomberman/Super%20Bomberman%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Fire Pro Wrestling – Queen’s Special",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/super-fire-pro-wrestling-queens-special/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Fire%20Pro%20Wrestling%20-%20Queen's%20Special/Super%20Fire%20Pro%20Wrestling%20-%20Queen's%20Special%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Fire Pro Wrestling III – Final Bout",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/super-fire-pro-wrestling-iii-final-bout/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Fire%20Pro%20Wrestling%20III%20-%20Final%20Bout/Super%20Fire%20Pro%20Wrestling%20III%20-%20Final%20Bout%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Fire Pro Wrestling 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/super-fire-pro-wrestling-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Fire%20Pro%20Wrestling%202/Super%20Fire%20Pro%20Wrestling%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Fire Pro Wrestling X",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/11/super-fire-pro-wrestling-x/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Fire%20Pro%20Wrestling%20X/Super%20Fire%20Pro%20Wrestling%20X%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Aleste",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/super-aleste/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Aleste/Super%20Aleste%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Bomberman 4",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/super-bomberman-4/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Bomberman%204/Super%20Bomberman%204%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Donkey Kong",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/08/super-donkey-kong/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Donkey%20Kong/Super%20Donkey%20Kong%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Donkey Kong 3 – Nazo No Kremis Tou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/07/super-donkey-kong-3-nazo-no-kremis-tou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Donkey%20Kong%203%20-%20Nazo%20no%20Kremis-tou/Super%20Donkey%20Kong%203%20-%20Nazo%20no%20Kremis-tou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Bomberman 3",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/07/super-bomberman-3/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Bomberman%203/Super%20Bomberman%203%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Donkey Kong 2 – Dixie & Diddy",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/07/super-donkey-kong-2-dixie-diddy/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Donkey%20Kong%202%20-%20Dixie%20&%20Diddy/Super%20Donkey%20Kong%202%20-%20Dixie%20&%20Diddy%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Mario Kart",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/07/super-mario-kart-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Mario%20Kart/Super%20Mario%20Kart%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Mario – Yoshi Island",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/06/super-mario-yoshi-island/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Mario%20-%20Yoshi%20Island/Super%20Mario%20-%20Yoshi%20Island%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Bowling",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/super-bowling/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Bowling/Super%20Bowling%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Bomberman 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/super-bomberman-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Bomberman%202/Super%20Bomberman%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Jinsei Game 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/super-jinsei-game-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Super%20Jinsei%20Game%202/Super%20Jinsei%20Game%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Fire Pro-Wrestling",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/05/super-fire-pro-wrestling/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Super%20Fire%20Pro-Wrestling/Super%20Fire%20Pro-Wrestling%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Thoroughbred Breeder II",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/thoroughbred-breeder-ii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Thoroughbred%20Breeder%20II/Thoroughbred%20Breeder%20II%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Tecmo Super Bowl II – Special Edition",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/tecmo-super-bowl-ii-special-edition/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Tecmo%20Super%20Bowl%20II%20-%20Special%20Edition/Tecmo%20Super%20Bowl%20II%20-%20Special%20Edition%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Robot Taisen EX",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-robot-taisen-ex/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Robot%20Taisen%20EX/Super%20Robot%20Taisen%20EX%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Tetris 2 + Bombliss",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-tetris-2-bombliss/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Tetris%202%20+%20Bombliss/Super%20Tetris%202%20+%20Bombliss%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Power League 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-power-league-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Power%20League%202/Super%20Power%20League%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Power League",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-power-league/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Power%20League/Super%20Power%20League%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Shanghai – Dragon’s Eye (Hot B)",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-shanghai-dragons-eye-hot-b/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Shanghai%20-%20Dragon's%20Eye%20(Hot%20B)/Super%20Shanghai%20-%20Dragon's%20Eye%20(HOT%20B)%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Nobunaga no Yabou – Zenkoku Ban",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-nobunaga-no-yabou-zenkoku-ban/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Nobunaga%20no%20Yabou%20-%20Zenkoku%20Ban/Super%20Nobunaga%20no%20Yabou%20-%20Zenkoku%20Ban%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Sangokushi II",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-sangokushi-ii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Sangokushi%20II/Super%20Sangokushi%20II%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Oozumou – Nessen Dai Ichiban",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-oozumou-nessen-dai-ichiban/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Oozumou%20-%20Nessen%20Dai%20Ichiban/Super%20Oozumou%20-%20Nessen%20Dai%20Ichiban%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Zugan – Hakotenjou kara no Shoutaijou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-zugan-hakotenjou-kara-no-shoutaijou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Zugan%20-%20Hakotenjou%20kara%20no%20Shoutaijou/Super%20Zugan%20-%20Hakotenjou%20kara%20no%20Shoutaijou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Momotarou Dentetsu III",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-momotarou-dentetsu-iii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Momotarou%20Dentetsu%20III/Super%20Momotarou%20Dentetsu%20III%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Momotarou Dentetsu DX",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-momotarou-dentetsu-dx-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Momotarou%20Dentetsu%20DX/Super%20Momotarou%20Dentetsu%20DX%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Momotarou Dentetsu II",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/super-momotarou-dentetsu-ii/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Momotarou%20Dentetsu%20II/Super%20Momotarou%20Dentetsu%20II%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Wagyan Land 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/08/super-wagyan-land-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Wagyan%20Land%202/Super%20Wagyan%20Land%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Robot Taisen Gaiden – Masoukishin – The Lord of Elemental",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/11/super-robot-taisen-gaiden-masoukishin-the-lord-of-elemental/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Robot%20Taisen%20Gaiden%20-%20Masoukishin%20-%20The%20Lord%20of%20Elemental/Super%20Robot%20Taisen%20Gaiden%20-%20Masoukishin%20-%20The%20Lord%20of%20Elemental%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Tetris 2 + Bombliss Gentei Han",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/08/super-tetris-2-bombliss-gentei-han/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Tetris%202%20+%20Bombliss%20-%20Gentei%20Han/Super%20Tetris%202%20+%20Bombliss%20-%20Gentei%20Han%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Pachinko",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/super-pachinko/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Pachinko/Super%20Pachinko%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Power League 3",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/super-power-league-3/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Power%20League%203/Super%20Power%20League%203%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Tenchi Muyou! Game-Hen",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/12/tenchi-muyou-game-hen/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Tenchi%20Muyou!%20Game-Hen/Tenchi%20Muyou!%20Game-Hen%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super R-Type",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/11/super-r-type/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20R-Type/Super%20R-Type%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Tenchi Souzou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/tenchi-souzou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Tenchi%20Souzou/Tenchi%20Souzou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Teenage Mutant Ninja Turtles – Turtles In Time",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/teenage-mutant-ninja-turtles-turtles-in-time/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Teenage%20Mutant%20Ninja%20Turtles%20-%20Turtles%20in%20Time/Teenage%20Mutant%20Ninja%20Turtles%20-%20Turtles%20in%20Time%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Puyo Puyo 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/super-puyo-puyo-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Puyo%20Puyo%202/Super%20Puyo%20Puyo%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Nazo Puyo – Lulu no Luu",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/super-nazo-puyo-lulu-no-luu/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Nazo%20Puyo%20-%20Lulu%20no%20Luu/Super%20Nazo%20Puyo%20-%20Lulu%20no%20Luu%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Street Fighter II – The New Challengers",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/super-street-fighter-ii-the-new-challengers/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Street%20Fighter%20II%20-%20The%20New%20Challengers/Super%20Street%20Fighter%20II%20-%20The%20New%20Challengers%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Power League 4",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/02/super-power-league-4/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Super%20Power%20League%204/Super%20Power%20League%204%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Nazo Puyo 2 – Lulu no Tetsuwan Hanjouki",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/super-nazo-puyo-2-lulu-no-tetsuwan-hanjouki/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Super%20Nazo%20Puyo%202%20-%20Lulu%20no%20Tetsuwan%20Hanjouki/Super%20Nazo%20Puyo%202%20-%20Lulu%20no%20Tetsuwan%20Hanjouki%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Tower Dream",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/tower-dream/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Tower%20Dream/Tower%20Dream%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Torneko no Daibouken – Fushigi no Dungeon",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/torneko-no-daibouken-fushigi-no-dungeon/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Torneko%20no%20Daibouken%20-%20Fushigi%20no%20Dungeon/Torneko%20no%20Daibouken%20-%20Fushigi%20no%20Dungeon%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Tengai Makyou Zero",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/tengai-makyou-zero/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Tengai%20Makyou%20Zero/Tengai%20Makyou%20Zero%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Tales of Phantasia",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/08/tales-of-phantasia/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Tales%20of%20Phantasia/Tales%20of%20Phantasia%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Tactics Ogre – Let Us Cling Together",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/07/tactics-ogre-let-us-cling-together/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Tactics%20Ogre/Tactics%20Ogre%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Puyo Puyo Tsuu Remix",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/super-puyo-puyo-tsuu-remix/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Super%20Puyo%20Puyo%20Tsuu%20Remix/Super%20Puyo%20Puyo%20Tsuu%20Remix%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Sword World SFC",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/sword-world-sfc/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Sword%20World%20SFC/Sword%20World%20SFC%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Super Puyo Puyo",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/super-puyo-puyo/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Super%20Puyo%20Puyo%20(SFC)/Super%20Puyo%20Puyo%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Suzuka 8 Hours",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/05/suzuka-8-hours/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Suzuka%208%20Hours/Suzuka%208%20Hours%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Zenkoku Koukou Soccer 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/05/zenkoku-koukou-soccer-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Zenkoku%20Koukou%20Soccer%202/Zenkoku%20Koukou%20Soccer%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Yokoyama Mitsuteru Sangokushi",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/05/yokoyama-mitsuteru-sangokushi/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Yokoyama%20Mitsuteru%20Sangokushi/Yokoyama%20Mitsuteru%20Sangokushi%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Wonder Project J – Kikai no Shounen Pino",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/05/wonder-project-j-kikai-no-shounen-pino/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Wonder%20Project%20J%20-%20Kikai%20no%20Shounen%20Pino/Wonder%20Project%20J%20-%20Kikai%20no%20Shounen%20Pino%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Yokoyama Mitsuteru Sangokushi Bangi – Sugoroku Eiyuu-ki",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/05/yokoyama-mitsuteru-sangokushi-bangi-sugoroku-eiyuu-ki/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Yokoyama%20Mitsuteru%20Sangokushi%20Bangi%20-%20Sugoroku%20Eiyuu-ki/Yokoyama%20Mitsuteru%20Sangokushi%20Bangi%20-%20Sugoroku%20Eiyuu-ki%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Winning Post",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2026/01/winning-post/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Winning%20Post/Winning%20Post%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Wild Trax",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/12/wild-trax/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Wild%20Trax/Wild%20Trax%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Yoshi no Road Hunting",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/11/yoshi-no-road-hunting/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Yoshi%20no%20Road%20Hunting/Yoshi%20no%20Road%20Hunting%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "World Class Rugby 2 – Kokunai Gekitou Hen ’93",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/world-class-rugby-2-kokunai-gekitou-hen-93/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/World%20Class%20Rugby%202%20-%20Kokunai%20Gekitou%20Hen%20'93/World%20Class%20Rugby%202%20-%20Kokunai%20Gekitou%20Hen%20'93%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Ultimate Football",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/ultimate-football/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Ultimate%20Football/Ultimate%20Football%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Umizuri Meijin – Suzuki Hen",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/umizuri-meijin-suzuki-hen/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Umizuri%20Meijin%20-%20Suzuki%20Hen/Umizuri%20Meijin%20-%20Suzuki%20Hen%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Tsuri Tarou",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2025/10/tsuri-tarou/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Tsuri%20Tarou/Tsuri%20Tarou%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Zen Nippon Pro-Wrestling",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/10/zen-nippon-pro-wrestling/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Zen%20Nippon%20Pro-Wrestling/Zen%20Nippon%20Pro-Wrestling%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "USA Ice Hockey",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/usa-ice-hockey/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/USA%20Ice%20Hockey/USA%20Ice%20Hockey%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Yuu Yuu Hakusho 2",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/yuu-yuu-hakusho-2/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Yuu%20Yuu%20Hakusho%202/Yuu%20Yuu%20Hakusho%202%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Yuu Yuu Hakusho",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2024/03/yuu-yuu-hakusho/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Yuu%20Yuu%20Hakusho/Yuu%20Yuu%20Hakusho%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Wolfenstein 3D – The Claw Of Eisenfaust",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/10/wolfenstein-3d-the-claw-of-eisenfaust/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Wolfenstein%203D%20-%20The%20Claw%20of%20Eisenfaust/Wolfenstein%203D%20-%20The%20Claw%20of%20Eisenfaust%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Zelda no Densetsu – Kamigami no Triforce",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/09/zelda-no-densetsu-kamigami-no-triforce/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Zelda%20no%20Densetsu%20-%20Kamigami%20no%20Triforce/Zelda%20no%20Densetsu%20-%20Kamigami%20no%20Triforce%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Xardion",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2023/05/xardion/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/sfc/Xardion/Xardion%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Waratte Iitomo Tamorinpic",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/07/waratte-iitomo-tamorinpic/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Waratte%20Iitomo%20Tamorinpic/Waratte%20Iitomo%20Tamorinpic%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Wedding Peach",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2019/06/wedding-peach/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Wedding%20Peach/Wedding%20Peach%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "title": "Uchuu Race: Astro Go! Go!",
+      "sourceUrl": "https://www.gamingalexandria.com/wp/2018/12/uchuu-race-astro-go-go/",
+      "manual": [
+        "https://www.gamingalexandria.com/highquality/snes/Astro%20Go!%20Go!/Astro%20Go!%20Go!%20-%20Manual.pdf"
+      ]
+    }
+  ]
+}

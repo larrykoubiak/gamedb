@@ -364,71 +364,6 @@ function renderCover(element, game, size, {eager = false, enlarge = true} = {}) 
   }
 }
 
-const artworkDialog = document.querySelector("#artwork-dialog");
-const artworkImage = document.querySelector("#artwork-image");
-const artworkError = document.querySelector("#artwork-error");
-let artworkItems = [];
-let artworkIndex = 0;
-
-function renderArtworkImage() {
-  const item = artworkItems[artworkIndex];
-  document.querySelector("#artwork-caption").textContent = item.caption;
-  artworkError.hidden = true;
-  artworkImage.hidden = false;
-  artworkImage.alt = item.caption;
-  artworkImage.src = item.source;
-  document.querySelector("#artwork-navigation").hidden = artworkItems.length < 2;
-  document.querySelector("#artwork-position").textContent = `Image ${artworkIndex + 1} of ${artworkItems.length}`;
-}
-
-function moveArtwork(direction) {
-  if (!artworkDialog.open || artworkItems.length < 2) return;
-  artworkIndex = (artworkIndex + direction + artworkItems.length) % artworkItems.length;
-  renderArtworkImage();
-}
-
-function artworkButton(image, items, startIndex, caption = items[startIndex()].caption) {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "artwork-zoom";
-  button.setAttribute("aria-label", `Enlarge ${caption}`);
-  button.setAttribute("aria-haspopup", "dialog");
-  button.append(image);
-  button.addEventListener("click", () => {
-    artworkItems = items;
-    artworkIndex = startIndex();
-    renderArtworkImage();
-    artworkDialog.showModal();
-  });
-  return button;
-}
-
-document.querySelector("#artwork-close").addEventListener("click", () => artworkDialog.close());
-document.querySelector("#artwork-previous").addEventListener("click", () => moveArtwork(-1));
-document.querySelector("#artwork-next").addEventListener("click", () => moveArtwork(1));
-artworkDialog.addEventListener("keydown", event => {
-  if (artworkItems.length > 1 && ["ArrowLeft", "ArrowRight"].includes(event.key)) {
-    event.preventDefault();
-    moveArtwork(event.key === "ArrowLeft" ? -1 : 1);
-  }
-});
-artworkDialog.addEventListener("click", event => {
-  if (event.target !== artworkDialog) return;
-  const rect = artworkDialog.getBoundingClientRect();
-  if (event.clientX < rect.left || event.clientX > rect.right ||
-      event.clientY < rect.top || event.clientY > rect.bottom) artworkDialog.close();
-});
-artworkDialog.addEventListener("close", () => {
-  artworkImage.removeAttribute("src");
-  artworkItems = [];
-  artworkIndex = 0;
-});
-artworkImage.addEventListener("error", () => {
-  if (!artworkDialog.open) return;
-  artworkImage.hidden = true;
-  artworkError.hidden = false;
-});
-
 function appendBreakdown(container, breakdown) {
   const list = document.createElement("ul");
   if (!breakdown?.length) {
@@ -1272,6 +1207,7 @@ function loadInterfaceOptions() {
       state.systemIcons = icons.value || {};
       state.correctionsEnabled = Boolean(capabilities.value?.softwareCorrections);
       state.vgmEnabled = Boolean(capabilities.value?.vgm);
+      document.querySelector("#snes-retail-link").hidden = !capabilities.value?.snesRetail;
     });
   }
   return optionsRequest;

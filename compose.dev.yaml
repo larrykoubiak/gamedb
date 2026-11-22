@@ -12,12 +12,14 @@ services:
       GAMEDB_ENABLE_CORRECTIONS: "1"
       GAMEDB_PREVIEW_CACHE: /data/media/previews
       GAMEDB_ROM_ROOT: /mnt/synology
+      GAMEDB_SNES_MANUAL_ROOT: /mnt/snes-manuals
     ports:
       - "${GAMEDB_EXPLORER_PORT:-8082}:8000"
     volumes:
       - ./data/media/launchbox:/data/media/launchbox
       - ./data/media/previews:/data/media/previews
       - "${GAMEDB_VGM_HOST_ROOT:-/mnt/synology/music/VGM/By Format}:/mnt/vgm:ro"
+      - "${GAMEDB_SNES_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/SNES}:/mnt/snes-manuals:ro"
       - /mnt/synology/roms:/mnt/synology/roms:ro
       - /mnt/synology/backup/games/Undub:/mnt/synology/backup/games/Undub:ro
 

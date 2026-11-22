@@ -1,0 +1,496 @@
+.snes-page {
+  --snes-gutter: clamp(1rem, 3.2vw, 4rem);
+  --panel: #191c1d;
+  --panel-hover: #252a2a;
+  --panel-selected: #24332d;
+  --art-mat: #0a0b0c;
+  --line: #505a57;
+  --line-soft: #2d3332;
+  --text: #eef0ee;
+  --muted: #a9b3af;
+  --accent: #b1d6c3;
+  --accent-strong: #daebe3;
+  --book-ink: var(--text);
+  --book-muted: var(--muted);
+  --book-rule: var(--line-soft);
+  --book-green: var(--accent);
+  --book-rust: #efad8d;
+  color-scheme: dark;
+  background: #101213;
+}
+
+.snes-topbar {
+  display: flex;
+  gap: clamp(.7rem, 2vw, 1.5rem);
+  flex-wrap: wrap;
+  min-height: 2.625rem;
+  padding-inline: var(--snes-gutter);
+  border-bottom: 1px solid var(--line-soft);
+  background: #141718;
+}
+.snes-topbar > * { display: inline-flex; align-items: center; }
+.snes-brand { font-size: 1rem; font-weight: 700; letter-spacing: -.025em; }
+.snes-topbar a { color: var(--muted); font-size: .82rem; text-decoration: none; }
+.snes-topbar a:hover { color: var(--text); text-decoration: underline; }
+.snes-topbar a:focus-visible { outline-offset: -2px; }
+.snes-archive { margin-inline-start: auto; }
+
+.snes-catalog { margin-inline: var(--snes-gutter); padding-block: clamp(.65rem, 1.4vw, 1.15rem) 1.25rem; }
+.snes-catalog a { color: var(--accent-strong); text-underline-offset: .2em; }
+.snes-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .65rem 1.25rem;
+  padding-bottom: .75rem;
+  border-bottom: 1px solid var(--book-rule);
+}
+.snes-heading h1, .snes-game-heading h1 {
+  color: var(--text);
+  font: 700 clamp(1.55rem, 3.6vw, 2.65rem)/1.1 var(--font-sans);
+  letter-spacing: -.025em;
+  overflow-wrap: anywhere;
+}
+.snes-heading h1 { font-size: clamp(1.25rem, 3.25vw, 2.5rem); }
+.snes-heading .summary { flex-basis: 100%; }
+.snes-browse-controls {
+  display: flex;
+  gap: .5rem;
+  flex: 1 1 16rem;
+  min-width: 0;
+  max-width: 33rem;
+}
+.snes-search { flex: 1; min-width: 0; }
+.snes-search input {
+  width: 100%;
+  min-height: 2.6rem;
+  padding: .4rem .75rem;
+  border: 1px solid var(--line);
+  border-radius: .35rem;
+  color: var(--text);
+  background: var(--panel);
+}
+.snes-search input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.snes-pagination { gap: .35rem; padding: 0; }
+.snes-browse-controls .snes-pagination button { width: 2.6rem; height: 2.6rem; padding: 0; }
+.snes-pagination button:hover:not(:disabled) { border-color: var(--accent); }
+.snes-pagination-bottom { justify-content: center; flex-wrap: wrap; gap: .5rem; }
+.snes-pagination-bottom button span { color: inherit; font: inherit; }
+.snes-page-numbers { display: flex; align-items: center; gap: .35rem; }
+.snes-page-numbers a {
+  display: grid;
+  place-items: center;
+  min-width: 2.55rem;
+  min-height: 2.6rem;
+  padding: .3rem .45rem;
+  border: 1px solid var(--line);
+  border-radius: .4rem;
+  background: var(--panel);
+  color: var(--text);
+  font-size: .9rem;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+}
+.snes-page-numbers a:hover { border-color: var(--accent); }
+.snes-page-numbers a[aria-current="page"] { border-color: var(--accent); background: var(--accent); color: var(--art-mat); }
+.snes-page-gap { padding-inline: .15rem; }
+.snes-search-status:not(.sr-only) { margin-top: 1rem; }
+
+@media (max-width: 40rem) {
+  .snes-pagination-bottom { gap: .25rem; }
+  .snes-pagination-bottom button { width: 2rem; min-height: 2.6rem; padding: 0; }
+  .snes-pagination-bottom button span { display: none; }
+  .snes-page-numbers { gap: .15rem; }
+  .snes-page-numbers a { min-width: 1.75rem; padding-inline: .15rem; font-size: .82rem; }
+}
+
+.snes-games {
+  --catalog-columns: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--catalog-columns), minmax(0, 1fr));
+  gap: clamp(.55rem, 1.15vw, 1rem);
+  list-style: none;
+  margin: .85rem 0 1rem;
+  padding: 0;
+}
+.snes-game {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--book-rule);
+  border-radius: .4rem;
+  background: var(--panel);
+  overflow-wrap: anywhere;
+  overflow: hidden;
+  text-decoration: none;
+}
+.snes-game:hover { border-color: var(--book-green); }
+.snes-game:hover strong { text-decoration: underline; }
+.snes-game-cover {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+  aspect-ratio: 4 / 3;
+  border-bottom: 1px solid var(--line-soft);
+  background: var(--art-mat);
+}
+.snes-game-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: .35rem;
+  object-fit: contain;
+}
+.snes-game-cover:empty::before {
+  content: "";
+  width: min(40%, 4.5rem);
+  aspect-ratio: 1;
+  background: url("/system-icons/pixel-nintendo-super-nintendo-entertainment-system-5f48a934.png") center / contain no-repeat;
+  filter: grayscale(1);
+  opacity: .5;
+  image-rendering: pixelated;
+}
+.snes-game-label {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: .3rem;
+  min-width: 0;
+  padding: clamp(.5rem, .8vw, .75rem);
+  font-size: clamp(.85rem, 1.15vw, 1rem);
+  line-height: 1.3;
+}
+.snes-markets { display: flex; flex-wrap: wrap; gap: .32rem; margin-top: auto; padding-top: .14rem; }
+.snes-markets img { display: block; width: 1.25rem; height: .833rem; border-radius: .1rem; }
+.snes-aliases, .snes-source { color: var(--muted); font-size: .82rem; }
+
+@media (min-width: 40rem) {
+  .snes-games { --catalog-columns: 3; }
+}
+
+@media (min-width: 58rem) {
+  .snes-games { --catalog-columns: 4; }
+}
+
+@media (min-width: 78rem) {
+  .snes-games { --catalog-columns: 5; }
+}
+
+.snes-game-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: .4rem .85rem;
+}
+.snes-game-heading .snes-game-title { min-width: 0; font-size: clamp(1.45rem, 2.6vw, 2.25rem); text-align: center; }
+.snes-release-picker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .3rem;
+  min-width: 0;
+}
+.snes-region-button {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: .3rem .5rem;
+  border: 1px solid var(--line);
+  border-radius: .35rem;
+  background: var(--panel);
+  color: var(--text);
+  font-size: .75rem;
+  cursor: pointer;
+}
+.snes-region-button:hover { background: var(--panel-hover); }
+.snes-region-button[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--panel-selected);
+  box-shadow: inset 0 -2px var(--accent);
+}
+.snes-region-button img { display: block; width: 1.65rem; height: 1.1rem; border-radius: .1rem; }
+.snes-media {
+  --artwork-height: clamp(8rem, 30dvh, 22rem);
+  --artwork-caption-height: 1.25rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: .65rem;
+  margin: .7rem 0 1rem;
+}
+.snes-media:not(:has(> :not([hidden]))) { display: none; }
+.snes-gallery { min-width: 0; }
+.snes-art { display: flex; gap: .65rem; }
+.snes-art figure { flex: 1 1 0; min-width: 0; margin: 0; }
+.snes-art .snes-manual-cover:not(:only-child) { flex-grow: .65; min-width: 2.75rem; }
+.snes-art figure > .artwork-zoom {
+  display: grid;
+  align-items: center;
+  width: 100%;
+  height: var(--artwork-height);
+  border: 1px solid var(--line-soft);
+  border-radius: .3rem;
+  background: var(--art-mat);
+  color: var(--accent-strong);
+  text-align: center;
+}
+.snes-art .artwork-zoom:hover { border-color: var(--book-green); }
+.snes-art .snes-manual-cover .artwork-zoom { cursor: pointer; overflow-wrap: anywhere; }
+.snes-art img { display: block; width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+.snes-art figure[data-kind="title"] img, .snes-art figure[data-kind="snap"] img { image-rendering: pixelated; }
+.snes-art figcaption { padding-top: .25rem; color: var(--muted); font-size: .76rem; line-height: 1rem; overflow-wrap: anywhere; }
+
+.snes-soundtrack {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: .65rem .75rem;
+  border: 1px solid var(--line-soft);
+  border-radius: .3rem;
+  background: var(--panel);
+  container-type: inline-size;
+}
+.snes-soundtrack h2 { margin-bottom: .45rem; color: var(--text); font: 650 1rem/1.2 var(--font-sans); }
+.snes-soundtrack-content { display: flex; flex: 1; min-width: 0; }
+.snes-soundtrack .soundtrack-playlist {
+  --soundtrack-tab: var(--accent);
+  --soundtrack-rule: var(--line);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.snes-soundtrack .soundtrack-player {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .3rem .75rem;
+  margin-block: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.snes-soundtrack .soundtrack-player-header { gap: .2rem .5rem; }
+.snes-soundtrack .soundtrack-current-title { font: 650 1rem/1.25 var(--font-sans); }
+.snes-soundtrack .soundtrack-current-credit { margin-top: .15rem; }
+.snes-soundtrack .soundtrack-player-status { color: var(--muted); }
+.snes-soundtrack .soundtrack-timeline { grid-column: 1; margin: 0; }
+.snes-soundtrack .soundtrack-timeline input {
+  background: linear-gradient(90deg, var(--accent) var(--played, 0%), var(--line) var(--played, 0%))
+    center / 100% .26rem no-repeat;
+}
+.snes-soundtrack .soundtrack-controls { grid-column: 2; grid-row: 1 / 3; gap: .35rem .6rem; }
+.snes-soundtrack .soundtrack-button, .snes-soundtrack select,
+.snes-soundtrack .soundtrack-files summary { background: var(--panel); }
+.snes-soundtrack .soundtrack-button:hover:not(:disabled),
+.snes-soundtrack .soundtrack-download:hover { background: var(--panel-hover); }
+.snes-soundtrack .soundtrack-main-play { background: var(--accent); color: var(--art-mat); }
+.snes-soundtrack .soundtrack-main-play:hover:not(:disabled) { background: var(--accent-strong); }
+.snes-soundtrack .soundtrack-playlist-bar {
+  position: relative;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: .45rem .65rem;
+  margin: .5rem 0 0;
+}
+.snes-soundtrack .soundtrack-playlist-bar > details { min-width: 0; max-width: 100%; }
+.snes-soundtrack .soundtrack-playlist-bar > details[open] { width: 100%; }
+.snes-soundtrack .soundtrack-playlist-bar > details > :is(.soundtrack-tracks, .soundtrack-playlist-tools) { margin-top: .4rem; }
+.snes-soundtrack .soundtrack-playlist-tools { display: grid; width: 100%; }
+.snes-soundtrack .soundtrack-playlist-tools select { width: 100%; }
+.snes-soundtrack .soundtrack-files ul {
+  position: static;
+  width: 100%;
+  background: var(--art-mat);
+  box-shadow: none;
+}
+.snes-soundtrack .soundtrack-playlist-bar > details > summary {
+  width: fit-content;
+  padding: .42rem .55rem;
+  border: 1px solid var(--soundtrack-rule);
+  border-radius: .25rem;
+  background: var(--panel);
+  color: var(--book-green);
+  font-size: .77rem;
+  cursor: pointer;
+}
+.snes-soundtrack .soundtrack-playlist-bar > details > summary:hover,
+.snes-soundtrack .soundtrack-playlist-bar > details[open] > summary { border-color: var(--accent); }
+.snes-soundtrack .soundtrack-tracks { max-height: 22rem; overflow: auto; }
+.snes-soundtrack .soundtrack-track.is-current { background: var(--panel-selected); }
+.snes-soundtrack .soundtrack-credits { margin: 0; }
+.snes-soundtrack .soundtrack-download-note { margin: .4rem 0 0; }
+
+.snes-profile {
+  display: grid;
+  gap: .6rem;
+  margin: 1rem 0 1.15rem;
+}
+.snes-profile:empty { display: none; }
+.snes-facts {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: .25rem .75rem;
+  margin: .75rem 0;
+  font-size: .85rem;
+}
+.snes-profile .snes-facts { margin: 0; }
+.snes-facts dt { color: var(--muted); }
+.snes-facts dd { margin: 0; overflow-wrap: anywhere; }
+.snes-description { --description-lines: 2; font-size: .94rem; line-height: 1.5; }
+.snes-description p { white-space: pre-line; overflow-wrap: anywhere; }
+.snes-description:not(.is-expanded) p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--description-lines);
+  overflow: hidden;
+}
+.snes-text-button {
+  margin-top: .4rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent-strong);
+  font-size: .82rem;
+  text-decoration: underline;
+  text-underline-offset: .18em;
+  cursor: pointer;
+}
+
+.snes-release-table {
+  width: 100%;
+  table-layout: fixed;
+  border: 1px solid var(--book-rule);
+  border-spacing: 0;
+  border-radius: .35rem;
+  background: var(--panel);
+  font-size: .87rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.snes-release-table caption {
+  padding-bottom: .55rem;
+  color: var(--text);
+  font: 650 1.05rem/1.2 var(--font-sans);
+  text-align: left;
+}
+.snes-release-table th, .snes-release-table td {
+  padding: .65rem .75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.snes-release-table thead th {
+  background: var(--panel-hover);
+  color: var(--muted);
+  font-size: .76rem;
+  font-weight: 650;
+}
+.snes-release-table thead th:first-child { width: 14%; border-radius: .3rem 0 0; }
+.snes-release-table thead th:nth-child(2) { width: 12%; }
+.snes-release-table thead th:nth-child(3) { width: 18%; }
+.snes-release-table thead th:nth-child(5) { width: 12%; }
+.snes-release-table thead th:last-child { width: 13%; border-radius: 0 .3rem 0 0; }
+.snes-release-table tbody th, .snes-release-table tbody td { border-top: 1px solid var(--line-soft); }
+.snes-release-table tbody th { color: var(--accent-strong); font-weight: 650; }
+.snes-release-table small { display: block; margin-top: .15rem; color: var(--muted); font-size: .72rem; }
+.snes-release-table th small { font-weight: 400; }
+.snes-release-table .snes-release-status { color: var(--book-rust); font-weight: 600; }
+.snes-release-list { margin: 0; padding: 0; list-style: none; }
+.snes-release-list li + li { margin-top: .2rem; }
+.snes-release-table code { font: .78rem var(--font-mono); }
+.snes-release-empty { color: var(--muted); }
+.snes-release-disclosure { margin-top: .25rem; }
+.snes-release-disclosure summary {
+  width: fit-content;
+  color: var(--accent);
+  font-size: .75rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.snes-release-disclosure .snes-facts { margin: .3rem 0 0; font-size: .75rem; font-weight: 400; }
+.snes-release-disclosure .snes-release-list { margin-top: .15rem; }
+.snes-mobile-label { display: none; }
+.snes-source { border-top: 1px solid var(--book-rule); margin-top: 1.4rem; padding-top: .85rem; }
+
+@media (min-width: 42rem) {
+  .snes-game-heading { grid-template-columns: minmax(9rem, 1fr) minmax(0, 2fr) minmax(9rem, 1fr); }
+  .snes-game-title { grid-column: 1 / -1; }
+  .snes-game-heading:has(.snes-release-picker:not([hidden])) .snes-game-title { grid-column: 2; }
+  .snes-release-picker { grid-column: 3; align-self: end; justify-content: flex-end; }
+  .snes-profile .snes-facts { grid-template-columns: repeat(2, max-content minmax(0, max-content)); }
+  .snes-profile .snes-facts dt:not(:first-child) { margin-inline-start: .75rem; }
+}
+
+@media (max-width: 54rem) {
+  .snes-release-table, .snes-release-table caption, .snes-release-table tbody { display: block; }
+  .snes-release-table { border: 0; background: transparent; }
+  .snes-release-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .snes-release-table tbody tr {
+    display: grid;
+    grid-template-columns: minmax(0, .42fr) minmax(0, .58fr);
+    overflow: hidden;
+    border: 1px solid var(--book-rule);
+    border-radius: .35rem;
+    background: var(--panel);
+  }
+  .snes-release-table tbody th, .snes-release-table tbody td { padding: .5rem .6rem; }
+  .snes-release-table tbody th, .snes-release-table tbody td:nth-child(2) { border-top: 0; }
+  .snes-mobile-label { display: block; margin-bottom: .2rem; color: var(--muted); font-size: .72rem; }
+}
+
+@media (max-width: 40rem) {
+  .snes-media { --artwork-height: clamp(6rem, 30vw, 12rem); }
+  .snes-description { --description-lines: 4; }
+}
+
+@container (max-width: 36rem) {
+  .snes-soundtrack .soundtrack-player { grid-template-columns: minmax(0, 1fr); }
+  .snes-soundtrack .soundtrack-controls { grid-column: auto; grid-row: auto; column-gap: .4rem; }
+  .snes-soundtrack .soundtrack-volume input { width: clamp(2.75rem, 17cqi, 5.5rem); }
+  .snes-soundtrack .soundtrack-subtunes { order: 3; }
+  .snes-soundtrack .soundtrack-track { grid-template-columns: 1.25rem minmax(0, 1fr) auto auto; gap: .35rem; }
+}
+
+@media (min-width: 64rem) {
+  .snes-media:has(> .snes-gallery:not([hidden]) + .snes-soundtrack:not([hidden])) {
+    grid-template-columns: minmax(0, 1fr) clamp(16rem, 21vw, 21rem);
+  }
+  .snes-gallery { display: flex; }
+  .snes-art { flex: 1; min-width: 0; }
+  .snes-art figure { display: flex; flex-direction: column; }
+  .snes-art figure > .artwork-zoom { flex: 1 0 var(--artwork-height); }
+  .snes-gallery:not([hidden]) + .snes-soundtrack { margin-bottom: var(--artwork-caption-height); }
+
+  .snes-gallery:not([hidden]) + .snes-soundtrack .soundtrack-playlist-bar > details[open] { width: auto; }
+  .snes-gallery:not([hidden]) + .snes-soundtrack .soundtrack-playlist-bar > details > :is(.soundtrack-tracks, .soundtrack-playlist-tools) {
+    position: absolute;
+    z-index: 2;
+    inset: 100% 0 auto;
+    max-height: min(34dvh, 22rem);
+    overflow: auto;
+    border: 1px solid var(--line);
+    border-radius: .3rem;
+    background: var(--panel);
+    box-shadow: 0 .45rem 1rem #0008;
+  }
+  .snes-gallery:not([hidden]) + .snes-soundtrack .soundtrack-playlist-tools { padding: .55rem; }
+}
+
+@media (min-width: 64rem) and (max-height: 42rem) {
+  .snes-catalog:has(#snes-detail:not([hidden])) { padding-block: .7rem .8rem; }
+  .snes-soundtrack { padding-block: .5rem; }
+  .snes-soundtrack h2 { margin-bottom: .3rem; }
+  .snes-profile { margin-block: .8rem .9rem; }
+  .snes-release-table th, .snes-release-table td { padding-block: .5rem; }
+  #snes-detail:not([hidden]) + .snes-source { margin-top: 1rem; padding-top: .55rem; }
+}

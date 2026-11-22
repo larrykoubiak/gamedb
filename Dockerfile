@@ -55,6 +55,10 @@ CMD ["python", "-m", "gamedb.catalog", "rebuild", "--plan"]
 
 FROM catalog-runtime AS explorer
 
+RUN apt-get update \
+    && apt-get install --yes --no-install-recommends poppler-utils \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY requirements-catalog.txt /app/requirements-catalog.txt
 RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
 

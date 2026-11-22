@@ -61,6 +61,88 @@ After a full derivation, build the complete consumer projection with
 `python -m gamedb rebuild`. Use `--plan`, `--layers`, `--from-layer`, or
 `--through-layer` to inspect or select its SQL layers.
 
+## SNES retail catalog
+
+The first GameDB V2 catalog starts with a [pinned SNES retail release list](https://en.wikipedia.org/wiki/Special:PermanentLink/1384177751#Retail_releases).
+It groups titles across Japan, North America, and PAL releases and keeps the
+market titles, date precision, and documented editions. The JSON snapshot
+records the source revision and attributes the adapted release data to
+Wikipedia contributors under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+Generate a match report against an existing GameDB catalog.
+
+```sh
+python -m gamedb seed-snes --report data/logs/snes-retail/matches.json
+```
+
+`--html` accepts a saved HTML copy of the pinned revision. The matcher uses
+No-Intro releases with complete content signatures, verified hashes, and a
+resolved package path. Title and market evidence link the base archives.
+Conflicting claims remain reviewable. The retail projection excludes flagged
+prototypes, demos, unlicensed titles, modified dumps, and later distribution
+variants from base matching. Unclassified tags need a reviewed content signature
+and archive label before they qualify. Documented Nintendo Power and SuFami Turbo
+editions have their own match scopes.
+
+Publish the snapshot to `app.snes_retail_catalog` and open **SNES retail catalog**
+in Explorer, or go directly to `/catalog/snes`.
+
+```sh
+python -m gamedb seed-snes --publish
+# With the catalog-builder image
+docker compose run --rm catalog-builder python -m gamedb.catalog seed-snes --sources /data/media/cache/snes-retail --publish
+```
+
+The report command uses a read-only database transaction. Run the publish
+command again after a catalog refresh to update the matches and Almanac links.
+The report shows title coverage and regional release coverage.
+Reviewed matches cite evidence from the [MAME cartridge list](https://github.com/mamedev/mame/blob/mame0285/hash/snes.xml),
+the [MAME SuFami Turbo list](https://github.com/mamedev/mame/blob/mame0285/hash/snes_strom.xml),
+and locally imported LaunchBox and Libretro metadata.
+[`reference/snes_retail_aliases.csv`](reference/snes_retail_aliases.csv) records regional spellings and alternate titles.
+[`reference/snes_retail.json`](reference/snes_retail.json) records edition groupings,
+reviewed content signatures, and notes for disputed regional releases.
+
+The same command enriches game and release pages. LaunchBox supplies descriptions.
+The regional pages show release dates, publisher and developer credits, product
+codes, documented boards, box art, title screens, and manual links where evidence
+is available. The artwork viewer also includes gameplay screenshots and clear
+logos. The report measures the coverage of each field by market.
+
+The regional pages also play SPC sets from the published VGM inventory when
+Explorer has a `GAMEDB_VGM_ROOT`. The catalog matches sets to verified editions
+and uses named regions and revisions when the rip specifies them. Rerun
+`seed-snes --publish` after a VGM import to refresh the links and coverage.
+
+Source indexes are cached in `data/media/cache/snes-retail`. Use `--sources` to
+reuse a saved directory. Saved SNES Central scan lists and board pages supply
+physical cartridge evidence alongside the catalog's Libretro and MAME records.
+`--hash-cartridges` verifies local No-Intro ZIP members against their catalog
+SHA-1 and caches SHA-256 fingerprints for ares PCB matches. Later runs reuse
+the fingerprints. [SNES Central scans](https://snescentral.com/scan_index.php) · [ares database](https://github.com/ares-emulator/ares/blob/v148/mia/Database/Super%20Famicom.bml)
+
+Manual links retain their market and source. Peebs’ archive and the Kirkland
+set cover North America and PAL, and Peebs’ Super Famicom list, Gaming Alexandria
+and Nintendo supply Japanese scans. [Peebs](https://sites.google.com/view/snesmanuals) · [Super Famicom manuals](https://sites.google.com/view/superfamicommanuals) · [Gaming Alexandria](https://www.gamingalexandria.com/wp/scans/super-famicom/)
+
+Mirror the manuals from a saved SNES match report into the NAS library.
+
+```sh
+python -m gamedb sync-snes-manuals --catalog data/logs/snes-retail/matches.json \
+  --root /mnt/synology/photo/Manuals/SNES
+```
+
+The command keeps PDFs by market, verifies published checksums where available,
+and reuses files from earlier runs. Reviewed replacement sources and page
+orders for image scans are in
+[`reference/snes_retail_manual_files.json`](reference/snes_retail_manual_files.json).
+Explorer shows the selected release's manual cover and opens its local PDF in
+a book viewer. The reader and cover previews use Poppler, which is installed in
+the Explorer image. Both Compose configurations mount the NAS folder
+read-only at `/mnt/snes-manuals`. Set
+`GAMEDB_SNES_MANUAL_HOST_ROOT` for a different Compose host path. Set
+`GAMEDB_SNES_MANUAL_ROOT` to the library directory when running Explorer directly.
+
 ## Integrated releases
 
 Reviewed ZIP packages that are intentionally outside RomVault can be imported

@@ -326,6 +326,39 @@ class CatalogRepository:
     def systems(self, revision=None, hide_rom_hacks=False):
         return self._listing_query(self.systems_sql(hide_rom_hacks), revision)
 
+    def snes_retail_available(self):
+        return self._read_listing("SELECT to_jsonb(to_regclass('app.snes_retail_catalog') IS NOT NULL)")
+
+    def snes_retail(self, *, game_key=None, browse=False):
+        if game_key is not None and not CONTENT_SIGNATURE.fullmatch(game_key):
+            raise ValueError("Invalid SNES catalog key")
+        if not self.snes_retail_available():
+            return None
+        if game_key is not None:
+            return self._read_listing("""
+                SELECT jsonb_build_object('source', payload->'source', 'game', game)
+                FROM app.snes_retail_catalog
+                CROSS JOIN LATERAL jsonb_array_elements(payload->'games') AS games(game)
+                WHERE singleton AND game->>'key' =
+            """ + quote_sql_text(game_key))
+        if browse:
+            return self._read_listing("""
+                SELECT jsonb_build_object('source', payload->'source', 'summary', payload->'summary', 'games', (
+                    SELECT jsonb_agg(jsonb_build_object(
+                        'key', game->'key', 'title', game->'title', 'aliases', game->'aliases', 'releases', (
+                            SELECT jsonb_agg(jsonb_build_object(
+                                'market', release->'market', 'titles', release->'titles', 'status', release->'status',
+                                'archiveTitles', jsonb_path_query_array(release, '$.archives[*].title'),
+                                'boxart', release->'artwork'->'boxart'
+                            ) ORDER BY release_order)
+                            FROM jsonb_array_elements(game->'releases') WITH ORDINALITY AS r(release, release_order)
+                        )
+                    ) ORDER BY game_order)
+                    FROM jsonb_array_elements(payload->'games') WITH ORDINALITY AS g(game, game_order)
+                )) FROM app.snes_retail_catalog WHERE singleton
+            """)
+        return self._read_listing("SELECT payload FROM app.snes_retail_catalog WHERE singleton")
+
     def catalog_manifest(self, revision: str | None = None, hide_rom_hacks=False):
         revision = revision or self.catalog_revision()
         return {
@@ -451,27 +484,66 @@ class CatalogRepository:
         if has_additional_targets is None:
             return []
         additional_targets = "OR soundtrack.additional_target_keys @> ARRAY[target.key]" if has_additional_targets else ""
+        albums_sql = SqlTemplate(QUERY_DIRECTORY / "vgm_albums.sql").render(
+            album_filter="soundtrack.target_key = target.key " + additional_targets,
+        )
         payload = self._read_listing(SqlTemplate(QUERY_DIRECTORY / "vgm_soundtracks.sql").render(
             software_id=sql_integer(software_id, "software_id", 1), software_key_sql=SOFTWARE_KEY_SQL,
-            additional_targets_sql=additional_targets, preferred_view=preferred_view(hide_rom_hacks),
+            albums_sql=albums_sql, preferred_view=preferred_view(hide_rom_hacks),
             username=quote_sql_text(self.username),
         ))
         return select_soundtracks(tuple(payload["platform"]), payload["releaseVersions"], payload["albums"]) if payload else []
 
+    def snes_soundtracks(self, game):
+        links = {link["key"]: link for link in game.get("soundtrackLinks", ())
+                 if re.fullmatch(r"[a-f0-9]{64}", link["key"])}
+        if not links or not self._read_listing("""
+            SELECT to_jsonb(to_regclass('vgm.soundtrack') IS NOT NULL AND to_regclass('vgm.asset') IS NOT NULL)
+        """):
+            return []
+        keys = ", ".join(map(quote_sql_text, links))
+        albums = self._read_listing(SqlTemplate(QUERY_DIRECTORY / "vgm_albums.sql").render(
+            album_filter=f"soundtrack.key IN ({keys})",
+        ))
+        return [{**album, "releases": links[album["key"]]["releases"],
+                 "titleMatches": links[album["key"]]["titleMatches"]} for album in albums if album["assets"]]
+
     def vgm_asset(self, key):
         if not re.fullmatch(r"[a-f0-9]{64}", key):
             raise ValueError("Invalid VGM asset key")
-        if not self._read_listing("SELECT to_jsonb(to_regclass('vgm.asset') IS NOT NULL)"):
+        has_retail_soundtracks = self._read_listing("""
+            SELECT CASE WHEN to_regclass('vgm.asset') IS NULL THEN 'null'::jsonb
+                   ELSE to_jsonb(to_regclass('app.snes_retail_soundtrack') IS NOT NULL) END
+        """)
+        if has_retail_soundtracks is None:
             return None
+        retail_link = """OR EXISTS (
+            SELECT FROM app.snes_retail_soundtrack retail WHERE retail.soundtrack_key = soundtrack.key
+        )""" if has_retail_soundtracks else ""
         return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "vgm_location.sql").render(
-            asset_key=quote_sql_text(key)
+            asset_key=quote_sql_text(key), retail_link=retail_link,
         ))
 
     def launchbox_image(self, relative_path):
-        return self.client.query("""
+        path = quote_sql_text(relative_path)
+        if self._read_listing("SELECT to_jsonb(to_regclass('app.snes_retail_image') IS NOT NULL)"):
+            asset = self._read_listing("""
+                SELECT jsonb_build_object('fileName',filename,'crc32',crc32)
+                FROM app.snes_retail_image WHERE path =
+            """ + path)
+            if asset:
+                return asset
+        if not self._read_listing("""
+            SELECT to_jsonb(EXISTS (
+                SELECT 1 FROM pg_attribute
+                WHERE attrelid = to_regclass('catalog.media') AND attname = 'source_crc32' AND NOT attisdropped
+            ))
+        """):
+            return None
+        return self._read_listing("""
             SELECT jsonb_build_object('fileName',file_name,'crc32',source_crc32)
-            FROM catalog.media WHERE provider='launchbox' AND relative_path=
-        """ + quote_sql_text(relative_path) + " LIMIT 1")
+            FROM catalog.media WHERE provider='launchbox' AND relative_path =
+        """ + path + " LIMIT 1")
 
     def software_facts(self, software_id: int, hide_rom_hacks=False):
         native = self.client.query(self.software_facts_sql(software_id))

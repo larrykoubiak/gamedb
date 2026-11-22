@@ -1,7 +1,52 @@
+const soundtrackTemplate = document.createElement("template");
+soundtrackTemplate.innerHTML = `
+<div class="soundtrack-playlist">
+  <section class="soundtrack-player" aria-label="Soundtrack player">
+    <div class="soundtrack-player-header">
+      <div>
+        <p class="soundtrack-current-title"></p>
+        <p class="soundtrack-current-credit"></p>
+      </div>
+      <p class="soundtrack-player-status" role="status"></p>
+    </div>
+    <div class="soundtrack-timeline">
+      <span>0:00</span>
+      <input type="range" min="0" step="0.1" aria-label="Playback position" disabled>
+      <span>–:––</span>
+    </div>
+    <div class="soundtrack-controls">
+      <div class="soundtrack-transport">
+        <button type="button" class="soundtrack-button" data-icon="previous" aria-label="Previous track" title="Previous track"></button>
+        <button type="button" class="soundtrack-button soundtrack-main-play" data-icon="play" aria-label="Play" title="Play"></button>
+        <button type="button" class="soundtrack-button" data-icon="next" aria-label="Next track" title="Next track"></button>
+      </div>
+      <label class="soundtrack-subtunes">Subtune <select></select></label>
+      <label class="soundtrack-volume">Volume <input type="range" min="0" max="1" step="0.01" value="1"></label>
+    </div>
+  </section>
+  <div class="soundtrack-playlist-bar">
+    <div class="soundtrack-playlist-label"><h3>Playlist</h3><span></span></div>
+    <div class="soundtrack-playlist-tools">
+      <select aria-label="Soundtrack source"></select>
+      <details class="soundtrack-files"><summary>Set downloads</summary><ul></ul></details>
+    </div>
+  </div>
+  <p class="soundtrack-download-note">This set is available to download.</p>
+  <ol class="soundtrack-tracks" role="list" aria-label="Tracks"></ol>
+  <p class="soundtrack-credits"><a href="/vgm/credits.txt" target="_blank" rel="noopener">Playback engine credits</a></p>
+</div>
+`;
+
 const browserMusicFormats = new Set(["aac", "flac", "m4a", "mp3", "ogg", "opus", "wav"]);
 const trackOrder = new Intl.Collator(undefined, {numeric: true, sensitivity: "base"});
 let activeSoundtrack;
 let soundtrackVolume = 1;
+
+function soundtrackElement(tag, text) {
+  const node = document.createElement(tag);
+  node.textContent = text;
+  return node;
+}
 
 function pauseAudio(container) {
   if (activeSoundtrack && container.contains(activeSoundtrack.root)) activeSoundtrack.stop();
@@ -61,14 +106,18 @@ function soundtrackTime(value) {
 }
 
 function soundtrackTitle(asset) {
-  if (asset.title) return asset.title;
+  // The SPC ID666 title field holds only 32 bytes. Some filenames preserve the rest.
+  if (asset.title && (asset.format !== "spc" || asset.title.length !== 32)) return asset.title;
   let name = asset.name;
   if (asset.format) {
     if (name.toLowerCase().endsWith(`.${asset.format}`)) name = name.slice(0, -asset.format.length - 1);
     else if (name.toLowerCase().startsWith(`${asset.format}.`)) name = name.slice(asset.format.length + 1);
   }
-  return name.replace(/^\d{1,3}[a-z]?\s+-\s+/i, "").replace(/^S[CL][A-Z]{2}-\d{5}[_ ]+/i, "")
-    .replaceAll("_", " ").trim() || asset.name;
+  const label = name.replace(/^\d{1,3}[a-z]?\s+-\s+/i, "").replace(/^S[CL][A-Z]{2}-\d{5}[_ ]+/i, "")
+    .replaceAll("_", " ").trim();
+  if (!asset.title) return label || asset.name;
+  const fullTitle = label.replace(/^\d{1,3}[a-z]?\s+/i, "");
+  return fullTitle.startsWith(asset.title) ? fullTitle : asset.title;
 }
 
 function setSoundtrackIcon(button, icon, label) {
@@ -78,7 +127,7 @@ function setSoundtrackIcon(button, icon, label) {
 }
 
 function soundtrackDownload(asset, icon = false) {
-  const link = cellText("a", icon ? "↓" : asset.name);
+  const link = soundtrackElement("a", icon ? "↓" : asset.name);
   link.href = asset.url;
   link.download = "";
   if (icon) {
@@ -89,7 +138,7 @@ function soundtrackDownload(asset, icon = false) {
   return link;
 }
 
-function renderSoundtracks(container, soundtracks) {
+function renderSoundtracks(container, soundtracks, {compact = false} = {}) {
   const albums = soundtracks.filter(album => album.assets?.length).map(album => ({
     ...album,
     tracks: album.assets.filter(asset => asset.kind === "track")
@@ -100,8 +149,7 @@ function renderSoundtracks(container, soundtracks) {
   }));
   if (!albums.length) return;
 
-  const template = document.querySelector("#soundtrack-playlist-template");
-  const root = template.content.firstElementChild.cloneNode(true);
+  const root = soundtrackTemplate.content.firstElementChild.cloneNode(true);
   const player = root.querySelector(".soundtrack-player");
   const title = root.querySelector(".soundtrack-current-title");
   const credit = root.querySelector(".soundtrack-current-credit");
@@ -113,9 +161,14 @@ function renderSoundtracks(container, soundtracks) {
   const volume = root.querySelector(".soundtrack-volume input");
   volume.value = soundtrackVolume;
   const count = root.querySelector(".soundtrack-playlist-label span");
+  const playlistBar = root.querySelector(".soundtrack-playlist-bar");
   const picker = root.querySelector(".soundtrack-playlist-tools select");
   picker.hidden = albums.length === 1;
-  const labels = albums.map(({title, collection}) => `${title} · ${collection}`);
+  const sharedTitle = compact && albums.every(album => album.title === albums[0].title);
+  const labels = albums.map(({title, collection}) => {
+    const source = compact && collection === "spcsets" ? "SNESMusic" : collection;
+    return sharedTitle ? source : `${title} · ${source}`;
+  });
   for (const [index, label] of labels.entries()) {
     const archive = labels.indexOf(label) === labels.lastIndexOf(label) ? "" :
       albums[index].files.find(asset => asset.kind === "archive")?.name;
@@ -126,6 +179,23 @@ function renderSoundtracks(container, soundtracks) {
   const tracks = root.querySelector(".soundtrack-tracks");
   const downloadOnly = root.querySelector(".soundtrack-download-note");
   const credits = root.querySelector(".soundtrack-credits");
+  let trackList, trackSummary, optionsSummary;
+  if (compact) {
+    picker.setAttribute("aria-label", "Soundtrack set");
+    trackList = document.createElement("details");
+    trackList.name = "soundtrack-panel";
+    trackSummary = soundtrackElement("summary", "Tracks");
+    trackList.append(trackSummary, tracks);
+
+    const options = document.createElement("details");
+    options.name = trackList.name;
+    optionsSummary = soundtrackElement("summary", "Options");
+    const tools = picker.parentElement;
+    tools.append(credits);
+    options.append(optionsSummary, tools);
+    playlistBar.append(trackList, options);
+    root.querySelector(".soundtrack-playlist-label").hidden = true;
+  }
   container.append(root);
 
   let album, selected, highlighted, transport, clock;
@@ -168,7 +238,7 @@ function renderSoundtracks(container, soundtracks) {
     title.textContent = selected.name;
     const activeSong = subtune || selected.defaultSubsong;
     const songs = activeSong ? `Song ${activeSong} of ${selected.subsongs}` : `${selected.subsongs} subtunes`;
-    credit.textContent = [selected.asset.artist, album.collection,
+    credit.textContent = [selected.asset.artist, compact ? "" : album.collection,
       selected.subsongs > 1 ? songs : ""].filter(Boolean).join(" · ");
     const message = error || {loading: "Loading…", playing: "Playing", paused: "Paused", ready: ""}[phase];
     if (status.textContent !== message) status.textContent = message;
@@ -288,6 +358,11 @@ function renderSoundtracks(container, soundtracks) {
     highlighted = null;
     subtune = 0;
     count.textContent = `${album.tracks.length} ${album.tracks.length === 1 ? "track" : "tracks"}`;
+    if (trackList) {
+      trackList.hidden = !album.tracks.length;
+      trackSummary.textContent = `Tracks (${album.tracks.length})`;
+      optionsSummary.textContent = album.tracks.length ? "Options" : "Downloads";
+    }
     root.classList.toggle("soundtrack-archive-only", !album.tracks.length);
     count.hidden = !album.tracks.length;
     downloads.hidden = !album.files.length;
@@ -302,20 +377,20 @@ function renderSoundtracks(container, soundtracks) {
     tracks.replaceChildren(...album.tracks.map((track, index) => {
       const row = document.createElement("li");
       row.className = "soundtrack-track";
-      const number = cellText("span", index + 1);
+      const number = soundtrackElement("span", index + 1);
       number.className = "soundtrack-track-number";
       number.setAttribute("aria-hidden", "true");
-      const name = cellText(track.playable ? "button" : "div", track.name);
+      const name = soundtrackElement(track.playable ? "button" : "div", track.name);
       name.className = "soundtrack-track-name";
       if (track.playable) {
         name.type = "button";
         name.setAttribute("aria-label", `Play ${track.name}`);
         name.addEventListener("click", () => track === selected ? toggle() : selectTrack(track, 0, true));
       }
-      if (track.asset.artist) name.append(cellText("small", track.asset.artist));
-      const meta = cellText("span", track.asset.format?.toUpperCase() || "");
+      if (track.asset.artist) name.append(soundtrackElement("small", track.asset.artist));
+      const meta = soundtrackElement("span", track.asset.format?.toUpperCase() || "");
       meta.className = "soundtrack-track-format";
-      const songs = cellText("span", track.subsongs > 1 ? ` · ${track.subsongs} songs` : "");
+      const songs = soundtrackElement("span", track.subsongs > 1 ? ` · ${track.subsongs} songs` : "");
       meta.append(songs);
       row.append(number, name, meta, soundtrackDownload(track.asset, true));
       rows.set(track, {row, button: name, songs});

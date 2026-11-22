@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SNES retail catalog | GameDB</title>
+  <link rel="stylesheet" href="/styles.css?v=17">
+  <link rel="stylesheet" href="/snes-retail.css">
+  <link rel="stylesheet" href="/snes-manual.css">
+  <script src="/vgm/player.js?v=5" defer></script>
+  <script src="/vgm/soundtracks.js" defer></script>
+  <script src="/artwork-viewer.js" defer></script>
+  <script src="/snes-manual.js" defer></script>
+  <script src="/snes-retail.js" defer></script>
+</head>
+<body class="snes-page">
+  <nav class="snes-topbar" aria-label="Catalog navigation">
+    <span class="snes-brand">GameDB</span>
+    <a id="snes-back" href="/catalog/snes" hidden>← SNES catalog</a>
+    <a class="snes-archive" href="/">Open archive</a>
+  </nav>
+  <main class="snes-catalog">
+    <header class="snes-heading">
+      <h1 id="snes-title" hidden>Super Nintendo retail catalog</h1>
+      <div class="snes-browse-controls" hidden>
+        <label class="snes-search">
+          <span class="sr-only">Search games</span>
+          <input id="snes-search" type="search" placeholder="Search by title" autocomplete="off">
+        </label>
+        <nav class="pagination snes-pagination" aria-label="Catalog pages" hidden>
+          <button type="button" data-page-step="-1" aria-label="Previous page" title="Previous page">←</button>
+          <button type="button" data-page-step="1" aria-label="Next page" title="Next page">→</button>
+        </nav>
+      </div>
+      <p id="snes-status" class="summary" role="status">Loading release catalog…</p>
+    </header>
+    <section id="snes-browse" hidden>
+      <p id="snes-results" class="summary snes-search-status sr-only" role="status" tabindex="-1"></p>
+      <ul id="snes-games" class="snes-games" role="list"></ul>
+      <nav class="pagination snes-pagination snes-pagination-bottom" aria-label="Catalog pages at bottom" hidden>
+        <button type="button" data-page-step="-1" aria-label="Previous page">←<span> Previous</span></button>
+        <div class="snes-page-numbers"></div>
+        <button type="button" data-page-step="1" aria-label="Next page"><span>Next </span>→</button>
+      </nav>
+    </section>
+    <section id="snes-detail" hidden></section>
+    <footer id="snes-source" class="snes-source" hidden>
+      Release list adapted from <a id="snes-source-link">Wikipedia contributors</a>.
+      <a id="snes-source-license">CC BY-SA 4.0</a>
+    </footer>
+  </main>
+  <dialog id="snes-manual-dialog" class="artwork-dialog snes-manual-dialog" aria-labelledby="snes-manual-title">
+    <header class="artwork-heading">
+      <h2 id="snes-manual-title"></h2>
+      <div class="snes-manual-controls">
+        <a id="snes-manual-file" class="secondary-button" target="_blank" rel="noopener noreferrer">Open PDF</a>
+        <form method="dialog">
+          <button class="icon-button" type="submit" aria-label="Close manual" autofocus>×</button>
+        </form>
+      </div>
+    </header>
+    <div class="snes-manual-stage">
+      <div id="snes-manual-book" class="snes-manual-book" hidden></div>
+      <p id="snes-manual-status" role="status" hidden></p>
+    </div>
+    <nav id="snes-manual-navigation" class="artwork-navigation" aria-label="Manual pages" hidden>
+      <button id="snes-manual-previous" class="secondary-button" type="button" aria-label="Previous manual page">← Previous</button>
+      <span id="snes-manual-position" role="status"></span>
+      <button id="snes-manual-next" class="secondary-button" type="button" aria-label="Next manual page">Next →</button>
+    </nav>
+  </dialog>
+</body>
+</html>
