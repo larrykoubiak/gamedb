@@ -27,6 +27,13 @@
           <span class="sr-only">Search games</span>
           <input id="snes-search" type="search" placeholder="Search by title" autocomplete="off">
         </label>
+        <select id="snes-genre" class="snes-genre" aria-label="Genre">
+          <option value="">All genres</option>
+        </select>
+        <label class="snes-translation-filter">
+          <input id="snes-translated" type="checkbox">
+          Has translation
+        </label>
         <nav class="pagination snes-pagination" aria-label="Catalog pages" hidden>
           <button type="button" data-page-step="-1" aria-label="Previous page" title="Previous page">←</button>
           <button type="button" data-page-step="1" aria-label="Next page" title="Next page">→</button>
@@ -49,6 +56,19 @@
       <a id="snes-source-license">CC BY-SA 4.0</a>
     </footer>
   </main>
+  <dialog id="snes-rom-dialog" class="artwork-dialog snes-rom-dialog" aria-labelledby="snes-rom-title">
+    <form id="snes-rom-form" method="dialog">
+      <h2 id="snes-rom-title">Download translated ROM</h2>
+      <label>GameDB API key
+        <input id="snes-rom-key" type="password" required autocomplete="off" spellcheck="false">
+      </label>
+      <p id="snes-rom-status" role="status" hidden></p>
+      <div class="snes-rom-actions">
+        <button id="snes-rom-cancel" class="secondary-button" type="button">Cancel</button>
+        <button id="snes-rom-submit" class="secondary-button" type="submit">Download ROM</button>
+      </div>
+    </form>
+  </dialog>
   <dialog id="snes-manual-dialog" class="artwork-dialog snes-manual-dialog" aria-labelledby="snes-manual-title">
     <header class="artwork-heading">
       <h2 id="snes-manual-title"></h2>

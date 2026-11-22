@@ -40,6 +40,9 @@ def main(argv=None) -> int:
     manuals.add_argument("--item-cache", type=Path,
                          default=DEFAULT_PIPELINE.parent / "data/media/cache/snes-retail/manual-items",
                          help="Cache for Internet Archive scan metadata")
+    translations = commands.add_parser("sync-snes-translations", help="Match RHDN patches to verified SNES retail ROMs")
+    translations.add_argument("--source", required=True, type=Path, help="Local RHDN backup directory")
+    translations.add_argument("--root", type=Path, help="Local patch library (default: data/media/snes-translations)")
     promote = commands.add_parser("promote-corrections")
     promote.add_argument(
         "--reference",
@@ -68,6 +71,16 @@ def main(argv=None) -> int:
             manuals.error(str(error))
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return int(bool(result["failures"]))
+
+    if args.command == "sync-snes-translations":
+        from .snes_translations import DEFAULT_ROOT, sync_translations
+
+        try:
+            result = sync_translations(args.source, args.root or DEFAULT_ROOT)
+        except (OSError, ValueError) as error:
+            translations.error(str(error))
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return 0
 
     if args.command == "promote-corrections":
         from gamedb.database import create_database_engine

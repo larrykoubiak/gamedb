@@ -7,9 +7,11 @@ from pathlib import Path
 import re
 import subprocess
 
+from gamedb.catalog.snes_cartridges import verified_roms_sql
 from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.config import PROJECT_ROOT
 from gamedb.explorer.cache import JsonResponseCache
+from gamedb.explorer.snes_metadata import add_release_metadata
 from gamedb.vgm.joshw import COLLECTION as JOSHW_COLLECTION, superseded_sources, supports_version, title_revision
 
 
@@ -329,35 +331,89 @@ class CatalogRepository:
     def snes_retail_available(self):
         return self._read_listing("SELECT to_jsonb(to_regclass('app.snes_retail_catalog') IS NOT NULL)")
 
+    def snes_translation_base(self, signature, sha1):
+        """Locate the exact official revision linked to a translation."""
+        if not self.snes_retail_available():
+            return None
+        base = verified_roms_sql(f"ARRAY[{quote_sql_text(signature)}]")
+        return self._read_listing(f"""
+            SELECT to_jsonb(base)
+            FROM ({base}) AS base
+            WHERE base.sha1 = {quote_sql_text(sha1)} AND EXISTS (
+                SELECT 1 FROM app.snes_retail_catalog
+                WHERE singleton AND jsonb_path_exists(
+                    payload,
+                    '$.games[*].releases[*] ? (@.status == "matched").archives[*] ? (@.signature == $signature)',
+                    jsonb_build_object('signature', base.signature)
+                )
+            )
+        """)
+
     def snes_retail(self, *, game_key=None, browse=False):
         if game_key is not None and not CONTENT_SIGNATURE.fullmatch(game_key):
             raise ValueError("Invalid SNES catalog key")
         if not self.snes_retail_available():
             return None
         if game_key is not None:
-            return self._read_listing("""
+            catalog = self._read_listing("""
                 SELECT jsonb_build_object('source', payload->'source', 'game', game)
                 FROM app.snes_retail_catalog
                 CROSS JOIN LATERAL jsonb_array_elements(payload->'games') AS games(game)
                 WHERE singleton AND game->>'key' =
             """ + quote_sql_text(game_key))
+            if catalog:
+                add_release_metadata(catalog["game"], self.snes_release_facts(catalog["game"]))
+            return catalog
         if browse:
-            return self._read_listing("""
-                SELECT jsonb_build_object('source', payload->'source', 'summary', payload->'summary', 'games', (
-                    SELECT jsonb_agg(jsonb_build_object(
-                        'key', game->'key', 'title', game->'title', 'aliases', game->'aliases', 'releases', (
-                            SELECT jsonb_agg(jsonb_build_object(
-                                'market', release->'market', 'titles', release->'titles', 'status', release->'status',
-                                'archiveTitles', jsonb_path_query_array(release, '$.archives[*].title'),
-                                'boxart', release->'artwork'->'boxart'
-                            ) ORDER BY release_order)
-                            FROM jsonb_array_elements(game->'releases') WITH ORDINALITY AS r(release, release_order)
-                        )
-                    ) ORDER BY game_order)
-                    FROM jsonb_array_elements(payload->'games') WITH ORDINALITY AS g(game, game_order)
-                )) FROM app.snes_retail_catalog WHERE singleton
-            """)
+            return self.snes_retail_browse()
         return self._read_listing("SELECT payload FROM app.snes_retail_catalog WHERE singleton")
+
+    def snes_retail_browse(self):
+        genres = "SELECT NULL::bigint AS game_order, NULL::jsonb AS items WHERE false"
+        if self._snes_facts_available():
+            verified = self._snes_verified_releases_sql("""
+                SELECT release->>'key' AS release_key, (archive->>'softwareId')::bigint AS software_id,
+                    archive->>'softwareKey' AS software_key, archive->>'signature' AS signature
+                FROM releases
+                CROSS JOIN LATERAL jsonb_array_elements(release->'archives') AS a(archive)
+                WHERE release->>'status' = 'matched'
+            """)
+            genres = f"""
+                SELECT releases.game_order, jsonb_agg(DISTINCT fact.fact_value ORDER BY fact.fact_value) AS items
+                FROM ({verified}) verified
+                JOIN releases ON releases.release->>'key' = verified.release_key
+                JOIN catalog.software_fact fact ON fact.software_id = verified.software_id
+                WHERE fact.is_selected AND fact.fact_key = 'genre'
+                GROUP BY releases.game_order
+            """
+        return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "snes_retail_browse.sql").render(
+            genres_sql=genres,
+        ))
+
+    def _snes_facts_available(self):
+        return self._read_listing("SELECT to_jsonb(to_regclass('catalog.software_fact') IS NOT NULL)")
+
+    def _snes_verified_releases_sql(self, links_sql):
+        return SqlTemplate(QUERY_DIRECTORY / "snes_verified_releases.sql").render(
+            links_sql=links_sql, software_key_sql=SOFTWARE_KEY_SQL,
+        )
+
+    def snes_release_facts(self, game):
+        links = [{"release_key": release["key"], "software_id": archive["softwareId"],
+                  "software_key": archive["softwareKey"], "signature": archive["signature"]}
+                 for release in game["releases"] if release["status"] == "matched"
+                 for archive in release.get("archives", ())]
+        if not links or not self._snes_facts_available():
+            return {}
+        verified = self._snes_verified_releases_sql(f"""
+            SELECT DISTINCT link.*
+            FROM jsonb_to_recordset({quote_sql_text(json.dumps(links))}::jsonb) AS link(
+                release_key text, software_id bigint, software_key text, signature text
+            )
+        """)
+        return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "snes_release_facts.sql").render(
+            verified_releases_sql=verified,
+        ))
 
     def catalog_manifest(self, revision: str | None = None, hide_rom_hacks=False):
         revision = revision or self.catalog_revision()

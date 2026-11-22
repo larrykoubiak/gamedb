@@ -17,12 +17,14 @@ from urllib.parse import parse_qs, quote, unquote, urlparse
 from sqlalchemy.exc import SQLAlchemyError
 
 from gamedb.arcade.bundle import prepare_manifest, public_manifest, write_bundle
+from gamedb.catalog.snes_translations import DEFAULT_ROOT as DEFAULT_SNES_TRANSLATION_ROOT
 from gamedb.config import PROJECT_ROOT, ProjectEnvironment
 from gamedb.database import create_database_engine
 from gamedb.explorer.cache import JsonResponseCache
 from gamedb.explorer.previews import ArtworkPreviewCache
 from gamedb.explorer.related_media import (
-    add_local_manuals, serve as serve_related_media, serve_snes_manual, serve_snes_manual_pages, serve_vgm,
+    add_local_manuals, add_local_translations, add_translation_availability, serve as serve_related_media,
+    serve_snes_manual, serve_snes_manual_pages, serve_snes_translation, serve_snes_translation_rom, serve_vgm,
 )
 from gamedb.explorer.repository import CatalogChanged, CatalogRepository, validate_metadata_filters
 from gamedb.launchbox.image_cache import LaunchBoxImageCache, valid_filename
@@ -36,6 +38,9 @@ SOFTWARE_RELEASES = re.compile(r"/api/software/([0-9]+)/releases")
 SOFTWARE_VGM = re.compile(r"/api/(?:v1/)?software/([0-9]+)/soundtracks")
 SNES_MANUAL = re.compile(r"/related-media/snes-manual/([0-9a-f]{64})")
 SNES_MANUAL_PAGES = re.compile(SNES_MANUAL.pattern + r"/pages(?:/([1-9][0-9]{0,8})\.webp)?")
+SNES_TRANSLATION = re.compile(r"/related-media/snes-translation/([0-9a-f]{64})")
+SNES_TRANSLATION_DOWNLOAD = re.compile(r"/api/v1/releases/([0-9a-f]{32})/translations/([0-9a-f]{64})/download")
+SNES_ICON = re.compile(r"/(?:snes-flags/(?:jp|na|pal)|snes-inputs/(?:pad|mouse|lightgun|multitap))\.png")
 SOFTWARE_FACTS = re.compile(r"/api/software/([0-9]+)/facts")
 SOFTWARE_PAGE = re.compile(r"/software/(?:([1-9][0-9]{0,18})-([0-9a-f]{32})|exo/([0-9a-f]{64}))")
 INSTALL_MANIFEST = re.compile(r"/api/v1/releases/([0-9a-f]{32})/install-manifest")
@@ -115,7 +120,7 @@ def _api_authorized(authorization: str | None, api_key: str) -> bool:
     return (
         bool(separator)
         and scheme.lower() == "bearer"
-        and hmac.compare_digest(credential, api_key)
+        and hmac.compare_digest(credential.encode("utf-8"), api_key.encode("utf-8"))
     )
 
 
@@ -199,8 +204,13 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         )
 
     def do_HEAD(self):  # noqa: N802 - BaseHTTPRequestHandler API
-        if manual := SNES_MANUAL.fullmatch(urlparse(self.path).path):
+        path = urlparse(self.path).path
+        if SNES_TRANSLATION_DOWNLOAD.fullmatch(path):
+            return self.do_GET()
+        if manual := SNES_MANUAL.fullmatch(path):
             return serve_snes_manual(self, manual[1])
+        if translation := SNES_TRANSLATION.fullmatch(path):
+            return serve_snes_translation(self, translation[1])
         return self.send_error(HTTPStatus.NOT_IMPLEMENTED, "Unsupported method ('HEAD')")
 
     def _get(self):
@@ -234,6 +244,10 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return serve_snes_manual(self, manual[1])
             if manual_pages := SNES_MANUAL_PAGES.fullmatch(parsed.path):
                 return serve_snes_manual_pages(self, manual_pages[1], int(manual_pages[2]) if manual_pages[2] else None)
+            if translation := SNES_TRANSLATION.fullmatch(parsed.path):
+                return serve_snes_translation(self, translation[1])
+            if translation := SNES_TRANSLATION_DOWNLOAD.fullmatch(parsed.path):
+                return serve_snes_translation_rom(self, translation[1], translation[2])
             soundtrack = SOFTWARE_VGM.fullmatch(parsed.path)
             if soundtrack:
                 items = self.server.repository.vgm_soundtracks(
@@ -247,8 +261,9 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return self._json_response(self.server.repository.systems(hide_rom_hacks=_hide_rom_hacks(query)))
             if parsed.path == "/api/snes-retail":
                 game_key = query["game"][0] if "game" in query else None
+                browse = query.get("view") == ["browse"]
                 catalog = self.server.repository.snes_retail(
-                    game_key=game_key, browse=query.get("view") == ["browse"],
+                    game_key=game_key, browse=browse,
                 )
                 if catalog is None:
                     error = "This SNES catalog entry could not be found." if game_key is not None else (
@@ -257,8 +272,11 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                     return self._json_response({"error": error}, HTTPStatus.NOT_FOUND)
                 if game_key is not None:
                     add_local_manuals(catalog["game"], self.server.snes_manual_root)
+                    add_local_translations(catalog["game"], self.server.snes_translation_root)
                     if self.server.vgm_root:
                         catalog["soundtracks"] = self.server.repository.snes_soundtracks(catalog["game"])
+                elif browse:
+                    add_translation_availability(catalog["games"], self.server.snes_translation_root)
                 return self._json_response(catalog)
             if parsed.path == "/api/capabilities":
                 return self._json_response({
@@ -379,7 +397,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 if not (ASSET_DIRECTORY / asset).is_file():
                     return self.send_error(HTTPStatus.NOT_FOUND)
                 return self._asset_response(asset, "image/png", "public, max-age=3600")
-            if re.fullmatch(r"/snes-flags/(?:jp|na|pal)\.png", parsed.path):
+            if SNES_ICON.fullmatch(parsed.path):
                 return self._asset_response(parsed.path[1:], "image/png", "public, max-age=3600")
             if parsed.path in ("/styles.css", "/almanac.css", "/snes-retail.css", "/snes-manual.css"):
                 return self._asset_response(parsed.path[1:], "text/css; charset=utf-8")
@@ -447,7 +465,8 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
-        self.wfile.write(body)
+        if self.command != "HEAD":
+            self.wfile.write(body)
 
     def _unauthorized_response(self):
         body = b'{"error":"API key required"}'
@@ -458,7 +477,8 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         self.send_header("WWW-Authenticate", 'Bearer realm="gamedb"')
         self.send_header("X-Content-Type-Options", "nosniff")
         self.end_headers()
-        self.wfile.write(body)
+        if self.command != "HEAD":
+            self.wfile.write(body)
 
     def _catalog_response(self, system_key=None, hide_rom_hacks=False):
         repository = self.server.repository
@@ -722,6 +742,7 @@ class ExplorerServer(ThreadingHTTPServer):
         self.vgm_root = Path(vgm_root) if vgm_root else None
         manual_root = os.environ.get("GAMEDB_SNES_MANUAL_ROOT")
         self.snes_manual_root = Path(manual_root) if manual_root else None
+        self.snes_translation_root = Path(os.environ.get("GAMEDB_SNES_TRANSLATION_ROOT") or DEFAULT_SNES_TRANSLATION_ROOT)
         self.rom_root = Path(os.environ.get("GAMEDB_ROM_ROOT", "/data/roms"))
 
     def server_close(self):

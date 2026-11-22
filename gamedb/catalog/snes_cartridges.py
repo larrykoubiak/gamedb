@@ -30,20 +30,28 @@ COUNTRY_MARKETS = {
 }
 LIBRETRO_DB = "https://github.com/libretro/libretro-database"
 
-VERIFIED_ROM_SQL = text("""
+
+def verified_roms_sql(signatures_sql):
+    return f"""
     SELECT DISTINCT ON (signature.sha1_set_digest)
            signature.sha1_set_digest AS signature, package.resolved_path AS path,
-           file.member_path, file.sha1_hex AS sha1
+           file.member_path, file.sha1_hex AS sha1,
+           CASE WHEN file.crc_verified THEN lower(file.crc_hex) END AS crc32,
+           CASE WHEN file.md5_verified THEN lower(file.md5_hex) END AS md5,
+           CASE WHEN file.size_verified THEN file.size END AS size
     FROM catalog.release_content_signature signature
     JOIN catalog.release_package rp ON rp.release_id = signature.release_id
     JOIN catalog.package package ON package.id = rp.package_id
     JOIN catalog.package_file file ON file.package_id = package.id
-    WHERE signature.sha1_set_digest = ANY(CAST(:signatures AS text[]))
+    WHERE signature.sha1_set_digest = ANY({signatures_sql})
       AND signature.package_count = 1 AND signature.rom_count = 1
       AND package.source_collection = 'No-Intro' AND package.resolved_path IS NOT NULL
       AND file.sha1_verified AND file.sha1_hex IS NOT NULL
     ORDER BY signature.sha1_set_digest, package.archive_name, file.id
-""")
+"""
+
+
+VERIFIED_ROM_SQL = text(verified_roms_sql("CAST(:signatures AS text[])"))
 
 RDB_SQL = text("""
     WITH latest AS (

@@ -5,7 +5,7 @@ from __future__ import annotations
 import sys
 
 
-HELP = """usage: gamedb {derive,parse-name,import-history,import-integrated,import-exo,import-vgm,import-rdb,import-launchbox,import-arcade,rebuild,seed-snes,sync-snes-manuals,promote-corrections,serve} ...
+HELP = """usage: gamedb {derive,parse-name,import-history,import-integrated,import-exo,import-vgm,import-rdb,import-launchbox,import-arcade,rebuild,seed-snes,sync-snes-manuals,sync-snes-translations,promote-corrections,serve} ...
 
 GameDB commands:
   derive       Build or selectively refresh the stable derived schema.
@@ -19,6 +19,7 @@ GameDB commands:
   rebuild      Project catalog, identity, and scores from derived data.
   seed-snes    Match the pinned SNES retail list against the catalog.
   sync-snes-manuals  Download the manuals linked by the SNES retail catalog.
+  sync-snes-translations  Match local translation patches to verified SNES retail ROMs.
   promote-corrections  Move reviewed working corrections into reference.
   serve        Run the explorer.
 
@@ -72,7 +73,7 @@ def main(argv=None) -> int:
         from gamedb.launchbox.__main__ import main as launchbox_main
 
         return launchbox_main(remaining)
-    if command in {"rebuild", "seed-snes", "sync-snes-manuals", "promote-corrections"}:
+    if command in {"rebuild", "seed-snes", "sync-snes-manuals", "sync-snes-translations", "promote-corrections"}:
         from gamedb.catalog.cli import main as catalog_main
 
         return catalog_main([command, *remaining])

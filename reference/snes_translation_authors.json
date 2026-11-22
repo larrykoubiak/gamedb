@@ -1,0 +1,1903 @@
+{
+  "source": "https://neoromhacking.net/community.php",
+  "authors": {
+    "2": "Aeon Genesis",
+    "9": "Marfisa",
+    "10": "Ackman Translations",
+    "11": "Magus",
+    "16": "Near",
+    "17": "Bishoujo Senshi Translations",
+    "21": "Chris M. Covell",
+    "24": "Chaotic Translations",
+    "27": "D",
+    "32": "Dragoon-X Translations",
+    "38": "DragonBallZ Translations",
+    "39": "SS4Squall",
+    "41": "DeJap Translations",
+    "42": "Disnesquick",
+    "43": "Dragonsoft",
+    "45": "Evolutions",
+    "54": "F.H.",
+    "55": "Firey Translations",
+    "56": "Fire Emblem Translations",
+    "57": "Gaijin Productions",
+    "59": "Gilhide",
+    "67": "Illusion Translations",
+    "70": "J2e Translations",
+    "76": "KingMike's Translations",
+    "78": "Kikuyama",
+    "80": "Klepto Software",
+    "85": "LNF Translations",
+    "87": "MageCraft Translations",
+    "90": "Magic Destiny",
+    "94": "Mana Sword",
+    "99": "Neill Corlett",
+    "102": "No-Life Translations",
+    "103": "NoPrgress",
+    "107": "obsolete translation",
+    "112": "Partial Translations",
+    "116": "Project: Sailor Moon",
+    "117": "Phantom Translations",
+    "118": "Psybuster",
+    "119": "RPGe",
+    "122": "RPGONE",
+    "129": "Sgt. Bow Hack",
+    "130": "Some Good Shit Translations",
+    "131": "MrRichard999",
+    "133": "Saiya Translations",
+    "138": "SoM2Freak",
+    "139": "Suicidal Translations",
+    "146": "Sydra",
+    "148": "Stealth Translations",
+    "150": "Square Translations",
+    "151": "SaGa Translations",
+    "152": "Serin9x",
+    "153": "SadNES cITy Translations",
+    "160": "Trans-Dimension",
+    "161": "Translations By Masamune",
+    "166": "Ultima Translations",
+    "167": "Vice Translations",
+    "168": "WakdHacks",
+    "171": "Yonin no Translators",
+    "174": "Zealsoft Translations",
+    "184": "Starsoft Translations",
+    "185": "Transcore",
+    "189": "Metalhawk's Translations",
+    "190": "RPG Shock!",
+    "196": "Langfandood",
+    "197": "Fallen Star Translations",
+    "226": "Blaxor",
+    "230": "Luxifer Angel",
+    "244": "FuSoYa’s Niche",
+    "246": "Twilight Translations",
+    "269": "Rover[SR13]",
+    "270": "Terminus Traduction",
+    "277": "Front Mission Translation Project",
+    "282": "Alemanic Translations",
+    "289": "filler",
+    "295": "B. Stigall",
+    "296": "Dragonsbrethren",
+    "301": "Azelistic",
+    "319": "d4s",
+    "321": "Thracia 776 ROM Translation Project",
+    "324": "satsu",
+    "581": "Ghettoyouth",
+    "670": "TiCo",
+    "689": "mteam",
+    "697": "yuumeikai",
+    "712": "DQ Translations",
+    "726": "General CoolNES Translations",
+    "728": "Cyndeline Translations",
+    "730": "The Translators",
+    "741": "ExtraOrdinary",
+    "745": "Ok Impala!",
+    "747": "Ryusui",
+    "804": "eDa",
+    "844": "Jaklub",
+    "849": "ManuLöwe",
+    "884": "DarknessSavior",
+    "895": "knighTeen87",
+    "912": "abw",
+    "921": "DANGER MAN",
+    "938": "Phil",
+    "999": "FloBo",
+    "1005": "Stardust Crusaders",
+    "1020": "Chief-NET",
+    "1068": "Django",
+    "1085": "Anti Justice",
+    "1112": "VX",
+    "1136": "EsperKnight",
+    "1181": "Norek",
+    "1193": "Dynamic-Designs",
+    "1211": "Synchronicity",
+    "1219": "Svambo",
+    "1225": "snes-projects",
+    "1228": "Lynx",
+    "1231": "Monkeys Traduções",
+    "1256": "Matt's Messy Room",
+    "1273": "CUE",
+    "1446": "Eien Ni Hen",
+    "1537": "Validus",
+    "1586": "Hiei-",
+    "1634": "Tom",
+    "1637": "FlashPV",
+    "1763": "Ripperon-X",
+    "1764": "Fred6758",
+    "1802": "Just4Fun",
+    "1848": "Avster",
+    "1866": "LostTemplar",
+    "1869": "Orden",
+    "2035": "Traducciones Magno",
+    "2041": "Zynk Oxhyde",
+    "2089": "krom",
+    "2209": "Jean Paul",
+    "2275": "kogami",
+    "2354": "Another Gamer",
+    "2355": "G-Trans",
+    "2366": "Solid One",
+    "2384": "Star-Trans",
+    "2385": "Sayans Traductions",
+    "2401": "Reaper",
+    "2403": "Sven Rech",
+    "2404": "Sephiroth",
+    "2412": "CBT",
+    "2414": "Griever.",
+    "2418": "Hexagon Traduções",
+    "2419": "Evil Darkness Traduções",
+    "2436": "Emuroms Translations",
+    "2437": "Portuguese-It",
+    "2439": "OJ Abreu",
+    "2481": "Happexamendios",
+    "2600": "Dwiki Prayoga",
+    "2618": "Mickey",
+    "2696": "megamanz",
+    "2751": "Psyklax",
+    "2865": "Cyjzero",
+    "2867": "East Wind",
+    "2869": "Ice Man",
+    "2876": "Jp32",
+    "2881": "FFR",
+    "2890": "Team Redwing",
+    "2941": "Blade133bo",
+    "2943": "denim",
+    "2971": "Hanmaru",
+    "2985": "RyleFury",
+    "3003": "Arumi",
+    "3076": "Taepung",
+    "3079": "D_Skywalk",
+    "3111": "AgentOrange",
+    "3114": "Lukas",
+    "3292": "DDSTranslation",
+    "3315": "Stoneboat",
+    "3342": "darkmoon2321",
+    "3384": "Wave",
+    "3482": "josete2k",
+    "3606": "gorgyrip",
+    "3614": "perfectacle",
+    "3664": "KenshinX",
+    "3703": "gc8tech",
+    "3768": "Kourampies",
+    "3825": "modda.se",
+    "3960": "jackic",
+    "4014": "Raccoon Sam",
+    "4124": "Hengki Kusuma Adi",
+    "4188": "Momochi",
+    "4193": "bMatSantos",
+    "4208": "q8fft",
+    "4253": "ajkmetiuk",
+    "4275": "Atomizer_Zero",
+    "4281": "Her-Saki",
+    "4296": "4ph",
+    "4315": "Crimental",
+    "4346": "FRCBMEX",
+    "4377": "pianohombre",
+    "4379": "S-P-E Team",
+    "4393": "Optiroc",
+    "4526": "DarkPika_404",
+    "4527": "DJCondor",
+    "4528": "Desert-Fox",
+    "4529": "Emy40",
+    "4530": "Piotrek1113",
+    "4531": "BabyPurpleYoshi",
+    "4532": "Logarithmika Magus",
+    "4608": "semco",
+    "4615": "Wolfgare",
+    "4649": "Cirosan",
+    "4671": "Magalicia",
+    "4692": "T.D. Stoneheart",
+    "4773": "Srchronotrigger",
+    "4777": "Max1323",
+    "4874": "Miacis",
+    "5062": "Pi-Man",
+    "5110": "NOKOH",
+    "5131": "Eduard Ereza",
+    "5146": "RMGlitch",
+    "5153": "Abokys",
+    "5159": "Génération IX",
+    "5205": "Steppolo Steppi",
+    "5219": "Basufi22",
+    "5229": "Voxar",
+    "5309": "spyblack",
+    "5364": "Diogo Ribeiro",
+    "5433": "NLeseul",
+    "5447": "WelshTranslator",
+    "5484": "TheDanaAddams",
+    "5494": "SuperTerra",
+    "5497": "Shinichi999",
+    "5531": "hitsumo",
+    "5552": "LucianoTheWindowsFan",
+    "5599": "Clomax",
+    "5602": "Maverick Blue Warrior",
+    "5781": "Zarby89",
+    "5789": "m0sca",
+    "5821": "Я929",
+    "5844": "Rod Merida",
+    "5963": "André Mena Calavia",
+    "5968": "EternalDreamAR",
+    "6086": "Krokodyl",
+    "6138": "TjVatio",
+    "6146": "GlostU",
+    "6179": "Translation Quest",
+    "6310": "Albergarri788",
+    "6322": "Bilie Ripper",
+    "6361": "Raviolo",
+    "6365": "JVF",
+    "6378": "POE",
+    "6380": "Dom aka Doke",
+    "6391": "The SAP Team",
+    "6459": "Retroman_X",
+    "6550": "Anubis-chan",
+    "6552": "C4_KadalMen",
+    "6553": "Mumble Translations",
+    "6557": "blizzz",
+    "6566": "SMFR",
+    "6688": "Masaru",
+    "6690": "GB Varbal",
+    "6713": "asiwish",
+    "6725": "Brutapode89",
+    "7204": "Backlog Odyssey",
+    "7279": "byftr",
+    "7348": "Rulesless",
+    "7362": "Quintana",
+    "7395": "bankbank",
+    "7634": "ChocoLixo",
+    "7800": "Ruenis",
+    "7879": "Nathan",
+    "7938": "DarkLink",
+    "7941": "Dindo",
+    "8178": "Atlas",
+    "8311": "Nezz",
+    "8318": "Taihen",
+    "8495": "Sandroid A.P",
+    "8520": "AndreuMB",
+    "8545": "ZeldaAsGaeilge",
+    "8554": "Nytegard",
+    "8666": "alasker1899"
+  },
+  "projectCreditsSource": "ROMhacking.net project credits saved in the PyTranslations list.json snapshot",
+  "projectCredits": {
+    "278": {
+      "version": "1.0 Beta",
+      "releasedAt": 1029211200,
+      "authors": [
+        "Akujin",
+        "David Mullen (MakoKnight)",
+        "F.H.",
+        "Dark Force"
+      ]
+    },
+    "289": {
+      "version": "1.0",
+      "releasedAt": 977461200,
+      "authors": [
+        "Dark Force",
+        "AnusP",
+        "Faraday",
+        "Alex W. Jackson",
+        "F.H.",
+        "Jason Li"
+      ]
+    },
+    "302": {
+      "version": "1.01",
+      "releasedAt": 1000094400,
+      "authors": [
+        "Gideon Zhi",
+        "Tsama",
+        "Disnesquick",
+        "Akujin"
+      ]
+    },
+    "303": {
+      "version": "1.00",
+      "releasedAt": 1002340800,
+      "authors": [
+        "Gideon Zhi",
+        "Akujin"
+      ]
+    },
+    "304": {
+      "version": "1.01",
+      "releasedAt": 1008565200,
+      "authors": [
+        "Gideon Zhi",
+        "Sogabe",
+        "Cidolfas",
+        "Taskforce"
+      ]
+    },
+    "307": {
+      "version": "1.0",
+      "releasedAt": 1175054400,
+      "authors": [
+        "Gideon Zhi",
+        "Haeleth"
+      ]
+    },
+    "308": {
+      "version": "2.00",
+      "releasedAt": 1536206400,
+      "authors": [
+        "Gideon Zhi",
+        "Tomato",
+        "TheMajinZenki",
+        "Wes Falls",
+        "g8z et al"
+      ]
+    },
+    "311": {
+      "version": "0.99",
+      "releasedAt": 961041600,
+      "authors": [
+        "recluse",
+        "Rom",
+        "Musashi",
+        "Faraday"
+      ]
+    },
+    "314": {
+      "version": "1.0",
+      "releasedAt": 972273600,
+      "authors": [
+        "Gideon Zhi",
+        "Tom"
+      ]
+    },
+    "319": {
+      "version": "1.2",
+      "releasedAt": 961819200,
+      "authors": [
+        "SS4Squall",
+        "Vincent"
+      ]
+    },
+    "326": {
+      "version": "1.02",
+      "releasedAt": 1455685200,
+      "authors": [
+        "SirYoink",
+        "Eien Ni Hen",
+        "MO",
+        "UnaFarmer"
+      ]
+    },
+    "341": {
+      "version": "2.01 Final",
+      "releasedAt": 1014440400,
+      "authors": [
+        "Dark Force",
+        "Neil_",
+        "Nan",
+        "Hojo",
+        "maht",
+        "Justinffx",
+        "Gema2k",
+        "Moose M.",
+        "MuuMuu",
+        "Alex W. Jackson",
+        "UnaFarmer",
+        "Geechyguy",
+        "/33/"
+      ]
+    },
+    "349": {
+      "version": "1.02",
+      "releasedAt": 1245384000,
+      "authors": [
+        "Bongo`",
+        "Yukiko",
+        "ZackMan",
+        "Wildbill",
+        "Draken",
+        "Taskforce",
+        "Red Soul",
+        "Tomato"
+      ]
+    },
+    "352": {
+      "version": "3.21",
+      "releasedAt": 994132800,
+      "authors": [
+        "AnusP",
+        "Blasted2",
+        "necrosaro",
+        "Dark Force",
+        "P-Funk",
+        "Ian Kelley",
+        "Trainspotter",
+        "Rydia",
+        "UnaFarmer"
+      ]
+    },
+    "353": {
+      "version": "1.10",
+      "releasedAt": 908596800,
+      "authors": [
+        "Myria",
+        "SoM2Freak",
+        "harmony7"
+      ]
+    },
+    "362": {
+      "version": "1.0b",
+      "releasedAt": 1001304000,
+      "authors": [
+        "Akujin",
+        "Hojo",
+        "David Mullen (MakoKnight)",
+        "Shih Tzu",
+        "F.H.",
+        "Dark Force"
+      ]
+    },
+    "363": {
+      "version": "1.0",
+      "releasedAt": 945666000,
+      "authors": [
+        "Akujin",
+        "Teunire"
+      ]
+    },
+    "365": {
+      "version": "0.99",
+      "releasedAt": 990849600,
+      "authors": [
+        "Bongo`",
+        "Akujin",
+        "Demi",
+        "Prez",
+        "Kitsune Sniper (Foxhack)"
+      ]
+    },
+    "374": {
+      "version": "1.00",
+      "releasedAt": 1032494400,
+      "authors": [
+        "Gideon Zhi",
+        "Alexander Beetle"
+      ]
+    },
+    "377": {
+      "version": "1.00B",
+      "releasedAt": 1001217600,
+      "authors": [
+        "Gideon Zhi",
+        "Tomato",
+        "ZackMan"
+      ]
+    },
+    "381": {
+      "version": "2.00 Deluxe",
+      "releasedAt": 1211947200,
+      "authors": [
+        "Gideon Zhi",
+        "RedComet",
+        "Ian Kelley",
+        "Liana",
+        "Kitsune Sniper (Foxhack)",
+        "AnusP",
+        "Akujin",
+        "Sogabe",
+        "Cidolfas",
+        "D",
+        "Nora",
+        "Tomato",
+        "ZackMan",
+        "Tsama",
+        "Tom",
+        "Haeleth",
+        "Brand S"
+      ]
+    },
+    "386": {
+      "version": "1.01",
+      "releasedAt": 1091592000,
+      "authors": [
+        "Gideon Zhi",
+        "necrosaro",
+        "Bansama",
+        "Shivalva",
+        "Ian Kelley",
+        "BMF54123",
+        "Shih Tzu"
+      ]
+    },
+    "388": {
+      "version": "2.00",
+      "releasedAt": 1365825600,
+      "authors": [
+        "Tomato",
+        "Gideon Zhi",
+        "evo",
+        "z80gaiden",
+        "KingMike"
+      ]
+    },
+    "392": {
+      "version": "1.03",
+      "releasedAt": 991195200,
+      "authors": [
+        "Gideon Zhi",
+        "ZackMan",
+        "Wildbill",
+        "Taskforce",
+        "Akujin",
+        "necrosaro",
+        "satsu",
+        "Dark Force"
+      ]
+    },
+    "399": {
+      "version": "1.00",
+      "releasedAt": 968040000,
+      "authors": [
+        "The Melody Maker"
+      ]
+    },
+    "401": {
+      "version": "1.00",
+      "releasedAt": 936936000,
+      "authors": [
+        "Cecil Stormclaw",
+        "FuSoYa",
+        "Moose M.",
+        "Lina`chan",
+        "Nuku-nuku"
+      ]
+    },
+    "435": {
+      "version": "1.00",
+      "releasedAt": 1015390800,
+      "authors": [
+        "FuSoYa",
+        "SilverSonic",
+        "Summon Illusion"
+      ]
+    },
+    "437": {
+      "version": "1.00",
+      "releasedAt": 942037200,
+      "authors": [
+        "LordTech",
+        "Musashi",
+        "UnaFarmer"
+      ]
+    },
+    "440": {
+      "version": "1.01",
+      "releasedAt": 967348800,
+      "authors": [
+        "Neill Corlett",
+        "Lina`chan",
+        "Nuku-nuku",
+        "SoM2Freak"
+      ]
+    },
+    "452": {
+      "version": "1.0",
+      "releasedAt": 1072846800,
+      "authors": [
+        "Dark Force",
+        "AnusP",
+        "Tomato",
+        "Akujin",
+        "Bisqwit",
+        "Hades Shingami",
+        "LifeBlood",
+        "ZsKnight",
+        "The Dumper",
+        "Katharsis"
+      ]
+    },
+    "480": {
+      "version": "0.99",
+      "releasedAt": 1085371200,
+      "authors": [
+        "necrosaro",
+        "Taskforce",
+        "oRdErEDchaos",
+        "Wildbill",
+        "UnaFarmer",
+        "Robyn",
+        "Faraday",
+        "Celes",
+        "MO"
+      ]
+    },
+    "483": {
+      "version": "1.0",
+      "releasedAt": 1141707600,
+      "authors": [
+        "Gideon Zhi",
+        "Ian Kelley",
+        "g8z et al"
+      ]
+    },
+    "484": {
+      "version": "1.0",
+      "releasedAt": 980053200,
+      "authors": [
+        "AnusP",
+        "Blasted2",
+        "necrosaro",
+        "UnaFarmer",
+        "Chojin",
+        "Luke Drelick",
+        "Ballz",
+        "Trainspotter"
+      ]
+    },
+    "496": {
+      "version": "1.00",
+      "releasedAt": 965448000,
+      "authors": [
+        "Gideon Zhi"
+      ]
+    },
+    "497": {
+      "version": "1.04",
+      "releasedAt": 997848000,
+      "authors": [
+        "LordTech",
+        "Tomato",
+        "Akujin",
+        "Kagami"
+      ]
+    },
+    "498": {
+      "version": "2.10",
+      "releasedAt": 1385614800,
+      "authors": [
+        "Gideon Zhi",
+        "Shimarisu",
+        "Deuce",
+        "LordTech",
+        "g8z et al",
+        "The Spoony Bard"
+      ]
+    },
+    "527": {
+      "version": "0.95",
+      "releasedAt": 1015477200,
+      "authors": [
+        "Gideon Zhi",
+        "Near",
+        "Xeur",
+        "satsu"
+      ]
+    },
+    "528": {
+      "version": "1.01",
+      "releasedAt": 1092369600,
+      "authors": [
+        "Gideon Zhi",
+        "Akujin",
+        "M",
+        "Klarth"
+      ]
+    },
+    "553": {
+      "version": "1.5",
+      "releasedAt": 1592452800,
+      "authors": [
+        "Jonny",
+        "BugCatcher",
+        "F.H.",
+        "Shih Tzu"
+      ]
+    },
+    "570": {
+      "version": "1.00",
+      "releasedAt": 1024804800,
+      "authors": [
+        "Gideon Zhi",
+        "satsu",
+        "Shih Tzu",
+        "Eien Ni Hen",
+        "Tetsuo",
+        "Haeleth"
+      ]
+    },
+    "571": {
+      "version": "1.00",
+      "releasedAt": 1025409600,
+      "authors": [
+        "Gideon Zhi",
+        "Ian Kelley",
+        "Tom"
+      ]
+    },
+    "598": {
+      "version": "1.00",
+      "releasedAt": 1032494400,
+      "authors": [
+        "Gideon Zhi",
+        "Datenshi"
+      ]
+    },
+    "622": {
+      "version": "1.03",
+      "releasedAt": 1040187600,
+      "authors": [
+        "Gideon Zhi",
+        "Sheex",
+        "ZackMan",
+        "Shih Tzu"
+      ]
+    },
+    "649": {
+      "version": "1.01",
+      "releasedAt": 1124424000,
+      "authors": [
+        "Gideon Zhi",
+        "Akujin",
+        "eikitty",
+        "kurisu",
+        "satsu"
+      ]
+    },
+    "660": {
+      "version": "1.01",
+      "releasedAt": 1047013200,
+      "authors": [
+        "Gideon Zhi",
+        "Shih Tzu"
+      ]
+    },
+    "669": {
+      "version": "2.10",
+      "releasedAt": 1433995200,
+      "authors": [
+        "Gideon Zhi",
+        "Ian Kelley",
+        "NinjaC64",
+        "satsu",
+        "Moriyosi",
+        "Matthew Kendora",
+        "_Bnu",
+        "BTAxis",
+        "Boss Monkey Hayama"
+      ]
+    },
+    "687": {
+      "version": "1.00",
+      "releasedAt": 1084420800,
+      "authors": [
+        "Gideon Zhi",
+        "Ian Kelley"
+      ]
+    },
+    "688": {
+      "version": "1.3",
+      "releasedAt": 1514696400,
+      "authors": [
+        "Jonny",
+        "Loek van Kooten",
+        "BugCatcher"
+      ]
+    },
+    "718": {
+      "version": "1.00",
+      "releasedAt": 1022558400,
+      "authors": [
+        "Gideon Zhi",
+        "Ian Kelley",
+        "Tomato",
+        "Oogami"
+      ]
+    },
+    "758": {
+      "version": "1.00",
+      "releasedAt": 1073451600,
+      "authors": [
+        "Gideon Zhi",
+        "AnusP",
+        "Mariko Sadakane",
+        "Eiko Ishakawa",
+        "Reiko",
+        "Chip"
+      ]
+    },
+    "775": {
+      "version": "1.00",
+      "releasedAt": 1015477200,
+      "authors": [
+        "Gideon Zhi",
+        "Ian Kelley",
+        "Tomato"
+      ]
+    },
+    "781": {
+      "version": "1.1",
+      "releasedAt": 1549774800,
+      "authors": [
+        "Jonny",
+        "Eien Ni Hen",
+        "Rpgmaniac-No1"
+      ]
+    },
+    "830": {
+      "version": "1.00",
+      "releasedAt": 1099195200,
+      "authors": [
+        "Gideon Zhi",
+        "vampiresquid",
+        "Kitsune Sniper (Foxhack)"
+      ]
+    },
+    "852": {
+      "version": "2.0",
+      "releasedAt": 1533009600,
+      "authors": [
+        "Jonny",
+        "ChrisRPG",
+        "BugCatcher",
+        "Eien Ni Hen"
+      ]
+    },
+    "853": {
+      "version": "1.0",
+      "releasedAt": 1103864400,
+      "authors": [
+        "ChrisRPG",
+        "Sky Render"
+      ]
+    },
+    "860": {
+      "version": "1.0b",
+      "releasedAt": 1105333200,
+      "authors": [
+        "KingMike",
+        "Patrick Newman"
+      ]
+    },
+    "893": {
+      "version": "1.00",
+      "releasedAt": 1173243600,
+      "authors": [
+        "Gideon Zhi",
+        "Tom",
+        "g8z et al"
+      ]
+    },
+    "907": {
+      "version": "1.00",
+      "releasedAt": 1129089600,
+      "authors": [
+        "Gideon Zhi",
+        "Datenshi",
+        "Kitsune Sniper (Foxhack)"
+      ]
+    },
+    "910": {
+      "version": "1.00",
+      "releasedAt": 1132203600,
+      "authors": [
+        "Gideon Zhi",
+        "Deuce",
+        "g8z et al",
+        "oacat"
+      ]
+    },
+    "939": {
+      "version": "0.99",
+      "releasedAt": 1270872000,
+      "authors": [
+        "TiCo",
+        "MrRichard999"
+      ]
+    },
+    "1063": {
+      "version": "1.00",
+      "releasedAt": 1161403200,
+      "authors": [
+        "Gideon Zhi",
+        "Ian Kelley"
+      ]
+    },
+    "1105": {
+      "version": "1.00",
+      "releasedAt": 1176350400,
+      "authors": [
+        "Gideon Zhi",
+        "Tom",
+        "danke"
+      ]
+    },
+    "1192": {
+      "version": "1.3",
+      "releasedAt": 1568865600,
+      "authors": [
+        "recluse",
+        "Rom",
+        "Musashi",
+        "Faraday",
+        "Jonny",
+        "filler",
+        "KingMike",
+        "satsu",
+        "Suzaku",
+        "Guadozoku"
+      ]
+    },
+    "1215": {
+      "version": "1.00",
+      "releasedAt": 1194325200,
+      "authors": [
+        "Gideon Zhi",
+        "Liana",
+        "Neil_"
+      ]
+    },
+    "1243": {
+      "version": "1.0",
+      "releasedAt": 1199509200,
+      "authors": [
+        "Phil",
+        "snesmaster40",
+        "KingMike"
+      ]
+    },
+    "1272": {
+      "version": "0.99",
+      "releasedAt": 1210219200,
+      "authors": [
+        "Kitsune Sniper (Foxhack)",
+        "monmon",
+        "BRPXQZME",
+        "Ryusui",
+        "Tom"
+      ]
+    },
+    "1323": {
+      "version": "1.1",
+      "releasedAt": 1258606800,
+      "authors": [
+        "DaMarsMan",
+        "Z6n4",
+        "Zenithian",
+        "PlatKing"
+      ]
+    },
+    "1332": {
+      "version": "1.04",
+      "releasedAt": 1224043200,
+      "authors": [
+        "Akujin",
+        "Draken",
+        "Daimajin",
+        "Xeur",
+        "PhatOo7",
+        "Bongo`",
+        "Wildbill"
+      ]
+    },
+    "1371": {
+      "version": "1.04 Final",
+      "releasedAt": 1237694400,
+      "authors": [
+        "VX",
+        "Tuffy da Bubba"
+      ]
+    },
+    "1384": {
+      "version": "1.2b",
+      "releasedAt": 1255147200,
+      "authors": [
+        "Ryusui",
+        "d4s"
+      ]
+    },
+    "1393": {
+      "version": "1.00",
+      "releasedAt": 1240632000,
+      "authors": [
+        "VX",
+        "Tuffy da Bubba",
+        "DarthNemesis",
+        "Ryusui",
+        "Tauwasser"
+      ]
+    },
+    "1428": {
+      "version": "1.01",
+      "releasedAt": 1261630800,
+      "authors": [
+        "Akujin",
+        "Bongo`",
+        "Draken",
+        "Wildbill",
+        "Taskforce",
+        "Red Soul"
+      ]
+    },
+    "1429": {
+      "version": "1.01",
+      "releasedAt": 1253937600,
+      "authors": [
+        "Gideon Zhi",
+        "Ian Kelley",
+        "Disnesquick",
+        "Wildbill"
+      ]
+    },
+    "1441": {
+      "version": "1.00",
+      "releasedAt": 1257138000,
+      "authors": [
+        "Gideon Zhi",
+        "Hexafire"
+      ]
+    },
+    "1442": {
+      "version": "1.0",
+      "releasedAt": 1257224400,
+      "authors": [
+        "sqykly",
+        "Denpanosekai"
+      ]
+    },
+    "1494": {
+      "version": "1.01",
+      "releasedAt": 1287633600,
+      "authors": [
+        "filler",
+        "Eien Ni Hen",
+        "Bongo`",
+        "Wildbill",
+        "Red Soul",
+        "Taskforce",
+        "Jonny",
+        "ChrisRPG",
+        "Brightman",
+        "Sky Render"
+      ]
+    },
+    "1537": {
+      "version": "1.0",
+      "releasedAt": 1280376000,
+      "authors": [
+        "RedComet",
+        "DarknessSavior",
+        "Tom"
+      ]
+    },
+    "1575": {
+      "version": "1.00",
+      "releasedAt": 1292734800,
+      "authors": [
+        "Gideon Zhi",
+        "Eien Ni Hen"
+      ]
+    },
+    "1607": {
+      "version": "1.00",
+      "releasedAt": 1303185600,
+      "authors": [
+        "Gideon Zhi",
+        "satsu"
+      ]
+    },
+    "1631": {
+      "version": "1.00",
+      "releasedAt": 1311048000,
+      "authors": [
+        "RedComet",
+        "SteveMartin",
+        "FlashPV"
+      ]
+    },
+    "1641": {
+      "version": "1.0",
+      "releasedAt": 1313035200,
+      "authors": [
+        "KingMike",
+        "filler",
+        "Paul Jensen"
+      ]
+    },
+    "1691": {
+      "version": "1.00",
+      "releasedAt": 1326430800,
+      "authors": [
+        "mziab",
+        "Norek"
+      ]
+    },
+    "1710": {
+      "version": "1.1",
+      "releasedAt": 1351137600,
+      "authors": [
+        "Neige",
+        "Hiei-",
+        "Pennywise"
+      ]
+    },
+    "1713": {
+      "version": "1.0",
+      "releasedAt": 1330491600,
+      "authors": [
+        "Wildbill",
+        "Bongo`",
+        "Ritchie",
+        "Recca",
+        "Red Soul",
+        "LostTemplar",
+        "Taskforce",
+        "FlashPV",
+        "Draken",
+        "Yuka",
+        "Delta Flame"
+      ]
+    },
+    "1714": {
+      "version": "1.0",
+      "releasedAt": 1330491600,
+      "authors": [
+        "KingMike",
+        "Geisha Boy",
+        "DarknessSavior"
+      ]
+    },
+    "1742": {
+      "version": "1.00",
+      "releasedAt": 1340856000,
+      "authors": [
+        "Kitsune Sniper (Foxhack)",
+        "satsu",
+        "DarknessSavior"
+      ]
+    },
+    "1785": {
+      "version": "1.0",
+      "releasedAt": 1356411600,
+      "authors": [
+        "Pennywise",
+        "LostTemplar",
+        "Eien Ni Hen",
+        "ChronoMoogle",
+        "sin_batsu",
+        "Shmu-Hadron",
+        "FlashPV",
+        "Leyla"
+      ]
+    },
+    "1824": {
+      "version": "1.00",
+      "releasedAt": 1365825600,
+      "authors": [
+        "Gideon Zhi",
+        "TheMajinZenki",
+        "blargh_",
+        "Kitsune Sniper (Foxhack)"
+      ]
+    },
+    "2054": {
+      "version": "1.01",
+      "releasedAt": 1385614800,
+      "authors": [
+        "Gideon Zhi",
+        "TheMajinZenki",
+        "Kitsune Sniper (Foxhack)"
+      ]
+    },
+    "2060": {
+      "version": "1.00",
+      "releasedAt": 1385614800,
+      "authors": [
+        "Gideon Zhi",
+        "Deuce",
+        "g8z et al"
+      ]
+    },
+    "2061": {
+      "version": "1.01",
+      "releasedAt": 1473307200,
+      "authors": [
+        "MrRichard999",
+        "DDSTranslation",
+        "DackR",
+        "EsperKnight",
+        "FinS",
+        "AgentOrange",
+        "Helly",
+        "Eien Ni Hen",
+        "Mark Patraw",
+        "Jink640",
+        "Hengki Kusuma Adi"
+      ]
+    },
+    "2155": {
+      "version": "1.00",
+      "releasedAt": 1393390800,
+      "authors": [
+        "Recca",
+        "Red Soul",
+        "Wildbill",
+        "Bongo`",
+        "Eien Ni Hen",
+        "Taskforce",
+        "Draken",
+        "FlashPV"
+      ]
+    },
+    "2181": {
+      "version": "1.02",
+      "releasedAt": 1419483600,
+      "authors": [
+        "Draken",
+        "Wildbill",
+        "Bongo`",
+        "Manske",
+        "Red Soul"
+      ]
+    },
+    "2263": {
+      "version": "1.1",
+      "releasedAt": 1409976000,
+      "authors": [
+        "DDSTranslation",
+        "Iriliane",
+        "Fernando Garcia"
+      ]
+    },
+    "2339": {
+      "version": "1.00",
+      "releasedAt": 1431576000,
+      "authors": [
+        "Wildbill",
+        "Bongo`",
+        "Gerb",
+        "Taskforce",
+        "FlashPV",
+        "Near",
+        "DaMarsMan",
+        "filler",
+        "D"
+      ]
+    },
+    "2344": {
+      "version": "1.0",
+      "releasedAt": 1432440000,
+      "authors": [
+        "Gideon Zhi",
+        "Eien Ni Hen"
+      ]
+    },
+    "2377": {
+      "version": "1.2",
+      "releasedAt": 1469073600,
+      "authors": [
+        "Eien Ni Hen",
+        "Alex W. Jackson",
+        "Shujin-Rik",
+        "F.H."
+      ]
+    },
+    "2418": {
+      "version": "1.10",
+      "releasedAt": 1451278800,
+      "authors": [
+        "Draken",
+        "Bongo`",
+        "filler",
+        "Wildbill"
+      ]
+    },
+    "2540": {
+      "version": "0.94",
+      "releasedAt": 1449810000,
+      "authors": [
+        "MrRichard999",
+        "pacnsacdave",
+        "Helly",
+        "Jink640",
+        "MarsRaven",
+        "TangoBunny"
+      ]
+    },
+    "2570": {
+      "version": "1.00",
+      "releasedAt": 1453957200,
+      "authors": [
+        "Kakushiken",
+        "filler",
+        "Bongo`",
+        "Taskforce",
+        "Draken"
+      ]
+    },
+    "2655": {
+      "version": "1.0",
+      "releasedAt": 1463976000,
+      "authors": [
+        "gorgyrip",
+        "sandytf",
+        "Nagato"
+      ]
+    },
+    "2665": {
+      "version": "1.02",
+      "releasedAt": 1470801600,
+      "authors": [
+        "Bongo`",
+        "filler",
+        "Taskforce",
+        "Draken"
+      ]
+    },
+    "2739": {
+      "version": "1.0",
+      "releasedAt": 1475380800,
+      "authors": [
+        "FlashPV",
+        "Eien Ni Hen",
+        "Shiroma3084",
+        "Kung Fu Furby",
+        "Jonny2x4"
+      ]
+    },
+    "2834": {
+      "version": "0.95",
+      "releasedAt": 1543899600,
+      "authors": [
+        "MrRichard999",
+        "Jink640",
+        "Helly",
+        "TheMajinZenki"
+      ]
+    },
+    "2835": {
+      "version": "1.01",
+      "releasedAt": 1486011600,
+      "authors": [
+        "Atomizer_Zero",
+        "FamilyGuy",
+        "AkiHizirino",
+        "mkwong98"
+      ]
+    },
+    "3021": {
+      "version": "1.0",
+      "releasedAt": 1494820800,
+      "authors": [
+        "MrRichard999",
+        "rainponcho",
+        "AgentOrange",
+        "Stoneboat"
+      ]
+    },
+    "3170": {
+      "version": "1.10",
+      "releasedAt": 1488776400,
+      "authors": [
+        "Draken",
+        "Bongo`",
+        "4ph",
+        "Spring",
+        "Taskforce"
+      ]
+    },
+    "3243": {
+      "version": "7.0",
+      "releasedAt": 1508644800,
+      "authors": [
+        "LostTemplar",
+        "Near",
+        "Tom",
+        "DDSTranslation",
+        "FlashPV",
+        "DougRPG"
+      ]
+    },
+    "3354": {
+      "version": "1.1",
+      "releasedAt": 1532145600,
+      "authors": [
+        "Optiroc",
+        "breakin",
+        "Lee Hyde",
+        "Sky Yoshi"
+      ]
+    },
+    "3355": {
+      "version": "1.02",
+      "releasedAt": 1514264400,
+      "authors": [
+        "Taskforce",
+        "Bongo`",
+        "Eien Ni Hen",
+        "Wildbill",
+        "Draken"
+      ]
+    },
+    "3470": {
+      "version": "1.2",
+      "releasedAt": 1522296000,
+      "authors": [
+        "Gideon Zhi",
+        "TheMajinZenki",
+        "FlashPV"
+      ]
+    },
+    "3471": {
+      "version": "1.1",
+      "releasedAt": 1520913600,
+      "authors": [
+        "Gideon Zhi",
+        "TheMajinZenki",
+        "Xanathis",
+        "Daichi"
+      ]
+    },
+    "3472": {
+      "version": "1.1",
+      "releasedAt": 1520913600,
+      "authors": [
+        "Gideon Zhi",
+        "TheMajinZenki",
+        "Setz"
+      ]
+    },
+    "3473": {
+      "version": "1.2",
+      "releasedAt": 1522296000,
+      "authors": [
+        "Gideon Zhi",
+        "Optiroc",
+        "TheMajinZenki",
+        "Setz"
+      ]
+    },
+    "3515": {
+      "version": "1.0",
+      "releasedAt": 1522555200,
+      "authors": [
+        "Draken",
+        "Bongo`",
+        "Melonseller",
+        "filler",
+        "Taskforce"
+      ]
+    },
+    "3516": {
+      "version": "1.10",
+      "releasedAt": 1527480000,
+      "authors": [
+        "Bongo`",
+        "filler",
+        "Taskforce"
+      ]
+    },
+    "3519": {
+      "version": "1.0",
+      "releasedAt": 1522123200,
+      "authors": [
+        "MrRichard999",
+        "AgentOrange"
+      ]
+    },
+    "3545": {
+      "version": "7.0",
+      "releasedAt": 1523505600,
+      "authors": [
+        "Tom",
+        "FlashPV",
+        "DDSTranslation"
+      ]
+    },
+    "3596": {
+      "version": "2.0",
+      "releasedAt": 1526529600,
+      "authors": [
+        "MrRichard999",
+        "FlashPV",
+        "Jink640"
+      ]
+    },
+    "3693": {
+      "version": "1.0",
+      "releasedAt": 1530590400,
+      "authors": [
+        "MrRichard999",
+        "DDSTranslation",
+        "Dr. Floppy",
+        "DackR",
+        "AgentOrange"
+      ]
+    },
+    "3836": {
+      "version": "1.0",
+      "releasedAt": 1535947200,
+      "authors": [
+        "Wildbill",
+        "Bongo`",
+        "filler",
+        "Taskforce"
+      ]
+    },
+    "3941": {
+      "version": "1.0",
+      "releasedAt": 1540699200,
+      "authors": [
+        "MrRichard999",
+        "DDSTranslation",
+        "AgentOrange",
+        "FlashPV"
+      ]
+    },
+    "3951": {
+      "version": "1.00",
+      "releasedAt": 1540440000,
+      "authors": [
+        "Gideon Zhi",
+        "Ian Kelley",
+        "Ryusui"
+      ]
+    },
+    "4064": {
+      "version": "0.995",
+      "releasedAt": 1547787600,
+      "authors": [
+        "MrRichard999",
+        "Helly",
+        "AgentOrange",
+        "TheMajinZenki"
+      ]
+    },
+    "4066": {
+      "version": "1.0",
+      "releasedAt": 1544331600,
+      "authors": [
+        "DDSTranslation",
+        "Tom",
+        "FlashPV"
+      ]
+    },
+    "4080": {
+      "version": "1.0",
+      "releasedAt": 1544418000,
+      "authors": [
+        "MrRichard999",
+        "D.D.S.",
+        "AgentOrange",
+        "TheMajinZenki",
+        "FlashPV"
+      ]
+    },
+    "4096": {
+      "version": "0.99",
+      "releasedAt": 1545022800,
+      "authors": [
+        "MrRichard999",
+        "krom",
+        "Helly",
+        "AgentOrange",
+        "D.D.S.",
+        "FlashPV",
+        "slidelljohn / [J]"
+      ]
+    },
+    "4115": {
+      "version": "1.1",
+      "releasedAt": 1519016400,
+      "authors": [
+        "Steppolo Steppi",
+        "Shiva Indis"
+      ]
+    },
+    "4116": {
+      "version": "2.0",
+      "releasedAt": 1545973200,
+      "authors": [
+        "DDSTranslation",
+        "Tom",
+        "FlashPV"
+      ]
+    },
+    "4129": {
+      "version": "1.0",
+      "releasedAt": 1545886800,
+      "authors": [
+        "MrRichard999",
+        "AgentOrange",
+        "TheMajinZenki",
+        "FlashPV"
+      ]
+    },
+    "4225": {
+      "version": "1.0",
+      "releasedAt": 1549170000,
+      "authors": [
+        "Jonny"
+      ]
+    },
+    "4306": {
+      "version": "1.0",
+      "releasedAt": 1552276800,
+      "authors": [
+        "MrRichard999",
+        "TheMajinZenki",
+        "FlashPV",
+        "D.D.S.",
+        "slidelljohn / [J]"
+      ]
+    },
+    "4351": {
+      "version": "0.99",
+      "releasedAt": 1553659200,
+      "authors": [
+        "MrRichard999",
+        "slidelljohn / [J]",
+        "Dr. Floppy",
+        "TheMajinZenki",
+        "FlashPV"
+      ]
+    },
+    "4653": {
+      "version": "1.04",
+      "releasedAt": 1559275200,
+      "authors": [
+        "Cirosan",
+        "HidoranBlaze",
+        "Ando",
+        "Zane Avernathy",
+        "EnDavio",
+        "Robert of Normandy",
+        "Kirb",
+        "dn",
+        "Miacis",
+        "Sam Heitzer"
+      ]
+    },
+    "4832": {
+      "version": "4.0",
+      "releasedAt": 1565323200,
+      "authors": [
+        "DDSTranslation",
+        "Tom",
+        "FlashPV"
+      ]
+    },
+    "4917": {
+      "version": "1.1",
+      "releasedAt": 1565668800,
+      "authors": [
+        "TheDanaAddams",
+        "Reld",
+        "g8z et al",
+        "sheepytina"
+      ]
+    },
+    "5323": {
+      "version": "1.00",
+      "releasedAt": 1577163600,
+      "authors": [
+        "Gideon Zhi",
+        "TheMajinZenki",
+        "Fei",
+        "Kitsune Sniper (Foxhack)"
+      ]
+    },
+    "5353": {
+      "version": "3.0",
+      "releasedAt": 1581138000,
+      "authors": [
+        "Tom",
+        "FlashPV",
+        "DDSTranslation"
+      ]
+    },
+    "5354": {
+      "version": "4.0",
+      "releasedAt": 1581138000,
+      "authors": [
+        "Tom",
+        "FlashPV",
+        "DDSTranslation"
+      ]
+    },
+    "5420": {
+      "version": "0.91",
+      "releasedAt": 1582693200,
+      "authors": [
+        "filler",
+        "Wildbill",
+        "Bongo`",
+        "Taskforce"
+      ]
+    },
+    "5493": {
+      "version": "0.1",
+      "releasedAt": 1578200400,
+      "authors": [
+        "Justin3009",
+        "DarkSamus993"
+      ]
+    },
+    "5563": {
+      "version": "1.1",
+      "releasedAt": 1593835200,
+      "authors": [
+        "Momochi",
+        "agarpac",
+        "Flootena",
+        "Celerity910",
+        "BinaryHedgehog"
+      ]
+    },
+    "5665": {
+      "version": "3.0",
+      "releasedAt": 1597809600,
+      "authors": [
+        "FlashPV",
+        "Tom",
+        "DDSTranslation"
+      ]
+    },
+    "5666": {
+      "version": "2.0",
+      "releasedAt": 1598414400,
+      "authors": [
+        "Tom",
+        "FlashPV",
+        "DDSTranslation"
+      ]
+    },
+    "5667": {
+      "version": "2.0",
+      "releasedAt": 1598414400,
+      "authors": [
+        "Tom",
+        "FlashPV",
+        "DDSTranslation",
+        "Akira76"
+      ]
+    },
+    "5692": {
+      "version": "1.0",
+      "releasedAt": 1600315200,
+      "authors": [
+        "Tom",
+        "FlashPV",
+        "DDSTranslation"
+      ]
+    },
+    "5710": {
+      "version": "1.0",
+      "releasedAt": 1601870400,
+      "authors": [
+        "Tom",
+        "FlashPV",
+        "DDSTranslation"
+      ]
+    },
+    "5737": {
+      "version": "1.0",
+      "releasedAt": 1603771200,
+      "authors": [
+        "Tom",
+        "FlashPV",
+        "DDSTranslation"
+      ]
+    },
+    "5763": {
+      "version": "0.90",
+      "releasedAt": 1604984400,
+      "authors": [
+        "Wildbill",
+        "Gerb",
+        "filler",
+        "Bongo`"
+      ]
+    },
+    "5881": {
+      "version": "1.0",
+      "releasedAt": 1610600400,
+      "authors": [
+        "Tom",
+        "FlashPV",
+        "DDSTranslation"
+      ]
+    },
+    "5910": {
+      "version": "0.90",
+      "releasedAt": 1611723600,
+      "authors": [
+        "Wildbill",
+        "filler",
+        "Bongo`",
+        "Taskforce"
+      ]
+    },
+    "5938": {
+      "version": "1.2",
+      "releasedAt": 1622520000,
+      "authors": [
+        "Near",
+        "Tom",
+        "FlashPV",
+        "dev_urandom",
+        "Blargg",
+        "ContraryMotion",
+        "Ballz",
+        "Lord Nightmare"
+      ]
+    },
+    "5997": {
+      "version": "2.0",
+      "releasedAt": 1615266000,
+      "authors": [
+        "Tom",
+        "FlashPV",
+        "DDSTranslation"
+      ]
+    },
+    "6031": {
+      "version": "0.75",
+      "releasedAt": 1617422400,
+      "authors": [
+        "Bongo`",
+        "Gerb",
+        "Taskforce",
+        "Wildbill"
+      ]
+    },
+    "6365": {
+      "version": "1.1",
+      "releasedAt": 1638507600,
+      "authors": [
+        "Svambo",
+        "Ellen & Sven",
+        "Antimatzist",
+        "ReyVGM"
+      ]
+    },
+    "6400": {
+      "version": "1.0",
+      "releasedAt": 1640754000,
+      "authors": [
+        "Svambo",
+        "Anonymousse",
+        "ReyVGM"
+      ]
+    },
+    "6591": {
+      "version": "1.01",
+      "releasedAt": 1656993600,
+      "authors": [
+        "mziab",
+        "FlamePurge"
+      ]
+    },
+    "6777": {
+      "version": "1.1",
+      "releasedAt": 1680926400,
+      "authors": [
+        "Retroman_X",
+        "Anime_World",
+        "Bunkai"
+      ]
+    }
+  }
+}

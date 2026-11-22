@@ -52,18 +52,18 @@
   letter-spacing: -.025em;
   overflow-wrap: anywhere;
 }
-.snes-heading h1 { font-size: clamp(1.25rem, 3.25vw, 2.5rem); }
+.snes-heading h1 { font-size: clamp(1.25rem, 2.8vw, 2.5rem); }
 .snes-heading .summary { flex-basis: 100%; }
 .snes-browse-controls {
   display: flex;
+  align-items: center;
   gap: .5rem;
-  flex: 1 1 16rem;
+  flex: 1 1 28rem;
   min-width: 0;
-  max-width: 33rem;
+  max-width: 43rem;
 }
-.snes-search { flex: 1; min-width: 0; }
-.snes-search input {
-  width: 100%;
+.snes-search { flex: 1 1 9.5rem; min-width: 0; }
+.snes-search input, .snes-genre, .snes-translation-filter {
   min-height: 2.6rem;
   padding: .4rem .75rem;
   border: 1px solid var(--line);
@@ -71,8 +71,26 @@
   color: var(--text);
   background: var(--panel);
 }
-.snes-search input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.snes-search input { width: 100%; }
+.snes-genre { flex: 0 1 10rem; min-width: 0; text-overflow: ellipsis; }
+.snes-translation-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.snes-translation-filter input { margin: 0; accent-color: var(--accent); }
+.snes-genre:has(option:checked:not([value=""])), .snes-translation-filter:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--panel-selected);
+}
+.snes-search input:focus-visible, .snes-genre:focus-visible, .snes-translation-filter:has(:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 .snes-pagination { gap: .35rem; padding: 0; }
+.snes-browse-controls .snes-pagination { flex: none; }
 .snes-browse-controls .snes-pagination button { width: 2.6rem; height: 2.6rem; padding: 0; }
 .snes-pagination button:hover:not(:disabled) { border-color: var(--accent); }
 .snes-pagination-bottom { justify-content: center; flex-wrap: wrap; gap: .5rem; }
@@ -98,6 +116,17 @@
 .snes-search-status:not(.sr-only) { margin-top: 1rem; }
 
 @media (max-width: 40rem) {
+  .snes-browse-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-areas: "search search pager" "genre translation translation";
+    flex-basis: 100%;
+  }
+  .snes-search { grid-area: search; }
+  .snes-browse-controls:has(.snes-pagination[hidden]) .snes-search { grid-column: 1 / -1; }
+  .snes-genre { grid-area: genre; width: 100%; }
+  .snes-translation-filter { grid-area: translation; }
+  .snes-browse-controls .snes-pagination { grid-area: pager; justify-self: end; }
   .snes-pagination-bottom { gap: .25rem; }
   .snes-pagination-bottom button { width: 2rem; min-height: 2.6rem; padding: 0; }
   .snes-pagination-bottom button span { display: none; }
@@ -337,9 +366,20 @@
   margin: .75rem 0;
   font-size: .85rem;
 }
-.snes-profile .snes-facts { margin: 0; }
-.snes-facts dt { color: var(--muted); }
-.snes-facts dd { margin: 0; overflow-wrap: anywhere; }
+.snes-profile-facts {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .3rem 1.25rem;
+  margin: 0;
+  font-size: .85rem;
+}
+.snes-profile-facts > div { display: flex; align-items: center; gap: .5rem; min-width: 0; }
+.snes-facts dt, .snes-profile-facts dt { color: var(--muted); }
+.snes-facts dd, .snes-profile-facts dd { margin: 0; overflow-wrap: anywhere; }
+.snes-input-icons, .snes-peripheral-icons { display: flex; align-items: center; flex-wrap: wrap; gap: .18rem; }
+.snes-input-icons img { width: 1.35rem; height: .9rem; object-fit: contain; }
+.snes-input-icons:has(> img) .snes-peripheral-icons { border-inline-start: 1px solid var(--line); padding-inline-start: .35rem; }
 .snes-description { --description-lines: 2; font-size: .94rem; line-height: 1.5; }
 .snes-description p { white-space: pre-line; overflow-wrap: anywhere; }
 .snes-description:not(.is-expanded) p {
@@ -412,6 +452,30 @@
 }
 .snes-release-disclosure .snes-facts { margin: .3rem 0 0; font-size: .75rem; font-weight: 400; }
 .snes-release-disclosure .snes-release-list { margin-top: .15rem; }
+.snes-translations { margin-top: .9rem; }
+.snes-translation-table caption { padding-bottom: .4rem; }
+.snes-translation-table th, .snes-translation-table td { padding-block: .4rem; }
+.snes-translation-table thead th:nth-child(2) { width: 31%; }
+.snes-translation-table thead th:nth-child(3) { width: 10%; }
+.snes-translation-table thead th:nth-child(4) { width: 14%; }
+.snes-translation-table thead th:last-child { width: auto; }
+.snes-translation-table time { white-space: nowrap; }
+.snes-patch-downloads { display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .65rem; }
+.snes-patch-downloads .snes-text-button { margin-top: 0; white-space: nowrap; }
+.snes-rom-dialog { --panel: #191c1d; --line: #505a57; width: min(26rem, 94vw); }
+.snes-rom-dialog form, .snes-rom-dialog label { display: grid; gap: .4rem; }
+.snes-rom-dialog form { gap: .85rem; }
+.snes-rom-dialog h2 { font-size: 1.15rem; }
+.snes-rom-dialog input {
+  width: 100%;
+  padding: .5rem .65rem;
+  border: 1px solid var(--line);
+  border-radius: .35rem;
+  color: var(--text);
+  background: #101213;
+}
+.snes-rom-dialog p { color: var(--muted); font-size: .85rem; }
+.snes-rom-actions { display: flex; justify-content: flex-end; gap: .5rem; }
 .snes-mobile-label { display: none; }
 .snes-source { border-top: 1px solid var(--book-rule); margin-top: 1.4rem; padding-top: .85rem; }
 
@@ -420,8 +484,6 @@
   .snes-game-title { grid-column: 1 / -1; }
   .snes-game-heading:has(.snes-release-picker:not([hidden])) .snes-game-title { grid-column: 2; }
   .snes-release-picker { grid-column: 3; align-self: end; justify-content: flex-end; }
-  .snes-profile .snes-facts { grid-template-columns: repeat(2, max-content minmax(0, max-content)); }
-  .snes-profile .snes-facts dt:not(:first-child) { margin-inline-start: .75rem; }
 }
 
 @media (max-width: 54rem) {
@@ -445,6 +507,9 @@
   }
   .snes-release-table tbody th, .snes-release-table tbody td { padding: .5rem .6rem; }
   .snes-release-table tbody th, .snes-release-table tbody td:nth-child(2) { border-top: 0; }
+  .snes-translation-table tbody tr { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .snes-translation-table tbody :is(th, td:nth-child(2), td:last-child) { grid-column: 1 / -1; }
+  .snes-translation-table tbody tr + tr, .snes-translation-table tbody + tbody { margin-top: .45rem; }
   .snes-mobile-label { display: block; margin-bottom: .2rem; color: var(--muted); font-size: .72rem; }
 }
 

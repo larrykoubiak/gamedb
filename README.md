@@ -109,6 +109,10 @@ codes, documented boards, box art, title screens, and manual links where evidenc
 is available. The artwork viewer also includes gameplay screenshots and clear
 logos. The report measures the coverage of each field by market.
 
+The selected release shows genre and player count from the archive's preferred
+metadata. Controller icons also show peripherals whose headerless CRC32 matches
+a verified base ROM. [OpenEmu SNES input data](https://github.com/OpenEmu/SNES9x-Core/blob/6b1495d48bdef85e04cb96f5050601b9c6be3d88/SNESGameCore.mm)
+
 The regional pages also play SPC sets from the published VGM inventory when
 Explorer has a `GAMEDB_VGM_ROOT`. The catalog matches sets to verified editions
 and uses named regions and revisions when the rip specifies them. Rerun
@@ -142,6 +146,47 @@ the Explorer image. Both Compose configurations mount the NAS folder
 read-only at `/mnt/snes-manuals`. Set
 `GAMEDB_SNES_MANUAL_HOST_ROOT` for a different Compose host path. Set
 `GAMEDB_SNES_MANUAL_ROOT` to the library directory when running Explorer directly.
+
+Import translations from a local ROMhacking.net backup after publishing the
+SNES catalog.
+
+```sh
+python -m gamedb sync-snes-translations \
+  --source /mnt/synology/backup2/romhacking.net-20240801
+```
+
+The importer checks the source CRC32 and size embedded in each BPS or UPS file
+against a verified retail ROM. For a package containing one IPS file, it uses
+the unambiguous base checksums recorded in the backup and records any copier
+header or interleaving requirement. Explorer lists the downloads under the
+matching release in a Translations table with authors, versions, and release
+dates. English patches appear first.
+
+Each entry in the release detail API carries the base release signature, the
+base ROM SHA-1, the patch SHA-256, and the required input layout.
+The [author reference](reference/snes_translation_authors.json) resolves the
+backup's contributor IDs through the NeoROMhacking community directory and
+includes saved ROMhacking.net project credits for matching versions and dates.
+
+**Download ROM** generates a translated `.sfc` from the exact verified base at
+request time. It handles IPS patches with or without a copier header and
+headerless BPS and UPS patches. The archive retains the original ROM and
+patch files. Explorer reads the originals through `GAMEDB_ROM_ROOT`.
+Interleaved patches remain available as patch downloads.
+
+Launcher clients can read `romDownloadUrl` on supported entries and request it
+with the existing GameDB API key in the `Authorization: Bearer` header. The
+browser uses the same authenticated route.
+
+```text
+GET /api/v1/releases/{baseReleaseSignature}/translations/{key}/download
+```
+
+The command stores patch files and their release links in
+`data/media/snes-translations`, which both Compose configurations mount
+read-only. Some older ZIPs require `7z` for Deflate64 extraction. Use `--root`
+to write to another directory and set
+`GAMEDB_SNES_TRANSLATION_ROOT` when running Explorer directly from that library.
 
 ## Integrated releases
 

@@ -54,6 +54,7 @@ services:
       - ./data/media/launchbox:/data/media/launchbox
       - /mnt/exo:/mnt/exo:ro
       - ./data/media/previews:/data/media/previews
+      - ./data/media/snes-translations:/app/data/media/snes-translations:ro
       - "${GAMEDB_VGM_HOST_ROOT:-/mnt/synology/music/VGM/By Format}:/mnt/vgm:ro"
       - "${GAMEDB_SNES_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/SNES}:/mnt/snes-manuals:ro"
       - ./data/libretro-thumbnails:/data/libretro-thumbnails:ro

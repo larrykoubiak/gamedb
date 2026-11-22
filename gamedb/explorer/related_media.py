@@ -1,17 +1,26 @@
 """Serve source-owned catalog attachments and their artwork previews."""
 
+import hashlib
+import json
 import mimetypes
+import re
 import shutil
 import tempfile
-from contextlib import ExitStack
+from collections import defaultdict
+from contextlib import ExitStack, contextmanager
 from functools import lru_cache
 from http import HTTPStatus
+from io import BytesIO
 from pathlib import Path
 from stat import S_ISREG
 from urllib.parse import quote, urlsplit
-from zipfile import BadZipFile
+from zipfile import BadZipFile, ZipFile
 
 from gamedb.catalog.snes_manuals import INDEX_NAME, manual_key, read_manual_index
+from gamedb.catalog.snes_patching import MAX_ROM_SIZE, PatchError, apply_translation, supports_patching
+from gamedb.catalog.snes_translations import (
+    FORMATS, INDEX_NAME as TRANSLATION_INDEX, INDEX_VERSION, MAX_PATCH_SIZE, translation_order,
+)
 from gamedb.exo.media import location_path, open_location
 from gamedb.vgm.archives import open_vgm_location
 
@@ -125,8 +134,150 @@ def _serve_manual_file(handler, key, root, location, preview_size, page=1):
     }, revision=location["mtime_ns"], preview_size=preview_size, preview_page=page)
 
 
+@lru_cache(maxsize=4)
+def _read_translation_index(path, revision):
+    document = json.loads(path.read_text(encoding="utf-8"))
+    if document.get("version") != INDEX_VERSION:
+        return {}, {}
+    records = {}
+    by_signature = defaultdict(list)
+    for record in document["translations"]:
+        key = record["key"]
+        if (not re.fullmatch(r"[0-9a-f]{64}", key) or not re.fullmatch(r"[0-9a-f]{64}", record["sha256"])
+                or record["format"] not in FORMATS or not 0 < record["size"] <= MAX_PATCH_SIZE):
+            continue
+        records[key] = record
+        for signature in record["signatures"]:
+            by_signature[signature].append(record)
+    return records, by_signature
+
+
+def _translation_index(root):
+    path = root / TRANSLATION_INDEX
+    try:
+        stat = path.stat()
+        return _read_translation_index(path, (stat.st_ino, stat.st_mtime_ns, stat.st_size))
+    except (AttributeError, KeyError, OSError, TypeError, ValueError):
+        return {}, {}
+
+
+def _translation_location(root, record):
+    relative = f"patches/{record['sha256']}.{record['format']}"
+    try:
+        stat = location_path(root, relative).stat()
+        if not S_ISREG(stat.st_mode) or stat.st_size != record["size"]:
+            return None
+    except (OSError, ValueError):
+        return None
+    return {"source_path": relative, "size_bytes": stat.st_size, "mtime_ns": stat.st_mtime_ns,
+            "member_no": 0, "sha256": record["sha256"]}
+
+
+def add_local_translations(game, root):
+    _, by_signature = _translation_index(root)
+    for release in game["releases"]:
+        if release["status"] != "matched":
+            continue
+        archives = release.get("archives", ())
+        matches = {}
+        for archive in archives:
+            for record in by_signature.get(archive["signature"], ()):
+                if record["key"] in matches or not _translation_location(root, record):
+                    continue
+                public = {field: value for field, value in record.items() if field != "signatures"}
+                public["baseReleaseSignature"] = archive["signature"]
+                public["url"] = f"/related-media/snes-translation/{record['key']}"
+                if supports_patching(record["format"], record["layout"]):
+                    public["romDownloadUrl"] = (
+                        f"/api/v1/releases/{archive['signature']}/translations/{record['key']}/download"
+                    )
+                if len(archives) > 1:
+                    public["baseArchive"] = archive["archiveNames"][0]
+                matches[record["key"]] = public
+        if matches:
+            release["translations"] = sorted(matches.values(), key=translation_order)
+
+
+def add_translation_availability(games, root):
+    _, by_signature = _translation_index(root)
+    available = {signature for signature, records in by_signature.items()
+                 if any(_translation_location(root, record) for record in records)}
+    for game in games:
+        for release in game["releases"]:
+            signatures = release.pop("archiveSignatures", ())
+            release["hasTranslations"] = release["status"] == "matched" and not available.isdisjoint(signatures)
+
+
+@contextmanager
+def _open_translation(root, location):
+    with open_location(root, location) as stream:
+        if hashlib.file_digest(stream, "sha256").hexdigest() != location["sha256"]:
+            raise ValueError("Translation patch checksum changed")
+        stream.seek(0)
+        yield stream
+
+
+def serve_snes_translation(handler, key):
+    root = handler.server.snes_translation_root
+    records, _ = _translation_index(root)
+    record = records.get(key)
+    location = _translation_location(root, record) if record else None
+    if location is None:
+        return handler.send_error(HTTPStatus.NOT_FOUND)
+    return _serve_file(handler, key, root, {
+        "path": record["filename"], "revision": record["sha256"], "locations": [location],
+    }, force_download=True, open_media=_open_translation)
+
+
+def serve_snes_translation_rom(handler, signature, key):
+    from gamedb.explorer.server import _resolve_rom_path
+
+    root = handler.server.snes_translation_root
+    records, _ = _translation_index(root)
+    record = records.get(key)
+    if not record or signature not in record["signatures"]:
+        return handler.send_error(HTTPStatus.NOT_FOUND)
+    if not supports_patching(record["format"], record["layout"]):
+        return handler._json_response({"error": "This patch requires a different ROM layout."}, HTTPStatus.CONFLICT)
+    patch_location = _translation_location(root, record)
+    if patch_location is None:
+        return handler._json_response({"error": "The translation patch is unavailable."}, HTTPStatus.NOT_FOUND)
+
+    rom = handler.server.repository.snes_translation_base(signature, record["baseSha1"])
+    if rom is None:
+        return handler._json_response({"error": "The verified base ROM is unavailable."}, HTTPStatus.CONFLICT)
+    try:
+        path = _resolve_rom_path(handler.server.rom_root, rom["path"])
+        with ZipFile(path) as archive, archive.open(rom["member_path"]) as member:
+            original = member.read(MAX_ROM_SIZE + 1)
+    except (BadZipFile, KeyError, NotImplementedError, OSError, RuntimeError, ValueError):
+        return handler._json_response({"error": "The verified base ROM is unavailable."}, HTTPStatus.CONFLICT)
+    if len(original) > MAX_ROM_SIZE or hashlib.sha1(original).hexdigest() != record["baseSha1"]:
+        return handler._json_response({"error": "The base ROM checksum or size has changed."}, HTTPStatus.CONFLICT)
+
+    try:
+        with open_location(root, patch_location) as file:
+            patch = file.read(record["size"] + 1)
+    except (OSError, ValueError):
+        return handler._json_response({"error": "The translation patch has changed."}, HTTPStatus.CONFLICT)
+    if len(patch) != record["size"] or hashlib.sha256(patch).hexdigest() != record["sha256"]:
+        return handler._json_response({"error": "The translation patch has changed."}, HTTPStatus.CONFLICT)
+    try:
+        patched = apply_translation(original, patch, record["format"], record["layout"])
+    except PatchError as error:
+        return handler._json_response({"error": str(error)}, HTTPStatus.CONFLICT)
+
+    base_name = Path(rom["member_path"].replace("\\", "/")).stem
+    tag = " ".join(item for item in (record["language"], record["version"]) if item)
+    filename = re.sub(r"[/\\\x00-\x1f\x7f]", "_", f"{base_name} [{tag}].sfc")
+    return _serve_file(handler, key, root, {
+        "path": filename, "revision": hashlib.sha256(patched).hexdigest(),
+        "locations": [{"size_bytes": len(patched), "member_no": 0}],
+    }, force_download=True, open_media=lambda *_: BytesIO(patched), cache_control="private, no-store")
+
+
 def _serve_file(handler, key, root, asset, revision=None, preview_size=None, *,
-                force_download=False, open_media=open_location, preview_page=1):
+                force_download=False, open_media=open_location, preview_page=1, cache_control=None):
     from gamedb.explorer.server import _byte_range
 
     name = Path(asset["path"]).name
@@ -170,6 +321,8 @@ def _serve_file(handler, key, root, asset, revision=None, preview_size=None, *,
         if handler.headers.get("If-None-Match") == etag:
             handler.send_response(HTTPStatus.NOT_MODIFIED)
             handler.send_header("ETag", etag)
+            if cache_control:
+                handler.send_header("Cache-Control", cache_control)
             handler.end_headers()
             return
         try:
@@ -209,7 +362,7 @@ def _serve_file(handler, key, root, asset, revision=None, preview_size=None, *,
         if not inline:
             handler.send_header("Content-Security-Policy", "sandbox; default-src 'none'")
         handler.send_header(
-            "Cache-Control", "public, max-age=3600" if revision else "public, no-cache"
+            "Cache-Control", cache_control or ("public, max-age=3600" if revision else "public, no-cache")
         )
         handler.send_header("ETag", etag)
         handler.end_headers()

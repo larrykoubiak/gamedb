@@ -5,21 +5,40 @@ const marketNames = {JP: "Japan", NA: "North America", PAL: "PAL region"};
 const channelNames = {"nintendo-power": "Nintendo Power", "sufami-turbo": "SuFami Turbo"};
 const matchNames = {matched: "Base ROM matched", ambiguous: "Needs review", unmatched: "No base ROM match"};
 const artworkNames = {boxart: "Box art", title: "Title screen", snap: "Gameplay", logo: "Clear logo"};
+const inputDevices = {
+  mouse: {name: "SNES Mouse", icon: "mouse"},
+  "super-scope": {name: "Super Scope", icon: "lightgun"},
+  justifier: {name: "Konami Justifier", icon: "lightgun"},
+  multitap: {name: "Multitap", icon: "multitap"},
+};
 const inlineItems = 2;
 const maxGamesPerPage = 10;
 const number = new Intl.NumberFormat();
+const translationDate = new Intl.DateTimeFormat("en-GB", {
+  day: "numeric", month: "short", year: "numeric", timeZone: "UTC",
+});
 const view = document.querySelector("#snes-browse");
 const browseControls = document.querySelector(".snes-browse-controls");
 const search = document.querySelector("#snes-search");
+const genreSelect = document.querySelector("#snes-genre");
+const translationFilter = document.querySelector("#snes-translated");
 const resultCount = document.querySelector("#snes-results");
 const list = document.querySelector("#snes-games");
 const pagers = document.querySelectorAll(".snes-pagination");
 const pageLinks = document.querySelector(".snes-page-numbers");
 const status = document.querySelector("#snes-status");
+const romDialog = document.querySelector("#snes-rom-dialog");
+const romForm = document.querySelector("#snes-rom-form");
+const romKey = document.querySelector("#snes-rom-key");
+const romStatus = document.querySelector("#snes-rom-status");
+const romSubmit = document.querySelector("#snes-rom-submit");
 let games;
 let pageSize;
 let pageAnchor;
 let page = Math.max(1, Number.parseInt(params.get("page"), 10) || 1);
+let romDownload;
+let romRequest;
+let rememberedRomKey = "";
 
 function element(tag, text, className) {
   const node = document.createElement(tag);
@@ -56,9 +75,11 @@ function marketFlag(market) {
   return icon;
 }
 
-function browseParameters(query, pageNumber) {
+function browseParameters({query, genre, translated}, pageNumber) {
   const result = new URLSearchParams();
   if (query?.trim()) result.set("q", query.trim());
+  if (genre) result.set("genre", genre);
+  if (translated) result.set("translated", "1");
   if (pageNumber > 1) result.set("page", String(pageNumber));
   return result;
 }
@@ -78,7 +99,7 @@ function visiblePageNumbers(total) {
   return [1, null, page - 1, page, page + 1, null, total];
 }
 
-function renderPageLinks(total) {
+function renderPageLinks(total, filters) {
   pageLinks.replaceChildren(...visiblePageNumbers(total).map(target => {
     if (target === null) {
       const gap = element("span", "…", "snes-page-gap");
@@ -87,7 +108,7 @@ function renderPageLinks(total) {
     }
     const label = number.format(target);
     const link = element("a", label);
-    const query = browseParameters(search.value, target);
+    const query = browseParameters(filters, target);
     link.href = query.size ? `?${query}` : location.pathname;
     link.dataset.page = target;
     link.setAttribute("aria-label", `Page ${label}`);
@@ -96,15 +117,24 @@ function renderPageLinks(total) {
   }));
 }
 
+function preferredCover(releases, title) {
+  return releases.find(release => release.boxart && release.titles.includes(title))
+    || releases.find(release => release.boxart);
+}
+
 function renderBrowse() {
-  const term = searchKey(search.value);
-  const matches = games.filter(game => game.searchText.includes(term));
+  const filters = {query: search.value, genre: genreSelect.value, translated: translationFilter.checked};
+  genreSelect.title = filters.genre;
+  const term = searchKey(filters.query);
+  const matches = games.filter(game => game.searchText.includes(term)
+    && (!filters.genre || game.genres.includes(filters.genre))
+    && (!filters.translated || game.releases.some(release => release.hasTranslations)));
   const pageCount = Math.max(1, Math.ceil(matches.length / pageSize));
   pageAnchor ??= (Math.min(page, pageCount) - 1) * pageSize;
   page = Math.min(Math.floor(pageAnchor / pageSize) + 1, pageCount);
   const start = (page - 1) * pageSize;
   const visible = matches.slice(start, start + pageSize);
-  const query = browseParameters(search.value, page);
+  const query = browseParameters(filters, page);
   history.replaceState(null, "", location.pathname + (query.size ? `?${query}` : ""));
   const fragment = document.createDocumentFragment();
   for (const game of visible) {
@@ -112,12 +142,16 @@ function renderBrowse() {
     const link = element("a", "", "snes-game");
     const detailQuery = new URLSearchParams(query);
     detailQuery.set("game", game.key);
-    const coverRelease = game.releases.find(release => release.boxart && release.titles.includes(game.title))
-      || game.releases.find(release => release.boxart);
-    const cover = coverRelease?.boxart;
+    const releases = filters.translated ? game.releases.filter(release => release.hasTranslations) : game.releases;
+    const coverRelease = preferredCover(releases, game.title);
+    const detailRelease = coverRelease || (filters.translated ? releases[0] : null);
+    if (detailRelease) {
+      detailQuery.set("market", detailRelease.market);
+      if (filters.translated) detailQuery.set("release", detailRelease.key);
+    }
+    const cover = coverRelease?.boxart || (filters.translated && preferredCover(game.releases, game.title)?.boxart);
     const stage = element("span", "", "snes-game-cover");
-    if (coverRelease) {
-      detailQuery.set("market", coverRelease.market);
+    if (cover) {
       const image = artworkImage(cover.preview || cover.url, "");
       image.addEventListener("error", () => image.remove(), {once: true});
       stage.append(image);
@@ -140,9 +174,10 @@ function renderBrowse() {
     fragment.append(item);
   }
   list.replaceChildren(fragment);
+  const emptyText = filters.genre || filters.translated ? "No games match these filters." : "No games match your search.";
   resultCount.textContent = matches.length
     ? `${number.format(start + 1)}–${number.format(start + visible.length)} of ${number.format(matches.length)} games`
-    : "No games match your search.";
+    : emptyText;
   resultCount.classList.toggle("sr-only", matches.length > 0);
   for (const pager of pagers) {
     const [previous, next] = pager.querySelectorAll("button");
@@ -150,15 +185,57 @@ function renderBrowse() {
     previous.disabled = page <= 1;
     next.disabled = page >= pageCount;
   }
-  renderPageLinks(pageCount);
+  renderPageLinks(pageCount, filters);
 }
 
-function factList(pairs) {
-  const list = element("dl", "", "snes-facts");
+function factList(pairs, {inline = false} = {}) {
+  const list = element("dl", "", inline ? "snes-profile-facts" : "snes-facts");
   for (const [label, value] of pairs) {
-    if (value) list.append(element("dt", label), element("dd", value));
+    if (!value) continue;
+    const term = element("dt", label);
+    const definition = element("dd");
+    definition.append(value);
+    if (inline) {
+      const pair = element("div");
+      pair.append(term, definition);
+      list.append(pair);
+    } else {
+      list.append(term, definition);
+    }
   }
   return list;
+}
+
+function inputIcon(icon, title) {
+  const image = element("img");
+  image.src = `/snes-inputs/${icon}.png`;
+  image.alt = "";
+  if (title) image.title = title;
+  return image;
+}
+
+function renderInputs({players = 0, peripherals = []}) {
+  const devices = peripherals.map(device => inputDevices[device]).filter(Boolean);
+  if (!players && !devices.length) return null;
+  const inputs = element("span", "", "snes-input-icons");
+  const count = players === 1 ? "1 player" : players ? `Up to ${players} players` : "";
+  const supported = devices.length ? `Supports ${devices.map(device => device.name).join(", ")}` : "";
+  inputs.title = [count, supported].filter(Boolean).join(" · ");
+  inputs.setAttribute("role", "img");
+  inputs.setAttribute("aria-label", inputs.title);
+  if (players === 1 && devices.length === 1 && devices[0].icon !== "multitap") {
+    inputs.append(inputIcon(devices[0].icon, devices[0].name));
+    return inputs;
+  }
+  const icons = players > 8 ? 1 : players;
+  for (let index = 0; index < icons; index++) inputs.append(inputIcon("pad"));
+  if (players > 8) inputs.append(element("span", `×${players}`));
+  if (devices.length) {
+    const accessories = element("span", "", "snes-peripheral-icons");
+    accessories.append(...devices.map(device => inputIcon(device.icon, device.name)));
+    inputs.append(accessories);
+  }
+  return inputs;
 }
 
 function uniqueValues(records, field) {
@@ -299,6 +376,148 @@ function manualCell(manuals) {
   }));
 }
 
+function openRomDownload(translation) {
+  romDownload = translation;
+  romKey.value = rememberedRomKey;
+  romStatus.hidden = true;
+  romDialog.showModal();
+  if (rememberedRomKey) romForm.requestSubmit();
+}
+
+romForm.addEventListener("submit", async event => {
+  event.preventDefault();
+  if (romRequest || !romDownload) return;
+  const key = romKey.value.trim();
+  const translation = romDownload;
+  const request = new AbortController();
+  romRequest = request;
+  romSubmit.disabled = true;
+  romStatus.textContent = "Building translated ROM…";
+  romStatus.hidden = false;
+  try {
+    const response = await fetch(translation.romDownloadUrl, {
+      headers: {Authorization: `Bearer ${key}`},
+      mode: "same-origin", redirect: "error", signal: request.signal,
+    });
+    if (response.status === 401) {
+      rememberedRomKey = "";
+      romKey.value = "";
+      romKey.focus();
+      throw new Error("Check your GameDB API key.");
+    }
+    if (!response.ok) {
+      const error = await response.json().catch(() => null);
+      throw new Error(error?.error || "Could not build the translated ROM.");
+    }
+    const file = await response.blob();
+    if (request.signal.aborted) return;
+    const encoded = response.headers.get("Content-Disposition")?.match(/filename\*=UTF-8''([^;]+)/i)?.[1];
+    const name = encoded ? decodeURIComponent(encoded) : translation.filename.replace(/\.[^.]+$/, ".sfc");
+    const url = URL.createObjectURL(file);
+    const link = element("a");
+    link.href = url;
+    link.download = name;
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
+    rememberedRomKey = key;
+    romDialog.close();
+  } catch (error) {
+    if (!request.signal.aborted) romStatus.textContent = error.message;
+  } finally {
+    if (romRequest === request) {
+      romRequest = null;
+      romSubmit.disabled = false;
+    }
+  }
+});
+
+document.querySelector("#snes-rom-cancel").addEventListener("click", () => romDialog.close());
+romDialog.addEventListener("close", () => {
+  romRequest?.abort();
+  romRequest = null;
+  romSubmit.disabled = false;
+  romKey.value = "";
+});
+
+function translationRow(translation, columns) {
+  const inputLayouts = {
+    headered: "Requires a copier header",
+    interleaved: "Requires an interleaved ROM",
+    "interleaved-headered": "Requires an interleaved ROM with a copier header",
+  };
+  const row = element("tr");
+  row.setAttribute("role", "row");
+  const language = element("th", translation.language);
+  language.scope = "row";
+  language.setAttribute("role", "rowheader");
+  const authors = element("td", translation.authors?.join(", ") || "—");
+  const version = element("td", translation.version || "—");
+  const released = element("td");
+  const date = new Date(translation.releasedAt * 1000);
+  if (translation.releasedAt && Number.isFinite(date.getTime())) {
+    const time = element("time", translationDate.format(date));
+    time.dateTime = date.toISOString().slice(0, 10);
+    released.append(time);
+  } else {
+    released.textContent = "—";
+  }
+  const patch = element("td");
+  const link = element("a", translation.filename);
+  link.href = translation.url;
+  link.download = translation.filename;
+  const downloads = element("div", "", "snes-patch-downloads");
+  downloads.append(link);
+  if (translation.romDownloadUrl) {
+    const download = element("button", "Download ROM", "snes-text-button");
+    download.type = "button";
+    download.setAttribute("aria-haspopup", "dialog");
+    download.setAttribute("aria-label", `Download ROM using ${translation.filename}`);
+    download.addEventListener("click", () => openRomDownload(translation));
+    downloads.append(download);
+  }
+  patch.append(downloads);
+  const status = translation.status === "Fully Playable" ? "" : translation.status;
+  const info = [status, inputLayouts[translation.layout]].filter(Boolean).join(" · ");
+  if (info) patch.append(element("small", info));
+  if (translation.baseArchive) patch.append(element("small", translation.baseArchive));
+  const cells = [authors, version, released, patch];
+  labelReleaseCells(cells, columns);
+  row.append(language, ...cells);
+  return row;
+}
+
+function showTranslations(section, translations) {
+  section.hidden = !translations.length;
+  section.replaceChildren();
+  if (section.hidden) return;
+
+  const columns = ["Language", "Authors", "Version", "Released", "Patch"];
+  const table = releaseTable("Translations", columns);
+  table.classList.add("snes-translation-table");
+  const rows = translations.map(translation => translationRow(translation, columns));
+  table.tBodies[0].append(...rows.slice(0, inlineItems));
+  section.append(table);
+  const remaining = rows.slice(inlineItems);
+  if (!remaining.length) return;
+
+  const additional = table.createTBody();
+  additional.id = "snes-more-translations";
+  additional.setAttribute("role", "rowgroup");
+  additional.append(...remaining);
+  additional.hidden = true;
+  const moreLabel = `Show ${remaining.length} more`;
+  const button = element("button", moreLabel, "snes-text-button");
+  button.type = "button";
+  button.setAttribute("aria-controls", additional.id);
+  button.setAttribute("aria-expanded", "false");
+  button.addEventListener("click", () => {
+    additional.hidden = !additional.hidden;
+    button.textContent = additional.hidden ? moreLabel : "Show fewer";
+    button.setAttribute("aria-expanded", String(!additional.hidden));
+  });
+  section.append(button);
+}
+
 function romCell(release) {
   const matched = release.status === "matched";
   const archives = matched ? release.archives : release.candidates;
@@ -318,13 +537,11 @@ function romCell(release) {
   return cell;
 }
 
-function renderReleaseTable(game, picker, targets, onSelection) {
-  const columns = ["Market", "Released", "Manuals", "ROM archives", "Product code", "PCB"];
+function releaseTable(caption, columns) {
   const table = element("table", "", "snes-release-table");
-  table.id = "snes-releases";
   // Keep the table structure available when CSS wraps each release on small screens.
   table.setAttribute("role", "table");
-  table.append(element("caption", "Releases"));
+  table.append(element("caption", caption));
   const head = table.createTHead();
   head.setAttribute("role", "rowgroup");
   const header = head.insertRow();
@@ -335,8 +552,24 @@ function renderReleaseTable(game, picker, targets, onSelection) {
     cell.setAttribute("role", "columnheader");
     header.append(cell);
   }
-  const body = table.createTBody();
-  body.setAttribute("role", "rowgroup");
+  table.createTBody().setAttribute("role", "rowgroup");
+  return table;
+}
+
+function labelReleaseCells(cells, columns) {
+  for (const [index, cell] of cells.entries()) {
+    cell.setAttribute("role", "cell");
+    const label = element("span", columns[index + 1], "snes-mobile-label");
+    label.setAttribute("aria-hidden", "true");
+    cell.prepend(label);
+  }
+}
+
+function renderReleaseTable(game, picker, targets, onSelection) {
+  const columns = ["Market", "Released", "Manuals", "ROM archives", "Product code", "PCB"];
+  const table = releaseTable("Releases", columns);
+  table.id = "snes-releases";
+  const body = table.tBodies[0];
   const rows = game.releases.map(release => {
     const row = element("tr");
     row.setAttribute("role", "row");
@@ -360,12 +593,7 @@ function renderReleaseTable(game, picker, targets, onSelection) {
         releaseList(chips.map(chip => element("code", chip)))));
     }
     const cells = [date, manualCell(release.manuals || []), romCell(release), productCodes, pcb];
-    for (const [index, cell] of cells.entries()) {
-      cell.setAttribute("role", "cell");
-      const label = element("span", columns[index + 1], "snes-mobile-label");
-      label.setAttribute("aria-hidden", "true");
-      cell.prepend(label);
-    }
+    labelReleaseCells(cells, columns);
     row.append(market, ...cells);
     const flag = element("button", "", "snes-region-button");
     flag.type = "button";
@@ -395,7 +623,9 @@ function renderReleaseTable(game, picker, targets, onSelection) {
   }
   const selectedMarket = params.get("market");
   const selectedStatus = params.get("match") || "matched";
-  const selected = rows.find(({release}) => release.status === selectedStatus &&
+  const selectedRelease = params.get("release");
+  const selected = rows.find(({release}) => release.key === selectedRelease)
+    || rows.find(({release}) => release.status === selectedStatus &&
       (!selectedMarket || release.market === selectedMarket))
     || rows.find(({release}) => release.market === selectedMarket)
     || rows.find(({release}) => release.status === "matched")
@@ -409,7 +639,9 @@ function renderDetail(game, soundtracks) {
     status.textContent = "This retail catalog entry could not be found.";
     return;
   }
-  const browseParams = browseParameters(params.get("q"), page);
+  const browseParams = browseParameters({
+    query: params.get("q"), genre: params.get("genre"), translated: params.get("translated") === "1",
+  }, page);
   const back = document.querySelector("#snes-back");
   back.href = location.pathname + (browseParams.size ? `?${browseParams}` : "");
   back.hidden = false;
@@ -435,8 +667,19 @@ function renderDetail(game, soundtracks) {
   const player = element("div", "", "snes-soundtrack-content");
   soundtrack.append(soundtrackTitle, player);
   media.append(gallery, soundtrack);
+  const profile = element("section", "", "snes-profile");
+  const translations = element("section", "", "snes-translations");
+  translations.id = "snes-translations";
+  const description = game.description ? renderDescription(game.description.text) : null;
   let currentAlbums = [];
   function showRelease(release) {
+    showTranslations(translations, release.translations || []);
+    const metadata = release.metadata || {};
+    const facts = factList([
+      ["Developer", game.developer], ["Publisher", game.publisher],
+      ["Genre", metadata.genres?.join(" · ")], ["Controls", renderInputs(metadata)],
+    ], {inline: true});
+    profile.replaceChildren(...[description, facts.childElementCount ? facts : null].filter(Boolean));
     const art = renderArt(release);
     const manual = release.manuals?.find(candidate => candidate.localUrl);
     if (manual) art.append(renderManualCover(manual));
@@ -452,14 +695,9 @@ function renderDetail(game, soundtracks) {
     if (albums.length) renderSoundtracks(player, albums, {compact: true});
   }
 
-  const profile = element("section", "", "snes-profile");
-  const credits = factList([["Developer", game.developer], ["Publisher", game.publisher]]);
-  if (game.description) profile.append(renderDescription(game.description.text));
-  if (credits.childElementCount) profile.append(credits);
-
-  const releases = renderReleaseTable(game, picker, `${gallery.id} ${soundtrack.id}`, showRelease);
+  const releases = renderReleaseTable(game, picker, `${gallery.id} ${soundtrack.id} ${translations.id}`, showRelease);
   const detail = document.querySelector("#snes-detail");
-  detail.append(masthead, media, profile, releases);
+  detail.append(masthead, media, profile, releases, translations);
   title.textContent = game.title;
   title.classList.add("snes-game-title");
   masthead.prepend(title);
@@ -483,14 +721,22 @@ async function start() {
       return;
     }
     games = payload.games.map(game => ({
-      ...game, searchText: searchKey([game.title, ...game.aliases.map(alias => alias.title),
+      ...game, genres: game.genres || [], searchText: searchKey([game.title, ...game.aliases.map(alias => alias.title),
         ...game.releases.flatMap(release => [...release.titles, ...release.archiveTitles])].join(" ")),
     }));
     search.value = params.get("q") || "";
-    search.addEventListener("input", () => {
+    const genres = [...new Set(games.flatMap(game => game.genres))].sort((a, b) => a.localeCompare(b));
+    for (const genre of genres) genreSelect.add(new Option(genre, genre));
+    genreSelect.disabled = !genres.length;
+    genreSelect.value = genres.includes(params.get("genre")) ? params.get("genre") : "";
+    translationFilter.checked = params.get("translated") === "1";
+    function updateFilters() {
       pageAnchor = 0;
       renderBrowse();
-    });
+    }
+    search.addEventListener("input", updateFilters);
+    genreSelect.addEventListener("change", updateFilters);
+    translationFilter.addEventListener("change", updateFilters);
     for (const pager of pagers) {
       pager.addEventListener("click", event => {
         const control = event.target.closest("[data-page-step], [data-page]");
