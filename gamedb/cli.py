@@ -5,7 +5,7 @@ from __future__ import annotations
 import sys
 
 
-HELP = """usage: gamedb {derive,parse-name,import-history,import-integrated,import-exo,import-vgm,import-rdb,import-launchbox,import-arcade,rebuild,seed-snes,seed-megadrive,sync-snes-manuals,sync-megadrive-manuals,sync-snes-translations,sync-megadrive-translations,promote-corrections,serve} ...
+HELP = """usage: gamedb <command> ...
 
 GameDB commands:
   derive       Build or selectively refresh the stable derived schema.
@@ -19,10 +19,13 @@ GameDB commands:
   rebuild      Project catalog, identity, and scores from derived data.
   seed-snes    Match the pinned SNES retail list against the catalog.
   seed-megadrive  Build the Mega Drive retail catalog.
+  seed-nes        Build the NES and Famicom retail catalog.
   sync-snes-manuals  Download the manuals linked by the SNES retail catalog.
   sync-megadrive-manuals  Download the manuals linked by the Mega Drive retail catalog.
+  sync-nes-manuals       Download the manuals linked by the NES and Famicom retail catalog.
   sync-snes-translations  Match local translation patches to verified SNES retail ROMs.
   sync-megadrive-translations  Match local translation patches to verified Mega Drive retail ROMs.
+  sync-nes-translations        Match local translation patches to verified NES retail ROMs.
   promote-corrections  Move reviewed working corrections into reference.
   serve        Run the explorer.
 
@@ -77,8 +80,8 @@ def main(argv=None) -> int:
 
         return launchbox_main(remaining)
     if command in {
-        "rebuild", "seed-snes", "seed-megadrive", "sync-snes-manuals", "sync-megadrive-manuals",
-        "sync-snes-translations", "sync-megadrive-translations", "promote-corrections",
+        "rebuild", "seed-snes", "seed-megadrive", "seed-nes", "sync-snes-manuals", "sync-megadrive-manuals",
+        "sync-nes-manuals", "sync-snes-translations", "sync-megadrive-translations", "sync-nes-translations", "promote-corrections",
     }:
         from gamedb.catalog.cli import main as catalog_main
 

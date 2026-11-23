@@ -3,7 +3,7 @@
 from collections import Counter, defaultdict
 from contextlib import closing
 from functools import partial
-from hashlib import sha256
+from hashlib import sha1, sha256
 from html import unescape
 import json
 from pathlib import Path
@@ -17,24 +17,26 @@ from zlib import crc32
 from libarchive import file_reader
 from libarchive.exception import ArchiveError
 
+from gamedb.catalog.cartridges import VERIFIED_ROM_SQL, read_verified_rom
+from gamedb.catalog.patching import PatchError, apply_translation, embedded_input, supports_patching, valid_ips
 from gamedb.catalog.retail import RETAIL_PLATFORMS, retail_tables, write_report
-from gamedb.catalog.cartridges import VERIFIED_ROM_SQL
-from gamedb.catalog.patching import embedded_input, supports_patching, valid_ips
 from gamedb.config import PROJECT_ROOT
 from gamedb.database import create_database_engine
 from gamedb.vgm.archives import member_name, safe_member
 
 
 TRANSLATION_ROOTS = {platform: PROJECT_ROOT / f"data/media/{platform}-translations" for platform in RETAIL_PLATFORMS}
-RHDN_CONSOLES = {"snes": "snes", "megadrive": "genesis"}
-AUTHOR_REFERENCE = PROJECT_ROOT / "reference/snes_translation_authors.json"
-MEGADRIVE_REVIEWS = PROJECT_ROOT / "reference/megadrive_translation_reviews.json"
+RHDN_CONSOLES = {"snes": "snes", "megadrive": "genesis", "nes": "nes"}
+AUTHOR_REFERENCE = PROJECT_ROOT / "reference/translation_authors.json"
+REVIEW_REFERENCES = {platform: PROJECT_ROOT / f"reference/{platform}_translation_reviews.json"
+                     for platform in ("megadrive", "nes")}
 INDEX_NAME = ".gamedb-translations.json"
 INDEX_VERSION = 1
 FORMATS = {"bps", "ips", "ups"}
 OTHER_PATCH_FORMATS = {"aps", "ips32", "pat", "ppf", "rup", "vcdiff", "xdelta", "xpatch"}
 SNES_LAYOUTS = {3: "headered", 4: "headerless", 5: "interleaved-headered", 6: "interleaved"}
 MEGADRIVE_LAYOUTS = {8: "headerless", 9: "interleaved-headered"}
+NES_LAYOUTS = {1: "ines", 2: "ines"}
 MAX_PATCH_SIZE = 16 * 1024 * 1024
 MAX_PACKAGE_PATCH_BYTES = 64 * 1024 * 1024
 TOKEN = re.compile(r"\s*('(?:''|\\.|[^'\\])*'|NULL|-?\d+(?:\.\d+)?|[(),;])", re.S)
@@ -93,7 +95,7 @@ def _source_archives(source, platform):
     packages = defaultdict(list)
     for path in (source / "translations" / RHDN_CONSOLES[platform] / "patches").iterdir():
         if ((prefix := re.match(r"^\[(\d+)\]", path.name))
-                and (path.suffix.lower() in {".zip", ".rar", ".7z"} or path.name.lower().endswith(".tar.gz"))
+                and (path.suffix.lower() in {".zip", ".rar", ".7z", ".tar"} or path.name.lower().endswith(".tar.gz"))
                 and path.is_file()):
             packages[int(prefix[1])].append(path)
     if not packages:
@@ -104,22 +106,52 @@ def _source_archives(source, platform):
 class BaseRoms:
     """Resolve a consistent set of verified checksums to one ROM identity."""
 
-    def __init__(self, roms):
+    def __init__(self, roms, *, ines_fingerprints=None):
         self.by_hash = defaultdict(set)
         self.by_sha1 = {}
+        self.nes_payloads = defaultdict(set)
+        self.roms = {}
+        fingerprints = ines_fingerprints or {}
         for rom in roms:
             base = self.by_sha1.setdefault(rom.sha1, {"sha1": rom.sha1, "signatures": []})
             base["signatures"].append(rom.signature)
+            self.roms.setdefault(rom.sha1, rom)
             for kind, digest in (("sha1", rom.sha1), ("md5", rom.md5), ("crc32", rom.crc32),
                                  ("input", (rom.size, rom.crc32) if rom.size and rom.crc32 else None)):
                 if digest:
                     self.by_hash[kind, digest].add(rom.sha1)
+            if payload := fingerprints.get(rom.sha1, {}).get("withoutHeader"):
+                for kind in ("sha1", "md5", "crc32"):
+                    self.nes_payloads[kind, payload[kind]].add(rom.sha1)
+                self.nes_payloads["input", (payload["size"], payload["crc32"])].add(rom.sha1)
 
-    def match(self, claims):
-        candidates = [self.by_hash.get(claim, set()) for claim in claims]
+    def match(self, claims, *, payload=False):
+        hashes = self.nes_payloads if payload else self.by_hash
+        candidates = [hashes.get(claim, set()) for claim in claims]
         if candidates and len(matches := set.intersection(*candidates)) == 1:
             return self.by_sha1[matches.pop()]
         return None
+
+    def match_input(self, claims, layout):
+        base = self.match(claims)
+        if layout == "ines" and (payload := self.match(claims, payload=True)):
+            return (None, layout) if base else (payload, "ines-payload")
+        return base, layout
+
+    def match_ines_ips(self, rominfo):
+        claims = _checksum_claims(rominfo)
+        combined = set().union(*claims.values())
+        base, layout = self.match_input(combined, "ines")
+        if base:
+            return base, "ines-unconfirmed" if layout == "ines-payload" else layout
+        # A ROM hash may describe the cartridge data while the file hash
+        # describes a different iNES header on those same bytes.
+        if claims["rom"] and claims["file"] and combined == claims["rom"] | claims["file"]:
+            payload = self.match(claims["rom"], payload=True)
+            file = self.match(claims["file"])
+            if payload and (not file or payload == file):
+                return payload, "ines" if file else "ines-unconfirmed"
+        return None, "ines-unconfirmed"
 
 
 def _verified_bases(connection, platform):
@@ -132,7 +164,14 @@ def _verified_bases(connection, platform):
         raise ValueError(f"Publish the {label} retail catalog before importing translations")
     signatures = sorted({archive["signature"] for game in snapshot["games"] for release in game["releases"]
                          if release["status"] == "matched" for archive in release.get("archives", ())})
-    roms = BaseRoms(connection.execute(VERIFIED_ROM_SQL, {"signatures": signatures}))
+    verified = list(connection.execute(VERIFIED_ROM_SQL, {"signatures": signatures}))
+    fingerprints = None
+    if platform == "nes":
+        from gamedb.catalog.nes import SOURCE_DIRECTORY
+        from gamedb.catalog.nes_rom import ines_fingerprints
+
+        fingerprints = ines_fingerprints(SOURCE_DIRECTORY / "rom-fingerprints.json", verified)
+    roms = BaseRoms(verified, ines_fingerprints=fingerprints)
     if not roms.by_sha1:
         raise ValueError(f"The published {label} catalog has no verified retail ROMs")
     return roms
@@ -208,7 +247,7 @@ def _patch_members(path):
     return members
 
 
-def _documented_input(rominfo, layout):
+def _checksum_claims(rominfo):
     source = unescape(rominfo or "").replace("\r\n", "\n").replace("\r", "\n")
     if output := OUTPUT_LABEL.search(source):
         source = source[:output.start()]
@@ -220,13 +259,18 @@ def _documented_input(rominfo, layout):
         value = "".join(value.split())
         if len(value) == {"sha1": 40, "md5": 32, "crc32": 8}[kind]:
             hashes[scope.lower()].add((kind, value.lower()))
+    return hashes
+
+
+def _documented_input(rominfo, layout):
+    hashes = _checksum_claims(rominfo)
     if layout != "headerless" and hashes["rom"]:
         # RHDN sometimes records both the original ROM and the prepared file.
         return hashes["rom"] | hashes["file/rom"] | hashes["rom/file"]
     return set().union(*hashes.values())
 
 
-def _package_matches(row, path, bases, *, layouts=SNES_LAYOUTS, review=None):
+def _package_matches(row, path, bases, *, layouts=SNES_LAYOUTS, review=None, native_layout="headerless"):
     try:
         members = _patch_members(path)
     except (ArchiveError, BadZipFile, NotImplementedError, OSError, RuntimeError, SubprocessError, ValueError):
@@ -239,25 +283,34 @@ def _package_matches(row, path, bases, *, layouts=SNES_LAYOUTS, review=None):
             continue
         if patch_format == "ips":
             layout = layouts.get(row["patchhint"])
-            if not layout or row["patchstatus"] == 4 or not valid_ips(data):
+            eligible = layout and row["patchstatus"] != 4
+            if not valid_ips(data):
                 continue
             if review and review["archive"] == path.name:
                 if review["patches"].get(name) != sha256(data).hexdigest():
                     continue
+                if not eligible and not (
+                    native_layout == "ines" and review.get("standalone") and review.get("outputSha1", {}).get(name)
+                ):
+                    continue
                 base = bases.by_sha1.get(review["baseSha1"])
                 layout = review.get("layout", layout)
                 evidence = "reviewed"
-            elif len(members) == 1:
-                base = bases.match(_documented_input(row["rominfo"], layout))
+            elif eligible and len(members) == 1:
+                if layout == "ines":
+                    base, layout = bases.match_ines_ips(row["rominfo"])
+                else:
+                    base, layout = bases.match_input(_documented_input(row["rominfo"], layout), layout)
                 evidence = "documented"
             else:
                 continue
         else:
-            layout = "headerless"
             embedded = embedded_input(data, patch_format)
-            base = bases.match([("input", embedded)]) if embedded else None
+            base, layout = bases.match_input([("input", embedded)], native_layout) if embedded else (None, native_layout)
+            if layout == "ines-payload" and not embedded_input(data, patch_format, same_size=True):
+                layout = "ines-payload-only"
             evidence = "embedded"
-        if base:
+        if base and layout:
             matches.append((name, patch_format, data, base, layout, evidence))
     return matches, None if matches else "no verified patch input"
 
@@ -274,6 +327,21 @@ def _store_patch(path, data):
             temporary.replace(path)
         finally:
             temporary.unlink(missing_ok=True)
+
+
+def _check_ines_build(bases, base, data, patch_format, layout, expected_sha1, output_header):
+    if not supports_patching(patch_format, layout):
+        return None if expected_sha1 else layout
+    original = read_verified_rom(bases.roms[base["sha1"]])
+    if original is not None:
+        try:
+            result = apply_translation(original, data, patch_format, layout, output_header=output_header)
+        except PatchError:
+            pass
+        else:
+            if not expected_sha1 or sha1(result).hexdigest() == expected_sha1:
+                return layout
+    return None if expected_sha1 else "ines-payload-only" if layout == "ines-payload" else "ines-file-only"
 
 
 def translation_order(record):
@@ -305,8 +373,9 @@ def _translation_authors(source, rows, additional=None):
 
 def _import_translations(source, root, bases, *, platform="snes", report=None):
     label = RETAIL_PLATFORMS[platform]
-    reviews = json.loads(MEGADRIVE_REVIEWS.read_text(encoding="utf-8")) if platform == "megadrive" else {}
-    layouts = MEGADRIVE_LAYOUTS if platform == "megadrive" else SNES_LAYOUTS
+    reference = REVIEW_REFERENCES.get(platform)
+    reviews = json.loads(reference.read_text(encoding="utf-8")) if reference else {}
+    layouts = {"snes": SNES_LAYOUTS, "megadrive": MEGADRIVE_LAYOUTS, "nes": NES_LAYOUTS}[platform]
     consoles = {row["consolekey"]: row["consoleid"] for row in _dump_rows(source, "console")}
     languages = {row["id"]: unescape(row["name"]) for row in _dump_rows(source, "language")}
     statuses = {row["id"]: row["description"] for row in _dump_rows(source, "patchstatus")}
@@ -342,32 +411,54 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
     translations = {}
     for row, path in packages:
         review = reviews.get("ips", {}).get(str(row["transkey"]))
-        matches, reason = _package_matches(row, path, bases, layouts=layouts, review=review)
+        matches, reason = _package_matches(row, path, bases, layouts=layouts, review=review,
+                                           native_layout="ines" if platform == "nes" else "headerless")
         if reason:
             skip(row, reason)
+            continue
         language = languages[row["language"]]
         version = unescape(row["patchver"] or "").strip()
+        imported = False
         for name, patch_format, data, base, layout, evidence in matches:
+            member_review = review if evidence == "reviewed" else {}
+            expected_sha1 = member_review.get("outputSha1", {}).get(name)
+            header = member_review.get("outputHeaders", {}).get(name)
+            if platform == "nes":
+                layout = _check_ines_build(bases, base, data, patch_format, layout, expected_sha1,
+                                           bytes.fromhex(header) if header else None)
+                if layout is None:
+                    continue
             digest = sha256(data).hexdigest()
             fingerprint = f"{base['sha1']}:{language.casefold()}:{layout}:{digest}"
-            member_review = review if evidence == "reviewed" else {}
             pad_to_size = member_review.get("padToSize")
             if pad_to_size is not None:
                 fingerprint += f":{pad_to_size}"
+            if expected_sha1:
+                fingerprint += f":{expected_sha1}"
             key = sha256(fingerprint.encode()).hexdigest()
+            status = statuses[row["patchstatus"]]
+            if row["patchstatus"] == 4 and member_review.get("standalone"):
+                status = "Standalone translation"
             record = {
                 "key": key, "rhdnId": row["transkey"], "language": language,
                 "authors": authors.get(row["transkey"], []),
                 "version": member_review.get("versions", {}).get(name, version),
-                "status": statuses[row["patchstatus"]], "releasedAt": row["patchrel_unix"] or 0,
+                "status": status, "releasedAt": row["patchrel_unix"] or 0,
                 "filename": name, "format": patch_format, "layout": layout, "evidence": evidence,
                 "size": len(data), "sha256": digest, "baseSha1": base["sha1"], "signatures": base["signatures"],
             }
             if pad_to_size is not None:
                 record["padToSize"] = pad_to_size
+            if expected_sha1:
+                record["outputSha1"] = expected_sha1
+            if header:
+                record["outputHeader"] = header
             _store_patch(patch_root / f"{digest}.{patch_format}", data)
             if key not in translations or record["releasedAt"] > translations[key]["releasedAt"]:
                 translations[key] = record
+            imported = True
+        if not imported:
+            skip(row, "reviewed NES output checksum did not match")
     records = sorted(translations.values(), key=translation_order)
     if not records:
         raise ValueError(f"No translation patches matched the verified {label} catalog")

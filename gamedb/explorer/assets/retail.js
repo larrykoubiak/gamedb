@@ -1,9 +1,10 @@
 "use strict";
 
 const params = new URLSearchParams(location.search);
-const isMegaDrive = location.pathname === "/catalog/megadrive";
-const catalogLabel = isMegaDrive ? "Mega Drive" : "SNES";
-const catalogApi = isMegaDrive ? "/api/megadrive-retail" : "/api/snes-retail";
+const platform = location.pathname.split("/").at(-1);
+const catalogLabel = {snes: "SNES", megadrive: "Mega Drive", nes: "NES / Famicom"}[platform];
+const catalogApi = `/api/${platform}-retail`;
+const romExtension = {snes: ".sfc", megadrive: ".md", nes: ".nes"}[platform];
 const marketNames = {
   JP: "Japan", NA: "North America", PAL: "PAL region", BR: "Brazil", KR: "South Korea", AS: "Asia",
 };
@@ -379,13 +380,13 @@ function manualCell(manuals) {
         openManual(manual);
       });
       entry.append(link);
-    } else if (isMegaDrive) {
+    } else if (platform !== "snes") {
       entry.append(newTabLink(manual.name, manual.url));
     } else {
       entry.append(element("span", manual.name));
     }
-    const info = isMegaDrive
-      ? [...manual.regions, manual.format, manual.source].filter(Boolean).join(" · ")
+    const info = platform !== "snes"
+      ? [...manual.regions, manual.language, manual.format, manual.source].filter(Boolean).join(" · ")
       : manual.localUrl ? [manual.format, manual.language].filter(Boolean).join(" · ") : "Unavailable locally";
     if (info) entry.append(element("small", info));
     return entry;
@@ -428,7 +429,7 @@ romForm.addEventListener("submit", async event => {
     const file = await response.blob();
     if (request.signal.aborted) return;
     const encoded = response.headers.get("Content-Disposition")?.match(/filename\*=UTF-8''([^;]+)/i)?.[1];
-    const name = encoded ? decodeURIComponent(encoded) : translation.filename.replace(/\.[^.]+$/, isMegaDrive ? ".md" : ".sfc");
+    const name = encoded ? decodeURIComponent(encoded) : translation.filename.replace(/\.[^.]+$/, romExtension);
     const url = URL.createObjectURL(file);
     const link = element("a");
     link.href = url;
@@ -460,6 +461,9 @@ function translationRow(translation, columns) {
     headered: "Requires a copier header",
     interleaved: "Requires an interleaved ROM",
     "interleaved-headered": "Requires an interleaved ROM with a copier header",
+    "ines-payload-only": "Targets the ROM data without the iNES header",
+    "ines-file-only": "Targets an iNES image",
+    "ines-unconfirmed": "Check the patch’s iNES header instructions",
   };
   const row = element("tr");
   row.setAttribute("role", "row");
@@ -498,6 +502,9 @@ function translationRow(translation, columns) {
     : "";
   const info = [status, inputLayouts[translation.layout], padding].filter(Boolean).join(" · ");
   if (info) patch.append(element("small", info));
+  if (translation.sourceUrl && !translation.romDownloadUrl) {
+    patch.append(newTabLink("Patch instructions", translation.sourceUrl));
+  }
   if (translation.baseArchive) patch.append(element("small", translation.baseArchive));
   const cells = [authors, version, released, patch];
   labelReleaseCells(cells, columns);
@@ -730,11 +737,9 @@ function renderDetail(game, soundtracks) {
 }
 
 async function start() {
-  if (isMegaDrive) {
-    document.title = "Mega Drive retail catalog | GameDB";
-    document.querySelector("#snes-title").textContent = "Mega Drive retail catalog";
-    document.querySelector("#snes-back").textContent = "← Mega Drive catalog";
-  }
+  document.title = `${catalogLabel} retail catalog | GameDB`;
+  document.querySelector("#snes-title").textContent = `${catalogLabel} retail catalog`;
+  document.querySelector("#snes-back").textContent = `← ${catalogLabel} catalog`;
   try {
     const key = params.get("game");
     const query = new URLSearchParams(key ? {game: key} : {view: "browse"});
@@ -757,7 +762,7 @@ async function start() {
     for (const genre of genres) genreSelect.add(new Option(genre, genre));
     genreSelect.disabled = !genres.length;
     genreSelect.value = genres.includes(params.get("genre")) ? params.get("genre") : "";
-    const hasTranslations = !isMegaDrive || games.some(game => game.releases.some(release => release.hasTranslations));
+    const hasTranslations = platform === "snes" || games.some(game => game.releases.some(release => release.hasTranslations));
     translationFilter.closest("label").hidden = !hasTranslations;
     translationFilter.checked = hasTranslations && params.get("translated") === "1";
     function updateFilters() {

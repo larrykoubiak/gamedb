@@ -12,7 +12,7 @@ from gamedb.database import create_database_engine
 
 from .importer import publish, resolve, summarize
 from .inventory import C64, PLAYSTATION, PS2, scan
-from .tags import PSF_VERSIONS, RELATED_PSF_VERSIONS, add_track_tags
+from .tags import COMPOSER_TAG_FORMATS, PSF_VERSIONS, RELATED_PSF_VERSIONS, add_track_tags
 
 
 def enrich(root, library, formats):
@@ -46,9 +46,10 @@ def main(argv=None):
         with engine.connect().execution_options(isolation_level="REPEATABLE READ") as connection:
             resolved = list(resolve(connection, library))
 
-        matched = (item for item, row in zip(library, resolved, strict=True)
-                   if row["status"] == "matched")
-        enrich(args.root, matched, {"spc", "nsf", "gbs", *RELATED_PSF_VERSIONS})
+        tagged = (item for item, row in zip(library, resolved, strict=True)
+                  if row["status"] == "matched"
+                  or any(asset["format"] in COMPOSER_TAG_FORMATS for asset in item.assets))
+        enrich(args.root, tagged, {"spc", "nsf", "gbs", *RELATED_PSF_VERSIONS, *COMPOSER_TAG_FORMATS})
         if args.publish:
             with engine.begin() as connection:
                 publish(connection, library, resolved)

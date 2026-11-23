@@ -38,15 +38,15 @@ class SourceIndex:
         return sha256(self.content).hexdigest()
 
 
-def read_index(path, url):
+def read_index(path, url, *, max_bytes=MAX_INDEX_BYTES):
     if path.is_file():
         with path.open("rb") as stream:
-            content = stream.read(MAX_INDEX_BYTES + 1)
+            content = stream.read(max_bytes + 1)
     else:
         request = Request(url, headers={"User-Agent": "GameDB/2.0 (catalog metadata)"})
         with urlopen(request, timeout=20) as stream:
-            content = stream.read(MAX_INDEX_BYTES + 1)
-        if len(content) > MAX_INDEX_BYTES:
+            content = stream.read(max_bytes + 1)
+        if len(content) > max_bytes:
             raise ValueError(f"Catalog source is too large: {url}")
         path.parent.mkdir(parents=True, exist_ok=True)
         with NamedTemporaryFile(dir=path.parent, delete=False) as stream:
@@ -57,7 +57,7 @@ def read_index(path, url):
                 temporary.replace(path)
             finally:
                 temporary.unlink(missing_ok=True)
-    if len(content) > MAX_INDEX_BYTES:
+    if len(content) > max_bytes:
         raise ValueError(f"Catalog source is too large: {path.name}")
     return SourceIndex(url, content)
 

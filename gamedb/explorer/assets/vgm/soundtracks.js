@@ -238,7 +238,8 @@ function renderSoundtracks(container, soundtracks, {compact = false} = {}) {
     title.textContent = selected.name;
     const activeSong = subtune || selected.defaultSubsong;
     const songs = activeSong ? `Song ${activeSong} of ${selected.subsongs}` : `${selected.subsongs} subtunes`;
-    credit.textContent = [selected.asset.artist, compact ? "" : album.collection,
+    const artist = selected.asset.artist?.trim();
+    credit.textContent = [compact && artist ? `Music by ${artist}` : artist, compact ? "" : album.collection,
       selected.subsongs > 1 ? songs : ""].filter(Boolean).join(" · ");
     const message = error || {loading: "Loading…", playing: "Playing", paused: "Paused", ready: ""}[phase];
     if (status.textContent !== message) status.textContent = message;

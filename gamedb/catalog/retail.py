@@ -16,7 +16,7 @@ from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.launchbox.matching import title_key
 
 
-RETAIL_PLATFORMS = {"snes": "SNES", "megadrive": "Mega Drive"}
+RETAIL_PLATFORMS = {"snes": "SNES", "megadrive": "Mega Drive", "nes": "NES / Famicom"}
 ARCHIVE_MARKETS = {
     "JP": {"JP"},
     "NA": {"US", "CA", "MX"},
@@ -168,13 +168,15 @@ def match_archives(catalog, archives, reviewed_aliases, verified_archives=(), *,
     index = defaultdict(list)
     spellings = defaultdict(list)
     contents = defaultdict(list)
+    independent = {item["signature"] for item in verified_archives if item.get("independentRetail")}
     for archive in archives:
         regions = set(archive["regions"])
         channel = archive["channel"]
         for market, countries in markets.items():
             if regions.intersection(countries) or ("WORLD" in regions and market in ARCHIVE_MARKETS):
-                index[market, channel, _title_key(archive["title"])].append(archive)
-                spellings[market, channel, _compact_title(archive["title"])].append(archive)
+                if archive["signature"] not in independent:
+                    index[market, channel, _title_key(archive["title"])].append(archive)
+                    spellings[market, channel, _compact_title(archive["title"])].append(archive)
                 contents[market, channel, archive["signature"]].append(archive)
 
     claims = defaultdict(set)
@@ -236,6 +238,52 @@ def match_archives(catalog, archives, reviewed_aliases, verified_archives=(), *,
         "eligibleArchives": len(archives),
     }
     return catalog
+
+
+def cartridge_group_matches(catalog, archives, fingerprints, records, *, markets=ARCHIVE_MARKETS):
+    """Use hardware-source clone groups that identify one documented edition."""
+    by_digest, by_name, by_group = defaultdict(list), defaultdict(set), defaultdict(list)
+    for record in records:
+        by_digest[record.digest].append(record)
+        for name in record.names:
+            by_name[_compact_title(name)].add(record.group)
+    for archive in archives:
+        for record in by_digest[fingerprints.get(archive["signature"])]:
+            by_group[record.group].append((archive, record))
+
+    releases = [release for game in catalog["games"] for release in game["releases"]]
+    owners, wanted, seen = defaultdict(set), {}, {}
+    for release in releases:
+        edition = release["edition"]
+        anchors = set()
+        for archive in release.get("archives", ()):
+            signature = archive["signature"]
+            seen[signature] = edition
+            anchors.update(record.group for record in by_digest[fingerprints.get(signature)])
+        groups = anchors or set().union(*(by_name[_compact_title(name)] for name in (*release["titles"], edition)))
+        wanted[release["key"]] = groups
+        for group in groups:
+            owners[group].add(edition)
+
+    for release in releases:
+        if release["status"] != "unmatched":
+            continue
+        edition, market = release["edition"], release["market"]
+        groups = {group for group in wanted[release["key"]] if owners[group] == {edition}}
+        if len(groups) != 1:
+            continue
+        (group,) = groups
+        verified = {}
+        for archive, record in by_group[group]:
+            signature = archive["signature"]
+            territories = set(archive["regions"])
+            if seen.get(signature, edition) != edition:
+                continue
+            if territories & markets[market] or ("WORLD" in territories and market in record.markets):
+                source = record.evidence["source"]
+                verified[signature] = f"{source['url']} ({source['record']}, cartridge SHA-1)"
+        for signature, evidence in sorted(verified.items()):
+            yield {"edition": edition, "market": market, "signature": signature, "evidence": evidence}
 
 
 def publish(connection, catalog, platform):

@@ -19,7 +19,8 @@ from gamedb.explorer.previews import source_revision
 def manual_roots():
     snes = os.environ.get("GAMEDB_SNES_MANUAL_ROOT")
     megadrive = os.environ.get("GAMEDB_MEGADRIVE_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Mega Drive"
-    return {"snes": Path(snes) if snes else None, "megadrive": Path(megadrive)}
+    nes = os.environ.get("GAMEDB_NES_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/NES"
+    return {"snes": Path(snes) if snes else None, "megadrive": Path(megadrive), "nes": Path(nes)}
 
 
 @lru_cache(maxsize=4)

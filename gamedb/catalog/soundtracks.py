@@ -117,6 +117,7 @@ def link_soundtracks(catalog, albums, *, reviews=None, aliases=(), system=SNES, 
         review = reviews.get((album["collection"], album["source_name"]))
         if ((review and not review["catalog_title"]) or album["status"] == "review" or EDITION.search(title)
                 or (album["collection"] == COLLECTION and album["source_name"] in fixed)
+                or title.casefold().endswith(" (game genie)")
                 or re.search(r"\[(?:mod|hack|unl)\]", album["source_name"], re.I)):
             continue
         primary = titles[platform, _title_key(review["catalog_title"] if review else title)]

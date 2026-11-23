@@ -1,5 +1,7 @@
 import tempfile
 import unittest
+from gzip import compress
+from io import BytesIO
 from pathlib import Path
 from struct import pack, pack_into
 from unittest.mock import patch
@@ -10,7 +12,7 @@ from gamedb.vgm.archives import open_vgm_location
 from gamedb.vgm.importer import resolve
 from gamedb.vgm.inventory import C64, GB, GBC, SNES, ST, Soundtrack, identify, scan
 from gamedb.vgm.matching import TitleIndex, match_sid, psf_album, reviewed_titles, sid_claim
-from gamedb.vgm.tags import read_tags
+from gamedb.vgm.tags import read_tags, stream_tags
 
 
 def stored_lha_member(name, contents):
@@ -86,6 +88,32 @@ class InventoryTests(unittest.TestCase):
             self.assertEqual(read_tags(root, album.assets[0]), {
                 "album": "Example", "artist": "Author", "copyright": "", "subsongs": 3,
             })
+
+    def test_vgm_and_vgz_use_the_gd3_author(self):
+        for english, japanese, expected in (("Composer", "作曲者", "Composer"), ("", "作曲者", "作曲者")):
+            fields = ["Opening", "", "Example", "", "Mega Drive", "", english, japanese,
+                      "1992", "Ripper", ""]
+            tags = ("\0".join(fields) + "\0").encode("utf-16-le")
+            header = bytearray(0x40)
+            header[:4] = b"Vgm "
+            pack_into("<I", header, 0x14, len(header) + 1 - 0x14)
+            vgm = header + b"\x66Gd3 " + pack("<II", 0x100, len(tags)) + tags
+            for name, data in (("vgm", vgm), ("vgz", compress(vgm))):
+                with self.subTest(format=name, expected=expected):
+                    asset = {"format": name, "size_bytes": len(data)}
+                    with tempfile.SpooledTemporaryFile() as stream:
+                        stream.write(data)
+                        stream.seek(0)
+                        self.assertEqual(stream_tags(stream, asset), {"artist": expected})
+            self.assertEqual(stream_tags(BytesIO(vgm[:-1]), {"format": "vgm", "size_bytes": len(vgm)}), {})
+
+    def test_nsfe_reads_the_author_chunk_after_the_music(self):
+        auth = "Game\0Composer A, Composer B\0Publisher\0Ripper\0".encode()
+        data = b"NSFE" + pack("<I4s", 512, b"DATA") + bytes(512)
+        data += pack("<I4s", len(auth), b"auth") + auth
+        asset = {"format": "nsfe", "size_bytes": len(data)}
+        self.assertEqual(stream_tags(BytesIO(data), asset), {"artist": "Composer A, Composer B"})
+        self.assertEqual(stream_tags(BytesIO(data[:-1]), asset), {})
 
     def test_loose_spc_and_archive_copies_form_one_soundtrack(self):
         with tempfile.TemporaryDirectory() as directory:

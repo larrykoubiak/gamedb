@@ -19,6 +19,28 @@ def remove_citations(cell):
         note.decompose()
 
 
+def regional_credits(cell):
+    remove_citations(cell)
+    for marker in cell.find_all("sup"):
+        marker.replace_with("\x1f" + cell_text(marker))
+    for line_break in cell.find_all("br"):
+        line_break.replace_with("\x1e")
+    credits = []
+    for line in cell.get_text().split("\x1e"):
+        name, _, scope = line.partition("\x1f")
+        name = " ".join(name.split())
+        if known_credit(name):
+            credits.append((name, set(re.findall(r"[A-Z]+", scope))))
+    return credits
+
+
+def credit_for_market(credits, regions=()):
+    scope = set(regions)
+    local = [name for name, codes in credits if codes & scope]
+    general = [name for name, codes in credits if not codes or "WW" in codes]
+    return " / ".join(dict.fromkeys(local or general))
+
+
 def title_and_aliases(cell):
     remove_citations(cell)
     for helper in cell.select('.noprint, .sortkey, [style*="display:none"], [style*="display: none"]'):

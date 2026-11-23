@@ -1,0 +1,2929 @@
+{
+  "source": "RHDN August 2024 archive and SHA-1 verified English Translations cartridge images",
+  "ips": {
+    "85": {
+      "archive": "[85]100world.zip",
+      "baseSha1": "f4c83bb987295e64c61f784860751a300709e22a",
+      "layout": "ines",
+      "patches": {
+        "100world.IPS": "63257fe6b4cdd983522b615e83a64fc717aa2507b422ff1b0cd73386c580de7a"
+      },
+      "outputSha1": {
+        "100world.IPS": "30867b7d263da64ad63b3a11e93a473c0c002e30"
+      },
+      "outputHeaders": {
+        "100world.IPS": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "100world.IPS": "100 World Story, The - The Tales on a Watery Wilderness (Japan) [T-En by AlanMidas v20070425] [n].zip"
+      }
+    },
+    "86": {
+      "archive": "[86]ai4e.zip",
+      "baseSha1": "c27f5fc3ed1bd401c676532b59d4ea07c1d0dda8",
+      "layout": "ines",
+      "patches": {
+        "AI4E.IPS": "56ebd9a30826a1d5f50587ae7996f303076c433c24f8416c80fc5027f9d89420"
+      },
+      "outputSha1": {
+        "AI4E.IPS": "d5a98779f11382e7bda7696c1f4d982461c8f774"
+      },
+      "outputHeaders": {
+        "AI4E.IPS": "4e45531a101040000000000000000000"
+      },
+      "evidence": {
+        "AI4E.IPS": "Adventure Island 4 (Japan) [T-En by Demiforce v1.00] [n].zip"
+      }
+    },
+    "87": {
+      "archive": "[87][11]Musashi098e.zip",
+      "baseSha1": "e0cd904fa7cad0f93c9086f5c1dd4914b8a386b2",
+      "layout": "ines",
+      "patches": {
+        "Musashie.ips": "5fa461e34eb2c2fc85fafb5a5193067212750086b05a52a25156fdb99266ef06"
+      },
+      "outputSha1": {
+        "Musashie.ips": "4e1810b53604ea09f71e8f648d468670d9a2efd7"
+      },
+      "evidence": {
+        "Musashie.ips": "Adventures of Musashi, The (Japan) [T-En by Gaijin Productions+MadHacker v0.98] [n].zip"
+      }
+    },
+    "92": {
+      "archive": "[92]vgust11.zip",
+      "baseSha1": "3dadaea8e1097cff5e5fc1c0865764abbf0a43db",
+      "layout": "ines",
+      "patches": {
+        "VGUST11.IPS": "113b43506865a8907fed98105af3c74120ab93fbff043f9126062564b09d3b43"
+      },
+      "outputSha1": {
+        "VGUST11.IPS": "8efefa4c63ce1e2ba97d94eac76168c38f4f0ca1"
+      },
+      "evidence": {
+        "VGUST11.IPS": "Armed Dragon Fantasy Villgust (Japan) [T-En by J2e Translations v1.1] [n].zip"
+      }
+    },
+    "94": {
+      "archive": "[94]asmikv25.zip",
+      "baseSha1": "d1901fd76cda65ef68812bdb592fd20d897f139a",
+      "layout": "ines",
+      "patches": {
+        "Asmikv25.ips": "8cdf834e4185e6f97849110fcfae245c23ee86010c1daa34656186850bb122b1"
+      },
+      "outputSha1": {
+        "Asmikv25.ips": "fb2339891f012b12647afb41d7c513f158dc7122"
+      },
+      "outputHeaders": {
+        "Asmikv25.ips": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "Asmikv25.ips": "Adventures in Asmik Land (Japan) [T-En by Gil Galad v0.25] [i] [n].zip"
+      }
+    },
+    "95": {
+      "archive": "[95]astrofang.zip",
+      "baseSha1": "a7097bcce4c3a7d4d3e845819b07e6106dd455e3",
+      "layout": "ines",
+      "patches": {
+        "Af-FULL.ips": "8ee7c33102f8f21ad82404857a8b37507e8cd932331e5686497b7847a23e6512"
+      },
+      "outputSha1": {
+        "Af-FULL.ips": "be612f532385293442f8dacc45202fb6dbb30b08"
+      },
+      "outputHeaders": {
+        "Af-FULL.ips": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "Af-FULL.ips": "Astro Fang - Super Machine (Japan) [T-En by Caution v20010705].zip"
+      }
+    },
+    "99": {
+      "archive": "[99]cworldv98f.zip",
+      "baseSha1": "2e37cbf4c6970bfe78fb1aa2a93b07ab2778f6c5",
+      "layout": "ines",
+      "patches": {
+        "Chaos98a.ips": "074013d8f1ca4085f38fa56bfd015384a4a8081641ccfd5b8f1bc26dd88a725c",
+        "Chaos98b.ips": "057ff0caf61d4018943a99c53b5436e351be6339331cd61b1442b93499a28fc4"
+      },
+      "outputSha1": {
+        "Chaos98a.ips": "cd094630d25addcddf8c489a3f65dc7a118bcb8c",
+        "Chaos98b.ips": "9042e783b71eef666a48bd8077ad1e12f2e173d6"
+      },
+      "outputHeaders": {
+        "Chaos98a.ips": "4e45531a101012000000000000000000",
+        "Chaos98b.ips": "4e45531a101012000000000000000000"
+      },
+      "evidence": {
+        "Chaos98a.ips": "Chaos World (Japan) [T-En by Aeon Genesis v0.98F].zip",
+        "Chaos98b.ips": "Chaos World (Japan) [T-En by Aeon Genesis v0.98F] (Bug Fix).zip"
+      }
+    },
+    "100": {
+      "archive": "[100]cfielde.zip",
+      "baseSha1": "53e0ed5a09f2c5e6c9418ea00c1d847b87e55776",
+      "layout": "ines",
+      "patches": {
+        "CHESTERE.IPS": "32fa6200d6b4cd4e4b5768b683429b66197c67a247eb14e3f239e7ce2ab6c794"
+      },
+      "outputSha1": {
+        "CHESTERE.IPS": "f5faf608a5d815862ff77b3a9973972aaee8735a"
+      },
+      "outputHeaders": {
+        "CHESTERE.IPS": "4e45531a080021000000000000000000"
+      },
+      "evidence": {
+        "CHESTERE.IPS": "Chester Field - Ankoku Shin e no Chousen (Japan) [T-En by Aeon Genesis v1.00b].zip"
+      }
+    },
+    "101": {
+      "archive": "[101]jetmanv1.zip",
+      "baseSha1": "d84a55694b87e636c22149c74fc78f1ff942d204",
+      "layout": "ines",
+      "patches": {
+        "jetmanv1.ips": "6e289b87ad99f1ed5ad70c0a65242ab69241cb0d66c61c7e5f7377c080a87b19"
+      },
+      "outputSha1": {
+        "jetmanv1.ips": "d9cf35f37418dc592aca68d5a1e42d982ead9897"
+      },
+      "outputHeaders": {
+        "jetmanv1.ips": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "jetmanv1.ips": "Choujin Sentai - Jetman (Japan) [T-En by MagiMoogle v1.00].zip"
+      }
+    },
+    "102": {
+      "archive": "[102]radia100.zip",
+      "baseSha1": "1840ac43b904439b8011152597bfb339ac678274",
+      "layout": "ines",
+      "patches": {
+        "radia100.ips": "23200a0aed7bb497c05314804cbaeba5a38959bba6484a90c833f37c1c0458f1"
+      },
+      "outputSha1": {
+        "radia100.ips": "87e8ac608dde48dceccc52e96b247086cb76c032"
+      },
+      "outputHeaders": {
+        "radia100.ips": "4e45531a101042000000000000000000"
+      },
+      "evidence": {
+        "radia100.ips": "Chronicle of the Radia War (Japan) [T-En by Dreamless+Jair+CX v1.00] [n].zip"
+      }
+    },
+    "104": {
+      "archive": "[104]cocrnv10.zip",
+      "baseSha1": "cf8f3c8b02529426750d1d1f5f8ae18253d583fa",
+      "layout": "ines",
+      "patches": {
+        "Cocoron.ips": "624d5e705d26ce56654e6cf888c28634104ac4a1f6b1a3c549892e2ed0c4e023"
+      },
+      "outputSha1": {
+        "Cocoron.ips": "475bf19a0933eb75b38fb9147e4feca4f7398674"
+      },
+      "outputHeaders": {
+        "Cocoron.ips": "4e45531a100012000000000000000000"
+      },
+      "evidence": {
+        "Cocoron.ips": "Cocoron (Japan) [T-En by Dynamic Designs v1.0].zip"
+      }
+    },
+    "107": {
+      "archive": "[107]brc-cwar.zip",
+      "baseSha1": "387669e5666164f93f6051f7f063dfe693f4bb7a",
+      "layout": "ines",
+      "patches": {
+        "COSMICWA.IPS": "3f8bd7613ca169ae375d47aa24edf28fad7457ea204e742629e42275fa7061b2"
+      },
+      "outputSha1": {
+        "COSMICWA.IPS": "e795242286a265b7502132ab38d08e242655df2f"
+      },
+      "outputHeaders": {
+        "COSMICWA.IPS": "4e45531a081012000000000000000000"
+      },
+      "evidence": {
+        "COSMICWA.IPS": "Cosmic Wars (Japan) [T-En by TransBRC v0.993] [i].zip"
+      }
+    },
+    "108": {
+      "archive": "[108]cgene.zip",
+      "baseSha1": "73c658e6306d0b7cfd8e35e2c4ffddf8ddb6689b",
+      "layout": "ines",
+      "patches": {
+        "COSMOGEN.IPS": "ffca4f580002ae31da4369a858d100d4488aed9f32ed0aad8844895dce494a06"
+      },
+      "outputSha1": {
+        "COSMOGEN.IPS": "908043950a8c8ad3e1a0811ab4a4fce3faacd690"
+      },
+      "outputHeaders": {
+        "COSMOGEN.IPS": "4e45531a020430000000000000000000"
+      },
+      "evidence": {
+        "COSMOGEN.IPS": "Cosmo Genesis (Japan) [T-En by Aeon Genesis v1.10].zip"
+      }
+    },
+    "109": {
+      "archive": "[109]gali-100.zip",
+      "baseSha1": "3add1213eafe34216e73bc51e02a00d9f8df0858",
+      "layout": "ines",
+      "patches": {
+        "gali-100.ips": "8cc314b073d18c080562be63537430eb5315647f6c58a455c199041720b43c44"
+      },
+      "outputSha1": {
+        "gali-100.ips": "fd3d9f8a6c862773194c3e23b420aabe9453d2d6"
+      },
+      "outputHeaders": {
+        "gali-100.ips": "4e45531a081012000000000000000000"
+      },
+      "evidence": {
+        "gali-100.ips": "Cosmo Police Galivan (Japan) [T-En by Jair v1.00].zip"
+      }
+    },
+    "110": {
+      "archive": "[110][10]daisenryaku.zip",
+      "baseSha1": "e32c903b543b4488419de27768744a58f940ecf9",
+      "layout": "ines",
+      "patches": {
+        "DAISENE.IPS": "556dc2a7b4ef38f027c20090406f29a3f5a63e6911814cc52fcf35d031542001"
+      },
+      "outputSha1": {
+        "DAISENE.IPS": "4be526b28a0579774b23e3b5d32f9dc805c0bf68"
+      },
+      "outputHeaders": {
+        "DAISENE.IPS": "4e45531a080412000000000000000000"
+      },
+      "evidence": {
+        "DAISENE.IPS": "Daisenryaku (Japan) [T-En by Aeon Genesis v1.00].zip"
+      }
+    },
+    "116": {
+      "archive": "[116]doae2e.zip",
+      "baseSha1": "cc1c05408dafa5c1bbb9cb7675aabf47e167d747",
+      "layout": "ines",
+      "patches": {
+        "DOAE2ENG.IPS": "47258dca589be9e87d2eb3efb714d3d8f2e02bfad0502d43c3c201151d74455b"
+      },
+      "outputSha1": {
+        "DOAE2ENG.IPS": "b35a8d24f148ea7ae97ef9a16eb2d482720bfdb0"
+      },
+      "outputHeaders": {
+        "DOAE2ENG.IPS": "4e45531a200042000000000000000000"
+      },
+      "evidence": {
+        "DOAE2ENG.IPS": "Destiny of an Emperor II - The Story of Zhuge Liang (Japan) [T-En by Dynamic Designs v1.12] [n].zip"
+      }
+    },
+    "117": {
+      "archive": "[117]dez2e.zip",
+      "baseSha1": "854a1dc7b2bbf948fb52f6fa861835595ab0c858",
+      "layout": "ines",
+      "patches": {
+        "DEZV11.IPS": "80944d49af05b4d21983537d3939680e3ba4c6dbd2f5ec4fb7734b3df52771d4"
+      },
+      "outputSha1": {
+        "DEZV11.IPS": "63e173c5b146795d41ead95bb668cb8791ae9edf"
+      },
+      "outputHeaders": {
+        "DEZV11.IPS": "4e45531a080010000000000000000000"
+      },
+      "evidence": {
+        "DEZV11.IPS": "Dezaemon (Japan) [T-En by Aeon Genesis v1.10].zip"
+      }
+    },
+    "118": {
+      "archive": "[118]doki.zip",
+      "baseSha1": "4920c28991f6b3f343de4a501fbd1b6bf6ba0e0b",
+      "layout": "ines",
+      "patches": {
+        "doki.ips": "048c3d364dc3c87736dab019373a2b1c2a455944bfb783f603becd1f0de24270"
+      },
+      "outputSha1": {
+        "doki.ips": "80d53a9c4cf261a6fcacc609574bde42fcaa767f"
+      },
+      "outputHeaders": {
+        "doki.ips": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "doki.ips": "Doki! Doki! Amusement Park (Japan) [T-En by No Talent Translations v1.1] [n].zip"
+      }
+    },
+    "120": {
+      "archive": "[120]dorav10.zip",
+      "baseSha1": "fe1205875284df2e52c6b129bb4ae745509b1d6f",
+      "layout": "ines",
+      "patches": {
+        "Doraerpg.ips": "c9b00f56ee07ee6cf0506426beea03e3d3143250b5fdad55ba7b050808dced4b"
+      },
+      "outputSha1": {
+        "Doraerpg.ips": "bf8980e0868f058aceb0cfdd4a00f29d82ab87bb"
+      },
+      "outputHeaders": {
+        "Doraerpg.ips": "4e45531a100012000000000000000000"
+      },
+      "evidence": {
+        "Doraerpg.ips": "Doraemon - The Revenge of Giga Zombie (Japan) [T-En by WakdHacks v1.0] [n].zip"
+      }
+    },
+    "138": {
+      "archive": "[138]ff12.zip",
+      "baseSha1": "87df20f36225b2b55e8931db8392d768049dd666",
+      "layout": "ines",
+      "patches": {
+        "FF1&2.IPS": "692240fbc8f488869744a703486b238908dfa89182ced006a5fb3b638980104d"
+      },
+      "outputSha1": {
+        "FF1&2.IPS": "ff5a216e3da57ee7133449a4ac6b0e8957a23595"
+      },
+      "outputHeaders": {
+        "FF1&2.IPS": "4e45531a200012000000000000000000"
+      },
+      "evidence": {
+        "FF1&2.IPS": "Final Fantasy I, II (Japan) [T-En by Demiforce v1.00].zip"
+      }
+    },
+    "139": {
+      "archive": "[139]ff2patch.zip",
+      "baseSha1": "4a02d61982966205cdf3a4d27381d610515eb494",
+      "layout": "ines",
+      "standalone": true,
+      "patches": {
+        "FF2EINES.IPS": "4207cd98bc8fe983d36c69105a146d66345a128f2bafb912ecfcfcade9912c8f"
+      },
+      "outputSha1": {
+        "FF2EINES.IPS": "62ed16088e5293a9f238161c12fe59eaa196f1f8"
+      },
+      "outputHeaders": {
+        "FF2EINES.IPS": "4e45531a100012000000000000000000"
+      },
+      "evidence": {
+        "FF2EINES.IPS": "139readme.txt identifies the iNES member. Reproduces Final Fantasy II (Japan) [T-En by Demiforce v1.03].zip. Verified historical input SHA-1 1a9e01a29472f1161bd16e1b4d76994346a505f6."
+      }
+    },
+    "141": {
+      "archive": "[141]ff3patch.zip",
+      "baseSha1": "31a8397a4c33833aa8eeaa0e150e8f6f562ffd16",
+      "layout": "ines",
+      "patches": {
+        "FF3E.IPS": "d214f35c18446c015fb6a6a7f1795b804b540e918e84acac7cf69b1aac150a14"
+      },
+      "outputSha1": {
+        "FF3E.IPS": "e183203762d2621b719cfbd5c6f65ba0051e04aa"
+      },
+      "outputHeaders": {
+        "FF3E.IPS": "4e45531a200042000000000000000000"
+      },
+      "evidence": {
+        "FF3E.IPS": "Final Fantasy III (Japan) [T-En by A.W.Jackson+Neill Corlett+SoM2Freak v1.1].zip"
+      }
+    },
+    "147": {
+      "archive": "[147]fbev101.zip",
+      "baseSha1": "cfed3f8bc2161acb786c008ebffa0303e653a7b6",
+      "layout": "ines",
+      "patches": {
+        "fbirdev101.ips": "48b0eed5a1a85edc2765cda97fa717bddeadcbc00d2d71ac2bda835fb3f78361"
+      },
+      "outputSha1": {
+        "fbirdev101.ips": "acd81baef65250aa2f6b1224bc48473720d135c7"
+      },
+      "outputHeaders": {
+        "fbirdev101.ips": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "fbirdev101.ips": "Hero of the Sun - Fire Bird (Japan) [T-En by Dragoon-X Translations v1.01] [n].zip"
+      }
+    },
+    "149": {
+      "archive": "[149]fuzzical.zip",
+      "baseSha1": "803c3315f65542f80ba6ba5b57760f5a70bd6b0a",
+      "layout": "ines",
+      "patches": {
+        "fuzzical.ips": "b60cb41c55917824c09ede3bc6a12c86e0154da121c78f9f86e1f9dc2a4fb2e9"
+      },
+      "outputSha1": {
+        "fuzzical.ips": "22bde17a39d1034cc0e9f99e244c0d6e478ffaf1"
+      },
+      "outputHeaders": {
+        "fuzzical.ips": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "fuzzical.ips": "Fuzzical Fighter (Japan) [T-En by WakdHacks v1.00b].zip"
+      }
+    },
+    "151": {
+      "archive": "[151]gd-v100.zip",
+      "baseSha1": "763608ba14c8734d952773c754c90e96e559637e",
+      "layout": "ines",
+      "patches": {
+        "gd-v100.ips": "f4dff29b494ed9235c1db8b5d8f088cc86e7b1fe97459ca683a1fd560d0205ad"
+      },
+      "outputSha1": {
+        "gd-v100.ips": "9babcf1a03645054617c23f73a833a91ea833670"
+      },
+      "outputHeaders": {
+        "gd-v100.ips": "4e45531a081070100000000000000000"
+      },
+      "evidence": {
+        "gd-v100.ips": "Getsufuu Maden (Japan) [T-En by RPGe v1.00].zip"
+      }
+    },
+    "158": {
+      "archive": "[158]hkfs.zip",
+      "baseSha1": "6c9b6821b0217eb5a6b5dd3961918336d82d3c19",
+      "layout": "ines",
+      "patches": {
+        "HKFS.ips": "299d5318d2e5b2a23b5848ba9157efb52ea820ee2730c5fc7054791555d532af"
+      },
+      "outputSha1": {
+        "HKFS.ips": "57ca0c476f394a164e032427a57db9a0d1731d1a"
+      },
+      "outputHeaders": {
+        "HKFS.ips": "4e45531a020431000000000000000000"
+      },
+      "evidence": {
+        "HKFS.ips": "Hello Kitty's Flower Shop (Japan) [T-En by Suicidal Translations v1.00] [n].zip"
+      }
+    },
+    "159": {
+      "archive": "[159]hotman10.zip",
+      "baseSha1": "b3d596f67fcea410514b10c66946315e9d5e3934",
+      "layout": "ines",
+      "patches": {
+        "HOTMAN.IPS": "b6bb3d15c7396606eb2f5f110e9c15067fe26be38f13c74c9ca353758cd9e15f"
+      },
+      "outputSha1": {
+        "HOTMAN.IPS": "55cd797479c436707b9dc03a9852a8f958f92fc9"
+      },
+      "outputHeaders": {
+        "HOTMAN.IPS": "4e45531a020431000000000000000000"
+      },
+      "evidence": {
+        "HOTMAN.IPS": "Hotman (Japan) [T-En by Six Feet Under v1.0] [n].zip"
+      }
+    },
+    "161": {
+      "archive": "[161]joymech.zip",
+      "baseSha1": "0dc0ab410b7cc0ab39bd46ad493ac77af3c6b8d7",
+      "layout": "ines",
+      "patches": {
+        "JOYMECH.IPS": "5076afaa7db35432a918926d07a6e7e8a92119810955cd99ee34d38780298d4c"
+      },
+      "outputSha1": {
+        "JOYMECH.IPS": "3ce0cda10d9fd2823bc1cb94f80122bfe9b82b5a"
+      },
+      "outputHeaders": {
+        "JOYMECH.IPS": "4e45531a102042000000000000000000"
+      },
+      "evidence": {
+        "JOYMECH.IPS": "Joy Mech Fight (Japan) [T-En by AlanMidas v20001215].zip"
+      }
+    },
+    "165": {
+      "archive": "[165]keroe100.zip",
+      "baseSha1": "6a4c9e5e79e0cbc117b7d49e2e02bc4cd9dc3d7e",
+      "layout": "ines",
+      "patches": {
+        "KERO.IPS": "b0406bafd66cb43970a6c41d1ff28f1f750f6fa30530d8fe3ffe2acc14514537"
+      },
+      "outputSha1": {
+        "KERO.IPS": "5df869cb19080f493cdad38645d3ce64068e57d3"
+      },
+      "outputHeaders": {
+        "KERO.IPS": "4e45531a020431000000000000000000"
+      },
+      "evidence": {
+        "KERO.IPS": "Kero Kero Keroppi's Big Adventure (Japan) [T-En by Gaijin Productions v1.00] [n].zip"
+      }
+    },
+    "166": {
+      "archive": "[166]keroppi2.zip",
+      "baseSha1": "8dde1fd2fab8f0efceda36f3e18db5488ac6521c",
+      "layout": "ines",
+      "patches": {
+        "KEROPPI2.IPS": "aa5a8ac74215b8e7f9d252623af71bc475caf2a96ee6111fb36a9bf0e6b5dfa8"
+      },
+      "outputSha1": {
+        "KEROPPI2.IPS": "994ce240d11b2917bcca70c89b336b777751559b"
+      },
+      "outputHeaders": {
+        "KEROPPI2.IPS": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "KEROPPI2.IPS": "Kero Kero Keroppi's Great Big Adventure 2 - Trouble in Donut Pond (Japan) [T-En by Spoony Bard v1.0] [n].zip"
+      }
+    },
+    "167": {
+      "archive": "[167]sbombe10.zip",
+      "baseSha1": "489dc6cff3a621f448769ca99ed8aca02a692de0",
+      "layout": "ines",
+      "patches": {
+        "SbombE10.ips": "50b6db91bfa3fd3d6f651226694160697fc2b96ba6ade378a58a7e82f5bcf9b5"
+      },
+      "outputSha1": {
+        "SbombE10.ips": "f34f9bb86c93f6db24581f62473c1ea924656da9"
+      },
+      "outputHeaders": {
+        "SbombE10.ips": "4e45531a080410000000000000000000"
+      },
+      "evidence": {
+        "SbombE10.ips": "Keroppi & Keroleen's Splash Bomb! (Japan) [T-En by Suicidal Translations v1.00] [n].zip"
+      }
+    },
+    "169": {
+      "archive": "[169]bdkv104.zip",
+      "baseSha1": "8c25c42c514cf3a0d034239418815e234fb23ba4",
+      "layout": "ines",
+      "patches": {
+        "bdkv104.ips": "043964c1a3f2d5ddf1c7778d2e0b37fc3c03800331041942cc144c6529e2f158"
+      },
+      "outputSha1": {
+        "bdkv104.ips": "ecf3c21144d2a1d9fc6d9ac924fcbdbade198ed6"
+      },
+      "outputHeaders": {
+        "bdkv104.ips": "4e45531a081070100000000000000000"
+      },
+      "evidence": {
+        "bdkv104.ips": "Castlevania Special - I'm Kid Dracula!! (Japan) [T-En by Vice Translations v1.04] [n].zip"
+      }
+    },
+    "173": {
+      "archive": "[173]kwe-vrc.zip",
+      "baseSha1": "094ce8f5849fb2890df04cbe586c40f28bc17a15",
+      "layout": "ines",
+      "patches": {
+        "KWE-VRC.IPS": "516c1972ec4d387a5b2238e6f078a348e9f80fab1e91e6f5a09ab053ea9029ff"
+      },
+      "outputSha1": {
+        "KWE-VRC.IPS": "df7bf622666d08ea075c99878e21882e1074e581"
+      },
+      "outputHeaders": {
+        "KWE-VRC.IPS": "4e45531a081070100000000000000000"
+      },
+      "evidence": {
+        "KWE-VRC.IPS": "Wai Wai World (Japan) [T-En by Demiforce v3.00].zip"
+      }
+    },
+    "174": {
+      "archive": "[174]kwe.zip",
+      "baseSha1": "094ce8f5849fb2890df04cbe586c40f28bc17a15",
+      "layout": "ines",
+      "patches": {
+        "KWE.IPS": "87d95540c44d254e476d214c5bb4529e6d8aa156c5ae50318d2fbce941a09bba"
+      },
+      "outputSha1": {
+        "KWE.IPS": "7e548a1fd001ec696517f6efd9537367d0b9079b"
+      },
+      "outputHeaders": {
+        "KWE.IPS": "4e45531a081070100000000000000000"
+      },
+      "evidence": {
+        "KWE.IPS": "Wai Wai World (Japan) [T-En by Dylan Robley v1.0].zip"
+      }
+    },
+    "180": {
+      "archive": "[180]brc-lmag.zip",
+      "baseSha1": "25f26418c40aac4f4fdd6ffca6ff18a6537b9b84",
+      "layout": "ines",
+      "patches": {
+        "BRC-LMAG.IPS": "5479cbf03f9610694dbb5e443731b21f4e8d95d05573bd71736786073db51c56"
+      },
+      "outputSha1": {
+        "BRC-LMAG.IPS": "a83f994f2c6b3ffc95680fad7fc9d74196c642ea"
+      },
+      "outputHeaders": {
+        "BRC-LMAG.IPS": "4e45531a081042000000000000000000"
+      },
+      "evidence": {
+        "BRC-LMAG.IPS": "Little Magic (Japan) [T-En by Gaijin Productions+TransBRC v0.33a] [i].zip"
+      }
+    },
+    "182": {
+      "archive": "[182]gali031b.zip",
+      "baseSha1": "254d8f105fbc6c851ba7c64a0e9601fed8fa4ed4",
+      "layout": "ines",
+      "patches": {
+        "GALIOUS.IPS": "be4ee1c4fdff955c12ac2deef71ee785410b2b6cd39626264289757cd452a295"
+      },
+      "outputSha1": {
+        "GALIOUS.IPS": "dea62a7430b309b740711839142a1cc8c05cb579"
+      },
+      "outputHeaders": {
+        "GALIOUS.IPS": "4e45531a080021000000000000000000"
+      },
+      "evidence": {
+        "GALIOUS.IPS": "Knightmare II - The Maze of Galious (Japan) [T-En by Manipulate v0.31b] [n].zip"
+      }
+    },
+    "186": {
+      "archive": "[186]liose.zip",
+      "baseSha1": "50765e729213742611434117d50d0f774049b5d6",
+      "layout": "ines",
+      "patches": {
+        "liose.ips": "45eb8af1c13ccacf2c7b2b868910083549a461c81bfcaad02432790b5a81e371"
+      },
+      "outputSha1": {
+        "liose.ips": "1536ea1fc8d59d690c1096d2554e9cc340cf6c56"
+      },
+      "outputHeaders": {
+        "liose.ips": "4e45531a100012000000000000000000"
+      },
+      "evidence": {
+        "liose.ips": "Future Soldier - Lios (Japan) [T-En by Aeon Genesis v1.00] [n].zip"
+      }
+    },
+    "187": {
+      "archive": "[187]mitsu.zip",
+      "baseSha1": "935a8f0c6af755f2f06382f94cb2fd02247b2287",
+      "layout": "ines",
+      "patches": {
+        "MITSU.IPS": "4c147b8d7f6ece9485135c7c55acab684509191c5533ab704bd8d68698a7e103"
+      },
+      "outputSha1": {
+        "MITSU.IPS": "78f272a42ef8695ae91a4c0ed8fd154e67366167"
+      },
+      "outputHeaders": {
+        "MITSU.IPS": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "MITSU.IPS": "Mitsume ga Tooru (Japan) [T-En by Spoony Bard v1.01].zip"
+      }
+    },
+    "188": {
+      "archive": "[188]moaikun-e.zip",
+      "baseSha1": "5cb692af3b847ea9b169359c1f8cafbe4d3b43a4",
+      "layout": "ines",
+      "patches": {
+        "MoaiKun.ips": "11746aa8fddc20764696d0e64b784f5ba281511b39cd5d0d2b8c7015688f14a5"
+      },
+      "outputSha1": {
+        "MoaiKun.ips": "325906310edbb7e053ae07ce1e3e38d25b413937"
+      },
+      "outputHeaders": {
+        "MoaiKun.ips": "4e45531a020431000000000000000000"
+      },
+      "evidence": {
+        "MoaiKun.ips": "Moai-kun (Japan) [T-En by Suicidal Translations v1.00].zip"
+      }
+    },
+    "189": {
+      "archive": "[189]moon_eng.zip",
+      "baseSha1": "e2c69fcd38538ee38b7138a752936ec9fc827664",
+      "layout": "ines",
+      "patches": {
+        "MOON_ENG.IPS": "15148cf1441cb7ef26e5a66eb4eed3bc275da80f9de1d857730515595d7d64a2"
+      },
+      "outputSha1": {
+        "MOON_ENG.IPS": "2c0e730ea3487f65084a91744593fc7fcf4336a5"
+      },
+      "outputHeaders": {
+        "MOON_ENG.IPS": "4e45531a102040000000000000000000"
+      },
+      "evidence": {
+        "MOON_ENG.IPS": "Moon Crystal (Japan) [T-En by A.W.Jackson v1.0].zip"
+      }
+    },
+    "191": {
+      "archive": "[191]mxcv100.zip",
+      "baseSha1": "ae1462e4042c89009446a793dfa0722c8b1a21f2",
+      "layout": "ines",
+      "patches": {
+        "mxcv100.ips": "01895df31fec52c24853fb934483bba6cb066d18168277797ba6a737bb6a161d"
+      },
+      "outputSha1": {
+        "mxcv100.ips": "b838956eba2c4b456a11f71a984f5ffbcd892801"
+      },
+      "outputHeaders": {
+        "mxcv100.ips": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "mxcv100.ips": "Motocross Champion (Japan) [T-En by Suicidal Translations v1.00].zip"
+      }
+    },
+    "194": {
+      "archive": "[194]nadj2e13.zip",
+      "baseSha1": "b530a44b9b72eb4c5b0d686dc9c359081f52fe45",
+      "layout": "ines",
+      "patches": {
+        "NADJ2E13.IPS": "76eb6cdc94bc0671d03d21f45af35ae1654e50fd147811388d76381549f91518"
+      },
+      "outputSha1": {
+        "NADJ2E13.IPS": "3eacaa6b91880852cb480828a2f79aa1568eba15"
+      },
+      "outputHeaders": {
+        "NADJ2E13.IPS": "4e45531a081042000000000000000000"
+      },
+      "evidence": {
+        "NADJ2E13.IPS": "Nadia - Secret of the Blue Water (Japan) [T-En by J2e Translations v1.3] [n].zip"
+      }
+    },
+    "195": {
+      "archive": "[195]kokkun-e.zip",
+      "baseSha1": "66f413d2e95c096ab9aa43f9f0559e3be27c58bf",
+      "layout": "ines",
+      "patches": {
+        "KOKKUN-E.IPS": "5d191a5fe8392ec6ecc116f1f43483a536e9fd8b5ff40fcb6d79dce626041b7c"
+      },
+      "outputSha1": {
+        "KOKKUN-E.IPS": "e31f57f5b67a0c5514a2ef20dd3850af2803bb7a"
+      },
+      "outputHeaders": {
+        "KOKKUN-E.IPS": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "KOKKUN-E.IPS": "Naughty Kokkun's Gourmet World (Japan) [T-En by Spoony Bard v1.0] [n].zip"
+      }
+    },
+    "197": {
+      "archive": "[197]ninjboy2.zip",
+      "baseSha1": "ec8c841b374c30600e1cb4923a5d701310d286ec",
+      "layout": "ines",
+      "patches": {
+        "NINJBOY2.IPS": "d4c7f13d1c49d8ecdfb257c3304f5a20f8035a2f30c9ca2f71bfa226a4b47f12"
+      },
+      "outputSha1": {
+        "NINJBOY2.IPS": "c0cde20a837b83b8055d6bee7acf8f87c9382106"
+      },
+      "outputHeaders": {
+        "NINJBOY2.IPS": "4e45531a080021000000000000000000"
+      },
+      "evidence": {
+        "NINJBOY2.IPS": "Ninja Boy 2 (Japan) [T-En by Spoony Bard v1.0] [n].zip"
+      }
+    },
+    "201": {
+      "archive": "[201]penguin.zip",
+      "baseSha1": "82f1ccaa96a2f0cdfff7dd07cd247a7391886357",
+      "layout": "ines",
+      "patches": {
+        "penguin.ips": "0c30db0b47ada83f7c7e22ffc46a38da184f9c184f5e11c9b11f77ca53373a56"
+      },
+      "outputSha1": {
+        "penguin.ips": "cdeedd3f9833b01a42b5cf3d124aa6e8d1079f3b"
+      },
+      "outputHeaders": {
+        "penguin.ips": "4e45531a020101000000000000000000"
+      },
+      "evidence": {
+        "penguin.ips": "Penguin-kun Wars (Japan) [T-En by Penguin Translations v1.012] [Ad by Spinner 8 v1.0].zip"
+      }
+    },
+    "202": {
+      "archive": "[202]pov100.zip",
+      "baseSha1": "de19b3144506b1dc9451a8143127877b36db101c",
+      "layout": "ines",
+      "patches": {
+        "po100.ips": "5f7a7a7cf86a35213b0d3787694af115ba57e094ef083f485bcd547a39d37fdc"
+      },
+      "outputSha1": {
+        "po100.ips": "518cd8abe17d2620a7108d545e9ed7bf534303df"
+      },
+      "outputHeaders": {
+        "po100.ips": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "po100.ips": "Princesstual Orgy (Japan) [T-En by Suicidal Translations v1.00] [n].zip"
+      }
+    },
+    "203": {
+      "archive": "[203]puyoe.zip",
+      "baseSha1": "b88ed1c09a97afaa26307888a2b815b3eb6ee69e",
+      "layout": "ines",
+      "patches": {
+        "puyopuyo.ips": "5903bf0a43d676ae18a2cc61526050791c63b678fdf1c5d1b29af7604962ff1b"
+      },
+      "outputSha1": {
+        "puyopuyo.ips": "734fbe2bb54fdcdc9b5a8008c38abcbb370a2b45"
+      },
+      "outputHeaders": {
+        "puyopuyo.ips": "4e45531a080020000000000000000000"
+      },
+      "evidence": {
+        "puyopuyo.ips": "Puyo Puyo (Japan) [T-En by Aeon Genesis v1.00].zip"
+      }
+    },
+    "204": {
+      "archive": "[204]silk101.zip",
+      "baseSha1": "8fbcd67f62f6423860c5d4256692bde0c96bd4b5",
+      "layout": "ines",
+      "patches": {
+        "Silkroad100.ips": "fcfb2b8f08b76f1953f0e61c942820d72d98657d5aaff142f4663c8d450045cd"
+      },
+      "outputSha1": {
+        "Silkroad100.ips": "44bd0d13062f3a24d1d073bb212bf06344f1b11c"
+      },
+      "outputHeaders": {
+        "Silkroad100.ips": "4e45531a101042000000000000000000"
+      },
+      "evidence": {
+        "Silkroad100.ips": "Rainbow Silkroad (Japan) [T-En by Gaijin Productions v1.01] [n].zip"
+      }
+    },
+    "206": {
+      "archive": "[206]rock2e.zip",
+      "baseSha1": "883ccf8256558b783bd3ac85492f9001cfdaa54d",
+      "layout": "ines",
+      "patches": {
+        "Rockman2.ips": "6ead00c343524873f653984a6eaea137155e72f5de3e3cfb5e4f9cc8e528a3a9"
+      },
+      "outputSha1": {
+        "Rockman2.ips": "3ba422ab145be22f72836df76bca3844acb6422b"
+      },
+      "outputHeaders": {
+        "Rockman2.ips": "4e45531a100010000000000000000000"
+      },
+      "evidence": {
+        "Rockman2.ips": "Rockman 2 - Dr. Wily's Riddle (Japan) [T-En by Aeon Genesis v1.00] [n].zip"
+      }
+    },
+    "209": {
+      "archive": "[209]sc2e.zip",
+      "baseSha1": "7eb4107f2000d644c5dc107e9173a9512cd2049f",
+      "layout": "ines",
+      "patches": {
+        "SC2e.ips": "d47393430e3eebaed1e8f68c50cac4b70f090d7c303c3df4791e48eed0fd7336"
+      },
+      "outputSha1": {
+        "SC2e.ips": "e3ec4de007cedb31acd841a4960abf296c7e1605"
+      },
+      "outputHeaders": {
+        "SC2e.ips": "4e45531a020431000000000000000000"
+      },
+      "evidence": {
+        "SC2e.ips": "Sanrio Carnival 2 (Japan) [T-En by Suicidal Translations v1.00].zip"
+      }
+    },
+    "210": {
+      "archive": "[210]ponpone.zip",
+      "baseSha1": "453fe0333be229778102b069e5862089d4e1ffae",
+      "layout": "ines",
+      "patches": {
+        "PONPON.IPS": "734e88c7ba02a0853bcc5a8f538b2a653c53237efee303a08d747d78b81256dd"
+      },
+      "outputSha1": {
+        "PONPON.IPS": "23869662f501fbd4206f48e162d042c274437e87"
+      },
+      "outputHeaders": {
+        "PONPON.IPS": "4e45531a020431000000000000000000"
+      },
+      "evidence": {
+        "PONPON.IPS": "Sanrio Cup - Pon Pon Volley (Japan) [T-En by Gaijin Productions v1.00].zip"
+      }
+    },
+    "212": {
+      "archive": "[212]splattr2.zip",
+      "baseSha1": "2e1357ac98c78f6cdcd824bc5b4ee5d57c622689",
+      "layout": "ines",
+      "patches": {
+        "splattr2.ips": "35d80fefc67016db5e6069274de97e7076aa0f142318a8c96e1f59716147bcdd"
+      },
+      "outputSha1": {
+        "splattr2.ips": "d416159014e1760729f4c5d2d0d835c78e0f1736"
+      },
+      "outputHeaders": {
+        "splattr2.ips": "4e45531a081031100000000000000000"
+      },
+      "evidence": {
+        "splattr2.ips": "Splatterhouse - Super Deformed (Japan) [T-En by Spinner 8 v2.00] [n].zip"
+      }
+    },
+    "213": {
+      "archive": "[213]skjv100.zip",
+      "baseSha1": "46bc15e30d2ac5a9333b7fab85669d1c33f2e711",
+      "layout": "ines",
+      "patches": {
+        "skjv100.ips": "6feab484e94bcdb3eb0cda8f57a6dc25ff85afbac93a55af203167af0d9bf565"
+      },
+      "outputSha1": {
+        "skjv100.ips": "c3f03140e9477aac8f185a7e3c5d43bfc1ecfbc1"
+      },
+      "outputHeaders": {
+        "skjv100.ips": "4e45531a080010000000000000000000"
+      },
+      "evidence": {
+        "skjv100.ips": "Shikinjou (Japan) [T-En by Suicidal Translations v1.00].zip"
+      }
+    },
+    "214": {
+      "archive": "[214]shuffle.zip",
+      "baseSha1": "234d4a1d6ac469608b39508709bdfd74e6f999fd",
+      "layout": "ines",
+      "patches": {
+        "shuffle.ips": "7e080bd79a0f96d453cb432761adb893b2d4dab14a728290edea5b58cf24f80e"
+      },
+      "outputSha1": {
+        "shuffle.ips": "cb95262dd7e71ea3cf0a7fa74fc6986bf380c5c0"
+      },
+      "outputHeaders": {
+        "shuffle.ips": "4e45531a080020000000000000000000"
+      },
+      "evidence": {
+        "shuffle.ips": "Shufflepuck Cafe (Japan) [T-En by MadHacker v1.0].zip"
+      }
+    },
+    "215": {
+      "archive": "[215]softbal.zip",
+      "baseSha1": "f4ad3e7c950de17e54a51d0871128d394b2fef5c",
+      "layout": "ines",
+      "patches": {
+        "SOFTBAL.IPS": "93fcc012d274508a8a24d1a083e4a8d59e1af2a2517dda26843e027f744305fc"
+      },
+      "outputSha1": {
+        "SOFTBAL.IPS": "97c5772e1cd1d89102ca97aa12c2e600df79ab4f"
+      },
+      "outputHeaders": {
+        "SOFTBAL.IPS": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "SOFTBAL.IPS": "Softball Heaven (Japan) [T-En by Spoony Bard v1.1] [n].zip"
+      }
+    },
+    "217": {
+      "archive": "[217]stedj2e.zip",
+      "baseSha1": "221586bd1270da6e1b6b9cbd9b8c66af1999abbb",
+      "layout": "ines",
+      "patches": {
+        "stedj2e.ips": "706870d6ee9fa2e4a1ea323b184c6e54e622d258871327e48efa55694ebee4a1"
+      },
+      "outputSha1": {
+        "stedj2e.ips": "6e67cedb3481037ddfe8237503bb8cd1ac4523d2"
+      },
+      "outputHeaders": {
+        "stedj2e.ips": "4e45531a081012000000000000000000"
+      },
+      "evidence": {
+        "stedj2e.ips": "Sted - Starfield of Memorable Relics (Japan) [T-En by J2e Translations v1.0] [n].zip"
+      }
+    },
+    "218": {
+      "archive": "[218]sugoroe.zip",
+      "baseSha1": "a78a3d95b2b960079e523c2795c5bb6d25ea33a9",
+      "layout": "ines",
+      "patches": {
+        "SUGOROE.IPS": "6c65db7b72d644ae238af2505ca83f485de48180b2974ac1573d131acd2233f2"
+      },
+      "outputSha1": {
+        "SUGOROE.IPS": "a966f54afc48233f9d9d09a41691309099957b76"
+      },
+      "outputHeaders": {
+        "SUGOROE.IPS": "4e45531a081042000000000000000000"
+      },
+      "evidence": {
+        "SUGOROE.IPS": "Sugoro Quest - The Quest of Dice Heroes (Japan) [T-En by AlanMidas v20070225] [n].zip"
+      }
+    },
+    "222": {
+      "archive": "[222]sh100.zip",
+      "baseSha1": "e18bc87875bc94a8dcf05ae0decc565728c78b84",
+      "layout": "ines",
+      "patches": {
+        "SH100.IPS": "2e005414acbd462daf7b1d40f945e63b4be9dc35797e9f823e2d8a2ebb20c63f"
+      },
+      "outputSha1": {
+        "SH100.IPS": "959c987732eadc06489f9c3cd21162317a653215"
+      },
+      "outputHeaders": {
+        "SH100.IPS": "4e45531a100012000000000000000000"
+      },
+      "evidence": {
+        "SH100.IPS": "Sweet Home (Japan) [T-En by Gaijin Productions+Suicidal Translations v1.00].zip"
+      }
+    },
+    "223": {
+      "archive": "[223]taboev101.zip",
+      "baseSha1": "25047ac83bd83390432b48051a1fd7676180d1fc",
+      "layout": "ines",
+      "patches": {
+        "taboev101.ips": "362ff3a15ec1d28ebb84ec357d10d0b4f7028788ac829c903b2be7229fae2dea"
+      },
+      "outputSha1": {
+        "taboev101.ips": "442dd25aac95f4bf7d4ba96c42f142d0861552e6"
+      },
+      "outputHeaders": {
+        "taboev101.ips": "4e45531a020430000000000000000000"
+      },
+      "evidence": {
+        "taboev101.ips": "Tabo's Tactics (Japan) [T-En by Suicidal Translations v1.01] [n].zip"
+      }
+    },
+    "224": {
+      "archive": "[224]nkhock99.zip",
+      "baseSha1": "328e86e469d3083102f948b7c48ea82d05dad3c6",
+      "layout": "ines",
+      "patches": {
+        "NKHOCK99.IPS": "b599ef0a88c8c51fcaf0f78bc7002707e23b66577e0674f70320531e5fdabd1e"
+      },
+      "outputSha1": {
+        "NKHOCK99.IPS": "570ebe10691dd4603b17fe1c547e8406b14b840d"
+      },
+      "outputHeaders": {
+        "NKHOCK99.IPS": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "NKHOCK99.IPS": "Go Go! Nekketsu Hockey Club - Multi-Sport Battle (Japan) [T-En by Disconnected Translations v0.99] [n].zip"
+      }
+    },
+    "226": {
+      "archive": "[226]tse-v10.zip",
+      "baseSha1": "1969d1ade58dae232d3778f2be048ea7a06924d4",
+      "layout": "ines",
+      "patches": {
+        "TSe-v10.ips": "cb6ea2fdbf82e974c474f4ea0d489f7c65647c94de899caf2a6b8c089f202dad"
+      },
+      "outputSha1": {
+        "TSe-v10.ips": "74a83909bb4a0786b5dec3b4411099ccf154ca27"
+      },
+      "outputHeaders": {
+        "TSe-v10.ips": "4e45531a081043000000000000000000"
+      },
+      "evidence": {
+        "TSe-v10.ips": "Downtown Special - Kunio-kun's Samurai Piece (Japan) [T-En by Dynamic Designs v1.00] [n].zip"
+      }
+    },
+    "227": {
+      "archive": "[227]tstar100.zip",
+      "baseSha1": "f12b826f0fb4a8bec86ca26d067908f9d542c6fc",
+      "layout": "ines",
+      "patches": {
+        "TSTAR100.IPS": "cd24f14ed74dd39cb4362bf716422d471234a594f57b6023dc8d159073ae35ad"
+      },
+      "outputSha1": {
+        "TSTAR100.IPS": "5d8aa17095f25ab7c4ded41f20474ba11f45e4a2"
+      },
+      "outputHeaders": {
+        "TSTAR100.IPS": "4e45531a102040000000000000000000"
+      },
+      "evidence": {
+        "TSTAR100.IPS": "Tetrastar - The Fighter (Japan) [T-En by Gaijin Productions v1.00b].zip"
+      }
+    },
+    "229": {
+      "archive": "[229]sbraine.zip",
+      "baseSha1": "db5170c1051fca111a98980bc3342883f95cc848",
+      "layout": "ines",
+      "patches": {
+        "SBRAINE.IPS": "d4bda8c05a4c4c6b149891b6608063e06e71c62710dd524f09fb8efeab8c0bdf"
+      },
+      "outputSha1": {
+        "SBRAINE.IPS": "7c786558fdf9886a561478d6b559e2b57a0fedc3"
+      },
+      "outputHeaders": {
+        "SBRAINE.IPS": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "SBRAINE.IPS": "Directive - Solbrain (Japan) [T-En by Aeon Genesis v1.01] [n].zip"
+      }
+    },
+    "233": {
+      "archive": "[233]venus20.zip",
+      "baseSha1": "30d2ab4aaad05c2202b1ad89abf93f4871b3fe21",
+      "layout": "ines",
+      "patches": {
+        "venus20.ips": "29ee70a14ae1a275d9c60cb5dc9ecb42bd8491e6cc022a949debd1f8711f7f35"
+      },
+      "outputSha1": {
+        "venus20.ips": "57a70f9868956697a7d182ab14403b089511cfd5"
+      },
+      "outputHeaders": {
+        "venus20.ips": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "venus20.ips": "Venus Wars, The - Back to the City Io (Japan) [T-En by J2e Translations v2.0] [n].zip"
+      }
+    },
+    "234": {
+      "archive": "[234]wagyane.zip",
+      "baseSha1": "7c4a68212dc7d36dae8d351c916ffc6f2840b8b5",
+      "layout": "ines",
+      "patches": {
+        "wagyane.ips": "48c3c8c33077a34a1566d04e4b5db51a9c69402434b9eaaf0b79eb093ce0b1ba"
+      },
+      "outputSha1": {
+        "wagyane.ips": "7920e38d5313c4e80b6b4cc77a07ab3fe148d337"
+      },
+      "outputHeaders": {
+        "wagyane.ips": "4e45531a0808e1c00000000000000000"
+      },
+      "evidence": {
+        "wagyane.ips": "Wagyan Land (Japan) [T-En by AlanMidas v20001223].zip"
+      }
+    },
+    "235": {
+      "archive": "[235]wai2v101.zip",
+      "baseSha1": "37963a3caf970a76de0ae66420c4dec2367d0c41",
+      "layout": "ines",
+      "patches": {
+        "WW2v101.IPS": "6f058f94d63831802ea129819a491e72be2aa7fc73e5594fe9eb36ad687d2893"
+      },
+      "outputSha1": {
+        "WW2v101.IPS": "7f79e90e75e566a69d8da95df9cf023b9ee89a47"
+      },
+      "outputHeaders": {
+        "WW2v101.IPS": "4e45531a101050100000000000000000"
+      },
+      "evidence": {
+        "WW2v101.IPS": "Wai Wai World 2 - SOS from Parsley Castle (Japan) [T-En by Vice Translations v1.01] [n].zip"
+      }
+    },
+    "238": {
+      "archive": "[238]ys1e.zip",
+      "baseSha1": "e0563957b5bd80a2226c5a6aaf30f0c6b957d49c",
+      "layout": "ines",
+      "patches": {
+        "ys1e.ips": "762f9de158b54239385f748d1cfcc1c38ee97a92142bfddc12ebf1be04951d49"
+      },
+      "outputSha1": {
+        "ys1e.ips": "f3da0184fb69f3b566f136f6977d4dce129acfd3"
+      },
+      "outputHeaders": {
+        "ys1e.ips": "4e45531a100012000000000000000000"
+      },
+      "evidence": {
+        "ys1e.ips": "Ys (Japan) [T-En by David Mullen v1].zip"
+      }
+    },
+    "239": {
+      "archive": "[239]ys2e.zip",
+      "baseSha1": "2e9393de9cd684f556c0348d8728bdf9a86c1f95",
+      "layout": "ines",
+      "patches": {
+        "ys2e.ips": "e8e26ada59c6bf562ec3b7a35c036997e43d7fdfe0baff07d784c2431e382535"
+      },
+      "outputSha1": {
+        "ys2e.ips": "bab7fb94a4c5fcd44c048e90f9de82c44629be5d"
+      },
+      "outputHeaders": {
+        "ys2e.ips": "4e45531a101042000000000000000000"
+      },
+      "evidence": {
+        "ys2e.ips": "Ys II - Ancient Ys Vanished - The Final Chapter (Japan) [T-En by David Mullen v1].zip"
+      }
+    },
+    "240": {
+      "archive": "[240]ys3e100.zip",
+      "baseSha1": "69e1c672afdff85411f8b1e774a0947c542dd384",
+      "layout": "ines",
+      "patches": {
+        "YS3E100.IPS": "9dfcb64d8564e72f45d3c4662786a9dac3c0d33ad3217ed72f50672cc3caf943"
+      },
+      "outputSha1": {
+        "YS3E100.IPS": "a778f8aa755b3a9796e031d90443dc2c08512637"
+      },
+      "outputHeaders": {
+        "YS3E100.IPS": "4e45531a101063700000000000000000"
+      },
+      "evidence": {
+        "YS3E100.IPS": "Ys III - Wanderers from Ys (Japan) [T-En by Vice Translations v1.00].zip"
+      }
+    },
+    "524": {
+      "archive": "[524]Egyptv101.zip",
+      "baseSha1": "c62b6a6bf63839c3a1303e56bf82d2db63b10274",
+      "layout": "ines",
+      "patches": {
+        "egyptv101.ips": "7bb4a2c67301ea7204ae8b192229f2e0e83eaf4cad31e2b9be90819920d4a3b4"
+      },
+      "outputSha1": {
+        "egyptv101.ips": "7ba97e6ae9e731306b535d72cc6673fbd2043f44"
+      },
+      "outputHeaders": {
+        "egyptv101.ips": "4e45531a020430000000000000000000"
+      },
+      "evidence": {
+        "egyptv101.ips": "Egypt (Japan) [T-En by Gil Galad v1.01].zip"
+      }
+    },
+    "545": {
+      "archive": "[545]zhunt101.zip",
+      "baseSha1": "98513a9fc9d34240b887ea0a48421c14bffec54d",
+      "layout": "ines",
+      "patches": {
+        "Zhunt101.ips": "6c78ea0f4fce8b3629f073d50802f164315250780a671c84037cd715d345ccd8"
+      },
+      "outputSha1": {
+        "Zhunt101.ips": "20af591a4643391973f430c521262601d5d9b73a"
+      },
+      "outputHeaders": {
+        "Zhunt101.ips": "4e45531a080410000000000000000000"
+      },
+      "evidence": {
+        "Zhunt101.ips": "Zombie Hunter (Japan) [T-En by KingMike Translations v1.01].zip"
+      }
+    },
+    "566": {
+      "archive": "[566]jb_v1_00.zip",
+      "baseSha1": "516264328536f3d21594a0ec761a7eaa54cdd0db",
+      "layout": "ines",
+      "patches": {
+        "jb.ips": "6288932174d195816860023d7ab9c628812ba64a0ae4d9d210c83da24dcd2aac"
+      },
+      "outputSha1": {
+        "jb.ips": "aa1111430bfad56bb4c3b467a78ba16a12261332"
+      },
+      "outputHeaders": {
+        "jb.ips": "4e45531a202052000000000000000000"
+      },
+      "evidence": {
+        "jb.ips": "Just Breed (Japan) [T-En by Dynamic Designs v1.00].zip"
+      }
+    },
+    "569": {
+      "archive": "[569]nksoc1.2.zip",
+      "baseSha1": "f47c60143992c5f2e36a31c5f290900c54dc346e",
+      "layout": "ines",
+      "patches": {
+        "NSL12.IPS": "d7678e3b5c03a22cc96200afd8387179c47f03f7e8c7e31a06590ea66d60f411"
+      },
+      "outputSha1": {
+        "NSL12.IPS": "a049f85a576f189e9bdfe892ef6fa3aee664d219"
+      },
+      "outputHeaders": {
+        "NSL12.IPS": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "NSL12.IPS": "Kunio-kun's Nekketsu Soccer League (Japan) [T-En by PentarouZero v1.2] [n].zip"
+      }
+    },
+    "576": {
+      "archive": "[576]mde-v100.zip",
+      "baseSha1": "0b04eeb57e5a9992ce233900af9698aad12a5cb5",
+      "layout": "ines",
+      "patches": {
+        "MDE-V100.IPS": "4a16f0b1dc6f60ca91c83ff92f62981253b44d5d58d0e2e6cd412f37c9a22656"
+      },
+      "outputSha1": {
+        "MDE-V100.IPS": "e6e13fb9be8de11016efbaac9ad5655b8e43b180"
+      },
+      "outputHeaders": {
+        "MDE-V100.IPS": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "MDE-V100.IPS": "Magical Doropie (Japan) [T-En by Video Smash Excellent v1.00].zip"
+      }
+    },
+    "596": {
+      "archive": "[596]downtown.zip",
+      "baseSha1": "1f1b4776e4a96067657c20f083cd67dd4e88ec99",
+      "layout": "ines",
+      "patches": {
+        "downtown.ips": "a36446d401c4fe7521cd06941e1022a3f542aa53139e60d2e03b4a62745900c3"
+      },
+      "outputSha1": {
+        "downtown.ips": "33d2931d9cc0821eb34f10a0b8dd3f73b145c615"
+      },
+      "outputHeaders": {
+        "downtown.ips": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "downtown.ips": "Downtown - Nekketsu Cross-Country (Japan) [T-En by Disconnected Translations v0.15] [i] [n].zip"
+      }
+    },
+    "615": {
+      "archive": "[615]nj100.zip",
+      "baseSha1": "8e2100be608f00d747ba54e8a8dd807aa128f129",
+      "layout": "ines",
+      "patches": {
+        "jaja100.ips": "d1d1519124a00b62b96b693f778df28312043d03baf683557b776d84a1e145e7"
+      },
+      "outputSha1": {
+        "jaja100.ips": "7e1eed32343a8f6cd21bd894d7775729368ba423"
+      },
+      "outputHeaders": {
+        "jaja100.ips": "4e45531a081020100000000000000000"
+      },
+      "evidence": {
+        "jaja100.ips": "Ninja Jajamaru - Galactic Battle (Japan) [T-En by HTI v1.00] [n].zip"
+      }
+    },
+    "620": {
+      "archive": "[620]recca.zip",
+      "baseSha1": "7e8506e047699bdef04a77c2cf50335be8133121",
+      "layout": "ines",
+      "patches": {
+        "RECCA-E.IPS": "e7f564521a1e1dc7039d25179e8ec29ce8eed669f91232558f8423a5822a173d"
+      },
+      "outputSha1": {
+        "RECCA-E.IPS": "d43ae67a64a563d8f7965b75291a83160e3392d7"
+      },
+      "outputHeaders": {
+        "RECCA-E.IPS": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "RECCA-E.IPS": "Recca - Raging Fire (Japan) [T-En by Aeon Genesis v1.00] [n].zip"
+      }
+    },
+    "634": {
+      "archive": "[634]photon1b.zip",
+      "baseSha1": "6e3ed8313de387c5c5b8820e1714da0056536e2f",
+      "layout": "ines",
+      "patches": {
+        "Photon1b.ips": "61a5ea6a02060eb117dd5e066226b42791b99976c2dc5ffd787d85614ba10544"
+      },
+      "outputSha1": {
+        "Photon1b.ips": "560f25ad88f934c64c01ce3ad0086d9b9359b42c"
+      },
+      "outputHeaders": {
+        "Photon1b.ips": "4e45531a080020000000000000000000"
+      },
+      "evidence": {
+        "Photon1b.ips": "Soldier of Light - Photon - The Ultimate Game on Planet Earth (Japan) [T-En by KingMike Translations v1.0b] [n].zip"
+      }
+    },
+    "635": {
+      "archive": "[635]wag2eips.zip",
+      "baseSha1": "201d0c2a99ecffb438ea8ab49422db7cf3ab1c3f",
+      "layout": "ines",
+      "patches": {
+        "wagyan2e.ips": "f07298db970da3310cfa54f2cfd274a2cb6bce9e89cb4cf9b320fe3d7fe17231"
+      },
+      "outputSha1": {
+        "wagyan2e.ips": "db1839bd74ac64c7e56c2e07fab88cf1c69aff67"
+      },
+      "outputHeaders": {
+        "wagyan2e.ips": "4e45531a101031100000000000000000"
+      },
+      "evidence": {
+        "wagyan2e.ips": "Wagyan Land 2 (Japan) [T-En by Abstract Crouton Production v1.0].zip"
+      }
+    },
+    "647": {
+      "archive": "[647]dbz1_101.zip",
+      "baseSha1": "aa8fba68f1ca8cd8015677e9dd12f06f17a1ba7a",
+      "layout": "ines",
+      "patches": {
+        "DBZ1J.IPS": "dfb97ad1e1e3b911fcd97e1a1c966e98ff4fe85e4b7285e9fe834c1b016695dc"
+      },
+      "outputSha1": {
+        "DBZ1J.IPS": "3c64e1d46f9d7ad560f2bba8f60d6fead925a4aa"
+      },
+      "outputHeaders": {
+        "DBZ1J.IPS": "4e45531a1020f0900000000000000000"
+      },
+      "evidence": {
+        "DBZ1J.IPS": "Dragon Ball Z - Assault of the Saiyans (Japan) [T-En by Twilight Translations v1.01] [n].zip"
+      }
+    },
+    "651": {
+      "archive": "[651]kn3ev100.zip",
+      "baseSha1": "6d67ba840f0a0ed487b4f875b3625ff820d6d9c6",
+      "layout": "ines",
+      "patches": {
+        "kn3ev100.ips": "8902e208565a1cb03961297e7dd5a33928ae7f6d6ec7f1e0c0f775fa3343de31"
+      },
+      "outputSha1": {
+        "kn3ev100.ips": "ba02bd54ffb60e3cf996f73d92c3728006db3cab"
+      },
+      "outputHeaders": {
+        "kn3ev100.ips": "4e45531a081010400000000000000000"
+      },
+      "evidence": {
+        "kn3ev100.ips": "Kid Niki 3 (Japan) [T-En by Suicidal Translations v1.00] [n].zip"
+      }
+    },
+    "652": {
+      "archive": "[652]witsev100.zip",
+      "baseSha1": "77c4de4d3681cea01194525ae7706cb63177b39b",
+      "layout": "ines",
+      "patches": {
+        "witsev100.ips": "ba5a5e4517848f3b85faefd57dacf877593e79cd069895384868b71c40186746"
+      },
+      "outputSha1": {
+        "witsev100.ips": "37552844718a43a9c15f01d1e25b5be9c05a3cf6"
+      },
+      "outputHeaders": {
+        "witsev100.ips": "4e45531a080021000000000000000000"
+      },
+      "evidence": {
+        "witsev100.ips": "Wit's (Japan) [T-En by Suicidal Translations v1.00].zip"
+      }
+    },
+    "659": {
+      "archive": "[659]kf2eips.zip",
+      "baseSha1": "72cb5e3634d05547e0150650e15b0d19854a6703",
+      "layout": "ines",
+      "patches": {
+        "kf2e.ips": "f4eb09f0ce9d5ca9d8c5d66c4abf9dca653de5fb63061e4dd0cc1ed3bac79f21"
+      },
+      "outputSha1": {
+        "kf2e.ips": "5e60dd0b6274d2007903b91b29ff62effe489b6b"
+      },
+      "outputHeaders": {
+        "kf2e.ips": "4e45531a081010400000000000000000"
+      },
+      "evidence": {
+        "kf2e.ips": "Kung Fu 2 (Japan) [T-En by Abstract Crouton Production v1.0] [n].zip"
+      }
+    },
+    "676": {
+      "archive": "[676]biov100.zip",
+      "baseSha1": "e1c7d975e6964f9860b58d5d9530ed7e2a24b376",
+      "layout": "ines",
+      "patches": {
+        "BIOV100.IPS": "67ae81e9b389c47d280c9c728f71378a0a705c720b95a0b8e516d26743be86d9"
+      },
+      "outputSha1": {
+        "BIOV100.IPS": "e99bd2b415de69531ec50936eb928c2bc3500cc2"
+      },
+      "outputHeaders": {
+        "BIOV100.IPS": "4e45531a081090100000000000000000"
+      },
+      "evidence": {
+        "BIOV100.IPS": "Bio Miracle Baby Upa!! (Japan) [T-En by Vice Translations v1.00] [n].zip"
+      }
+    },
+    "678": {
+      "archive": "[678]yume1021.zip",
+      "baseSha1": "7cb7eec5650c1327c2619a14f497ba0af06e185c",
+      "layout": "ines",
+      "patches": {
+        "ypm1021.ips": "7d7bd122bb7a0990f408f080b1574370198905a83cd3f153339da3f9be75bd1f"
+      },
+      "outputSha1": {
+        "ypm1021.ips": "6730403428b76a830ded0e1d3654957f8305c686"
+      },
+      "outputHeaders": {
+        "ypm1021.ips": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "ypm1021.ips": "Dream Penguin Adventure (Japan) [T-En by Vice Translations v1.021] [n].zip"
+      }
+    },
+    "683": {
+      "archive": "[683]DvD_Translations-ADandD_DragonLance_2-Dragons_of_Flame-v1_03.zip",
+      "baseSha1": "926ee7592f45fd204a371f78600e7f37272e5143",
+      "layout": "ines",
+      "patches": {
+        "DoF-v1_03.IPS": "d007f8986a3cd398054b5bfac35dca02d6bce76871f1aceef4a284dab5186327"
+      },
+      "outputSha1": {
+        "DoF-v1_03.IPS": "7f0741580ec2ab8df060a19767793c038c669472"
+      },
+      "outputHeaders": {
+        "DoF-v1_03.IPS": "4e45531a081012000000000000000000"
+      },
+      "evidence": {
+        "DoF-v1_03.IPS": "Advanced Dungeons & Dragons - Dragons of Flame (Japan) [T-En by DvD Translations v1.03].zip"
+      }
+    },
+    "685": {
+      "archive": "[685]bprin11a.zip",
+      "baseSha1": "7203f5ba4c32f38d19ef27195d1c26e0541accd3",
+      "layout": "ines",
+      "patches": {
+        "bprin11a.ips": "0f45ee5b0f93a1fa2710d185355f1593815b93ba22e093ce0c11a78d22592071"
+      },
+      "outputSha1": {
+        "bprin11a.ips": "5c387229b6f734eec70236c5fd890af850408302"
+      },
+      "outputHeaders": {
+        "bprin11a.ips": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "bprin11a.ips": "Banana Prince (Germany) [T-En by KingMike Translations v1.1a].zip"
+      }
+    },
+    "700": {
+      "archive": "[700]attack10.zip",
+      "baseSha1": "9a325a10565d3edde94da0a6504b5e4df5d0d0aa",
+      "layout": "ines",
+      "patches": {
+        "ATTACK10.IPS": "0a9c87d3f61ceef4acffad23c31d94f9bca784016a2f9b6dcd6f68be8a53e1ee"
+      },
+      "outputSha1": {
+        "ATTACK10.IPS": "8e539482d5c8011a3c6f4ac292bd2d09f263a033"
+      },
+      "outputHeaders": {
+        "ATTACK10.IPS": "4e45531a080021000000000000000000"
+      },
+      "evidence": {
+        "ATTACK10.IPS": "Attack Animal Academy (Japan) [T-En by PentarouZero v1.0] [n].zip"
+      }
+    },
+    "730": {
+      "archive": "[730]akuv100.zip",
+      "baseSha1": "c3248da0b075ffe93f1d65aa8a1579c91e560309",
+      "layout": "ines",
+      "patches": {
+        "AKUV100.IPS": "1e52a5de9b35687b7c90b48b463bdbc9109cffb3b86ff8be07cc3080eecf8f2b"
+      },
+      "outputSha1": {
+        "AKUV100.IPS": "eca6f2a2b81fae9d1dc1f25e6bd75ba0ac04c884"
+      },
+      "outputHeaders": {
+        "AKUV100.IPS": "4e45531a101080100000000000000000"
+      },
+      "evidence": {
+        "AKUV100.IPS": "Castlevania III - Legend of Demon Castle (Japan) [T-En by Vice Translations v1.00] [n].zip"
+      }
+    },
+    "739": {
+      "archive": "[739]wrc100.zip",
+      "baseSha1": "4026ddf92f01e08f9e4c3863769aebd153ff67cc",
+      "layout": "ines",
+      "patches": {
+        "wrc100.ips": "6d191335b1b1591505dc1bfd0340ccb4c54c2913f6c09087b2f1350389a40306"
+      },
+      "outputSha1": {
+        "wrc100.ips": "9a1ee8570ac59d5ba76f0e7f4d0b706fbfda393d"
+      },
+      "outputHeaders": {
+        "wrc100.ips": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "wrc100.ips": "Exciting Rally - World Rally Championship (Japan) [T-En by Klepto Software v1.00].zip"
+      }
+    },
+    "741": {
+      "archive": "[741]airwolf1.zip",
+      "baseSha1": "52b63b099a720989ecd31c4535374c9389eebce6",
+      "layout": "ines",
+      "patches": {
+        "airwolf1.IPS": "2c7f30bacb5b99f0efd88a2d60dfe8d075f6c232cc148ba00dc58ccd26dba306"
+      },
+      "outputSha1": {
+        "airwolf1.IPS": "b76eb5b18b09bfc48f08533309cd03b8b24221fd"
+      },
+      "outputHeaders": {
+        "airwolf1.IPS": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "airwolf1.IPS": "Airwolf (Japan) [T-En by Vice Translations v1.00].zip"
+      }
+    },
+    "744": {
+      "archive": "[744]DvD_Translations-JJ_Jump_Out_The_Epic_War-Part_II-v1_00.zip",
+      "baseSha1": "8787ea6b987fc091c13b1e8e778af3b1df4db8a9",
+      "layout": "ines",
+      "patches": {
+        "3D2v1_00.IPS": "fb754562f886e1492da161dd2640eb460b111a09113deb70e9790b1119c4dad5",
+        "TD2v1_00.IPS": "85ea7374913f898f75463376745309e23b69f44d096a4ad7ebe3f6401d5b8a6c"
+      },
+      "outputSha1": {
+        "3D2v1_00.IPS": "f623c34e4efe3baed531b963509d7dafcd029191",
+        "TD2v1_00.IPS": "e54091563b9f39863a93f8c0260b3b5518628576"
+      },
+      "outputHeaders": {
+        "3D2v1_00.IPS": "4e45531a080021000000000000000000",
+        "TD2v1_00.IPS": "4e45531a080021000000000000000000"
+      },
+      "evidence": {
+        "3D2v1_00.IPS": "JJ - The 3-D Battles of WorldRunner - Part II (Japan) [T-En by DvD Translations v1.00 3D2] [n].zip",
+        "TD2v1_00.IPS": "JJ - Jump Out! The Epic War - Part II (Japan) [T-En by DvD Translations v1.00 TD2] [n].zip"
+      }
+    },
+    "756": {
+      "archive": "[756]dbg2-100.zip",
+      "baseSha1": "6deb1223143299d0c1961d64507e6a71ac4e095d",
+      "layout": "ines",
+      "patches": {
+        "BUSTII10.IPS": "0c3a9ed25460d9c52a4dd0adfc1063f0985e14381654b8f11b7b1402961fda0c"
+      },
+      "outputSha1": {
+        "BUSTII10.IPS": "ee4e59a6e60d37bfff710df6327e56888497da92"
+      },
+      "outputHeaders": {
+        "BUSTII10.IPS": "4e45531a0808e1c00000000000000000"
+      },
+      "evidence": {
+        "BUSTII10.IPS": "Dragon Buster II - Seal of Darkness (Japan) [T-En by PentarouZero v1.0] [n].zip"
+      }
+    },
+    "773": {
+      "archive": "[773]lupin100.zip",
+      "baseSha1": "9fd37ad1b34bf0ad3e69e2f72b1244924f1d5a6e",
+      "layout": "ines",
+      "patches": {
+        "lupin100.ips": "eaed6431a5cbcb37074b08d33ac9442fd86bc11ba266130200f25edefc139f18"
+      },
+      "outputSha1": {
+        "lupin100.ips": "6d0d3b17a6e58eb197af164fa83de1642bebafe1"
+      },
+      "outputHeaders": {
+        "lupin100.ips": "4e45531a0808e1c00000000000000000"
+      },
+      "evidence": {
+        "lupin100.ips": "Lupin the 3rd - Pandora's Legacy (Japan) [T-En by Vice Translations v1.00] [n].zip"
+      }
+    },
+    "774": {
+      "archive": "[774]arme101.zip",
+      "baseSha1": "fbb779519748519cfd981d542e6dfc46572574e7",
+      "layout": "ines",
+      "patches": {
+        "arme101.ips": "c8ac8857a637a6758f8af451edb59c40b9fda7000b7ee2b75f3b34550690cd85"
+      },
+      "outputSha1": {
+        "arme101.ips": "ed5612028ad32c9c693dd4392e307998a58a0007"
+      },
+      "outputHeaders": {
+        "arme101.ips": "4e45531a101061700000000000000000"
+      },
+      "evidence": {
+        "arme101.ips": "Armadillo (Japan) [T-En by Vice Translations v1.01].zip"
+      }
+    },
+    "825": {
+      "archive": "[825]anpanmanv.99eng.zip",
+      "baseSha1": "f3643b64674bfeff327cf529d37f0f10e591d106",
+      "layout": "ines",
+      "patches": {
+        "soreike anpanman english.ips": "1c70ab2dff86d9710e78050ecb863f2deec5bf97a0fb8f7e6bc235c3692d3395"
+      },
+      "outputSha1": {
+        "soreike anpanman english.ips": "7db1a4d79b5b81cfa34c086510d734bab3275198"
+      },
+      "outputHeaders": {
+        "soreike anpanman english.ips": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "soreike anpanman english.ips": "Hey You! Anpanman - Everyone's Hiking Game! (Japan) [T-En by Pope Hentai v0.99] [n].zip"
+      }
+    },
+    "838": {
+      "archive": "[838]sai2-100.zip",
+      "baseSha1": "c48437016b20ecc28f7673d82c91441982d685a2",
+      "layout": "ines",
+      "patches": {
+        "sai2-100.ips": "b66ea6c125aa663e535abb35a7e81baf596cbad84133c3258a37a44fb1954351"
+      },
+      "outputSha1": {
+        "sai2-100.ips": "fa30461d2f7a49185b3da7b616b1ac11496752bc"
+      },
+      "outputHeaders": {
+        "sai2-100.ips": "4e45531a081020100000000000000000"
+      },
+      "evidence": {
+        "sai2-100.ips": "Saiyuki World 2 - Evil Spirit of Heaven (Japan) [T-En by PentarouZero v1.0] [n].zip"
+      }
+    },
+    "839": {
+      "archive": "[839]para-100.zip",
+      "baseSha1": "58e0b0f6eddc49f83cda556b2c364bb02fbe8f76",
+      "layout": "ines",
+      "patches": {
+        "para-100.ips": "7e7a2917ea9651e82e701cdf086083f1e11e15d97de5b2249af0ff8efaed7d4d"
+      },
+      "outputSha1": {
+        "para-100.ips": "dc13ea8330a53833aa4f9d1ac17d78598b2ced45"
+      },
+      "outputHeaders": {
+        "para-100.ips": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "para-100.ips": "Parallel World (Japan) [T-En by PentarouZero v1.0].zip"
+      }
+    },
+    "886": {
+      "archive": "[886]beastv10.zip",
+      "baseSha1": "21eb7e8278a309d5d55468fa50f7690d4364ced9",
+      "layout": "ines",
+      "patches": {
+        "altered.IPS": "94e43bd4c1273d33933e45b715f88c77f8644abad8fdd65c6b574a3dc9f1c34f"
+      },
+      "outputSha1": {
+        "altered.IPS": "cfc93d6d435091bf010effc043a3ff914ed1eb88"
+      },
+      "outputHeaders": {
+        "altered.IPS": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "altered.IPS": "Altered Beast (Japan) [T-En by Aka Translations v1.00] [n].zip"
+      }
+    },
+    "891": {
+      "archive": "[891]rcrz101.zip",
+      "baseSha1": "4dd1d17de13c53dd5f526d78a9755351488860ad",
+      "layout": "ines",
+      "patches": {
+        "rcrz101.IPS": "c85308c11c2888abe4ef263e9a560bdef82b472ad97d6b7dc93ad259d7991887"
+      },
+      "outputSha1": {
+        "rcrz101.IPS": "493b3a4a0e2b003f555f1c427296bad14e58b1f6"
+      },
+      "outputHeaders": {
+        "rcrz101.IPS": "4e45531a080021000000000000000000"
+      },
+      "evidence": {
+        "rcrz101.IPS": "River City Ransom Zero (Japan) [T-En by Vice Translations v1.01] [n].zip"
+      }
+    },
+    "898": {
+      "archive": "[898]dbz3_100_ips.zip",
+      "baseSha1": "451874665504660ebe3e8cfc8f396862319551af",
+      "layout": "ines",
+      "patches": {
+        "dbz3.ips": "b0f565aeb8b2b13667d78199d3a30d25136299460cea5188e0d46149d8ee3464"
+      },
+      "outputSha1": {
+        "dbz3.ips": "246a66ff3e961554fa1e56ed3334350104c53ca9"
+      },
+      "outputHeaders": {
+        "dbz3.ips": "4e45531a102000100000000000000000"
+      },
+      "evidence": {
+        "dbz3.ips": "Dragon Ball Z III - Killer Androids (Japan) [T-En by Twilight Translations v1.00] [n].zip"
+      }
+    },
+    "899": {
+      "archive": "[899]dbzg_100_ips.zip",
+      "baseSha1": "33eb849a139b89d21b2da48b810196a8971a0d0d",
+      "layout": "ines",
+      "patches": {
+        "dbzg.ips": "3f1c76486fe0d1f964273998c4ba7938846beb05135b4a952b0045e622c7db6e",
+        "dbzg_vpc.ips": "dc49dcd894abed0645483ce2e2b5958e7cc71b17ce5a42e2738b85e3fca4d7fd"
+      },
+      "outputSha1": {
+        "dbzg.ips": "893453c17b0dff8889acf496ceb06d1f63021fcc",
+        "dbzg_vpc.ips": "cbb2382d78724ee4c18d0d71ca557eb565364408"
+      },
+      "outputHeaders": {
+        "dbzg.ips": "4e45531a102000100000000000000000",
+        "dbzg_vpc.ips": "4e45531a102000100000000000000000"
+      },
+      "evidence": {
+        "dbzg.ips": "Dragon Ball Z Gaiden - Plan to Eliminate the Saiyans (Japan) [T-En by Twilight Translations v1.00] [n].zip",
+        "dbzg_vpc.ips": "Dragon Ball Z Gaiden - Plan to Eliminate the Saiyans (Japan) [T-En by Twilight Translations v1.00] (Vegeta Control) [n].zip"
+      }
+    },
+    "904": {
+      "archive": "[904]hirake_v101.zip",
+      "baseSha1": "aca8cf0b797904396abfdd540b7a26f89229be45",
+      "layout": "ines",
+      "patches": {
+        "hev101.ips": "aea8b52130c5d754ae79ac4ccb79b320b256f65eb93ad00ccee3dc5bee6c9da7"
+      },
+      "outputSha1": {
+        "hev101.ips": "f1a93f0383cd0d3bd8862930e49675056883e668"
+      },
+      "outputHeaders": {
+        "hev101.ips": "4e45531a020410000000000000000000"
+      },
+      "evidence": {
+        "hev101.ips": "Hirake! Ponkikki (Japan) [T-En by Gil Galad v1.01].zip"
+      }
+    },
+    "934": {
+      "archive": "[934]darklord-e.zip",
+      "baseSha1": "3019ef453329fd7620e817d932d527ce349a8bed",
+      "layout": "ines",
+      "patches": {
+        "darklord-e.ips": "bbc2c8d37f1c3415337982e6aa7518de9fb6fe269520fa946eb188dfce6e4000"
+      },
+      "outputSha1": {
+        "darklord-e.ips": "5dd8b4df076fe0dfed9b67133aeab51008342ba4"
+      },
+      "outputHeaders": {
+        "darklord-e.ips": "4e45531a101043000000000000000000"
+      },
+      "evidence": {
+        "darklord-e.ips": "Dark Lord (Japan) [T-En by Aeon Genesis v1.00].zip"
+      }
+    },
+    "959": {
+      "archive": "[959]nkdb.zip",
+      "baseSha1": "a18badb09635b1d90ec574defc2742fb1d9ca7d3",
+      "layout": "ines",
+      "patches": {
+        "nkdb.ips": "a351495ce8caedd03ee3a1e39b81b39872f160bf2dcbfa9204dd875aa8e748b2"
+      },
+      "outputSha1": {
+        "nkdb.ips": "de07411cbd4b8213c3df7f2814eea1a87259033b"
+      },
+      "outputHeaders": {
+        "nkdb.ips": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "nkdb.ips": "Nekketsu High Dodgeball (Japan) [T-En by Cleveland Rock v0.9] [n].zip"
+      }
+    },
+    "1045": {
+      "archive": "[1045]esper2e.zip",
+      "baseSha1": "dc527dce96af9f19ba26cb3038f28217ce67e942",
+      "layout": "ines",
+      "patches": {
+        "esper2.ips": "c822692c0b65a3d731f7f89404add46ea65ec6747897c907899af7746ed16736"
+      },
+      "outputSha1": {
+        "esper2.ips": "1786eb08348d3c73e3fed66fe88ebda74e78ed0f"
+      },
+      "outputHeaders": {
+        "esper2.ips": "4e45531a1010a2100000000000000000"
+      },
+      "evidence": {
+        "esper2.ips": "Esper Dream 2 (Japan) [T-En by Aeon Genesis v1.00] [n].zip"
+      }
+    },
+    "1047": {
+      "archive": "[1047]madara-e.zip",
+      "baseSha1": "e6b6a78a78116223f14903158e813f0ed7cdbcf3",
+      "layout": "ines",
+      "patches": {
+        "madarae.ips": "bf5c158c8e7e04a8a6d22d23a87e9e8a826f9fcc42adf518f2700509808329c0"
+      },
+      "outputSha1": {
+        "madarae.ips": "539f81ee9dd662b0d2062e58b4bfcfb9e5220ab9"
+      },
+      "outputHeaders": {
+        "madarae.ips": "4e45531a1020a3100000000000000000"
+      },
+      "evidence": {
+        "madarae.ips": "Madara (Japan) [T-En by Aeon Genesis v1.00] [n].zip"
+      }
+    },
+    "1077": {
+      "archive": "[1077]DvD_Translations-Gorbys_Pipeline-revA.zip",
+      "baseSha1": "99eb531812699f9f6043e6f2d7b084bea8baa784",
+      "layout": "ines",
+      "patches": {
+        "DvDGorby.IPS": "3236d4b93121c7c3fd2fa66ec3112ede5085ec8cda349f9581989e84a25b77e6"
+      },
+      "outputSha1": {
+        "DvDGorby.IPS": "53594716f5631e7572271bea927966f73ee640c1"
+      },
+      "outputHeaders": {
+        "DvDGorby.IPS": "4e45531a020430000000000000000000"
+      },
+      "evidence": {
+        "DvDGorby.IPS": "Gorby's Pipeline - Great Military Operation (Japan) [T-En by DvD Translations Rev A] [n].zip"
+      }
+    },
+    "1081": {
+      "archive": "[1081]ff2nes_sv.zip",
+      "baseSha1": "4a02d61982966205cdf3a4d27381d610515eb494",
+      "layout": "ines",
+      "patches": {
+        "ff2_nes_sv.ips": "34663cdb7a1ed941fabab1c59015ada37f178098b6f79337460f95a0a668d176"
+      },
+      "outputSha1": {
+        "ff2_nes_sv.ips": "d54f52a6c3a8475cd92cd8d9a7ba0eb18cb244ea"
+      },
+      "outputHeaders": {
+        "ff2_nes_sv.ips": "4e45531a100012000000000000000000"
+      },
+      "evidence": {
+        "ff2_nes_sv.ips": "1081readme.txt specifies the original Japanese .nes. Reproduced using the documented iNES input. Verified historical input SHA-1 1a9e01a29472f1161bd16e1b4d76994346a505f6."
+      }
+    },
+    "1102": {
+      "archive": "[1102]American Dream (Eng).zip",
+      "baseSha1": "c4e75c7e9af4053ef954ff6a9d8e1cd9e6d98ff0",
+      "layout": "ines",
+      "patches": {
+        "American Dream (Eng).ips": "ade024f4de010bf80cb6d4706911a07e58173b5eecad8d2d5047f0b5583ac430"
+      },
+      "outputSha1": {
+        "American Dream (Eng).ips": "223afc139bae1844fb43fc47602f9cddc3ff012d"
+      },
+      "outputHeaders": {
+        "American Dream (Eng).ips": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "American Dream (Eng).ips": "American Dream (Japan) [T-En by Pale Dim v1.0].zip"
+      }
+    },
+    "1110": {
+      "archive": "[1110]mfc_holydiver_eng10.zip",
+      "baseSha1": "6c08b7994ffb7e3a182adc9b21b5ad8bde30f05a",
+      "layout": "ines",
+      "patches": {
+        "mfc_holydiver_eng10.ips": "8070597e630b25cbb0266244571e0f45a5c3c63a75949b2b89c2469af064e588"
+      },
+      "outputSha1": {
+        "mfc_holydiver_eng10.ips": "fb7f078ccae66da934387bd80967e03b2e29747b"
+      },
+      "outputHeaders": {
+        "mfc_holydiver_eng10.ips": "4e45531a0810e8400000000000000000"
+      },
+      "evidence": {
+        "mfc_holydiver_eng10.ips": "Holy Diver (Japan) [T-En by Monaco v1.0].zip"
+      }
+    },
+    "1182": {
+      "archive": "[1182]CT2Eng.zip",
+      "baseSha1": "49bb04a2165f80d1eb936b259e68cb9cf2b57143",
+      "layout": "ines",
+      "patches": {
+        "Captain Tsubasa Vol. II - Super Striker (J).ips": "c98481bfb4ae8808ca6b7062ebd8756e32f31eb900108c23d8c5e93a4bd3f9e3"
+      },
+      "outputSha1": {
+        "Captain Tsubasa Vol. II - Super Striker (J).ips": "a081364d15aa651a3a30477b7f8b7115a1060c8b"
+      },
+      "outputHeaders": {
+        "Captain Tsubasa Vol. II - Super Striker (J).ips": "4e45531a101041000000000000000000"
+      },
+      "evidence": {
+        "Captain Tsubasa Vol. II - Super Striker (J).ips": "Captain Tsubasa Vol. II - Super Striker (Japan) [T-En by Hayabusakun v1.0].zip"
+      }
+    },
+    "1264": {
+      "archive": "[1264]DvD_Translations-Dragon_Slayer_Jr_Romancia-revA.zip",
+      "baseSha1": "711525660a479a86d2eb8b45ef67aaf1b18a697a",
+      "layout": "ines",
+      "patches": {
+        "DvD_DSJr.IPS": "f1bb05840a8b9db6e98729db72971d08bf3ba7eac4a85e47f571d46f5ca95e04"
+      },
+      "outputSha1": {
+        "DvD_DSJr.IPS": "a397393ca833adc509ef3de3647b05d513911abe"
+      },
+      "outputHeaders": {
+        "DvD_DSJr.IPS": "4e45531a080010000000000000000000"
+      },
+      "evidence": {
+        "DvD_DSJr.IPS": "Dragon Slayer Jr. - Romancia (Japan) [T-En by DvD Translations Rev A] [n].zip"
+      }
+    },
+    "1267": {
+      "archive": "[1267]dse10.zip",
+      "baseSha1": "f06be0fa8ef550fbd5caea90294c6adf149576f2",
+      "layout": "ines",
+      "patches": {
+        "dse10.ips": "fe3eebd2b842379e2f073138890daea134464e39b28fcd5f373c112c3f90c1dd"
+      },
+      "outputSha1": {
+        "dse10.ips": "2d1c5630e827b6d5a89993986eb7a714643ba637"
+      },
+      "outputHeaders": {
+        "dse10.ips": "4e45531a081072100000000000000000"
+      },
+      "evidence": {
+        "dse10.ips": "Dragon Scroll - Resurrection of the Demon Dragon (Japan) [T-En by KingMike Translations v1.0] [n].zip"
+      }
+    },
+    "1275": {
+      "archive": "[1275]Jarvas.zip",
+      "baseSha1": "91c6eb7834786b7f0430e575ee4d108dbb719b9c",
+      "layout": "ines",
+      "patches": {
+        "Mirai Shinwa Jarvas.ips": "bec590e284c6d51cfbeb5a260e3336665df6ece0d211f807459c4204240e94f6"
+      },
+      "outputSha1": {
+        "Mirai Shinwa Jarvas.ips": "9ed6fb3c1e467b590eb807ae64f485618f8c8294"
+      },
+      "outputHeaders": {
+        "Mirai Shinwa Jarvas.ips": "4e45531a081001500000000000000000"
+      },
+      "evidence": {
+        "Mirai Shinwa Jarvas.ips": "Distant Legend of Jarvas (Japan) [T-En by Aishsha+Stardust Crusaders v1.00] [n].zip"
+      }
+    },
+    "1279": {
+      "archive": "[1279]ghosthunter.zip",
+      "baseSha1": "4e12e3cca303f5c06509ead3c0b79a2117714371",
+      "layout": "ines",
+      "patches": {
+        "GhostHunter.IPS": "7824aae87f6003442438160ca3dbf812bb63564d733c8f42712699f9bb529432"
+      },
+      "outputSha1": {
+        "GhostHunter.IPS": "b9f850781d6c2c2e52672759fee82f3411518bf9"
+      },
+      "evidence": {
+        "GhostHunter.IPS": "Ghost Hunter (Japan) [T-En by Snark v1.0] [n].zip"
+      }
+    },
+    "1280": {
+      "archive": "[1280]Oishinbo.zip",
+      "baseSha1": "dc380990a00d8eb8f9148901b3fd62f27cf2ca72",
+      "layout": "ines",
+      "patches": {
+        "GOURMET.IPS": "b7f4710b755f4466840d0284c2b0a5996cd030f8ce0c8b61d578c949ccdbc3ee"
+      },
+      "outputSha1": {
+        "GOURMET.IPS": "c2dbb77abf9dabf7b982c212cb7e2a8c0639f6de"
+      },
+      "outputHeaders": {
+        "GOURMET.IPS": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "GOURMET.IPS": "Gourmet (Japan) [T-En by Snark v1.0] [n].zip"
+      }
+    },
+    "1285": {
+      "archive": "[1285]Columbus_-_Ougon_no_Yoake_E_.rar",
+      "baseSha1": "5ae9ea6ff2aa76423579ca4fa5af56dee3a7178c",
+      "layout": "ines",
+      "patches": {
+        "Columbus_-_Ougon_no_Yoake_(U)_[!].ips": "3b183752007c242878ef8b7bfa589454e21d7bdecd6b4700457f2201c4fe3d2f"
+      },
+      "outputSha1": {
+        "Columbus_-_Ougon_no_Yoake_(U)_[!].ips": "4583e426cce60e0f675e31d5b20ce82edc1fe40c"
+      },
+      "outputHeaders": {
+        "Columbus_-_Ougon_no_Yoake_(U)_[!].ips": "4e45531a081042000000000000000000"
+      },
+      "evidence": {
+        "Columbus_-_Ougon_no_Yoake_(U)_[!].ips": "Columbus - Golden Dawn (Japan) [T-En by Aishsha v1.02] [n].zip"
+      }
+    },
+    "1290": {
+      "archive": "[1290]DvD_Translations-King_Kong_Lives-revA.zip",
+      "baseSha1": "76e5f0b3d873c375c7db7a103060befcd5c40d7a",
+      "layout": "ines",
+      "patches": {
+        "DvD_KKL.IPS": "afe70e2ea14f355bec654966db83d84f9274ad25677e6d1a24ecc0b264b27578"
+      },
+      "outputSha1": {
+        "DvD_KKL.IPS": "03ae291c88e4f6e85a905e19ae01bf7254de531b"
+      },
+      "outputHeaders": {
+        "DvD_KKL.IPS": "4e45531a0810b1400000000000000000"
+      },
+      "evidence": {
+        "DvD_KKL.IPS": "King Kong Lives - Megaton Punch of Rage (Japan) [T-En by DvD Translations Rev A] [n].zip"
+      }
+    },
+    "1306": {
+      "archive": "[1306]Elys0_92.zip",
+      "baseSha1": "679c78425c5d98ba7fc199ba506a15f0cd6a62b7",
+      "layout": "ines",
+      "patches": {
+        "ElysionE.ips": "1f143a604023dcecec4056fede551d164edcd128aaa458f8a72a62e7ba9aeab1",
+        "ElysionE_SRAM.ips": "10be81d735586bac3c4dfb670ea89f4fa5fea2f715047bd3e73a2b3ba34e4a45"
+      },
+      "outputSha1": {
+        "ElysionE.ips": "576a042ae19bc434fe80cc3a34762d50eb54202e",
+        "ElysionE_SRAM.ips": "bf2ce915e78ed761092fb387331ae3812cf95986"
+      },
+      "evidence": {
+        "ElysionE.ips": "Elysion (Japan) [T-En by Tenshigami Translations v0.92].zip",
+        "ElysionE_SRAM.ips": "Elysion (Japan) [T-En by Tenshigami Translations v0.92] (SRAM Saving).zip"
+      }
+    },
+    "1339": {
+      "archive": "[1339]Kitaro2eng.v1.1.zip",
+      "baseSha1": "8768b86606d40c340e94c93e3b4bcc76333816bd",
+      "layout": "ines",
+      "patches": {
+        "Kitaro2eng.v1.1.ips": "492768fbdf791e9a09070b83166e1a7b820fbe8525340f74592fd1d4d093ad2a"
+      },
+      "outputSha1": {
+        "Kitaro2eng.v1.1.ips": "e6819d6b7810320d5c7ade72b1da722c732227a2"
+      },
+      "outputHeaders": {
+        "Kitaro2eng.v1.1.ips": "4e45531a081082900000000000000000"
+      },
+      "evidence": {
+        "Kitaro2eng.v1.1.ips": "Spooky Kitaro 2 - Kitaro vs. Yokai Army (Japan) [T-En by Aishsha+Djinn v1.01] [n].zip"
+      }
+    },
+    "1341": {
+      "archive": "[1341]peacock1.zip",
+      "baseSha1": "b3bb0dd1bf15662f42eab636d3e1e1b9956c5fa3",
+      "layout": "ines",
+      "patches": {
+        "PEACOCK.IPS": "a5f4d48ae26a95badf90bc74e4933a770d2eea4b25eabdb84a2b86d75ff63a20"
+      },
+      "outputSha1": {
+        "PEACOCK.IPS": "2bd98e652019330f9d1e1ae0d51bfd3bfdf2615d"
+      },
+      "outputHeaders": {
+        "PEACOCK.IPS": "4e45531a100010000000000000000000"
+      },
+      "evidence": {
+        "PEACOCK.IPS": "Peacock King (Japan) [T-En by Snark v1.1] [n].zip"
+      }
+    },
+    "1353": {
+      "archive": "[1353]Crisis Force.zip",
+      "baseSha1": "91030a8ffc22be284eb6f8ebaec4ca9418871d96",
+      "layout": "ines",
+      "patches": {
+        "Crisis Force.ips": "d2f5536d9ec19fa3cded57dd14c92ed61bcd6b48d54037fc09daa904e4a3fd50"
+      },
+      "outputSha1": {
+        "Crisis Force.ips": "6c2458b515b39274ed684628e5189e6c4275dfa9"
+      },
+      "outputHeaders": {
+        "Crisis Force.ips": "4e45531a081070100000000000000000"
+      },
+      "evidence": {
+        "Crisis Force.ips": "Crisis Force (Japan) [T-En by Stardust Crusaders v1.00].zip"
+      }
+    },
+    "1354": {
+      "archive": "[1354]Cosmic Epsilon.zip",
+      "baseSha1": "b70a2086551a78a0d7bdbcb5ecd55ed11af668e8",
+      "layout": "ines",
+      "patches": {
+        "Cosmic Epsilon.ips": "d13685f5dd04d9c625833736457c96bd1e2520b04e9e2fb6f25aa739ed63b3e8"
+      },
+      "outputSha1": {
+        "Cosmic Epsilon.ips": "d0f1103acdf6f3057bfe45f6ba23f89a94bf33ed"
+      },
+      "outputHeaders": {
+        "Cosmic Epsilon.ips": "4e45531a082040000000000000000000"
+      },
+      "evidence": {
+        "Cosmic Epsilon.ips": "Cosmic Epsilon (Japan) [T-En by Stardust Crusaders v1.00].zip"
+      }
+    },
+    "1362": {
+      "archive": "[1362]Fist of the North Star.zip",
+      "baseSha1": "b9dcd6b5e4defc99dba1fb155a7eab2f114b1d37",
+      "layout": "ines",
+      "patches": {
+        "Hokuto no Ken.ips": "b03d83ae3b60e8a77f845681e0afe3d06317ce0109e0dc62c8f0756d7546cd54"
+      },
+      "outputSha1": {
+        "Hokuto no Ken.ips": "9e0b5d910d5bc5e3185c9bb133cdebbb6a7a6d0e"
+      },
+      "outputHeaders": {
+        "Hokuto no Ken.ips": "4e45531a020431000000000000000000"
+      },
+      "evidence": {
+        "Hokuto no Ken.ips": "Hokuto no Ken - Fist of the North Star (Japan) [T-En by Stardust Crusaders v1.01] [n].zip"
+      }
+    },
+    "1363": {
+      "archive": "[1363]J. League Winning Goal.zip",
+      "baseSha1": "8dad51abb5a15fb2a64fd11af4d8a4f4c51ed0e4",
+      "layout": "ines",
+      "patches": {
+        "J-League Winning Goal.ips": "17271f936741d588ec02edc5064f30226ed4bc13dc74efd723dc357473ab1e80"
+      },
+      "outputSha1": {
+        "J-League Winning Goal.ips": "c936a7992150c1f7f9a52a65c1e70fac25436c28"
+      },
+      "outputHeaders": {
+        "J-League Winning Goal.ips": "4e45531a081042000000000000000000"
+      },
+      "evidence": {
+        "J-League Winning Goal.ips": "J.League Winning Goal (Japan) [T-En by Stardust Crusaders v1.00].zip"
+      }
+    },
+    "1364": {
+      "archive": "[1364]TheMostDangerousDetectives_v100.zip",
+      "baseSha1": "e9637724910b6799f07941d69a8f78e64a26ead5",
+      "layout": "ines",
+      "patches": {
+        "TheMostDangerousDetectives_v100.ips": "282750f34d0cd7582e423d86e1a57bc199e441bd7eb83292eff454f6c6144ead"
+      },
+      "outputSha1": {
+        "TheMostDangerousDetectives_v100.ips": "4ce5357d3ba645cc8e587f3e70b3d02afd47f921"
+      },
+      "outputHeaders": {
+        "TheMostDangerousDetectives_v100.ips": "4e45531a080020000000000000000000"
+      },
+      "evidence": {
+        "TheMostDangerousDetectives_v100.ips": "Most Dangerous Detectives, The (Japan) [T-En by Gil Galad v1.00] [n].zip"
+      }
+    },
+    "1374": {
+      "archive": "[1374]cadillac_e_v100.zip",
+      "baseSha1": "9601b823c47870e572a519f7cdd2bfa7ac2cab9e",
+      "layout": "ines",
+      "patches": {
+        "cadillac_e_v100.ips": "71ed7d8d1067f202542088045a0842bd30c32e4feb51b7fb3ddbeead66c74407"
+      },
+      "outputSha1": {
+        "cadillac_e_v100.ips": "940bd5c843fecaa7c474782f53efd9bd3fefe5b2"
+      },
+      "outputHeaders": {
+        "cadillac_e_v100.ips": "4e45531a020431000000000000000000"
+      },
+      "evidence": {
+        "cadillac_e_v100.ips": "Cadillac (Japan) [T-En by Gil Galad v1.00].zip"
+      }
+    },
+    "1378": {
+      "archive": "[1378]DvD_Translations-Valkyrie_s_Adventure-Legend_of_the_Time_Key-revA.zip",
+      "baseSha1": "4374adefaa1d96597b26f9af6a9f39f4f09bc75c",
+      "layout": "ines",
+      "patches": {
+        "DvD_VAL.IPS": "ea024ed5c6b71917d6ceebfc25a960edf46d859705e33d3e278d4f28cde93613"
+      },
+      "outputSha1": {
+        "DvD_VAL.IPS": "c0486a70557a629651a5f8e82841988e21da2de0"
+      },
+      "outputHeaders": {
+        "DvD_VAL.IPS": "4e45531a0204e0c00000000000000000"
+      },
+      "evidence": {
+        "DvD_VAL.IPS": "Valkyrie's Adventure - Legend of the Time Key (Japan) [T-En by DvD Translations Rev A] [n].zip"
+      }
+    },
+    "1386": {
+      "archive": "[1386]devilman.zip",
+      "baseSha1": "e5ef673229f8827143c9d46585073022259ca848",
+      "layout": "ines",
+      "patches": {
+        "Devilman.IPS": "1763819eed1f06dd54869a766bd4cb0d3cef139d2758b9223e9751ade0e3b621"
+      },
+      "outputSha1": {
+        "Devilman.IPS": "a13abc649b4c56649cc29af12cd161831af8add9"
+      },
+      "outputHeaders": {
+        "Devilman.IPS": "4e45531a0810a0900000000000000000"
+      },
+      "evidence": {
+        "Devilman.IPS": "Devil Man (Japan) [T-En by Snark v1.0].zip"
+      }
+    },
+    "1387": {
+      "archive": "[1387]peacock2.zip",
+      "baseSha1": "42f6d96a0f83a0f43ffa1a14c9b2ba2e53c9925c",
+      "layout": "ines",
+      "patches": {
+        "PEACOCK2.IPS": "64b0ab4c42dd24449c548470edd1402fbd2e3c90ff7ef05f10e5ff9458babfea"
+      },
+      "outputSha1": {
+        "PEACOCK2.IPS": "9b9db229f0c115c52e2c36963064e6a1364ae0f7"
+      },
+      "outputHeaders": {
+        "PEACOCK2.IPS": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "PEACOCK2.IPS": "Peacock King II (Japan) [T-En by Snark v1.0] [n].zip"
+      }
+    },
+    "1388": {
+      "archive": "[1388]Robocco Wars.zip",
+      "baseSha1": "14b097e9ce2da7c16c0bee15ae797ef50ab603c8",
+      "layout": "ines",
+      "patches": {
+        "Robocco Wars.ips": "7ae401af79e73f182c610662c1c28deae451c7788b1070096e67180057e43111"
+      },
+      "outputSha1": {
+        "Robocco Wars.ips": "0ac3565bc6d619b308918c595189506282b062a0"
+      },
+      "outputHeaders": {
+        "Robocco Wars.ips": "4e45531a101040000000000000000000"
+      },
+      "evidence": {
+        "Robocco Wars.ips": "Robocco Wars (Japan) [T-En by Stardust Crusaders v1.00].zip"
+      }
+    },
+    "1389": {
+      "archive": "[1389]Lum's Wedding Bell.zip",
+      "baseSha1": "811eea6dfac344557f65f3adbb5f8d57d5691be5",
+      "layout": "ines",
+      "patches": {
+        "Urusei Yatsura - Lum no Wedding Bell.ips": "22b664b914b2937cd61bf911d4ca422c555225685d5c84a2d07815a2580df23e"
+      },
+      "outputSha1": {
+        "Urusei Yatsura - Lum no Wedding Bell.ips": "adf98f83b3745be3795d434663ddc85b0ceea886"
+      },
+      "outputHeaders": {
+        "Urusei Yatsura - Lum no Wedding Bell.ips": "4e45531a020471500000000000000000"
+      },
+      "evidence": {
+        "Urusei Yatsura - Lum no Wedding Bell.ips": "Urusei Yatsura - Lum's Wedding Bell (Japan) [T-En by Stardust Crusaders v1.00] [n].zip"
+      }
+    },
+    "1394": {
+      "archive": "[1394]Silva_Saga101.rar",
+      "baseSha1": "44337b32ab3452b3b6f0811e7de826f6df3bdc28",
+      "layout": "ines",
+      "patches": {
+        "Silva Saga.ips": "e687af23b0da364ad8d12695862ac34ac544499d5689d0a26a7f8e12da63f1d4"
+      },
+      "outputSha1": {
+        "Silva Saga.ips": "a32bd06092f129668736ad0a627e78575b52e0d7"
+      },
+      "outputHeaders": {
+        "Silva Saga.ips": "4e45531a202043000000000000000000"
+      },
+      "evidence": {
+        "Silva Saga.ips": "Silva Saga (Japan) [T-En by Aishsha v1.01].zip"
+      }
+    },
+    "1395": {
+      "archive": "[1395]ZyuRangers.zip",
+      "baseSha1": "654228fbc298260d680350634c93a4a05cb45834",
+      "layout": "ines",
+      "patches": {
+        "zyu.ips": "2b01ef342dfa44d4e1cb59a0a3268292f308d4f297cf2e767c07804ce63c4452"
+      },
+      "outputSha1": {
+        "zyu.ips": "6aed345d3f0b9e57bbc1991fa43de2c658153992"
+      },
+      "outputHeaders": {
+        "zyu.ips": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "zyu.ips": "Kyoryu Sentai ZyuRanger (Japan) [T-En by DankTrans v0.99] [n].zip"
+      }
+    },
+    "1398": {
+      "archive": "[1398]Hello_Kitty_World_Translation.zip",
+      "baseSha1": "c7f744be2e59b9238e6b61fe3f8110b1d96aa77e",
+      "layout": "ines",
+      "patches": {
+        "Hello_Kitty_World_(English).ips": "073f1299748c7382fb3cceb67a84d126edf0cb38eb4cf17a4d4a690219a9bc94"
+      },
+      "outputSha1": {
+        "Hello_Kitty_World_(English).ips": "df7e273ce83e17f4e934a2b2428bf54b7e528c76"
+      },
+      "outputHeaders": {
+        "Hello_Kitty_World_(English).ips": "4e45531a080021000000000000000000"
+      },
+      "evidence": {
+        "Hello_Kitty_World_(English).ips": "Hello Kitty World (Japan) [T-En by Flake v1.0].zip"
+      }
+    },
+    "1402": {
+      "archive": "[1402]Blazer.zip",
+      "baseSha1": "69a688091193577953b02f57aa684193a94d4034",
+      "layout": "ines",
+      "patches": {
+        "Power Blazer.ips": "59179280bc27a2564ca1398dbb2f7e091ec261b02f88789e9146b58061e09bc7"
+      },
+      "outputSha1": {
+        "Power Blazer.ips": "852e622b1787b678fcf120260af7014ae069df31"
+      },
+      "outputHeaders": {
+        "Power Blazer.ips": "4e45531a081010200000000000000000"
+      },
+      "evidence": {
+        "Power Blazer.ips": "Power Blazer (Japan) [T-En by Stardust Crusaders v1.00].zip"
+      }
+    },
+    "1419": {
+      "archive": "[1419]Acala.zip",
+      "baseSha1": "20d7d24de23e1b82ff4951032703ba8153520bf9",
+      "layout": "ines",
+      "patches": {
+        "Fudou Myouou Den.ips": "1908ae6aa3b81274966aebf877c01ed715e2055e64b38062f823e798d536f1b5"
+      },
+      "outputSha1": {
+        "Fudou Myouou Den.ips": "0f52630ddc31027f17341a09c6d46b1793c69708"
+      },
+      "outputHeaders": {
+        "Fudou Myouou Den.ips": "4e45531a1010f0c00000000000000000"
+      },
+      "evidence": {
+        "Fudou Myouou Den.ips": "Acala Legend, The (Japan) [T-En by Stardust Crusaders v1.00] [n].zip"
+      }
+    },
+    "1420": {
+      "archive": "[1420]Shinsenden.rar",
+      "baseSha1": "7bed195dc5dcf9cb0d9faa04be8bfd875f7f62c2",
+      "layout": "ines",
+      "patches": {
+        "Shinsenden.ips": "5875a6575f714957fa6213c1abec974bad51dd0c9e9bb3a7b7316039084c415c"
+      },
+      "outputSha1": {
+        "Shinsenden.ips": "3d327d9d35568d70e7aa3a7ceacdb0e62db0f457"
+      },
+      "outputHeaders": {
+        "Shinsenden.ips": "4e45531a200013000000000000000000"
+      },
+      "evidence": {
+        "Shinsenden.ips": "Shinsenden - The Legend of Immortals (Japan) [T-En by Aishsha+Ded302+Djinn v1.00] [n].zip"
+      }
+    },
+    "1421": {
+      "archive": "[1421]Gegege1.rar",
+      "baseSha1": "c26a3c8bf3756ada0c79dc38fba39e1c6ee45bb0",
+      "layout": "ines",
+      "patches": {
+        "Gegege no Kitarou - Youkai Dai Makyou (J).ips": "bff140690a25222d3fd7ce563de9df1c81cd3ad94eaa48b19da41819383620df"
+      },
+      "outputSha1": {
+        "Gegege no Kitarou - Youkai Dai Makyou (J).ips": "e7f4a69971fbf422bd630bffd0a6e53e9d54bb89"
+      },
+      "outputHeaders": {
+        "Gegege no Kitarou - Youkai Dai Makyou (J).ips": "4e45531a020431000000000000000000"
+      },
+      "evidence": {
+        "Gegege no Kitarou - Youkai Dai Makyou (J).ips": "Spooky Kitaro in the Yokai World (Japan) [T-En by Aishsha v1.00] [n].zip"
+      }
+    },
+    "1444": {
+      "archive": "[1444]Jajamaru Gekimaden.zip",
+      "baseSha1": "909ea44da2b704e88b4058631b985897cd6ae41c",
+      "layout": "ines",
+      "patches": {
+        "Jajamaru Gekimaden.ips": "81e2f99452939a55c90b1c3d5dcd48cf3016b0a3ab6855647739f8487e224df7"
+      },
+      "outputSha1": {
+        "Jajamaru Gekimaden.ips": "528c0c3ab9a427f5272785df93f8403e35778a89"
+      },
+      "outputHeaders": {
+        "Jajamaru Gekimaden.ips": "4e45531a081022100000000000000000"
+      },
+      "evidence": {
+        "Jajamaru Gekimaden.ips": "Ninja Jajamaru - Legend of a Demon's Attack - Castle of Dreams (Japan) [T-En by Aishsha+Stardust Crusaders v1.00] [n].zip"
+      }
+    },
+    "1445": {
+      "archive": "[1445]feg_engtrans_artemis251_v1.01.zip",
+      "baseSha1": "cdead23d0114eec572d0aeadca415445bdae6602",
+      "layout": "ines",
+      "patches": {
+        "FEG_Jap_to_251_1.01.ips": "d2e6d894438e9444c98fffee745c708ae72c97dab788b0de6523867903340754"
+      },
+      "outputSha1": {
+        "FEG_Jap_to_251_1.01.ips": "66029d044d3bf1ef9f1df83850ebf8a967b3f229"
+      },
+      "outputHeaders": {
+        "FEG_Jap_to_251_1.01.ips": "4e45531a1010a2000000000000000000"
+      },
+      "evidence": {
+        "FEG_Jap_to_251_1.01.ips": "Fire Emblem Gaiden (Japan) [T-En by Artemis251 v1.01].zip"
+      }
+    },
+    "1448": {
+      "archive": "[1448]Jaja.zip",
+      "baseSha1": "8cc58c63f19c6f213bfb2bcd5900104f6106fe35",
+      "layout": "ines",
+      "patches": {
+        "Ninja Jajamaru Kun.ips": "1ca0b31daddf5eb6d78e5ec7f4dbc0a3a121af35e76ef1a7ba723678bdd4bd11"
+      },
+      "outputSha1": {
+        "Ninja Jajamaru Kun.ips": "5f6227b519aa3d104a5d39ec26e31c42f10561ff"
+      },
+      "outputHeaders": {
+        "Ninja Jajamaru Kun.ips": "4e45531a010271500000000000000000"
+      },
+      "evidence": {
+        "Ninja Jajamaru Kun.ips": "Ninja Jajamaru (Japan) [T-En by Aishsha+Stardust Crusaders v1.00] [n].zip"
+      }
+    },
+    "1449": {
+      "archive": "[1449]moonprincess.zip",
+      "baseSha1": "083ef41cd1660daf3d1a203d6c2a191ba749ac70",
+      "layout": "ines",
+      "patches": {
+        "Moonprincess.ips": "f2de58c0ab7e5be9a1cc297bca6697760753465029f8c4d6498c9501e81efc29"
+      },
+      "outputSha1": {
+        "Moonprincess.ips": "a1a23904d5a2266aac15ae857728b855b0726e3a"
+      },
+      "outputHeaders": {
+        "Moonprincess.ips": "4e45531a100012000000000000000000"
+      },
+      "evidence": {
+        "Moonprincess.ips": "Moon Princess - The Bamboo Cutter's Legend (Japan) [T-En by Snark v0.99] [n].zip"
+      }
+    },
+    "1453": {
+      "archive": "[1453]Maharajah.zip",
+      "baseSha1": "0343d1dc5312babf863dfb5ac372d5f504099e0b",
+      "layout": "ines",
+      "patches": {
+        "MAHARAJA.IPS": "adebbe50deb9267c5b496f28c3a2869c11578df31cbf6c1be0daa7db263e0e44"
+      },
+      "outputSha1": {
+        "MAHARAJA.IPS": "21e641492a45e71480dd4bf98670ffb291c895f0"
+      },
+      "outputHeaders": {
+        "MAHARAJA.IPS": "4e45531a081040400000000000000000"
+      },
+      "evidence": {
+        "MAHARAJA.IPS": "Maharaja (Japan) [T-En by Snark v0.99].zip"
+      }
+    },
+    "1461": {
+      "archive": "[1461]Captain Silver.zip",
+      "baseSha1": "b59bd36262318828529bce2f1ac81d3637422ee7",
+      "layout": "ines",
+      "patches": {
+        "Captain Silver.ips": "e27b9eaf4d489f6cf607e09d2fad4db3f940c905c0ec2b45870b889ceddc5f2f"
+      },
+      "outputSha1": {
+        "Captain Silver.ips": "ad6b392959fc6ac3ea44e5de4bf8e641cbae6994"
+      },
+      "outputHeaders": {
+        "Captain Silver.ips": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "Captain Silver.ips": "Captain Silver (Japan) [T-En by Stardust Crusaders v1.00].zip"
+      }
+    },
+    "1474": {
+      "archive": "[1474]Jajamaru_Daibouken.rar",
+      "baseSha1": "018c4ca17a2164c3f481a09c6b20a9567c137300",
+      "layout": "ines",
+      "patches": {
+        "Jajamaru original.ips": "05a6cd1ae046cd1031d14352a6669c6fdb5599014a62c00777fa0439be303689"
+      },
+      "outputSha1": {
+        "Jajamaru original.ips": "cfb6977a4a9e8b7801593995c1b4995829e9199d"
+      },
+      "outputHeaders": {
+        "Jajamaru original.ips": "4e45531a020471500000000000000000"
+      },
+      "evidence": {
+        "Jajamaru original.ips": "Ninja Jajamaru's Great Adventure (Japan) [T-En by Aishsha+Stardust Crusaders v1.00] [n].zip"
+      }
+    },
+    "1477": {
+      "archive": "[1477]PokoFinal.rar",
+      "baseSha1": "6563503d1eecb06a77691cfda78514c21a62893b",
+      "layout": "ines",
+      "patches": {
+        "WP.IPS": "9c0a1c38b1b4e022a48d2921644b732c4bd867bce803b1be6faa2fb5424bd223"
+      },
+      "outputSha1": {
+        "WP.IPS": "e08bf45129615f04d99c954bbe875bd2aba12356"
+      },
+      "outputHeaders": {
+        "WP.IPS": "4e45531a080021000000000000000000"
+      },
+      "evidence": {
+        "WP.IPS": "Woody Poko (Japan) [T-En by Sqpat v1.00].zip"
+      }
+    },
+    "1485": {
+      "archive": "[1485]Sqoon.zip",
+      "baseSha1": "dd9399f604993303e5c4b396a3c4dc8a571a326a",
+      "layout": "ines",
+      "patches": {
+        "Sqoon.ips": "e8da6ba6e872ad31a5e7586067b4072e05bca094aeed1993e1a5206f79dd4e0f"
+      },
+      "outputSha1": {
+        "Sqoon.ips": "e77ffa9a78b5348bc6e3c4abb57522f3c834c525"
+      },
+      "outputHeaders": {
+        "Sqoon.ips": "4e45531a020101000000000000000000"
+      },
+      "evidence": {
+        "Sqoon.ips": "Sqoon (Japan) [T-En by Stardust Crusaders v1.00].zip"
+      }
+    },
+    "1496": {
+      "archive": "[1496]ganbaregoemon.zip",
+      "baseSha1": "fdd84593983377a1794dedcc47da8ec0b761f03f",
+      "layout": "ines",
+      "patches": {
+        "goemon.ips": "447306f027616f8a51ebba312a491b69a58e167b14e2a92a1aaedf41a7cdabfa"
+      },
+      "outputSha1": {
+        "goemon.ips": "188c02a798874bfcf38007044568ce0073704858"
+      },
+      "outputHeaders": {
+        "goemon.ips": "4e45531a0810b1400000000000000000"
+      },
+      "evidence": {
+        "goemon.ips": "Ganbare Goemon! (Japan) [T-En by Spinner 8 v1.01] [n].zip"
+      }
+    },
+    "1519": {
+      "archive": "[1519][12]Darkmyth.zip",
+      "baseSha1": "f53288c582a25e59f935679e7fd03557192e7220",
+      "layout": "ines",
+      "patches": {
+        "Darkmyth.IPS": "3d6a2961fa0c5ac72dde2704f285b58e2098306219cdf565020b847b76605713"
+      },
+      "outputSha1": {
+        "Darkmyth.IPS": "df148335ae5977d7470d9364b24265177a1e76c2"
+      },
+      "outputHeaders": {
+        "Darkmyth.IPS": "4e45531a100010000000000000000000"
+      },
+      "evidence": {
+        "Darkmyth.IPS": "Ankoku Shinwa - The Dark Myth (Japan) [T-En by Snark v0.99] [n].zip"
+      }
+    },
+    "1520": {
+      "archive": "[1520]Dream.rar",
+      "baseSha1": "5f69472c3685bdabcb0d03b5d00d75edc599098b",
+      "layout": "ines",
+      "patches": {
+        "Dream Master.ips": "177171bb49320f7deb42e62f3520506c713a54a93a37c897d7183a1f0865f85d"
+      },
+      "outputSha1": {
+        "Dream Master.ips": "aff4b38aad368c0956b40099ebbddb53c337291e"
+      },
+      "outputHeaders": {
+        "Dream Master.ips": "4e45531a202030100000000000000000"
+      },
+      "evidence": {
+        "Dream Master.ips": "Dream Master (Japan) [T-En by Aishsha v1.01].zip"
+      }
+    },
+    "1542": {
+      "archive": "[1542]InsectorX.zip",
+      "baseSha1": "33a6e5eb01e1607ac84d1761f2802c4aade41c2d",
+      "layout": "ines",
+      "patches": {
+        "Insector X.ips": "13487b2afa63938f919a7932b99246d927676ce8aca1904b933c8d78e6308e27"
+      },
+      "outputSha1": {
+        "Insector X.ips": "7580c5a72aa2a28350b34dc1bdc47b486882c44e"
+      },
+      "outputHeaders": {
+        "Insector X.ips": "4e45531a081010200000000000000000"
+      },
+      "evidence": {
+        "Insector X.ips": "Insector X (Japan) [T-En by Stardust Crusaders v1.00].zip"
+      }
+    },
+    "1543": {
+      "archive": "[1543]B-Wings.zip",
+      "baseSha1": "249e145b777fe8a629c8be9fc01ee72462fa9b9e",
+      "layout": "ines",
+      "patches": {
+        "B-Wings.ips": "65cb3d7928ac30d364171382e38ed5a88d726facb1c91b4047038a7c6e8ccd46"
+      },
+      "outputSha1": {
+        "B-Wings.ips": "5e6febc07ba2d18bfea504eee1eb92f4e3a13013"
+      },
+      "outputHeaders": {
+        "B-Wings.ips": "4e45531a020190b00000000000000000"
+      },
+      "evidence": {
+        "B-Wings.ips": "B-Wings (Japan) [T-En by Stardust Crusaders v1.00].zip"
+      }
+    },
+    "1544": {
+      "archive": "[1544]DragonNinja.zip",
+      "baseSha1": "6e1a3ef4109ea423d5dfb20a21c223513a84f309",
+      "layout": "ines",
+      "patches": {
+        "Dragon Ninja.ips": "c835ada548d14e4ac59161583b126df21f8714a958a1e8798d17a642a8461b61"
+      },
+      "outputSha1": {
+        "Dragon Ninja.ips": "2893365d3de959a7cc713007abc717369ea600b8"
+      },
+      "outputHeaders": {
+        "Dragon Ninja.ips": "4e45531a081031100000000000000000"
+      },
+      "evidence": {
+        "Dragon Ninja.ips": "Dragon Ninja (Japan) [T-En by Stardust Crusaders v1.00].zip"
+      }
+    },
+    "1548": {
+      "archive": "[1548]71eae27f9f704cdcbe88.zip",
+      "baseSha1": "2a647d47def0339026cca13263ff750500b584e0",
+      "layout": "ines",
+      "patches": {
+        "Nekketsu! Street Basket - Go for it, Dunk Heroes.ips": "53545be749994899b9db4a45a794fd6efd37506f7ad4734e650b8ec1efa71bae"
+      },
+      "outputSha1": {
+        "Nekketsu! Street Basket - Go for it, Dunk Heroes.ips": "61c2ce554334266f675e878624a5bbc2e6fbfc73"
+      },
+      "outputHeaders": {
+        "Nekketsu! Street Basket - Go for it, Dunk Heroes.ips": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "Nekketsu! Street Basket - Go for it, Dunk Heroes.ips": "Nekketsu! Street Basket - Go for it, Dunk Heroes! (Japan) [T-En by Farid v1.2] [n].zip"
+      }
+    },
+    "1554": {
+      "archive": "[1554]madcity.zip",
+      "baseSha1": "852cc8fa0f16c1945a706200486631f359648791",
+      "layout": "ines",
+      "patches": {
+        "Mad City.ips": "16e76d99ccf105c1cc67674267ccecec1d4741ee4cff3228cf6727323b03671d"
+      },
+      "outputSha1": {
+        "Mad City.ips": "328ba27c0aa5dc2655507459722f1e4ee286df49"
+      },
+      "outputHeaders": {
+        "Mad City.ips": "4e45531a081010000000000000000000"
+      },
+      "evidence": {
+        "Mad City.ips": "Mad City (Japan) [T-En by Stardust Crusaders v1.00].zip"
+      }
+    },
+    "1571": {
+      "archive": "[1571]drjekyll.zip",
+      "baseSha1": "eb2ebe8fd39a284d02d90e040a2f3d365d97ed53",
+      "layout": "ines",
+      "patches": {
+        "Dr Jekyll and Mr Hyde (J).ips": "a0d028f33a0383a1701cf184a5848939d4d66e9442131de976b932e47bbf0ad2"
+      },
+      "outputSha1": {
+        "Dr Jekyll and Mr Hyde (J).ips": "dd7ea2b2d61f82865b2515d1ca5fbd3bf06773ae"
+      },
+      "evidence": {
+        "Dr Jekyll and Mr Hyde (J).ips": "Dr. Jekyll and Mr. Hyde (Japan) [T-En by Yauch v1.0] [n].zip"
+      }
+    },
+    "1578": {
+      "archive": "[1578]banana.zip",
+      "baseSha1": "04033de2bd71cd5f73904e8faa5a32b134685daf",
+      "layout": "ines",
+      "patches": {
+        "banana48K.ips": "cc1b4b697cb57eff8be516badc41172de83436b6aabd09708499f107f50897e6"
+      },
+      "outputSha1": {
+        "banana48K.ips": "8c2dba029e24f11208d031fba1f8f61c635fdfc1"
+      },
+      "outputHeaders": {
+        "banana48K.ips": "4e45531a020230000000000000000000"
+      },
+      "evidence": {
+        "banana48K.ips": "Banana (Japan) [T-En by KingMike Translations v1.0].zip"
+      }
+    },
+    "1580": {
+      "archive": "[1580]Esper.rar",
+      "baseSha1": "85c07547156833b08d23765f7fb3ba3ca16df0df",
+      "layout": "ines",
+      "patches": {
+        "Esper Bouken Tai (J).ips": "d7c71b523320e478e1c8d60621b3e7e8f2e2fa1c61998483b37478bf745a8507"
+      },
+      "outputSha1": {
+        "Esper Bouken Tai (J).ips": "f35a0521e2c3020cf4bdd9ccbe5384bcc2d4bc20"
+      },
+      "outputHeaders": {
+        "Esper Bouken Tai (J).ips": "4e45531a200021000000000000000000"
+      },
+      "evidence": {
+        "Esper Bouken Tai (J).ips": "Esper Corps (Japan) [T-En by Aishsha v1.01] [n].zip"
+      }
+    },
+    "1582": {
+      "archive": "[1582]magic.zip",
+      "baseSha1": "8b2b3cacdf147496f4830f40860d62efb0f00e82",
+      "layout": "ines",
+      "patches": {
+        "magic.ips": "d79bef9491104e7898b30ac76da0f1cc101e0af92aa0886d3f9d7e59aeb8c910"
+      },
+      "outputSha1": {
+        "magic.ips": "8ccd7e53da63104ef08ceafe3783564e15d13a6b"
+      },
+      "outputHeaders": {
+        "magic.ips": "4e45531a081020100000000000000000"
+      },
+      "evidence": {
+        "magic.ips": "Magic John (Japan) [T-En by KingMike Translations v1.0].zip"
+      }
+    },
+    "1593": {
+      "archive": "[1593]FE1.zip",
+      "baseSha1": "dbb7c47ae41fb1a2ad1c7188946233027dc9e29f",
+      "layout": "ines",
+      "patches": {
+        "FE1_JAP_TO_V10.ips": "10ab9ee578231b64f4b8ef13c797c2feec078b4ac59704c04900b1f4ac039f38"
+      },
+      "outputSha1": {
+        "FE1_JAP_TO_V10.ips": "70bd0954eb5d7bef91b8f39c2e569630bf9db032"
+      },
+      "outputHeaders": {
+        "FE1_JAP_TO_V10.ips": "4e45531a1010a2000000000000000000"
+      },
+      "evidence": {
+        "FE1_JAP_TO_V10.ips": "Fire Emblem - Dark Dragon and the Sword of Light (Japan) [T-En by Quirino v1.0] [n].zip"
+      }
+    },
+    "1603": {
+      "archive": "[1603]Tao.zip",
+      "baseSha1": "da3caf6b8a2747ad5d0cafdceee734fcf2e4f2bd",
+      "layout": "ines",
+      "patches": {
+        "TAOWAY.IPS": "670b6bcb0d982264e0498ea9e7fb81580511f57dae83143c6c9156a22d5bdc24"
+      },
+      "outputSha1": {
+        "TAOWAY.IPS": "b48d8740621c891208923ad37ba70d0bccd5e7d7"
+      },
+      "outputHeaders": {
+        "TAOWAY.IPS": "4e45531a081012000000000000000000"
+      },
+      "evidence": {
+        "TAOWAY.IPS": "Tao (Japan) [T-En by Snark v1.0].zip"
+      }
+    },
+    "1656": {
+      "archive": "[1656]Warwolf.zip",
+      "baseSha1": "62b99b5affa448ccd25a39bfa3b2155a5419aa8d",
+      "layout": "ines",
+      "patches": {
+        "Warwolf.ips": "2c2aaede141d8e4b885615778d1cd3a9bece08129a04f54dda92c84b0c41f790"
+      },
+      "outputSha1": {
+        "Warwolf.ips": "c36b79e20646d6241f7b490482cf0bf5dcb36f84"
+      },
+      "outputHeaders": {
+        "Warwolf.ips": "4e45531a081040000000000000000000"
+      },
+      "evidence": {
+        "Warwolf.ips": "Warwolf Chronicles (Japan) [T-En by Stardust Crusaders v1.00] [n].zip"
+      }
+    },
+    "1658": {
+      "archive": "[1658]deep4e10.zip",
+      "baseSha1": "72b99441924d2935133778baccc708b0b5343e59",
+      "layout": "ines",
+      "patches": {
+        "dd4eng.ips": "9bd52c80470a35da95675121711d8a010244a398e23606abebfe1156bcaffc89"
+      },
+      "outputSha1": {
+        "dd4eng.ips": "04ba04a67b6e631fe0f734062ae494362bf01cb7"
+      },
+      "outputHeaders": {
+        "dd4eng.ips": "4e45531a100012000000000000000000"
+      },
+      "evidence": {
+        "dd4eng.ips": "Deep Dungeon IV - The Black Sorceror (Japan) [T-En by KingMike Translations v1.0] [n].zip"
+      }
+    },
+    "1661": {
+      "archive": "[1661]Toukon-Club-J-T-Eng-v1.1-by-Eric-Engel1.zip",
+      "baseSha1": "837d8ec273805bd1433c28a5fac340178f2697f0",
+      "layout": "ines",
+      "patches": {
+        "Toukon Club (J) [T-Eng v1.1 by Eric Engel].ips": "7e9264a1f80e8cb714927f46a2d0e5ff124bda76d3c0d0dc7fe2532a87736f6a"
+      },
+      "outputSha1": {
+        "Toukon Club (J) [T-Eng v1.1 by Eric Engel].ips": "bc0392376d490b9318817f9ba939857c153eb02b"
+      },
+      "outputHeaders": {
+        "Toukon Club (J) [T-Eng v1.1 by Eric Engel].ips": "4e45531a082020100000000000000000"
+      },
+      "evidence": {
+        "Toukon Club (J) [T-Eng v1.1 by Eric Engel].ips": "Toukon Club - Fighting Spirit (Japan) [T-En by Eric Engel v1.1] [n].zip"
+      }
+    },
+    "1723": {
+      "archive": "[1723]nakayoshi100.zip",
+      "baseSha1": "cc7877034eff7bcb97ac5f24e9f4f560de3a94a1",
+      "layout": "ines",
+      "patches": {
+        "dub_naka_100.ips": "984bf5fadbfb3373bbd4311fd136b1302249aa0a660620889401379055aa5d2d",
+        "manga_naka_100.ips": "775f58b3d7176bcce37528e6337e0291ff8a153f991f59453a14fc9b58f6a3a2"
+      },
+      "outputSha1": {
+        "dub_naka_100.ips": "18ea305ac274043737ee8724a92d16d0a06ca370",
+        "manga_naka_100.ips": "87ad659ebd755866d0bbf519ef44ba18cd6c425a"
+      },
+      "outputHeaders": {
+        "dub_naka_100.ips": "4e45531a082042000000000000000000",
+        "manga_naka_100.ips": "4e45531a082042000000000000000000"
+      },
+      "evidence": {
+        "dub_naka_100.ips": "Nakayoshi n' Me (Japan) [T-En by HTI v1.00] (Anime Version) [n].zip",
+        "manga_naka_100.ips": "Nakayoshi n' Me (Japan) [T-En by HTI v1.00] (Manga Version) [n].zip"
+      }
+    },
+    "1949": {
+      "archive": "[1949]ff2br.zip",
+      "baseSha1": "4a02d61982966205cdf3a4d27381d610515eb494",
+      "layout": "ines",
+      "patches": {
+        "FF2.IPS": "51a3c27fe4789fd15639ee4e43aa35ad958f9d353f2efcfa146f4a2959ce2f71"
+      },
+      "outputSha1": {
+        "FF2.IPS": "655e3a0f2563883caa7b0d61c3cd99bdfcdcdb73"
+      },
+      "outputHeaders": {
+        "FF2.IPS": "4e45531a100012000000000000000000"
+      },
+      "evidence": {
+        "FF2.IPS": "The RHDN ROM information identifies the original Japanese .nes. Reproduced using the documented iNES input. Verified historical input SHA-1 1a9e01a29472f1161bd16e1b4d76994346a505f6."
+      }
+    },
+    "2656": {
+      "archive": "[2656]FFII_ChaosRushENTranslation_v2.2b.zip",
+      "baseSha1": "4a02d61982966205cdf3a4d27381d610515eb494",
+      "layout": "ines",
+      "standalone": true,
+      "patches": {
+        "FFII_ChaosRushENTranslation_v2.2b.ips": "5c2a862340183e62a40c2d27871a9e2f202db22b8e756b835a898b5e14a7cc20"
+      },
+      "outputSha1": {
+        "FFII_ChaosRushENTranslation_v2.2b.ips": "55282926cc5de37bbe053974304a8f845ed760b7"
+      },
+      "outputHeaders": {
+        "FFII_ChaosRushENTranslation_v2.2b.ips": "4e45531a100012000000000000000000"
+      },
+      "evidence": {
+        "FFII_ChaosRushENTranslation_v2.2b.ips": "2656readme.txt specifies a clean Japanese ROM. Reproduced using the documented iNES input. Verified historical input SHA-1 1a9e01a29472f1161bd16e1b4d76994346a505f6."
+      }
+    },
+    "3535": {
+      "archive": "[3535]DvD_Translations-twinbee_2-revA.zip",
+      "baseSha1": "56ebe4d5f801118704c2ec9be69ea33bd0fe6324",
+      "layout": "ines",
+      "patches": {
+        "DvD_TwinBee_2_revA.ips": "c4d766cd30470a4b0015abeac62f100a63b6d9367084fd6f12fa6c2e2f9ce8e0"
+      },
+      "outputSha1": {
+        "DvD_TwinBee_2_revA.ips": "f33a5b4f76f70c4b71e9f05f72f13992b258e389"
+      },
+      "evidence": {
+        "DvD_TwinBee_2_revA.ips": "Original patch instructions in 3535readme.txt"
+      }
+    },
+    "4524": {
+      "archive": "[4524]Rockman 6.7z",
+      "baseSha1": "a1457985695066da2e3748eabaeb86e1adf78311",
+      "layout": "ines",
+      "patches": {
+        "Rockman 6.ips": "b2fe16d1770e3721784e56cbb79facee29b9361de1cf686272e557c07e0021ac"
+      },
+      "outputSha1": {
+        "Rockman 6.ips": "61c35f48434006dfeb025e1ccb79ee4de0436b00"
+      },
+      "evidence": {
+        "Rockman 6.ips": "Original patch instructions in 4524readme.txt"
+      }
+    },
+    "4835": {
+      "archive": "[4835]ff2_tt.zip",
+      "baseSha1": "4a02d61982966205cdf3a4d27381d610515eb494",
+      "layout": "ines",
+      "patches": {
+        "FF2FP.IPS": "6bd320f2def01a013290f701d8018364b2cffc80ca6e47711c126320a077a1cd"
+      },
+      "outputSha1": {
+        "FF2FP.IPS": "e0f3f324855ee92403de8e5ada092cdfdbe1244e"
+      },
+      "outputHeaders": {
+        "FF2FP.IPS": "4e45531a100012000000000000000000"
+      },
+      "evidence": {
+        "FF2FP.IPS": "4835readme.txt specifies the original Japanese .nes. Reproduced using the documented iNES input. Verified historical input SHA-1 1a9e01a29472f1161bd16e1b4d76994346a505f6."
+      }
+    }
+  }
+}

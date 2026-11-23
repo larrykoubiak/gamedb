@@ -38,6 +38,11 @@ def main(argv=None) -> int:
     megadrive.add_argument("--report", type=Path, help="Write the full match report as JSON")
     megadrive.add_argument("--publish", action="store_true", help="Publish the Mega Drive catalog to Explorer")
     megadrive.add_argument("--sources", type=Path, help="Directory of saved Mega Drive reference indexes")
+    nes = commands.add_parser("seed-nes", help="Build the NES and Famicom retail catalog")
+    nes.add_argument("--html", type=Path, help="Use a saved copy of the pinned Wikipedia HTML")
+    nes.add_argument("--report", type=Path, help="Write the full match report as JSON")
+    nes.add_argument("--publish", action="store_true", help="Publish the NES catalog to Explorer")
+    nes.add_argument("--sources", type=Path, help="Directory of saved NES reference indexes")
     manuals = commands.add_parser("sync-snes-manuals", help="Download the manuals linked by a SNES match report")
     manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-snes")
     manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
@@ -49,6 +54,10 @@ def main(argv=None) -> int:
     md_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-megadrive")
     md_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
     md_manuals.add_argument("--workers", type=int, default=4, help="Concurrent downloads (default: 4)")
+    nes_manuals = commands.add_parser("sync-nes-manuals", help="Download the linked NES and Famicom manuals")
+    nes_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-nes")
+    nes_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
+    nes_manuals.add_argument("--workers", type=int, default=6, help="Concurrent downloads (default: 6)")
     translations = commands.add_parser("sync-snes-translations", help="Match RHDN patches to verified SNES retail ROMs")
     translations.add_argument("--source", required=True, type=Path, help="Local RHDN backup directory")
     translations.add_argument("--root", type=Path, help="Local patch library (default: data/media/snes-translations)")
@@ -56,6 +65,10 @@ def main(argv=None) -> int:
     md_translations.add_argument("--source", required=True, type=Path, help="RHDN backup root or translations/genesis directory")
     md_translations.add_argument("--root", type=Path, help="Local patch library (default: data/media/megadrive-translations)")
     md_translations.add_argument("--report", type=Path, help="Write an audit of packages that could not be matched")
+    nes_translations = commands.add_parser("sync-nes-translations", help="Match RHDN patches to verified NES cartridges")
+    nes_translations.add_argument("--source", required=True, type=Path, help="RHDN backup root or translations/nes directory")
+    nes_translations.add_argument("--root", type=Path, help="Local patch library (default: data/media/nes-translations)")
+    nes_translations.add_argument("--report", type=Path, help="Write an audit of packages that could not be matched")
     promote = commands.add_parser("promote-corrections")
     promote.add_argument(
         "--reference",
@@ -75,13 +88,20 @@ def main(argv=None) -> int:
         print(json.dumps(result, indent=2))
         return 0
 
-    if args.command == "seed-megadrive":
-        from .megadrive import seed_megadrive
+    if args.command in {"seed-megadrive", "seed-nes"}:
+        if args.command == "seed-nes":
+            from .nes import seed_nes as seed
+
+            command = nes
+        else:
+            from .megadrive import seed_megadrive as seed
+
+            command = megadrive
 
         try:
-            result = seed_megadrive(args.html, args.report, publish_catalog=args.publish, sources=args.sources)
+            result = seed(args.html, args.report, publish_catalog=args.publish, sources=args.sources)
         except (OSError, ValueError) as error:
-            megadrive.error(str(error))
+            command.error(str(error))
         print(json.dumps(result, indent=2))
         return 0
 
@@ -95,23 +115,31 @@ def main(argv=None) -> int:
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return int(bool(result["failures"]))
 
-    if args.command == "sync-megadrive-manuals":
-        from .megadrive import SOURCE_DIRECTORY
+    if args.command in {"sync-megadrive-manuals", "sync-nes-manuals"}:
         from .manuals import sync_manuals
+
+        if args.command == "sync-nes-manuals":
+            from .nes import SOURCE_DIRECTORY
+
+            command = nes_manuals
+        else:
+            from .megadrive import SOURCE_DIRECTORY
+
+            command = md_manuals
 
         try:
             result = sync_manuals(args.catalog, args.root, SOURCE_DIRECTORY / "manual-items", workers=args.workers,
                                   source_references=None)
         except (OSError, ValueError) as error:
-            md_manuals.error(str(error))
+            command.error(str(error))
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return int(bool(result["failures"]))
 
-    if args.command in {"sync-snes-translations", "sync-megadrive-translations"}:
+    if args.command in {"sync-snes-translations", "sync-megadrive-translations", "sync-nes-translations"}:
         from .translations import TRANSLATION_ROOTS, sync_translations
 
-        platform = "snes" if args.command == "sync-snes-translations" else "megadrive"
-        command = translations if platform == "snes" else md_translations
+        platform = args.command.split("-")[1]
+        command = {"snes": translations, "megadrive": md_translations, "nes": nes_translations}[platform]
         try:
             result = sync_translations(args.source, args.root or TRANSLATION_ROOTS[platform],
                                        platform=platform, report=getattr(args, "report", None))

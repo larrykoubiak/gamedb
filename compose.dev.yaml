@@ -14,6 +14,7 @@ services:
       GAMEDB_ROM_ROOT: /mnt/synology
       GAMEDB_SNES_MANUAL_ROOT: /mnt/snes-manuals
       GAMEDB_MEGADRIVE_MANUAL_ROOT: /mnt/megadrive-manuals
+      GAMEDB_NES_MANUAL_ROOT: /mnt/nes-manuals
     ports:
       - "${GAMEDB_EXPLORER_PORT:-8082}:8000"
     volumes:
@@ -21,9 +22,11 @@ services:
       - ./data/media/previews:/data/media/previews
       - ./data/media/snes-translations:/app/data/media/snes-translations:ro
       - ./data/media/megadrive-translations:/app/data/media/megadrive-translations:ro
+      - ./data/media/nes-translations:/app/data/media/nes-translations:ro
       - "${GAMEDB_VGM_HOST_ROOT:-/mnt/synology/music/VGM/By Format}:/mnt/vgm:ro"
       - "${GAMEDB_SNES_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/SNES}:/mnt/snes-manuals:ro"
       - "${GAMEDB_MEGADRIVE_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Mega Drive}:/mnt/megadrive-manuals:ro"
+      - "${GAMEDB_NES_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/NES}:/mnt/nes-manuals:ro"
       - /mnt/synology/roms:/mnt/synology/roms:ro
       - /mnt/synology/backup/games/Undub:/mnt/synology/backup/games/Undub:ro
 

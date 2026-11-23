@@ -317,7 +317,7 @@
 }
 .snes-soundtrack .soundtrack-player-header { gap: .2rem .5rem; }
 .snes-soundtrack .soundtrack-current-title { font: 650 1rem/1.25 var(--font-sans); }
-.snes-soundtrack .soundtrack-current-credit { margin-top: .15rem; }
+.snes-soundtrack .soundtrack-current-credit { margin-top: .15rem; overflow-wrap: anywhere; }
 .snes-soundtrack .soundtrack-player-status { color: var(--muted); }
 .snes-soundtrack .soundtrack-timeline { grid-column: 1; margin: 0; }
 .snes-soundtrack .soundtrack-timeline input {

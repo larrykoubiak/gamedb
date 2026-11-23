@@ -1,0 +1,1114 @@
+{
+  "verifiedArchives": [
+    {
+      "edition": "Airwolf",
+      "market": "NA",
+      "signature": "16598431c8b049db97d2691444ceb5d5",
+      "archiveName": "Airwolf (USA) (Acclaim).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (airwolfu, Airwolf (USA), cartridge SHA-1)"
+    },
+    {
+      "edition": "Airwolf",
+      "market": "PAL",
+      "signature": "b24824c138cd6745c0269cc8c254d3ec",
+      "archiveName": "Airwolf (Europe) (Acclaim).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (airwolf, Airwolf (Europe), cartridge SHA-1)"
+    },
+    {
+      "edition": "Airwolf (JP)",
+      "market": "JP",
+      "signature": "3fe9d8a966724c747ce2ef4452d4814f",
+      "archiveName": "Airwolf (Japan) (Kyugo).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (airwolfj, Airwolf (Japan), cartridge SHA-1)"
+    },
+    {
+      "edition": "Fantasy Zone",
+      "market": "JP",
+      "signature": "e48af96e0adc9c7a1d5cfb33aa7c53ce",
+      "archiveName": "Fantasy Zone (Japan) (Sunsoft).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (fantzonej, Fantasy Zone (Japan), cartridge SHA-1)"
+    },
+    {
+      "edition": "Indiana Jones and the Last Crusade (Taito)",
+      "market": "NA",
+      "signature": "846687bbbd01f299e3277e862747d401",
+      "archiveName": "Indiana Jones and the Last Crusade (USA) (Taito).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (indycrst, Indiana Jones and the Last Crusade (USA, Taito), cartridge SHA-1)"
+    },
+    {
+      "edition": "Indiana Jones and the Last Crusade (Ubi Soft)",
+      "market": "NA",
+      "signature": "72419d69074d08865da697c3a75fd7bb",
+      "archiveName": "Indiana Jones and the Last Crusade (USA) (UBI Soft).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (indycrusu, Indiana Jones and the Last Crusade (USA, UBI Soft), cartridge SHA-1)"
+    },
+    {
+      "edition": "Mario Bros.",
+      "market": "PAL",
+      "signature": "712edb14a520204868de2a93b564f6cc",
+      "archiveName": "Mario Bros. (Europe) (PAL-MA-0).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (mario, Mario Bros. (Europe, rev. A), cartridge SHA-1)"
+    },
+    {
+      "edition": "Mario Bros.",
+      "market": "PAL",
+      "signature": "80ef8444f31a810f8b485702d8a1b461",
+      "archiveName": "Mario Bros. (World).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (mario1, Mario Bros. (World), cartridge SHA-1)"
+    },
+    {
+      "edition": "Mario Bros. Classic Series",
+      "market": "PAL",
+      "signature": "371a4e1fe9897fd73a7f6313f821ca02",
+      "archiveName": "Mario Bros. (Europe) (PAL-MC-0, Classic Series).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (mariocs, Mario Bros. (Classic Series) (Europe), cartridge SHA-1)"
+    },
+    {
+      "edition": "Ms. Pac-Man",
+      "market": "NA",
+      "signature": "8aeca31d1444889be595f93d9593ee63",
+      "archiveName": "Ms. Pac-Man (USA) (Namco).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (mspacman, Ms. Pac-Man (USA, Namco), cartridge SHA-1)"
+    },
+    {
+      "edition": "Pac-Man",
+      "market": "NA",
+      "signature": "f4aa7f4f52342f72a77ef4db3e2423e5",
+      "archiveName": "Pac-Man (USA) (Namco).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (pacmanu, Pac-Man (USA, Namco), cartridge SHA-1)"
+    },
+    {
+      "edition": "Pac-Man",
+      "market": "NA",
+      "signature": "80975ff5e3f801b7221e8ab93d450d89",
+      "archiveName": "Pac-Man (USA) (Tengen).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (pacmant, Pac-Man (USA, Tengen), cartridge SHA-1)"
+    },
+    {
+      "edition": "Rampart",
+      "market": "NA",
+      "signature": "0643072b02bcb0ab4b79965880ce0670",
+      "archiveName": "Rampart (USA) (Jaleco).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (rampartu, Rampart (USA), cartridge SHA-1)"
+    },
+    {
+      "edition": "Rampart",
+      "market": "PAL",
+      "signature": "23da3445318919ba0fb2bfd61f74ec77",
+      "archiveName": "Rampart (Europe) (Jaleco).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (rampart, Rampart (Europe), cartridge SHA-1)"
+    },
+    {
+      "edition": "Rampart (JP)",
+      "market": "JP",
+      "signature": "ba52489f6edcd1ff8b0462c37011fcdc",
+      "archiveName": "Rampart (Japan) (Konami).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (rampartj, Rampart (Japan), cartridge SHA-1)"
+    },
+    {
+      "edition": "Star Wars",
+      "market": "JP",
+      "signature": "26163c80b1391fdba89a26d71ef254d3",
+      "archiveName": "Star Wars (Japan) (Victor).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (starwarsj, Star Wars (Japan, Victor), cartridge SHA-1)"
+    },
+    {
+      "edition": "Star Wars (JP)",
+      "market": "JP",
+      "signature": "a594513e48946d7068c961b57470628b",
+      "archiveName": "Star Wars (Japan) (Namco).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (starwrsn, Star Wars (Japan, Namco), cartridge SHA-1)"
+    },
+    {
+      "edition": "Superman",
+      "market": "NA",
+      "signature": "42a00b3ef855f2b25ca2061a0fbff00f",
+      "archiveName": "Superman (USA) (Kemco).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (superman, Superman (USA), cartridge SHA-1)"
+    },
+    {
+      "edition": "Tecmo NBA Basketball",
+      "market": "NA",
+      "signature": "f2f83ebb42750c2a558d715b5d2f085f",
+      "archiveName": "Tecmo NBA Basketball (USA) (NES-BK) (Rev 1).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (tecmonba1, Tecmo NBA Basketball (USA, rev. A), cartridge SHA-1)"
+    },
+    {
+      "edition": "Tecmo NBA Basketball",
+      "market": "NA",
+      "signature": "7d7d90baac3af9dbfd2286ebb1fa3193",
+      "archiveName": "Tecmo NBA Basketball (USA) (NES-BK).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (tecmonba2, Tecmo NBA Basketball (USA), cartridge SHA-1)"
+    },
+    {
+      "edition": "Tecmo NBA Basketball",
+      "market": "NA",
+      "signature": "6e83465c31c634ccc6ed0aca517595bc",
+      "archiveName": "Tecmo NBA Basketball (USA) (NES-N7).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (tecmonba, Tecmo NBA Basketball (USA) (NES-N7), cartridge SHA-1)"
+    },
+    {
+      "edition": "Tetris (JP)",
+      "market": "JP",
+      "signature": "5c28a57e10d414a5665c7df9f635d38b",
+      "archiveName": "Tetris (Bulletproof) (Japan) (Rev 1).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (tetrisja, Tetris (Japan, rev. A), cartridge SHA-1)"
+    },
+    {
+      "edition": "Tetris (JP)",
+      "market": "JP",
+      "signature": "b12d5807dc748bebcbea0f07ea1ecd15",
+      "archiveName": "Tetris (Bulletproof) (Japan) (Rev 2).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (tetrisj, Tetris (Japan, rev. B), cartridge SHA-1)"
+    },
+    {
+      "edition": "Tetris (JP)",
+      "market": "JP",
+      "signature": "cb21518c7ed1c35d7658bd5c08c4c830",
+      "archiveName": "Tetris (Bulletproof) (Japan).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (tetrisjb, Tetris (Japan), cartridge SHA-1)"
+    },
+    {
+      "edition": "The Black Bass (JP)",
+      "market": "JP",
+      "signature": "5a30393f5cc49f0bbe803c1e584f64da",
+      "archiveName": "Black Bass, The (Japan).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (blackbsj, The Black Bass (Japan), cartridge SHA-1)"
+    },
+    {
+      "title": "Alien Syndrome",
+      "edition": "Alien Syndrome (Tengen)",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1989",
+      "signature": "4b688e32cf0ea537f1357866a1301897",
+      "archiveName": "Alien Syndrome (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (aliensyn, cartridge SHA-1)"
+    },
+    {
+      "title": "Baby Boomer",
+      "edition": "Baby Boomer",
+      "market": "NA",
+      "publisher": "Color Dreams",
+      "date": "1989",
+      "signature": "bbc32c40def22e9d1507d0886c5836ff",
+      "archiveName": "Baby Boomer (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (babyboom, cartridge SHA-1)"
+    },
+    {
+      "title": "Bee 52",
+      "edition": "Bee 52",
+      "market": "NA",
+      "publisher": "Camerica",
+      "date": "1992",
+      "signature": "0c4dc6d1ad18bd13e2616b3a89834bfd",
+      "archiveName": "Bee 52 (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (bee52, cartridge SHA-1)"
+    },
+    {
+      "title": "Bible Adventures",
+      "edition": "Bible Adventures",
+      "market": "NA",
+      "publisher": "Wisdom Tree",
+      "date": "1991",
+      "signature": "de8dd56527473bbc0f4a9b5c686741ad",
+      "archiveName": "Bible Adventures (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (bibleadve, cartridge SHA-1)"
+    },
+    {
+      "title": "Bible Adventures",
+      "edition": "Bible Adventures",
+      "market": "NA",
+      "publisher": "Wisdom Tree",
+      "date": "1991",
+      "signature": "153563a1fa631da0e79c09a6290c680b",
+      "archiveName": "Bible Adventures (USA) (v1.1) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (bibleadvd, cartridge SHA-1)"
+    },
+    {
+      "title": "Bible Adventures",
+      "edition": "Bible Adventures",
+      "market": "NA",
+      "publisher": "Wisdom Tree",
+      "date": "1991",
+      "signature": "991432ee5039148e43c5982aec0e9c72",
+      "archiveName": "Bible Adventures (USA) (v1.2) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (bibleadvc, cartridge SHA-1)"
+    },
+    {
+      "title": "Bible Adventures",
+      "edition": "Bible Adventures",
+      "market": "NA",
+      "publisher": "Wisdom Tree",
+      "date": "1991",
+      "signature": "15615d91ee20599e878729ab75fcc232",
+      "archiveName": "Bible Adventures (USA) (v1.3) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (bibleadvb, cartridge SHA-1)"
+    },
+    {
+      "title": "Bible Adventures",
+      "edition": "Bible Adventures",
+      "market": "NA",
+      "publisher": "Wisdom Tree",
+      "date": "1991",
+      "signature": "66315e72e1f8f7c69cdd7e1ab3e5c630",
+      "archiveName": "Bible Adventures (USA) (v1.4) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (bibleadva, cartridge SHA-1)"
+    },
+    {
+      "title": "Bible Adventures",
+      "edition": "Bible Adventures",
+      "market": "NA",
+      "publisher": "Wisdom Tree",
+      "date": "1991",
+      "signature": "1961859e9862000393c2b06a99783aaf",
+      "archiveName": "Bible Adventures (USA) (v1.5) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (bibleadv, cartridge SHA-1)"
+    },
+    {
+      "title": "Bible Buffet",
+      "edition": "Bible Buffet",
+      "market": "NA",
+      "publisher": "Wisdom Tree",
+      "date": "1993",
+      "signature": "a382ddda0cf38ea3ed259c16c1a99cc0",
+      "archiveName": "Bible Buffet (USA) (v6.0) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (biblebuf, cartridge SHA-1)"
+    },
+    {
+      "title": "Big Nose Freaks Out",
+      "edition": "Big Nose Freaks Out",
+      "market": "NA",
+      "publisher": "Camerica",
+      "date": "1992",
+      "signature": "eeb2d054f83f6c6ba9191c45de648a1e",
+      "archiveName": "Big Nose Freaks Out (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (bignfo, cartridge SHA-1)"
+    },
+    {
+      "title": "Big Nose the Caveman",
+      "edition": "Big Nose the Caveman",
+      "market": "NA",
+      "publisher": "Camerica",
+      "date": "1991",
+      "signature": "b26efb442e5a1ac4a274d04fb71a93fd",
+      "archiveName": "Big Nose the Caveman (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (bignose, cartridge SHA-1)"
+    },
+    {
+      "title": "Blackjack",
+      "edition": "Blackjack",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1992",
+      "signature": "eb7e64dfb6b669901b64ae0978ba148f",
+      "archiveName": "Blackjack (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (blckjack, cartridge SHA-1)"
+    },
+    {
+      "title": "Bubble Bath Babes",
+      "edition": "Bubble Bath Babes",
+      "market": "NA",
+      "publisher": "Panesian",
+      "date": "1991",
+      "signature": "d388e485d13e1d0efeff2736ec992fd4",
+      "archiveName": "Bubble Bath Babes (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (bublbath, cartridge SHA-1)"
+    },
+    {
+      "title": "Caltron 6 in 1",
+      "edition": "Caltron 6 in 1",
+      "market": "NA",
+      "publisher": "Caltron",
+      "date": "1992",
+      "signature": "603772d9ef2717d48e45a0473f6d65a8",
+      "archiveName": "Caltron - 6 in 1 (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (6in1cal, cartridge SHA-1)"
+    },
+    {
+      "title": "Castle of Deceit",
+      "edition": "Castle of Deceit",
+      "market": "NA",
+      "publisher": "Bunch Games",
+      "date": "1990",
+      "signature": "61b75b24da423f6fd79a2b1e479ec4ff",
+      "archiveName": "Castle of Deceit (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (castldec, cartridge SHA-1)"
+    },
+    {
+      "title": "Challenge of the Dragon",
+      "edition": "Challenge of the Dragon",
+      "market": "NA",
+      "publisher": "Color Dreams",
+      "date": "1990",
+      "signature": "2ae5161b6f50d0829550ccbf3ba11f7e",
+      "archiveName": "Challenge of the Dragon (USA) (Color Dreams) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (chaldrgn, cartridge SHA-1)"
+    },
+    {
+      "title": "Crystal Mines",
+      "edition": "Crystal Mines",
+      "market": "NA",
+      "publisher": "Color Dreams",
+      "date": "1989",
+      "signature": "58903b96cfd6be9e6b56b872da7c5335",
+      "archiveName": "Crystal Mines (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (cmines, cartridge SHA-1)"
+    },
+    {
+      "title": "Death Race",
+      "edition": "Death Race",
+      "market": "NA",
+      "publisher": "American Game Cartridges",
+      "date": "1990",
+      "signature": "21e47a96bac165e383cd0ccc7ab19a64",
+      "archiveName": "Death Race (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (deathrac, cartridge SHA-1)"
+    },
+    {
+      "title": "Deathbots",
+      "edition": "Deathbots",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1990",
+      "signature": "4f96651756a0ff577b153589fe8bd8af",
+      "archiveName": "Deathbots (USA) (Rev 1) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (deathbot, cartridge SHA-1)"
+    },
+    {
+      "title": "Deathbots",
+      "edition": "Deathbots",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1990",
+      "signature": "d1c3c79a516abf8db0229afc10d201a6",
+      "archiveName": "Deathbots (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (deathbot1, cartridge SHA-1)"
+    },
+    {
+      "title": "Dudes with Attitude",
+      "edition": "Dudes with Attitude",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1990",
+      "signature": "3ae178ccfa1c5fa1ba2aab9d153213f7",
+      "archiveName": "Dudes with Attitude (USA) (Rev 1) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (dudesatt, cartridge SHA-1)"
+    },
+    {
+      "title": "Dudes with Attitude",
+      "edition": "Dudes with Attitude",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1990",
+      "signature": "b522cdd270d10c45608aa3360a2f3268",
+      "archiveName": "Dudes with Attitude (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (dudesatt1, cartridge SHA-1)"
+    },
+    {
+      "title": "Fantasy Zone",
+      "edition": "Fantasy Zone (Tengen)",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1989",
+      "signature": "8aa8dfa96c75a2b3b0bc41676366f2e9",
+      "archiveName": "Fantasy Zone (USA) (Tengen) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (fantzone, cartridge SHA-1)"
+    },
+    {
+      "title": "Firehawk",
+      "edition": "Firehawk",
+      "market": "NA",
+      "publisher": "Camerica",
+      "date": "1991",
+      "signature": "c078241c639cdb843ba555bd49a1534e",
+      "archiveName": "Firehawk (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (firehawk, cartridge SHA-1)"
+    },
+    {
+      "title": "Galactic Crusader",
+      "edition": "Galactic Crusader",
+      "market": "NA",
+      "publisher": "Bunch Games",
+      "date": "1990",
+      "signature": "e3d27eb9e1616cc810912b3322afb80f",
+      "archiveName": "Galactic Crusader (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (galcrus, cartridge SHA-1)"
+    },
+    {
+      "title": "Gauntlet",
+      "edition": "Gauntlet (Tengen)",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1989",
+      "signature": "dcab38d77a31d9a1682d4e117bb6d751",
+      "archiveName": "Gauntlet (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (gauntunl, cartridge SHA-1)"
+    },
+    {
+      "title": "Impossible Mission II",
+      "edition": "Impossible Mission II",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1990",
+      "signature": "c9c81674c8cd38400c62a2b473d74706",
+      "archiveName": "Impossible Mission II (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (impmiss2, cartridge SHA-1)"
+    },
+    {
+      "title": "Indiana Jones and the Temple of Doom",
+      "edition": "Indiana Jones and the Temple of Doom (Tengen)",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1989",
+      "signature": "b55f62beaefca6a1b4b717b9a4856b1a",
+      "archiveName": "Indiana Jones and the Temple of Doom (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (indyunl, cartridge SHA-1)"
+    },
+    {
+      "title": "Joshua & the Battle of Jericho",
+      "edition": "Joshua & the Battle of Jericho",
+      "market": "NA",
+      "publisher": "Wisdom Tree",
+      "date": "1992",
+      "signature": "f0b567bd8d0bcd98744a89ed99f8e875",
+      "archiveName": "Joshua & the Battle of Jericho (USA) (v6.0) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (joshua, cartridge SHA-1)"
+    },
+    {
+      "title": "King Neptune's Adventure",
+      "edition": "King Neptune's Adventure",
+      "market": "NA",
+      "publisher": "Color Dreams",
+      "date": "1990",
+      "signature": "febc7ba20cfd25c48876a62a2a508d7c",
+      "archiveName": "King Neptune's Adventure (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (kingnept, cartridge SHA-1)"
+    },
+    {
+      "title": "Klax",
+      "edition": "Klax (Tengen)",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1990",
+      "signature": "d520b6268cc7f6b8c9cb36024c807fbf",
+      "archiveName": "Klax (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (klax, cartridge SHA-1)"
+    },
+    {
+      "title": "Krazy Kreatures",
+      "edition": "Krazy Kreatures",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1990",
+      "signature": "c99cdcc7fe9268fec7948d4dafbbafbf",
+      "archiveName": "Krazy Kreatures (USA) (Rev A) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (krazykr, cartridge SHA-1)"
+    },
+    {
+      "title": "Krazy Kreatures",
+      "edition": "Krazy Kreatures",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1990",
+      "signature": "08d3922c1ddb62adf40e9e007df8eb80",
+      "archiveName": "Krazy Kreatures (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (krazykrp, cartridge SHA-1)"
+    },
+    {
+      "title": "Linus Spacehead's Cosmic Crusade",
+      "edition": "Linus Spacehead's Cosmic Crusade",
+      "market": "NA",
+      "publisher": "Camerica",
+      "date": "1992",
+      "signature": "6c3dffe7d89458bd4456581f6d4b4bf4",
+      "archiveName": "Linus Spacehead's Cosmic Crusade (USA) (En,Fr,De,Es) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (linuscc, cartridge SHA-1)"
+    },
+    {
+      "title": "Master Chu and the Drunkard Hu",
+      "edition": "Master Chu and the Drunkard Hu",
+      "market": "NA",
+      "publisher": "Color Dreams",
+      "date": "1989",
+      "signature": "4fafe9f17bda6a5f3e57c2641b89f560",
+      "archiveName": "Master Chu and the Drunkard Hu (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (mastrchu, cartridge SHA-1)"
+    },
+    {
+      "title": "Maxi 15",
+      "edition": "Maxi 15",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1992",
+      "signature": "752431c0df4195cdd64ade16aac589a1",
+      "archiveName": "Maxi 15 (USA) (Rev 1) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (maxi15u, cartridge SHA-1)"
+    },
+    {
+      "title": "Maxi 15",
+      "edition": "Maxi 15",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1992",
+      "signature": "3fecfce159a97fe942057baca8386682",
+      "archiveName": "Maxi 15 (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (maxi15ua, cartridge SHA-1)"
+    },
+    {
+      "title": "Menace Beach",
+      "edition": "Menace Beach",
+      "market": "NA",
+      "publisher": "Color Dreams",
+      "date": "1990",
+      "signature": "924aeed0d87e140bf98201c2caa03e97",
+      "archiveName": "Menace Beach (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (menaceb, cartridge SHA-1)"
+    },
+    {
+      "title": "Metal Fighter",
+      "edition": "Metal Fighter",
+      "market": "NA",
+      "publisher": "Color Dreams",
+      "date": "1989",
+      "signature": "5cbf0056cea81f277ae5d99a0286c0aa",
+      "archiveName": "Metal Fighter (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (metalfgt, cartridge SHA-1)"
+    },
+    {
+      "title": "Micro Machines",
+      "edition": "Micro Machines",
+      "market": "NA",
+      "publisher": "Camerica",
+      "date": "1991",
+      "signature": "69a223e9020646f825124e0dfbed4f56",
+      "archiveName": "Micro Machines (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (micromacu, cartridge SHA-1)"
+    },
+    {
+      "title": "MiG-29: Soviet Fighter",
+      "edition": "MiG-29: Soviet Fighter",
+      "market": "NA",
+      "publisher": "Camerica",
+      "date": "1991",
+      "signature": "8e288518445b61383cc5188c5055bc24",
+      "archiveName": "MiG 29 - Soviet Fighter (USA, Europe) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (mig29sf, cartridge SHA-1)"
+    },
+    {
+      "title": "Mission Cobra",
+      "edition": "Mission Cobra",
+      "market": "NA",
+      "publisher": "Bunch Games",
+      "date": "1990",
+      "signature": "90593b63cfa677841d5641e178258023",
+      "archiveName": "Mission Cobra (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (miscobra, cartridge SHA-1)"
+    },
+    {
+      "title": "Moon Ranger",
+      "edition": "Moon Ranger",
+      "market": "NA",
+      "publisher": "Bunch Games",
+      "date": "1990",
+      "signature": "fafcb4804d6cf51761d38c3ef3219d9f",
+      "archiveName": "Moon Ranger (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (moonrang, cartridge SHA-1)"
+    },
+    {
+      "title": "Ms. Pac-Man",
+      "edition": "Ms. Pac-Man (Tengen)",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1990",
+      "signature": "1bd4c25c3cc49c13bfd211fbfc7421cb",
+      "archiveName": "Ms. Pac-Man (USA) (Tengen) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (mspacmnt, cartridge SHA-1)"
+    },
+    {
+      "title": "Operation Secret Storm",
+      "edition": "Operation Secret Storm",
+      "market": "NA",
+      "publisher": "Color Dreams",
+      "date": "1992",
+      "signature": "b5b75e318192306ddc478c839e13dc6d",
+      "archiveName": "Operation Secret Storm (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (opsecrts, cartridge SHA-1)"
+    },
+    {
+      "title": "Pac-Man",
+      "edition": "Pac-Man (Tengen)",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1989",
+      "signature": "55418e660510700bc8852295d0ed3c76",
+      "archiveName": "Pac-Man (USA) (Tengen) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (pacmantu, cartridge SHA-1)"
+    },
+    {
+      "title": "Pac-Mania",
+      "edition": "Pac-Mania",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1990",
+      "signature": "ba28b4257b1349b53c5685a785fb4f99",
+      "archiveName": "Pac-Mania (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (pacmania, cartridge SHA-1)"
+    },
+    {
+      "title": "Pesterminator: The Western Exterminator",
+      "edition": "Pesterminator: The Western Exterminator",
+      "market": "NA",
+      "publisher": "Color Dreams",
+      "date": "1990",
+      "signature": "923e38010b5dc536ef240fb727896ba3",
+      "archiveName": "Pesterminator - The Western Exterminator (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (pesterm, cartridge SHA-1)"
+    },
+    {
+      "title": "Puzzle",
+      "edition": "Puzzle",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1990",
+      "signature": "512f846051aecdd92b244136e16a7596",
+      "archiveName": "Puzzle (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (puzzle, cartridge SHA-1)"
+    },
+    {
+      "title": "Pyramid",
+      "edition": "Pyramid",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1990",
+      "signature": "16866935d5fd2fa90bda4d1018119109",
+      "archiveName": "Pyramid (USA) (Rev 1) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (pyramid, cartridge SHA-1)"
+    },
+    {
+      "title": "Pyramid",
+      "edition": "Pyramid",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1990",
+      "signature": "d49f929703319f69041cf67812c4c560",
+      "archiveName": "Pyramid (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (pyramid1, cartridge SHA-1)"
+    },
+    {
+      "title": "Quattro Adventure",
+      "edition": "Quattro Adventure",
+      "market": "NA",
+      "publisher": "Camerica",
+      "date": "1991",
+      "signature": "aa031e7f83a2b42a61c62eafc49bc605",
+      "archiveName": "Quattro Adventure (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (quatradv, cartridge SHA-1)"
+    },
+    {
+      "title": "Quattro Arcade",
+      "edition": "Quattro Arcade",
+      "market": "NA",
+      "publisher": "Camerica",
+      "date": "1992",
+      "signature": "a56da197ff486a2d537df589ff90f28d",
+      "archiveName": "Quattro Arcade (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (quatrarc, cartridge SHA-1)"
+    },
+    {
+      "title": "Quattro Sports",
+      "edition": "Quattro Sports",
+      "market": "NA",
+      "publisher": "Camerica",
+      "date": "1992",
+      "signature": "6e57fb581f766eca20326c053f34f9e4",
+      "archiveName": "Quattro Sports (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (quatrspt, cartridge SHA-1)"
+    },
+    {
+      "title": "R.B.I. Baseball",
+      "edition": "R.B.I. Baseball (Tengen)",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1989",
+      "signature": "2a8097d1f5c2cb29780d41975be7f833",
+      "archiveName": "R.B.I. Baseball (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (rbibba, cartridge SHA-1)"
+    },
+    {
+      "title": "R.B.I. Baseball 2",
+      "edition": "R.B.I. Baseball 2",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1990",
+      "signature": "9cdc5ff29b5a2addade0cb7f4baf945d",
+      "archiveName": "R.B.I. Baseball 2 (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (rbibb2, cartridge SHA-1)"
+    },
+    {
+      "title": "R.B.I. Baseball 3",
+      "edition": "R.B.I. Baseball 3",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1991",
+      "signature": "93a20dd12867751424c11ed3c394bc25",
+      "archiveName": "R.B.I. Baseball 3 (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (rbibb3, cartridge SHA-1)"
+    },
+    {
+      "title": "Rad Racket: Deluxe Tennis II",
+      "edition": "Rad Racket: Deluxe Tennis II",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1991",
+      "signature": "fbd035fa879e8ea0ebd6ba26611de9a9",
+      "archiveName": "Rad Racket - Deluxe Tennis II (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (radrackt, cartridge SHA-1)"
+    },
+    {
+      "title": "Raid 2020",
+      "edition": "Raid 2020",
+      "market": "NA",
+      "publisher": "Color Dreams",
+      "date": "1989",
+      "signature": "bfaf301fe9a6a09560671b55bac9235b",
+      "archiveName": "Raid 2020 (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (raid2020, cartridge SHA-1)"
+    },
+    {
+      "title": "Road Runner",
+      "edition": "Road Runner",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1989",
+      "signature": "67319b48fc0a341f4beb54795504fea2",
+      "archiveName": "Road Runner (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (roadrunn, cartridge SHA-1)"
+    },
+    {
+      "title": "Robodemons",
+      "edition": "Robodemons",
+      "market": "NA",
+      "publisher": "Color Dreams",
+      "date": "1990",
+      "signature": "9957b7bcbf36f5620999880b537fb193",
+      "archiveName": "Robodemons (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (robodemn, cartridge SHA-1)"
+    },
+    {
+      "title": "Rolling Thunder",
+      "edition": "Rolling Thunder (Tengen)",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1989",
+      "signature": "ad26098e5737b28c717092f8f1795b45",
+      "archiveName": "Rolling Thunder (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (rthunder, cartridge SHA-1)"
+    },
+    {
+      "title": "Secret Scout in the Temple of Demise",
+      "edition": "Secret Scout in the Temple of Demise",
+      "market": "NA",
+      "publisher": "Color Dreams",
+      "date": "1991",
+      "signature": "ebdb73fc5e974a88fc3d25eb4d409d88",
+      "archiveName": "Secret Scout in the Temple of Demise (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (sscout, cartridge SHA-1)"
+    },
+    {
+      "title": "Shinobi",
+      "edition": "Shinobi",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1989",
+      "signature": "38d8c0a97561289d77615e5e0443ddff",
+      "archiveName": "Shinobi (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (shinobi, cartridge SHA-1)"
+    },
+    {
+      "title": "Shockwave",
+      "edition": "Shockwave",
+      "market": "NA",
+      "publisher": "American Game Cartridges",
+      "date": "1990",
+      "signature": "841a28f9d94a093e221c6dfd438405e6",
+      "archiveName": "Shockwave (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (shockwav, cartridge SHA-1)"
+    },
+    {
+      "title": "Silent Assault",
+      "edition": "Silent Assault",
+      "market": "NA",
+      "publisher": "Color Dreams",
+      "date": "1990",
+      "signature": "6b771a9e670498c46aefa13aa34eb77d",
+      "archiveName": "Silent Assault (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (silentas, cartridge SHA-1)"
+    },
+    {
+      "title": "Skull & Crossbones",
+      "edition": "Skull & Crossbones",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1990",
+      "signature": "3f13bb5f505ba1d9d94e771d0c249a62",
+      "archiveName": "Skull & Crossbones (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (skullxb, cartridge SHA-1)"
+    },
+    {
+      "title": "Solitaire",
+      "edition": "Solitaire",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1992",
+      "signature": "ad5a30870a943fefdd79d510305a10a6",
+      "archiveName": "Solitaire (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (solitair, cartridge SHA-1)"
+    },
+    {
+      "title": "Spiritual Warfare",
+      "edition": "Spiritual Warfare",
+      "market": "NA",
+      "publisher": "Wisdom Tree",
+      "date": "1992",
+      "signature": "421f40a35223f0569a06b75c50421e9f",
+      "archiveName": "Spiritual Warfare (USA) (v5.1) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (spiritwfb, cartridge SHA-1)"
+    },
+    {
+      "title": "Spiritual Warfare",
+      "edition": "Spiritual Warfare",
+      "market": "NA",
+      "publisher": "Wisdom Tree",
+      "date": "1992",
+      "signature": "6987c8322e3275fd975c3f9c2d845f89",
+      "archiveName": "Spiritual Warfare (USA) (v6.0) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (spiritwfa, cartridge SHA-1)"
+    },
+    {
+      "title": "Spiritual Warfare",
+      "edition": "Spiritual Warfare",
+      "market": "NA",
+      "publisher": "Wisdom Tree",
+      "date": "1992",
+      "signature": "b05ca6b2c979830eb276043fd53e2fad",
+      "archiveName": "Spiritual Warfare (USA) (v6.1) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (spiritwf, cartridge SHA-1)"
+    },
+    {
+      "title": "Stunt Kids",
+      "edition": "Stunt Kids",
+      "market": "NA",
+      "publisher": "Camerica",
+      "date": "1992",
+      "signature": "98bef951111431bb2f14f73d6e1fa268",
+      "archiveName": "Stunt Kids (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (stuntkid, cartridge SHA-1)"
+    },
+    {
+      "title": "Super Sprint",
+      "edition": "Super Sprint (Tengen)",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1989",
+      "signature": "a1f98cf1b6e956bb8b4db0adbc7ed41f",
+      "archiveName": "Super Sprint (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (ssprint, cartridge SHA-1)"
+    },
+    {
+      "title": "Tagin' Dragon",
+      "edition": "Tagin' Dragon",
+      "market": "NA",
+      "publisher": "Bunch Games",
+      "date": "1990",
+      "signature": "a03ae732d4bd16f6c3a35fe085cda986",
+      "archiveName": "Tagin' Dragon (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (tagindrg, cartridge SHA-1)"
+    },
+    {
+      "title": "Tetris",
+      "edition": "Tetris (Tengen)",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1989",
+      "signature": "20c190ee2aaf2321af4f5aec4d8b51ab",
+      "archiveName": "Tetris (USA) (Tengen) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (tetrist, cartridge SHA-1)"
+    },
+    {
+      "title": "The Fantastic Adventures of Dizzy",
+      "edition": "The Fantastic Adventures of Dizzy",
+      "market": "NA",
+      "publisher": "Camerica",
+      "date": "1991",
+      "signature": "5a667a7b0d1b6eceea76caa1c8dc4e41",
+      "archiveName": "Fantastic Adventures of Dizzy, The (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (fntdizzy, cartridge SHA-1)"
+    },
+    {
+      "title": "The Ultimate Stuntman",
+      "edition": "The Ultimate Stuntman",
+      "market": "NA",
+      "publisher": "Camerica",
+      "date": "1990",
+      "signature": "e57381242ed53b45e7f225354598eaec",
+      "archiveName": "Ultimate Stuntman, The (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (ultstunt, cartridge SHA-1)"
+    },
+    {
+      "title": "Tiles of Fate",
+      "edition": "Tiles of Fate",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1990",
+      "signature": "965aad1be7bbc04e91b5a157aa63a9ce",
+      "archiveName": "Tiles of Fate (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (tilefate, cartridge SHA-1)"
+    },
+    {
+      "title": "Toobin'",
+      "edition": "Toobin'",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1989",
+      "signature": "3410d8ac22ca42412dd35999e6d5df53",
+      "archiveName": "Toobin' (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (toobin, cartridge SHA-1)"
+    },
+    {
+      "title": "Trolls on Treasure Island",
+      "edition": "Trolls on Treasure Island",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1992",
+      "signature": "7f0f97b0b3300e6ba98527f008a423fa",
+      "archiveName": "Trolls on Treasure Island (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (trollsti, cartridge SHA-1)"
+    },
+    {
+      "title": "Ultimate League Soccer",
+      "edition": "Ultimate League Soccer",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1991",
+      "signature": "5c720a6670ecd49c83806c77503e11bb",
+      "archiveName": "Ultimate League Soccer (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (ultsoccru, cartridge SHA-1)"
+    },
+    {
+      "title": "Venice Beach Volleyball",
+      "edition": "Venice Beach Volleyball",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1991",
+      "signature": "46a728b1849ea25db9cd0a654877383c",
+      "archiveName": "Venice Beach Volleyball (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (venicebv, cartridge SHA-1)"
+    },
+    {
+      "title": "Vindicators",
+      "edition": "Vindicators",
+      "market": "NA",
+      "publisher": "Tengen",
+      "date": "1989",
+      "signature": "2b6014e863362dcbedd52fc79ac487e0",
+      "archiveName": "Vindicators (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (vindictr, cartridge SHA-1)"
+    },
+    {
+      "title": "Wally Bear and the NO! Gang",
+      "edition": "Wally Bear and the NO! Gang",
+      "market": "NA",
+      "publisher": "American Video Entertainment",
+      "date": "1991",
+      "signature": "3989f8037196500a982f1cf12dafc44d",
+      "archiveName": "Wally Bear and the No! Gang (USA) (Unl).zip",
+      "independentRetail": true,
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml (wallybng, cartridge SHA-1)"
+    }
+  ]
+}

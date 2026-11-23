@@ -84,7 +84,7 @@ def read_cartridge_roms(connection, catalog):
     return {row.signature: row for row in connection.execute(VERIFIED_ROM_SQL, {"signatures": signatures})}
 
 
-def _fingerprint(rom):
+def read_verified_rom(rom):
     path = Path(rom.path)
     if path.suffix.lower() != ".zip":
         return None
@@ -95,7 +95,12 @@ def _fingerprint(rom):
         return None
     if len(content) > 16 * 1024 * 1024 or sha1(content).hexdigest() != rom.sha1:
         return None
-    return sha256(content).hexdigest()
+    return content
+
+
+def _fingerprint(rom):
+    content = read_verified_rom(rom)
+    return sha256(content).hexdigest() if content is not None else None
 
 
 def cartridge_hashes(path, roms, refresh=False):

@@ -80,49 +80,7 @@ def cartridge_records(xml):
 
 
 def mame_matches(catalog, archives, roms, records):
-    """Use a MAME software group only when it identifies one documented edition."""
-    by_digest, by_name, by_group = defaultdict(list), defaultdict(set), defaultdict(list)
-    for record in records:
-        by_digest[record.digest].append(record)
-        for name in record.names:
-            by_name[retail._compact_title(name)].add(record.group)
-    for archive in archives:
-        for record in by_digest[roms.get(archive["signature"])]:
-            by_group[record.group].append((archive, record))
-
-    owners, wanted = defaultdict(set), {}
-    for game in catalog["games"]:
-        for release in game["releases"]:
-            edition = release["edition"]
-            anchors = {record.group for archive in release.get("archives", ())
-                       for record in by_digest[roms.get(archive["signature"])]}
-            groups = set().union(*(by_name[retail._compact_title(name)] for name in (*release["titles"], edition)))
-            wanted[release["key"]] = anchors or groups
-            for group in anchors or groups:
-                owners[group].add(edition)
-
-    seen = {archive["signature"]: release["edition"] for game in catalog["games"] for release in game["releases"]
-            for archive in release.get("archives", ())}
-    for game in catalog["games"]:
-        for release in game["releases"]:
-            if release["status"] != "unmatched":
-                continue
-            edition, market = release["edition"], release["market"]
-            groups = {group for group in wanted[release["key"]] if owners[group] == {edition}}
-            if len(groups) != 1:
-                continue
-            (group,) = groups
-            signature_claims = {}
-            for archive, record in by_group[group]:
-                signature = archive["signature"]
-                territories = set(archive["regions"])
-                if seen.get(signature, edition) != edition:
-                    continue
-                if territories & ARCHIVE_MARKETS[market] or ("WORLD" in territories and market in record.markets):
-                    signature_claims[signature] = record.evidence["source"]["record"]
-            for signature, name in sorted(signature_claims.items()):
-                yield {"edition": edition, "market": market, "signature": signature,
-                       "evidence": f"{MAME + MAME_FILE} ({name}, cartridge SHA-1)"}
+    return retail.cartridge_group_matches(catalog, archives, roms, records, markets=ARCHIVE_MARKETS)
 
 
 def add_cartridge_details(catalog, roms, records, rdb=()):

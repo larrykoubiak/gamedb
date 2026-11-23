@@ -123,6 +123,41 @@ configurations mount it read-only. Set `GAMEDB_MEGADRIVE_TRANSLATION_ROOT` when
 running Explorer directly with a library created using `--root`. Some older
 patch archives require `7z` to extract their members.
 
+## NES and Famicom retail catalog
+
+The catalog covers licensed Japanese, North American, and PAL cartridges,
+official multicarts, Bandai Datach, and reviewed original-era North American
+independent releases. It adapts the release tables under CC BY-SA 4.0. The seed
+matches verified No-Intro archives by title and region, with MAME program and
+graphics chip hashes for reviewed variants. [Pinned release tables](https://en.wikipedia.org/wiki/Special:PermanentLink/1385181858#Licensed_games) · [MAME cartridge records](https://github.com/mamedev/mame/blob/mame0285/hash/nes.xml)
+
+```sh
+python -m gamedb seed-nes --report data/logs/nes-retail/matches.json --publish
+python -m gamedb sync-nes-manuals --catalog data/logs/nes-retail/matches.json \
+  --root /mnt/synology/photo/Manuals/NES
+python -m gamedb sync-nes-translations \
+  --source /mnt/synology/backup2/romhacking.net-20240801/translations/nes \
+  --report data/logs/nes-retail/translations.json
+```
+
+Open **NES / Famicom retail catalog** in Explorer or go to `/catalog/nes`.
+The catalog shows regional LaunchBox and Libretro artwork, MAME board and
+cartridge codes, and local NSF and NSFE soundtrack sets. The seed uses the
+Rx2.0 Calibre metadata to identify region and language and links PDFs by their
+source SHA-1. Source indexes are cached in `data/media/cache/nes-retail`.
+Omit `--publish` for a read-only audit. [Rx2.0 Manual Restoration Project](https://www.gamingalexandria.com/wp/2025/04/rx2-0-ressurectionxtras-nes-famicom-manual-restoration-project-complete/)
+
+Both Compose configurations mount the manual and translation libraries
+read-only. Set `GAMEDB_NES_MANUAL_HOST_ROOT` for another manual library on the
+host or `GAMEDB_NES_MANUAL_ROOT` when running Explorer directly. Warm previews
+in the Explorer service with `python -m gamedb.explorer warm-manual-cache nes`.
+
+The importer attaches patches to the cartridge revision supported by checksum
+evidence. **Download ROM** uses the GameDB API key and builds a `.nes` image
+when the patch layout is verified. Reviewed IPS builds check their output
+against pinned SHA-1 values. The translation report records projects that
+could not be matched. [Reviewed patch packages](reference/nes_translation_reviews.json)
+
 ## SNES retail catalog
 
 The first GameDB V2 catalog starts with a [pinned SNES retail release list](https://en.wikipedia.org/wiki/Special:PermanentLink/1384177751#Retail_releases).
@@ -226,7 +261,7 @@ dates. English patches appear first.
 
 Each entry in the release detail API carries the base release signature, the
 base ROM SHA-1, the patch SHA-256, and the required input layout.
-The [author reference](reference/snes_translation_authors.json) resolves the
+The [author reference](reference/translation_authors.json) resolves the
 backup's contributor IDs through the NeoROMhacking community directory and
 includes saved ROMhacking.net project credits for matching versions and dates.
 

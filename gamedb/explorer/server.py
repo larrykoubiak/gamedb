@@ -292,8 +292,8 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return self._json_response({
                     "softwareCorrections": self.server.corrections_enabled,
                     "vgm": bool(self.server.vgm_root),
-                    "snesRetail": self.server.repository.retail_available("snes"),
-                    "megadriveRetail": self.server.repository.retail_available("megadrive"),
+                    **{f"{platform}Retail": self.server.repository.retail_available(platform)
+                       for platform in RETAIL_PLATFORMS},
                 })
             if parsed.path == "/api/metadata-options":
                 system_id = query.get("system_id", [""])[0]
@@ -391,8 +391,8 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             if SOFTWARE_PAGE.fullmatch(parsed.path):
                 return self._asset_response("index.html", "text/html; charset=utf-8")
             if RETAIL_PAGE.fullmatch(parsed.path):
-                return self._asset_response("snes-retail.html", "text/html; charset=utf-8")
-            if parsed.path in ("/app.js", "/almanac.js", "/artwork-viewer.js", "/snes-retail.js", "/snes-manual.js"):
+                return self._asset_response("retail.html", "text/html; charset=utf-8")
+            if parsed.path in ("/app.js", "/almanac.js", "/artwork-viewer.js", "/retail.js", "/manual-reader.js"):
                 return self._asset_response(parsed.path[1:], "text/javascript; charset=utf-8")
             if content_type := VGM_STATIC_TYPES.get(parsed.path):
                 cache = (
@@ -412,7 +412,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return self._asset_response(asset, "image/png", "public, max-age=3600")
             if SNES_ICON.fullmatch(parsed.path):
                 return self._asset_response(parsed.path[1:], "image/png", "public, max-age=3600")
-            if parsed.path in ("/styles.css", "/almanac.css", "/snes-retail.css", "/snes-manual.css"):
+            if parsed.path in ("/styles.css", "/almanac.css", "/retail.css", "/manual-reader.css"):
                 return self._asset_response(parsed.path[1:], "text/css; charset=utf-8")
             self.send_error(HTTPStatus.NOT_FOUND)
         except (ValueError, TypeError):

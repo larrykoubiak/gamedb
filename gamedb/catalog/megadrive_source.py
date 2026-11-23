@@ -5,7 +5,7 @@ import re
 
 from bs4 import BeautifulSoup
 
-from gamedb.catalog.retail_source import cell_text, known_credit, remove_citations, title_and_aliases
+from gamedb.catalog.retail_source import cell_text, credit_for_market, regional_credits, remove_citations, title_and_aliases
 
 
 REVISION = 1386009379
@@ -37,26 +37,8 @@ def _market_names(title, aliases, market):
     return list(dict.fromkeys([*(regional or [title]), *local]))
 
 
-def _credit(cell):
-    remove_citations(cell)
-    for marker in cell.find_all("sup"):
-        marker.replace_with("\x1f" + cell_text(marker))
-    for line_break in cell.find_all("br"):
-        line_break.replace_with("\x1e")
-    credits = []
-    for line in cell.get_text().split("\x1e"):
-        name, _, scope = line.partition("\x1f")
-        name = " ".join(name.split())
-        if known_credit(name):
-            credits.append((name, set(re.findall(r"[A-Z]+", scope))))
-    return credits
-
-
 def _credit_for(credits, market):
-    scopes = {market, *LOCAL_MARKERS.get(market, ())}
-    regional = [name for name, regions in credits if regions & scopes]
-    general = [name for name, regions in credits if not regions or "WW" in regions]
-    return " / ".join(dict.fromkeys(regional or general))
+    return credit_for_market(credits, {market, *LOCAL_MARKERS.get(market, ())})
 
 
 def _release_dates(cells, notes, title):
@@ -89,7 +71,8 @@ def _compilations(soup, reviews, games):
     rows = {}
     for row in table.find_all("tr")[1:]:
         title, developer, publisher, _ = row.find_all(["th", "td"], recursive=False)
-        rows[cell_text(title)] = (_credit_for(_credit(developer), None), _credit_for(_credit(publisher), None))
+        rows[cell_text(title)] = (credit_for_market(regional_credits(developer)),
+                                 credit_for_market(regional_credits(publisher)))
     for source_title, review in reviews.items():
         developer, publisher = rows[source_title]
         title = review.get("title", source_title)
@@ -134,7 +117,7 @@ def parse_retail_list(html, compilations=None, *, expected_rows=878):
             multiple, previous = True, None
         else:
             raise ValueError("Unexpected Mega Drive release row")
-        developers, publishers = map(_credit, cells[:2])
+        developers, publishers = map(regional_credits, cells[:2])
         developer, publisher = _credit_for(developers, None), _credit_for(publishers, None)
         dates = _release_dates(cells[2:], notes, title)
         if not dates:

@@ -17,7 +17,7 @@ from urllib.parse import quote, urlsplit
 from zipfile import BadZipFile, ZipFile
 
 from gamedb.catalog.manuals import manual_key
-from gamedb.catalog.patching import MAX_ROM_SIZE, PatchError, apply_translation, supports_patching
+from gamedb.catalog.patching import MAX_ROM_SIZE, apply_translation, supports_patching
 from gamedb.catalog.translations import (
     FORMATS, INDEX_NAME as TRANSLATION_INDEX, INDEX_VERSION, MAX_PATCH_SIZE, translation_order,
 )
@@ -161,6 +161,8 @@ def add_local_translations(game, root, platform="snes"):
                 public = {field: value for field, value in record.items() if field != "signatures"}
                 public["baseReleaseSignature"] = archive["signature"]
                 public["url"] = f"/related-media/{platform}-translation/{record['key']}"
+                if platform == "nes":
+                    public["sourceUrl"] = f"https://neoromhacking.net/translationpage.php?id={record['rhdnId']}"
                 if supports_patching(record["format"], record["layout"]):
                     public["romDownloadUrl"] = (
                         f"/api/v1/releases/{archive['signature']}/translations/{record['key']}/download"
@@ -239,14 +241,18 @@ def serve_retail_translation_rom(handler, signature, key):
     if len(patch) != record["size"] or hashlib.sha256(patch).hexdigest() != record["sha256"]:
         return handler._json_response({"error": "The translation patch has changed."}, HTTPStatus.CONFLICT)
     try:
+        header = record.get("outputHeader")
         patched = apply_translation(original, patch, record["format"], record["layout"],
-                                    pad_to_size=record.get("padToSize"))
-    except PatchError as error:
+                                    pad_to_size=record.get("padToSize"),
+                                    output_header=bytes.fromhex(header) if header else None)
+    except ValueError as error:
         return handler._json_response({"error": str(error)}, HTTPStatus.CONFLICT)
+    if (expected_sha1 := record.get("outputSha1")) and hashlib.sha1(patched).hexdigest() != expected_sha1:
+        return handler._json_response({"error": "The patched ROM checksum does not match."}, HTTPStatus.CONFLICT)
 
     base_name = Path(rom["member_path"].replace("\\", "/")).stem
     tag = " ".join(item for item in (record["language"], record["version"]) if item)
-    extension = "md" if platform == "megadrive" else "sfc"
+    extension = {"snes": "sfc", "megadrive": "md", "nes": "nes"}[platform]
     filename = re.sub(r"[/\\\x00-\x1f\x7f]", "_", f"{base_name} [{tag}].{extension}")
     return _serve_file(handler, key, root, {
         "path": filename, "revision": hashlib.sha256(patched).hexdigest(),

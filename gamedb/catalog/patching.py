@@ -2,6 +2,8 @@
 
 from zlib import crc32
 
+from gamedb.catalog.nes_rom import INES_HEADER_SIZE, ines_boundaries
+
 
 MAX_ROM_SIZE = 16 * 1024 * 1024
 COPIER_HEADER_SIZE = 512
@@ -54,8 +56,8 @@ class _PatchReader:
 
 
 def supports_patching(patch_format, layout):
-    return ((patch_format == "ips" and layout in ("headerless", "headered"))
-            or (patch_format in DELTA_MAGIC and layout == "headerless"))
+    return ((patch_format == "ips" and layout in ("headerless", "headered", "ines", "ines-payload"))
+            or (patch_format in DELTA_MAGIC and layout in ("headerless", "ines", "ines-payload")))
 
 
 def _ips_reader(patch):
@@ -174,10 +176,12 @@ def _delta_header(patch, patch_format):
     return reader, source_size, target_size, source_crc, target_crc
 
 
-def embedded_input(patch, patch_format):
+def embedded_input(patch, patch_format, *, same_size=False):
     try:
-        _, source_size, _, source_crc, _ = _delta_header(patch, patch_format)
+        _, source_size, target_size, source_crc, _ = _delta_header(patch, patch_format)
     except PatchError:
+        return None
+    if same_size and source_size != target_size:
         return None
     return source_size, f"{source_crc:08x}"
 
@@ -197,7 +201,17 @@ def _apply_delta(source, patch, patch_format):
     return target
 
 
-def apply_translation(source, patch, patch_format, layout, *, pad_to_size=None):
+def _ines_program(data):
+    try:
+        start, _, end = ines_boundaries(data)
+    except ValueError as error:
+        raise PatchError("Invalid iNES program or graphics data.") from error
+    if end != len(data):
+        raise PatchError("The iNES header and image size do not agree.")
+    return start
+
+
+def apply_translation(source, patch, patch_format, layout, *, pad_to_size=None, output_header=None):
     if not supports_patching(patch_format, layout):
         raise PatchError("The patch requires an unsupported input layout.")
     if not 0 < len(source) <= MAX_ROM_SIZE:
@@ -207,7 +221,22 @@ def apply_translation(source, patch, patch_format, layout, *, pad_to_size=None):
                 or not len(source) <= pad_to_size <= MAX_ROM_SIZE):
             raise PatchError("The patch requires an invalid padded ROM size.")
         source = source.ljust(pad_to_size, b"\x00")
+    if layout == "ines-payload":
+        if _ines_program(source) != INES_HEADER_SIZE:
+            raise PatchError("The patch requires a standard 16-byte iNES header.")
+        header, source = source[:INES_HEADER_SIZE], source[INES_HEADER_SIZE:]
     if patch_format == "ips":
         prefix_size = COPIER_HEADER_SIZE if layout == "headered" else 0
-        return _apply_ips(source, patch, prefix_size)
-    return _apply_delta(source, patch, patch_format)
+        result = _apply_ips(source, patch, prefix_size)
+    else:
+        result = _apply_delta(source, patch, patch_format)
+    if layout == "ines-payload":
+        result = bytearray(header) + result
+    if output_header is not None:
+        if (layout not in ("ines", "ines-payload") or len(output_header) != INES_HEADER_SIZE
+                or _ines_program(result) != INES_HEADER_SIZE):
+            raise PatchError("The patch requires a different iNES output header.")
+        result[:INES_HEADER_SIZE] = output_header
+    if layout in ("ines", "ines-payload"):
+        _ines_program(result)
+    return result
