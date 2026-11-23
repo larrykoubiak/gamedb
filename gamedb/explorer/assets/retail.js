@@ -558,7 +558,8 @@ function romCell(release) {
     }
     if (archive.discs?.length > 1) {
       const revisions = archive.revisions.map(value => `Rev ${value}`);
-      const label = [`${archive.discs.length} discs`, ...revisions, ...archive.versions].join(" · ");
+      const label = [archive.pressing, `${archive.discs.length} discs`, ...revisions, ...archive.versions]
+        .filter(Boolean).join(" · ");
       return releaseDisclosure(label, releaseList(archive.discs.map(disc => archiveLink(disc.name))));
     }
     return archiveLink(archive.archiveNames.join(" · "));

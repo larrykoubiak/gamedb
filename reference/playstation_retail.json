@@ -631,6 +631,14 @@
       ],
       "evidence": "https://game-rave.com/?p=2999 · US disc serial SLUS-00340"
     },
+    "3428": {
+      "pressings": {
+        "Jet Moto 2 - Championship Edition": {
+          "label": "Championship Edition",
+          "manual": "Jet Moto 2 - Championship Edition (GH) (USA).pdf"
+        }
+      }
+    },
     "3528": {
       "archiveTitles": [
         "Discworld II - Mortality Bytes!"
@@ -667,6 +675,18 @@
         "Rival Schools - United by Fate"
       ],
       "evidence": "https://game-rave.com/?p=3867 · US disc serial SLUS-00681, SLUS-00771"
+    },
+    "3905": {
+      "pressings": {
+        "Resident Evil 2 - Dual Shock Ver.": {
+          "label": "Dual Shock Edition",
+          "manual": "Resident Evil 2 - Dual Shock Ver. (USA).pdf",
+          "serials": [
+            "SLUS-00748",
+            "SLUS-00756"
+          ]
+        }
+      }
     },
     "3919": {
       "archiveTitles": [
@@ -954,6 +974,14 @@
       ],
       "evidence": "https://game-rave.com/?p=9155 · US disc serial SLUS-00616"
     },
+    "9279": {
+      "pressings": {
+        "Lost World, The - Jurassic Park - Special Edition": {
+          "label": "Special Edition",
+          "manual": "Lost World, The - Jurassic Park - Special Edition (GH) (USA).pdf"
+        }
+      }
+    },
     "9302": {
       "rating": "Kids to Adults"
     },
@@ -991,6 +1019,18 @@
         "Norse by Norsewest - The Return of the Lost Vikings"
       ],
       "evidence": "https://game-rave.com/?p=9802 · US disc serial SLUS-00466"
+    },
+    "9896": {
+      "pressings": {
+        "Resident Evil - Director's Cut - Dual Shock Ver.": {
+          "label": "Dual Shock Edition",
+          "manual": "Resident Evil - Director's Cut - Dual Shock Ver. (GH) (USA).pdf",
+          "serials": [
+            "SLUS-00747"
+          ],
+          "source": "https://psxdatacenter.com/games/U/R/SLUS-00747.html"
+        }
+      }
     }
   },
   "metadata": {

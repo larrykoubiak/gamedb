@@ -69,7 +69,7 @@ def add_manuals(catalog, manuals, reviews):
     for game in catalog["games"]:
         release, = game["releases"]
         titles = {*release["titles"], *(archive["title"] for archive in release.get("archives", ())
-                                       if archive["basis"] != "reviewed-retail-bundle")}
+                                       if archive["basis"] not in {"reviewed-retail-bundle", "reviewed-retail-pressing"})}
         names[game["key"]] = {_compact_title(title) for title in titles}
         for title in names[game["key"]]:
             claims[title].add(game["key"])
@@ -84,6 +84,13 @@ def add_manuals(catalog, manuals, reviews):
             options = [item for title in names[game["key"]]
                        if claims[title] == {game["key"]} for item in by_title[title]]
             selected = [(game["title"], pick_manual(options))] if options else []
+        available = {archive["title"] for archive in release.get("archives", ())
+                     if archive["basis"] == "reviewed-retail-pressing"}
+        for title, pressing in review.get("pressings", {}).items():
+            if title in available and (filename := pressing.get("manual")):
+                if filename not in by_name:
+                    raise ValueError(f"Unknown reviewed PlayStation manual: {filename!r}")
+                selected.append((pressing["label"], pick_manual(by_name[filename])))
         if selected:
             release["manuals"] = [{**asset, "name": name, "format": "PDF", "regions": ["US"]}
                                   for name, asset in selected]

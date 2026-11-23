@@ -4,7 +4,7 @@ import unittest
 
 from sqlalchemy import text
 
-from gamedb.catalog.playstation import ARCHIVES, match_releases
+from gamedb.catalog.playstation import ARCHIVES, add_pressings, match_releases
 from gamedb.catalog.playstation_media import _catalogue_manuals, add_manuals
 from gamedb.catalog.playstation_source import game_record
 from gamedb.database import create_database_engine
@@ -82,6 +82,26 @@ class PlaystationRetailTests(unittest.TestCase):
         bundle = releases[2]
         self.assertEqual([a["signature"] for a in bundle["archives"]], [a["signature"] for a in originals])
         self.assertEqual([m["name"] for m in bundle["manuals"]], ["Game", "Expansion"])
+
+    def test_retail_pressing_keeps_its_own_serial_and_manual(self):
+        entry = game(1, "Game", "<tr><td>Sony ID: SLUS-00001</td></tr>")
+        release, = entry["releases"]
+        catalog = {"games": [entry]}
+        archives = [archive("Game"), archive("Game - Dual Shock"), archive("Game - Dual Shock", "JP")]
+        reviews = {"1": {"pressings": {"Game - Dual Shock": {
+            "label": "Dual Shock Edition", "serials": ["SLUS-00002"], "manual": "Game - Dual Shock (USA).pdf",
+        }}}}
+        manuals = list(_catalogue_manuals("""
+            <a href="https://www.videogamemanual.com/ps1/Game%20(USA).pdf">Original</a>
+            <a href="https://www.videogamemanual.com/ps1/Game%20-%20Dual%20Shock%20(USA).pdf">Dual Shock</a>
+        """))
+        match_releases(catalog, archives, reviews)
+        add_pressings(catalog, archives, reviews)
+        add_manuals(catalog, manuals, reviews)
+        self.assertEqual([a["signature"] for a in release["archives"]], [a["signature"] for a in archives[:2]])
+        self.assertEqual(release["archives"][1]["pressing"], "Dual Shock Edition")
+        self.assertEqual(release["productCodes"], ["SLUS-00001", "SLUS-00002"])
+        self.assertEqual([m["name"] for m in release["manuals"]], ["Game", "Dual Shock Edition"])
 
 
 @unittest.skipUnless(os.environ.get("GAMEDB_TEST_POSTGRES") == "1", "requires PostgreSQL")

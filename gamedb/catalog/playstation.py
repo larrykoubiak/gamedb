@@ -119,6 +119,25 @@ def match_releases(catalog, archives, reviews):
     return aliases
 
 
+def add_pressings(catalog, archives, reviews):
+    claimed = {archive["signature"] for game in catalog["games"] for release in game["releases"]
+               for archive in release.get("archives", ())}
+    for game in catalog["games"]:
+        release, = game["releases"]
+        review = reviews.get(game["source"]["record"], {})
+        if release["status"] != "matched" or not (pressings := review.get("pressings")):
+            continue
+        for archive in archives:
+            pressing = pressings.get(archive["title"])
+            if not pressing or "US" not in archive["regions"] or archive["signature"] in claimed:
+                continue
+            release["archives"].append({**archive, "basis": "reviewed-retail-pressing", "pressing": pressing["label"],
+                                        "evidence": pressing.get("source", game["source"]["url"])})
+            codes = dict.fromkeys((*release["productCodes"], *pressing.get("serials", ())))
+            release["productCodes"] = list(codes)
+            claimed.add(archive["signature"])
+
+
 def seed_playstation(report=None, *, publish_catalog=False, sources=None):
     reference = json.loads(REFERENCE.read_text(encoding="utf-8"))
     reviews = reference.get("games", {})
@@ -144,6 +163,7 @@ def seed_playstation(report=None, *, publish_catalog=False, sources=None):
             add_descriptions_and_art(connection, catalog, {"thumbs-playstation.json": thumbs}, reference,
                                      platforms={"Sony Playstation"}, thumbnails=THUMBNAILS, thumbnail_key="playstation")
             apply_reviewed_artwork(catalog, reviews)
+            add_pressings(catalog, archives, reviews)
             add_manuals(catalog, manuals, reviews)
             catalog["summary"]["metadata"] = retail.enrichment_coverage(catalog, MARKETS)
             catalog["summary"]["soundtracks"] = add_soundtracks(
