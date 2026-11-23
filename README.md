@@ -94,6 +94,16 @@ manual viewer. The two Compose configurations mount the library read-only.
 Set `GAMEDB_MEGADRIVE_MANUAL_HOST_ROOT` for a different host directory or
 `GAMEDB_MEGADRIVE_MANUAL_ROOT` when running Explorer directly.
 
+Warm cover and page previews after syncing the library. Run the warmer in
+Explorer so it uses the same manual mount and cache paths as the reader.
+
+```sh
+docker compose exec -T explorer nice -n 10 python -m gamedb.explorer warm-manual-cache megadrive
+```
+
+The command reuses existing previews and reports any unreadable manuals. Use
+`snes` to warm the SNES library or `--workers` to adjust concurrency.
+
 Import the Genesis translations from the local ROMhacking.net backup after
 publishing the catalog.
 

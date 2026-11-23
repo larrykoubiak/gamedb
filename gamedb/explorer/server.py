@@ -22,6 +22,7 @@ from gamedb.catalog.translations import TRANSLATION_ROOTS
 from gamedb.config import PROJECT_ROOT, ProjectEnvironment
 from gamedb.database import create_database_engine
 from gamedb.explorer.cache import JsonResponseCache
+from gamedb.explorer.manuals import manual_roots
 from gamedb.explorer.previews import ArtworkPreviewCache
 from gamedb.explorer.related_media import (
     add_local_manuals, add_local_translations, add_translation_availability, serve as serve_related_media,
@@ -746,18 +747,11 @@ class ExplorerServer(ThreadingHTTPServer):
         self.launchbox_cache = LaunchBoxImageCache(os.environ.get(
             "GAMEDB_LAUNCHBOX_IMAGE_CACHE", "/data/media/launchbox"
         ))
-        self.preview_cache = ArtworkPreviewCache(os.environ.get(
-            "GAMEDB_PREVIEW_CACHE", PROJECT_ROOT / "data/media/previews"
-        ))
+        self.preview_cache = ArtworkPreviewCache.from_environment()
         self.exo_root = Path(os.environ.get("GAMEDB_EXO_ROOT", "/mnt/exo"))
         vgm_root = os.environ.get("GAMEDB_VGM_ROOT")
         self.vgm_root = Path(vgm_root) if vgm_root else None
-        snes_manual_root = os.environ.get("GAMEDB_SNES_MANUAL_ROOT")
-        megadrive_manual_root = os.environ.get("GAMEDB_MEGADRIVE_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Mega Drive"
-        self.retail_manual_roots = {
-            "snes": Path(snes_manual_root) if snes_manual_root else None,
-            "megadrive": Path(megadrive_manual_root),
-        }
+        self.retail_manual_roots = manual_roots()
         self.retail_translation_roots = {
             platform: Path(os.environ.get(f"GAMEDB_{platform.upper()}_TRANSLATION_ROOT") or root)
             for platform, root in TRANSLATION_ROOTS.items()

@@ -25,6 +25,7 @@ class ProjectEnvironment:
         "GAMEDB_MEGADRIVE_TRANSLATION_ROOT",
         "GAMEDB_INTEGRATED_ROOT",
         "GAMEDB_ROM_ROOT",
+        "GAMEDB_SNES_MANUAL_ROOT",
         "GAMEDB_SNES_TRANSLATION_ROOT",
         "GAMEDB_VGM_ROOT",
         "PGDATABASE",

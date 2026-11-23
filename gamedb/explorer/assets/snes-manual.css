@@ -9,6 +9,7 @@
 }
 .snes-manual-controls { display: flex; align-items: center; gap: .5rem; flex-shrink: 0; }
 .snes-manual-controls a { font-size: .8rem; text-decoration: none; white-space: nowrap; }
+.snes-manual-dialog .artwork-navigation button:disabled { opacity: .5; cursor: default; }
 
 .snes-manual-stage {
   display: grid;
@@ -70,6 +71,9 @@
 
 #snes-manual-status {
   z-index: 3;
+  display: grid;
+  justify-items: center;
+  gap: .4rem;
   grid-area: 1 / 1;
   padding: .5rem .7rem;
   border-radius: .35rem;
@@ -78,6 +82,8 @@
   font-size: .85rem;
   text-align: center;
 }
+#snes-manual-progress { width: min(10rem, 60vw); height: .6rem; accent-color: var(--accent); }
+#snes-manual-retry { padding: .25rem .55rem; font-size: .8rem; }
 #snes-manual-book:not([hidden]) + #snes-manual-status { align-self: end; }
 body:has(#snes-manual-dialog[open]) { overflow: hidden; }
 

@@ -16,12 +16,13 @@ from stat import S_ISREG
 from urllib.parse import quote, urlsplit
 from zipfile import BadZipFile, ZipFile
 
-from gamedb.catalog.manuals import INDEX_NAME, manual_key, read_manual_index
+from gamedb.catalog.manuals import manual_key
 from gamedb.catalog.patching import MAX_ROM_SIZE, PatchError, apply_translation, supports_patching
 from gamedb.catalog.translations import (
     FORMATS, INDEX_NAME as TRANSLATION_INDEX, INDEX_VERSION, MAX_PATCH_SIZE, translation_order,
 )
 from gamedb.exo.media import location_path, open_location
+from gamedb.explorer.manuals import manual_location
 from gamedb.vgm.archives import open_vgm_location
 
 
@@ -63,36 +64,11 @@ def serve_vgm(handler, key):
     }, force_download=not location["playable"], open_media=open_vgm_location)
 
 
-@lru_cache(maxsize=4)
-def _manual_index(path, revision):
-    return read_manual_index(path)
-
-
-def _manual_location(root, key):
-    if root is None:
-        return None
-    try:
-        index = root / INDEX_NAME
-        revision = index.stat()
-        records = _manual_index(index, (revision.st_ino, revision.st_mtime_ns, revision.st_size))
-        record = records.get(key)
-        if not isinstance(record, dict) or not isinstance(relative := record.get("path"), str):
-            return None
-        path = location_path(root, relative)
-        stat = path.stat()
-        if (path.suffix.lower() != ".pdf" or not S_ISREG(stat.st_mode)
-                or stat.st_size != record.get("size") or stat.st_mtime_ns != record.get("mtime_ns")):
-            return None
-    except (OSError, ValueError):
-        return None
-    return {"source_path": relative, "size_bytes": stat.st_size, "mtime_ns": stat.st_mtime_ns, "member_no": 0}
-
-
 def add_local_manuals(game, root, platform):
     for release in game["releases"]:
         for manual in release.get("manuals", ()):
             key = manual_key(manual["url"])
-            if _manual_location(root, key):
+            if manual_location(root, key):
                 manual.update(
                     localUrl=f"/related-media/{platform}-manual/{key}",
                     preview=f"/previews/320/{platform}-manual/{key}",
@@ -101,14 +77,14 @@ def add_local_manuals(game, root, platform):
 
 
 def serve_retail_manual(handler, root, key, *, preview_size=None):
-    location = _manual_location(root, key)
+    location = manual_location(root, key)
     if location is None:
         return handler.send_error(HTTPStatus.NOT_FOUND)
     return _serve_manual_file(handler, key, root, location, preview_size)
 
 
 def serve_retail_manual_pages(handler, root, key, page=None):
-    location = _manual_location(root, key)
+    location = manual_location(root, key)
     if location is None:
         return handler.send_error(HTTPStatus.NOT_FOUND)
     cache = handler.server.preview_cache

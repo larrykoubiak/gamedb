@@ -81,7 +81,11 @@
     </header>
     <div class="snes-manual-stage">
       <div id="snes-manual-book" class="snes-manual-book" hidden></div>
-      <p id="snes-manual-status" role="status" hidden></p>
+      <div id="snes-manual-status" hidden>
+        <p id="snes-manual-message" role="status"></p>
+        <progress id="snes-manual-progress" aria-label="Manual pages ready" hidden></progress>
+        <button id="snes-manual-retry" class="secondary-button" type="button" hidden>Try again</button>
+      </div>
     </div>
     <nav id="snes-manual-navigation" class="artwork-navigation" aria-label="Manual pages" hidden>
       <button id="snes-manual-previous" class="secondary-button" type="button" aria-label="Previous manual page">← Previous</button>
