@@ -25,8 +25,8 @@ from gamedb.database import create_database_engine
 from gamedb.vgm.archives import member_name, safe_member
 
 
-TRANSLATION_ROOTS = {platform: PROJECT_ROOT / f"data/media/{platform}-translations" for platform in RETAIL_PLATFORMS}
 RHDN_CONSOLES = {"snes": "snes", "megadrive": "genesis", "nes": "nes"}
+TRANSLATION_ROOTS = {platform: PROJECT_ROOT / f"data/media/{platform}-translations" for platform in RHDN_CONSOLES}
 AUTHOR_REFERENCE = PROJECT_ROOT / "reference/translation_authors.json"
 REVIEW_REFERENCES = {platform: PROJECT_ROOT / f"reference/{platform}_translation_reviews.json"
                      for platform in ("megadrive", "nes")}

@@ -43,6 +43,10 @@ def main(argv=None) -> int:
     nes.add_argument("--report", type=Path, help="Write the full match report as JSON")
     nes.add_argument("--publish", action="store_true", help="Publish the NES catalog to Explorer")
     nes.add_argument("--sources", type=Path, help="Directory of saved NES reference indexes")
+    playstation = commands.add_parser("seed-playstation", help="Build the US PlayStation retail catalog")
+    playstation.add_argument("--report", type=Path, help="Write the full match report as JSON")
+    playstation.add_argument("--publish", action="store_true", help="Publish the PlayStation catalog to Explorer")
+    playstation.add_argument("--sources", type=Path, help="Directory of saved PlayStation reference indexes")
     manuals = commands.add_parser("sync-snes-manuals", help="Download the manuals linked by a SNES match report")
     manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-snes")
     manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
@@ -58,6 +62,10 @@ def main(argv=None) -> int:
     nes_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-nes")
     nes_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
     nes_manuals.add_argument("--workers", type=int, default=6, help="Concurrent downloads (default: 6)")
+    ps_manuals = commands.add_parser("sync-playstation-manuals", help="Download the linked US PlayStation manuals")
+    ps_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-playstation")
+    ps_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
+    ps_manuals.add_argument("--workers", type=int, default=4, help="Concurrent downloads (default: 4)")
     translations = commands.add_parser("sync-snes-translations", help="Match RHDN patches to verified SNES retail ROMs")
     translations.add_argument("--source", required=True, type=Path, help="Local RHDN backup directory")
     translations.add_argument("--root", type=Path, help="Local patch library (default: data/media/snes-translations)")
@@ -88,6 +96,16 @@ def main(argv=None) -> int:
         print(json.dumps(result, indent=2))
         return 0
 
+    if args.command == "seed-playstation":
+        from .playstation import seed_playstation
+
+        try:
+            result = seed_playstation(args.report, publish_catalog=args.publish, sources=args.sources)
+        except (OSError, ValueError) as error:
+            playstation.error(str(error))
+        print(json.dumps(result, indent=2))
+        return 0
+
     if args.command in {"seed-megadrive", "seed-nes"}:
         if args.command == "seed-nes":
             from .nes import seed_nes as seed
@@ -115,13 +133,17 @@ def main(argv=None) -> int:
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return int(bool(result["failures"]))
 
-    if args.command in {"sync-megadrive-manuals", "sync-nes-manuals"}:
+    if args.command in {"sync-megadrive-manuals", "sync-nes-manuals", "sync-playstation-manuals"}:
         from .manuals import sync_manuals
 
         if args.command == "sync-nes-manuals":
             from .nes import SOURCE_DIRECTORY
 
             command = nes_manuals
+        elif args.command == "sync-playstation-manuals":
+            from .playstation import SOURCE_DIRECTORY
+
+            command = ps_manuals
         else:
             from .megadrive import SOURCE_DIRECTORY
 

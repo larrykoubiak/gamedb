@@ -20,9 +20,11 @@ GameDB commands:
   seed-snes    Match the pinned SNES retail list against the catalog.
   seed-megadrive  Build the Mega Drive retail catalog.
   seed-nes        Build the NES and Famicom retail catalog.
+  seed-playstation  Build the US PlayStation retail catalog.
   sync-snes-manuals  Download the manuals linked by the SNES retail catalog.
   sync-megadrive-manuals  Download the manuals linked by the Mega Drive retail catalog.
   sync-nes-manuals       Download the manuals linked by the NES and Famicom retail catalog.
+  sync-playstation-manuals  Download the manuals linked by the PlayStation retail catalog.
   sync-snes-translations  Match local translation patches to verified SNES retail ROMs.
   sync-megadrive-translations  Match local translation patches to verified Mega Drive retail ROMs.
   sync-nes-translations        Match local translation patches to verified NES retail ROMs.
@@ -80,8 +82,9 @@ def main(argv=None) -> int:
 
         return launchbox_main(remaining)
     if command in {
-        "rebuild", "seed-snes", "seed-megadrive", "seed-nes", "sync-snes-manuals", "sync-megadrive-manuals",
-        "sync-nes-manuals", "sync-snes-translations", "sync-megadrive-translations", "sync-nes-translations", "promote-corrections",
+        "rebuild", "seed-snes", "seed-megadrive", "seed-nes", "seed-playstation", "sync-snes-manuals",
+        "sync-megadrive-manuals", "sync-nes-manuals", "sync-playstation-manuals", "sync-snes-translations",
+        "sync-megadrive-translations", "sync-nes-translations", "promote-corrections",
     }:
         from gamedb.catalog.cli import main as catalog_main
 

@@ -2,14 +2,15 @@
 
 const params = new URLSearchParams(location.search);
 const platform = location.pathname.split("/").at(-1);
-const catalogLabel = {snes: "SNES", megadrive: "Mega Drive", nes: "NES / Famicom"}[platform];
+const catalogLabel = {snes: "SNES", megadrive: "Mega Drive", nes: "NES / Famicom", playstation: "PlayStation (US)"}[platform];
 const catalogApi = `/api/${platform}-retail`;
 const romExtension = {snes: ".sfc", megadrive: ".md", nes: ".nes"}[platform];
+const optical = platform === "playstation";
 const marketNames = {
-  JP: "Japan", NA: "North America", PAL: "PAL region", BR: "Brazil", KR: "South Korea", AS: "Asia",
+  JP: "Japan", NA: optical ? "United States" : "North America", PAL: "PAL region", BR: "Brazil", KR: "South Korea", AS: "Asia",
 };
 const channelNames = {"nintendo-power": "Nintendo Power", "sufami-turbo": "SuFami Turbo"};
-const matchNames = {matched: "Base ROM matched", ambiguous: "Needs review", unmatched: "No base ROM match"};
+const matchNames = {ambiguous: "Needs review", unmatched: optical ? "No verified discs" : "No base ROM match"};
 const artworkNames = {boxart: "Box art", title: "Title screen", snap: "Gameplay", logo: "Clear logo"};
 const inputDevices = {
   mouse: {name: "SNES Mouse", icon: "mouse"},
@@ -55,7 +56,8 @@ function element(tag, text, className) {
 }
 
 function searchKey(value) {
-  return value.normalize("NFKD").replace(/\p{M}/gu, "").toLowerCase().trim();
+  const key = value.normalize("NFKD").replace(/\p{M}/gu, "").toLowerCase().trim();
+  return optical ? key.replace(/\b(s[cl]us)[-_\s]*(\d{3})\.?(\d{2})\b/g, "$1-$2$3") : key;
 }
 
 function newTabLink(name, url) {
@@ -548,11 +550,18 @@ function romCell(release) {
   const matched = release.status === "matched";
   const archives = matched ? release.archives : release.candidates;
   const entries = (archives || []).map(archive => {
-    const name = archive.archiveNames.join(" · ");
-    if (!matched) return element("span", name);
-    const link = element("a", name);
-    link.href = `/software/${archive.softwareId}-${archive.softwareKey}#releases`;
-    return link;
+    function archiveLink(name) {
+      if (!matched) return element("span", name);
+      const link = element("a", name);
+      link.href = `/software/${archive.softwareId}-${archive.softwareKey}#releases`;
+      return link;
+    }
+    if (archive.discs?.length > 1) {
+      const revisions = archive.revisions.map(value => `Rev ${value}`);
+      const label = [`${archive.discs.length} discs`, ...revisions, ...archive.versions].join(" · ");
+      return releaseDisclosure(label, releaseList(archive.discs.map(disc => archiveLink(disc.name))));
+    }
+    return archiveLink(archive.archiveNames.join(" · "));
   });
   const cell = releaseListCell(entries);
   if (!matched) {
@@ -592,7 +601,8 @@ function labelReleaseCells(cells, columns) {
 }
 
 function renderReleaseTable(game, picker, targets, onSelection) {
-  const columns = ["Market", "Released", "Manuals", "ROM archives", "Product code", "PCB"];
+  const columns = optical ? ["Market", "Released", "Manuals", "Verified discs", "Serials"]
+    : ["Market", "Released", "Manuals", "ROM archives", "Product code", "PCB"];
   const table = releaseTable("Releases", columns);
   table.id = "snes-releases";
   const body = table.tBodies[0];
@@ -612,7 +622,7 @@ function renderReleaseTable(game, picker, targets, onSelection) {
     const date = element("td", release.date);
     if (channelNames[release.channel]) date.append(element("small", channelNames[release.channel]));
     const {serials, headerCodes, boards, chips} = cartridgeDetails(release);
-    const productCodes = releaseListCell(serials.map(code => element("code", code)));
+    const productCodes = releaseListCell((release.productCodes || serials).map(code => element("code", code)));
     if (headerCodes.length) {
       productCodes.querySelector(".snes-release-empty")?.remove();
       productCodes.append(releaseDisclosure("ROM header", releaseList(headerCodes.map(code => element("code", code)))));
@@ -622,7 +632,8 @@ function renderReleaseTable(game, picker, targets, onSelection) {
       pcb.append(releaseDisclosure(chips.length === 1 ? "ROM chip" : "ROM chips",
         releaseList(chips.map(chip => element("code", chip)))));
     }
-    const cells = [date, manualCell(release.manuals || []), romCell(release), productCodes, pcb];
+    const cells = [date, manualCell(release.manuals || []), romCell(release), productCodes];
+    if (!optical) cells.push(pcb);
     labelReleaseCells(cells, columns);
     row.append(market, ...cells);
     const flag = element("button", "", "snes-region-button");
@@ -707,7 +718,9 @@ function renderDetail(game, soundtracks) {
     const metadata = release.metadata || {};
     const facts = factList([
       ["Developer", release.developer || game.developer], ["Publisher", release.publisher || game.publisher],
-      ["Genre", metadata.genres?.join(" · ")], ["Controls", renderInputs(metadata)],
+      ["Genre", metadata.genres?.join(" · ") || release.genre], ["Players", release.players],
+      ["Controls", optical ? release.accessories : renderInputs(metadata)],
+      ["Memory card", release.memoryCard], ["ESRB", release.rating],
     ], {inline: true});
     profile.replaceChildren(...[description, facts.childElementCount ? facts : null].filter(Boolean));
     const art = renderArt(release);
@@ -746,8 +759,12 @@ async function start() {
     const response = await fetch(`${catalogApi}?${query}`);
     const payload = await response.json();
     if (!response.ok) throw new Error(payload.error || `Could not load the ${catalogLabel} retail catalog.`);
-    document.querySelector("#snes-source-link").href = payload.source.url;
-    document.querySelector("#snes-source-license").href = payload.source.license;
+    const source = document.querySelector("#snes-source-link");
+    source.href = payload.source.url;
+    source.textContent = payload.source.name;
+    const license = document.querySelector("#snes-source-license");
+    license.hidden = !payload.source.license;
+    if (payload.source.license) license.href = payload.source.license;
     document.querySelector("#snes-source").hidden = false;
     if (key) {
       renderDetail(payload.game, payload.soundtracks || []);
@@ -755,9 +772,11 @@ async function start() {
     }
     games = payload.games.map(game => ({
       ...game, genres: game.genres || [], searchText: searchKey([game.title, ...game.aliases.map(alias => alias.title),
-        ...game.releases.flatMap(release => [...release.titles, ...release.archiveTitles])].join(" ")),
+        ...game.releases.flatMap(release => [...release.titles, ...release.archiveTitles,
+          ...(release.productCodes || [])])].join(" ")),
     }));
     search.value = params.get("q") || "";
+    if (optical) search.placeholder = "Search by title or serial";
     const genres = [...new Set(games.flatMap(game => game.genres))].sort((a, b) => a.localeCompare(b));
     for (const genre of genres) genreSelect.add(new Option(genre, genre));
     genreSelect.disabled = !genres.length;

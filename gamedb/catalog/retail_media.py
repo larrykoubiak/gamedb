@@ -21,7 +21,7 @@ from gamedb.launchbox.matching import match_candidates, title_key
 
 LAUNCHBOX_PLATFORMS = {"Super Nintendo Entertainment System", "Nintendo Super Famicom", "Nintendo Sufami Turbo"}
 LAUNCHBOX_GAME = "https://gamesdb.launchbox-app.com/games/details/"
-LAUNCHBOX_COVER_CHECKSUMS = PROJECT_ROOT / "reference/launchbox_retail_cover_checksums.json"
+LAUNCHBOX_IMAGE_CHECKSUMS = PROJECT_ROOT / "reference/launchbox_retail_image_checksums.json"
 LIBRETRO_KINDS = {"Named_Boxarts": "boxart", "Named_Titles": "title", "Named_Snaps": "snap", "Named_Logos": "logo"}
 MANUAL_NOTE = re.compile(r"\s*\(\s*(?:high quality|poor quality|color|manual scan)\s*\)\s*$", re.I)
 
@@ -336,7 +336,8 @@ def _libretro_paths(indexes, thumbnails=THUMBNAILS):
         tree = json.loads(indexes[filename].content)
         if tree.get("truncated") or tree["sha"] != revision:
             raise ValueError(f"Unexpected Libretro image index for {folder}")
-        paths[name] = {row["path"] for row in tree["tree"] if row["type"] == "blob" and row["mode"] == "100644"}
+        paths[name] = {row["path"] for row in tree["tree"]
+                       if row["type"] == "blob" and row["mode"] in {"100644", "100755"}}
     return paths
 
 
@@ -405,7 +406,7 @@ def add_descriptions_and_art(connection, catalog, indexes, reference, *,
     artwork_regions = {(record["archiveName"], record["kind"]): record
                        for record in reference.get("artworkRegions", ())}
     checksum_reviews = {(filename, review["previousCrc32"]): review["crc32"]
-                        for filename, review in json.loads(LAUNCHBOX_COVER_CHECKSUMS.read_text(encoding="utf-8")).items()}
+                        for filename, review in json.loads(LAUNCHBOX_IMAGE_CHECKSUMS.read_text(encoding="utf-8")).items()}
     release_ids, images = _scope_launchbox(connection, catalog, reviewed, platforms=platforms)
     paths = _libretro_paths(indexes, thumbnails)
     for game in catalog["games"]:

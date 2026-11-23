@@ -61,6 +61,34 @@ After a full derivation, build the complete consumer projection with
 `python -m gamedb rebuild`. Use `--plan`, `--layers`, `--from-layer`, or
 `--through-layer` to inspect or select its SQL layers.
 
+## US PlayStation retail catalog
+
+The Game-Rave US checklist sets the scope for retail games and licensed
+compilations. GameDB links those titles to local, SHA-1-verified US Redump
+discs and shows their pressings, printed serials, and controller details.
+The reviewed matches document title variations and retail boxes whose discs
+have separate Redump entries. [Game-Rave checklist](https://game-rave.com/?page_id=105) · [Reviewed matches](reference/playstation_retail.json)
+
+```sh
+python -m gamedb seed-playstation --report data/logs/playstation-retail/matches.json --publish
+python -m gamedb sync-playstation-manuals --catalog data/logs/playstation-retail/matches.json \
+  --root /mnt/synology/photo/Manuals/PlayStation
+docker compose exec -T explorer nice -n 10 python -m gamedb.explorer warm-manual-cache playstation
+```
+
+Open **PlayStation (US) retail catalog** in Explorer or go to
+`/catalog/playstation`. The catalog uses Libretro and LaunchBox artwork,
+scans of original booklets, and soundtrack sets from the configured VGM
+library. [Kirkland’s Manual Labor](https://www.videogamemanual.com/ps1/index.html) · [Sony PlayStation Manuals archive](https://archive.org/details/SonyPlaystationManuals)
+
+Omit `--publish` for a read-only audit. Pass `--sources` to reuse saved
+reference indexes from a different directory. The default cache is
+`data/media/cache/playstation-retail`.
+
+Both Compose configurations mount the manual library read-only. Set
+`GAMEDB_PLAYSTATION_MANUAL_HOST_ROOT` to use a different host directory or
+`GAMEDB_PLAYSTATION_MANUAL_ROOT` when running Explorer directly.
+
 ## Mega Drive retail catalog
 
 The Mega Drive catalog uses a pinned licensed game list and reviewed

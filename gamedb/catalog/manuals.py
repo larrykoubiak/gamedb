@@ -118,6 +118,7 @@ def _sources(manual, cache, reviewed):
     hostname = location.hostname or ""
     if location.scheme != "https" or (hostname not in {
         "archive.org", "www.gamingalexandria.com", "www.nintendo.co.jp", "segaretro.org", "www.digitpress.com",
+        "www.videogamemanual.com",
     } and not hostname.endswith(".archive.org")):
         raise ValueError("Unsupported manual source URL")
     if hostname == "archive.org" and location.path.startswith("/details/"):

@@ -1,0 +1,1052 @@
+{
+  "artworkRegions": [
+    {
+      "archiveName": "Alone in the Dark - The New Nightmare (USA) (Disc 1).zip",
+      "filename": "Alone in the Dark - The New Nightmare (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "D (USA) (Disc 1).zip",
+      "filename": "D (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "Driver 2 (USA) (Disc 1) (Rev 1).zip",
+      "filename": "Driver 2 (USA).png",
+      "kind": "snap",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Snaps"
+    },
+    {
+      "archiveName": "Driver 2 (USA) (Disc 1) (Rev 1).zip",
+      "filename": "Driver 2 (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "Evil Dead - Hail to the King (USA) (Disc 1).zip",
+      "filename": "Evil Dead - Hail to the King (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "Fear Effect (USA) (Disc 1).zip",
+      "filename": "Fear Effect (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "Fear Effect 2 - Retro Helix (USA) (Disc 1) (Rev 1).zip",
+      "filename": "Fear Effect 2 - Retro Helix (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "Final Fantasy IX (USA) (Disc 1) (Rev 1).zip",
+      "filename": "Final Fantasy IX (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "Final Fantasy VII (USA) (Disc 1).zip",
+      "filename": "Final Fantasy VII (USA).png",
+      "kind": "boxart",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Boxarts"
+    },
+    {
+      "archiveName": "Final Fantasy VII (USA) (Disc 1).zip",
+      "filename": "Final Fantasy VII (USA).png",
+      "kind": "snap",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Snaps"
+    },
+    {
+      "archiveName": "Final Fantasy VII (USA) (Disc 1).zip",
+      "filename": "Final Fantasy VII (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "Final Fantasy VIII (USA) (Disc 1).zip",
+      "filename": "Final Fantasy VIII (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "Galerians (USA) (Disc 1).zip",
+      "filename": "Galerians (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "Heart of Darkness (USA) (Disc 1).zip",
+      "filename": "Heart of Darkness (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "Juggernaut (USA) (Disc 1).zip",
+      "filename": "Juggernaut (USA).png",
+      "kind": "boxart",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Boxarts"
+    },
+    {
+      "archiveName": "Koudelka (USA) (Disc 1).zip",
+      "filename": "Koudelka (USA).png",
+      "kind": "boxart",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Boxarts"
+    },
+    {
+      "archiveName": "Metal Gear Solid (USA) (Disc 1).zip",
+      "filename": "Metal Gear Solid (USA).png",
+      "kind": "boxart",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Boxarts"
+    },
+    {
+      "archiveName": "Parasite Eve (USA) (Disc 1).zip",
+      "filename": "Parasite Eve (USA).png",
+      "kind": "boxart",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Boxarts"
+    },
+    {
+      "archiveName": "Parasite Eve (USA) (Disc 1).zip",
+      "filename": "Parasite Eve (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "Parasite Eve II (USA) (Disc 1).zip",
+      "filename": "Parasite Eve II (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "Resident Evil 2 (USA) (Disc 1).zip",
+      "filename": "Resident Evil 2 (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "Syphon Filter 2 (USA) (Disc 1).zip",
+      "filename": "Syphon Filter 2 (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "Vs. (USA).zip",
+      "filename": "VS. (USA).png",
+      "kind": "boxart",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Boxarts"
+    },
+    {
+      "archiveName": "WipEout (USA).zip",
+      "filename": "Wipeout (USA).png",
+      "kind": "snap",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Snaps"
+    },
+    {
+      "archiveName": "WipEout (USA).zip",
+      "filename": "Wipeout (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "WipEout 3 (USA).zip",
+      "filename": "Wipeout 3 (USA).png",
+      "kind": "snap",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Snaps"
+    },
+    {
+      "archiveName": "WipEout 3 (USA).zip",
+      "filename": "Wipeout 3 (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    },
+    {
+      "archiveName": "You Don't Know Jack (USA) (Disc 1).zip",
+      "filename": "You Don't Know Jack (USA).png",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation/tree/ccee75c7744d81676b6725307aca27ef6be6231a/Named_Titles"
+    }
+  ],
+  "games": {
+    "1005": {
+      "archiveTitles": [
+        "Revolution X - Music Is the Weapon"
+      ],
+      "evidence": "https://game-rave.com/?p=1005 · US disc serial SLUS-00012"
+    },
+    "10251": {
+      "archiveTitles": [
+        "Tenchu 2 - Birth of the Stealth Assassins"
+      ],
+      "evidence": "https://game-rave.com/?p=10251 · US disc serial SLUS-00939"
+    },
+    "10344": {
+      "archiveTitles": [
+        "Space Shot"
+      ],
+      "evidence": "https://game-rave.com/?p=10344 · US disc serial SLUS-01308"
+    },
+    "10483": {
+      "artwork": {
+        "boxart": {
+          "regions": [
+            "US"
+          ],
+          "source": {
+            "name": "PSX Datacenter",
+            "url": "https://psxdatacenter.com/games/U/G/SLUS-00106DC.html"
+          },
+          "url": "https://psxdatacenter.com/images/hires/U/G/SLUS-00106DC/SLUS-00106-F-DC.jpg"
+        }
+      },
+      "bundleDiscs": [
+        "Grand Theft Auto (USA).zip",
+        "Grand Theft Auto - Mission Pack 1 - London 1969 (USA).zip"
+      ],
+      "evidence": "https://game-rave.com/?p=10483 · US double-pack with SLUS-00106 and SLUS-00846",
+      "manuals": [
+        "Grand Theft Auto (USA).pdf",
+        "Grand Theft Auto - Mission Pack 1 - London 1969 (USA).pdf"
+      ]
+    },
+    "10497": {
+      "archiveTitles": [
+        "World Destruction League - Thunder Tanks"
+      ],
+      "evidence": "https://game-rave.com/?p=10497 · US disc serial SLUS-01175"
+    },
+    "10526": {
+      "archiveTitles": [
+        "Saban's Power Rangers - Lightspeed Rescue"
+      ],
+      "evidence": "https://game-rave.com/?p=10526 · US disc serial SLUS-01114"
+    },
+    "10532": {
+      "archiveTitles": [
+        "Saban's Power Rangers - Time Force"
+      ],
+      "evidence": "https://game-rave.com/?p=10532 · US disc serial SLUS-01351"
+    },
+    "10542": {
+      "archiveTitles": [
+        "Star Sweep"
+      ],
+      "evidence": "https://game-rave.com/?p=10542 · US disc serial SLUS-01307"
+    },
+    "10778": {
+      "archiveTitles": [
+        "Disney-Pixar Buzz Lightyear of Star Command"
+      ],
+      "evidence": "https://game-rave.com/?p=10778 · US disc serial SLUS-01192"
+    },
+    "10920": {
+      "archiveTitles": [
+        "Ultimate Fighting Championship"
+      ],
+      "evidence": "https://game-rave.com/?p=10920 · US disc serial SLUS-01143"
+    },
+    "10951": {
+      "archiveTitles": [
+        "FIFA 99"
+      ],
+      "evidence": "https://game-rave.com/?p=10951 · US disc serial SLUS-00782"
+    },
+    "10970": {
+      "serials": [
+        "SLUS-00683"
+      ]
+    },
+    "10984": {
+      "evidence": "https://game-rave.com/?p=10984 · Verified US disc serials SLUS-01360, SLUS-01363",
+      "verifiedTitles": [
+        "Final Fantasy Chronicles - Final Fantasy IV",
+        "Final Fantasy Chronicles - Chrono Trigger"
+      ]
+    },
+    "11032": {
+      "archiveTitles": [
+        "Nickelodeon Rugrats in Paris - The Movie"
+      ],
+      "evidence": "https://game-rave.com/?p=11032 · US disc serial SLUS-01116"
+    },
+    "11101": {
+      "archiveTitles": [
+        "Walt Disney's The Jungle Book - Rhythm n' Groove"
+      ],
+      "evidence": "https://game-rave.com/?p=11101 · US disc serial SLUS-01278"
+    },
+    "11243": {
+      "archiveTitles": [
+        "EA Sports Supercross"
+      ],
+      "evidence": "https://game-rave.com/?p=11243 · US disc serial SLUS-01319"
+    },
+    "11374": {
+      "evidence": "https://game-rave.com/?p=11374 · Verified US disc serials SLUS-01224, SLUS-01252, SLUS-01253, SLUS-01254, SLUS-01255",
+      "title": "Arc the Lad Collection",
+      "verifiedTitles": [
+        "Arc the Lad Collection - Arc the Lad",
+        "Arc the Lad Collection - Arc the Lad II",
+        "Arc the Lad Collection - Arc the Lad III",
+        "Arc the Lad Collection - Arc Arena - Monster Tournament"
+      ]
+    },
+    "11558": {
+      "archiveTitles": [
+        "Tiger Woods PGA Tour Golf"
+      ],
+      "evidence": "https://game-rave.com/?p=11558 · US disc serial SLUS-01273"
+    },
+    "11823": {
+      "archiveTitles": [
+        "World of Dragon Warrior - Torneko - The Last Hope"
+      ],
+      "evidence": "https://game-rave.com/?p=11823 · US disc serial SLUS-01181"
+    },
+    "1216": {
+      "archiveTitles": [
+        "Slam 'n Jam '96 featuring Magic & Kareem"
+      ],
+      "evidence": "https://game-rave.com/?p=1216 · US disc serial SLUS-00022"
+    },
+    "12254": {
+      "archiveTitles": [
+        "Eggs of Steel - Charlie's Eggcellent Adventure"
+      ],
+      "evidence": "https://game-rave.com/?p=12254 · US disc serial SLUS-00751"
+    },
+    "12470": {
+      "archiveTitles": [
+        "DBZ - Dead Ball Zone"
+      ],
+      "evidence": "https://game-rave.com/?p=12470 · US disc serial SLUS-00658"
+    },
+    "12563": {
+      "archiveTitles": [
+        "F1 World Grand Prix"
+      ],
+      "evidence": "https://game-rave.com/?p=12563 · US disc serial SLUS-01344"
+    },
+    "12595": {
+      "archiveTitles": [
+        "Interplay Sports Baseball 2000"
+      ],
+      "evidence": "https://game-rave.com/?p=12595 · US disc serial SLUS-00850"
+    },
+    "12599": {
+      "archiveTitles": [
+        "Hello Kitty - Cube Frenzy"
+      ],
+      "evidence": "https://game-rave.com/?p=12599 · US disc serial SLUS-00778"
+    },
+    "12825": {
+      "archiveTitles": [
+        "Nickelodeon Rugrats - Totally Angelica"
+      ],
+      "evidence": "https://game-rave.com/?p=12825 · US disc serial SLUS-01364"
+    },
+    "1285": {
+      "archiveTitles": [
+        "Tecmo World Golf - Japan"
+      ],
+      "evidence": "https://game-rave.com/?p=1285 · US disc serial SLUS-00299"
+    },
+    "1391": {
+      "serials": [
+        "SLUS-00033"
+      ]
+    },
+    "1397": {
+      "serials": [
+        "SLUS-00199"
+      ]
+    },
+    "1404": {
+      "archiveTitles": [
+        "Warhawk - The Red Mercury Missions"
+      ],
+      "evidence": "https://game-rave.com/?p=1404 · US disc serial SCUS-94305"
+    },
+    "1413": {
+      "archiveTitles": [
+        "Williams Arcade's Greatest Hits"
+      ],
+      "evidence": "https://game-rave.com/?p=1413 · US disc serial SLUS-00201"
+    },
+    "1484": {
+      "archiveTitles": [
+        "Zoop - America's Largest Killer of Time!"
+      ],
+      "evidence": "https://game-rave.com/?p=1484 · US disc serial SLUS-00078"
+    },
+    "15030": {
+      "archiveTitles": [
+        "World Destruction League - WarJetz"
+      ],
+      "evidence": "https://game-rave.com/?p=15030 · US disc serial SLUS-01247"
+    },
+    "15080": {
+      "archiveTitles": [
+        "IHRA Drag Racing"
+      ],
+      "evidence": "https://game-rave.com/?p=15080 · US disc serial SLUS-01097"
+    },
+    "15625": {
+      "archiveTitles": [
+        "Nickelodeon Rocket Power - Team Rocket Rescue"
+      ],
+      "evidence": "https://game-rave.com/?p=15625 · US disc serial SLUS-01353"
+    },
+    "15648": {
+      "archiveTitles": [
+        "Rescue Heroes - Molten Menace"
+      ],
+      "evidence": "https://game-rave.com/?p=15648 · US disc serial SLUS-01373"
+    },
+    "15663": {
+      "archiveTitles": [
+        "Wreckin Crew - Drive Dangerously"
+      ],
+      "evidence": "https://game-rave.com/?p=15663 · US disc serial SLUS-00587"
+    },
+    "15767": {
+      "archiveTitles": [
+        "Nickelodeon SpongeBob SquarePants - SuperSponge"
+      ],
+      "evidence": "https://game-rave.com/?p=15767 · US disc serial SLUS-01352"
+    },
+    "16239": {
+      "archiveTitles": [
+        "Disney-Pixar Monsters, Inc. - Scream Team"
+      ],
+      "evidence": "https://game-rave.com/?p=16239 · US disc serial SCUS-94635"
+    },
+    "1626": {
+      "artwork": {
+        "title": {
+          "regions": [],
+          "source": {
+            "name": "LaunchBox",
+            "url": "https://gamesdb.launchbox-app.com/games/details/12159"
+          },
+          "url": "https://images.launchbox-app.com/6ee446f8-eb08-4b47-a4f0-2868e1e42a38.png"
+        }
+      }
+    },
+    "16339": {
+      "archiveTitles": [
+        "FIFA Soccer 2002"
+      ],
+      "evidence": "https://game-rave.com/?p=16339 · US disc serial SLUS-01408"
+    },
+    "1649": {
+      "archiveTitles": [
+        "All-Star Baseball 97 featuring Frank Thomas"
+      ],
+      "evidence": "https://game-rave.com/?p=1649 · US disc serial SLUS-00392"
+    },
+    "16565": {
+      "archiveTitles": [
+        "Peter Pan in Disney's Return to Never Land"
+      ],
+      "evidence": "https://game-rave.com/?p=16565 · US disc serial SCUS-94643"
+    },
+    "17498": {
+      "archiveTitles": [
+        "Superstar Dance Club - 1 Hits!!!"
+      ],
+      "evidence": "https://game-rave.com/?p=17498 · US disc serial SLUS-01493"
+    },
+    "17534": {
+      "archiveTitles": [
+        "My Disney Kitchen"
+      ],
+      "evidence": "https://game-rave.com/?p=17534 · US disc serial SLUS-01512"
+    },
+    "17627": {
+      "archiveTitles": [
+        "Bratz - Dress Up, Get Down and Be a Bratz Superstar!"
+      ],
+      "evidence": "https://game-rave.com/?p=17627 · US disc serial SLUS-01508"
+    },
+    "17725": {
+      "archiveTitles": [
+        "Nick Jr. Dora the Explorer - Barnyard Buddies"
+      ],
+      "evidence": "https://game-rave.com/?p=17725 · US disc serial SLUS-01576"
+    },
+    "17779": {
+      "archiveTitles": [
+        "MTV Celebrity Deathmatch"
+      ],
+      "evidence": "https://game-rave.com/?p=17779 · US disc serial SLUS-01453"
+    },
+    "186": {
+      "archiveTitles": [
+        "A-Train - Trains, Power, Money"
+      ],
+      "evidence": "https://game-rave.com/?p=186 · US disc serial SLUS-00003"
+    },
+    "1952": {
+      "archiveTitles": [
+        "Top Shop"
+      ],
+      "evidence": "https://game-rave.com/?p=1952 · US disc serial SLUS-01333"
+    },
+    "2074": {
+      "archiveTitles": [
+        "Bubsy 3D - Furbitten Planet"
+      ],
+      "evidence": "https://game-rave.com/?p=2074 · US disc serial SLUS-00110"
+    },
+    "2884": {
+      "archiveTitles": [
+        "Courier Crisis - The Saga of the Modern Fatalist"
+      ],
+      "evidence": "https://game-rave.com/?p=2884 · US disc serial SLUS-00442"
+    },
+    "2994": {
+      "archiveTitles": [
+        "Ian Livingstone's Deathtrap Dungeon"
+      ],
+      "evidence": "https://game-rave.com/?p=2994 · US disc serial SLUS-00566"
+    },
+    "2999": {
+      "archiveTitles": [
+        "Tecmo's Deception - Invitation to Darkness"
+      ],
+      "evidence": "https://game-rave.com/?p=2999 · US disc serial SLUS-00340"
+    },
+    "3528": {
+      "archiveTitles": [
+        "Discworld II - Mortality Bytes!"
+      ],
+      "evidence": "https://game-rave.com/?p=3528 · US disc serial SCUS-94605",
+      "title": "Discworld II: Mortality Bytes!"
+    },
+    "3533": {
+      "archiveTitles": [
+        "Disney-Pixar Toy Story 2 - Buzz Lightyear to the Rescue!"
+      ],
+      "evidence": "https://game-rave.com/?p=3533 · US disc serial SLUS-00893"
+    },
+    "3558": {
+      "archiveTitles": [
+        "Disney's Hercules Action Game"
+      ],
+      "evidence": "https://game-rave.com/?p=3558 · US disc serial SLUS-00529"
+    },
+    "3612": {
+      "archiveTitles": [
+        "Einhaender"
+      ],
+      "evidence": "https://game-rave.com/?p=3612 · US disc serial SCUS-94243"
+    },
+    "3814": {
+      "archiveTitles": [
+        "Kagero - Deception II"
+      ],
+      "evidence": "https://game-rave.com/?p=3814 · US disc serial SLUS-00677"
+    },
+    "3867": {
+      "archiveTitles": [
+        "Rival Schools - United by Fate"
+      ],
+      "evidence": "https://game-rave.com/?p=3867 · US disc serial SLUS-00681, SLUS-00771"
+    },
+    "3919": {
+      "archiveTitles": [
+        "X Games Pro Boarder"
+      ],
+      "evidence": "https://game-rave.com/?p=3919 · US disc serial SLUS-00704"
+    },
+    "3997": {
+      "serials": [
+        "SLUS-00373"
+      ]
+    },
+    "402": {
+      "archiveTitles": [
+        "Defcon 5 - Peace Has a Price..."
+      ],
+      "evidence": "https://game-rave.com/?p=402 · US disc serial SLUS-00009"
+    },
+    "4035": {
+      "archiveTitles": [
+        "Nickelodeon Rugrats - Search for Reptar"
+      ],
+      "evidence": "https://game-rave.com/?p=4035 · US disc serial SLUS-00650"
+    },
+    "4052": {
+      "archiveTitles": [
+        "O.D.T."
+      ],
+      "evidence": "https://game-rave.com/?p=4052 · US disc serial SLUS-00698"
+    },
+    "4072": {
+      "archiveTitles": [
+        "Tiger Woods 99 PGA Tour Golf"
+      ],
+      "evidence": "https://game-rave.com/?p=4072 · US disc serial SLUS-00785"
+    },
+    "4081": {
+      "artwork": {
+        "snap": {
+          "regions": [],
+          "source": {
+            "name": "LaunchBox",
+            "url": "https://gamesdb.launchbox-app.com/games/details/9429"
+          },
+          "url": "https://images.launchbox-app.com/490eaf6a-e9f3-499f-b6af-f0e7c33f7eeb.png"
+        }
+      }
+    },
+    "424": {
+      "archiveTitles": [
+        "Terry Pratchett's Discworld"
+      ],
+      "evidence": "https://game-rave.com/?p=424 · US disc serial SCUS-94600"
+    },
+    "4922": {
+      "serials": [
+        "SLUS-00491"
+      ]
+    },
+    "5017": {
+      "archiveTitles": [
+        "Ehrgeiz - God Bless the Ring"
+      ],
+      "evidence": "https://game-rave.com/?p=5017 · US disc serial SLUS-00809"
+    },
+    "5154": {
+      "serials": [
+        "SLUS-00796"
+      ]
+    },
+    "567": {
+      "evidence": "https://game-rave.com/?p=567 · Verified US disc serials SCUS-94503",
+      "title": "ESPN Extreme Games",
+      "verifiedTitles": [
+        "ESPN Extreme Games",
+        "1Xtreme"
+      ]
+    },
+    "5995": {
+      "archiveTitles": [
+        "Driver - You Are the Wheelman"
+      ],
+      "evidence": "https://game-rave.com/?p=5995 · US disc serial SLUS-00842"
+    },
+    "6134": {
+      "archiveTitles": [
+        "Disney Presents Tigger's Honey Hunt"
+      ],
+      "evidence": "https://game-rave.com/?p=6134 · US disc serial SLUS-01210"
+    },
+    "648": {
+      "archiveTitles": [
+        "Hi-Octane - The Track Fights Back!"
+      ],
+      "evidence": "https://game-rave.com/?p=648 · US disc serial SLUS-00157"
+    },
+    "6511": {
+      "evidence": "https://game-rave.com/?p=6511 · Verified US disc serials SLUS-00879, SLUS-00900",
+      "verifiedTitles": [
+        "Final Fantasy Anthology - Final Fantasy V",
+        "Final Fantasy Anthology - Final Fantasy VI"
+      ]
+    },
+    "6570": {
+      "archiveTitles": [
+        "Pac-Man World - 20th Anniversary"
+      ],
+      "evidence": "https://game-rave.com/?p=6570 · US disc serial SLUS-00439"
+    },
+    "6660": {
+      "archiveTitles": [
+        "NBA Basketball 2000"
+      ],
+      "evidence": "https://game-rave.com/?p=6660 · US disc serial SLUS-00926"
+    },
+    "6698": {
+      "archiveTitles": [
+        "EA Sports Supercross 2000"
+      ],
+      "evidence": "https://game-rave.com/?p=6698 · US disc serial SLUS-01005"
+    },
+    "6779": {
+      "archiveTitles": [
+        "Nickelodeon Rugrats - Studio Tour"
+      ],
+      "evidence": "https://game-rave.com/?p=6779 · US disc serial SLUS-00880"
+    },
+    "6813": {
+      "archiveTitles": [
+        "Thrasher - Skate and Destroy"
+      ],
+      "evidence": "https://game-rave.com/?p=6813 · US disc serial SLUS-00935"
+    },
+    "7036": {
+      "archiveTitles": [
+        "FIFA - Road to World Cup 98"
+      ],
+      "evidence": "https://game-rave.com/?p=7036 · US disc serial SLUS-00520"
+    },
+    "7221": {
+      "archiveTitles": [
+        "Starfighter Sanvein"
+      ],
+      "evidence": "https://game-rave.com/?p=7221 · US disc serial SLUS-01302"
+    },
+    "7268": {
+      "archiveTitles": [
+        "EA Sports Superbike 2000"
+      ],
+      "evidence": "https://game-rave.com/?p=7268 · US disc serial SLUS-01052"
+    },
+    "7352": {
+      "artwork": {
+        "snap": {
+          "regions": [
+            "US"
+          ],
+          "source": {
+            "name": "PSX Datacenter",
+            "url": "https://psxdatacenter.com/games/U/T/SCUS-94208.html"
+          },
+          "url": "https://psxdatacenter.com/images/screens/U/T/SCUS-94208/ss6.jpg"
+        }
+      }
+    },
+    "738": {
+      "archiveTitles": [
+        "3D Lemmings"
+      ],
+      "evidence": "https://game-rave.com/?p=738 · US disc serial SCUS-94601"
+    },
+    "7624": {
+      "artwork": {
+        "snap": {
+          "regions": [
+            "US"
+          ],
+          "source": {
+            "name": "PSX Datacenter",
+            "url": "https://psxdatacenter.com/games/U/A/SLUS-01030.html"
+          },
+          "url": "https://psxdatacenter.com/images/screens/U/A/SLUS-01030/ss10.jpg"
+        }
+      }
+    },
+    "8234": {
+      "archiveTitles": [
+        "Colony Wars - Red Sun"
+      ],
+      "evidence": "https://game-rave.com/?p=8234 · US disc serial SLUS-00866"
+    },
+    "832": {
+      "archiveTitles": [
+        "Road & Track Presents - The Need for Speed"
+      ],
+      "evidence": "https://game-rave.com/?p=832 · US disc serial SLUS-00204"
+    },
+    "8483": {
+      "serials": [
+        "SLUS-01092",
+        "SLUS-01164"
+      ]
+    },
+    "8509": {
+      "archiveTitles": [
+        "ISS Pro Evolution"
+      ],
+      "evidence": "https://game-rave.com/?p=8509 · US disc serial SLUS-01014"
+    },
+    "8624": {
+      "archiveTitles": [
+        "Namco Museum Vol. 1"
+      ],
+      "evidence": "https://game-rave.com/?p=8624 · US disc serial SLUS-00215",
+      "title": "Namco Museum Vol. 1"
+    },
+    "8634": {
+      "archiveTitles": [
+        "Namco Museum Vol. 2"
+      ],
+      "evidence": "https://game-rave.com/?p=8634 · US disc serial SLUS-00216",
+      "title": "Namco Museum Vol. 2"
+    },
+    "8639": {
+      "archiveTitles": [
+        "Namco Museum Vol. 3"
+      ],
+      "evidence": "https://game-rave.com/?p=8639 · US disc serial SLUS-00398",
+      "title": "Namco Museum Vol. 3"
+    },
+    "8647": {
+      "archiveTitles": [
+        "Namco Museum Vol. 4"
+      ],
+      "evidence": "https://game-rave.com/?p=8647 · US disc serial SLUS-00416",
+      "title": "Namco Museum Vol. 4"
+    },
+    "8651": {
+      "archiveTitles": [
+        "Namco Museum Vol. 5"
+      ],
+      "evidence": "https://game-rave.com/?p=8651 · US disc serial SLUS-00417",
+      "title": "Namco Museum Vol. 5"
+    },
+    "8665": {
+      "archiveTitles": [
+        "Mega Man 8"
+      ],
+      "evidence": "https://game-rave.com/?p=8665 · US disc serial SLUS-00453",
+      "title": "Mega Man 8"
+    },
+    "8725": {
+      "archiveTitles": [
+        "Star Gladiator - Episode I - Final Crusade"
+      ],
+      "evidence": "https://game-rave.com/?p=8725 · US disc serial SLUS-00372"
+    },
+    "8935": {
+      "archiveTitles": [
+        "NCAA Basketball Final Four 97"
+      ],
+      "evidence": "https://game-rave.com/?p=8935 · US disc serial SLUS-00142"
+    },
+    "8955": {
+      "archiveTitles": [
+        "March Madness '98"
+      ],
+      "evidence": "https://game-rave.com/?p=8955 · US disc serial SLUS-00526"
+    },
+    "9112": {
+      "archiveTitles": [
+        "Saban's Power Rangers Zeo - Full Tilt Battle Pinball"
+      ],
+      "evidence": "https://game-rave.com/?p=9112 · US disc serial SLUS-00256"
+    },
+    "9147": {
+      "archiveTitles": [
+        "Re-Loaded - The Hardcore Sequel"
+      ],
+      "evidence": "https://game-rave.com/?p=9147 · US disc serial SLUS-00382"
+    },
+    "9155": {
+      "archiveTitles": [
+        "Risk - The Game of Global Domination"
+      ],
+      "evidence": "https://game-rave.com/?p=9155 · US disc serial SLUS-00616"
+    },
+    "9302": {
+      "rating": "Kids to Adults"
+    },
+    "9342": {
+      "archiveTitles": [
+        "MechWarrior 2 - 31st Century Combat - Arcade Combat Edition"
+      ],
+      "evidence": "https://game-rave.com/?p=9342 · US disc serial SLUS-00401"
+    },
+    "9441": {
+      "evidence": "https://game-rave.com/?p=9441 · Retail set ships both SLUS-01142 and SLUS-01163",
+      "verifiedTitles": [
+        "Strider 2",
+        "Strider"
+      ]
+    },
+    "9497": {
+      "serials": [
+        "SLUS-00030"
+      ]
+    },
+    "9546": {
+      "serials": [
+        "SLUS-00937"
+      ]
+    },
+    "9670": {
+      "archiveTitles": [
+        "I.Q - Intelligent Qube"
+      ],
+      "evidence": "https://game-rave.com/?p=9670 · US disc serial SCUS-94181"
+    },
+    "9802": {
+      "archiveTitles": [
+        "Norse by Norsewest - The Return of the Lost Vikings"
+      ],
+      "evidence": "https://game-rave.com/?p=9802 · US disc serial SLUS-00466"
+    }
+  },
+  "metadata": {
+    "Beyblade": {
+      "descriptionId": 18922
+    },
+    "Billiards": {
+      "descriptionId": 11697
+    },
+    "Car and Driver Presents Grand Tour Racing ’98": {
+      "descriptionId": 9289
+    },
+    "Disney’s The Jungle Book – Rhythm n’ Groove": {
+      "descriptionId": 2294
+    },
+    "Final Fantasy Chronicles": {
+      "description": {
+        "source": {
+          "name": "Game-Rave",
+          "url": "https://game-rave.com/?p=10984"
+        },
+        "text": "A two-disc collection of Final Fantasy IV and Chrono Trigger. Both role-playing games originally appeared on the Super Nintendo."
+      }
+    },
+    "Gallop Racer": {
+      "descriptionId": 160377
+    },
+    "Grand Theft Auto": {
+      "descriptionId": 9437
+    },
+    "Grand Theft Auto Director’s Cut": {
+      "description": {
+        "source": {
+          "name": "Game-Rave",
+          "url": "https://game-rave.com/?p=10483"
+        },
+        "text": "A two-disc release pairing the original Grand Theft Auto with its London 1969 expansion."
+      }
+    },
+    "King’s Field II": {
+      "descriptionId": 556
+    },
+    "NHL Face Off 97": {
+      "descriptionId": 123194
+    },
+    "Shanghai True Valor": {
+      "descriptionId": 13616
+    },
+    "Strike Point": {
+      "descriptionId": 11856
+    }
+  },
+  "supplementalManuals": {
+    "MDK (USA).pdf": {
+      "sha1": "139086aef7fb1d6f11068c1cc7d9a1fff39b9d97",
+      "size": 41678741
+    }
+  }
+}

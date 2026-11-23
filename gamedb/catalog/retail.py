@@ -1,4 +1,4 @@
-"""Match and publish retail cartridge catalogs against GameDB inventory."""
+"""Match and publish retail catalogs against GameDB inventory."""
 
 from collections import Counter, defaultdict
 import csv
@@ -16,7 +16,8 @@ from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.launchbox.matching import title_key
 
 
-RETAIL_PLATFORMS = {"snes": "SNES", "megadrive": "Mega Drive", "nes": "NES / Famicom"}
+RETAIL_PLATFORMS = {"snes": "SNES", "megadrive": "Mega Drive", "nes": "NES / Famicom",
+                    "playstation": "PlayStation (US)"}
 ARCHIVE_MARKETS = {
     "JP": {"JP"},
     "NA": {"US", "CA", "MX"},
@@ -206,8 +207,6 @@ def match_archives(catalog, archives, reviewed_aliases, verified_archives=(), *,
             claims[archive["signature"]].add(release["edition"])
         candidates[release["key"]] = sorted(matches, key=lambda item: (item["archiveNames"], item["signature"]))
 
-    counts = Counter()
-    by_market = {market: Counter() for market in markets}
     for release in releases:
         release.pop("archives", None)
         release.pop("candidates", None)
@@ -222,6 +221,15 @@ def match_archives(catalog, archives, reviewed_aliases, verified_archives=(), *,
             release.update(status="ambiguous", candidates=matches)
         else:
             release.update(status="unmatched")
+    summarize_matches(catalog, len(archives), markets)
+    return catalog
+
+
+def summarize_matches(catalog, archive_count, markets):
+    releases = [release for game in catalog["games"] for release in game["releases"]]
+    counts = Counter()
+    by_market = {market: Counter() for market in markets}
+    for release in releases:
         counts[release["status"]] += 1
         by_market[release["market"]][release["status"]] += 1
 
@@ -235,9 +243,8 @@ def match_archives(catalog, archives, reviewed_aliases, verified_archives=(), *,
         "releases": len(releases),
         **coverage(counts),
         "byMarket": {market: coverage(counter) for market, counter in by_market.items()},
-        "eligibleArchives": len(archives),
+        "eligibleArchives": archive_count,
     }
-    return catalog
 
 
 def cartridge_group_matches(catalog, archives, fingerprints, records, *, markets=ARCHIVE_MARKETS):
@@ -338,7 +345,7 @@ def enrichment_coverage(catalog, markets=ARCHIVE_MARKETS):
             records = [*release.get("cartridgeScans", ()), *(record
                        for archive in release.get("archives", ()) for record in archive.get("cartridge", ()))]
             bucket.update({
-                "serial": int(any(record.get("serials") for record in records)),
+                "serial": int(bool(release.get("productCodes")) or any(record.get("serials") for record in records)),
                 "pcb": int(any(record.get("boards") for record in records)),
                 "boxart": int("boxart" in release.get("artwork", {})),
                 "titleScreen": int("title" in release.get("artwork", {})),

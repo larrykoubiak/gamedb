@@ -44,7 +44,8 @@ RETAIL_PAGE = re.compile(rf"/catalog/{RETAIL_SYSTEM}")
 RETAIL_MANUAL_PATH = rf"{RETAIL_SYSTEM}-manual/([0-9a-f]{{64}})"
 RETAIL_MANUAL = re.compile("/related-media/" + RETAIL_MANUAL_PATH)
 RETAIL_MANUAL_PAGES = re.compile(RETAIL_MANUAL.pattern + r"/pages(?:/([1-9][0-9]{0,8})\.webp)?")
-RETAIL_TRANSLATION = re.compile(rf"/related-media/{RETAIL_SYSTEM}-translation/([0-9a-f]{{64}})")
+TRANSLATION_SYSTEM = "(" + "|".join(TRANSLATION_ROOTS) + ")"
+RETAIL_TRANSLATION = re.compile(rf"/related-media/{TRANSLATION_SYSTEM}-translation/([0-9a-f]{{64}})")
 RETAIL_TRANSLATION_DOWNLOAD = re.compile(r"/api/v1/releases/([0-9a-f]{32})/translations/([0-9a-f]{64})/download")
 SNES_ICON = re.compile(r"/(?:snes-flags/(?:jp|na|pal)|snes-inputs/(?:pad|mouse|lightgun|multitap))\.png")
 SOFTWARE_FACTS = re.compile(r"/api/software/([0-9]+)/facts")
@@ -282,10 +283,11 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                     return self._json_response({"error": error}, HTTPStatus.NOT_FOUND)
                 if game_key is not None:
                     add_local_manuals(catalog["game"], self.server.retail_manual_roots[platform], platform)
-                    add_local_translations(catalog["game"], self.server.retail_translation_roots[platform], platform)
+                    if platform in self.server.retail_translation_roots:
+                        add_local_translations(catalog["game"], self.server.retail_translation_roots[platform], platform)
                     if self.server.vgm_root:
                         catalog["soundtracks"] = self.server.repository.retail_soundtracks(catalog["game"])
-                elif browse:
+                elif browse and platform in self.server.retail_translation_roots:
                     add_translation_availability(catalog["games"], self.server.retail_translation_roots[platform])
                 return self._json_response(catalog)
             if parsed.path == "/api/capabilities":

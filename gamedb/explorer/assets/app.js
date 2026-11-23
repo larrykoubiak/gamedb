@@ -1210,6 +1210,7 @@ function loadInterfaceOptions() {
       document.querySelector("#snes-retail-link").hidden = !capabilities.value?.snesRetail;
       document.querySelector("#megadrive-retail-link").hidden = !capabilities.value?.megadriveRetail;
       document.querySelector("#nes-retail-link").hidden = !capabilities.value?.nesRetail;
+      document.querySelector("#playstation-retail-link").hidden = !capabilities.value?.playstationRetail;
     });
   }
   return optionsRequest;

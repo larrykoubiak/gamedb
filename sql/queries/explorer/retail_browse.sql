@@ -13,7 +13,7 @@ WITH snapshot AS (
 ), game_releases AS (
     SELECT game_order, jsonb_agg(jsonb_build_object(
         'key', release->'key', 'market', release->'market', 'titles', release->'titles',
-        'status', release->'status', 'boxart', release->'artwork'->'boxart',
+        'status', release->'status', 'boxart', release->'artwork'->'boxart', 'productCodes', release->'productCodes',
         'archiveTitles', jsonb_path_query_array(release, '$.archives[*].title'),
         'archiveSignatures', jsonb_path_query_array(release, '$.archives[*].signature')
     ) ORDER BY release_order) AS items
