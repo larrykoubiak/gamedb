@@ -7,10 +7,12 @@ from struct import pack, pack_into
 from unittest.mock import patch
 from zipfile import ZipFile
 
+from libarchive import file_writer
+
 from gamedb.vgm.amiga import AMIGA_CD32
 from gamedb.vgm.archives import open_vgm_location
 from gamedb.vgm.importer import resolve
-from gamedb.vgm.inventory import C64, GB, GBC, SNES, ST, Soundtrack, identify, scan
+from gamedb.vgm.inventory import C64, GB, GBC, PLAYSTATION, PSF_COLLECTION, SNES, ST, Soundtrack, identify, scan
 from gamedb.vgm.matching import TitleIndex, match_sid, psf_album, reviewed_titles, sid_claim
 from gamedb.vgm.tags import add_track_tags, read_tags, stream_tags
 
@@ -29,6 +31,25 @@ def stored_lha_member(name, contents):
 
 
 class InventoryTests(unittest.TestCase):
+    def test_playstation_7zip_album_indexes_psf_tracks_and_dependencies(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / PSF_COLLECTION / "Example (1998-08-10)(Studio)[PS1].7z"
+            source.parent.mkdir()
+            track_data = b"PSF\x01" + bytes(12) + b"[TAG]title=Opening\nartist=Composer\n_lib=Game.psflib\n"
+            files = {"Set/Opening.minipsf": track_data, "Set/Game.psflib": b"program", "Set/Notes.txt": b"credits"}
+            with file_writer(str(source), "7zip") as archive:
+                for name, contents in files.items():
+                    archive.add_file_from_memory(name, len(contents), contents)
+            album, = scan(root)
+            self.assertEqual((album.system, album.title), (PLAYSTATION, "Example"))
+            add_track_tags(root, album.assets, {"minipsf"})
+            track, = [item for item in album.assets if item["kind"] == "track"]
+            self.assertEqual((track["title"], track["artist"]), ("Opening", "Composer"))
+            self.assertEqual({item["format"] for item in album.assets if item["kind"] == "support"}, {"psflib", "txt"})
+            with open_vgm_location(root, track) as member:
+                self.assertEqual(member.read(), track_data)
+
     def test_unexotica_readable_tracks_keep_prefix_names_and_disc_platform(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

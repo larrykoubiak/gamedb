@@ -224,6 +224,8 @@ def tracks_for_set(root, album):
     formats = SUFFIXES - ARCHIVES
     if album.collection == JOSHW_COLLECTION:
         formats = formats | JOSHW_TRACKS | JOSHW_LIBRARIES | {".txt"}
+    elif album.collection == PSF_COLLECTION:
+        formats = formats | {".txt"}
     for asset in assets[:]:
         try:
             if asset["format"] == "zip":
@@ -232,7 +234,7 @@ def tracks_for_set(root, album):
                 tracks = list(packed_tracks(root, asset, amiga=True))
             elif asset["format"] == "7z" and album.collection == "GBS":
                 tracks = list(packed_tracks(root, asset, formats={".gbs", ".m3u", ".txt"}))
-            elif asset["format"] == "7z" and album.collection == JOSHW_COLLECTION:
+            elif asset["format"] == "7z" and album.collection in {JOSHW_COLLECTION, PSF_COLLECTION}:
                 amiga = album.system in {AMIGA, AMIGA_CD32, AMIGA_CDTV}
                 tracks = list(packed_tracks(root, asset, amiga=amiga, formats=None if amiga else formats))
             else:

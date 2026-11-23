@@ -7,6 +7,7 @@ from sqlalchemy import text
 
 from gamedb.config import PROJECT_ROOT
 from gamedb.database import create_database_engine
+from gamedb.vgm.inventory import BROWSER_AUDIO
 
 from . import retail
 from .playstation_media import add_manuals, apply_reviewed_artwork, manual_inventory
@@ -22,6 +23,7 @@ MARKETS = {"NA": {"US"}}
 THUMBNAILS = {"playstation": ("Sony - PlayStation", "ccee75c7744d81676b6725307aca27ef6be6231a")}
 SOURCE_DIRECTORY = PROJECT_ROOT / "data/media/cache/playstation-retail"
 REFERENCE = PROJECT_ROOT / "reference/playstation_retail.json"
+SOUNDTRACK_FORMATS = {"psf", "minipsf", "xa", "genh"} | {suffix[1:] for suffix in BROWSER_AUDIO}
 
 ARCHIVES = text(f"""
     SELECT release.display_title AS title, signature.sha1_set_digest AS signature,
@@ -146,7 +148,7 @@ def seed_playstation(report=None, *, publish_catalog=False, sources=None):
             catalog["summary"]["metadata"] = retail.enrichment_coverage(catalog, MARKETS)
             catalog["summary"]["soundtracks"] = add_soundtracks(
                 connection, catalog, platform=SYSTEM, secondary_platform=None,
-                formats=("psf", "minipsf", "xa", "genh", "wav", "flac"),
+                formats=sorted(SOUNDTRACK_FORMATS),
                 aliases=[{"edition": item["edition"], "title": item["archiveTitle"]} for item in aliases],
             )
             if publish_catalog:
