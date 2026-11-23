@@ -98,7 +98,7 @@ function startVgmPlayback(asset, libraries, {started, ended, subsong, volume}) {
   }
 
   try {
-    worker = new Worker("/vgm/decoder.mjs?v=4", {type: "module"});
+    worker = new Worker("/vgm/decoder.mjs?v=5", {type: "module"});
     worker.addEventListener("error", () => finish("The playback engine could not load."));
     worker.addEventListener("messageerror", () => finish("The playback engine returned unreadable audio."));
     worker.addEventListener("message", ({data}) => {
@@ -115,7 +115,8 @@ function startVgmPlayback(asset, libraries, {started, ended, subsong, volume}) {
       }
     });
     worker.postMessage({
-      type: "open", url: asset.url, format: asset.format, libraries, sampleRate: audio.sampleRate, subsong, generation,
+      type: "open", url: asset.url, format: asset.format, libraries, sampleRate: audio.sampleRate,
+      subsong, defaultSubsong: asset.defaultSubsong, generation,
     });
     resume();
   } catch (error) {

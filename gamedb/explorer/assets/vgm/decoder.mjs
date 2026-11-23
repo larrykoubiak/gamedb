@@ -73,10 +73,11 @@ function loadTrack(bytes, format, subsong, firstSong) {
   });
 }
 
-async function openZXTune({url, format, libraries, sampleRate, subsong}) {
+async function openZXTune({url, format, libraries, sampleRate, subsong, defaultSubsong}) {
   const [module, bytes] = await Promise.all([createZXTune(), readAudioFile(url)]);
   decoder = module;
   const info = readSubsongInfo(bytes, format);
+  if (format === "nsfe" && defaultSubsong > 0) info.defaultSubsong = defaultSubsong;
   const track = loadTrack(bytes, format, subsong, info.defaultSubsong);
   let player, duration;
   try {

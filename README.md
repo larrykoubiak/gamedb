@@ -388,6 +388,7 @@ members of UnExoticA LHA and JoshW 7-Zip packages. It preserves Amiga module
 names such as `MOD.Title` and keeps sample banks in the same album. The original
 packages are available as downloads. SPC ID666 labels, NSF, SID and GBS credits
 and subsong counts, and PSF track names and credits appear when available.
+NES subsong titles come from NSFe or NSF2 metadata and bundled NSF playlists.
 
 Run a read-only match against the configured catalog before publishing.
 

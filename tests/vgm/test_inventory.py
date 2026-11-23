@@ -12,7 +12,7 @@ from gamedb.vgm.archives import open_vgm_location
 from gamedb.vgm.importer import resolve
 from gamedb.vgm.inventory import C64, GB, GBC, SNES, ST, Soundtrack, identify, scan
 from gamedb.vgm.matching import TitleIndex, match_sid, psf_album, reviewed_titles, sid_claim
-from gamedb.vgm.tags import read_tags, stream_tags
+from gamedb.vgm.tags import add_track_tags, read_tags, stream_tags
 
 
 def stored_lha_member(name, contents):
@@ -114,6 +114,40 @@ class InventoryTests(unittest.TestCase):
         asset = {"format": "nsfe", "size_bytes": len(data)}
         self.assertEqual(stream_tags(BytesIO(data), asset), {"artist": "Composer A, Composer B"})
         self.assertEqual(stream_tags(BytesIO(data[:-1]), asset), {})
+
+    def test_nsfe_subsong_titles_follow_the_embedded_playlist(self):
+        chunks = [(b"INFO", bytes(8) + bytes([4, 0])), (b"tlbl", "Opening\0\0決戦\0".encode()),
+                  (b"plst", bytes([2, 0, 1, 3])), (b"DATA", bytes(512)), (b"NEND", b"")]
+        data = b"NSFE" + b"".join(pack("<I4s", len(body), kind) + body for kind, body in chunks)
+        tags = stream_tags(BytesIO(data), {"format": "nsfe", "size_bytes": len(data)})
+        self.assertEqual(tags, {"subsongs": 4, "default_subsong": 1,
+                                "subsong_titles": ["決戦", "Opening", "", ""]})
+
+    def test_nsf_uses_appended_labels_and_matching_playlist_entries(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / "Akumu_nsf_archive/Example.zip"
+            path.parent.mkdir()
+            header = bytearray(0x80)
+            header[:8] = b"NESM\x1a\x01\x05\x02"
+            program = bytes(256)
+            header[0x7d:0x80] = len(program).to_bytes(3, "little")
+            labels = b"Embedded\0"
+            with ZipFile(path, "w") as archive:
+                archive.writestr("set/Example.nsf", header + program + pack("<I4s", len(labels), b"tlbl")
+                                 + labels + pack("<I4s", 0, b"NEND"))
+                archive.writestr("set/Example.m3u", "Example::NSF,03,Stage\\, part two,1:20\n"
+                                 "Example.nsf::NSF,01,Alternate title\n"
+                                 "Example.nsf::NSF,04,Conflicting label A\n"
+                                 "Example.nsf::NSF,06,Out of range\n"
+                                 "Unrelated.nsf::NSF,02,Unrelated\n")
+                archive.writestr("set/Alternate.m3u", "Example.nsf::NSF,04,Conflicting label B\n")
+                archive.writestr("other/Example.m3u", "Example.nsf::NSF,05,Wrong folder\n")
+            album, = scan(root)
+            add_track_tags(root, album.assets, {"nsf"})
+            nsf, = [asset for asset in album.assets if asset["format"] == "nsf"]
+            self.assertEqual((nsf["subsongs"], nsf["default_subsong"]), (5, 2))
+            self.assertEqual(nsf["subsong_titles"], ["Embedded", "", "Stage, part two", "", ""])
 
     def test_loose_spc_and_archive_copies_form_one_soundtrack(self):
         with tempfile.TemporaryDirectory() as directory:

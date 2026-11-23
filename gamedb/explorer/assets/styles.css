@@ -544,6 +544,8 @@ h2 { font-size: 1.55rem; letter-spacing: -.025em; }
   color: var(--book-ink);
   font-size: .77rem;
 }
+.soundtrack-subtunes { min-width: 0; max-width: 100%; }
+.soundtrack-subtunes select { max-width: min(15rem, 70vw); }
 
 .soundtrack-playlist-bar { justify-content: space-between; gap: .5rem 1rem; margin: 1rem 0 .55rem; }
 .soundtrack-playlist-label { align-items: baseline; gap: .45rem .7rem; }

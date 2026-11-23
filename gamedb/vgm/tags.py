@@ -4,6 +4,7 @@ import re
 from collections import defaultdict
 from contextlib import closing
 from gzip import GzipFile
+from pathlib import PurePosixPath
 from struct import unpack_from
 from zipfile import BadZipFile
 from zlib import error as ZlibError
@@ -22,7 +23,10 @@ PSF_FIELDS = {"game": "album", "title": "title", "artist": "artist",
 JAPANESE = re.compile(r"[\u3041-\u30fa\u3400-\u9fff]")
 MAX_PSF_TAG_BYTES = 64 * 1024
 MAX_COMPOSER_TAG_BYTES = 64 * 1024
+MAX_NSF_TAG_BYTES = 64 * 1024
 MAX_VGZ_TAG_SCAN = 64 * 1024**2
+NSF_PLAYLIST_FORMATS = {"m3u", "m3u8"}
+NSF_PLAYLIST_ENTRY = re.compile(rb"(.+)::NSF,\s*([0-9]{1,3})\s*,\s*((?:\\.|[^,\\])*)", re.I)
 
 
 def tag_text(raw):
@@ -90,9 +94,8 @@ def sid_tags(header):
     }
 
 
-def nsfe_tags(stream, size):
-    if stream.read(4) != b"NSFE":
-        return {}
+def nsf_chunks(stream, size):
+    chunks = {}
     while stream.tell() + 8 <= size:
         header = stream.read(8)
         if len(header) != 8:
@@ -100,17 +103,94 @@ def nsfe_tags(stream, size):
         length, kind = unpack_from("<I4s", header)
         if kind == b"NEND" or length > size - stream.tell():
             break
-        if kind != b"auth":
+        if kind not in (b"INFO", b"auth", b"tlbl", b"plst") or length > MAX_NSF_TAG_BYTES:
             stream.seek(length, 1)
             continue
-        if length > MAX_COMPOSER_TAG_BYTES:
+        data = stream.read(length)
+        if len(data) != length:
             break
-        tag = stream.read(length)
-        fields = tag.split(b"\0", 2)
-        if len(tag) == length and len(fields) >= 2 and (artist := tag_text(fields[1])):
-            return {"artist": artist}
-        break
-    return {}
+        chunks.setdefault(kind, data)
+    return chunks
+
+
+def nsf_subsong_tags(count, first_song, labels, playlist=b""):
+    # The decoder addresses at most the number of tracks in the file header.
+    order = playlist[:count] or range(count)
+    tags = {"subsongs": len(order)}
+    if count:
+        tags["default_subsong"] = first_song if 1 <= first_song <= len(order) else 1
+    if labels:
+        names = [tag_text(raw) for raw in labels.split(b"\0", count)[:count]]
+        titles = [names[index] if index < len(names) else "" for index in order]
+        if any(titles):
+            tags["subsong_titles"] = titles
+    return tags
+
+
+def nsfe_tags(stream, size):
+    if stream.read(4) != b"NSFE":
+        return {}
+    chunks = nsf_chunks(stream, size)
+    tags = {}
+    fields = chunks.get(b"auth", b"").split(b"\0", 2)
+    if len(fields) >= 2 and (artist := tag_text(fields[1])):
+        tags["artist"] = artist
+    info = chunks.get(b"INFO", b"")
+    if len(info) >= 9 and info[8]:
+        playlist = chunks.get(b"plst", b"")
+        first_song = info[9] + 1 if len(info) >= 10 and not playlist else 1
+        tags.update(nsf_subsong_tags(info[8], first_song, chunks.get(b"tlbl", b""), playlist))
+    return tags
+
+
+def nsf_tags(stream, header, size):
+    labels = b""
+    program_size = int.from_bytes(header[0x7d:0x80], "little")
+    if program_size and 0x80 + program_size + 8 <= size:
+        # Both version 1 and NSF2 can append optional NSFe chunks after the program.
+        stream.seek(0x80 + program_size)
+        labels = nsf_chunks(stream, size).get(b"tlbl", b"")
+    return {"album": tag_text(header[14:46]), "artist": tag_text(header[46:78]),
+            **nsf_subsong_tags(header[6], header[7], labels)}
+
+
+def nsf_location(asset):
+    if member := asset.get("member_name"):
+        return asset["source_path"], PurePosixPath(member)
+    return None, PurePosixPath(asset["source_path"])
+
+
+def read_nsf_playlist(stream, asset, playlists):
+    archive, path = nsf_location(asset)
+    for line in stream.read(MAX_NSF_TAG_BYTES).removeprefix(b"\xef\xbb\xbf").splitlines():
+        line = line.strip()
+        if line.startswith(b"#") or not (entry := NSF_PLAYLIST_ENTRY.match(line)):
+            continue
+        name, number, label = entry.groups()
+        filename = tag_text(name).replace("\\,", ",").replace("\\", "/")
+        if not filename.lower().endswith(".nsf"):
+            filename += ".nsf"
+        title = tag_text(re.sub(rb"\\([,\\])", rb"\1", label))
+        if title:
+            songs = playlists[archive, path.parent / filename]
+            index = int(number)
+            if songs.setdefault(index, title) != title:
+                songs[index] = ""
+
+
+def add_nsf_playlist_titles(assets, playlists):
+    for asset in assets:
+        if asset["format"] != "nsf" or not (count := asset.get("subsongs")):
+            continue
+        if not (songs := playlists.get(nsf_location(asset))):
+            continue
+        titles = list(asset.get("subsong_titles", ()))
+        titles.extend([""] * (count - len(titles)))
+        for index, title in songs.items():
+            if title and 1 <= index <= count and not titles[index - 1]:
+                titles[index - 1] = title
+        if any(titles):
+            asset["subsong_titles"] = titles
 
 
 def gd3_tags(stream, size):
@@ -162,21 +242,40 @@ def read_tags(root, asset):
 
 def add_track_tags(root, assets, formats):
     packed = defaultdict(list)
+    playlists = defaultdict(dict)
+    read_playlists = "nsf" in formats and any(asset["format"] == "nsf" for asset in assets)
+
+    def enrich(asset, stream):
+        if asset["format"] in NSF_PLAYLIST_FORMATS:
+            read_nsf_playlist(stream, asset, playlists)
+        else:
+            asset.update(stream_tags(stream, asset))
+
     for asset in assets:
-        if asset["format"] not in formats:
+        playlist = (read_playlists and asset["format"] in NSF_PLAYLIST_FORMATS
+                    and asset["size_bytes"] <= MAX_NSF_TAG_BYTES)
+        if asset["format"] not in formats and not playlist:
             continue
         if asset.get("archive_format"):
             packed[asset["source_path"]].append(asset)
+        elif playlist:
+            try:
+                with open_vgm_location(root, asset) as stream:
+                    enrich(asset, stream)
+            except (OSError, ValueError, BadZipFile, NotImplementedError, EOFError):
+                continue
         else:
             asset.update(read_tags(root, asset))
     for locations in packed.values():
         try:
             with closing(packed_locations(root, locations)) as members:
                 for asset, stream in members:
-                    asset.update(stream_tags(stream, asset))
+                    enrich(asset, stream)
         except (OSError, ValueError, NotImplementedError, EOFError):
             # An unavailable member should not prevent importing the other sets.
             continue
+    if playlists:
+        add_nsf_playlist_titles(assets, playlists)
 
 
 def stream_tags(stream, asset):
@@ -192,8 +291,7 @@ def stream_tags(stream, asset):
     if format_name == "sid":
         return sid_tags(header)
     if format_name == "nsf" and len(header) >= 0x80 and header[:5] == b"NESM\x1a":
-        return {"album": tag_text(header[14:46]), "artist": tag_text(header[46:78]),
-                "subsongs": header[6]}
+        return nsf_tags(stream, header, asset["size_bytes"])
     if format_name == "gbs" and len(header) >= 0x70 and header[:4] == b"GBS\x01":
         return {
             "album": tag_text(header[16:48]),

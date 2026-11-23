@@ -144,7 +144,8 @@ function renderSoundtracks(container, soundtracks, {compact = false} = {}) {
     tracks: album.assets.filter(asset => asset.kind === "track")
       .sort((first, second) => trackOrder.compare(first.name, second.name))
       .map(asset => ({asset, name: soundtrackTitle(asset),
-        playable: asset.playable || canPlayVgm(asset), subsongs: asset.subsongs || 1})),
+        playable: asset.playable || canPlayVgm(asset), subsongs: asset.subsongs || 1,
+        defaultSubsong: asset.defaultSubsong})),
     files: album.assets.filter(asset => asset.kind !== "track"),
   }));
   if (!albums.length) return;
@@ -198,7 +199,7 @@ function renderSoundtracks(container, soundtracks, {compact = false} = {}) {
   }
   container.append(root);
 
-  let album, selected, highlighted, transport, clock;
+  let album, selected, highlighted, transport, clock, songTrack;
   let playable = [];
   let libraries = [];
   let rows = new Map();
@@ -235,8 +236,9 @@ function renderSoundtracks(container, soundtracks, {compact = false} = {}) {
     player.hidden = !selected;
     downloadOnly.hidden = Boolean(selected);
     if (!selected) return;
-    title.textContent = selected.name;
     const activeSong = subtune || selected.defaultSubsong;
+    const songTitles = selected.asset.subsongTitles;
+    title.textContent = songTitles?.[activeSong - 1] || selected.name;
     const songs = activeSong ? `Song ${activeSong} of ${selected.subsongs}` : `${selected.subsongs} subtunes`;
     const artist = selected.asset.artist?.trim();
     credit.textContent = [compact && artist ? `Music by ${artist}` : artist, compact ? "" : album.collection,
@@ -249,10 +251,15 @@ function renderSoundtracks(container, soundtracks, {compact = false} = {}) {
     next.disabled = !neighbor(1);
     subtunes.hidden = selected.subsongs <= 1;
     if (!subtunes.hidden) {
-      const defaultLabel = selected.defaultSubsong ? `Default song (${selected.defaultSubsong})` : "Default song";
-      if (song.options.length !== selected.subsongs + 1 || song.options[0]?.label !== defaultLabel) {
+      const first = selected.defaultSubsong;
+      const defaultLabel = first ? `Default song (${songTitles?.[first - 1] || first})` : "Default song";
+      if (songTrack !== selected || song.options.length !== selected.subsongs + 1
+          || song.options[0]?.label !== defaultLabel) {
         song.replaceChildren(new Option(defaultLabel, "0"));
-        for (let index = 1; index <= selected.subsongs; index++) song.add(new Option(`Song ${index}`, index));
+        for (let index = 1; index <= selected.subsongs; index++) {
+          song.add(new Option(songTitles?.[index - 1] || `Song ${index}`, index));
+        }
+        songTrack = selected;
       }
       song.value = String(subtune);
     }
