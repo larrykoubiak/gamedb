@@ -69,6 +69,19 @@ class SnesEnrichmentTests(unittest.TestCase):
         self.assertEqual(boxart["regions"], ["US"])
         self.assertEqual(title["basis"], "shared-rom")
 
+    def test_reviewed_thumbnail_can_use_a_different_boxart_filename(self):
+        archive_name = "Game (Japan) (Rev 1).zip"
+        japan = release("Game", "JP")
+        japan["archives"] = [{"archiveNames": [archive_name], "regions": ["JP"],
+                              "revisions": ["1"], "versions": []}]
+        paths = {"snes": {"Named_Boxarts/Game (Japan).png"}}
+        reviewed = {(archive_name, "boxart"): {"market": "JP", "regions": ["JP"],
+                                              "filename": "Game (Japan).png", "source": {"name": "Box scan"}}}
+        self.assertEqual(list(_libretro_art(japan, paths)), [])
+        (_, kind, asset), = _libretro_art(japan, paths, reviewed)
+        self.assertEqual((kind, asset["archive"]), ("boxart", archive_name))
+        self.assertTrue(asset["url"].endswith("/Game%20%28Japan%29.png"))
+
     def test_shared_rom_can_supply_gameplay_but_logo_must_match_the_local_title(self):
         japan = release("Japanese Title", "JP")
         archive = {"archiveNames": ["Game (Japan, USA).zip"], "regions": ["JP", "US"],
@@ -85,6 +98,16 @@ class SnesEnrichmentTests(unittest.TestCase):
         self.assertFalse(list(_launchbox_art(release("Japanese Title", "JP"), [1], images)))
         (rank, kind, asset), = _launchbox_art(release("Western Title", "NA"), [1], images)
         self.assertEqual((rank, kind, asset["basis"]), (-1, "logo", "source-title"))
+
+    def test_launchbox_checksum_review_requires_the_original_reference(self):
+        image = SimpleNamespace(image_type="Box - Front", region="Japan", file_name="image.png", crc32=1)
+        images = {1: [(image, "Game")]}
+        reviewed = {("image.png", 1): 2}
+        (_, _, asset), = _launchbox_art(release("Game", "JP"), [1], images, checksum_reviews=reviewed)
+        self.assertEqual(asset["crc32"], 2)
+        image.crc32 = 3
+        (_, _, asset), = _launchbox_art(release("Game", "JP"), [1], images, checksum_reviews=reviewed)
+        self.assertEqual(asset["crc32"], 3)
 
     def test_manuals_require_market_evidence_and_only_original_pdfs(self):
         japan = release("Game", "JP")

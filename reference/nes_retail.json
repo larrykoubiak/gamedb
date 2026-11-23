@@ -1,4 +1,18 @@
 {
+  "artworkRegions": [
+    {
+      "archiveName": "1942 (Japan, USA) (En).zip",
+      "market": "NA", "kind": "boxart", "regions": ["US"],
+      "filename": "1942 (Japan, USA) (En).png",
+      "source": {"name":"Libretro","url":"https://github.com/libretro-thumbnails/Nintendo_-_Nintendo_Entertainment_System/blob/29607117d7dd3a0d42273dc5599ad5982cf5eb91/Named_Boxarts/1942%20(Japan%2C%20USA)%20(En).png"}
+    },
+    {
+      "archiveName": "MiG 29 - Soviet Fighter (USA, Europe) (Unl).zip",
+      "market": "NA", "kind": "boxart", "regions": ["US"],
+      "filename": "MiG 29 - Soviet Fighter (USA) (Unl).png",
+      "source": {"name":"Libretro","url":"https://github.com/libretro-thumbnails/Nintendo_-_Nintendo_Entertainment_System/blob/29607117d7dd3a0d42273dc5599ad5982cf5eb91/Named_Boxarts/MiG%2029%20-%20Soviet%20Fighter%20(USA)%20(Unl).png"}
+    }
+  ],
   "verifiedArchives": [
     {
       "edition": "Airwolf",

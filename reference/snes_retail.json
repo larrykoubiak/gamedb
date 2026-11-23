@@ -40,6 +40,9 @@
       "descriptionId": 5721,
       "marketIds": {"JP": 5721, "NA": 5721}
     },
+    "Shōgi Club": {
+      "marketIds": {"JP": 162164}
+    },
     "Super Tetris 2 + Bombliss: Gentei-ban": {
       "descriptionId": 132634,
       "marketIds": {"JP": 132634}
@@ -56,6 +59,66 @@
     }
   },
   "artworkRegions": [
+    {
+      "archiveName": "Angelique - Premium Box (Japan).zip",
+      "market": "JP", "kind": "boxart", "regions": ["JP"],
+      "filename": "Angelique (Japan) (Premium Box).png",
+      "source": {"name":"Libretro","url":"https://github.com/libretro-thumbnails/Nintendo_-_Super_Nintendo_Entertainment_System/blob/3298e21ecddfba90a589180f81ea242d2a90d7bb/Named_Boxarts/Angelique%20(Japan)%20(Premium%20Box).png"}
+    },
+    {
+      "archiveName": "Amazing Tennis (Japan) (En).zip",
+      "market": "JP", "kind": "boxart", "regions": ["JP"],
+      "filename": "David Crane's Amazing Tennis (Japan).png",
+      "source": {"name":"Libretro","url":"https://github.com/libretro-thumbnails/Nintendo_-_Super_Nintendo_Entertainment_System/blob/3298e21ecddfba90a589180f81ea242d2a90d7bb/Named_Boxarts/David%20Crane's%20Amazing%20Tennis%20(Japan).png"}
+    },
+    {
+      "archiveName": "Elfaria - A Fantastic Theater (Japan).zip",
+      "market": "JP", "kind": "boxart", "regions": ["JP"],
+      "filename": "Elfaria - The Isle of the Blest (Japan).png",
+      "source": {"name":"Libretro","url":"https://github.com/libretro-thumbnails/Nintendo_-_Super_Nintendo_Entertainment_System/blob/3298e21ecddfba90a589180f81ea242d2a90d7bb/Named_Boxarts/Elfaria%20-%20The%20Isle%20of%20the%20Blest%20(Japan).png"}
+    },
+    {
+      "archiveName": "Finalset (Japan) (En).zip",
+      "market": "JP", "kind": "boxart", "regions": ["JP"],
+      "filename": "Finalset (Japan).png",
+      "source": {"name":"Libretro","url":"https://github.com/libretro-thumbnails/Nintendo_-_Super_Nintendo_Entertainment_System/blob/3298e21ecddfba90a589180f81ea242d2a90d7bb/Named_Boxarts/Finalset%20(Japan).png"}
+    },
+    {
+      "archiveName": "Zen-Nihon GT Senshuken - Hyper Battle Game (Japan).zip",
+      "market": "JP", "kind": "boxart", "regions": ["JP"],
+      "filename": "Zen-Nihon GT Senshuken (Japan).png",
+      "source": {"name":"Libretro","url":"https://github.com/libretro-thumbnails/Nintendo_-_Super_Nintendo_Entertainment_System/blob/3298e21ecddfba90a589180f81ea242d2a90d7bb/Named_Boxarts/Zen-Nihon%20GT%20Senshuken%20(Japan).png"}
+    },
+    {
+      "archiveName": "Akagawa Jirou - Majo-tachi no Nemuri (Japan).zip",
+      "market": "JP", "kind": "boxart", "regions": ["JP"],
+      "filename": "Akagawa Jirou - Majotachi no Nemuri (Japan).png",
+      "source": {"name":"Libretro","url":"https://github.com/libretro-thumbnails/Nintendo_-_Super_Nintendo_Entertainment_System/blob/3298e21ecddfba90a589180f81ea242d2a90d7bb/Named_Boxarts/Akagawa%20Jirou%20-%20Majotachi%20no%20Nemuri%20(Japan).png"}
+    },
+    {
+      "archiveName": "Kamai-tachi no Yoru (Japan).zip",
+      "market": "JP", "kind": "boxart", "regions": ["JP"],
+      "filename": "Kamaitachi no Yoru (Japan).png",
+      "source": {"name":"Libretro","url":"https://github.com/libretro-thumbnails/Nintendo_-_Super_Nintendo_Entertainment_System/blob/3298e21ecddfba90a589180f81ea242d2a90d7bb/Named_Boxarts/Kamaitachi%20no%20Yoru%20(Japan).png"}
+    },
+    {
+      "archiveName": "Sankyo Fever! Fever! - Pachinko Jikki Simulation Game (Japan).zip",
+      "market": "JP", "kind": "boxart", "regions": ["JP"],
+      "filename": "Sankyo Fever! Fever! (Japan).png",
+      "source": {"name":"Libretro","url":"https://github.com/libretro-thumbnails/Nintendo_-_Super_Nintendo_Entertainment_System/blob/3298e21ecddfba90a589180f81ea242d2a90d7bb/Named_Boxarts/Sankyo%20Fever!%20Fever!%20(Japan).png"}
+    },
+    {
+      "archiveName": "Super Linearball (Japan) (En).zip",
+      "market": "JP", "kind": "boxart", "regions": ["JP"],
+      "filename": "Super Linearball (Japan).png",
+      "source": {"name":"Libretro","url":"https://github.com/libretro-thumbnails/Nintendo_-_Super_Nintendo_Entertainment_System/blob/3298e21ecddfba90a589180f81ea242d2a90d7bb/Named_Boxarts/Super%20Linearball%20(Japan).png"}
+    },
+    {
+      "archiveName": "Zero4 Champ RR (Japan).zip",
+      "market": "JP", "kind": "boxart", "regions": ["JP"],
+      "filename": "Zero 4 Champ RR (Japan).png",
+      "source": {"name":"Libretro","url":"https://github.com/libretro-thumbnails/Nintendo_-_Super_Nintendo_Entertainment_System/blob/3298e21ecddfba90a589180f81ea242d2a90d7bb/Named_Boxarts/Zero%204%20Champ%20RR%20(Japan).png"}
+    },
     {
       "archiveName": "Super Metroid (Japan, USA) (En,Ja).zip",
       "market": "NA",

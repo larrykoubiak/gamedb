@@ -14,12 +14,14 @@ from gamedb.catalog.media import BAD_CHARS
 from gamedb.catalog.cartridges import COUNTRY_MARKETS
 from gamedb.catalog.references import GAMING_ALEXANDRIA, KIRKLAND_ITEM, PEEBS, PEEBS_ITEM, PEEBS_JP, THUMBNAILS
 from gamedb.catalog.retail_source import known_credit
+from gamedb.config import PROJECT_ROOT
 from gamedb.launchbox.image_cache import valid_filename
 from gamedb.launchbox.matching import match_candidates, title_key
 
 
 LAUNCHBOX_PLATFORMS = {"Super Nintendo Entertainment System", "Nintendo Super Famicom", "Nintendo Sufami Turbo"}
 LAUNCHBOX_GAME = "https://gamesdb.launchbox-app.com/games/details/"
+LAUNCHBOX_COVER_CHECKSUMS = PROJECT_ROOT / "reference/launchbox_retail_cover_checksums.json"
 LIBRETRO_KINDS = {"Named_Boxarts": "boxart", "Named_Titles": "title", "Named_Snaps": "snap", "Named_Logos": "logo"}
 MANUAL_NOTE = re.compile(r"\s*\(\s*(?:high quality|poor quality|color|manual scan)\s*\)\s*$", re.I)
 
@@ -358,7 +360,8 @@ def _libretro_art(release, paths, reviewed=(), *,
                     continue
                 if kind == "logo" and not (exclusive or review or title_key(archive.get("title", "")) in local_titles):
                     continue
-                path = f"{directory}/{stem}.png"
+                filename = (review or {}).get("filename", f"{stem}.png")
+                path = f"{directory}/{filename}"
                 if path in paths.get(folder_key, ()):
                     rank = 2 if exclusive else 0
                     if not archive["revisions"] and not archive["versions"]:
@@ -375,7 +378,7 @@ def _libretro_art(release, paths, reviewed=(), *,
                     yield 4 if review else rank, kind, asset
 
 
-def _launchbox_art(release, keys, images, *, country_markets=COUNTRY_MARKETS):
+def _launchbox_art(release, keys, images, *, country_markets=COUNTRY_MARKETS, checksum_reviews=None):
     local_titles = {title_key(title) for title in release["titles"]}
     for key in keys:
         for image, title in images.get(key, ()):
@@ -386,9 +389,10 @@ def _launchbox_art(release, keys, images, *, country_markets=COUNTRY_MARKETS):
                                      and title_key(title) in local_titles):
                 continue
             path = f"launchbox/{kind}/{image.file_name}"
+            crc32 = (checksum_reviews or {}).get((image.file_name, image.crc32), image.crc32)
             yield (2 if regional else -1), kind, {
                 "url": f"/media/{path}", "preview": f"/previews/320/{path}", "path": path,
-                "filename": image.file_name, "crc32": image.crc32, "regions": regions,
+                "filename": image.file_name, "crc32": crc32, "regions": regions,
                 "basis": "source-region" if regional else "source-title",
                 "source": {"name": "LaunchBox", "url": f"{LAUNCHBOX_GAME}{key}"},
             }
@@ -400,6 +404,8 @@ def add_descriptions_and_art(connection, catalog, indexes, reference, *,
     reviewed = reference.get("metadata", {})
     artwork_regions = {(record["archiveName"], record["kind"]): record
                        for record in reference.get("artworkRegions", ())}
+    checksum_reviews = {(filename, review["previousCrc32"]): review["crc32"]
+                        for filename, review in json.loads(LAUNCHBOX_COVER_CHECKSUMS.read_text(encoding="utf-8")).items()}
     release_ids, images = _scope_launchbox(connection, catalog, reviewed, platforms=platforms)
     paths = _libretro_paths(indexes, thumbnails)
     for game in catalog["games"]:
@@ -419,7 +425,8 @@ def add_descriptions_and_art(connection, catalog, indexes, reference, *,
             art = {}
             candidates = (*_libretro_art(release, paths, artwork_regions, thumbnails=thumbnails,
                                         thumbnail_key=thumbnail_key, country_markets=country_markets), *_launchbox_art(
-                release, release_ids.get(release["key"], ()), images, country_markets=country_markets,
+                release, release_ids.get(release["key"], ()), images,
+                country_markets=country_markets, checksum_reviews=checksum_reviews,
             ))
             for _, kind, asset in sorted(candidates, key=lambda item: (-item[0], item[2]["url"])):
                 art.setdefault(kind, asset)
