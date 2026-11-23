@@ -1,6 +1,6 @@
 import unittest
 
-from gamedb.explorer.snes_metadata import add_release_metadata
+from gamedb.explorer.retail_metadata import add_release_metadata
 
 
 class SnesMetadataTests(unittest.TestCase):

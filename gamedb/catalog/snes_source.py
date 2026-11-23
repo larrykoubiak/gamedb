@@ -7,6 +7,8 @@ from urllib.request import Request, urlopen
 
 from bs4 import BeautifulSoup
 
+from gamedb.catalog.retail_source import cell_text, known_credit, remove_citations, title_and_aliases
+
 
 REVISION = 1384177751
 SOURCE_URL = f"https://en.wikipedia.org/wiki/Special:PermanentLink/{REVISION}#Retail_releases"
@@ -15,11 +17,6 @@ MAX_HTML_BYTES = 8 * 1024 * 1024
 MARKETS = ("JP", "NA", "PAL")
 MARKET_NAMES = ("Japan", "North America", "PAL region")
 MARKET_COUNTRIES = {"PAL": {"FR", "GER"}, "NA": {"MX"}, "JP": set()}
-UNKNOWN_CREDITS = {"", "-", "—", "unknown", "unknown developer", "unknown publisher", "n/a"}
-
-
-def known_credit(value):
-    return bool(value and "?" not in value and value.strip().casefold() not in UNKNOWN_CREDITS)
 
 
 def load_html(path=None):
@@ -37,50 +34,6 @@ def load_html(path=None):
 
 def _key(*parts):
     return sha256("\x00".join(("gamedb:snes-retail", *parts)).encode()).hexdigest()[:32]
-
-
-def _text(node):
-    return " ".join(node.get_text(" ", strip=True).split())
-
-
-def _remove_citations(cell):
-    for note in cell.find_all("sup", class_="reference"):
-        note.decompose()
-
-
-def _title_and_aliases(cell):
-    _remove_citations(cell)
-    for helper in cell.select('.noprint, .sortkey, [style*="display:none"], [style*="display: none"]'):
-        helper.decompose()
-    # One language link in this revision uses a separate Bracket template
-    # instead of the usual interlanguage-link markup.
-    for link in cell.select('a[rel="mw:WikiLink/Interwiki"]'):
-        group = link.parent
-        before, after = group.previous_sibling, group.next_sibling
-        if (group.get("about") and re.fullmatch(r"[a-z-]{2,12}", _text(link))
-                and getattr(before, "name", None) == getattr(after, "name", None) == "span"
-                and before.get("about") == after.get("about") == group["about"]
-                and _text(before) == "[" and _text(after) == "]"):
-            before.decompose()
-            after.decompose()
-            group.decompose()
-    # The retail table puts market abbreviations in superscripts at the end
-    # of each alternate title. Preserve them as data, apart from citations.
-    for marker in cell.find_all("sup"):
-        marker.replace_with("\x1f" + _text(marker))
-    for line_break in cell.find_all("br"):
-        line_break.replace_with("\x1e")
-    primary, *alternates = re.split(r"[\x1e•]", cell.get_text())
-    title = " ".join(primary.split())
-    if not title or "\x1f" in primary:
-        raise ValueError("SNES retail row has an invalid primary title")
-    aliases = []
-    for alternate in alternates:
-        name, _, marker = alternate.partition("\x1f")
-        name = " ".join(name.split())
-        if name:
-            aliases.append({"title": name, "regions": re.findall(r"[A-Z]+", marker)})
-    return title, aliases
 
 
 def _market_titles(title, aliases, market):
@@ -114,7 +67,7 @@ def parse_retail_list(html, edition_parents, *, release_notes=(), expected_rows=
     if len(rows) != expected_rows:
         raise ValueError(f"Expected {expected_rows} SNES retail rows, found {len(rows)}")
 
-    notes = {note["id"]: _text(note).casefold() for note in soup.select('li[id^="cite_note-"]')}
+    notes = {note["id"]: cell_text(note).casefold() for note in soup.select('li[id^="cite_note-"]')}
     review_notes = {(note["edition"], note["market"]): {"text": note["text"], "url": note["url"]}
                     for note in release_notes}
     games = {}
@@ -124,13 +77,13 @@ def parse_retail_list(html, edition_parents, *, release_notes=(), expected_rows=
         if len(cells) not in (6, 7) or any(cell.has_attr("colspan") or cell.has_attr("rowspan") for cell in cells):
             raise ValueError("Unexpected columns in SNES retail row")
         channel = _channel(cells[0], notes)
-        title, aliases = _title_and_aliases(cells[0])
+        title, aliases = title_and_aliases(cells[0])
         if title in games:
             raise ValueError(f"Duplicate SNES retail source title {title!r}")
         releases = []
         for market, cell in zip(MARKETS, cells[3:6], strict=True):
-            _remove_citations(cell)
-            date = _text(cell)
+            remove_citations(cell)
+            date = cell_text(cell)
             if date.casefold() in {"unreleased", "cancelled"}:
                 continue
             if not re.search(r"\b(?:19|20)\d{2}\b", date):
@@ -145,9 +98,9 @@ def parse_retail_list(html, edition_parents, *, release_notes=(), expected_rows=
             releases.append(release)
         if not releases:
             raise ValueError(f"SNES retail row has no published market for {title!r}")
-        _remove_citations(cells[1])
-        _remove_citations(cells[2])
-        developer, publisher = (_text(cell) for cell in cells[1:3])
+        remove_citations(cells[1])
+        remove_citations(cells[2])
+        developer, publisher = (cell_text(cell) for cell in cells[1:3])
         games[title] = {
             "key": _key("game", title), "title": title, "aliases": aliases,
             "developer": developer if known_credit(developer) else "",

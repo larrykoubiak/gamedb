@@ -1,4 +1,4 @@
-"""Mirror the manual files linked by a published SNES retail catalog."""
+"""Mirror the manual files linked by a retail catalog."""
 
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -20,13 +20,15 @@ from urllib.request import Request, urlopen
 
 from gamedb.config import PROJECT_ROOT
 
-from .snes_references import _read_index
+from .references import read_index
 
 
 INDEX_NAME = ".gamedb-manuals.json"
 SOURCE_REFERENCES = PROJECT_ROOT / "reference/snes_retail_manual_files.json"
-MARKET_DIRECTORIES = {"JP": "Japan", "NA": "North America", "PAL": "PAL"}
-USER_AGENT = "GameDB/2.0 (SNES manual library)"
+MARKET_DIRECTORIES = {
+    "JP": "Japan", "NA": "North America", "PAL": "PAL", "BR": "Brazil", "KR": "South Korea", "AS": "Asia",
+}
+USER_AGENT = "GameDB/2.0 (retail manual library)"
 CHUNK_SIZE = 1024 * 1024
 
 
@@ -79,7 +81,7 @@ def _catalog_manuals(path):
 def _archive_files(item, cache):
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,199}", item):
         raise ValueError("Invalid Internet Archive item name")
-    index = _read_index(cache / f"{item}.json", f"https://archive.org/metadata/{item}")
+    index = read_index(cache / f"{item}.json", f"https://archive.org/metadata/{item}")
     data = json.loads(index.content)
     if data.get("metadata", {}).get("identifier") != item:
         raise ValueError("Internet Archive item metadata unavailable")
@@ -115,7 +117,7 @@ def _sources(manual, cache, reviewed):
     location = urlsplit(url)
     hostname = location.hostname or ""
     if location.scheme != "https" or (hostname not in {
-        "archive.org", "www.gamingalexandria.com", "www.nintendo.co.jp"
+        "archive.org", "www.gamingalexandria.com", "www.nintendo.co.jp", "segaretro.org", "www.digitpress.com",
     } and not hostname.endswith(".archive.org")):
         raise ValueError("Unsupported manual source URL")
     if hostname == "archive.org" and location.path.startswith("/details/"):
@@ -127,7 +129,7 @@ def _sources(manual, cache, reviewed):
                 raise ValueError("A reviewed manual page is missing from the scan")
             return [_archive_file(item, by_name[name]) for name in reviewed["archivePages"]], True
         return [_archive_pdf(item, manual["name"], files)], False
-    return [(url, manual.get("sha1"), None)], False
+    return [(url, manual.get("sha1"), manual.get("size"))], False
 
 
 def _verify_bytes(count, expected_size, digest, expected_digest):
@@ -245,9 +247,9 @@ def _sync_manual(root, record, relative, manual, cache, reviewed):
             sleep(min(int(delay), 60) if delay.isdecimal() else 2 ** attempt)
 
 
-def sync_manuals(catalog, root, cache, *, workers=8):
+def sync_manuals(catalog, root, cache, *, workers=8, source_references=SOURCE_REFERENCES):
     manuals = _catalog_manuals(catalog)
-    reviewed = json.loads(SOURCE_REFERENCES.read_text(encoding="utf-8"))
+    reviewed = json.loads(source_references.read_text(encoding="utf-8")) if source_references else {}
     root.mkdir(parents=True, exist_ok=True)
     with (root / ".gamedb-manuals.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)

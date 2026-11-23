@@ -1,7 +1,12 @@
 "use strict";
 
 const params = new URLSearchParams(location.search);
-const marketNames = {JP: "Japan", NA: "North America", PAL: "PAL region"};
+const isMegaDrive = location.pathname === "/catalog/megadrive";
+const catalogLabel = isMegaDrive ? "Mega Drive" : "SNES";
+const catalogApi = isMegaDrive ? "/api/megadrive-retail" : "/api/snes-retail";
+const marketNames = {
+  JP: "Japan", NA: "North America", PAL: "PAL region", BR: "Brazil", KR: "South Korea", AS: "Asia",
+};
 const channelNames = {"nintendo-power": "Nintendo Power", "sufami-turbo": "SuFami Turbo"};
 const matchNames = {matched: "Base ROM matched", ambiguous: "Needs review", unmatched: "No base ROM match"};
 const artworkNames = {boxart: "Box art", title: "Title screen", snap: "Gameplay", logo: "Clear logo"};
@@ -10,6 +15,7 @@ const inputDevices = {
   "super-scope": {name: "Super Scope", icon: "lightgun"},
   justifier: {name: "Konami Justifier", icon: "lightgun"},
   multitap: {name: "Multitap", icon: "multitap"},
+  "j-cart": {name: "J-Cart controller ports", icon: "multitap"},
 };
 const inlineItems = 2;
 const maxGamesPerPage = 10;
@@ -69,6 +75,11 @@ function artworkImage(source, alt) {
 }
 
 function marketFlag(market) {
+  if (!["JP", "NA", "PAL"].includes(market)) {
+    const code = element("span", market, "snes-market-code");
+    code.setAttribute("aria-hidden", "true");
+    return code;
+  }
   const icon = element("img");
   icon.alt = "";
   icon.src = `/snes-flags/${market.toLowerCase()}.png`;
@@ -249,6 +260,7 @@ function cartridgeDetails(release) {
   ];
   return {
     serials: uniqueValues(records, "serials"),
+    headerCodes: uniqueValues(records, "headerCodes"),
     boards: uniqueValues(records, "boards"),
     chips: uniqueValues(records, "romChip"),
   };
@@ -367,10 +379,14 @@ function manualCell(manuals) {
         openManual(manual);
       });
       entry.append(link);
+    } else if (isMegaDrive) {
+      entry.append(newTabLink(manual.name, manual.url));
     } else {
       entry.append(element("span", manual.name));
     }
-    const info = manual.localUrl ? [manual.format, manual.language].filter(Boolean).join(" · ") : "Unavailable locally";
+    const info = isMegaDrive
+      ? [...manual.regions, manual.format, manual.source].filter(Boolean).join(" · ")
+      : manual.localUrl ? [manual.format, manual.language].filter(Boolean).join(" · ") : "Unavailable locally";
     if (info) entry.append(element("small", info));
     return entry;
   }));
@@ -412,7 +428,7 @@ romForm.addEventListener("submit", async event => {
     const file = await response.blob();
     if (request.signal.aborted) return;
     const encoded = response.headers.get("Content-Disposition")?.match(/filename\*=UTF-8''([^;]+)/i)?.[1];
-    const name = encoded ? decodeURIComponent(encoded) : translation.filename.replace(/\.[^.]+$/, ".sfc");
+    const name = encoded ? decodeURIComponent(encoded) : translation.filename.replace(/\.[^.]+$/, isMegaDrive ? ".md" : ".sfc");
     const url = URL.createObjectURL(file);
     const link = element("a");
     link.href = url;
@@ -477,7 +493,10 @@ function translationRow(translation, columns) {
   }
   patch.append(downloads);
   const status = translation.status === "Fully Playable" ? "" : translation.status;
-  const info = [status, inputLayouts[translation.layout]].filter(Boolean).join(" · ");
+  const padding = translation.padToSize
+    ? `Pad the base ROM to ${(translation.padToSize / 1024).toLocaleString()} KiB with zero bytes`
+    : "";
+  const info = [status, inputLayouts[translation.layout], padding].filter(Boolean).join(" · ");
   if (info) patch.append(element("small", info));
   if (translation.baseArchive) patch.append(element("small", translation.baseArchive));
   const cells = [authors, version, released, patch];
@@ -585,8 +604,12 @@ function renderReleaseTable(game, picker, targets, onSelection) {
     if (credits.childElementCount) market.append(releaseDisclosure("Credits", credits));
     const date = element("td", release.date);
     if (channelNames[release.channel]) date.append(element("small", channelNames[release.channel]));
-    const {serials, boards, chips} = cartridgeDetails(release);
+    const {serials, headerCodes, boards, chips} = cartridgeDetails(release);
     const productCodes = releaseListCell(serials.map(code => element("code", code)));
+    if (headerCodes.length) {
+      productCodes.querySelector(".snes-release-empty")?.remove();
+      productCodes.append(releaseDisclosure("ROM header", releaseList(headerCodes.map(code => element("code", code)))));
+    }
     const pcb = releaseListCell(boards.map(code => element("code", code)));
     if (chips.length) {
       pcb.append(releaseDisclosure(chips.length === 1 ? "ROM chip" : "ROM chips",
@@ -676,7 +699,7 @@ function renderDetail(game, soundtracks) {
     showTranslations(translations, release.translations || []);
     const metadata = release.metadata || {};
     const facts = factList([
-      ["Developer", game.developer], ["Publisher", game.publisher],
+      ["Developer", release.developer || game.developer], ["Publisher", release.publisher || game.publisher],
       ["Genre", metadata.genres?.join(" · ")], ["Controls", renderInputs(metadata)],
     ], {inline: true});
     profile.replaceChildren(...[description, facts.childElementCount ? facts : null].filter(Boolean));
@@ -703,16 +726,21 @@ function renderDetail(game, soundtracks) {
   masthead.prepend(title);
   pageHeading.hidden = true;
   detail.hidden = false;
-  document.title = `${game.title} | SNES retail catalog`;
+  document.title = `${game.title} | ${catalogLabel} retail catalog`;
 }
 
 async function start() {
+  if (isMegaDrive) {
+    document.title = "Mega Drive retail catalog | GameDB";
+    document.querySelector("#snes-title").textContent = "Mega Drive retail catalog";
+    document.querySelector("#snes-back").textContent = "← Mega Drive catalog";
+  }
   try {
     const key = params.get("game");
     const query = new URLSearchParams(key ? {game: key} : {view: "browse"});
-    const response = await fetch(`/api/snes-retail?${query}`);
+    const response = await fetch(`${catalogApi}?${query}`);
     const payload = await response.json();
-    if (!response.ok) throw new Error(payload.error || "Could not load the SNES retail catalog.");
+    if (!response.ok) throw new Error(payload.error || `Could not load the ${catalogLabel} retail catalog.`);
     document.querySelector("#snes-source-link").href = payload.source.url;
     document.querySelector("#snes-source-license").href = payload.source.license;
     document.querySelector("#snes-source").hidden = false;
@@ -729,7 +757,9 @@ async function start() {
     for (const genre of genres) genreSelect.add(new Option(genre, genre));
     genreSelect.disabled = !genres.length;
     genreSelect.value = genres.includes(params.get("genre")) ? params.get("genre") : "";
-    translationFilter.checked = params.get("translated") === "1";
+    const hasTranslations = !isMegaDrive || games.some(game => game.releases.some(release => release.hasTranslations));
+    translationFilter.closest("label").hidden = !hasTranslations;
+    translationFilter.checked = hasTranslations && params.get("translated") === "1";
     function updateFilters() {
       pageAnchor = 0;
       renderBrowse();

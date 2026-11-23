@@ -1208,6 +1208,7 @@ function loadInterfaceOptions() {
       state.correctionsEnabled = Boolean(capabilities.value?.softwareCorrections);
       state.vgmEnabled = Boolean(capabilities.value?.vgm);
       document.querySelector("#snes-retail-link").hidden = !capabilities.value?.snesRetail;
+      document.querySelector("#megadrive-retail-link").hidden = !capabilities.value?.megadriveRetail;
     });
   }
   return optionsRequest;

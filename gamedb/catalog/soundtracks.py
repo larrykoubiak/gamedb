@@ -1,4 +1,4 @@
-"""Resolve SPC sets against the verified SNES retail editions."""
+"""Resolve music sets against verified retail editions."""
 
 from collections import defaultdict
 from datetime import datetime
@@ -14,20 +14,21 @@ from gamedb.vgm.matching import reviewed_titles, spelling_key
 SNES = ("Nintendo", "Super Nintendo Entertainment System")
 SUFAMI = ("Nintendo", "Sufami Turbo")
 RIP_DATE = re.compile(r"\(((?:19|20)\d{2}(?:-\d{2}){0,2})\)")
-RIP_MARKETS = {"JP": "JP", "JPN": "JP", "US": "NA", "USA": "NA", "EU": "PAL", "EUR": "PAL", "PAL": "PAL"}
+RIP_MARKETS = {"JP": "JP", "JPN": "JP", "US": "NA", "USA": "NA", "EU": "PAL", "EUR": "PAL", "PAL": "PAL",
+               "BR": "BR", "KR": "KR"}
 
-SPC_ALBUMS = text("""
+RETAIL_ALBUMS = text("""
     SELECT album.key, album.title, album.collection, album.source_name, album.platform,
            album.aliases, album.status, album.target_key,
            coalesce(to_jsonb(album)->'additional_target_keys', '[]') AS additional_target_keys
     FROM vgm.soundtrack album
     WHERE album.platform IN (
-        ARRAY['Nintendo', 'Super Nintendo Entertainment System'], ARRAY['Nintendo', 'Sufami Turbo']
+        CAST(:platform AS text[]), CAST(:secondary_platform AS text[])
     )
     AND EXISTS (
         SELECT FROM vgm.asset asset
         WHERE asset.soundtrack_key = album.key AND asset.detail->>'kind' = 'track'
-          AND asset.detail->>'format' = 'spc'
+          AND asset.detail->>'format' = ANY(CAST(:formats AS text[]))
     )
     ORDER BY album.collection, album.source_name, album.key
 """)
@@ -72,7 +73,7 @@ def _choose_title(candidates, primary, editions, album):
     return preferred.pop() if len(preferred) == 1 else None
 
 
-def _compatible_release(release, version, markets):
+def _compatible_release(release, version, markets, platform):
     if markets and release["market"] not in markets:
         return False
     if not version:
@@ -80,10 +81,10 @@ def _compatible_release(release, version, markets):
     facts = [(kind, value) for archive in release["archives"]
              for kind, field in (("revision", "revisions"), ("version", "versions"))
              for value in archive[field]]
-    return supports_version(SNES, version, facts)
+    return supports_version(platform, version, facts)
 
 
-def link_soundtracks(catalog, albums, *, reviews=None, aliases=()):
+def link_soundtracks(catalog, albums, *, reviews=None, aliases=(), system=SNES, secondary_platform=SUFAMI):
     """Reuse the catalog's ownership evidence and reconcile explicit retail titles."""
     reviews = {} if reviews is None else reviews
     editions, titles, owners = {}, defaultdict(set), defaultdict(set)
@@ -94,7 +95,8 @@ def link_soundtracks(catalog, albums, *, reviews=None, aliases=()):
                 staged[release["edition"]].append(release)
         for edition, releases in staged.items():
             editions[edition] = game, releases
-            platforms = (SNES, SUFAMI) if releases[0]["channel"] == "sufami-turbo" else (SNES,)
+            platforms = ((system, secondary_platform) if releases[0]["channel"] == "sufami-turbo"
+                         else (system,))
             names = {_title_key(edition)}
             for release in releases:
                 names.update(_release_names(release))
@@ -106,7 +108,7 @@ def link_soundtracks(catalog, albums, *, reviews=None, aliases=()):
 
     for item in aliases:
         if item["edition"] in editions:
-            titles[SNES, _title_key(item["title"])].add(item["edition"])
+            titles[system, _title_key(item["title"])].add(item["edition"])
 
     fixed = superseded_sources(album["source_name"] for album in albums if album["collection"] == COLLECTION)
     for album in albums:
@@ -128,7 +130,7 @@ def link_soundtracks(catalog, albums, *, reviews=None, aliases=()):
             continue
         game, releases = editions[edition]
         region_tags = _rip_markets(album)
-        eligible = [release for release in releases if _compatible_release(release, version, region_tags)]
+        eligible = [release for release in releases if _compatible_release(release, version, region_tags, platform)]
         if eligible:
             game.setdefault("soundtrackLinks", []).append({
                 "key": album["key"], "title": album["title"], "collection": album["collection"],
@@ -142,9 +144,14 @@ def link_soundtracks(catalog, albums, *, reviews=None, aliases=()):
     }
 
 
-def add_soundtracks(connection, catalog, aliases):
+def add_soundtracks(connection, catalog, aliases=(), *,
+                    platform=SNES, secondary_platform=SUFAMI, formats=("spc",)):
     present = connection.execute(text("""
         SELECT to_regclass('vgm.soundtrack') IS NOT NULL AND to_regclass('vgm.asset') IS NOT NULL
     """)).scalar_one()
-    albums = list(connection.execute(SPC_ALBUMS).mappings()) if present else []
-    return link_soundtracks(catalog, albums, reviews=reviewed_titles(), aliases=aliases)
+    albums = list(connection.execute(RETAIL_ALBUMS, {
+        "platform": list(platform), "secondary_platform": list(secondary_platform) if secondary_platform else None,
+        "formats": list(formats),
+    }).mappings()) if present else []
+    return link_soundtracks(catalog, albums, reviews=reviewed_titles(), aliases=aliases, system=platform,
+                            secondary_platform=secondary_platform)

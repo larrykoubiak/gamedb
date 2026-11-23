@@ -16,9 +16,9 @@ from stat import S_ISREG
 from urllib.parse import quote, urlsplit
 from zipfile import BadZipFile, ZipFile
 
-from gamedb.catalog.snes_manuals import INDEX_NAME, manual_key, read_manual_index
-from gamedb.catalog.snes_patching import MAX_ROM_SIZE, PatchError, apply_translation, supports_patching
-from gamedb.catalog.snes_translations import (
+from gamedb.catalog.manuals import INDEX_NAME, manual_key, read_manual_index
+from gamedb.catalog.patching import MAX_ROM_SIZE, PatchError, apply_translation, supports_patching
+from gamedb.catalog.translations import (
     FORMATS, INDEX_NAME as TRANSLATION_INDEX, INDEX_VERSION, MAX_PATCH_SIZE, translation_order,
 )
 from gamedb.exo.media import location_path, open_location
@@ -88,28 +88,26 @@ def _manual_location(root, key):
     return {"source_path": relative, "size_bytes": stat.st_size, "mtime_ns": stat.st_mtime_ns, "member_no": 0}
 
 
-def add_local_manuals(game, root):
+def add_local_manuals(game, root, platform):
     for release in game["releases"]:
         for manual in release.get("manuals", ()):
             key = manual_key(manual["url"])
             if _manual_location(root, key):
                 manual.update(
-                    localUrl=f"/related-media/snes-manual/{key}",
-                    preview=f"/previews/320/snes-manual/{key}",
+                    localUrl=f"/related-media/{platform}-manual/{key}",
+                    preview=f"/previews/320/{platform}-manual/{key}",
                     format="PDF",
                 )
 
 
-def serve_snes_manual(handler, key, *, preview_size=None):
-    root = handler.server.snes_manual_root
+def serve_retail_manual(handler, root, key, *, preview_size=None):
     location = _manual_location(root, key)
     if location is None:
         return handler.send_error(HTTPStatus.NOT_FOUND)
     return _serve_manual_file(handler, key, root, location, preview_size)
 
 
-def serve_snes_manual_pages(handler, key, page=None):
-    root = handler.server.snes_manual_root
+def serve_retail_manual_pages(handler, root, key, page=None):
     location = _manual_location(root, key)
     if location is None:
         return handler.send_error(HTTPStatus.NOT_FOUND)
@@ -173,7 +171,7 @@ def _translation_location(root, record):
             "member_no": 0, "sha256": record["sha256"]}
 
 
-def add_local_translations(game, root):
+def add_local_translations(game, root, platform="snes"):
     _, by_signature = _translation_index(root)
     for release in game["releases"]:
         if release["status"] != "matched":
@@ -186,7 +184,7 @@ def add_local_translations(game, root):
                     continue
                 public = {field: value for field, value in record.items() if field != "signatures"}
                 public["baseReleaseSignature"] = archive["signature"]
-                public["url"] = f"/related-media/snes-translation/{record['key']}"
+                public["url"] = f"/related-media/{platform}-translation/{record['key']}"
                 if supports_patching(record["format"], record["layout"]):
                     public["romDownloadUrl"] = (
                         f"/api/v1/releases/{archive['signature']}/translations/{record['key']}/download"
@@ -217,8 +215,8 @@ def _open_translation(root, location):
         yield stream
 
 
-def serve_snes_translation(handler, key):
-    root = handler.server.snes_translation_root
+def serve_retail_translation(handler, platform, key):
+    root = handler.server.retail_translation_roots[platform]
     records, _ = _translation_index(root)
     record = records.get(key)
     location = _translation_location(root, record) if record else None
@@ -229,13 +227,15 @@ def serve_snes_translation(handler, key):
     }, force_download=True, open_media=_open_translation)
 
 
-def serve_snes_translation_rom(handler, signature, key):
+def serve_retail_translation_rom(handler, signature, key):
     from gamedb.explorer.server import _resolve_rom_path
 
-    root = handler.server.snes_translation_root
-    records, _ = _translation_index(root)
-    record = records.get(key)
-    if not record or signature not in record["signatures"]:
+    for platform, root in handler.server.retail_translation_roots.items():
+        records, _ = _translation_index(root)
+        record = records.get(key)
+        if record and signature in record["signatures"]:
+            break
+    else:
         return handler.send_error(HTTPStatus.NOT_FOUND)
     if not supports_patching(record["format"], record["layout"]):
         return handler._json_response({"error": "This patch requires a different ROM layout."}, HTTPStatus.CONFLICT)
@@ -243,7 +243,7 @@ def serve_snes_translation_rom(handler, signature, key):
     if patch_location is None:
         return handler._json_response({"error": "The translation patch is unavailable."}, HTTPStatus.NOT_FOUND)
 
-    rom = handler.server.repository.snes_translation_base(signature, record["baseSha1"])
+    rom = handler.server.repository.retail_translation_base(platform, signature, record["baseSha1"])
     if rom is None:
         return handler._json_response({"error": "The verified base ROM is unavailable."}, HTTPStatus.CONFLICT)
     try:
@@ -263,13 +263,15 @@ def serve_snes_translation_rom(handler, signature, key):
     if len(patch) != record["size"] or hashlib.sha256(patch).hexdigest() != record["sha256"]:
         return handler._json_response({"error": "The translation patch has changed."}, HTTPStatus.CONFLICT)
     try:
-        patched = apply_translation(original, patch, record["format"], record["layout"])
+        patched = apply_translation(original, patch, record["format"], record["layout"],
+                                    pad_to_size=record.get("padToSize"))
     except PatchError as error:
         return handler._json_response({"error": str(error)}, HTTPStatus.CONFLICT)
 
     base_name = Path(rom["member_path"].replace("\\", "/")).stem
     tag = " ".join(item for item in (record["language"], record["version"]) if item)
-    filename = re.sub(r"[/\\\x00-\x1f\x7f]", "_", f"{base_name} [{tag}].sfc")
+    extension = "md" if platform == "megadrive" else "sfc"
+    filename = re.sub(r"[/\\\x00-\x1f\x7f]", "_", f"{base_name} [{tag}].{extension}")
     return _serve_file(handler, key, root, {
         "path": filename, "revision": hashlib.sha256(patched).hexdigest(),
         "locations": [{"size_bytes": len(patched), "member_no": 0}],

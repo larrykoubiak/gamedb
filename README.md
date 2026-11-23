@@ -61,6 +61,58 @@ After a full derivation, build the complete consumer projection with
 `python -m gamedb rebuild`. Use `--plan`, `--layers`, `--from-layer`, or
 `--through-layer` to inspect or select its SQL layers.
 
+## Mega Drive retail catalog
+
+The Mega Drive catalog uses a pinned licensed game list and reviewed
+cartridge compilations. It keeps the titles and dates shown for
+Japan, North America, PAL, Brazil, South Korea, and Asia. Release notes on Sega
+Channel and Meganet identify games and editions that were available only on
+those services. The snapshot attributes the adapted release data to Wikipedia
+contributors under CC BY-SA 4.0. [Pinned release list](https://en.wikipedia.org/wiki/Special:PermanentLink/1386009379#Licensed_games)
+
+```sh
+python -m gamedb seed-megadrive --report data/logs/megadrive-retail/matches.json --publish
+python -m gamedb sync-megadrive-manuals --catalog data/logs/megadrive-retail/matches.json \
+  --root "/mnt/synology/photo/Manuals/Mega Drive"
+```
+
+Open **Mega Drive retail catalog** in Explorer or go to `/catalog/megadrive`.
+The seed matches region and verified No-Intro content, using MAME cartridge
+hashes and the reviewed aliases in `reference/megadrive_retail_aliases.csv`.
+`reference/megadrive_retail.json` records reviewed compilations and exact
+archive exceptions for original retail cartridges, including some independently
+published releases. The report measures release and asset coverage by market.
+Omit `--publish` to generate a report in a read-only database transaction.
+
+The regional pages show LaunchBox descriptions and artwork, Libretro images
+and ROM header codes, MAME cartridge details, Sega Retro scans, Digital Press
+manuals, and matched VGM soundtracks. Source indexes are cached under
+`data/media/cache/megadrive-retail`. Use `--sources` to choose a cache directory
+or `--html` to use a saved copy of the pinned release list. The manual sync
+checks source hashes where supplied and publishes local PDFs to the shared
+manual viewer. The two Compose configurations mount the library read-only.
+Set `GAMEDB_MEGADRIVE_MANUAL_HOST_ROOT` for a different host directory or
+`GAMEDB_MEGADRIVE_MANUAL_ROOT` when running Explorer directly.
+
+Import the Genesis translations from the local ROMhacking.net backup after
+publishing the catalog.
+
+```sh
+python -m gamedb sync-megadrive-translations \
+  --source /mnt/synology/backup2/romhacking.net-20240801/translations/genesis \
+  --report data/logs/megadrive-retail/translations.json
+```
+
+Explorer shows patches under the matching regional release. **Has translation**
+filters the catalog, and **Download ROM** builds a translated `.md` from the
+verified cartridge using the GameDB API key. The [reviewed packages](reference/megadrive_translation_reviews.json)
+record the exact IPS members and base ROMs for packages that needed individual
+verification. The audit lists projects that could not be matched. The patch
+library lives in `data/media/megadrive-translations` and both Compose
+configurations mount it read-only. Set `GAMEDB_MEGADRIVE_TRANSLATION_ROOT` when
+running Explorer directly with a library created using `--root`. Some older
+patch archives require `7z` to extract their members.
+
 ## SNES retail catalog
 
 The first GameDB V2 catalog starts with a [pinned SNES retail release list](https://en.wikipedia.org/wiki/Special:PermanentLink/1384177751#Retail_releases).

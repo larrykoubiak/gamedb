@@ -13,8 +13,8 @@ from zipfile import BadZipFile, ZipFile
 from bs4 import BeautifulSoup
 from sqlalchemy import text
 
-from gamedb.catalog.snes_references import ARES, JENSMA, MAME, SNES_CENTRAL
-from gamedb.catalog.snes_source import known_credit
+from gamedb.catalog.references import ARES, JENSMA, MAME, SNES_CENTRAL
+from gamedb.catalog.retail_source import known_credit
 from gamedb.launchbox.matching import title_key
 
 
@@ -64,9 +64,18 @@ RDB_SQL = text("""
     JOIN staging.libretro_rdb_file file ON file.import_id = latest.id
     JOIN staging.libretro_rdb_entry entry ON entry.file_id = file.id
     WHERE entry.sha1_hex = ANY(CAST(:hashes AS text[]))
-      AND file.database_name IN ('Nintendo - Super Nintendo Entertainment System', 'Nintendo - Sufami Turbo')
+      AND file.database_name = ANY(CAST(:databases AS text[]))
     ORDER BY entry.sha1_hex, entry.serial, entry.name
 """)
+
+
+def rdb_cartridge_records(connection, hashes, databases):
+    present = connection.execute(text("""
+        SELECT to_regclass('staging.libretro_rdb_entry') IS NOT NULL
+           AND to_regclass('staging.libretro_rdb_file') IS NOT NULL
+           AND to_regclass('staging.libretro_rdb_import') IS NOT NULL
+    """)).scalar_one()
+    return connection.execute(RDB_SQL, {"hashes": sorted(set(hashes)), "databases": list(databases)}) if present else ()
 
 
 def read_cartridge_roms(connection, catalog):
@@ -227,21 +236,16 @@ def add_cartridge_evidence(connection, catalog, roms, fingerprints, indexes, cen
             verified[digest].append((markets, record))
         for digest, fingerprint in fingerprints.items():
             checked[digest].extend(verified.get(fingerprint, ()))
-    present = connection.execute(text("""
-        SELECT to_regclass('staging.libretro_rdb_entry') IS NOT NULL
-           AND to_regclass('staging.libretro_rdb_file') IS NOT NULL
-           AND to_regclass('staging.libretro_rdb_import') IS NOT NULL
-    """)).scalar_one()
-    if present:
-        for row in connection.execute(RDB_SQL, {"hashes": sorted({rom.sha1 for rom in roms.values()})}):
-            serials = _serials(row.serial)
-            developer = row.developer if known_credit(row.developer) else None
-            if serials or developer:
-                markets = {_markets_in_serial(code) for code in serials} - {None}
-                checked[row.sha1].append((markets or _markets_in_label(row.name), {
-                    "serials": serials, "boards": [], "developer": developer,
-                    "source": {"name": "Libretro", "url": LIBRETRO_DB, "revision": row.source_revision},
-                }))
+    databases = ("Nintendo - Super Nintendo Entertainment System", "Nintendo - Sufami Turbo")
+    for row in rdb_cartridge_records(connection, (rom.sha1 for rom in roms.values()), databases):
+        serials = _serials(row.serial)
+        developer = row.developer if known_credit(row.developer) else None
+        if serials or developer:
+            markets = {_markets_in_serial(code) for code in serials} - {None}
+            checked[row.sha1].append((markets or _markets_in_label(row.name), {
+                "serials": serials, "boards": [], "developer": developer,
+                "source": {"name": "Libretro", "url": LIBRETRO_DB, "revision": row.source_revision},
+            }))
 
     releases = {release["key"]: release for game in catalog["games"] for release in game["releases"]}
     by_name, by_code = defaultdict(set), defaultdict(set)

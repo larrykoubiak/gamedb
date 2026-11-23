@@ -6,7 +6,7 @@ from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
 
-from gamedb.catalog.snes_manuals import INDEX_NAME, _archive_pdf, manual_key, read_manual_index, sync_manuals
+from gamedb.catalog.manuals import INDEX_NAME, _archive_pdf, manual_key, read_manual_index, sync_manuals
 
 
 PDF = b"%PDF-1.4\n%%EOF\n"
@@ -33,7 +33,7 @@ class SnesManualTests(unittest.TestCase):
         with TemporaryDirectory() as directory:
             root = Path(directory)
             report = self.report(root)
-            with patch("gamedb.catalog.snes_manuals.urlopen", return_value=Response(PDF)) as request:
+            with patch("gamedb.catalog.manuals.urlopen", return_value=Response(PDF)) as request:
                 result = sync_manuals(report, root, root, workers=1)
                 repeated = sync_manuals(report, root, root, workers=1)
             self.assertEqual(result["downloaded"], 1)
@@ -48,8 +48,8 @@ class SnesManualTests(unittest.TestCase):
         with TemporaryDirectory() as directory:
             root = Path(directory)
             report = self.report(root)
-            with patch("gamedb.catalog.snes_manuals.urlopen", side_effect=lambda *a, **k: Response(b"<html>")), \
-                    patch("gamedb.catalog.snes_manuals.sleep"):
+            with patch("gamedb.catalog.manuals.urlopen", side_effect=lambda *a, **k: Response(b"<html>")), \
+                    patch("gamedb.catalog.manuals.sleep"):
                 result = sync_manuals(report, root, root, workers=1)
             self.assertIn(URL, result["failures"])
             self.assertNotIn(manual_key(URL), read_manual_index(root / INDEX_NAME))

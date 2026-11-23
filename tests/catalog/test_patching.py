@@ -1,7 +1,7 @@
 import unittest
 from zlib import crc32
 
-from gamedb.catalog.snes_patching import PatchError, apply_translation, embedded_input, valid_ips
+from gamedb.catalog.patching import PatchError, apply_translation, embedded_input, valid_ips
 
 
 def with_checksums(body, original, patched):
@@ -24,6 +24,12 @@ class SnesPatchingTests(unittest.TestCase):
             apply_translation(b"ab", patch, "ips", "headerless")
         with self.assertRaisesRegex(PatchError, "unsupported input layout"):
             apply_translation(b"ab", patch, "ips", "interleaved")
+
+    def test_ips_expands_a_reviewed_base_with_zero_bytes(self):
+        patch = b"PATCH\x00\x00\x03\x00\x01xEOF"
+        self.assertEqual(apply_translation(b"ab", patch, "ips", "headerless", pad_to_size=6), b"ab\x00x\x00\x00")
+        with self.assertRaisesRegex(PatchError, "invalid padded ROM size"):
+            apply_translation(b"ab", patch, "ips", "headerless", pad_to_size=1)
 
     def test_bps_copy_actions_and_checksums(self):
         original = b"0123456789"

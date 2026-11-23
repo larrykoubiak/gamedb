@@ -95,7 +95,7 @@ def _apply_ips(source, patch, prefix_size):
     for offset, content in _ips_edits(reader):
         end = offset + len(content)
         if end > MAX_ROM_SIZE + prefix_size:
-            raise PatchError("The patched SNES ROM would exceed 16 MiB.")
+            raise PatchError("The patched ROM would exceed 16 MiB.")
         if end > len(target):
             target.extend(bytes(end - len(target)))
         target[offset:end] = content
@@ -187,7 +187,7 @@ def _apply_delta(source, patch, patch_format):
     if source_size != len(source) or crc32(source) != source_crc:
         raise PatchError("The patch expects a different base ROM checksum or size.")
     if not 0 < target_size <= MAX_ROM_SIZE:
-        raise PatchError("The patch declares an invalid SNES ROM size.")
+        raise PatchError("The patch declares an invalid ROM size.")
     apply = _apply_bps if patch_format == "bps" else _apply_ups
     target = apply(source, reader, target_size)
     if reader.remaining:
@@ -197,11 +197,16 @@ def _apply_delta(source, patch, patch_format):
     return target
 
 
-def apply_translation(source, patch, patch_format, layout):
+def apply_translation(source, patch, patch_format, layout, *, pad_to_size=None):
     if not supports_patching(patch_format, layout):
         raise PatchError("The patch requires an unsupported input layout.")
     if not 0 < len(source) <= MAX_ROM_SIZE:
-        raise PatchError("Invalid SNES base ROM size.")
+        raise PatchError("Invalid base ROM size.")
+    if pad_to_size is not None:
+        if (patch_format != "ips" or layout != "headerless" or type(pad_to_size) is not int
+                or not len(source) <= pad_to_size <= MAX_ROM_SIZE):
+            raise PatchError("The patch requires an invalid padded ROM size.")
+        source = source.ljust(pad_to_size, b"\x00")
     if patch_format == "ips":
         prefix_size = COPIER_HEADER_SIZE if layout == "headered" else 0
         return _apply_ips(source, patch, prefix_size)

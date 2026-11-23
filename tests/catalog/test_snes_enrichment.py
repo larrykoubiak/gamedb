@@ -2,10 +2,10 @@ import json
 from types import SimpleNamespace
 import unittest
 
-from gamedb.catalog.snes_cartridges import _jensma_rows, _markets_in_serial, mame_cartridges
-from gamedb.catalog.snes_media import _launchbox_art, _libretro_art, _manual_link_regions, add_manuals
-from gamedb.catalog.snes_references import KIRKLAND_ITEM, SourceIndex
-from gamedb.catalog.snes_source import known_credit
+from gamedb.catalog.cartridges import _jensma_rows, _markets_in_serial, mame_cartridges
+from gamedb.catalog.retail_media import _launchbox_art, _libretro_art, _manual_link_regions, add_manuals
+from gamedb.catalog.references import KIRKLAND_ITEM, SourceIndex
+from gamedb.catalog.retail_source import known_credit
 
 
 def release(edition, market):

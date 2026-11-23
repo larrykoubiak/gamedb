@@ -8,8 +8,8 @@ from unittest.mock import patch
 from zipfile import ZipFile
 from zlib import crc32
 
-from gamedb.catalog.snes_translations import (
-    INDEX_NAME, BaseRoms, _documented_input, _import_translations, _package_matches,
+from gamedb.catalog.translations import (
+    INDEX_NAME, MEGADRIVE_LAYOUTS, BaseRoms, _documented_input, _import_translations, _package_matches,
 )
 from gamedb.explorer.related_media import (
     add_local_translations, add_translation_availability, _open_translation, _translation_location,
@@ -38,7 +38,7 @@ def archive(path, members):
             handle.writestr(filename, payload)
 
 
-class SnesTranslationsTests(unittest.TestCase):
+class TranslationsTests(unittest.TestCase):
     def test_multi_patch_archive_uses_each_embedded_input(self):
         first, second = rom(1, "first"), rom(2, "second")
         bases = BaseRoms([first, second])
@@ -80,6 +80,38 @@ class SnesTranslationsTests(unittest.TestCase):
             archive(path, {"patch.ips": IPS, "different.ips": IPS})
             self.assertEqual(_package_matches(row, path, bases)[0], [])
 
+    def test_megadrive_ips_resolves_grouped_hashes_and_layout(self):
+        base = rom(1, "official")
+        grouped_sha1 = " ".join(base.sha1[offset:offset + 8] for offset in range(0, 40, 8))
+        row = {"patchstatus": 1, "rominfo": f"ROM SHA-1: {grouped_sha1}\nROM CRC32: {base.crc32}"}
+        bases = BaseRoms([base])
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "patch.zip"
+            archive(path, {"patch.ips": IPS})
+            for hint, layout in ((8, "headerless"), (9, "interleaved-headered")):
+                with self.subTest(hint=hint):
+                    matches, reason = _package_matches({**row, "patchhint": hint}, path, bases,
+                                                       layouts=MEGADRIVE_LAYOUTS)
+                    self.assertIsNone(reason)
+                    self.assertEqual([(rom["sha1"], mode, evidence) for _, _, _, rom, mode, evidence in matches],
+                                     [(base.sha1, layout, "documented")])
+
+    def test_megadrive_review_pins_exact_ips_members_and_base(self):
+        base = rom(1, "official")
+        row = {"patchstatus": 1, "patchhint": 9, "rominfo": f"File SHA-1: {hashlib.sha1(IPS).hexdigest()}"}
+        bases = BaseRoms([base])
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "variants.zip"
+            review = {"archive": path.name, "baseSha1": base.sha1, "layout": "headerless",
+                      "patches": {"base.ips": hashlib.sha256(IPS).hexdigest()}}
+            archive(path, {"base.ips": IPS, "addendum.ips": IPS})
+            matches, reason = _package_matches(row, path, bases, layouts=MEGADRIVE_LAYOUTS, review=review)
+            self.assertIsNone(reason)
+            self.assertEqual([(name, rom["sha1"], layout, evidence) for name, _, _, rom, layout, evidence in matches],
+                             [("base.ips", base.sha1, "headerless", "reviewed")])
+            archive(path, {"base.ips": IPS.replace(b"x", b"y"), "addendum.ips": IPS})
+            self.assertEqual(_package_matches(row, path, bases, layouts=MEGADRIVE_LAYOUTS, review=review)[0], [])
+
     def test_import_and_release_attachment(self):
         base = rom(1, "official")
         with TemporaryDirectory() as directory:
@@ -111,7 +143,7 @@ class SnesTranslationsTests(unittest.TestCase):
                     "2": {"version": "Team's v1", "releasedAt": 100, "authors": ["Local translator", "Local editor"]},
                 },
             }))
-            with patch("gamedb.catalog.snes_translations.AUTHOR_REFERENCE", reference):
+            with patch("gamedb.catalog.translations.AUTHOR_REFERENCE", reference):
                 result = _import_translations(root, library, BaseRoms([base]))
             self.assertEqual(result["patches"], 2)
             self.assertEqual(result["withAuthors"], 2)

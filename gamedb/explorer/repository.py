@@ -7,11 +7,12 @@ from pathlib import Path
 import re
 import subprocess
 
-from gamedb.catalog.snes_cartridges import verified_roms_sql
+from gamedb.catalog.cartridges import verified_roms_sql
+from gamedb.catalog.retail import RETAIL_PLATFORMS, retail_tables
 from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.config import PROJECT_ROOT
 from gamedb.explorer.cache import JsonResponseCache
-from gamedb.explorer.snes_metadata import add_release_metadata
+from gamedb.explorer.retail_metadata import add_release_metadata
 from gamedb.vgm.joshw import COLLECTION as JOSHW_COLLECTION, superseded_sources, supports_version, title_revision
 
 
@@ -328,19 +329,21 @@ class CatalogRepository:
     def systems(self, revision=None, hide_rom_hacks=False):
         return self._listing_query(self.systems_sql(hide_rom_hacks), revision)
 
-    def snes_retail_available(self):
-        return self._read_listing("SELECT to_jsonb(to_regclass('app.snes_retail_catalog') IS NOT NULL)")
+    def retail_available(self, platform):
+        table, _, _ = retail_tables(platform)
+        return self._read_listing(f"SELECT to_jsonb(to_regclass('{table}') IS NOT NULL)")
 
-    def snes_translation_base(self, signature, sha1):
+    def retail_translation_base(self, platform, signature, sha1):
         """Locate the exact official revision linked to a translation."""
-        if not self.snes_retail_available():
+        if not self.retail_available(platform):
             return None
+        table, _, _ = retail_tables(platform)
         base = verified_roms_sql(f"ARRAY[{quote_sql_text(signature)}]")
         return self._read_listing(f"""
             SELECT to_jsonb(base)
             FROM ({base}) AS base
             WHERE base.sha1 = {quote_sql_text(sha1)} AND EXISTS (
-                SELECT 1 FROM app.snes_retail_catalog
+                SELECT 1 FROM {table}
                 WHERE singleton AND jsonb_path_exists(
                     payload,
                     '$.games[*].releases[*] ? (@.status == "matched").archives[*] ? (@.signature == $signature)',
@@ -349,29 +352,32 @@ class CatalogRepository:
             )
         """)
 
-    def snes_retail(self, *, game_key=None, browse=False):
+    def retail_catalog(self, platform, *, game_key=None, browse=False):
         if game_key is not None and not CONTENT_SIGNATURE.fullmatch(game_key):
-            raise ValueError("Invalid SNES catalog key")
-        if not self.snes_retail_available():
+            raise ValueError("Invalid retail catalog key")
+        if not self.retail_available(platform):
             return None
+        table, _, _ = retail_tables(platform)
         if game_key is not None:
-            catalog = self._read_listing("""
+            catalog = self._read_listing(f"""
                 SELECT jsonb_build_object('source', payload->'source', 'game', game)
-                FROM app.snes_retail_catalog
+                FROM {table}
                 CROSS JOIN LATERAL jsonb_array_elements(payload->'games') AS games(game)
                 WHERE singleton AND game->>'key' =
             """ + quote_sql_text(game_key))
             if catalog:
-                add_release_metadata(catalog["game"], self.snes_release_facts(catalog["game"]))
+                add_release_metadata(catalog["game"], self.retail_release_facts(catalog["game"]),
+                                     snes_peripherals=platform == "snes")
             return catalog
         if browse:
-            return self.snes_retail_browse()
-        return self._read_listing("SELECT payload FROM app.snes_retail_catalog WHERE singleton")
+            return self.retail_browse(platform)
+        return self._read_listing(f"SELECT payload FROM {table} WHERE singleton")
 
-    def snes_retail_browse(self):
+    def retail_browse(self, platform):
+        table, _, _ = retail_tables(platform)
         genres = "SELECT NULL::bigint AS game_order, NULL::jsonb AS items WHERE false"
-        if self._snes_facts_available():
-            verified = self._snes_verified_releases_sql("""
+        if self._retail_facts_available():
+            verified = self._retail_verified_releases_sql("""
                 SELECT release->>'key' AS release_key, (archive->>'softwareId')::bigint AS software_id,
                     archive->>'softwareKey' AS software_key, archive->>'signature' AS signature
                 FROM releases
@@ -386,32 +392,32 @@ class CatalogRepository:
                 WHERE fact.is_selected AND fact.fact_key = 'genre'
                 GROUP BY releases.game_order
             """
-        return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "snes_retail_browse.sql").render(
-            genres_sql=genres,
+        return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "retail_browse.sql").render(
+            catalog_table=table, genres_sql=genres,
         ))
 
-    def _snes_facts_available(self):
+    def _retail_facts_available(self):
         return self._read_listing("SELECT to_jsonb(to_regclass('catalog.software_fact') IS NOT NULL)")
 
-    def _snes_verified_releases_sql(self, links_sql):
-        return SqlTemplate(QUERY_DIRECTORY / "snes_verified_releases.sql").render(
+    def _retail_verified_releases_sql(self, links_sql):
+        return SqlTemplate(QUERY_DIRECTORY / "retail_verified_releases.sql").render(
             links_sql=links_sql, software_key_sql=SOFTWARE_KEY_SQL,
         )
 
-    def snes_release_facts(self, game):
+    def retail_release_facts(self, game):
         links = [{"release_key": release["key"], "software_id": archive["softwareId"],
                   "software_key": archive["softwareKey"], "signature": archive["signature"]}
                  for release in game["releases"] if release["status"] == "matched"
                  for archive in release.get("archives", ())]
-        if not links or not self._snes_facts_available():
+        if not links or not self._retail_facts_available():
             return {}
-        verified = self._snes_verified_releases_sql(f"""
+        verified = self._retail_verified_releases_sql(f"""
             SELECT DISTINCT link.*
             FROM jsonb_to_recordset({quote_sql_text(json.dumps(links))}::jsonb) AS link(
                 release_key text, software_id bigint, software_key text, signature text
             )
         """)
-        return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "snes_release_facts.sql").render(
+        return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "retail_release_facts.sql").render(
             verified_releases_sql=verified,
         ))
 
@@ -550,7 +556,7 @@ class CatalogRepository:
         ))
         return select_soundtracks(tuple(payload["platform"]), payload["releaseVersions"], payload["albums"]) if payload else []
 
-    def snes_soundtracks(self, game):
+    def retail_soundtracks(self, game):
         links = {link["key"]: link for link in game.get("soundtrackLinks", ())
                  if re.fullmatch(r"[a-f0-9]{64}", link["key"])}
         if not links or not self._read_listing("""
@@ -567,26 +573,31 @@ class CatalogRepository:
     def vgm_asset(self, key):
         if not re.fullmatch(r"[a-f0-9]{64}", key):
             raise ValueError("Invalid VGM asset key")
-        has_retail_soundtracks = self._read_listing("""
-            SELECT CASE WHEN to_regclass('vgm.asset') IS NULL THEN 'null'::jsonb
-                   ELSE to_jsonb(to_regclass('app.snes_retail_soundtrack') IS NOT NULL) END
+        tables = [retail_tables(platform)[2] for platform in RETAIL_PLATFORMS]
+        existence = ", ".join(f"to_regclass('{table}') IS NOT NULL" for table in tables)
+        present = self._read_listing(f"""
+            SELECT CASE WHEN to_regclass('vgm.asset') IS NOT NULL
+                        THEN jsonb_build_array({existence}) END
         """)
-        if has_retail_soundtracks is None:
+        if present is None:
             return None
-        retail_link = """OR EXISTS (
-            SELECT FROM app.snes_retail_soundtrack retail WHERE retail.soundtrack_key = soundtrack.key
-        )""" if has_retail_soundtracks else ""
+        retail_link = "\n".join(
+            f"OR EXISTS (SELECT FROM {table} retail WHERE retail.soundtrack_key = soundtrack.key)"
+            for table, exists in zip(tables, present, strict=True) if exists
+        )
         return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "vgm_location.sql").render(
             asset_key=quote_sql_text(key), retail_link=retail_link,
         ))
 
     def launchbox_image(self, relative_path):
         path = quote_sql_text(relative_path)
-        if self._read_listing("SELECT to_jsonb(to_regclass('app.snes_retail_image') IS NOT NULL)"):
-            asset = self._read_listing("""
-                SELECT jsonb_build_object('fileName',filename,'crc32',crc32)
-                FROM app.snes_retail_image WHERE path =
-            """ + path)
+        tables = [retail_tables(platform)[1] for platform in RETAIL_PLATFORMS]
+        existence = ", ".join(f"to_regclass('{table}') IS NOT NULL" for table in tables)
+        present = self._read_listing(f"SELECT jsonb_build_array({existence})")
+        choices = [f"SELECT jsonb_build_object('fileName',filename,'crc32',crc32) FROM {table} WHERE path = {path}"
+                   for table, exists in zip(tables, present, strict=True) if exists]
+        if choices:
+            asset = self._read_listing(" UNION ALL ".join(choices) + " LIMIT 1")
             if asset:
                 return asset
         if not self._read_listing("""

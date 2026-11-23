@@ -1,6 +1,6 @@
 import unittest
 
-from gamedb.catalog.snes_soundtracks import SNES, link_soundtracks
+from gamedb.catalog.soundtracks import SNES, link_soundtracks
 from gamedb.vgm.joshw import COLLECTION
 
 

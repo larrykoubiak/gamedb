@@ -1,0 +1,336 @@
+{
+  "authorSource": "https://neoromhacking.net/community.php",
+  "authors": {
+    "52": "Eidolon Translation Group",
+    "63": "Hiryuu Honyaku",
+    "95": "Demiforce",
+    "96": "Naflign's Ego",
+    "205": "Nebelwurfer HQ",
+    "425": "Hyllian",
+    "519": "Jon Najar",
+    "716": "Djinn",
+    "820": "Gufino2",
+    "841": "Rolly",
+    "965": "Di Somma Michele",
+    "1156": "SSTranslations",
+    "1196": "Corrigo",
+    "1393": "USC",
+    "1523": "FlamePurge",
+    "1569": "Dizzy",
+    "1661": "Rebecca Capowski",
+    "2212": "DBZ Game",
+    "2857": "-pepodmc",
+    "2901": "Kale",
+    "2902": "Jate",
+    "3272": "lory1990",
+    "3273": "tryphon",
+    "3465": "Anime_World",
+    "3493": "MatTheRabbit",
+    "3819": "Malias",
+    "3998": "cccmar",
+    "4212": "Nebulous Translations",
+    "4306": "Supper",
+    "4466": "Baraksha",
+    "4502": "Magic Team",
+    "4541": "Luceid",
+    "4568": "Green Jerry",
+    "4700": "Paspallas",
+    "4875": "Peaches",
+    "4903": "candidosobrinho.sa",
+    "5226": "bge",
+    "5349": "Kana",
+    "5471": "Mike_Deloge",
+    "5686": "RadioTails",
+    "5874": "IVO THE HEDGEHOG",
+    "5903": "Roebloz",
+    "6177": "KanonZombie",
+    "6382": "LIPEMCO! Translations",
+    "6445": "Arunotaku",
+    "6536": "adh_alk",
+    "6632": "Abomenaj Zizeloj",
+    "6773": "AFSBLOOD",
+    "6921": "edwinmusic",
+    "6975": "Mad-Dentist",
+    "7016": "Valug",
+    "7026": "JDN2011",
+    "7046": "saulfabreg",
+    "7333": "ArcadeTV",
+    "7364": "Tybis",
+    "7366": "SatY Traduções",
+    "7772": "Jotesc0",
+    "7947": "Kuroi",
+    "8051": "Chronoss",
+    "8305": "Alucard73",
+    "8560": "snimat",
+    "8582": "RLGC",
+    "8585": "Ernani S. Costa",
+    "8611": "Filipinha",
+    "8668": "timehero & javixoga"
+  },
+  "ips": {
+    "1075": {
+      "archive": "[1075]Battle Mania Daiginjou - Trouble Shooter Vintage.zip",
+      "baseSha1": "fbcf7e899ff964f52ade160793d6cb22bf68375c",
+      "patches": {
+        "Battle Mania Daiginjou.ips": "2769a79e7c3b3eae175db21d678531930169bee3911d7c4db01fd64cd6bd2a4f",
+        "Trouble Shooter Vintage.ips": "fc125105a4295ac16eaddc2f926cb05ce05374c943ca39927193b64a5569db19"
+      },
+      "evidence": "The included instructions describe two English scripts for the same Japanese cartridge."
+    },
+    "1573": {
+      "archive": "[1573][SMD] Light Crusader (U) [!] [T-BR] [T-Unknown Master G-Monkey's Traduções] [V-1.0 P-100% A-2010].rar",
+      "baseSha1": "df58fbcbede4b9659740b5505641d4cc7dd1b7f8",
+      "patches": {
+        "Light Crusader BR v1.0.ips": "d4bff0131e452fa11b505ba87cbe656ce2cccf8faee3e34352480ae8c4f9d26a"
+      },
+      "evidence": "The included instructions identify the IPS and RUP as alternate formats of the translation for the same cartridge."
+    },
+    "2119": {
+      "archive": "[2119]Castle Of Illusion - update.zip",
+      "baseSha1": "0679162757f375751a677fd05195c9248abc84f0",
+      "patches": {
+        "Castle_of_Illusion.ips": "6d9113bf3c0538b3bdc161cf5df0b5f3e68c0d392ea77ef2f61f881355839397",
+        "Castle_of_Illusion_alt.ips": "4aa8435652f00d5bfa1bb0e4c3f9079a3af5eeee23b27d76883316528473e49e"
+      },
+      "evidence": "Leeme.txt identifies both font variants and gives the Japanese cartridge SHA-1 and CRC32."
+    },
+    "2309": {
+      "archive": "[2309]rentahero98.zip",
+      "baseSha1": "a07e4d56c9842e1177df9016fb9478060dc4c1c6",
+      "patches": {
+        "Rent a Hero 0.98 - Genesis.ips": "16d8e0d226c64fa9e883962f39c42ee5cc026e61668457a538e6efc2765646b5",
+        "Rent a Hero 0.98 - MegaDrive.ips": "957e9817be19174981b4d52b8155bf0809683c1c7db5575068485df06f44a4e7"
+      },
+      "evidence": "The included instructions identify the Genesis and Mega Drive wording options for the original raw Japanese ROM."
+    },
+    "2713": {
+      "archive": "[2713]Dahna - Goddess' Birth (E).7z",
+      "baseSha1": "da0246a063e6f70933e251b9ae84587fe620d4f0",
+      "patches": {
+        "Dahna - Goddess' Birth (E).ips": "426470b8b2ad5b2f1e1537860809ca2a13e650068de58d9fc02d7a24791db74c"
+      },
+      "evidence": "RHDN gives the IPS file checksums. Applying it to the verified Japanese ROM reproduces the Libretro translated ROM SHA-1.",
+      "outputSha1": "24310b49b02abce85d8270c95871451206785408",
+      "source": "https://github.com/libretro/libretro-database/blob/f89f09cbe13f9f7863ecf20d0ebf2c5ce53be029/metadat/hacks/Sega%20-%20Mega%20Drive%20-%20Genesis.dat#L41-L46"
+    },
+    "2790": {
+      "archive": "[2790]md_ps2.zip",
+      "baseSha1": "0711080e968490a6b8c5fafbb9db3e62ba597231",
+      "patches": {
+        "Phantasy Star 2.ips": "51a7fd70e268ed6f234d602df9bee326a0dadfda029c8027cbc12e447452b543"
+      },
+      "layout": "headerless",
+      "evidence": "The included German instructions apply the IPS after converting the source to raw BIN. The patched ROM checksum agrees with its Sega header."
+    },
+    "3377": {
+      "archive": "[3377]landstalker-es-v1.zip",
+      "baseSha1": "9fbadc86319936855831ecd096d82d716b304215",
+      "patches": {
+        "landstalker-es-v1.ips": "ef6fce09c5717e189e9269e72bd8f7b0a65e7d357313abdb278b1ae356089b8c"
+      },
+      "layout": "headerless",
+      "evidence": "LEEME.txt gives the European ROM SHA-1 and requires appending 256 KiB of zeros before applying the patch.",
+      "padToSize": 2359296
+    },
+    "3549": {
+      "archive": "[3549]PS3EnglishTranslation.zip",
+      "baseSha1": "59d4914e652672fd1e453c76b8250d17e8ca154e",
+      "patches": {
+        "PS3T-v1.2.ips": "b7e22ce6ea7b31615c0d6a74d7d73719ac2a9aadba34bea4938dabdebb4a2a21"
+      },
+      "evidence": "The included instructions apply the translation before the optional parallax and walk speed patches."
+    },
+    "4164": {
+      "archive": "[4164]ps4fr_v3_0_0.zip",
+      "baseSha1": "bc7ff6d6a8408f38562bc610f24645cad6c42629",
+      "patches": {
+        "ps4fr.ips": "ea108df6ea279bf8f53cab396acef347644d5d22632125e9b37af60b7b6253f6"
+      },
+      "evidence": "LISEZMOI.txt identifies ps4fr.ips as the base translation and gives the matching English ROM MD5. The music patch requires the translation."
+    },
+    "4431": {
+      "archive": "[4431]zerowingsmd.zip",
+      "baseSha1": "98335b97c5e21f7f8c5436427621836660b91075",
+      "patches": {
+        "zerowingsmd.ips": "573626b95dce0494750c46568fcc808cfc279163f5ee176a4e712747a9bc89e9"
+      },
+      "evidence": "The author readme gives the verified European ROM SHA-1 and MD5 and places its CRC32 in the byte-count field. The CRC32 in the checksum field belongs to Zool."
+    },
+    "4496": {
+      "archive": "[4496]taskforceharrierexsmd.zip",
+      "baseSha1": "1d36bd69e356f276c582fee247af2f71af1f3bf4",
+      "patches": {
+        "taskforceharrierexsmd.ips": "2885dea026ee75c382bdb5e80dd9b240774a2bb958f634b6d92f980e422e91f1"
+      },
+      "evidence": "The translation instructions identify the original US ROM by SHA-1, MD5, and CRC32."
+    },
+    "5429": {
+      "archive": "[5429]Yuu Yuu Hakusho  Sunset Fighters (S).rar",
+      "baseSha1": "e307363837626d47060f5347d0fccfc568a12b18",
+      "patches": {
+        "Yuu Yuu Hakusho  Sunset Fighters (S) 1.1.ips": "57030be759610694352bf6fa1ea5f9379f06b119b9177dce6d7e641da8732a11"
+      },
+      "layout": "headerless",
+      "evidence": "The included instructions give the raw Brazilian ROM filename and its matching SHA-1 and CRC32."
+    },
+    "5458": {
+      "archive": "[5458]Phelios (S).rar",
+      "baseSha1": "c2e34b7eb411ac78bb480e30434808b2ae4989ea",
+      "patches": {
+        "Phelios (S) 1.0.ips": "424fb00f8876b11cc863af6c067bc651cd9a7732bf67a242995d5763157c9bf7"
+      },
+      "layout": "headerless",
+      "evidence": "The included instructions give the raw USA ROM filename and its matching SHA-1 and CRC32."
+    },
+    "5494": {
+      "archive": "[5494]World Heroes (S).rar",
+      "baseSha1": "5a563f441c3013ac4b3f9e08d5e5a6e05efc5de0",
+      "patches": {
+        "World Heroes (S) 1.0.ips": "95d49f11665ebecf8b12c17e975f4a39a8e302df56d13da55aae0c77a7c08ef4"
+      },
+      "layout": "headerless",
+      "evidence": "The included instructions give the raw USA ROM filename and its matching SHA-1 and CRC32."
+    },
+    "5573": {
+      "archive": "[5573]Saturday Night Slam Masters (S) (MD).rar",
+      "baseSha1": "7252006bf41e41b92c6261c6722766a1352a6dca",
+      "patches": {
+        "Saturday Night Slam Masters (S) (MD) 1.1.ips": "55fd535c46f6989b35c3ecddb16049e73571e94705d9f00691c6726fc79edb35"
+      },
+      "layout": "headerless",
+      "evidence": "The included IPS instructions give the raw ROM SHA-1 and CRC32."
+    },
+    "5624": {
+      "archive": "[5624]Sonic (S).rar",
+      "baseSha1": "6ddb7de1e17e7f6cdb88927bd906352030daa194",
+      "patches": {
+        "Sonic (S) Titulos orginales 1.0.ips": "4792b11d3af8b07389dfe7b81b199273b2858ab59d223247cfc815d0eef8c422",
+        "Sonic (S) 1.1.ips": "dca094a65d624511fb4f7ff21ea3334966836cb6ac55579a5258ee5e9594df98"
+      },
+      "evidence": "README STH.txt describes both level-title options and gives checksums for the raw USA and Europe ROM.",
+      "layout": "headerless",
+      "versions": {
+        "Sonic (S) Titulos orginales 1.0.ips": "1.0"
+      }
+    },
+    "5678": {
+      "archive": "[5678]Monster World IV MD.7z",
+      "baseSha1": "46ba5e8775a2223fe5056f54555d9caa7d04f4e1",
+      "patches": {
+        "Monster World IV (S) fuente normal.ips": "1d8304291a9dd143c37bdb1c36ff833aeacb05fa48ada67225132e6b10d7e82e",
+        "Monster World(S) fuente mod.ips": "603f2e68d9064b5e56091290bea1411d00209e343b49cc3a2c6f01d907b0aa57"
+      },
+      "evidence": "The included instructions offer both fonts for the Japanese cartridge and give its CRC32."
+    },
+    "5797": {
+      "archive": "[5797]Aladdin~MD~U~T_esp-Rod_Merida-1_01-ips.zip",
+      "baseSha1": "d21c085b8429edc2c5092cd74ef3c36d01bf987f",
+      "patches": {
+        "ALADIN.IPS": "5fc320fed9aa8ef623e33015ef480bfe6d4edf863f3b9ab2b96a2678fb7f1922"
+      },
+      "evidence": "The included instructions apply ALADIN.IPS to the original 1993 US ROM. The remix patch has a different base."
+    },
+    "6030": {
+      "archive": "[6030]A-Train MD (S).zip",
+      "baseSha1": "d0d0aaad68978fd15c5857773141ae639de1abc7",
+      "patches": {
+        "A Train MD (S) 1.0.ips": "bea5ab7c7d71b9ce50b4f48e732701440aeef7be840c45a3d78c96bf478455b0"
+      },
+      "layout": "headerless",
+      "evidence": "The included instructions give the raw ROM filename and its matching SHA-1 and CRC32."
+    },
+    "6235": {
+      "archive": "[6235]Sailor Moon (S).zip",
+      "baseSha1": "7565b0b19fb830ded5e90399f552c14c2aacdeb8",
+      "patches": {
+        "BSSM (S) 1.0.ips": "5e70908976ee8274229bc5d7b3e4d9c4ffc43c7df76cf7aeb6a7a81ae4d3e7e1"
+      },
+      "layout": "headerless",
+      "evidence": "The included instructions give the raw Japanese ROM filename and its matching SHA-1 and CRC32."
+    },
+    "6422": {
+      "archive": "[6422]mag_hat_2021_10_18.zip",
+      "baseSha1": "1a741125a80ba9207c74a32e5b21dbb347c3c34a",
+      "patches": {
+        "mag_hat_2021_10_18.ips": "ba27eaedbf7c1dfbb2089c84019d53bcb182d0a5ea1f85d658edc34b984444fc"
+      },
+      "layout": "headerless",
+      "evidence": "The project names the verified Japanese No-Intro SHA-1. IPS writes at aligned program addresses jump to other code blocks inserted by the same patch in the raw ROM."
+    },
+    "6440": {
+      "archive": "[6440]DRMBM - Traducción al español.7z",
+      "baseSha1": "aa6b60103fa92bc95fcc824bf1675e411627c8d3",
+      "patches": {
+        "Dr Robotnik's Mean Bean Machine - Español de España.ips": "68dd7eadc9832e08aa3af02509b601aba94b1040b31e61ec61c418ba5f97c464",
+        "Dr Robotnik's Mean Bean Machine - Español Latino.ips": "9e79c0d31d2a5d76eaa2da390d03a68cead0221cf81e2095c2b3c1a469442063"
+      },
+      "evidence": "Each edition readme names its patch and gives the same US ROM SHA-1 and CRC32."
+    },
+    "6691": {
+      "archive": "[6691]TOY STORY indo.zip",
+      "baseSha1": "49be571cd943fd594949c318a0bdbe6263fdd512",
+      "patches": {
+        "Toy Story (Indo).ips": "f323899d910578d2f53f605ac30025dc052bd6bf5494f426107862800a60dac1"
+      },
+      "layout": "headerless",
+      "evidence": "The included instructions specify the 4 MiB USA ROM. The project gives its raw BIN SHA-1 and CRC32."
+    },
+    "6789": {
+      "archive": "[6789]Haunting Starring Polterguy (BR).zip",
+      "baseSha1": "d6227ef00fdded9184676edf5dd2f6cae9b244a5",
+      "patches": {
+        "Haunting Starring Polterguy (BR).ips": "0b44e3632da0a5de5733e1d248c829fe8fd8baa243e2019354a4703e33b1d13c"
+      },
+      "layout": "headerless",
+      "evidence": "Using the project SHA-1, the patch writes the ROM title at the raw header offset and produces the checksum stored in that header."
+    },
+    "7164": {
+      "archive": "[7164]IPS GODS MD PTBR.zip",
+      "baseSha1": "bfc84beba074c7dc58b0b4fcac73fffcf0c6b585",
+      "patches": {
+        "Gods (U) PTBR - Fontes Flat.ips": "73ce58b31cc04bc08bc0f2a48f2d4781e0b39a3b08f11bcdaa348e0b13f1547f",
+        "Gods (U) PTBR.ips": "e43ec8b90b90222e47473b3a04e6076ec3ba0d6e0691db30c20611f16ff4d927"
+      },
+      "evidence": "README.txt lists both font variants as standalone translations for the same US cartridge."
+    },
+    "7263": {
+      "archive": "[7263]gunstar_heroes.zip",
+      "baseSha1": "7721e302555f16e3242ad4a47ed87a1de1882122",
+      "patches": {
+        "Gunstar Heroes (IND).ips": "25d3c973643a6470651a6df94b7995bf47bfc1ae328f8649cf17820bd46facfd"
+      },
+      "layout": "headerless",
+      "evidence": "The project names the verified USA No-Intro SHA-1. The patch writes the valid Sega checksum at the raw header offset."
+    },
+    "7270": {
+      "archive": "[7270]Magical Hat no Buttobi Turbo! Daibouken (PTBR v0.8).zip",
+      "baseSha1": "1a741125a80ba9207c74a32e5b21dbb347c3c34a",
+      "patches": {
+        "Magical Hat no Buttobi Turbo! Daibouken (PTBR v0.8).ips": "29d2ce93e4553498404aaa7cba3bcf18b81eeb6faa56a30f3013a7766b450cc8"
+      },
+      "layout": "headerless",
+      "evidence": "The project names the verified Japanese No-Intro SHA-1. The raw Sega header declares the patched size and the checksum verifies."
+    },
+    "7272": {
+      "archive": "[7272]FOTNS_V1_5.zip",
+      "baseSha1": "7d489e1087a0816e2091261f6550f42a61474915",
+      "patches": {
+        "FOTNS_ENG_V1_1.ips": "2e1a7a2620bf26f2c6f2164e97d2e7487528b767e4baab3379f1fe97b182931d",
+        "FOTNS_REVISITED_V1_5.ips": "c004776ad959c0eabb480915dfaae75efa3eddfb6770c6b36893d02291cb856a"
+      },
+      "evidence": "README.txt describes the direct English translation and the English edition with gameplay and script changes.",
+      "versions": {
+        "FOTNS_ENG_V1_1.ips": "1.1"
+      }
+    },
+    "7338": {
+      "archive": "[7338]Sonic The Hedgehog (USA, Europe) [T-Gz] 1.0.3.zip",
+      "baseSha1": "6ddb7de1e17e7f6cdb88927bd906352030daa194",
+      "patches": {
+        "Sonic The Hedgehog (USA, Europe) [T-Gz] 1.0.3.ips": "d95dc5002e759c51a9563f8146c0f7ec9c7ef784d2f2dc5a2eaa6a5e2e45ebb9"
+      },
+      "layout": "headerless",
+      "evidence": "LEME.txt says to apply the IPS directly to the USA and Europe ROM with the matching raw MD5."
+    }
+  }
+}

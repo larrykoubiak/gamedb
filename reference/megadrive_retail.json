@@ -1,0 +1,521 @@
+{
+  "compilations": {
+    "10 Super Jogos (BRAZIL) / Mega Games 10 (ASIA)": {
+      "title": "Mega Games 10",
+      "markets": {
+        "BR": {
+          "date": "1997",
+          "title": "10 Super Jogos"
+        },
+        "AS": {
+          "date": "1997"
+        }
+      }
+    },
+    "6-Pak": {
+      "markets": {
+        "NA": {
+          "date": "1995"
+        }
+      }
+    },
+    "The Disney Collection : Castle of Illusion Starring Mickey Mouse / QuackShot Starring Donald Duck (PAL)": {
+      "title": "The Disney Collection",
+      "markets": {
+        "PAL": {
+          "date": "1996"
+        }
+      }
+    },
+    "EA Sports Double Header": {
+      "markets": {
+        "PAL": {
+          "date": "1993"
+        }
+      }
+    },
+    "Mega Games I (PAL)": {
+      "title": "Mega Games I",
+      "markets": {
+        "PAL": {
+          "date": "1992"
+        },
+        "NA": {
+          "date": "1993",
+          "title": "Triple Score: 3 Games in 1"
+        }
+      }
+    },
+    "Mega Games 2": {
+      "markets": {
+        "PAL": {
+          "date": "1993"
+        }
+      }
+    },
+    "Mega Games 3": {
+      "markets": {
+        "PAL": {
+          "date": "1993"
+        },
+        "AS": {
+          "date": "1993"
+        }
+      }
+    },
+    "Mega Games 6": {
+      "markets": {
+        "PAL": {
+          "date": "1995"
+        }
+      }
+    },
+    "Mega Games 6 vol. 2": {
+      "title": "Mega Games 6 Vol. 2",
+      "markets": {
+        "PAL": {
+          "date": "1995"
+        }
+      }
+    },
+    "Mega 6 Vol. 3": {
+      "title": "Mega Games 6 Vol. 3",
+      "markets": {
+        "PAL": {
+          "date": "1995"
+        }
+      }
+    },
+    "Sega Sports 1 (Europe)": {
+      "title": "Sega Sports 1",
+      "markets": {
+        "PAL": {
+          "date": "1995"
+        }
+      }
+    },
+    "Sonic Compilation (PAL) / Sonic Classics (NA)": {
+      "title": "Sonic Compilation",
+      "markets": {
+        "NA": {
+          "date": "1995",
+          "title": "Sonic Classics"
+        },
+        "PAL": {
+          "date": "1995"
+        }
+      }
+    }
+  },
+  "scanTitles": {
+    "HardBall III": ["Al Michaels Announces HardBall III"],
+    "Spider-Man": ["Spider-Man (Acclaim)"],
+    "Ultimate Mortal Kombat 3": ["Ultimate Mortal Kombat 3 (Mega Drive)"],
+    "F-22 Interceptor": ["F-22 Interceptor: Advanced Tactical Fighter"]
+  },
+  "verifiedArchives": [
+    {
+      "edition": "Klax (Namco)",
+      "market": "JP",
+      "signature": "eeaeb942c9fe4306ea194c9207a1e456",
+      "archiveName": "Klax (Japan) (Namco).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (klaxj, cartridge SHA-1)"
+    },
+    {
+      "edition": "Klax (Tengen)",
+      "market": "NA",
+      "signature": "f2528954d4af064a641d5df70306485f",
+      "archiveName": "Klax (USA, Europe) (Tengen).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (klax, cartridge SHA-1)"
+    },
+    {
+      "edition": "Klax (Tengen)",
+      "market": "PAL",
+      "signature": "f2528954d4af064a641d5df70306485f",
+      "archiveName": "Klax (USA, Europe) (Tengen).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (klax, cartridge SHA-1)"
+    },
+    {
+      "edition": "Micro Machines Military",
+      "market": "PAL",
+      "signature": "3a342008eb7bb19e0fb11513965cd39c",
+      "archiveName": "Micro Machines - Military (Europe) (J-Cart).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (micromm, cartridge SHA-1)"
+    },
+    {
+      "edition": "Micro Machines: Turbo Tournament '96",
+      "market": "PAL",
+      "signature": "3b855b1367f7bdcdf114490aa495fd04",
+      "archiveName": "Micro Machines - Turbo Tournament 96 (Europe) (J-Cart).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (microm96a, cartridge SHA-1)"
+    },
+    {
+      "edition": "Micro Machines: Turbo Tournament '96",
+      "market": "PAL",
+      "signature": "c633ef242ff1c4e2f4103c061851ef6e",
+      "archiveName": "Micro Machines - Turbo Tournament 96 (Europe) (Rev 1) (J-Cart).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (microm96, cartridge SHA-1)"
+    },
+    {
+      "edition": "Pete Sampras Tennis",
+      "market": "NA",
+      "signature": "b6868de3f870a768c06ccf197524f7e8",
+      "archiveName": "Pete Sampras Tennis (USA, Europe) (MDST6636) (J-Cart).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (sampras, cartridge SHA-1)"
+    },
+    {
+      "edition": "Pete Sampras Tennis",
+      "market": "PAL",
+      "signature": "b6868de3f870a768c06ccf197524f7e8",
+      "archiveName": "Pete Sampras Tennis (USA, Europe) (MDST6636) (J-Cart).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (sampras, cartridge SHA-1)"
+    },
+    {
+      "edition": "Pete Sampras Tennis",
+      "market": "NA",
+      "signature": "2830b7f0bd0f5b4e73e74b85ca9cc23a",
+      "archiveName": "Pete Sampras Tennis (USA, Europe) (Rev 1) (MDST17FF) (J-Cart).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (sampras2, cartridge SHA-1)"
+    },
+    {
+      "edition": "Pete Sampras Tennis",
+      "market": "PAL",
+      "signature": "2830b7f0bd0f5b4e73e74b85ca9cc23a",
+      "archiveName": "Pete Sampras Tennis (USA, Europe) (Rev 1) (MDST17FF) (J-Cart).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (sampras2, cartridge SHA-1)"
+    },
+    {
+      "edition": "Pete Sampras Tennis",
+      "market": "PAL",
+      "signature": "1cd485a97e088df6d80ea942476e9aa6",
+      "archiveName": "Pete Sampras Tennis (Europe) (Rev 2) (MDSTEE13).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (sampras1, cartridge SHA-1)"
+    },
+    {
+      "edition": "PGA Tour Golf",
+      "market": "NA",
+      "signature": "4778d9e160521f9a9d1c46d583145588",
+      "archiveName": "PGA Tour Golf (USA, Europe) (PGA07).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (pgaa, cartridge SHA-1)"
+    },
+    {
+      "edition": "PGA Tour Golf",
+      "market": "PAL",
+      "signature": "4778d9e160521f9a9d1c46d583145588",
+      "archiveName": "PGA Tour Golf (USA, Europe) (PGA07).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (pgaa, cartridge SHA-1)"
+    },
+    {
+      "edition": "PGA Tour Golf",
+      "market": "NA",
+      "signature": "4ea0d9a43e304ef34afdc5ddef2cefd5",
+      "archiveName": "PGA Tour Golf (USA, Europe) (PGA09).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (pga, cartridge SHA-1)"
+    },
+    {
+      "edition": "PGA Tour Golf",
+      "market": "PAL",
+      "signature": "4ea0d9a43e304ef34afdc5ddef2cefd5",
+      "archiveName": "PGA Tour Golf (USA, Europe) (PGA09).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (pga, cartridge SHA-1)"
+    },
+    {
+      "edition": "Road Rash II",
+      "market": "NA",
+      "signature": "dd9ebfc760711edae85b848af272c34a",
+      "archiveName": "Road Rash II (USA, Europe) (RR205).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (rrash2a, cartridge SHA-1)"
+    },
+    {
+      "edition": "Road Rash II",
+      "market": "PAL",
+      "signature": "dd9ebfc760711edae85b848af272c34a",
+      "archiveName": "Road Rash II (USA, Europe) (RR205).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (rrash2a, cartridge SHA-1)"
+    },
+    {
+      "edition": "Road Rash II",
+      "market": "NA",
+      "signature": "77de2db9c5c9051f45bb6f33b7600f61",
+      "archiveName": "Road Rash II (USA, Europe) (RR206).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (rrash2, cartridge SHA-1)"
+    },
+    {
+      "edition": "Road Rash II",
+      "market": "PAL",
+      "signature": "77de2db9c5c9051f45bb6f33b7600f61",
+      "archiveName": "Road Rash II (USA, Europe) (RR206).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (rrash2, cartridge SHA-1)"
+    },
+    {
+      "edition": "Sampras Tennis 96",
+      "market": "PAL",
+      "signature": "78a05572f5885b0a73e821a67fdc4c3c",
+      "archiveName": "Sampras Tennis 96 (Europe) (J-Cart).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (sampra96, cartridge SHA-1)"
+    },
+    {
+      "edition": "Spider-Man",
+      "market": "NA",
+      "signature": "96940fa72a6abb20095285c0c4f3c7fb",
+      "archiveName": "Spider-Man (USA, Europe) (Acclaim).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (spidermn, cartridge SHA-1)"
+    },
+    {
+      "edition": "Spider-Man",
+      "market": "PAL",
+      "signature": "96940fa72a6abb20095285c0c4f3c7fb",
+      "archiveName": "Spider-Man (USA, Europe) (Acclaim).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (spidermn, cartridge SHA-1)"
+    },
+    {
+      "edition": "Spider-Man vs. The Kingpin",
+      "market": "JP",
+      "signature": "b69f85b90cbdf99a2e866ceb4d9cc52b",
+      "archiveName": "Spider-Man (World) (Sega).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (spidking, cartridge SHA-1)"
+    },
+    {
+      "edition": "Spider-Man vs. The Kingpin",
+      "market": "NA",
+      "signature": "b69f85b90cbdf99a2e866ceb4d9cc52b",
+      "archiveName": "Spider-Man (World) (Sega).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (spidking, cartridge SHA-1)"
+    },
+    {
+      "edition": "Spider-Man vs. The Kingpin",
+      "market": "PAL",
+      "signature": "b69f85b90cbdf99a2e866ceb4d9cc52b",
+      "archiveName": "Spider-Man (World) (Sega).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (spidking, cartridge SHA-1)"
+    },
+    {
+      "edition": "Super Skidmarks",
+      "market": "PAL",
+      "signature": "8ed1d277de640e3b7c0ef211a15db30b",
+      "archiveName": "Super Skidmarks (Europe) (J-Cart).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (sskid, cartridge SHA-1)"
+    },
+    {
+      "edition": "The Flintstones",
+      "market": "JP",
+      "signature": "5d8477b1053ad6acbb2d35c52d93836d",
+      "archiveName": "Flintstones, The (Japan) (Taito).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (flintj, cartridge SHA-1)"
+    },
+    {
+      "edition": "The Flintstones",
+      "market": "NA",
+      "signature": "6bb75eda0c75d4591033a179fcec09bd",
+      "archiveName": "Flintstones, The (USA) (Taito).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (flintu, cartridge SHA-1)"
+    },
+    {
+      "edition": "The Flintstones",
+      "market": "PAL",
+      "signature": "8200aa5f225691b2dcf866e81a14ff56",
+      "archiveName": "Flintstones, The (Europe) (Taito).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (flint, cartridge SHA-1)"
+    },
+    {
+      "edition": "The Lost Vikings",
+      "market": "NA",
+      "signature": "201e7e73eec3d358396f8c01808682e8",
+      "archiveName": "Lost Vikings, The (USA) (November, 1993).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (lostviku, cartridge SHA-1)"
+    },
+    {
+      "edition": "The Lost Vikings",
+      "market": "NA",
+      "signature": "a460fcb3cc5bac392d7fb9ef61cdef01",
+      "archiveName": "Lost Vikings, The (USA) (October, 1995).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (lostviku1, cartridge SHA-1)"
+    },
+    {
+      "edition": "Tinhead",
+      "market": "NA",
+      "signature": "e3a850a2f2b2ec07cd8257c08a725d7c",
+      "archiveName": "Tinhead (USA) (Ballistic) (April, 1994).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (tinhead, cartridge SHA-1)"
+    },
+    {
+      "edition": "Brian Lara Cricket '96",
+      "market": "PAL",
+      "signature": "e0a37019a8ba69dd274770ae455994a5",
+      "archiveName": "Brian Lara Cricket 96 (Europe).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (brianl96a, cartridge SHA-1)"
+    },
+    {
+      "edition": "Brian Lara Cricket '96",
+      "market": "PAL",
+      "signature": "f715e43ad22b7a7b51afd851446b19e3",
+      "archiveName": "Brian Lara Cricket 96 (Europe) (Rev 1).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (brianl96, cartridge SHA-1)"
+    },
+    {
+      "edition": "Brian Lara Cricket '96",
+      "market": "PAL",
+      "signature": "a0bbf2b79dfc72ce79b4bc2e6f9a354d",
+      "archiveName": "Shane Warne Cricket (Australia).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (shanewar, cartridge SHA-1)"
+    },
+    {
+      "edition": "Budokan: The Martial Spirit",
+      "market": "NA",
+      "signature": "f4616529cc8cff30e2bb6e2236a426c0",
+      "archiveName": "Budokan - The Martial Spirit (USA) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (budokanu, cartridge SHA-1) · https://segaretro.org/File:Budokan_US_cover.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "Double Dragon",
+      "market": "NA",
+      "signature": "6fc027a19b684f72ca3bedc3a8cd960e",
+      "archiveName": "Double Dragon (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (ddragon, cartridge SHA-1) · https://segaretro.org/File:DoubleDragon_MD_US_Box.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "Double Dragon",
+      "market": "PAL",
+      "signature": "6fc027a19b684f72ca3bedc3a8cd960e",
+      "archiveName": "Double Dragon (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (ddragon, cartridge SHA-1) · https://segaretro.org/File:DoubleDragon_MD_EU_front.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "HardBall III",
+      "market": "NA",
+      "signature": "d78f2086703c297cadfcdc7b739062db",
+      "archiveName": "Al Michaels Announces HardBall III (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (hardbal3, cartridge SHA-1) · https://segaretro.org/Al_Michaels_Announces_HardBall_III",
+      "independentRetail": true
+    },
+    {
+      "edition": "HardBall III",
+      "market": "PAL",
+      "signature": "d78f2086703c297cadfcdc7b739062db",
+      "archiveName": "Al Michaels Announces HardBall III (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (hardbal3, cartridge SHA-1) · https://segaretro.org/Al_Michaels_Announces_HardBall_III",
+      "independentRetail": true
+    },
+    {
+      "edition": "HardBall!",
+      "market": "NA",
+      "signature": "05a73bc0c76df92696ae60409bf1b8f0",
+      "archiveName": "HardBall! (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (hardball, cartridge SHA-1) · https://segaretro.org/File:HardBall_MD_US_Box.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "HardBall!",
+      "market": "PAL",
+      "signature": "05a73bc0c76df92696ae60409bf1b8f0",
+      "archiveName": "HardBall! (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (hardball, cartridge SHA-1) · https://segaretro.org/File:Hardball_MD_EU_front.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "Mike Ditka Power Football",
+      "market": "NA",
+      "signature": "59472c4bf7cede5f124514adb547a93e",
+      "archiveName": "Mike Ditka Power Football (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (ditkapf, cartridge SHA-1) · https://segaretro.org/File:MDPF_MD_US_Box.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "Mike Ditka Power Football",
+      "market": "PAL",
+      "signature": "59472c4bf7cede5f124514adb547a93e",
+      "archiveName": "Mike Ditka Power Football (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (ditkapf, cartridge SHA-1) · https://segaretro.org/File:MDPF_MD_EU_Box.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "Populous",
+      "market": "NA",
+      "signature": "b71e7b63b660fd805987a91c4f93b0e1",
+      "archiveName": "Populous (USA) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (populousu, cartridge SHA-1) · https://segaretro.org/File:Populous_MD_US_Box.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "Summer Challenge",
+      "market": "NA",
+      "signature": "1656a487b6e05600d9de6937bf1efa6e",
+      "archiveName": "Summer Challenge (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (summer, cartridge SHA-1) · https://segaretro.org/File:SummerChallenge_MD_US_Box.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "Summer Challenge",
+      "market": "PAL",
+      "signature": "1656a487b6e05600d9de6937bf1efa6e",
+      "archiveName": "Summer Challenge (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (summer, cartridge SHA-1) · https://segaretro.org/File:SummerChallenge_MD_EU_Box_Front.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "Super Off Road",
+      "market": "NA",
+      "signature": "f2be30209bd4950ed7975da41e3f5870",
+      "archiveName": "Super Off Road (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (superoff, cartridge SHA-1) · https://segaretro.org/File:SuperOffRoad_MD_US_Box_Front.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "Super Off Road",
+      "market": "PAL",
+      "signature": "f2be30209bd4950ed7975da41e3f5870",
+      "archiveName": "Super Off Road (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (superoff, cartridge SHA-1) · https://segaretro.org/File:SuperOffRoad_MD_EU_front.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "The Duel: Test Drive II",
+      "market": "NA",
+      "signature": "f2a354eb1dbf085ade4aab9cb1a0b8f8",
+      "archiveName": "Test Drive II - The Duel (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (td2, cartridge SHA-1) · https://segaretro.org/File:TestDriveII_MD_US_Box_Front_Accolade.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "The Duel: Test Drive II",
+      "market": "PAL",
+      "signature": "f2a354eb1dbf085ade4aab9cb1a0b8f8",
+      "archiveName": "Test Drive II - The Duel (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (td2, cartridge SHA-1) · https://segaretro.org/The_Duel:_Test_Drive_II",
+      "independentRetail": true
+    },
+    {
+      "edition": "Turrican",
+      "market": "NA",
+      "signature": "2bc8843ba8a14fa93c08ed85a2934a71",
+      "archiveName": "Turrican (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (turrican, cartridge SHA-1) · https://segaretro.org/File:Turrican_MD_US_Box.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "Turrican",
+      "market": "PAL",
+      "signature": "2bc8843ba8a14fa93c08ed85a2934a71",
+      "archiveName": "Turrican (USA, Europe) (Unl).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (turrican, cartridge SHA-1) · https://segaretro.org/File:Turrican_MD_EU_front.jpg",
+      "independentRetail": true
+    },
+    {
+      "edition": "F-22 Interceptor",
+      "market": "NA",
+      "signature": "0e921b4c32c1e31dcf3cc604b1bc563a",
+      "archiveName": "F-22 Interceptor - Advanced Tactical Fighter (USA, Europe) (F-202).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (f22a, both cartridge chip SHA-1 values verified against the original F-202 ROM)"
+    },
+    {
+      "edition": "F-22 Interceptor",
+      "market": "PAL",
+      "signature": "0e921b4c32c1e31dcf3cc604b1bc563a",
+      "archiveName": "F-22 Interceptor - Advanced Tactical Fighter (USA, Europe) (F-202).zip",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml (f22a, both cartridge chip SHA-1 values verified against the original F-202 ROM)"
+    }
+  ]
+}

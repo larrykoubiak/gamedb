@@ -1,4 +1,4 @@
-"""Import translation patches anchored to verified SNES retail ROMs."""
+"""Import translation patches anchored to verified retail ROMs."""
 
 from collections import Counter, defaultdict
 from contextlib import closing
@@ -17,21 +17,24 @@ from zlib import crc32
 from libarchive import file_reader
 from libarchive.exception import ArchiveError
 
-from gamedb.catalog.snes import write_report
-from gamedb.catalog.snes_cartridges import VERIFIED_ROM_SQL
-from gamedb.catalog.snes_patching import embedded_input, valid_ips
+from gamedb.catalog.retail import RETAIL_PLATFORMS, retail_tables, write_report
+from gamedb.catalog.cartridges import VERIFIED_ROM_SQL
+from gamedb.catalog.patching import embedded_input, supports_patching, valid_ips
 from gamedb.config import PROJECT_ROOT
 from gamedb.database import create_database_engine
 from gamedb.vgm.archives import member_name, safe_member
 
 
-DEFAULT_ROOT = PROJECT_ROOT / "data/media/snes-translations"
+TRANSLATION_ROOTS = {platform: PROJECT_ROOT / f"data/media/{platform}-translations" for platform in RETAIL_PLATFORMS}
+RHDN_CONSOLES = {"snes": "snes", "megadrive": "genesis"}
 AUTHOR_REFERENCE = PROJECT_ROOT / "reference/snes_translation_authors.json"
+MEGADRIVE_REVIEWS = PROJECT_ROOT / "reference/megadrive_translation_reviews.json"
 INDEX_NAME = ".gamedb-translations.json"
 INDEX_VERSION = 1
 FORMATS = {"bps", "ips", "ups"}
 OTHER_PATCH_FORMATS = {"aps", "ips32", "pat", "ppf", "rup", "vcdiff", "xdelta", "xpatch"}
-INPUT_LAYOUTS = {3: "headered", 4: "headerless", 5: "interleaved-headered", 6: "interleaved"}
+SNES_LAYOUTS = {3: "headered", 4: "headerless", 5: "interleaved-headered", 6: "interleaved"}
+MEGADRIVE_LAYOUTS = {8: "headerless", 9: "interleaved-headered"}
 MAX_PATCH_SIZE = 16 * 1024 * 1024
 MAX_PACKAGE_PATCH_BYTES = 64 * 1024 * 1024
 TOKEN = re.compile(r"\s*('(?:''|\\.|[^'\\])*'|NULL|-?\d+(?:\.\d+)?|[(),;])", re.S)
@@ -39,7 +42,7 @@ ESCAPE = re.compile(r"''|\\(.)", re.S)
 MYSQL_ESCAPES = {"n": "\n", "r": "\r", "t": "\t", "0": "\0", "b": "\b", "Z": "\x1a"}
 HASH_CLAIM = re.compile(
     r"^[ \t]*(?:(file/rom|rom/file|file|rom|original|source|input)[ \t]+)?(sha[- ]?1|md5|crc(?:[- ]?32)?)"
-    r"(?:[ \t]*[:=][ \t]*|[ \t]+)(?:0x)?([0-9a-f]+)\b", re.I | re.M,
+    r"(?:[ \t]*[:=][ \t]*|[ \t]+)(?:0x)?([0-9a-f]+(?:[ \t]+[0-9a-f]{4,16}\b)*)\b", re.I | re.M,
 )
 OUTPUT_LABEL = re.compile(r"^[ \t]*(?:patched\b|after patching\b|output\b)", re.I | re.M)
 
@@ -86,14 +89,15 @@ def _dump_rows(source, table):
             offset = end.end()
 
 
-def _source_archives(source):
+def _source_archives(source, platform):
     packages = defaultdict(list)
-    for path in (source / "translations/snes/patches").iterdir():
+    for path in (source / "translations" / RHDN_CONSOLES[platform] / "patches").iterdir():
         if ((prefix := re.match(r"^\[(\d+)\]", path.name))
-                and path.suffix.lower() in (".zip", ".rar", ".7z") and path.is_file()):
+                and (path.suffix.lower() in {".zip", ".rar", ".7z"} or path.name.lower().endswith(".tar.gz"))
+                and path.is_file()):
             packages[int(prefix[1])].append(path)
     if not packages:
-        raise ValueError("No SNES translation packages in the RHDN backup")
+        raise ValueError(f"No {RETAIL_PLATFORMS[platform]} translation packages in the RHDN backup")
     return packages
 
 
@@ -118,30 +122,40 @@ class BaseRoms:
         return None
 
 
-def _verified_bases(connection):
-    snapshot = connection.exec_driver_sql("SELECT payload FROM app.snes_retail_catalog WHERE singleton").scalar_one_or_none()
+def _verified_bases(connection, platform):
+    table, _, _ = retail_tables(platform)
+    label = RETAIL_PLATFORMS[platform]
+    if not connection.exec_driver_sql(f"SELECT to_regclass('{table}') IS NOT NULL").scalar_one():
+        raise ValueError(f"Publish the {label} retail catalog before importing translations")
+    snapshot = connection.exec_driver_sql(f"SELECT payload FROM {table} WHERE singleton").scalar_one_or_none()
     if snapshot is None:
-        raise ValueError("Publish the SNES retail catalog before importing translations")
+        raise ValueError(f"Publish the {label} retail catalog before importing translations")
     signatures = sorted({archive["signature"] for game in snapshot["games"] for release in game["releases"]
                          if release["status"] == "matched" for archive in release.get("archives", ())})
     roms = BaseRoms(connection.execute(VERIFIED_ROM_SQL, {"signatures": signatures}))
     if not roms.by_sha1:
-        raise ValueError("The published SNES catalog has no verified retail ROMs")
+        raise ValueError(f"The published {label} catalog has no verified retail ROMs")
     return roms
+
+
+def _sevenzip_member(path, name, size, expected_crc=None):
+    with Popen(["7z", "x", "-so", "-spd", "--", str(path.resolve()), name],
+               stdin=DEVNULL, stdout=PIPE, stderr=DEVNULL) as process:
+        try:
+            data = process.stdout.read(size + 1)
+            if len(data) != size or process.wait(timeout=10):
+                raise ValueError("Could not verify translation archive member")
+            if expected_crc is not None and crc32(data) != expected_crc:
+                raise ValueError("Translation archive member checksum changed")
+            return data
+        finally:
+            if process.poll() is None:
+                process.kill()
 
 
 def _zip_blocks(path, archive, member):
     if member.compress_type == 9:  # Deflate64 used by some older RHDN ZIPs.
-        with Popen(["7z", "x", "-so", "-spd", "--", str(path.resolve()), member.filename],
-                   stdin=DEVNULL, stdout=PIPE, stderr=DEVNULL) as process:
-            try:
-                data = process.stdout.read(member.file_size + 1)
-                if len(data) != member.file_size or process.wait(timeout=10) or crc32(data) != member.CRC:
-                    raise ValueError("Could not verify Deflate64 archive member")
-            finally:
-                if process.poll() is None:
-                    process.kill()
-        yield data
+        yield _sevenzip_member(path, member.filename, member.file_size, member.CRC)
         return
     with archive.open(member) as stream:
         while block := stream.read(64 * 1024):
@@ -178,10 +192,15 @@ def _patch_members(path):
                 if total_size > MAX_PACKAGE_PATCH_BYTES:
                     raise ValueError("Translation package exceeds the patch size limit")
                 data = bytearray()
-                for block in blocks():
-                    if len(data) + len(block) > size:
-                        raise ValueError("Incorrect translation patch size")
-                    data.extend(block)
+                try:
+                    for block in blocks():
+                        if len(data) + len(block) > size:
+                            raise ValueError("Incorrect translation patch size")
+                        data.extend(block)
+                except ArchiveError:
+                    if path.suffix.lower() != ".rar":
+                        raise
+                    data = _sevenzip_member(path, member_path, size)
                 if len(data) != size:
                     raise ValueError("Incomplete translation patch")
                 payload = data
@@ -198,6 +217,7 @@ def _documented_input(rominfo, layout):
         kind = label.lower().replace("-", "").replace(" ", "")
         if kind == "crc":
             kind = "crc32"
+        value = "".join(value.split())
         if len(value) == {"sha1": 40, "md5": 32, "crc32": 8}[kind]:
             hashes[scope.lower()].add((kind, value.lower()))
     if layout != "headerless" and hashes["rom"]:
@@ -206,22 +226,32 @@ def _documented_input(rominfo, layout):
     return set().union(*hashes.values())
 
 
-def _package_matches(row, path, bases):
+def _package_matches(row, path, bases, *, layouts=SNES_LAYOUTS, review=None):
     try:
         members = _patch_members(path)
     except (ArchiveError, BadZipFile, NotImplementedError, OSError, RuntimeError, SubprocessError, ValueError):
         return [], "unreadable package"
+    if not any(data is not None for _, _, data in members):
+        return [], "no supported patch file"
     matches = []
     for name, patch_format, data in members:
         if data is None:
             continue
         if patch_format == "ips":
-            # A package-level checksum cannot assign separate IPS files to inputs.
-            layout = INPUT_LAYOUTS.get(row["patchhint"])
-            if len(members) != 1 or not layout or row["patchstatus"] == 4 or not valid_ips(data):
+            layout = layouts.get(row["patchhint"])
+            if not layout or row["patchstatus"] == 4 or not valid_ips(data):
                 continue
-            base = bases.match(_documented_input(row["rominfo"], layout))
-            evidence = "documented"
+            if review and review["archive"] == path.name:
+                if review["patches"].get(name) != sha256(data).hexdigest():
+                    continue
+                base = bases.by_sha1.get(review["baseSha1"])
+                layout = review.get("layout", layout)
+                evidence = "reviewed"
+            elif len(members) == 1:
+                base = bases.match(_documented_input(row["rominfo"], layout))
+                evidence = "documented"
+            else:
+                continue
         else:
             layout = "headerless"
             embedded = embedded_input(data, patch_format)
@@ -251,9 +281,9 @@ def translation_order(record):
     return language != "english", language, -record["releasedAt"], record["filename"].casefold(), record["key"]
 
 
-def _translation_authors(source, rows):
+def _translation_authors(source, rows, additional=None):
     reference = json.loads(AUTHOR_REFERENCE.read_text(encoding="utf-8"))
-    names = reference["authors"]
+    names = reference["authors"] | (additional or {})
     credited = defaultdict(list)
     if (source / "scripts/transauthor-project.sql").is_file():
         for row in _dump_rows(source, "transauthor-project"):
@@ -273,69 +303,99 @@ def _translation_authors(source, rows):
     return authors
 
 
-def _import_translations(source, root, bases):
+def _import_translations(source, root, bases, *, platform="snes", report=None):
+    label = RETAIL_PLATFORMS[platform]
+    reviews = json.loads(MEGADRIVE_REVIEWS.read_text(encoding="utf-8")) if platform == "megadrive" else {}
+    layouts = MEGADRIVE_LAYOUTS if platform == "megadrive" else SNES_LAYOUTS
     consoles = {row["consolekey"]: row["consoleid"] for row in _dump_rows(source, "console")}
     languages = {row["id"]: unescape(row["name"]) for row in _dump_rows(source, "language")}
     statuses = {row["id"]: row["description"] for row in _dump_rows(source, "patchstatus")}
-    rows = [row for row in _dump_rows(source, "transdata") if row["consolekey"] == consoles["snes"]]
-    authors = _translation_authors(source, rows)
-    archives = _source_archives(source)
+    console = consoles[RHDN_CONSOLES[platform]]
+    rows = [row for row in _dump_rows(source, "transdata") if row["consolekey"] == console]
+    authors = _translation_authors(source, rows, reviews.get("authors"))
+    archives = _source_archives(source, platform)
+    titles = ({r["gamekey"]: unescape(r["gametitle"] or "") for r in _dump_rows(source, "gamedata")
+               if r["platformid"] == console} if report and (source / "scripts/gamedata.sql").is_file() else {})
     skipped = Counter()
+    unresolved = []
+
+    def skip(row, reason):
+        skipped[reason] += 1
+        if report:
+            unresolved.append({"rhdnId": row["transkey"], "title": titles.get(row.get("gamekey")),
+                               "language": languages[row["language"]], "reason": reason})
+
     packages = []
     for row in rows:
         paths = archives.get(row["transkey"], ())
         filename = unescape(row["patchfile"] or "").casefold()
         paths = [path for path in paths if path.name.casefold() == filename] or paths
         if len(paths) != 1:
-            skipped["missing or ambiguous archive"] += 1
+            skip(row, "missing or ambiguous archive")
         else:
             packages.append((row, paths[0]))
     if not packages:
-        raise ValueError("Could not locate any archives for the SNES translation records")
+        raise ValueError(f"Could not locate any archives for the {label} translation records")
 
     patch_root = root / "patches"
     patch_root.mkdir(parents=True, exist_ok=True)
     translations = {}
     for row, path in packages:
-        matches, reason = _package_matches(row, path, bases)
+        review = reviews.get("ips", {}).get(str(row["transkey"]))
+        matches, reason = _package_matches(row, path, bases, layouts=layouts, review=review)
         if reason:
-            skipped[reason] += 1
+            skip(row, reason)
         language = languages[row["language"]]
+        version = unescape(row["patchver"] or "").strip()
         for name, patch_format, data, base, layout, evidence in matches:
             digest = sha256(data).hexdigest()
-            key = sha256(f"{base['sha1']}:{language.casefold()}:{layout}:{digest}".encode()).hexdigest()
+            fingerprint = f"{base['sha1']}:{language.casefold()}:{layout}:{digest}"
+            member_review = review if evidence == "reviewed" else {}
+            pad_to_size = member_review.get("padToSize")
+            if pad_to_size is not None:
+                fingerprint += f":{pad_to_size}"
+            key = sha256(fingerprint.encode()).hexdigest()
             record = {
                 "key": key, "rhdnId": row["transkey"], "language": language,
                 "authors": authors.get(row["transkey"], []),
-                "version": unescape(row["patchver"] or "").strip(),
+                "version": member_review.get("versions", {}).get(name, version),
                 "status": statuses[row["patchstatus"]], "releasedAt": row["patchrel_unix"] or 0,
                 "filename": name, "format": patch_format, "layout": layout, "evidence": evidence,
                 "size": len(data), "sha256": digest, "baseSha1": base["sha1"], "signatures": base["signatures"],
             }
+            if pad_to_size is not None:
+                record["padToSize"] = pad_to_size
             _store_patch(patch_root / f"{digest}.{patch_format}", data)
             if key not in translations or record["releasedAt"] > translations[key]["releasedAt"]:
                 translations[key] = record
     records = sorted(translations.values(), key=translation_order)
     if not records:
-        raise ValueError("No translation patches matched the verified SNES catalog")
+        raise ValueError(f"No translation patches matched the verified {label} catalog")
     write_report(root / INDEX_NAME, {"version": INDEX_VERSION, "translations": records})
-    return {
+    summary = {
         "sourceRecords": len(rows),
+        "matchedProjects": len(rows) - sum(skipped.values()),
         "patches": len(records),
+        "romDownloads": sum(supports_patching(record["format"], record["layout"]) for record in records),
         "withAuthors": sum(bool(record["authors"]) for record in records),
         "baseRoms": len({record["baseSha1"] for record in records}),
         "languages": dict(Counter(record["language"] for record in records)),
         "formats": dict(Counter(record["format"] for record in records)),
         "skippedPackages": dict(skipped),
     }
+    if report:
+        write_report(report, {"summary": summary, "unresolved": unresolved})
+    return summary
 
 
-def sync_translations(source, root):
+def sync_translations(source, root, *, platform="snes", report=None):
+    if source.name == RHDN_CONSOLES[platform] and source.parent.name == "translations":
+        source = source.parent.parent
     database = create_database_engine()
     try:
         with database.begin() as connection:
             connection.exec_driver_sql("SET TRANSACTION READ ONLY")
-            bases = _verified_bases(connection)
+            bases = _verified_bases(connection, platform)
     finally:
         database.dispose()
-    return _import_translations(source, root, bases)
+    return _import_translations(source, root, bases, platform=platform, report=report)

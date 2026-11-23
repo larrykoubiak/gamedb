@@ -1,4 +1,4 @@
-"""Resolve descriptions, release artwork and original manuals for SNES."""
+"""Resolve descriptions, artwork, and manuals for retail releases."""
 
 from collections import defaultdict
 import json
@@ -11,9 +11,9 @@ from sqlalchemy import text
 
 from gamedb.catalog.launchbox_media import IMAGE_KINDS, REGIONS as LAUNCHBOX_REGIONS
 from gamedb.catalog.media import BAD_CHARS
-from gamedb.catalog.snes_cartridges import COUNTRY_MARKETS
-from gamedb.catalog.snes_references import GAMING_ALEXANDRIA, KIRKLAND_ITEM, PEEBS, PEEBS_ITEM, PEEBS_JP, THUMBNAILS
-from gamedb.catalog.snes_source import known_credit
+from gamedb.catalog.cartridges import COUNTRY_MARKETS
+from gamedb.catalog.references import GAMING_ALEXANDRIA, KIRKLAND_ITEM, PEEBS, PEEBS_ITEM, PEEBS_JP, THUMBNAILS
+from gamedb.catalog.retail_source import known_credit
 from gamedb.launchbox.image_cache import valid_filename
 from gamedb.launchbox.matching import match_candidates, title_key
 
@@ -233,7 +233,7 @@ def _owners(catalog):
     return owners
 
 
-def _scope_launchbox(connection, catalog, reviewed):
+def _scope_launchbox(connection, catalog, reviewed, *, platforms=LAUNCHBOX_PLATFORMS):
     names = connection.execute(text("""
         SELECT to_regclass('staging.launchbox_import') IS NOT NULL
            AND to_regclass('staging.launchbox_record') IS NOT NULL
@@ -246,7 +246,7 @@ def _scope_launchbox(connection, catalog, reviewed):
     if not snapshot:
         return {}, {}
     games, aliases = {}, defaultdict(set)
-    parameters = {"snapshot": snapshot.id, "platforms": sorted(LAUNCHBOX_PLATFORMS)}
+    parameters = {"snapshot": snapshot.id, "platforms": sorted(platforms)}
     for row in connection.execute(LAUNCHBOX_GAMES_SQL, parameters):
         if row.record_type == "Game":
             games[row.database_id] = row.raw_record
@@ -262,7 +262,7 @@ def _scope_launchbox(connection, catalog, reviewed):
 
     # Use each curated title once so same-name games compete for a source record.
     items = [dict(
-        id=game["key"], manufacturer_name="Nintendo", system_name="SNES retail",
+        id=game["key"], manufacturer_name="", system_name="retail",
         titles={game["title"], *(name for release in game["releases"] for name in release_names(release))},
         match_facts={
             "release_date": {match[0] for release in game["releases"]
@@ -270,7 +270,7 @@ def _scope_launchbox(connection, catalog, reviewed):
             "publisher": {game["publisher"]}, "developer": {game["developer"]},
         },
     ) for game in catalog["games"]]
-    mappings = {("Nintendo", "SNES retail"): LAUNCHBOX_PLATFORMS}
+    mappings = {("", "retail"): platforms}
     canonical = {row["software_id"]: row["selected_database_id"]
                  for row in match_candidates(items, games, aliases, mappings)}
     chosen = set()
@@ -325,9 +325,9 @@ def _scope_launchbox(connection, catalog, reviewed):
     return release_ids, images
 
 
-def _libretro_paths(indexes):
+def _libretro_paths(indexes, thumbnails=THUMBNAILS):
     paths = {}
-    for name, (folder, revision) in THUMBNAILS.items():
+    for name, (folder, revision) in thumbnails.items():
         filename = f"thumbs-{name}.json"
         if filename not in indexes:
             continue
@@ -338,14 +338,15 @@ def _libretro_paths(indexes):
     return paths
 
 
-def _libretro_art(release, paths, reviewed=()):
-    folder_key = "sufami" if release["channel"] == "sufami-turbo" else "snes"
-    folder, revision = THUMBNAILS[folder_key]
+def _libretro_art(release, paths, reviewed=(), *,
+                  thumbnails=THUMBNAILS, thumbnail_key="snes", country_markets=COUNTRY_MARKETS):
+    folder_key = "sufami" if release["channel"] == "sufami-turbo" else thumbnail_key
+    folder, revision = thumbnails[folder_key]
     repository = folder.replace(" ", "_")
     local_titles = {title_key(title) for title in release["titles"]}
     for archive in release.get("archives", ()):
         regions = archive["regions"]
-        markets = {COUNTRY_MARKETS[region] for region in regions if region in COUNTRY_MARKETS}
+        markets = {country_markets[region] for region in regions if region in country_markets}
         exclusive = markets == {release["market"]} and "WORLD" not in regions
         for name in archive["archiveNames"]:
             stem = PurePosixPath(name).stem.translate(BAD_CHARS)
@@ -374,13 +375,13 @@ def _libretro_art(release, paths, reviewed=()):
                     yield 4 if review else rank, kind, asset
 
 
-def _launchbox_art(release, keys, images):
+def _launchbox_art(release, keys, images, *, country_markets=COUNTRY_MARKETS):
     local_titles = {title_key(title) for title in release["titles"]}
     for key in keys:
         for image, title in images.get(key, ()):
             kind = IMAGE_KINDS[image.image_type]
             regions = sorted(LAUNCHBOX_REGIONS.get(image.region, ()))
-            regional = {COUNTRY_MARKETS.get(region) for region in regions} == {release["market"]}
+            regional = {country_markets.get(region) for region in regions} == {release["market"]}
             if not regional and not (kind == "logo" and image.region in ("", "World")
                                      and title_key(title) in local_titles):
                 continue
@@ -393,12 +394,14 @@ def _launchbox_art(release, keys, images):
             }
 
 
-def add_descriptions_and_art(connection, catalog, indexes, reference):
+def add_descriptions_and_art(connection, catalog, indexes, reference, *,
+                             platforms=LAUNCHBOX_PLATFORMS, thumbnails=THUMBNAILS,
+                             thumbnail_key="snes", country_markets=COUNTRY_MARKETS):
     reviewed = reference.get("metadata", {})
     artwork_regions = {(record["archiveName"], record["kind"]): record
                        for record in reference.get("artworkRegions", ())}
-    release_ids, images = _scope_launchbox(connection, catalog, reviewed)
-    paths = _libretro_paths(indexes)
+    release_ids, images = _scope_launchbox(connection, catalog, reviewed, platforms=platforms)
+    paths = _libretro_paths(indexes, thumbnails)
     for game in catalog["games"]:
         if description := reviewed.get(game["title"], {}).get("description"):
             game["description"] = description
@@ -414,8 +417,9 @@ def add_descriptions_and_art(connection, catalog, indexes, reference):
             if release["status"] != "matched":
                 continue
             art = {}
-            candidates = (*_libretro_art(release, paths, artwork_regions), *_launchbox_art(
-                release, release_ids.get(release["key"], ()), images,
+            candidates = (*_libretro_art(release, paths, artwork_regions, thumbnails=thumbnails,
+                                        thumbnail_key=thumbnail_key, country_markets=country_markets), *_launchbox_art(
+                release, release_ids.get(release["key"], ()), images, country_markets=country_markets,
             ))
             for _, kind, asset in sorted(candidates, key=lambda item: (-item[0], item[2]["url"])):
                 art.setdefault(kind, asset)

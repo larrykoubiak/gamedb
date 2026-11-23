@@ -1,4 +1,4 @@
-"""Cache the source indexes used to enrich the SNES retail catalog."""
+"""Cache source indexes used to enrich retail catalogs."""
 
 from dataclasses import dataclass
 from hashlib import sha256
@@ -38,16 +38,16 @@ class SourceIndex:
         return sha256(self.content).hexdigest()
 
 
-def _read_index(path, url):
+def read_index(path, url):
     if path.is_file():
         with path.open("rb") as stream:
             content = stream.read(MAX_INDEX_BYTES + 1)
     else:
-        request = Request(url, headers={"User-Agent": "GameDB/2.0 (SNES catalog metadata)"})
+        request = Request(url, headers={"User-Agent": "GameDB/2.0 (catalog metadata)"})
         with urlopen(request, timeout=20) as stream:
             content = stream.read(MAX_INDEX_BYTES + 1)
         if len(content) > MAX_INDEX_BYTES:
-            raise ValueError(f"SNES source is too large: {url}")
+            raise ValueError(f"Catalog source is too large: {url}")
         path.parent.mkdir(parents=True, exist_ok=True)
         with NamedTemporaryFile(dir=path.parent, delete=False) as stream:
             temporary = Path(stream.name)
@@ -58,7 +58,7 @@ def _read_index(path, url):
             finally:
                 temporary.unlink(missing_ok=True)
     if len(content) > MAX_INDEX_BYTES:
-        raise ValueError(f"SNES source is too large: {path.name}")
+        raise ValueError(f"Catalog source is too large: {path.name}")
     return SourceIndex(url, content)
 
 
@@ -85,7 +85,7 @@ def reference_indexes(directory):
     indexes, warnings = {}, []
     for name, url in urls.items():
         try:
-            indexes[name] = _read_index(directory / name, url)
+            indexes[name] = read_index(directory / name, url)
         except (OSError, ValueError) as error:
             warnings.append(f"{name}: {error}")
     return indexes, warnings
@@ -96,8 +96,8 @@ def snes_central_indexes(directory):
     for path in sorted(directory.glob("central-*-cart.html")):
         region = path.name.removeprefix("central-").removesuffix("-cart.html")
         if region.isalpha() and region.isupper():
-            yield region, _read_index(path, SNES_CENTRAL + f"scanlist.php?region={region}&type=cart")
+            yield region, read_index(path, SNES_CENTRAL + f"scanlist.php?region={region}&type=cart")
     for path in sorted(directory.glob("central-pcb-*.html")):
         board = path.stem.removeprefix("central-pcb-")
         if all(c.isalnum() or c == "-" for c in board):
-            yield board, _read_index(path, SNES_CENTRAL + f"pcbboards.php?chip={board}")
+            yield board, read_index(path, SNES_CENTRAL + f"pcbboards.php?chip={board}")

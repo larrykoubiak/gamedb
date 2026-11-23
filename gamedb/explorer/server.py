@@ -17,14 +17,15 @@ from urllib.parse import parse_qs, quote, unquote, urlparse
 from sqlalchemy.exc import SQLAlchemyError
 
 from gamedb.arcade.bundle import prepare_manifest, public_manifest, write_bundle
-from gamedb.catalog.snes_translations import DEFAULT_ROOT as DEFAULT_SNES_TRANSLATION_ROOT
+from gamedb.catalog.retail import RETAIL_PLATFORMS
+from gamedb.catalog.translations import TRANSLATION_ROOTS
 from gamedb.config import PROJECT_ROOT, ProjectEnvironment
 from gamedb.database import create_database_engine
 from gamedb.explorer.cache import JsonResponseCache
 from gamedb.explorer.previews import ArtworkPreviewCache
 from gamedb.explorer.related_media import (
     add_local_manuals, add_local_translations, add_translation_availability, serve as serve_related_media,
-    serve_snes_manual, serve_snes_manual_pages, serve_snes_translation, serve_snes_translation_rom, serve_vgm,
+    serve_retail_manual, serve_retail_manual_pages, serve_retail_translation, serve_retail_translation_rom, serve_vgm,
 )
 from gamedb.explorer.repository import CatalogChanged, CatalogRepository, validate_metadata_filters
 from gamedb.launchbox.image_cache import LaunchBoxImageCache, valid_filename
@@ -36,10 +37,14 @@ USERNAME = re.compile(r"[A-Za-z0-9_.-]{1,64}")
 SYSTEM_TITLES = re.compile(r"/api/systems/([0-9]+)/titles")
 SOFTWARE_RELEASES = re.compile(r"/api/software/([0-9]+)/releases")
 SOFTWARE_VGM = re.compile(r"/api/(?:v1/)?software/([0-9]+)/soundtracks")
-SNES_MANUAL = re.compile(r"/related-media/snes-manual/([0-9a-f]{64})")
-SNES_MANUAL_PAGES = re.compile(SNES_MANUAL.pattern + r"/pages(?:/([1-9][0-9]{0,8})\.webp)?")
-SNES_TRANSLATION = re.compile(r"/related-media/snes-translation/([0-9a-f]{64})")
-SNES_TRANSLATION_DOWNLOAD = re.compile(r"/api/v1/releases/([0-9a-f]{32})/translations/([0-9a-f]{64})/download")
+RETAIL_SYSTEM = "(" + "|".join(RETAIL_PLATFORMS) + ")"
+RETAIL_API = re.compile(rf"/api/{RETAIL_SYSTEM}-retail")
+RETAIL_PAGE = re.compile(rf"/catalog/{RETAIL_SYSTEM}")
+RETAIL_MANUAL_PATH = rf"{RETAIL_SYSTEM}-manual/([0-9a-f]{{64}})"
+RETAIL_MANUAL = re.compile("/related-media/" + RETAIL_MANUAL_PATH)
+RETAIL_MANUAL_PAGES = re.compile(RETAIL_MANUAL.pattern + r"/pages(?:/([1-9][0-9]{0,8})\.webp)?")
+RETAIL_TRANSLATION = re.compile(rf"/related-media/{RETAIL_SYSTEM}-translation/([0-9a-f]{{64}})")
+RETAIL_TRANSLATION_DOWNLOAD = re.compile(r"/api/v1/releases/([0-9a-f]{32})/translations/([0-9a-f]{64})/download")
 SNES_ICON = re.compile(r"/(?:snes-flags/(?:jp|na|pal)|snes-inputs/(?:pad|mouse|lightgun|multitap))\.png")
 SOFTWARE_FACTS = re.compile(r"/api/software/([0-9]+)/facts")
 SOFTWARE_PAGE = re.compile(r"/software/(?:([1-9][0-9]{0,18})-([0-9a-f]{32})|exo/([0-9a-f]{64}))")
@@ -205,12 +210,12 @@ class ExplorerHandler(BaseHTTPRequestHandler):
 
     def do_HEAD(self):  # noqa: N802 - BaseHTTPRequestHandler API
         path = urlparse(self.path).path
-        if SNES_TRANSLATION_DOWNLOAD.fullmatch(path):
+        if RETAIL_TRANSLATION_DOWNLOAD.fullmatch(path):
             return self.do_GET()
-        if manual := SNES_MANUAL.fullmatch(path):
-            return serve_snes_manual(self, manual[1])
-        if translation := SNES_TRANSLATION.fullmatch(path):
-            return serve_snes_translation(self, translation[1])
+        if manual := RETAIL_MANUAL.fullmatch(path):
+            return serve_retail_manual(self, self.server.retail_manual_roots[manual[1]], manual[2])
+        if translation := RETAIL_TRANSLATION.fullmatch(path):
+            return serve_retail_translation(self, translation[1], translation[2])
         return self.send_error(HTTPStatus.NOT_IMPLEMENTED, "Unsupported method ('HEAD')")
 
     def _get(self):
@@ -240,14 +245,16 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             vgm_asset = re.fullmatch(r"/related-media/vgm/([0-9a-f]{64})", parsed.path)
             if vgm_asset:
                 return serve_vgm(self, vgm_asset[1])
-            if manual := SNES_MANUAL.fullmatch(parsed.path):
-                return serve_snes_manual(self, manual[1])
-            if manual_pages := SNES_MANUAL_PAGES.fullmatch(parsed.path):
-                return serve_snes_manual_pages(self, manual_pages[1], int(manual_pages[2]) if manual_pages[2] else None)
-            if translation := SNES_TRANSLATION.fullmatch(parsed.path):
-                return serve_snes_translation(self, translation[1])
-            if translation := SNES_TRANSLATION_DOWNLOAD.fullmatch(parsed.path):
-                return serve_snes_translation_rom(self, translation[1], translation[2])
+            if manual := RETAIL_MANUAL.fullmatch(parsed.path):
+                return serve_retail_manual(self, self.server.retail_manual_roots[manual[1]], manual[2])
+            if manual := RETAIL_MANUAL_PAGES.fullmatch(parsed.path):
+                return serve_retail_manual_pages(
+                    self, self.server.retail_manual_roots[manual[1]], manual[2], int(manual[3]) if manual[3] else None,
+                )
+            if translation := RETAIL_TRANSLATION.fullmatch(parsed.path):
+                return serve_retail_translation(self, translation[1], translation[2])
+            if translation := RETAIL_TRANSLATION_DOWNLOAD.fullmatch(parsed.path):
+                return serve_retail_translation_rom(self, translation[1], translation[2])
             soundtrack = SOFTWARE_VGM.fullmatch(parsed.path)
             if soundtrack:
                 items = self.server.repository.vgm_soundtracks(
@@ -259,30 +266,33 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return serve_related_media(self, attachment[1])
             if parsed.path == "/api/systems":
                 return self._json_response(self.server.repository.systems(hide_rom_hacks=_hide_rom_hacks(query)))
-            if parsed.path == "/api/snes-retail":
+            if retail := RETAIL_API.fullmatch(parsed.path):
+                platform = retail[1]
+                label = RETAIL_PLATFORMS[platform]
                 game_key = query["game"][0] if "game" in query else None
                 browse = query.get("view") == ["browse"]
-                catalog = self.server.repository.snes_retail(
-                    game_key=game_key, browse=browse,
+                catalog = self.server.repository.retail_catalog(
+                    platform, game_key=game_key, browse=browse,
                 )
                 if catalog is None:
-                    error = "This SNES catalog entry could not be found." if game_key is not None else (
-                        "The SNES retail catalog has not been published."
+                    error = f"This {label} catalog entry could not be found." if game_key is not None else (
+                        f"The {label} retail catalog has not been published."
                     )
                     return self._json_response({"error": error}, HTTPStatus.NOT_FOUND)
                 if game_key is not None:
-                    add_local_manuals(catalog["game"], self.server.snes_manual_root)
-                    add_local_translations(catalog["game"], self.server.snes_translation_root)
+                    add_local_manuals(catalog["game"], self.server.retail_manual_roots[platform], platform)
+                    add_local_translations(catalog["game"], self.server.retail_translation_roots[platform], platform)
                     if self.server.vgm_root:
-                        catalog["soundtracks"] = self.server.repository.snes_soundtracks(catalog["game"])
+                        catalog["soundtracks"] = self.server.repository.retail_soundtracks(catalog["game"])
                 elif browse:
-                    add_translation_availability(catalog["games"], self.server.snes_translation_root)
+                    add_translation_availability(catalog["games"], self.server.retail_translation_roots[platform])
                 return self._json_response(catalog)
             if parsed.path == "/api/capabilities":
                 return self._json_response({
                     "softwareCorrections": self.server.corrections_enabled,
                     "vgm": bool(self.server.vgm_root),
-                    "snesRetail": self.server.repository.snes_retail_available(),
+                    "snesRetail": self.server.repository.retail_available("snes"),
+                    "megadriveRetail": self.server.repository.retail_available("megadrive"),
                 })
             if parsed.path == "/api/metadata-options":
                 system_id = query.get("system_id", [""])[0]
@@ -300,9 +310,11 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return self._media_response(parsed.path[len(MEDIA_PREFIX):])
             preview = PREVIEW_PATH.fullmatch(parsed.path)
             if preview:
-                manual = re.fullmatch(r"snes-manual/([0-9a-f]{64})", preview[2])
+                manual = re.fullmatch(RETAIL_MANUAL_PATH, preview[2])
                 if manual:
-                    return serve_snes_manual(self, manual[1], preview_size=int(preview[1]))
+                    return serve_retail_manual(
+                        self, self.server.retail_manual_roots[manual[1]], manual[2], preview_size=int(preview[1]),
+                    )
                 return self._media_response(preview[2], int(preview[1]))
 
             match = INSTALL_MANIFEST.fullmatch(parsed.path)
@@ -377,7 +389,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return self._asset_response("index.html", "text/html; charset=utf-8")
             if SOFTWARE_PAGE.fullmatch(parsed.path):
                 return self._asset_response("index.html", "text/html; charset=utf-8")
-            if parsed.path == "/catalog/snes":
+            if RETAIL_PAGE.fullmatch(parsed.path):
                 return self._asset_response("snes-retail.html", "text/html; charset=utf-8")
             if parsed.path in ("/app.js", "/almanac.js", "/artwork-viewer.js", "/snes-retail.js", "/snes-manual.js"):
                 return self._asset_response(parsed.path[1:], "text/javascript; charset=utf-8")
@@ -740,9 +752,16 @@ class ExplorerServer(ThreadingHTTPServer):
         self.exo_root = Path(os.environ.get("GAMEDB_EXO_ROOT", "/mnt/exo"))
         vgm_root = os.environ.get("GAMEDB_VGM_ROOT")
         self.vgm_root = Path(vgm_root) if vgm_root else None
-        manual_root = os.environ.get("GAMEDB_SNES_MANUAL_ROOT")
-        self.snes_manual_root = Path(manual_root) if manual_root else None
-        self.snes_translation_root = Path(os.environ.get("GAMEDB_SNES_TRANSLATION_ROOT") or DEFAULT_SNES_TRANSLATION_ROOT)
+        snes_manual_root = os.environ.get("GAMEDB_SNES_MANUAL_ROOT")
+        megadrive_manual_root = os.environ.get("GAMEDB_MEGADRIVE_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Mega Drive"
+        self.retail_manual_roots = {
+            "snes": Path(snes_manual_root) if snes_manual_root else None,
+            "megadrive": Path(megadrive_manual_root),
+        }
+        self.retail_translation_roots = {
+            platform: Path(os.environ.get(f"GAMEDB_{platform.upper()}_TRANSLATION_ROOT") or root)
+            for platform, root in TRANSLATION_ROOTS.items()
+        }
         self.rom_root = Path(os.environ.get("GAMEDB_ROM_ROOT", "/data/roms"))
 
     def server_close(self):
