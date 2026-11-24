@@ -12,6 +12,7 @@ from gamedb.database import create_database_engine
 
 from .importer import publish, resolve, summarize
 from .inventory import C64, PLAYSTATION, PS2, scan
+from .joshw import COLLECTION, DOMAINS
 from .tags import COMPOSER_TAG_FORMATS, PSF_VERSIONS, RELATED_PSF_VERSIONS, add_track_tags
 
 
@@ -33,10 +34,12 @@ def main(argv=None):
         os.environ.get("GAMEDB_VGM_ROOT") or "/mnt/synology/music/VGM/By Format"
     ))
     parser.add_argument("--report", type=Path, help="write a JSON Lines matching report")
+    parser.add_argument("--joshw-bucket", choices=sorted(DOMAINS), help="refresh one JoshW subdomain")
     parser.add_argument("--publish", action="store_true", help="replace the VGM database inventory")
     args = parser.parse_args(argv)
 
-    library = scan(args.root)
+    subdirectory = Path(COLLECTION, args.joshw_bucket) if args.joshw_bucket else None
+    library = scan(args.root, subdirectory=subdirectory)
     if not library:
         parser.error(f"no soundtrack sets found under {args.root}")
     tag_sources = (item for item in library if item.system in {C64, PLAYSTATION, PS2})
@@ -52,7 +55,7 @@ def main(argv=None):
         enrich(args.root, tagged, {"spc", "nsf", "gbs", *RELATED_PSF_VERSIONS, *COMPOSER_TAG_FORMATS})
         if args.publish:
             with engine.begin() as connection:
-                publish(connection, library, resolved)
+                publish(connection, library, resolved, joshw_bucket=args.joshw_bucket)
     finally:
         engine.dispose()
     if args.report:

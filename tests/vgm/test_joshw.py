@@ -147,7 +147,8 @@ class JoshWTests(unittest.TestCase):
                 for path, data in recordings.items():
                     archive.add_file_from_memory(path, len(data), data)
 
-            album, = scan(root)
+            (root / "Unrelated.nsf").write_bytes(b"NESM\x1a")
+            album, = scan(root, subdirectory=Path("JoshW/2sf"))
             add_track_tags(root, album.assets, {"mini2sf"})
             self.assertEqual(album.system, ("Nintendo", "Nintendo DS"))
             self.assertEqual((album.title, album.aliases), ("Actual Game", ("Regional Title",)))

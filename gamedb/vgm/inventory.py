@@ -246,15 +246,16 @@ def tracks_for_set(root, album):
             break
 
 
-def scan(root: Path) -> list[Soundtrack]:
-    if not root.is_dir():
-        raise FileNotFoundError(f"VGM source is unavailable: {root}")
+def scan(root: Path, *, subdirectory: Path | None = None) -> list[Soundtrack]:
+    source = root / subdirectory if subdirectory else root
+    if not source.is_dir():
+        raise FileNotFoundError(f"VGM source is unavailable: {source}")
 
     def fail(error):
         raise error
 
     sets = {}
-    for directory, directories, files in os.walk(root, onerror=fail):
+    for directory, directories, files in os.walk(source, onerror=fail):
         directories[:] = sorted(n for n in directories if not n.startswith((".", "@")))
         for name in sorted(files):
             path = Path(directory, name)

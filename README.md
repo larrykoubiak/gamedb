@@ -499,6 +499,9 @@ docker compose run --rm --no-deps --entrypoint python catalog-builder \
   -m gamedb.vgm --root /mnt/vgm --publish
 ```
 
+Pass `--joshw-bucket psf` to `import-vgm` to refresh just the PlayStation
+source. Run `seed-playstation --publish` to update its retail soundtrack links.
+
 Set `GAMEDB_VGM_ROOT=/mnt/vgm` for the Compose Explorer, or set it to the NAS
 path when running Explorer directly. Matched games then show their music on the
 **Soundtracks** tab in the Almanac. The player handles browser audio and
