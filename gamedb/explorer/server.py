@@ -296,6 +296,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                     )
                     return self._json_response({"error": error}, HTTPStatus.NOT_FOUND)
                 if game_key is not None:
+                    self._add_retail_install_urls(catalog["game"])
                     add_local_manuals(catalog["game"], self.server.retail_manual_roots[platform], platform)
                     if platform in self.server.retail_translation_roots:
                         add_local_translations(catalog["game"], self.server.retail_translation_roots[platform], platform)
@@ -678,6 +679,18 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             self.end_headers()
             while chunk := handle.read(1024 * 1024):
                 self.wfile.write(chunk)
+
+    def _add_retail_install_urls(self, game):
+        archives = [archive for release in game["releases"] if release["status"] == "matched"
+                    for archive in release.get("archives", ())]
+        for match in self.server.repository.retail_install_paths(archives):
+            try:
+                for path in match["paths"]:
+                    _resolve_rom_path(self.server.rom_root, path)
+            except (OSError, ValueError):
+                continue
+            archive = archives[match["linkNo"] - 1]
+            archive["installManifestUrl"] = f"/api/v1/releases/{archive['signature']}/install-manifest"
 
     def _load_install_manifest(self, release_signature):
         manifest = self.server.repository.install_manifest(release_signature)

@@ -242,11 +242,19 @@ class CatalogRepository:
             QUERY_DIRECTORY / "system_software_facts.sql"
         ).render(system_id=sql_integer(system_id, "system_id", 1))
 
-    def install_manifest_sql(self, release_signature: str) -> str:
+    def install_manifest_sql(self, release_signature: str, retail_platforms=()) -> str:
+        published = " UNION ALL ".join(
+            f"SELECT payload FROM {retail_tables(platform)[0]} WHERE singleton"
+            for platform in retail_platforms
+        )
         return SqlTemplate(QUERY_DIRECTORY / "install_manifest.sql").render(
             username=quote_sql_text(self.username),
             release_signature=quote_sql_text(
                 self._signature(release_signature, "release_signature")
+            ),
+            retail_catalogs_sql=published or "SELECT NULL::jsonb AS payload WHERE false",
+            retail_install_releases_sql=self._retail_install_releases_sql(
+                "SELECT link_no, archive FROM retail_links", signature_source="inventory",
             ),
         )
 
@@ -440,6 +448,26 @@ class CatalogRepository:
         return SqlTemplate(QUERY_DIRECTORY / "retail_verified_releases.sql").render(
             links_sql=links_sql, software_key_sql=SOFTWARE_KEY_SQL,
         )
+
+    def _retail_install_releases_sql(self, links_sql, *, signature_source="catalog.release_content_signature"):
+        return SqlTemplate(QUERY_DIRECTORY / "retail_install_releases.sql").render(
+            links_sql=links_sql, signature_source=signature_source, software_key_sql=SOFTWARE_KEY_SQL,
+        )
+
+    def retail_install_paths(self, archives):
+        if not archives:
+            return []
+        links = [{key: archive.get(key) for key in ("signature", "softwareKey", "archiveNames")}
+                 for archive in archives]
+        eligible = self._retail_install_releases_sql(f"""
+            SELECT link_no, archive
+            FROM jsonb_array_elements({quote_sql_text(json.dumps(links))}::jsonb)
+                 WITH ORDINALITY AS published(archive, link_no)
+        """)
+        return self._read_listing(f"""
+            SELECT coalesce(jsonb_agg(jsonb_build_object('linkNo', link_no, 'paths', paths)), '[]'::jsonb)
+            FROM ({eligible}) verified
+        """)
 
     def retail_release_facts(self, game):
         links = [{"release_key": release["key"], "software_id": archive["softwareId"],
@@ -669,7 +697,13 @@ class CatalogRepository:
         ))
 
     def install_manifest(self, release_signature: str):
-        return self.client.query(self.install_manifest_sql(release_signature))
+        tables = ", ".join(f"('{platform}', '{retail_tables(platform)[0]}')" for platform in RETAIL_PLATFORMS)
+        platforms = self._read_listing(f"""
+            SELECT coalesce(jsonb_agg(platform ORDER BY platform), '[]'::jsonb)
+            FROM (VALUES {tables}) AS retail(platform, relation)
+            WHERE to_regclass(relation) IS NOT NULL
+        """)
+        return self._read_listing(self.install_manifest_sql(release_signature, platforms))
 
     def correction_targets(
         self, system_id: int, exclude_software_id: int, title_filter: str

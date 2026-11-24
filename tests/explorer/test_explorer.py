@@ -239,9 +239,12 @@ class ExplorerTests(unittest.TestCase):
             [{"key": "genre", "values": []}],
         )
 
-    def test_install_manifest_requires_preferred_release_and_hides_paths_at_transport(self):
-        query = CatalogRepository("default").install_manifest_sql("a" * 32)
+    def test_install_manifest_includes_legacy_and_published_retail_paths(self):
+        query = CatalogRepository("default").install_manifest_sql("a" * 32, ("snes",))
         self.assertIn("app.user_preferred_release", query)
+        self.assertIn("app.user_rom_hack_fallback", query)
+        self.assertIn("app.snes_retail_catalog", query)
+        self.assertNotIn("app.nes_retail_catalog", query)
         self.assertIn("catalog.package_file", query)
         self.assertIn("'resolvedPath', package.resolved_path", query)
         self.assertIn("'packageSignature'", query)

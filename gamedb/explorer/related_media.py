@@ -1,5 +1,6 @@
 """Serve source-owned catalog attachments and their artwork previews."""
 
+from base64 import b64encode
 import hashlib
 import json
 import mimetypes
@@ -179,6 +180,22 @@ def _disc_set_location(root, record):
     return {"source_path": relative, "size_bytes": stat.st_size, "mtime_ns": stat.st_mtime_ns, "member_no": 0}
 
 
+def _disc_launch_path(root, location):
+    try:
+        with ZipFile(location_path(root, location["source_path"])) as archive:
+            names = [member.filename for member in archive.infolist() if not member.is_dir()]
+    except (OSError, ValueError, BadZipFile):
+        return None
+    if "Play.m3u" in names:
+        return "Play.m3u"
+    cues = [name for name in names if name.lower().endswith(".cue")]
+    if len(cues) == 1:
+        cue = cues[0]
+        if Path(cue).name == cue and "\\" not in cue and cue.isprintable():
+            return cue
+    return None
+
+
 def add_local_translations(game, root, platform="snes"):
     _, by_signature = _translation_index(root)
     for release in game["releases"]:
@@ -199,6 +216,9 @@ def add_local_translations(game, root, platform="snes"):
                 disc_location = _disc_set_location(root, record) if disc else None
                 if disc_location:
                     public["discDownloadSize"] = disc_location["size_bytes"]
+                    public["discDownloadSha256"] = record["discSet"]["sha256"]
+                    if launch_path := _disc_launch_path(root, disc_location):
+                        public["discLaunchPath"] = launch_path
                 if disc_location or supports_patching(record["format"], record["layout"]):
                     public["romDownloadUrl"] = (
                         f"/api/v1/releases/{archive['signature']}/translations/{record['key']}/download"
@@ -257,9 +277,10 @@ def serve_retail_translation_rom(handler, signature, key, *, disc_only=False):
         location = _disc_set_location(root, record)
         if location is None or not handler.server.repository.retail_has_archive(platform, signature):
             return handler._json_response({"error": "The verified disc set is unavailable."}, HTTPStatus.NOT_FOUND)
+        digest = record["discSet"]["sha256"]
         return _serve_file(handler, key, root, {
-            "path": record["discSet"]["filename"], "revision": record["discSet"]["sha256"], "locations": [location],
-        }, force_download=True, cache_control="private, no-store")
+            "path": record["discSet"]["filename"], "revision": digest, "locations": [location],
+        }, force_download=True, cache_control="private, no-store", representation_sha256=digest)
     if disc_only:
         return handler.send_error(HTTPStatus.NOT_FOUND)
     if not supports_patching(record["format"], record["layout"]):
@@ -301,14 +322,17 @@ def serve_retail_translation_rom(handler, signature, key, *, disc_only=False):
     tag = " ".join(item for item in (record["language"], record["version"]) if item)
     extension = {"snes": "sfc", "megadrive": "md", "nes": "nes"}[platform]
     filename = re.sub(r"[/\\\x00-\x1f\x7f]", "_", f"{base_name} [{tag}].{extension}")
+    digest = hashlib.sha256(patched).hexdigest()
     return _serve_file(handler, key, root, {
-        "path": filename, "revision": hashlib.sha256(patched).hexdigest(),
+        "path": filename, "revision": digest,
         "locations": [{"size_bytes": len(patched), "member_no": 0}],
-    }, force_download=True, open_media=lambda *_: BytesIO(patched), cache_control="private, no-store")
+    }, force_download=True, open_media=lambda *_: BytesIO(patched), cache_control="private, no-store",
+        representation_sha256=digest)
 
 
 def _serve_file(handler, key, root, asset, revision=None, preview_size=None, *,
-                force_download=False, open_media=open_location, preview_page=1, cache_control=None):
+                force_download=False, open_media=open_location, preview_page=1, cache_control=None,
+                representation_sha256=None):
     from gamedb.explorer.server import _byte_range
 
     name = Path(asset["path"]).name
@@ -376,6 +400,9 @@ def _serve_file(handler, key, root, asset, revision=None, preview_size=None, *,
         handler.send_header("Accept-Ranges", "bytes")
         handler.send_header("Content-Length", str(remaining))
         handler.send_header("Content-Type", mime)
+        if representation_sha256:
+            digest = b64encode(bytes.fromhex(representation_sha256)).decode("ascii")
+            handler.send_header("Repr-Digest", f"sha-256=:{digest}:")
         # A source HTML supplement can be downloaded without running active
         # content under the Explorer origin.
         inline = not force_download and (

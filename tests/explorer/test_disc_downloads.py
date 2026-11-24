@@ -1,3 +1,4 @@
+from base64 import b64encode
 from contextlib import closing
 from hashlib import sha256
 from http.client import HTTPConnection
@@ -12,6 +13,7 @@ from urllib.parse import urlencode
 from zipfile import ZipFile
 
 from gamedb.catalog.translations import DISC_LAYOUT, INDEX_NAME, INDEX_VERSION
+from gamedb.explorer.related_media import add_local_translations
 from gamedb.explorer.server import ExplorerHandler
 
 
@@ -33,13 +35,26 @@ class DiscDownloadTests(unittest.TestCase):
             (root / "discs").mkdir()
             artifact = artifact.rename(root / "discs" / f"{digest}.zip")
             size = artifact.stat().st_size
+            patch = b"patch"
+            patch_digest = sha256(patch).hexdigest()
+            (root / "patches").mkdir()
+            (root / "patches" / f"{patch_digest}.zip").write_bytes(patch)
             entry = {
-                "key": key, "signatures": [signature], "sha256": "d" * 64, "format": "zip", "size": 1,
-                "layout": DISC_LAYOUT,
+                "key": key, "signatures": [signature], "sha256": patch_digest, "format": "zip", "size": len(patch),
+                "layout": DISC_LAYOUT, "language": "English", "version": "1.0", "title": "Test",
+                "releasedAt": 1, "filename": "Patch.zip",
                 "discSet": {"filename": "Game [English].zip", "sha256": digest, "size": size,
                             "mtimeNs": artifact.stat().st_mtime_ns},
             }
-            (root / INDEX_NAME).write_text(json.dumps({"version": INDEX_VERSION, "translations": [entry]}))
+            patch_only = dict(entry, key="d" * 64, discSet=None)
+            (root / INDEX_NAME).write_text(json.dumps({"version": INDEX_VERSION, "translations": [entry, patch_only]}))
+            release = {"status": "matched", "archives": [{"signature": signature}]}
+            add_local_translations({"releases": [release]}, root, "playstation")
+            translations = {item["key"]: item for item in release["translations"]}
+            self.assertEqual(translations[key]["romDownloadUrl"], url)
+            self.assertEqual(translations[key]["discDownloadSha256"], digest)
+            self.assertEqual(translations[key]["discLaunchPath"], "Game.cue")
+            self.assertNotIn("romDownloadUrl", translations[patch_only["key"]])
             server.repository = Mock()
             server.repository.retail_has_archive.return_value = True
             server.retail_translation_roots = {"playstation": root}
@@ -64,8 +79,11 @@ class DiscDownloadTests(unittest.TestCase):
                 self.assertEqual((status, int(headers["Content-Length"]), body), (200, size, b""))
                 self.assertEqual(headers["Cache-Control"], "private, no-store")
                 self.assertIn("Game%20%5BEnglish%5D.zip", headers["Content-Disposition"])
+                expected_digest = f"sha-256=:{b64encode(bytes.fromhex(digest)).decode('ascii')}:"
+                self.assertEqual(headers["Repr-Digest"], expected_digest)
                 status, headers, body = request("GET", {**bearer, "Range": "bytes=0-3"})
                 self.assertEqual((status, headers["Content-Range"], body), (206, f"bytes 0-3/{size}", b"PK\x03\x04"))
+                self.assertEqual(headers["Repr-Digest"], expected_digest)
                 status, _, body = request("POST", {"Content-Type": "application/x-www-form-urlencoded"},
                                           urlencode({"key": password}))
                 self.assertEqual((status, body), (200, artifact.read_bytes()))

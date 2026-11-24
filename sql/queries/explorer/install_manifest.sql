@@ -1,16 +1,17 @@
-WITH selected AS MATERIALIZED (
+WITH inventory AS MATERIALIZED (
+    SELECT release_id, sha1_set_digest, package_count
+    FROM catalog.release_content_signature
+    WHERE sha1_set_digest = __RELEASE_SIGNATURE__
+),
+legacy AS MATERIALIZED (
     SELECT
         release.id AS release_id,
         signature.sha1_set_digest AS release_signature,
-        software.display_name AS title,
-        md5(system.manufacturer_name || E'\x1f' || system.system_name) AS system_key,
-        system.manufacturer_name,
-        system.system_name
-    FROM catalog.release_content_signature signature
+        software.id AS software_id
+    FROM inventory signature
     JOIN catalog.release release ON release.id = signature.release_id
     JOIN catalog.software_release membership ON membership.release_id = release.id
     JOIN catalog.software software ON software.id = membership.software_id
-    JOIN catalog.system system ON system.id = software.system_id
     JOIN (
         SELECT user_id, software_id, release_id, 0 AS priority FROM app.user_preferred_release
         UNION ALL
@@ -18,10 +19,29 @@ WITH selected AS MATERIALIZED (
         WHERE release_id IS NOT NULL
     ) preferred ON preferred.software_id = software.id AND preferred.release_id = release.id
     JOIN app.app_user user_account ON user_account.id = preferred.user_id
-    WHERE signature.sha1_set_digest = __RELEASE_SIGNATURE__
-      AND user_account.username = __USERNAME__
+    WHERE user_account.username = __USERNAME__
     ORDER BY preferred.priority, software.id, release.id
     LIMIT 1
+),
+retail_links AS (
+    SELECT NULL::bigint AS link_no, matched.archive
+    FROM (__RETAIL_CATALOGS_SQL__) published
+    CROSS JOIN LATERAL jsonb_path_query(
+        published.payload,
+        '$.games[*].releases[*] ? (@.status == "matched").archives[*] ? (@.signature == $signature)',
+        jsonb_build_object('signature', __RELEASE_SIGNATURE__::text)
+    ) AS matched(archive)
+    WHERE EXISTS (SELECT FROM inventory) AND NOT EXISTS (SELECT FROM legacy)
+),
+selected AS MATERIALIZED (
+    TABLE legacy
+    UNION ALL
+    (
+        SELECT verified.release_id, verified.release_signature, verified.software_id
+        FROM (__RETAIL_INSTALL_RELEASES_SQL__) verified
+        ORDER BY verified.software_id, verified.release_id
+        LIMIT 1
+    )
 ),
 packages AS (
     SELECT coalesce(jsonb_agg(
@@ -63,14 +83,16 @@ packages AS (
 SELECT (
     SELECT jsonb_build_object(
         'releaseSignature', selected.release_signature,
-        'title', selected.title,
+        'title', software.display_name,
         'system', jsonb_build_object(
-            'key', selected.system_key,
-            'manufacturer', selected.manufacturer_name,
-            'name', selected.system_name
+            'key', md5(system.manufacturer_name || E'\x1f' || system.system_name),
+            'manufacturer', system.manufacturer_name,
+            'name', system.system_name
         ),
         'packages', packages.items
     )
     FROM selected
+    JOIN catalog.software software ON software.id = selected.software_id
+    JOIN catalog.system system ON system.id = software.system_id
     CROSS JOIN packages
 );

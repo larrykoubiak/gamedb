@@ -333,6 +333,15 @@ browser uses the same authenticated route.
 GET /api/v1/releases/{baseReleaseSignature}/translations/{key}/download
 ```
 
+The download sends the output filename in `Content-Disposition` and the full
+output SHA-256 in `Repr-Digest`, including on `HEAD` and byte-range responses.
+The patched cartridge file is the launch file. A disc set includes
+`discDownloadSize`, `discDownloadSha256` and `discLaunchPath` in the translation
+entry. Extract the ZIP and launch the relative path, which is `Play.m3u` for a
+multi-disc set or the single `.cue` for one disc. A reviewed cartridge output
+can also include `outputSha1`. The translation's `sha256` verifies the patch
+artifact. Patch-only entries omit `romDownloadUrl`.
+
 The command stores patch files and their release links in
 `data/media/snes-translations`, which both Compose configurations mount
 read-only. Some older ZIPs require `7z` for Deflate64 extraction. Use `--root`
@@ -917,6 +926,12 @@ after the server has evicted the snapshot or restarted. Revalidate with
 
 Numeric database IDs remain present for compatibility but are rebuild-local;
 clients should persist the system key and release content signature instead.
+
+Matched archives in retail game details expose `installManifestUrl` when the
+published software key, signature and packages resolve against the current
+inventory. Use the selected archive's `signature` and the existing bearer
+token. The schema version 1 manifest carries each package's `downloadUrl`,
+its file hashes and its media sequence for multi-disc releases.
 
 After reviewing working corrections, promote them into the version-controlled
 reference CSV and its `ref` materialization:
