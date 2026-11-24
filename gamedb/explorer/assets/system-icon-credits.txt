@@ -1,3 +1,19 @@
+Retail catalog logos
+
+Super Nintendo Entertainment System
+https://commons.wikimedia.org/wiki/File:SNES_logo.svg
+
+Sega Mega Drive logo, rendered as PNG from the RetroPie Carbon theme by Rookervik.
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+https://github.com/RetroPie/es-theme-carbon/blob/b09973e0b0c589cb11fe772c169a6ff5d588b390/megadrive/art/system.svg
+
+Nintendo Entertainment System
+https://commons.wikimedia.org/wiki/File:NES_logo.svg
+
+PlayStation
+https://commons.wikimedia.org/wiki/File:Playstation_logo_colour.svg
+
 Platform icons from RetroArch assets (Libretro contributors), pixel and monochrome themes.
 Source: https://github.com/libretro/retroarch-assets/tree/d9f969054dc7fbb6fa89519036d2b971e0855b51
 License: Creative Commons Attribution 4.0 International.

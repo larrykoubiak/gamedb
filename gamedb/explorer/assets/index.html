@@ -5,16 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GameDB Explorer</title>
   <meta name="description" content="Search GameDB across all platforms or browse by system.">
-  <link rel="stylesheet" href="/styles.css?v=17">
+  <link rel="stylesheet" href="/styles.css?v=18">
   <link rel="stylesheet" href="/almanac.css?v=3">
 </head>
 <body>
   <header class="almanac-topbar">
     <a id="catalog-home" class="almanac-brand" href="/" aria-label="GameDB Almanac home">GameDB <span>Almanac</span></a>
-    <a id="snes-retail-link" href="/catalog/snes" hidden>SNES retail catalog</a>
-    <a id="megadrive-retail-link" href="/catalog/megadrive" hidden>Mega Drive retail catalog</a>
-    <a id="nes-retail-link" href="/catalog/nes" hidden>NES / Famicom retail catalog</a>
-    <a id="playstation-retail-link" href="/catalog/playstation" hidden>PlayStation (US) retail catalog</a>
+    <nav class="retail-catalog-links" aria-label="Retail catalogs">
+      <a id="snes-retail-link" href="/catalog/snes" hidden>
+        <img src="/system-icons/retail-logo-snes.png" width="330" height="83" alt="SNES retail catalog">
+      </a>
+      <a id="megadrive-retail-link" href="/catalog/megadrive" hidden>
+        <img src="/system-icons/retail-logo-megadrive.png" width="330" height="53" alt="Mega Drive retail catalog">
+      </a>
+      <a id="nes-retail-link" href="/catalog/nes" hidden>
+        <img src="/system-icons/retail-logo-nes.png" width="330" height="122" alt="NES / Famicom retail catalog">
+      </a>
+      <a id="playstation-retail-link" href="/catalog/playstation" hidden>
+        <img src="/system-icons/retail-logo-playstation.png" width="330" height="251" alt="PlayStation (US) retail catalog">
+      </a>
+    </nav>
     <a id="back-to-catalog" href="/" hidden><span aria-hidden="true">←</span> Back to catalog</a>
   </header>
 

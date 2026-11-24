@@ -62,6 +62,29 @@ h2 { font-size: 1.55rem; letter-spacing: -.025em; }
 .almanac-topbar a:focus-visible { outline-color: #d7ae76; }
 .almanac-topbar #back-to-catalog:hover { text-decoration: underline; text-underline-offset: .25em; }
 
+.retail-catalog-links {
+  display: flex;
+  gap: .5rem;
+  min-width: 0;
+  margin-inline-start: auto;
+}
+
+.retail-catalog-links:not(:has(> a:not([hidden]))) { display: none; }
+
+.retail-catalog-links a {
+  display: flex;
+  width: 7rem;
+  min-width: 0;
+  height: 2.75rem;
+  padding: .35rem .55rem;
+  border: 1px solid var(--book-edge);
+  border-radius: .3rem;
+  background: var(--book-paper);
+}
+
+.retail-catalog-links a:hover { background: var(--panel); border-color: #d7ae76; }
+.retail-catalog-links img { display: block; width: 100%; height: 100%; object-fit: contain; }
+
 .almanac-brand {
   display: flex;
   align-items: center;
@@ -744,7 +767,8 @@ button.soundtrack-track-name:hover { color: var(--book-green); text-decoration: 
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 @media (max-width: 760px) {
-  .almanac-topbar { min-height: 4.15rem; padding-inline: 1rem; }
+  .almanac-topbar { min-height: 4.15rem; padding-inline: 1rem; flex-wrap: wrap; }
+  .retail-catalog-links { order: 1; flex-basis: 100%; margin-inline-start: 0; }
   .almanac-brand { gap: .45rem; font-size: 1.4rem; }
   .almanac-brand span { padding-left: .45rem; font-size: .6rem; }
   #back-to-catalog { gap: .3rem; font-size: .75rem; }
