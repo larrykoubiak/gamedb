@@ -106,11 +106,12 @@ Later imports reuse the checked patch archive in the library. [Final Fantasy VII
 **Has translation** filters the retail catalog. Each matching release links
 the patch archive and a **Download disc set** button that uses the GameDB API
 key. GameDB checks the original and patched tracks against pinned SHA-1
-values, keeps the original CUE sheets and audio tracks, and includes
+values and recalculates XA sector checksums in the reviewed PPF builds.
+It keeps the original CUE sheets and audio tracks and includes
 `Play.m3u` in multi-disc ZIPs. The library lives in
 `data/media/playstation-translations` and both Compose configurations mount it
 read-only in Explorer. Set `GAMEDB_PLAYSTATION_TRANSLATION_ROOT` when running
-Explorer with a library in another directory.
+Explorer with a library in another directory. [CD-ROM XA sector format](https://www.ecma-international.org/wp-content/uploads/ECMA-168_2nd_edition_december_1994.pdf)
 
 ## Mega Drive retail catalog
 

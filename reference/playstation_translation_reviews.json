@@ -203,12 +203,14 @@
         {
           "archiveName": "Threads of Fate (USA).zip",
           "inputSha1": "375e4a344c4feef969bef6042ff1f90e350fa5d5",
-          "outputSha1": "ac14654d4f080422712ee0b1b8fc723ad0abdf90",
+          "outputSha1": "0a6aca2599211b30127aef2b679d50c45577d085",
           "patches": [
             "Hilos del Destino.ppf"
-          ]
+          ],
+          "repairXaChecksums": true
         }
-      ]
+      ],
+      "evidence": "Verified the PPF build and regenerated CD-ROM XA EDC and ECC on edited Form 1 sectors."
     },
     "7300": {
       "archive": "[7300]Diablo ESP v1.01.zip",
@@ -220,12 +222,14 @@
         {
           "archiveName": "Diablo (USA) (En,Fr,De,Sv).zip",
           "inputSha1": "5e3669fd2920b953f9a164426e044c21e109fd26",
-          "outputSha1": "88f969cfe7f2ce71574ff8dfb781de19c49364c0",
+          "outputSha1": "368acdf197f54a82f0773d6d3a0bb29b4d32deaa",
           "patches": [
             "DIABLO ESP V1.01 NTSC 006 19.ppf"
-          ]
+          ],
+          "repairXaChecksums": true
         }
-      ]
+      ],
+      "evidence": "Verified the PPF build and regenerated CD-ROM XA EDC and ECC on edited Form 1 sectors."
     }
   }
 }

@@ -10,6 +10,66 @@ from .patching import PatchError
 RAW_CD_SECTOR_SIZE = 2352
 XDELTA_EXTENSIONS = {".xdelta", ".xdelta3", ".vcdiff"}
 DISC_PATCH_EXTENSIONS = XDELTA_EXTENSIONS | {".ppf"}
+CD_SYNC = bytes.fromhex("00 ff ff ff ff ff ff ff ff ff ff 00")
+XA_CHECKSUM_OFFSET = 2072
+
+
+def _crc_table_entry(value):
+    for _ in range(8):
+        value = (value >> 1) ^ (0xD8018001 if value & 1 else 0)
+    return value
+
+
+CD_CRC_TABLE = tuple(_crc_table_entry(value) for value in range(256))
+GF_DOUBLE = bytes((value << 1) ^ (0x11D if value & 0x80 else 0) for value in range(256))
+GF_TRIPLE = bytes(value ^ doubled for value, doubled in enumerate(GF_DOUBLE))
+GF_DIVIDE_BY_THREE = bytes(GF_TRIPLE.index(value) for value in range(256))
+
+
+def _ecc_parity(data, codewords, symbols, start_stride, symbol_stride):
+    parity = bytearray(2 * codewords)
+    for codeword in range(codewords):
+        position = (codeword // 2) * start_stride + codeword % 2
+        weighted, unweighted = 0, 0
+        for _ in range(symbols):
+            value = data[position]
+            weighted = GF_DOUBLE[weighted ^ value]
+            unweighted ^= value
+            position = (position + symbol_stride) % len(data)
+        first = GF_DIVIDE_BY_THREE[GF_DOUBLE[weighted] ^ unweighted]
+        parity[codeword] = first
+        parity[codeword + codewords] = first ^ unweighted
+    return bytes(parity)
+
+
+def _xa_form1_checksums(sector):
+    # CD-ROM XA uses a zeroed sector address for ECC. ECMA-130 and ECMA-168 Annex C.
+    if (len(sector) != RAW_CD_SECTOR_SIZE or sector[:12] != CD_SYNC or sector[15] != 2
+            or sector[18] & 0x20 or sector[16:20] != sector[20:24]):
+        raise PatchError("An edited sector is not CD-ROM XA Form 1")
+    payload = sector[16:XA_CHECKSUM_OFFSET]
+    edc = 0
+    for value in payload:
+        edc = (edc >> 8) ^ CD_CRC_TABLE[(edc ^ value) & 0xFF]
+    checksum = edc.to_bytes(4, "little")
+    encoded = b"\x00" * 4 + payload + checksum
+    p_parity = _ecc_parity(encoded, 86, 24, 2, 86)
+    q_parity = _ecc_parity(encoded + p_parity, 52, 43, 86, 88)
+    return checksum + p_parity + q_parity
+
+
+def repair_xa_form1_checksums(source, target):
+    """Recalculate EDC and ECC for edited sectors of a reviewed XA data track."""
+    if source.stat().st_size != target.stat().st_size:
+        raise PatchError("XA checksum repair requires the original track length")
+    with source.open("rb") as original, target.open("r+b") as modified:
+        while sector := modified.read(RAW_CD_SECTOR_SIZE):
+            if sector == original.read(RAW_CD_SECTOR_SIZE):
+                continue
+            checksums = _xa_form1_checksums(sector)
+            if checksums != sector[XA_CHECKSUM_OFFSET:]:
+                modified.seek(-len(checksums), os.SEEK_CUR)
+                modified.write(checksums)
 
 
 def _apply_ppf3(image, patch):

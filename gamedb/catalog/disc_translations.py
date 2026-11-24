@@ -19,7 +19,7 @@ from gamedb.database import create_database_engine
 from gamedb.exo.media import location_path
 from gamedb.vgm.archives import safe_member
 
-from .disc_patching import DISC_PATCH_EXTENSIONS, patch_disc_image
+from .disc_patching import DISC_PATCH_EXTENSIONS, patch_disc_image, repair_xa_form1_checksums
 from .retail import retail_tables, write_report
 from .translations import (
     DISC_LAYOUT, DISC_PATCH_ARCHIVES, INDEX_NAME, INDEX_VERSION, RHDN_CONSOLES, _archive_members, _dump_rows,
@@ -138,14 +138,19 @@ def _build_disc(bundle, members, disc, patches, work, rom_root):
         }:
             raise ValueError(f"The cue sheet does not describe the archived tracks: {cue['name']}")
         temporary = Path(directory)
-        original = temporary / "source.bin"
+        source_image = temporary / "source.bin"
+        repair_checksums = disc.get("repairXaChecksums", False)
+        original = source_image
         with original.open("wb") as output:
             _write_verified(source, output, data)
         for index, step in enumerate(disc["patches"]):
             target = temporary / f"target-{index}.bin"
             patch_disc_image(original, patches[step], target)
-            original.unlink()
+            if index or not repair_checksums:
+                original.unlink()
             original = target
+        if repair_checksums:
+            repair_xa_form1_checksums(source_image, original)
         if _digest(original, "sha1") != disc["outputSha1"]:
             raise ValueError(f"Patched disc checksum differs from the reviewed build: {disc['archiveName']}")
         for member in members:
