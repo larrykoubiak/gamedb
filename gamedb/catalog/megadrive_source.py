@@ -5,7 +5,9 @@ import re
 
 from bs4 import BeautifulSoup
 
-from gamedb.catalog.retail_source import cell_text, credit_for_market, regional_credits, remove_citations, title_and_aliases
+from gamedb.catalog.retail_source import (
+    add_reviewed_releases, cell_text, credit_for_market, regional_credits, remove_citations, title_and_aliases,
+)
 
 
 REVISION = 1386009379
@@ -88,7 +90,7 @@ def _compilations(soup, reviews, games):
         }
 
 
-def parse_retail_list(html, compilations=None, *, expected_rows=878):
+def parse_retail_list(html, compilations=None, *, additional_releases=(), expected_rows=878):
     soup = BeautifulSoup(html, "html.parser")
     about = soup.html.get("about", "") if soup.html else ""
     revision = re.search(rb'"wgRevisionId"\s*:\s*(\d+)', html)
@@ -142,6 +144,8 @@ def parse_retail_list(html, compilations=None, *, expected_rows=878):
     if compilations:
         _compilations(soup, compilations, games)
 
+    add_reviewed_releases(games, additional_releases, markets=MARKETS,
+                          game_key=lambda title: _key("game", title), make_release=_release)
     return {
         "source": {
             "name": "Wikipedia contributors", "url": SOURCE_URL, "revision": REVISION,

@@ -4,6 +4,7 @@ import unittest
 from gamedb.catalog.megadrive import ARCHIVE_MARKETS, add_cartridge_details, cartridge_records, mame_matches
 from gamedb.catalog.megadrive_media import add_scans
 from gamedb.catalog.megadrive_source import REVISION, parse_retail_list
+from gamedb.catalog.references import SourceIndex
 from gamedb.catalog.retail import match_archives
 
 
@@ -50,6 +51,23 @@ class MegaDriveCatalogTests(unittest.TestCase):
         self.assertEqual(Counter(release["edition"] for release in game["releases"]),
                          {"Klax (Namco)": 1, "Klax (Tengen)": 2})
         self.assertEqual(len({release["key"] for release in game["releases"]}), 3)
+
+    def test_reviewed_edition_keeps_each_manual_with_its_release(self):
+        html = source("""
+          <tr><th>Example</th><td>Studio</td><td>Sega</td>
+              <td>Unreleased</td><td>1993</td><td>Unreleased</td><td></td></tr>
+        """)
+        evidence = {"name": "Box scan", "url": "https://example.com/scan"}
+        catalog = parse_retail_list(html, additional_releases=[{
+            "game": "Example", "edition": "Local Edition", "market": "NA", "source": evidence,
+        }], expected_rows=1)
+        add_scans(catalog, [], SourceIndex("https://example.com/manuals", b"""
+            <a href="example.pdf">Example</a><a href="local.pdf">Local Edition</a>
+        """))
+        base, local = catalog["games"][0]["releases"]
+        self.assertNotEqual(base["key"], local["key"])
+        self.assertEqual(local["date"], "")
+        self.assertEqual([r["manuals"][0]["name"] for r in (base, local)], ["Example", "Local Edition"])
 
     def test_mame_title_link_requires_verified_content_and_preserves_market_of_product_codes(self):
         catalog = parse_retail_list(source("""

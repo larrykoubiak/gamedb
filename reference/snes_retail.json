@@ -2,6 +2,76 @@
   "editions": {
     "Final Fantasy IV Easy Type": "Final Fantasy IV"
   },
+  "additionalReleases": [
+    {
+      "game": "Arcade's Greatest Hits: The Atari Collection 1",
+      "market": "PAL",
+      "date": "1998",
+      "source": { "name": "SNES Central", "url": "https://snescentral.com/cart.php?id=0212&num=1" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/snes.xml", "record": "arcadeac" }
+    },
+    {
+      "game": "George Foreman's KO Boxing",
+      "market": "PAL",
+      "date": "1992",
+      "source": { "name": "SNES Central", "url": "https://snescentral.com/cart.php?id=0365&num=1" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/snes.xml", "record": "georgeko" }
+    },
+    {
+      "game": "Knights of the Round",
+      "market": "PAL",
+      "date": "1994",
+      "source": { "name": "SNES Central", "url": "https://snescentral.com/cart.php?id=0432&num=1" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/snes.xml", "record": "kotr" }
+    },
+    {
+      "game": "Power Rangers Zeo: Battle Racers",
+      "market": "PAL",
+      "date": "1996",
+      "source": { "name": "SNES Central", "url": "https://snescentral.com/cart.php?id=0559&num=1" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/snes.xml", "record": "przeo" }
+    },
+    {
+      "game": "RPG Tsukūru 2",
+      "newGame": true,
+      "market": "JP",
+      "date": "January 31, 1996",
+      "developer": "Kuusou Kagaku",
+      "publisher": "ASCII Entertainment",
+      "source": { "name": "Gaming Alexandria", "url": "https://www.gamingalexandria.com/wp/2026/05/rpg-tsukuru-2/" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/snes.xml", "record": "rpgtsuk2" }
+    },
+    {
+      "game": "RPG Tsukūru: Super Dante",
+      "newGame": true,
+      "market": "JP",
+      "date": "March 31, 1995",
+      "developer": "Kuusou Kagaku",
+      "publisher": "ASCII Entertainment",
+      "source": { "name": "Gaming Alexandria", "url": "https://www.gamingalexandria.com/wp/2019/07/rpg-tsukuru-super-dante/" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/snes.xml", "record": "rpgtsuku" }
+    },
+    {
+      "game": "Todd McFarlane's Spawn: The Video Game",
+      "market": "PAL",
+      "source": { "name": "SNES Central", "url": "https://snescentral.com/cart.php?id=0625&num=1" }
+    },
+    {
+      "game": "Troy Aikman NFL Football",
+      "market": "PAL",
+      "date": "1994",
+      "source": { "name": "SNES Central", "url": "https://snescentral.com/cart.php?id=0729&num=1" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/snes.xml", "record": "troyaik" }
+    },
+    {
+      "game": "Ys V: Lost Kefin, Kingdom of Sand",
+      "edition": "Ys V Expert",
+      "market": "JP",
+      "date": "March 22, 1996",
+      "publisher": "Koei",
+      "source": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/snes.xml", "record": "ys5ex" }
+    }
+  ],
   "metadata": {
     "Angelique: Premium Box": {
       "description": {
@@ -56,6 +126,9 @@
         }
       },
       "marketIds": {"JP": 455522, "NA": 3281, "PAL": 3281}
+    },
+    "Ys V: Lost Kefin, Kingdom of Sand": {
+      "descriptionId": 21139
     }
   },
   "artworkRegions": [

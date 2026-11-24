@@ -138,7 +138,8 @@ def seed_megadrive(html_path=None, report=None, *, publish_catalog=False, source
     reference = json.loads(REFERENCE.read_text(encoding="utf-8"))
     directory = sources or SOURCE_DIRECTORY
     html = html_path.read_bytes() if html_path else read_index(directory / "retail.html", HTML_URL).content
-    catalog = parse_retail_list(html, reference.get("compilations"))
+    catalog = parse_retail_list(html, reference.get("compilations"),
+                                additional_releases=reference.get("additionalReleases", ()))
     aliases = retail.read_aliases(REFERENCE.with_name("megadrive_retail_aliases.csv"))
     indexes, warnings = _indexes(directory)
     categories = sega_retro_scans(directory)

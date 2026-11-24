@@ -71,6 +71,19 @@ class SoundtrackTests(unittest.TestCase):
         ]), {"titles": 1, "sets": 1})
         self.assertEqual([(link["key"], link["releases"]) for link in game["soundtrackLinks"]], [("fixed", ["jp"])])
 
+    def test_an_explicit_rip_alias_links_a_local_edition_of_the_same_game(self):
+        game = {"releases": [
+            release("base", "Game", "Game", "NA", "1993", "original"),
+            release("local", "Local Title", "Local Title", "NA", "1993", "localized"),
+        ]}
+        other = {"releases": [release("other", "Another Game", "Another Game", "NA", "1993", "other")]}
+        rip = {**album("rip", "Game", "Game [Local Title] [SNES]", "original"),
+               "aliases": ["Local Title", "Another Game"]}
+        self.assertEqual(link_soundtracks({"games": [game, other]}, [rip]), {"titles": 1, "sets": 1})
+        self.assertEqual(game["soundtrackLinks"][0]["releases"], ["base", "local"])
+        self.assertEqual(game["soundtrackLinks"][0]["titleMatches"], ["base", "local"])
+        self.assertNotIn("soundtrackLinks", other)
+
     def test_playstation_demo_alias_does_not_link_to_a_retail_release(self):
         game = {"releases": [release("na", "Game", "Game", "NA", "1999", "base")]}
         retail = {**album("retail", "Game", "psf/g/Game (1999)[PS1]", "base"), "platform": PLAYSTATION}

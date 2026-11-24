@@ -67,6 +67,26 @@ class SnesRetailTests(unittest.TestCase):
         self.assertNotIn("reviewNote", japan)
         self.assertEqual(pal["reviewNote"], {"text": note["text"], "url": note["url"]})
 
+    def test_reviewed_additions_keep_the_original_game_and_release_keys(self):
+        html = source_document(row("Example", "1993"))
+        evidence = {"name": "Cartridge scan", "url": "https://example.com/scan"}
+        edition = {"game": "Example", "edition": "Example Expert", "market": "JP", "date": "1994",
+                   "publisher": "Second Publisher", "source": evidence}
+        extra_game = {"game": "Extra Game", "newGame": True, "market": "JP", "date": "1995", "source": evidence}
+        baseline, = parse_retail_list(html, {}, expected_rows=1)["games"]
+        game, extra = parse_retail_list(
+            html, {}, additional_releases=[edition, extra_game], expected_rows=1,
+        )["games"]
+        base_release, expert = game["releases"]
+        self.assertEqual((game["key"], base_release), (baseline["key"], baseline["releases"][0]))
+        self.assertNotEqual(base_release["key"], expert["key"])
+        self.assertEqual((expert["edition"], expert["channel"], expert["source"]),
+                         ("Example Expert", "cartridge", evidence))
+        self.assertEqual(expert["creditSources"], {"publisher": evidence})
+        self.assertEqual(extra["releases"][0]["edition"], "Extra Game")
+        with self.assertRaisesRegex(ValueError, "Invalid reviewed retail release"):
+            parse_retail_list(html, {}, additional_releases=[edition, edition], expected_rows=1)
+
     def test_bracketed_language_link_does_not_become_part_of_the_title(self):
         title = ('<i>Chaos Seed</i> <span about="#mwt1">[</span><span about="#mwt1">'
                  '<a rel="mw:WikiLink/Interwiki">ja</a></span><span about="#mwt1">]</span>')

@@ -107,6 +107,260 @@
       }
     }
   },
+  "additionalReleases": [
+    {
+      "game": "Alex Kidd in the Enchanted Castle",
+      "title": "Alex Kidd: Cheongong Maseong",
+      "market": "KR",
+      "date": "1990",
+      "publisher": "Samsung",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:AKitEC_MD_KR_Box.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "alexkiddk" }
+    },
+    {
+      "game": "Beyond Oasis",
+      "title": "The Story of Thor",
+      "market": "KR",
+      "date": "1995",
+      "publisher": "Samsung",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:StoryofThor_MD_KR_Box.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "thork" }
+    },
+    {
+      "game": "Body Count",
+      "market": "BR",
+      "date": "1994",
+      "publisher": "Tec Toy",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:Bodycount_md_br_cover.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "bodycob" }
+    },
+    {
+      "game": "Boxing Legends of the Ring",
+      "edition": "Chávez II",
+      "market": "NA",
+      "date": "1993",
+      "publisher": "American Softworks",
+      "source": { "name": "Juegomania", "url": "https://www.juegomania.org/genesis/133/chavez-ii-genesis-133" }
+    },
+    {
+      "game": "Classic Collection",
+      "newGame": true,
+      "market": "PAL",
+      "date": "1996",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "source": { "name": "Centre for Computing History", "url": "https://www.computinghistory.org.uk/det/52488/Classic-Collection/" }
+    },
+    {
+      "game": "Crusader of Centy",
+      "title": "Shin Changsegi: Ragnacenty",
+      "market": "KR",
+      "date": "1994",
+      "publisher": "Samsung",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:Ragnacenty_MD_KR_cover.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "ragnacenk" }
+    },
+    {
+      "game": "Dahna: Megami Tanjō",
+      "title": "Dahna",
+      "market": "KR",
+      "date": "1992",
+      "publisher": "Samsung",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:Dahna_MD_KR_Box.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "dahnak" }
+    },
+    {
+      "game": "Donald in Maui Mallard",
+      "market": "BR",
+      "date": "1997",
+      "publisher": "Tec Toy",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:MauiMallard_MD_BR_Box.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "mauimallb" }
+    },
+    {
+      "game": "Dr. Robotnik's Mean Bean Machine",
+      "edition": "Dongguri Techi Jakjeon",
+      "market": "KR",
+      "publisher": "Samsung",
+      "source": { "name": "Scanlines16", "url": "https://scanlines16.com/en/collection/donggeuri-toechijakjeon-puyo-puyo-kor/" }
+    },
+    {
+      "game": "FIFA Soccer 95",
+      "market": "KR",
+      "date": "1994",
+      "publisher": "Samsung",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:FIFA95_MD_KR_Box.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "fifa95k" }
+    },
+    {
+      "game": "Light Crusader",
+      "market": "KR",
+      "date": "1995",
+      "publisher": "Samsung",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:LightCrusader_MD_KR_Box.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "lightcrsk" }
+    },
+    {
+      "game": "Mazin Saga: Mutant Fighter",
+      "title": "Mazin Saga",
+      "market": "AS",
+      "date": "1993",
+      "publisher": "Sega",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:MazinSaga_MD_AS_Box.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "mazinsaga" }
+    },
+    {
+      "game": "Mystic Defender",
+      "edition": "On Dal Jang Goon",
+      "market": "KR",
+      "publisher": "Samsung",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:MysticDefender_MD_KR_Box.jpg" }
+    },
+    {
+      "game": "NBA Live 95",
+      "market": "KR",
+      "date": "1994",
+      "publisher": "Samsung",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:NBALive95_MD_KR_cover.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "nbaliv95k" }
+    },
+    {
+      "game": "NHL 95",
+      "edition": "Elitserien 95",
+      "market": "PAL",
+      "date": "1994",
+      "developer": "Neurostone",
+      "publisher": "Electronic Arts",
+      "source": { "name": "Martin Lindell", "url": "https://martinlindell.com/2017/09/16/elitserien-pa-mega-drive/" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "elit95" }
+    },
+    {
+      "game": "NHL 96",
+      "edition": "Elitserien 96",
+      "market": "PAL",
+      "date": "1995",
+      "developer": "Neurostone",
+      "publisher": "Electronic Arts",
+      "source": { "name": "Martin Lindell", "url": "https://martinlindell.com/2017/09/16/elitserien-pa-mega-drive/" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "elit96" }
+    },
+    {
+      "game": "Phantasy Star II",
+      "market": "BR",
+      "publisher": "Tec Toy",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:PhantasyStarII_MD_BR_cover.jpg" }
+    },
+    {
+      "game": "Phantasy Star III: Generations of Doom",
+      "market": "BR",
+      "date": "1998",
+      "publisher": "Tec Toy",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:PhantasyStarIII_MD_BR_cover.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "pstar3br" }
+    },
+    {
+      "game": "Sega Top Five",
+      "newGame": true,
+      "market": "BR",
+      "date": "1997",
+      "developer": "Sega",
+      "publisher": "Tec Toy",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:SegaTop5_MD_BR_Box.jpg" }
+    },
+    {
+      "game": "Shadowrun",
+      "market": "AS",
+      "publisher": "Sega",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:ShadowRun_MD_AS_Box.jpg" }
+    },
+    {
+      "game": "Shining in the Darkness",
+      "market": "BR",
+      "date": "1994",
+      "publisher": "Tec Toy",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:SitD_MD_BR_Box.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "shindarkbr" }
+    },
+    {
+      "game": "Sport Games",
+      "newGame": true,
+      "market": "BR",
+      "date": "1998",
+      "publisher": "Tec Toy",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:SportGames_MD_BR_Box.jpg" }
+    },
+    {
+      "game": "Streets of Rage 3",
+      "market": "AS",
+      "publisher": "Sega",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:Sor3_md_as_cover.jpg" }
+    },
+    {
+      "game": "Sub-Terrania",
+      "market": "AS",
+      "publisher": "Sega",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:SubTerrania_MD_Asia_Box.jpg" }
+    },
+    {
+      "game": "The Smurfs",
+      "market": "BR",
+      "date": "1995",
+      "publisher": "Tec Toy",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:Smurfs_MD_BR_Box.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "smurfs_br" }
+    },
+    {
+      "game": "Tiny Toon Adventures: Buster's Hidden Treasure",
+      "title": "Tiny Toon Adventures",
+      "market": "KR",
+      "date": "1993",
+      "publisher": "Samsung",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:TTA_MD_KR_cover.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "ttoonbhtk" }
+    },
+    {
+      "game": "ToeJam & Earl in Panic on Funkotron",
+      "market": "AS",
+      "publisher": "Sega",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:TJEPoF_MD_AS_cover.jpg" }
+    },
+    {
+      "game": "Virtua Fighter 2",
+      "market": "KR",
+      "date": "1997",
+      "publisher": "Samsung",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:VirtuaFighter2_MD_KR_Box_Alt.jpg" },
+      "dateSource": { "name": "MAME", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/megadriv.xml", "record": "vf2k" }
+    },
+    {
+      "game": "Where in the World Is Carmen Sandiego?",
+      "market": "BR",
+      "publisher": "Tec Toy",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:WitWiCS_MD_BR_front.jpg" }
+    },
+    {
+      "game": "Where in Time is Carmen Sandiego?",
+      "market": "BR",
+      "publisher": "Tec Toy",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:WhereinTime_MD_BR_cover.jpg" }
+    },
+    {
+      "game": "World Heroes",
+      "market": "AS",
+      "publisher": "Sega",
+      "source": { "name": "Sega Retro", "url": "https://segaretro.org/File:WorldHeroes_MD_AS_Box.jpg" }
+    }
+  ],
+  "metadata": {
+    "NHL 95": {
+      "descriptionId": 662,
+      "editionIds": { "NHL 95": 662 }
+    },
+    "NHL 96": {
+      "descriptionId": 663,
+      "editionIds": { "NHL 96": 663 }
+    }
+  },
   "scanTitles": {
     "HardBall III": ["Al Michaels Announces HardBall III"],
     "Spider-Man": ["Spider-Man (Acclaim)"],

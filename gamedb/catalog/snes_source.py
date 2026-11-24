@@ -1,13 +1,12 @@
 """Read the pinned SNES retail list as games and market-specific releases."""
 
-from collections import defaultdict
 from hashlib import sha256
 import re
 from urllib.request import Request, urlopen
 
 from bs4 import BeautifulSoup
 
-from gamedb.catalog.retail_source import cell_text, known_credit, remove_citations, title_and_aliases
+from gamedb.catalog.retail_source import add_reviewed_releases, cell_text, known_credit, remove_citations, title_and_aliases
 
 
 REVISION = 1384177751
@@ -36,6 +35,12 @@ def _key(*parts):
     return sha256("\x00".join(("gamedb:snes-retail", *parts)).encode()).hexdigest()[:32]
 
 
+def _release(title, market, date, names, *, edition=None, channel="cartridge"):
+    edition = edition or title
+    return {"key": _key("release", edition, market), "edition": edition, "market": market,
+            "titles": names, "date": date, "channel": channel}
+
+
 def _market_titles(title, aliases, market):
     regional = [alias["title"] for alias in aliases if market in alias["regions"]]
     local = [alias["title"] for alias in aliases if MARKET_COUNTRIES[market].intersection(alias["regions"])]
@@ -51,7 +56,7 @@ def _channel(cell, notes):
     return "cartridge"
 
 
-def parse_retail_list(html, edition_parents, *, release_notes=(), expected_rows=1749):
+def parse_retail_list(html, edition_parents, *, release_notes=(), additional_releases=(), expected_rows=1749):
     soup = BeautifulSoup(html, "html.parser")
     about = soup.html.get("about", "") if soup.html else ""
     revision = re.search(rb'"wgRevisionId"\s*:\s*(\d+)', html)
@@ -88,11 +93,8 @@ def parse_retail_list(html, edition_parents, *, release_notes=(), expected_rows=
                 continue
             if not re.search(r"\b(?:19|20)\d{2}\b", date):
                 raise ValueError(f"Unrecognized {market} release date for {title!r}: {date!r}")
-            release = {
-                "key": _key("release", title, market), "edition": title, "market": market,
-                "titles": _market_titles(title, aliases, market), "date": date,
-                "channel": channel if market == "JP" else "cartridge",
-            }
+            release = _release(title, market, date, _market_titles(title, aliases, market),
+                               channel=channel if market == "JP" else "cartridge")
             if review := review_notes.pop((title, market), None):
                 release["reviewNote"] = review
             releases.append(release)
@@ -114,6 +116,8 @@ def parse_retail_list(html, edition_parents, *, release_notes=(), expected_rows=
     if review_notes:
         raise ValueError(f"SNES review notes refer to unknown releases {list(review_notes)}")
 
+    add_reviewed_releases(games, additional_releases, markets=MARKETS,
+                          game_key=lambda title: _key("game", title), make_release=_release)
     return {
         "source": {
             "name": "Wikipedia contributors", "url": SOURCE_URL, "revision": REVISION,

@@ -136,13 +136,20 @@ def link_soundtracks(catalog, albums, *, reviews=None, aliases=(), system=SNES, 
         if not (edition := _choose_title(choices, primary, editions, album)):
             continue
         game, releases = editions[edition]
+        matched_titles = {_title_key(title)}
+        if album["collection"] == COLLECTION and not review:
+            siblings = [release for other in sorted(alternative - {edition}) if editions[other][0] is game
+                        for release in editions[other][1]]
+            if siblings:
+                releases = releases + siblings
+                matched_titles.update(map(_title_key, album["aliases"]))
         region_tags = _rip_markets(album)
         eligible = [release for release in releases if _compatible_release(release, version, region_tags, platform)]
         if eligible:
             game.setdefault("soundtrackLinks", []).append({
                 "key": album["key"], "title": album["title"], "collection": album["collection"],
                 "releases": [release["key"] for release in eligible],
-                "titleMatches": [release["key"] for release in eligible if _title_key(title) in _release_names(release)],
+                "titleMatches": [release["key"] for release in eligible if matched_titles & _release_names(release)],
             })
 
     return {

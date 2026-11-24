@@ -23,7 +23,8 @@ def seed_snes(html_path=None, report=None, *, publish_catalog=False, sources=Non
     reference = json.loads((directory / "snes_retail.json").read_text(encoding="utf-8"))
     reviewed = read_aliases(directory / "snes_retail_aliases.csv")
     verified = reference["verifiedArchives"]
-    catalog = parse_retail_list(load_html(html_path), reference["editions"], release_notes=reference["releaseNotes"])
+    catalog = parse_retail_list(load_html(html_path), reference["editions"], release_notes=reference["releaseNotes"],
+                                additional_releases=reference.get("additionalReleases", ()))
     sources = sources or PROJECT_ROOT / "data/media/cache/snes-retail"
     indexes, warnings = reference_indexes(sources)
     indexes["ga-sfc-references.json"] = SourceIndex(

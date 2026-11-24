@@ -1,4 +1,4 @@
-"""Read shared title and credit markup in Wikipedia retail lists."""
+"""Read shared retail list markup and apply reviewed release additions."""
 
 import re
 
@@ -39,6 +39,38 @@ def credit_for_market(credits, regions=()):
     local = [name for name, codes in credits if codes & scope]
     general = [name for name, codes in credits if not codes or "WW" in codes]
     return " / ".join(dict.fromkeys(local or general))
+
+
+def add_reviewed_releases(games, additions, *, markets, game_key, make_release):
+    edition_markets = {(release["edition"], release["market"]) for game in games.values()
+                       for release in game["releases"]}
+    for review in additions:
+        title, market = review["game"], review["market"]
+        edition = review.get("edition", title)
+        new_game = title not in games
+        if (new_game != review.get("newGame", False) or market not in markets
+                or (edition, market) in edition_markets):
+            raise ValueError(f"Invalid reviewed retail release {title!r} / {edition!r} ({market})")
+
+        credits = {field: review[field] for field in ("developer", "publisher") if review.get(field)}
+        if new_game:
+            games[title] = {"key": game_key(title), "title": title, "aliases": [], "releases": [],
+                            "developer": credits.get("developer", ""), "publisher": credits.get("publisher", "")}
+        game = games[title]
+        local_title = review.get("title", edition)
+        source = review["source"]
+        release = make_release(title, market, review.get("date", ""), [local_title], edition=edition)
+        release.update(credits, source=source)
+        if date_source := review.get("dateSource"):
+            release["dateSource"] = date_source
+        if credits:
+            release["creditSources"] = dict.fromkeys(credits, source)
+        game["releases"].append(release)
+        edition_markets.add((edition, market))
+
+        alias = {"title": local_title, "regions": [market]}
+        if local_title != title and alias not in game["aliases"]:
+            game["aliases"].append(alias)
 
 
 def title_and_aliases(cell):

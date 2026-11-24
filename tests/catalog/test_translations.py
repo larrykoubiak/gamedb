@@ -73,6 +73,9 @@ class TranslationsTests(unittest.TestCase):
             matches, _ = _package_matches(row, path, bases)
             self.assertEqual([(base["sha1"], layout, evidence) for _, _, _, base, layout, evidence in matches],
                              [(first.sha1, "headered", "documented")])
+            self.assertEqual(_documented_input(
+                f"BEFORE:\nSHA-1: {first.sha1}\nAFTER:\nSHA-1: {second.sha1}", "headerless",
+            ), {("sha1", first.sha1)})
             self.assertIsNone(bases.match(_documented_input(
                 f"SHA1: {first.sha1}\nCRC32: {second.crc32}", "headerless",
             )))

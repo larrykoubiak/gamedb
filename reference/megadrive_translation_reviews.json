@@ -110,7 +110,9 @@
         "Dahna - Goddess' Birth (E).ips": "426470b8b2ad5b2f1e1537860809ca2a13e650068de58d9fc02d7a24791db74c"
       },
       "evidence": "RHDN gives the IPS file checksums. Applying it to the verified Japanese ROM reproduces the Libretro translated ROM SHA-1.",
-      "outputSha1": "24310b49b02abce85d8270c95871451206785408",
+      "outputSha1": {
+        "Dahna - Goddess' Birth (E).ips": "24310b49b02abce85d8270c95871451206785408"
+      },
       "source": "https://github.com/libretro/libretro-database/blob/f89f09cbe13f9f7863ecf20d0ebf2c5ce53be029/metadat/hacks/Sega%20-%20Mega%20Drive%20-%20Genesis.dat#L41-L46"
     },
     "2790": {

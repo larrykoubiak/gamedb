@@ -306,11 +306,12 @@ def _scope_launchbox(connection, catalog, reviewed, *, platforms=LAUNCHBOX_PLATF
                 if not known_credit(game[field]) and known_credit(value):
                     game[field] = value
                     game.setdefault("creditSources", {})[field] = source
+        market_ids, edition_ids = review.get("marketIds", {}), review.get("editionIds", {})
         for release in game["releases"]:
             keys = release_ids[release["key"]]
-            regional_id = review.get("marketIds", {}).get(release["market"])
-            if regional_id in games:
-                release_ids[release["key"]] = keys = {regional_id}
+            reviewed_id = edition_ids.get(release["edition"], market_ids.get(release["market"]))
+            if reviewed_id in games:
+                release_ids[release["key"]] = keys = {reviewed_id}
             elif not keys and len(known) == 1:
                 keys.update(known)
             chosen.update(keys)

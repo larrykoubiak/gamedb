@@ -96,12 +96,18 @@ def add_scans(catalog, categories, press=None, aliases=(), *, reviewed_titles=No
     claims, by_edition = defaultdict(set), {}
     releases = {}
     for game in catalog["games"]:
+        local_claims, game_claims = defaultdict(set), defaultdict(set)
+        game_names = {game["title"], *(alias["title"] for alias in game["aliases"])}
         for release in game["releases"]:
             key, market = release["key"], release["market"]
             releases[key] = release
             by_edition[release["edition"], market] = key
-            for label in {game["title"], *release_names(release), *(a["title"] for a in game["aliases"])}:
-                claims[market, _compact_title(label)].add(key)
+            for label in release_names(release):
+                local_claims[market, _compact_title(label)].add(key)
+            for label in game_names:
+                game_claims[market, _compact_title(label)].add(key)
+        for scope, keys in (game_claims | local_claims).items():
+            claims[scope].update(keys)
     for alias in aliases:
         if key := by_edition.get((alias["edition"], alias["market"])):
             claims[alias["market"], _compact_title(alias["archiveTitle"])].add(key)

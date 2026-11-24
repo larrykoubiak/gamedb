@@ -49,7 +49,7 @@ HASH_CLAIM = re.compile(
     r"^[ \t]*(?:(file/rom|rom/file|file|rom|original|source|input)[ \t]+)?(sha[- ]?1|md5|crc(?:[- ]?32)?)"
     r"(?:[ \t]*[:=][ \t]*|[ \t]+)(?:0x)?([0-9a-f]+(?:[ \t]+[0-9a-f]{4,16}\b)*)\b", re.I | re.M,
 )
-OUTPUT_LABEL = re.compile(r"^[ \t]*(?:patched\b|after patching\b|output\b)", re.I | re.M)
+OUTPUT_LABEL = re.compile(r"^[ \t]*(?:patched\b|after patching\b|after[ \t]*:|output\b)", re.I | re.M)
 
 
 def _literal(token):

@@ -131,9 +131,10 @@ python -m gamedb sync-megadrive-manuals --catalog data/logs/megadrive-retail/mat
 Open **Mega Drive retail catalog** in Explorer or go to `/catalog/megadrive`.
 The seed matches region and verified No-Intro content, using MAME cartridge
 hashes and the reviewed aliases in `reference/megadrive_retail_aliases.csv`.
-`reference/megadrive_retail.json` records reviewed compilations and exact
-archive exceptions for original retail cartridges, including some independently
-published releases. The report measures release and asset coverage by market.
+`reference/megadrive_retail.json` records reviewed compilations, supplemental
+retail releases, and exact archive exceptions for original cartridges,
+including some independently published releases. The report measures release
+and asset coverage by market.
 Omit `--publish` to generate a report in a read-only database transaction.
 
 The regional pages show LaunchBox descriptions and artwork, Libretro images
@@ -250,7 +251,8 @@ the [MAME SuFami Turbo list](https://github.com/mamedev/mame/blob/mame0285/hash/
 and locally imported LaunchBox and Libretro metadata.
 [`reference/snes_retail_aliases.csv`](reference/snes_retail_aliases.csv) records regional spellings and alternate titles.
 [`reference/snes_retail.json`](reference/snes_retail.json) records edition groupings,
-reviewed content signatures, and notes for disputed regional releases.
+supplemental retail releases, reviewed content signatures, and notes for
+disputed regional releases.
 
 The same command enriches game and release pages. LaunchBox supplies descriptions.
 The regional pages show release dates, publisher and developer credits, product
