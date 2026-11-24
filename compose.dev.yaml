@@ -24,6 +24,7 @@ services:
       - ./data/media/snes-translations:/app/data/media/snes-translations:ro
       - ./data/media/megadrive-translations:/app/data/media/megadrive-translations:ro
       - ./data/media/nes-translations:/app/data/media/nes-translations:ro
+      - ./data/media/playstation-translations:/app/data/media/playstation-translations:ro
       - "${GAMEDB_VGM_HOST_ROOT:-/mnt/synology/music/VGM/By Format}:/mnt/vgm:ro"
       - "${GAMEDB_SNES_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/SNES}:/mnt/snes-manuals:ro"
       - "${GAMEDB_MEGADRIVE_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Mega Drive}:/mnt/megadrive-manuals:ro"
@@ -51,5 +52,7 @@ services:
     entrypoint: ["python", "-m", "gamedb.catalog"]
     command: ["rebuild", "--plan"]
     volumes:
+      - ./data/media/playstation-translations:/app/data/media/playstation-translations
+      - /mnt/synology/roms:/mnt/synology/roms:ro
       - "${GAMEDB_VGM_HOST_ROOT:-/mnt/synology/music/VGM/By Format}:/mnt/vgm:ro"
     profiles: [tools]

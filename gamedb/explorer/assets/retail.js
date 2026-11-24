@@ -397,10 +397,28 @@ function manualCell(manuals) {
 
 function openRomDownload(translation) {
   romDownload = translation;
+  const discs = Boolean(translation.discDownloadSize);
+  document.querySelector("#snes-rom-title").textContent = discs ? "Download translated disc set" : "Download translated ROM";
+  romSubmit.textContent = discs ? "Download disc set" : "Download ROM";
   romKey.value = rememberedRomKey;
   romStatus.hidden = true;
   romDialog.showModal();
   if (rememberedRomKey) romForm.requestSubmit();
+}
+
+function submitDiscDownload(url, key) {
+  const form = element("form");
+  form.method = "post";
+  form.action = url;
+  form.hidden = true;
+  const input = element("input");
+  input.type = "hidden";
+  input.name = "key";
+  input.value = key;
+  form.append(input);
+  document.body.append(form);
+  form.submit();
+  form.remove();
 }
 
 romForm.addEventListener("submit", async event => {
@@ -408,13 +426,15 @@ romForm.addEventListener("submit", async event => {
   if (romRequest || !romDownload) return;
   const key = romKey.value.trim();
   const translation = romDownload;
+  const discs = Boolean(translation.discDownloadSize);
   const request = new AbortController();
   romRequest = request;
   romSubmit.disabled = true;
-  romStatus.textContent = "Building translated ROM…";
+  romStatus.textContent = discs ? "Preparing disc download…" : "Building translated ROM…";
   romStatus.hidden = false;
   try {
     const response = await fetch(translation.romDownloadUrl, {
+      method: discs ? "HEAD" : "GET",
       headers: {Authorization: `Bearer ${key}`},
       mode: "same-origin", redirect: "error", signal: request.signal,
     });
@@ -426,18 +446,22 @@ romForm.addEventListener("submit", async event => {
     }
     if (!response.ok) {
       const error = await response.json().catch(() => null);
-      throw new Error(error?.error || "Could not build the translated ROM.");
+      throw new Error(error?.error || (discs ? "The disc set could not be downloaded." : "Could not build the translated ROM."));
     }
-    const file = await response.blob();
-    if (request.signal.aborted) return;
-    const encoded = response.headers.get("Content-Disposition")?.match(/filename\*=UTF-8''([^;]+)/i)?.[1];
-    const name = encoded ? decodeURIComponent(encoded) : translation.filename.replace(/\.[^.]+$/, romExtension);
-    const url = URL.createObjectURL(file);
-    const link = element("a");
-    link.href = url;
-    link.download = name;
-    link.click();
-    setTimeout(() => URL.revokeObjectURL(url), 10000);
+    if (discs) {
+      submitDiscDownload(translation.romDownloadUrl, key);
+    } else {
+      const file = await response.blob();
+      if (request.signal.aborted) return;
+      const encoded = response.headers.get("Content-Disposition")?.match(/filename\*=UTF-8''([^;]+)/i)?.[1];
+      const name = encoded ? decodeURIComponent(encoded) : translation.filename.replace(/\.[^.]+$/, romExtension);
+      const url = URL.createObjectURL(file);
+      const link = element("a");
+      link.href = url;
+      link.download = name;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
+    }
     rememberedRomKey = key;
     romDialog.close();
   } catch (error) {
@@ -490,10 +514,11 @@ function translationRow(translation, columns) {
   const downloads = element("div", "", "snes-patch-downloads");
   downloads.append(link);
   if (translation.romDownloadUrl) {
-    const download = element("button", "Download ROM", "snes-text-button");
+    const label = translation.discDownloadSize ? "Download disc set" : "Download ROM";
+    const download = element("button", label, "snes-text-button");
     download.type = "button";
     download.setAttribute("aria-haspopup", "dialog");
-    download.setAttribute("aria-label", `Download ROM using ${translation.filename}`);
+    download.setAttribute("aria-label", `${label} using ${translation.filename}`);
     download.addEventListener("click", () => openRomDownload(translation));
     downloads.append(download);
   }
@@ -504,8 +529,14 @@ function translationRow(translation, columns) {
     : "";
   const info = [status, inputLayouts[translation.layout], padding].filter(Boolean).join(" · ");
   if (info) patch.append(element("small", info));
-  if (translation.sourceUrl && !translation.romDownloadUrl) {
-    patch.append(newTabLink("Patch instructions", translation.sourceUrl));
+  if (translation.discDownloadSize) {
+    const count = translation.baseDiscs.length;
+    const size = translation.discDownloadSize / (1024 ** 2);
+    patch.append(element("small", `${count} ${count === 1 ? "disc" : "discs"} · ${number.format(Math.round(size))} MiB ZIP`));
+  }
+  if (translation.sourceUrl && (translation.discDownloadSize || !translation.romDownloadUrl)) {
+    const label = translation.discDownloadSize ? "Project notes" : "Patch instructions";
+    patch.append(newTabLink(label, translation.sourceUrl));
   }
   if (translation.baseArchive) patch.append(element("small", translation.baseArchive));
   const cells = [authors, version, released, patch];

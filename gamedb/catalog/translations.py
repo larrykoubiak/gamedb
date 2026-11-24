@@ -6,6 +6,7 @@ from functools import partial
 from hashlib import sha1, sha256
 from html import unescape
 import json
+import os
 from pathlib import Path
 import re
 from stat import S_ISLNK
@@ -20,18 +21,20 @@ from libarchive.exception import ArchiveError
 from gamedb.catalog.cartridges import VERIFIED_ROM_SQL, read_verified_rom
 from gamedb.catalog.patching import PatchError, apply_translation, embedded_input, supports_patching, valid_ips
 from gamedb.catalog.retail import RETAIL_PLATFORMS, retail_tables, write_report
-from gamedb.config import PROJECT_ROOT
+from gamedb.config import PROJECT_ROOT, ProjectEnvironment
 from gamedb.database import create_database_engine
 from gamedb.vgm.archives import member_name, safe_member
 
 
-RHDN_CONSOLES = {"snes": "snes", "megadrive": "genesis", "nes": "nes"}
+RHDN_CONSOLES = {"snes": "snes", "megadrive": "genesis", "nes": "nes", "playstation": "psx"}
 TRANSLATION_ROOTS = {platform: PROJECT_ROOT / f"data/media/{platform}-translations" for platform in RHDN_CONSOLES}
 AUTHOR_REFERENCE = PROJECT_ROOT / "reference/translation_authors.json"
 REVIEW_REFERENCES = {platform: PROJECT_ROOT / f"reference/{platform}_translation_reviews.json"
                      for platform in ("megadrive", "nes")}
 INDEX_NAME = ".gamedb-translations.json"
 INDEX_VERSION = 1
+DISC_LAYOUT = "disc-set"
+DISC_PATCH_ARCHIVES = {"zip", "rar", "7z"}
 FORMATS = {"bps", "ips", "ups"}
 OTHER_PATCH_FORMATS = {"aps", "ips32", "pat", "ppf", "rup", "vcdiff", "xdelta", "xpatch"}
 SNES_LAYOUTS = {3: "headered", 4: "headerless", 5: "interleaved-headered", 6: "interleaved"}
@@ -482,6 +485,12 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
 def sync_translations(source, root, *, platform="snes", report=None):
     if source.name == RHDN_CONSOLES[platform] and source.parent.name == "translations":
         source = source.parent.parent
+    if platform == "playstation":
+        from .disc_translations import sync_disc_translations
+
+        ProjectEnvironment().load()
+        rom_root = Path(os.environ.get("GAMEDB_ROM_ROOT") or "/mnt/synology")
+        return sync_disc_translations(source, root, rom_root, platform=platform, report=report)
     database = create_database_engine()
     try:
         with database.begin() as connection:

@@ -19,7 +19,8 @@ from zipfile import BadZipFile, ZipFile
 from gamedb.catalog.manuals import manual_key
 from gamedb.catalog.patching import MAX_ROM_SIZE, apply_translation, supports_patching
 from gamedb.catalog.translations import (
-    FORMATS, INDEX_NAME as TRANSLATION_INDEX, INDEX_VERSION, MAX_PATCH_SIZE, translation_order,
+    DISC_LAYOUT, DISC_PATCH_ARCHIVES, FORMATS, INDEX_NAME as TRANSLATION_INDEX, INDEX_VERSION, MAX_PATCH_SIZE,
+    translation_order,
 )
 from gamedb.exo.media import location_path, open_location
 from gamedb.explorer.manuals import manual_location
@@ -117,8 +118,12 @@ def _read_translation_index(path, revision):
     by_signature = defaultdict(list)
     for record in document["translations"]:
         key = record["key"]
+        disc = record["layout"] == DISC_LAYOUT
+        valid_patch = (record["format"] in DISC_PATCH_ARCHIVES and record["size"] > 0) if disc else (
+            record["format"] in FORMATS and 0 < record["size"] <= MAX_PATCH_SIZE
+        )
         if (not re.fullmatch(r"[0-9a-f]{64}", key) or not re.fullmatch(r"[0-9a-f]{64}", record["sha256"])
-                or record["format"] not in FORMATS or not 0 < record["size"] <= MAX_PATCH_SIZE):
+                or not valid_patch):
             continue
         records[key] = record
         for signature in record["signatures"]:
@@ -147,6 +152,22 @@ def _translation_location(root, record):
             "member_no": 0, "sha256": record["sha256"]}
 
 
+def _disc_set_location(root, record):
+    try:
+        artifact = record["discSet"]
+        digest = artifact["sha256"]
+        if not re.fullmatch(r"[0-9a-f]{64}", digest):
+            return None
+        relative = f"discs/{digest}.zip"
+        stat = location_path(root, relative).stat()
+        if (not S_ISREG(stat.st_mode) or stat.st_size != artifact["size"]
+                or stat.st_mtime_ns != artifact["mtimeNs"]):
+            return None
+    except (KeyError, OSError, TypeError, ValueError):
+        return None
+    return {"source_path": relative, "size_bytes": stat.st_size, "mtime_ns": stat.st_mtime_ns, "member_no": 0}
+
+
 def add_local_translations(game, root, platform="snes"):
     _, by_signature = _translation_index(root)
     for release in game["releases"]:
@@ -158,12 +179,16 @@ def add_local_translations(game, root, platform="snes"):
             for record in by_signature.get(archive["signature"], ()):
                 if record["key"] in matches or not _translation_location(root, record):
                     continue
-                public = {field: value for field, value in record.items() if field != "signatures"}
+                public = {field: value for field, value in record.items() if field not in {"signatures", "discSet", "mtimeNs"}}
                 public["baseReleaseSignature"] = archive["signature"]
                 public["url"] = f"/related-media/{platform}-translation/{record['key']}"
                 if platform == "nes":
                     public["sourceUrl"] = f"https://neoromhacking.net/translationpage.php?id={record['rhdnId']}"
-                if supports_patching(record["format"], record["layout"]):
+                disc = platform == "playstation" and record["layout"] == DISC_LAYOUT
+                disc_location = _disc_set_location(root, record) if disc else None
+                if disc_location:
+                    public["discDownloadSize"] = disc_location["size_bytes"]
+                if disc_location or supports_patching(record["format"], record["layout"]):
                     public["romDownloadUrl"] = (
                         f"/api/v1/releases/{archive['signature']}/translations/{record['key']}/download"
                     )
@@ -205,15 +230,26 @@ def serve_retail_translation(handler, platform, key):
     }, force_download=True, open_media=_open_translation)
 
 
-def serve_retail_translation_rom(handler, signature, key):
+def serve_retail_translation_rom(handler, signature, key, *, disc_only=False):
     from gamedb.explorer.server import _resolve_rom_path
 
     for platform, root in handler.server.retail_translation_roots.items():
+        if disc_only and platform != "playstation":
+            continue
         records, _ = _translation_index(root)
         record = records.get(key)
         if record and signature in record["signatures"]:
             break
     else:
+        return handler.send_error(HTTPStatus.NOT_FOUND)
+    if platform == "playstation" and record["layout"] == DISC_LAYOUT:
+        location = _disc_set_location(root, record)
+        if location is None or not handler.server.repository.retail_has_archive(platform, signature):
+            return handler._json_response({"error": "The verified disc set is unavailable."}, HTTPStatus.NOT_FOUND)
+        return _serve_file(handler, key, root, {
+            "path": record["discSet"]["filename"], "revision": record["discSet"]["sha256"], "locations": [location],
+        }, force_download=True, cache_control="private, no-store")
+    if disc_only:
         return handler.send_error(HTTPStatus.NOT_FOUND)
     if not supports_patching(record["format"], record["layout"]):
         return handler._json_response({"error": "This patch requires a different ROM layout."}, HTTPStatus.CONFLICT)

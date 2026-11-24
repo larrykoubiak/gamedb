@@ -28,6 +28,7 @@ GameDB commands:
   sync-snes-translations  Match local translation patches to verified SNES retail ROMs.
   sync-megadrive-translations  Match local translation patches to verified Mega Drive retail ROMs.
   sync-nes-translations        Match local translation patches to verified NES retail ROMs.
+  sync-playstation-translations  Build translations for verified US PlayStation discs.
   promote-corrections  Move reviewed working corrections into reference.
   serve        Run the explorer.
 
@@ -84,7 +85,7 @@ def main(argv=None) -> int:
     if command in {
         "rebuild", "seed-snes", "seed-megadrive", "seed-nes", "seed-playstation", "sync-snes-manuals",
         "sync-megadrive-manuals", "sync-nes-manuals", "sync-playstation-manuals", "sync-snes-translations",
-        "sync-megadrive-translations", "sync-nes-translations", "promote-corrections",
+        "sync-megadrive-translations", "sync-nes-translations", "sync-playstation-translations", "promote-corrections",
     }:
         from gamedb.catalog.cli import main as catalog_main
 

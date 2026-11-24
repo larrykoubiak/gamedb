@@ -1,0 +1,231 @@
+{
+  "projects": {
+    "2931": {
+      "archive": "[2931]MX6_ESP.rar",
+      "archiveSha256": "1b267aca7437c72b49f277e59a1b59a49ddc7eb89cffd5516f25ace860819930",
+      "discs": [
+        {
+          "archiveName": "Mega Man X6 (USA) (Rev 1).zip",
+          "inputSha1": "d4f7e08371027a87a3bf13311db5a4c56733f4ea",
+          "outputSha1": "fa4ecb76d51fb77eadd12b08703886a4b2f7b2eb",
+          "patches": [
+            "MX6_ESP_ver2.1.xdelta"
+          ]
+        }
+      ]
+    },
+    "4153": {
+      "archive": "[4153]Megaman_X6_patch_V1_20_04_2016.zip",
+      "archiveSha256": "08acd1da1227bf8464189fddbb6bab1dcff230718df2329aa7f96c49bacf9b3e",
+      "authors": [
+        "Sephiroth16",
+        "Jericho",
+        "RyleFury",
+        "Zero Maverick"
+      ],
+      "discs": [
+        {
+          "archiveName": "Mega Man X6 (USA) (Rev 1).zip",
+          "inputSha1": "d4f7e08371027a87a3bf13311db5a4c56733f4ea",
+          "outputSha1": "de869d5d17ea5183844c7a1a3ba8f2bb05bb4328",
+          "patches": [
+            "PROG/237B6FEDDD1A88E86AB1CDDC8822F03F.xdelta",
+            "PROG/FF50AF80533A1A9A3A9FE6FBE4A8560F.xdelta"
+          ]
+        }
+      ]
+    },
+    "5682": {
+      "archive": "Final Fantasy VII Steam Translation for PS1 v1.02b (NTSC-U).zip",
+      "archivePage": "https://www.mediafire.com/file/2xavtjvpfoay4ar/file",
+      "archiveSha256": "37c92ad8844db75ef9bb727a0bba5d83ffeb269b3137f23632084e211c867c3b",
+      "authors": [
+        "ProjectXsent",
+        "MysticLord"
+      ],
+      "discs": [
+        {
+          "archiveName": "Final Fantasy VII (USA) (Disc 1).zip",
+          "inputSha1": "1f890164ac4daeba07def64bb5b636bfaa1d3ab9",
+          "outputSha1": "fb375ddb30f0901df70932043c0fc85997b2ba85",
+          "patches": [
+            "FF7 Steam Disc 1 PS1.xdelta"
+          ]
+        },
+        {
+          "archiveName": "Final Fantasy VII (USA) (Disc 2).zip",
+          "inputSha1": "9b8456c661722b032e24f2596840b06ea5cbdd46",
+          "outputSha1": "eb8f985d6684ba51b017420a30a3133d66055e34",
+          "patches": [
+            "FF7 Steam Disc 2 PS1.xdelta"
+          ]
+        },
+        {
+          "archiveName": "Final Fantasy VII (USA) (Disc 3).zip",
+          "inputSha1": "0d9614fcd1288bbff2c53e690c6f626d3ac28fd0",
+          "outputSha1": "c3ee05f59693f0e7e70e5542279ee63e0f177d03",
+          "patches": [
+            "FF7 Steam Disc 3 PS1.xdelta"
+          ]
+        }
+      ],
+      "evidence": "The author’s v1.02b archive includes the Disc 2 fixes listed under v1.01b4.",
+      "releasedAt": 1786752000,
+      "sourceUrl": "https://forums.qhimm.com/index.php?topic=20289.0",
+      "version": "1.02b"
+    },
+    "6059": {
+      "archive": "[6059]Ready 2 Rumble Boxing - Round 2 (Portuguese) (PSX Version).rar",
+      "archiveSha256": "e04de9226bb31ef5e9e24aaa2de73b859ff77c637a797c16dfdb181aa424fa5b",
+      "authors": [
+        "MichaelNA2005"
+      ],
+      "discs": [
+        {
+          "archiveName": "Ready 2 Rumble Boxing - Round 2 (USA).zip",
+          "inputSha1": "93381780b483dbeca1a46241935e3ccebeebed35",
+          "outputSha1": "f3b8081b5a05a92e38a482f1d55b0a4929e40293",
+          "patches": [
+            "Ready 2 Rumble Boxing - Round 2 (Portuguese) (PSX Version).xdelta"
+          ]
+        }
+      ]
+    },
+    "6076": {
+      "archive": "[6076]Breath of Fire IV [T+Ger_1.00_Twisted Phoenix].7z",
+      "archiveSha256": "1c3716c62c6c629f4633e4d763994d2450d2f3a8e58d964724580566fc4b215d",
+      "authors": [
+        "Twisted Phoenix Game Translation"
+      ],
+      "discs": [
+        {
+          "archiveName": "Breath of Fire IV (USA).zip",
+          "inputSha1": "24be71b32aeb52a930bc08dccda5db61e904de8a",
+          "outputSha1": "f4ed9ece8c46c4c8c74e0900cf19594f9c711cf6",
+          "patches": [
+            "Breath of Fire IV [T+Ger_1.00_Twisted Phoenix]/BoF4/BOF4 Beta v4 TAO.xdelta"
+          ]
+        }
+      ]
+    },
+    "6318": {
+      "archive": "[6318]juggernaut_v1.0_spanish_translation.zip",
+      "archiveSha256": "484efb0917cfd276061c09e72ad07cc5bc056596ab0a3dea7429b1dc32916b18",
+      "authors": [
+        "Mr. Nobody"
+      ],
+      "discs": [
+        {
+          "archiveName": "Juggernaut (USA) (Disc 1).zip",
+          "inputSha1": "2a6502e52187503afd22582641b06a2c710a09db",
+          "outputSha1": "6b4e70db2de4a2510f431ce5c9e5a3c395b079d1",
+          "patches": [
+            "cd1/patch_data/juggernaut_disco_1_esp.xdelta3"
+          ]
+        },
+        {
+          "archiveName": "Juggernaut (USA) (Disc 2).zip",
+          "inputSha1": "eb4b2bbfb3155b9d128b32b76f838b0d4ae41660",
+          "outputSha1": "8570ecef3404826f6aefb0b008b72069931ab016",
+          "patches": [
+            "cd2/patch_data/juggernaut_disco_2_esp.xdelta3"
+          ]
+        },
+        {
+          "archiveName": "Juggernaut (USA) (Disc 3).zip",
+          "inputSha1": "474edeaf49176581d8a48862ed05e7edb5595530",
+          "outputSha1": "b72dcc5a6117e4c8a71f02a01e3ddda3bea693e9",
+          "patches": [
+            "cd3/patch_data/juggernaut_disco_3_esp.xdelta3"
+          ]
+        }
+      ]
+    },
+    "6540": {
+      "archive": "[6540]Megaman_L_v1.0C.rar",
+      "archiveSha256": "760851bb442e6a06739d3ce9e6ef738959b8faa69ee2ec83cfa90c3c06445298",
+      "discs": [
+        {
+          "archiveName": "Mega Man Legends (USA).zip",
+          "inputSha1": "904489e2e8d06e1c44e60d8925329f9472b2d037",
+          "outputSha1": "9f2a0863ecb68ef87d98146991a76cfed9ac1e25",
+          "patches": [
+            "MegaMan_L_v1.0c.xdelta"
+          ]
+        }
+      ]
+    },
+    "6550": {
+      "archive": "[6550]EGITA1.0.rar",
+      "archiveSha256": "5ebfe4c304853435db59c6761fc0bbf045be9304968bc581609c208370e3f09c",
+      "discs": [
+        {
+          "archiveName": "Elemental Gearbolt (USA).zip",
+          "inputSha1": "c3cd7720515020b55a10f680ab47a7bca1e2fc34",
+          "outputSha1": "afcd4b6f06eb45897289ab17ae4d5ce25f462428",
+          "patches": [
+            "EGITA1.0.xdelta"
+          ]
+        }
+      ]
+    },
+    "6625": {
+      "archive": "[6625]CDVPPTBR0.99.zip",
+      "archiveSha256": "139696632fc27ca0adf70b492a7187397b8d0ddf75fa4971ec81453fea3a3cac",
+      "discs": [
+        {
+          "archiveName": "Countdown Vampires (USA) (Disc 1).zip",
+          "inputSha1": "5ee460a19a8ea606e8d058f216383133615a95d3",
+          "outputSha1": "2b88d59ba0ad392be561efb1b2bd9b6916ba5e0a",
+          "patches": [
+            "CDVPPTBR0.99/cd1ptbr.xdelta"
+          ]
+        },
+        {
+          "archiveName": "Countdown Vampires (USA) (Disc 2).zip",
+          "inputSha1": "23900a207a6a5dd3aa6880ecafd71e00270082ce",
+          "outputSha1": "99ff53d5e8b5fcbbb09896ff8340db8df59abc1a",
+          "patches": [
+            "CDVPPTBR0.99/cd2ptbr.xdelta"
+          ]
+        }
+      ],
+      "evidence": "The author specifies SLUS-01199 and lists a different Disc 2 SHA-1. On the verified Redump disc, all 3,704 changed sectors retain their original headers and pass error-detection checks.",
+      "sourceUrl": "https://www.romhacking.net.br/index.php?topic=2119.0"
+    },
+    "7114": {
+      "archive": "[7114]Threads of Fate ESP NTSC V1.0.rar",
+      "archiveSha256": "22bbdfab548cb5f15ed78e8990a58877fdea8136fce054f2520618b72f31687b",
+      "authors": [
+        "Marcelo Amor"
+      ],
+      "discs": [
+        {
+          "archiveName": "Threads of Fate (USA).zip",
+          "inputSha1": "375e4a344c4feef969bef6042ff1f90e350fa5d5",
+          "outputSha1": "ac14654d4f080422712ee0b1b8fc723ad0abdf90",
+          "patches": [
+            "Hilos del Destino.ppf"
+          ]
+        }
+      ]
+    },
+    "7300": {
+      "archive": "[7300]Diablo ESP v1.01.zip",
+      "archiveSha256": "d1b8abe5d150e31a7ad7a882d44a44346e164e56958d945b6c20aec9408aaa1e",
+      "authors": [
+        "Marcelo Amor"
+      ],
+      "discs": [
+        {
+          "archiveName": "Diablo (USA) (En,Fr,De,Sv).zip",
+          "inputSha1": "5e3669fd2920b953f9a164426e044c21e109fd26",
+          "outputSha1": "88f969cfe7f2ce71574ff8dfb781de19c49364c0",
+          "patches": [
+            "DIABLO ESP V1.01 NTSC 006 19.ppf"
+          ]
+        }
+      ]
+    }
+  }
+}

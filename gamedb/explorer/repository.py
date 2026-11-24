@@ -333,6 +333,21 @@ class CatalogRepository:
         table, _, _ = retail_tables(platform)
         return self._read_listing(f"SELECT to_jsonb(to_regclass('{table}') IS NOT NULL)")
 
+    def retail_has_archive(self, platform, signature):
+        if not self.retail_available(platform):
+            return False
+        table, _, _ = retail_tables(platform)
+        return self._read_listing(f"""
+            SELECT to_jsonb(EXISTS (
+                SELECT FROM {table}
+                WHERE singleton AND jsonb_path_exists(
+                    payload,
+                    '$.games[*].releases[*] ? (@.status == "matched").archives[*] ? (@.signature == $signature)',
+                    jsonb_build_object('signature', {quote_sql_text(signature)}::text)
+                )
+            ))
+        """)
+
     def retail_translation_base(self, platform, signature, sha1):
         """Locate the exact official revision linked to a translation."""
         if not self.retail_available(platform):

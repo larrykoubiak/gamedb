@@ -89,6 +89,29 @@ Both Compose configurations mount the manual library read-only. Set
 `GAMEDB_PLAYSTATION_MANUAL_HOST_ROOT` to use a different host directory or
 `GAMEDB_PLAYSTATION_MANUAL_ROOT` when running Explorer directly.
 
+Import translations after publishing the PlayStation catalog. The builder uses
+`xdelta3`, reads PPF3 patches directly, and uses 7-Zip for archive members that
+libarchive cannot read. [Reviewed disc builds](reference/playstation_translation_reviews.json)
+
+```sh
+python -m gamedb sync-playstation-translations \
+  --source /mnt/synology/backup2/romhacking.net-20240801/translations/psx \
+  --report data/logs/playstation-retail/translations.json
+```
+
+For the first import, save the author's Final Fantasy VII v1.02b ZIP in
+`data/media/playstation-translations/sources` under its original filename.
+Later imports reuse the checked patch archive in the library. [Final Fantasy VII patch release](https://www.mediafire.com/file/2xavtjvpfoay4ar/file)
+
+**Has translation** filters the retail catalog. Each matching release links
+the patch archive and a **Download disc set** button that uses the GameDB API
+key. GameDB checks the original and patched tracks against pinned SHA-1
+values, keeps the original CUE sheets and audio tracks, and includes
+`Play.m3u` in multi-disc ZIPs. The library lives in
+`data/media/playstation-translations` and both Compose configurations mount it
+read-only in Explorer. Set `GAMEDB_PLAYSTATION_TRANSLATION_ROOT` when running
+Explorer with a library in another directory.
+
 ## Mega Drive retail catalog
 
 The Mega Drive catalog uses a pinned licensed game list and reviewed

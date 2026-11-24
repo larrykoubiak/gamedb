@@ -36,6 +36,10 @@ RUN apt-get update \
 
 FROM catalog-runtime AS catalog-builder
 
+RUN apt-get update \
+    && apt-get install --yes --no-install-recommends xdelta3 7zip \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY requirements-catalog.txt /app/requirements-catalog.txt
 RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
 

@@ -432,6 +432,8 @@ class ExplorerHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):  # noqa: N802 - BaseHTTPRequestHandler API
         parsed = urlparse(self.path)
+        if translation := RETAIL_TRANSLATION_DOWNLOAD.fullmatch(parsed.path):
+            return self._disc_translation_post(translation[1], translation[2])
         if parsed.path != "/api/software-corrections":
             return self.send_error(HTTPStatus.NOT_FOUND)
         if not self.server.corrections_enabled:
@@ -472,6 +474,25 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 {"error": _database_error(error.stderr or error.stdout)},
                 HTTPStatus.INTERNAL_SERVER_ERROR,
             )
+
+    def _disc_translation_post(self, signature, key):
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+            if not 0 < length <= 16_384 or self.headers.get_content_type() != "application/x-www-form-urlencoded":
+                raise ValueError("Invalid download form")
+            form = parse_qs(self.rfile.read(length).decode("ascii"), strict_parsing=True, max_num_fields=1)
+            token, = form["key"]
+        except (KeyError, ValueError):
+            return self._json_response({"error": "Invalid download form."}, HTTPStatus.BAD_REQUEST)
+        if not _api_authorized(f"Bearer {token}", self.server.api_key):
+            return self._unauthorized_response()
+        try:
+            return serve_retail_translation_rom(self, signature, key, disc_only=True)
+        except SQLAlchemyError as error:
+            message = _database_error(str(getattr(error, "orig", error)))
+        except subprocess.CalledProcessError as error:
+            message = _database_error(error.stderr or error.stdout)
+        return self._json_response({"error": message}, HTTPStatus.INTERNAL_SERVER_ERROR)
 
     def _json_response(self, payload, status=HTTPStatus.OK):
         body = json.dumps(payload, ensure_ascii=False).encode("utf-8")

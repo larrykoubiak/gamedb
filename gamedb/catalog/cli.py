@@ -77,6 +77,10 @@ def main(argv=None) -> int:
     nes_translations.add_argument("--source", required=True, type=Path, help="RHDN backup root or translations/nes directory")
     nes_translations.add_argument("--root", type=Path, help="Local patch library (default: data/media/nes-translations)")
     nes_translations.add_argument("--report", type=Path, help="Write an audit of packages that could not be matched")
+    ps_translations = commands.add_parser("sync-playstation-translations", help="Build reviewed US PlayStation translations")
+    ps_translations.add_argument("--source", required=True, type=Path, help="RHDN backup root or translations/psx directory")
+    ps_translations.add_argument("--root", type=Path, help="Local patch and disc library (default: data/media/playstation-translations)")
+    ps_translations.add_argument("--report", type=Path, help="Write the list of verified builds and failures")
     promote = commands.add_parser("promote-corrections")
     promote.add_argument(
         "--reference",
@@ -157,18 +161,20 @@ def main(argv=None) -> int:
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return int(bool(result["failures"]))
 
-    if args.command in {"sync-snes-translations", "sync-megadrive-translations", "sync-nes-translations"}:
+    if args.command in {"sync-snes-translations", "sync-megadrive-translations", "sync-nes-translations",
+                        "sync-playstation-translations"}:
         from .translations import TRANSLATION_ROOTS, sync_translations
 
         platform = args.command.split("-")[1]
-        command = {"snes": translations, "megadrive": md_translations, "nes": nes_translations}[platform]
+        command = {"snes": translations, "megadrive": md_translations, "nes": nes_translations,
+                   "playstation": ps_translations}[platform]
         try:
             result = sync_translations(args.source, args.root or TRANSLATION_ROOTS[platform],
                                        platform=platform, report=getattr(args, "report", None))
         except (OSError, ValueError) as error:
             command.error(str(error))
         print(json.dumps(result, indent=2, ensure_ascii=False))
-        return 0
+        return int(bool(result.get("failures")))
 
     if args.command == "promote-corrections":
         from gamedb.database import create_database_engine
