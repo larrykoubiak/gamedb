@@ -1,6 +1,7 @@
 import unittest
 
 from gamedb.catalog.soundtracks import SNES, link_soundtracks
+from gamedb.vgm.inventory import PLAYSTATION
 from gamedb.vgm.joshw import COLLECTION
 
 
@@ -20,7 +21,7 @@ def album(key, title, label, target=None):
     }
 
 
-class SnesSoundtrackTests(unittest.TestCase):
+class SoundtrackTests(unittest.TestCase):
     def test_release_date_resolves_two_games_named_casper(self):
         japanese = {"releases": [release("jp", "Casper (Japan)", "Casper", "JP", "March 14, 1997", "shared")]}
         western = {"releases": [release("na", "Casper", "Casper", "NA", "December 1996", "shared")]}
@@ -69,3 +70,11 @@ class SnesSoundtrackTests(unittest.TestCase):
             album("wrong-version", "Game (v1.2)", "Game (v1.2) (1993)[JP][SNES]"),
         ]), {"titles": 1, "sets": 1})
         self.assertEqual([(link["key"], link["releases"]) for link in game["soundtrackLinks"]], [("fixed", ["jp"])])
+
+    def test_playstation_demo_alias_does_not_link_to_a_retail_release(self):
+        game = {"releases": [release("na", "Game", "Game", "NA", "1999", "base")]}
+        retail = {**album("retail", "Game", "psf/g/Game (1999)[PS1]", "base"), "platform": PLAYSTATION}
+        demo = {**album("demo", "Game", "psf/g/Game [Euro Demo 37] (1999)[PS1]", "base"), "platform": PLAYSTATION}
+        result = link_soundtracks({"games": [game]}, [demo, retail], system=PLAYSTATION, secondary_platform=None)
+        self.assertEqual(result, {"titles": 1, "sets": 1})
+        self.assertEqual([link["key"] for link in game["soundtrackLinks"]], ["retail"])

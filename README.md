@@ -489,7 +489,8 @@ Add `--link-existing` to reuse files from `The PlayStation Music Collection PSF`
 whose name, size, and revision match the index. It creates hard links under
 `JoshW/psf`. The PlayStation catalog and Almanac prefer the JoshW copy when it
 covers the same release. The importer reads PSF and XA tracks from the
-archives and keeps PSF libraries needed for playback. [JoshW PlayStation archive](https://psf.joshw.info/)
+archives and keeps PSF libraries needed for playback. Game pages also offer
+the original archives for sets in other formats. [JoshW PlayStation archive](https://psf.joshw.info/)
 
 Add `--publish` to atomically replace the VGM inventory. In Compose the catalog
 builder sees the share at `/mnt/vgm`.

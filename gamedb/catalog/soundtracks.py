@@ -14,6 +14,7 @@ from gamedb.vgm.matching import reviewed_titles, spelling_key
 SNES = ("Nintendo", "Super Nintendo Entertainment System")
 SUFAMI = ("Nintendo", "Sufami Turbo")
 RIP_DATE = re.compile(r"\(((?:19|20)\d{2}(?:-\d{2}){0,2})\)")
+PLAYSTATION_PREVIEW = re.compile(r"\b(?:demo|preview|prototype|trial|taikenban|sampler|homebrew|unlicensed)\b", re.I)
 RIP_MARKETS = {"JP": "JP", "JPN": "JP", "US": "NA", "USA": "NA", "EU": "PAL", "EUR": "PAL", "PAL": "PAL",
                "BR": "BR", "KR": "KR"}
 
@@ -27,8 +28,11 @@ RETAIL_ALBUMS = text("""
     )
     AND EXISTS (
         SELECT FROM vgm.asset asset
-        WHERE asset.soundtrack_key = album.key AND asset.detail->>'kind' = 'track'
-          AND asset.detail->>'format' = ANY(CAST(:formats AS text[]))
+        WHERE asset.soundtrack_key = album.key AND (
+            (asset.detail->>'kind' = 'track' AND asset.detail->>'format' = ANY(CAST(:formats AS text[])))
+            OR (asset.detail->>'kind' = 'archive' AND album.collection = :joshw_collection
+                AND starts_with(album.source_name, CAST(:joshw_archive_prefix AS text)))
+        )
     )
     ORDER BY album.collection, album.source_name, album.key
 """)
@@ -117,6 +121,8 @@ def link_soundtracks(catalog, albums, *, reviews=None, aliases=(), system=SNES, 
         review = reviews.get((album["collection"], album["source_name"]))
         if ((review and not review["catalog_title"]) or album["status"] == "review" or EDITION.search(title)
                 or (album["collection"] == COLLECTION and album["source_name"] in fixed)
+                or (album["collection"] == COLLECTION and album["source_name"].startswith("psf/")
+                    and PLAYSTATION_PREVIEW.search(album["source_name"]))
                 or title.casefold().endswith(" (game genie)")
                 or re.search(r"\[(?:mod|hack|unl)\]", album["source_name"], re.I)):
             continue
@@ -146,13 +152,14 @@ def link_soundtracks(catalog, albums, *, reviews=None, aliases=(), system=SNES, 
 
 
 def add_soundtracks(connection, catalog, aliases=(), *,
-                    platform=SNES, secondary_platform=SUFAMI, formats=("spc",)):
+                    platform=SNES, secondary_platform=SUFAMI, formats=("spc",), joshw_archive_bucket=None):
     present = connection.execute(text("""
         SELECT to_regclass('vgm.soundtrack') IS NOT NULL AND to_regclass('vgm.asset') IS NOT NULL
     """)).scalar_one()
     albums = list(connection.execute(RETAIL_ALBUMS, {
         "platform": list(platform), "secondary_platform": list(secondary_platform) if secondary_platform else None,
-        "formats": list(formats),
+        "formats": list(formats), "joshw_collection": COLLECTION,
+        "joshw_archive_prefix": f"{joshw_archive_bucket}/" if joshw_archive_bucket else None,
     }).mappings()) if present else []
     return link_soundtracks(catalog, albums, reviews=reviewed_titles(), aliases=aliases, system=platform,
                             secondary_platform=secondary_platform)

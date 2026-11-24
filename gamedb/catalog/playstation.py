@@ -169,6 +169,7 @@ def seed_playstation(report=None, *, publish_catalog=False, sources=None):
             catalog["summary"]["soundtracks"] = add_soundtracks(
                 connection, catalog, platform=SYSTEM, secondary_platform=None,
                 formats=sorted(SOUNDTRACK_FORMATS),
+                joshw_archive_bucket="psf",
                 aliases=[{"edition": item["edition"], "title": item["archiveTitle"]} for item in aliases],
             )
             if publish_catalog:
