@@ -1,4 +1,4 @@
-"""Fetch the current JoshW cartridge and handheld collections onto the VGM share."""
+"""Refresh the supported JoshW soundtrack collections on the VGM share."""
 
 import argparse
 import json
@@ -9,12 +9,13 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from http.client import HTTPSConnection, HTTPException
 from pathlib import Path
+from stat import S_ISREG
 from tempfile import NamedTemporaryFile
 from time import sleep
 from urllib.parse import quote
 from urllib.request import urlopen
 
-from .joshw import COLLECTION, DOMAINS, INDEX_URL, parse_path, platform, superseded_sources
+from .joshw import COLLECTION, DOMAINS, INDEX_URL, PSF_COLLECTION, parse_path, platform, superseded_sources
 
 
 def packages(index):
@@ -47,11 +48,42 @@ def packages(index):
     return buckets
 
 
+def same_version(path, size, revision):
+    try:
+        stat = path.lstat()
+    except FileNotFoundError:
+        return False
+    return S_ISREG(stat.st_mode) and stat.st_size == size and stat.st_mtime == revision
+
+
+def package_destination(root, domain, path):
+    destination = root / domain / path
+    if destination.is_symlink() or not destination.resolve().is_relative_to(root):
+        raise ValueError(f"Invalid JoshW destination: {destination}")
+    return destination
+
+
+def link_playstation_packages(root, entries):
+    """Reuse archives from the flat PSF collection that match the current index revision."""
+    legacy = root.parent / PSF_COLLECTION
+    linked = 0
+    for path, size, revision in entries:
+        destination = package_destination(root, "psf", path)
+        source = legacy / path.name
+        if destination.exists() or not same_version(source, size, revision):
+            continue
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            destination.hardlink_to(source)
+        except FileExistsError:
+            continue
+        linked += 1
+    return linked
+
+
 def fetch_file(connection, path, size, revision, destination):
-    if destination.is_file():
-        stat = destination.stat()
-        if stat.st_size == size and stat.st_mtime == revision:
-            return False
+    if same_version(destination, size, revision):
+        return False
     connection.request("GET", "/" + quote(path.as_posix()), headers={"User-Agent": "GameDB VGM import"})
     with connection.getresponse() as response:
         if response.status != 200:
@@ -84,9 +116,7 @@ def fetch_bucket(root, domain, entries):
     downloaded = failed = 0
     try:
         for number, (path, size, revision) in enumerate(entries, 1):
-            destination = root / domain / path
-            if destination.is_symlink() or not destination.resolve().is_relative_to(root):
-                raise ValueError(f"Invalid JoshW destination: {destination}")
+            destination = package_destination(root, domain, path)
             for attempt in range(3):
                 try:
                     if fetch_file(connection, path, size, revision, destination):
@@ -115,30 +145,41 @@ def main(argv=None):
     parser.add_argument("--root", type=Path, required=True, help="existing VGM library root")
     parser.add_argument("--index", type=Path, help="use a saved HCS64 index")
     parser.add_argument("--bucket", action="append", help="limit the scope to an index subdomain")
-    parser.add_argument("--download", action="store_true", help="write the packages onto the share")
+    action = parser.add_mutually_exclusive_group()
+    action.add_argument("--download", action="store_true", help="write the packages onto the share")
+    action.add_argument("--link-existing", action="store_true", help="hard-link matching local PSF archives into JoshW")
     args = parser.parse_args(argv)
+    buckets = args.bucket or (["psf"] if args.link_existing else [])
+    if args.link_existing and set(buckets) != {"psf"}:
+        parser.error("--link-existing reuses PlayStation archives in bucket psf")
     if args.index:
         index = json.loads(args.index.read_bytes())
     else:
         with urlopen(INDEX_URL, timeout=30) as response:
             index = json.load(response)
     selected = packages(index)
-    if not selected:
-        parser.error("no cartridge or handheld downloads found in the HCS64 index")
-    if args.bucket:
-        unknown = set(args.bucket) - selected.keys()
+    if buckets:
+        unknown = set(buckets) - selected.keys()
         if unknown:
             parser.error(f"unsupported JoshW buckets: {', '.join(sorted(unknown))}")
-        selected = {domain: selected[domain] for domain in dict.fromkeys(args.bucket)}
+        selected = {domain: selected[domain] for domain in dict.fromkeys(buckets)}
+    else:
+        selected.pop("psf", None)
+    if not selected:
+        parser.error("no supported downloads found in the HCS64 index")
     for domain, entries in selected.items():
         print(f"{domain}: {len(entries)} files, {sum(size for _, size, _ in entries):,} bytes", flush=True)
-    if not args.download:
+    if not (args.download or args.link_existing):
         return 0
     if not args.root.is_dir():
         parser.error(f"VGM root is unavailable: {args.root}")
     collection = args.root.resolve() / COLLECTION
     if collection.is_symlink():
         parser.error(f"JoshW folder is a symbolic link: {collection}")
+    if args.link_existing:
+        linked = link_playstation_packages(collection, selected["psf"])
+        print(f"psf: {linked} existing archives linked", flush=True)
+        return 0
     with ThreadPoolExecutor(max_workers=2) as workers:
         results = [workers.submit(fetch_bucket, collection, domain, entries)
                    for domain, entries in selected.items()]

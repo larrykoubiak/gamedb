@@ -5,6 +5,7 @@ from pathlib import PurePosixPath
 
 
 COLLECTION = "JoshW"
+PSF_COLLECTION = "The PlayStation Music Collection PSF"
 INDEX_URL = "https://vgm.hcs64.com/index-clean.json"
 DEFAULT_SYSTEMS = {
     "spc": ("Nintendo", "Super Nintendo Entertainment System"),
@@ -13,6 +14,7 @@ DEFAULT_SYSTEMS = {
     "usf": ("Nintendo", "Nintendo 64"),
     "gsf": ("Nintendo", "Game Boy Advance"),
     "2sf": ("Nintendo", "Nintendo DS"),
+    "psf": ("Sony", "PlayStation"),
 }
 CARTRIDGES = {
     "smd": {"smd": ("Sega", "Mega Drive"), "32x": ("Sega", "32X"), "pico": ("Sega", "Pico")},
@@ -35,6 +37,7 @@ PLATFORM_NOTES = {
     "2sf": {"nds", "dsi", "dsiware", "ncsf"}, "smd": {*CARTRIDGES["smd"], "scd"},
     "hes": {*CARTRIDGES["hes"], "tcd", "pc-fx", "pc-fxga"}, "wsr": set(CARTRIDGES["wsr"]),
     "kss": {"gg", "sms", "sg-1000"}, "cdi": {"jaguar", "amiga", "cd32", "cdtv"},
+    "psf": {"ps1", "psx", "psf"},
 }
 OTHER_NOTES = {"a", "ab", "alt", "en", "eu", "fixed", "jp", "mod", "rr", "tagged", "us", "ut", "z0", "z1"}
 
@@ -113,6 +116,20 @@ def title_revision(title):
 def superseded_sources(names):
     """Find the exact source filenames replaced by an upstream fix."""
     return {original for name in names if (original := FIX_LABEL.sub("", name)) != name}
+
+
+def prefer_playstation_sources(albums):
+    """Prefer the matching JoshW archive when it covers the same releases."""
+    upstream = {}
+    for album in albums:
+        if (album["collection"] == COLLECTION and album["sourceName"].startswith("psf/")
+                and any(asset["kind"] == "track" for asset in album["assets"])):
+            name = album["sourceName"]
+            upstream.setdefault(PurePosixPath(name).name, set()).update(album.get("releases", ()))
+    return [album for album in albums
+            if album["collection"] != PSF_COLLECTION
+            or (name := album["sourceName"]) not in upstream
+            or not set(album.get("releases", ())).issubset(upstream[name])]
 
 
 def supports_version(system, version, facts):

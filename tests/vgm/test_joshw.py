@@ -1,3 +1,4 @@
+import os
 import tempfile
 import unittest
 from collections import defaultdict
@@ -7,10 +8,10 @@ from unittest.mock import patch
 from libarchive import file_writer
 
 from gamedb.vgm.archives import open_vgm_location
-from gamedb.vgm.fetch_joshw import packages
+from gamedb.vgm.fetch_joshw import link_playstation_packages, packages
 from gamedb.vgm.importer import resolve
 from gamedb.vgm.inventory import Soundtrack, scan
-from gamedb.vgm.joshw import DEFAULT_SYSTEMS, soundtrack_name
+from gamedb.vgm.joshw import DEFAULT_SYSTEMS, PSF_COLLECTION, prefer_playstation_sources, soundtrack_name
 from gamedb.vgm.matching import TitleIndex
 from gamedb.vgm.tags import add_track_tags
 
@@ -46,6 +47,35 @@ class JoshWTests(unittest.TestCase):
                  for version, fix in (("1.0", ""), ("1.0", " [fixed]"), ("1.2", ""))]
         index = [{"sd": "usf", "nm": name, "sz": 256, "md": "2026-11-17 10:47"} for name in names]
         self.assertEqual([str(path) for path, _, _ in packages(index)["usf"]], names[1:])
+
+    def test_playstation_archives_reuse_the_indexed_version(self):
+        name = "t/Test Game (2000)(Studio)[PS1].7z"
+        entries = packages([{"sd": "psf", "nm": name, "sz": 7, "md": "2018-11-20 17:57"}])["psf"]
+        path, _, revision = entries[0]
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            legacy = root / PSF_COLLECTION / path.name
+            legacy.parent.mkdir()
+            legacy.write_bytes(b"archive")
+            os.utime(legacy, (revision - 60, revision - 60))
+            self.assertEqual(link_playstation_packages(root / "JoshW", entries), 0)
+            os.utime(legacy, (revision, revision))
+            self.assertEqual(link_playstation_packages(root / "JoshW", entries), 1)
+            self.assertTrue((root / "JoshW" / "psf" / path).samefile(legacy))
+            self.assertEqual(link_playstation_packages(root / "JoshW", entries), 0)
+            self.assertEqual(DEFAULT_SYSTEMS["psf"], ("Sony", "PlayStation"))
+
+    def test_preferred_playstation_source_covers_the_same_release(self):
+        name = "Test Game (2000)(Studio)[PS1]"
+        legacy = {"collection": PSF_COLLECTION, "sourceName": name, "releases": ["us"],
+                  "assets": [{"kind": "track", "format": "xa"}]}
+        joshw = {**legacy, "collection": "JoshW", "sourceName": f"psf/t/{name}"}
+        other = {**legacy, "sourceName": "Test Game (Alternate)"}
+        self.assertEqual(prefer_playstation_sources([joshw, legacy, other]), [joshw, other])
+        japanese = {**joshw, "releases": ["jp"]}
+        self.assertEqual(prefer_playstation_sources([japanese, legacy]), [japanese, legacy])
+        unavailable = {**joshw, "assets": [{"kind": "archive"}]}
+        self.assertEqual(prefer_playstation_sources([unavailable, legacy]), [unavailable, legacy])
 
     def test_versioned_title_matches_both_catalog_names_only_with_revision_evidence(self):
         system = DEFAULT_SYSTEMS["usf"]

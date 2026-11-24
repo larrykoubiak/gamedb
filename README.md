@@ -484,6 +484,13 @@ names when the catalog supports the same soundtrack version, and disc titles
 when a rip's notes confirm the name and platform. Ambiguous titles stay in
 the matching report.
 
+Use `--bucket psf` to select the PlayStation archive.
+Add `--link-existing` to reuse files from `The PlayStation Music Collection PSF`
+whose name, size, and revision match the index. It creates hard links under
+`JoshW/psf`. The PlayStation catalog and Almanac prefer the JoshW copy when it
+covers the same release. The importer reads PSF and XA tracks from the
+archives and keeps PSF libraries needed for playback. [JoshW PlayStation archive](https://psf.joshw.info/)
+
 Add `--publish` to atomically replace the VGM inventory. In Compose the catalog
 builder sees the share at `/mnt/vgm`.
 

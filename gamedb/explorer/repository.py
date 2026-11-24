@@ -13,7 +13,9 @@ from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.config import PROJECT_ROOT
 from gamedb.explorer.cache import JsonResponseCache
 from gamedb.explorer.retail_metadata import add_release_metadata
-from gamedb.vgm.joshw import COLLECTION as JOSHW_COLLECTION, superseded_sources, supports_version, title_revision
+from gamedb.vgm.joshw import (
+    COLLECTION as JOSHW_COLLECTION, prefer_playstation_sources, superseded_sources, supports_version, title_revision,
+)
 
 
 QUERY_DIRECTORY = PROJECT_ROOT / "sql" / "queries" / "explorer"
@@ -82,6 +84,7 @@ def select_soundtracks(platform, release_versions, albums):
                                     if album["collection"] == JOSHW_COLLECTION)
     available = [album for album in available if album["collection"] != JOSHW_COLLECTION
                  or album["sourceName"] not in superseded]
+    available = prefer_playstation_sources(available)
     matching = []
     for album in available:
         _, version = title_revision(album["title"])
@@ -582,8 +585,10 @@ class CatalogRepository:
         albums = self._read_listing(SqlTemplate(QUERY_DIRECTORY / "vgm_albums.sql").render(
             album_filter=f"soundtrack.key IN ({keys})",
         ))
-        return [{**album, "releases": links[album["key"]]["releases"],
-                 "titleMatches": links[album["key"]]["titleMatches"]} for album in albums if album["assets"]]
+        return prefer_playstation_sources([
+            {**album, "releases": links[album["key"]]["releases"], "titleMatches": links[album["key"]]["titleMatches"]}
+            for album in albums if album["assets"]
+        ])
 
     def vgm_asset(self, key):
         if not re.fullmatch(r"[a-f0-9]{64}", key):

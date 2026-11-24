@@ -14,7 +14,7 @@ from gamedb.launchbox.matching import literal_title_key
 
 from .amiga import AMIGA, AMIGA_CD32, AMIGA_CDTV, apply_game_notes, archived_game_alias, module_format
 from .archives import members as archive_members, safe_member
-from .joshw import COLLECTION as JOSHW_COLLECTION, platform as joshw_platform, soundtrack_name
+from .joshw import COLLECTION as JOSHW_COLLECTION, PSF_COLLECTION, platform as joshw_platform, soundtrack_name
 
 NES = ("Nintendo", "Nintendo Entertainment System")
 GB = ("Nintendo", "Game Boy")
@@ -26,7 +26,6 @@ C64 = ("Commodore", "C64")
 ST = ("Atari", "ST")
 PLAYSTATION = ("Sony", "PlayStation")
 PS2 = ("Sony", "PlayStation 2")
-PSF_COLLECTION = "The PlayStation Music Collection PSF"
 
 # A title at the root of one of these collections names a game set. Alphabet,
 # composer and disc directories in the other collections have different roles.
