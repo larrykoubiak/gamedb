@@ -1,3 +1,4 @@
+import gzip
 import subprocess
 import threading
 import unittest
@@ -5,9 +6,12 @@ from concurrent.futures import Future, ThreadPoolExecutor
 from http.client import HTTPConnection
 from http.server import ThreadingHTTPServer
 import json
+from pathlib import Path
+from tempfile import TemporaryDirectory
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
+from gamedb.catalog.translations import INDEX_NAME, INDEX_VERSION
 from gamedb.explorer.cache import JsonResponseCache
 from gamedb.explorer.repository import CatalogChanged, CatalogRepository
 from gamedb.explorer.server import ExplorerHandler, ExplorerServer
@@ -254,3 +258,95 @@ class LauncherSnapshotCacheTests(unittest.TestCase):
             finally:
                 server.shutdown()
                 thread.join()
+
+
+class RetailBrowseCacheTests(unittest.TestCase):
+    def setUp(self):
+        class QuietHandler(ExplorerHandler):
+            def log_message(self, *args):
+                pass
+
+        self.root = Path(self.enterContext(TemporaryDirectory()))
+        self.repository = Mock()
+        self.repository.retail_browse_revision.return_value = ['publication', 'metadata']
+        self.title = 'Aventure française'
+        self.repository.retail_browse.side_effect = self.browse
+        self.server = self.enterContext(ThreadingHTTPServer(('127.0.0.1', 0), QuietHandler))
+        self.server.repository = self.repository
+        self.server.retail_browse_cache = JsonResponseCache()
+        self.server.retail_translation_roots = {'snes': self.root}
+        thread = threading.Thread(target=self.server.serve_forever)
+        thread.start()
+        self.addCleanup(thread.join)
+        self.addCleanup(self.server.shutdown)
+
+    def browse(self, platform):
+        return {'source': platform, 'games': [{'title': self.title, 'releases': [
+            {'status': 'matched', 'archiveSignatures': ['signature']},
+        ]}]}
+
+    def get(self, platform='snes', **headers):
+        connection = HTTPConnection(*self.server.server_address, timeout=5)
+        try:
+            connection.request('GET', f'/api/{platform}-retail?view=browse', headers=headers)
+            response = connection.getresponse()
+            return response.status, response.headers, response.read()
+        finally:
+            connection.close()
+
+    def test_browse_variants_share_a_load_and_support_conditional_get(self):
+        status, headers, body = self.get(**{'Accept-Encoding': 'br, gzip'})
+        self.assertEqual(status, 200)
+        self.assertEqual(headers['Content-Encoding'], 'gzip')
+        self.assertEqual(headers['Vary'], 'Accept-Encoding')
+        self.assertEqual(headers['Cache-Control'], 'public, no-cache')
+        etag = headers['ETag']
+        self.assertEqual(json.loads(gzip.decompress(body))['games'][0]['title'], self.title)
+        self.assertEqual(self.get(**{'Accept-Encoding': 'gzip'})[2], body)
+
+        status, headers, identity = self.get(**{'Accept-Encoding': 'gzip;q=0, *;q=1'})
+        self.assertEqual(status, 200)
+        self.assertIsNone(headers.get('Content-Encoding'))
+        self.assertEqual(headers['ETag'], etag)
+        self.assertEqual(identity, gzip.decompress(body))
+
+        status, headers, empty = self.get(**{'If-None-Match': f'"different", {etag}'})
+        self.assertEqual((status, headers['ETag'], headers['Vary'], empty), (304, etag, 'Accept-Encoding', b''))
+        self.repository.retail_browse.assert_called_once_with('snes')
+        self.assertEqual(json.loads(self.get('nes')[2])['source'], 'nes')
+
+    def test_browse_refreshes_when_an_index_or_publication_changes(self):
+        _, headers, body = self.get()
+        self.assertEqual(json.loads(body)['games'][0]['releases'], [{'status': 'matched', 'hasTranslations': False}])
+
+        patches = self.root / 'patches'
+        patches.mkdir()
+        digest = 'a' * 64
+        (patches / f'{digest}.ips').write_bytes(b'patch')
+        (self.root / INDEX_NAME).write_text(json.dumps({
+            'version': INDEX_VERSION,
+            'translations': [{'key': 'b' * 64, 'sha256': digest, 'layout': 'rom', 'format': 'ips',
+                              'size': 5, 'signatures': ['signature']}],
+        }), encoding='utf-8')
+        status, changed, body = self.get(**{'If-None-Match': headers['ETag']})
+        self.assertEqual(status, 200)
+        self.assertNotEqual(changed['ETag'], headers['ETag'])
+        self.assertEqual(json.loads(body)['games'][0]['releases'], [{'status': 'matched', 'hasTranslations': True}])
+
+        self.repository.retail_browse_revision.return_value = ['publication', 'metadata editing']
+
+        def interrupted(platform):
+            payload = self.browse(platform)
+            self.title = 'New edition'
+            self.repository.retail_browse_revision.return_value = ['new publication', 'new metadata']
+            self.repository.retail_browse.side_effect = self.browse
+            return payload
+
+        self.repository.retail_browse.side_effect = interrupted
+        status, refreshed, body = self.get(**{'If-None-Match': changed['ETag']})
+        self.assertEqual((status, json.loads(body)['games'][0]['title']), (200, 'New edition'))
+        self.assertNotEqual(refreshed['ETag'], changed['ETag'])
+        self.assertEqual(self.repository.retail_browse.call_count, 4)
+
+        self.repository.retail_browse_revision.return_value = None
+        self.assertEqual(self.get(**{'If-None-Match': refreshed['ETag']})[0], 404)

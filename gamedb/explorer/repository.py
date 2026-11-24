@@ -414,6 +414,25 @@ class CatalogRepository:
             catalog_table=table, genres_sql=genres,
         ))
 
+    def retail_browse_revision(self, platform):
+        table, _, _ = retail_tables(platform)
+        relations = self._read_listing(f"""
+            SELECT jsonb_build_object(
+                'retail', to_regclass('{table}') IS NOT NULL,
+                'listings', to_regclass('catalog.listing_generation') IS NOT NULL
+            )
+        """)
+        if not relations["retail"]:
+            return None
+        listing_revision = (
+            "(SELECT revision FROM catalog.listing_generation WHERE singleton)"
+            if relations["listings"] else "NULL"
+        )
+        return self._read_listing(f"""
+            SELECT jsonb_build_array(published_at, {listing_revision})
+            FROM {table} WHERE singleton
+        """)
+
     def _retail_facts_available(self):
         return self._read_listing("SELECT to_jsonb(to_regclass('catalog.software_fact') IS NOT NULL)")
 

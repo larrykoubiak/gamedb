@@ -2,6 +2,7 @@
 
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+import gzip
 import hashlib
 import hmac
 import ipaddress
@@ -27,6 +28,7 @@ from gamedb.explorer.previews import ArtworkPreviewCache
 from gamedb.explorer.related_media import (
     add_local_manuals, add_local_translations, add_translation_availability, serve as serve_related_media,
     serve_retail_manual, serve_retail_manual_pages, serve_retail_translation, serve_retail_translation_rom, serve_vgm,
+    translation_index_revision,
 )
 from gamedb.explorer.repository import CatalogChanged, CatalogRepository, validate_metadata_filters
 from gamedb.launchbox.image_cache import LaunchBoxImageCache, valid_filename
@@ -194,6 +196,19 @@ def _database_error(stderr: str) -> str:
     return stderr.strip().splitlines()[-1] if stderr else "Database query failed"
 
 
+def _accepts_gzip(header):
+    weights = {}
+    for offer in header.lower().split(","):
+        coding, _, parameter = offer.partition(";")
+        _, _, value = parameter.partition("=")
+        try:
+            weights[coding.strip()] = float(value) if parameter else 1.0
+        except ValueError:
+            weights[coding.strip()] = 0.0
+    gzip_weight = weights.get("gzip", weights.get("*", 0.0))
+    return 0 < gzip_weight <= 1 and gzip_weight >= weights.get("identity", 0.0)
+
+
 class ExplorerHandler(BaseHTTPRequestHandler):
     """Translate HTTP requests into catalog and correction operations."""
 
@@ -270,13 +285,12 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return self._json_response(self.server.repository.systems(hide_rom_hacks=_hide_rom_hacks(query)))
             if retail := RETAIL_API.fullmatch(parsed.path):
                 platform = retail[1]
-                label = RETAIL_PLATFORMS[platform]
                 game_key = query["game"][0] if "game" in query else None
-                browse = query.get("view") == ["browse"]
-                catalog = self.server.repository.retail_catalog(
-                    platform, game_key=game_key, browse=browse,
-                )
+                if game_key is None and query.get("view") == ["browse"]:
+                    return self._retail_browse_response(platform)
+                catalog = self.server.repository.retail_catalog(platform, game_key=game_key)
                 if catalog is None:
+                    label = RETAIL_PLATFORMS[platform]
                     error = f"This {label} catalog entry could not be found." if game_key is not None else (
                         f"The {label} retail catalog has not been published."
                     )
@@ -287,8 +301,6 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                         add_local_translations(catalog["game"], self.server.retail_translation_roots[platform], platform)
                     if self.server.vgm_root:
                         catalog["soundtracks"] = self.server.repository.retail_soundtracks(catalog["game"])
-                elif browse and platform in self.server.retail_translation_roots:
-                    add_translation_availability(catalog["games"], self.server.retail_translation_roots[platform])
                 return self._json_response(catalog)
             if parsed.path == "/api/capabilities":
                 return self._json_response({
@@ -515,6 +527,53 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         self.end_headers()
         if self.command != "HEAD":
             self.wfile.write(body)
+
+    def _retail_browse_response(self, platform):
+        repository = self.server.repository
+        root = self.server.retail_translation_roots.get(platform)
+
+        def current_revision():
+            return repository.retail_browse_revision(platform), translation_index_revision(root)
+
+        revision = current_revision()
+        if revision[0] is None:
+            return self._json_response(
+                {"error": f"The {RETAIL_PLATFORMS[platform]} retail catalog has not been published."},
+                HTTPStatus.NOT_FOUND,
+            )
+
+        def load():
+            catalog = repository.retail_browse(platform)
+            if catalog is None:
+                raise CatalogChanged()
+            if root is not None:
+                add_translation_availability(catalog["games"], root)
+            if current_revision() != revision:
+                raise CatalogChanged()
+            return catalog
+
+        cache = self.server.retail_browse_cache
+        body = cache.get_bytes(json.dumps((platform, revision)), load)
+        tag = f'"{hashlib.sha256(body).hexdigest()}"'
+        validators = {value.strip().removeprefix("W/") for value in self.headers.get("If-None-Match", "").split(",")}
+        not_modified = tag in validators or "*" in validators
+        compressed = not not_modified and _accepts_gzip(self.headers.get("Accept-Encoding", ""))
+        if compressed:
+            body = cache.get_encoded("gzip:" + tag, lambda: gzip.compress(body, compresslevel=3, mtime=0))
+
+        self.send_response(HTTPStatus.NOT_MODIFIED if not_modified else HTTPStatus.OK)
+        self.send_header("ETag", f"W/{tag}")
+        self.send_header("Cache-Control", "public, no-cache")
+        self.send_header("Vary", "Accept-Encoding")
+        if not_modified:
+            self.end_headers()
+            return
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        if compressed:
+            self.send_header("Content-Encoding", "gzip")
+        self.end_headers()
+        self.wfile.write(body)
 
     def _catalog_response(self, system_key=None, hide_rom_hacks=False):
         repository = self.server.repository
@@ -763,6 +822,8 @@ class ExplorerServer(ThreadingHTTPServer):
         self.api_key = _api_key()
         self.rebuild_lock = threading.Lock()
         self.catalog_cache = JsonResponseCache(max_entries=128, max_bytes=128 * 1024 * 1024, ttl=None)
+        # A bounded lifetime also catches changes to files referenced by an unchanged patch index.
+        self.retail_browse_cache = JsonResponseCache(max_entries=16, max_bytes=24 * 1024 * 1024, ttl=300)
         self.corrections_enabled = _corrections_enabled()
         self.thumbnail_root = Path(os.environ.get(
             "GAMEDB_LIBRETRO_THUMBNAILS", "/data/libretro-thumbnails"

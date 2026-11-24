@@ -24,6 +24,12 @@ class JsonResponseCache:
         return json.loads(self.get_bytes(key, loader))
 
     def get_bytes(self, key, loader):
+        return self.get_encoded(key, lambda: json.dumps(
+            loader(), ensure_ascii=False, separators=(',', ':')
+        ).encode('utf-8'))
+
+    def get_encoded(self, key, loader):
+        """Cache an already encoded JSON response, including compressed variants."""
         with self._lock:
             entry = self._entries.get(key)
             if entry is not None:
@@ -43,7 +49,7 @@ class JsonResponseCache:
         if not owner:
             return pending.result()
         try:
-            body = json.dumps(loader(), ensure_ascii=False, separators=(',', ':')).encode('utf-8')
+            body = loader()
             size = len(body) + len(key.encode('utf-8'))
             with self._lock:
                 if generation == self._generation and size <= self.max_bytes:

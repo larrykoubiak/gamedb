@@ -131,11 +131,22 @@ def _read_translation_index(path, revision):
     return records, by_signature
 
 
-def _translation_index(root):
-    path = root / TRANSLATION_INDEX
+def translation_index_revision(root):
+    if root is None:
+        return None
     try:
-        stat = path.stat()
-        return _read_translation_index(path, (stat.st_ino, stat.st_mtime_ns, stat.st_size))
+        stat = (root / TRANSLATION_INDEX).stat()
+    except OSError:
+        return None
+    return stat.st_ino, stat.st_mtime_ns, stat.st_size
+
+
+def _translation_index(root):
+    revision = translation_index_revision(root)
+    if revision is None:
+        return {}, {}
+    try:
+        return _read_translation_index(root / TRANSLATION_INDEX, revision)
     except (AttributeError, KeyError, OSError, TypeError, ValueError):
         return {}, {}
 
