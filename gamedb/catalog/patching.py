@@ -1,7 +1,13 @@
 """Apply cartridge translation patches to a verified base ROM in memory."""
 
+import os
+from pathlib import Path
+from subprocess import DEVNULL, PIPE, Popen
+from tempfile import TemporaryDirectory
+from threading import Timer
 from zlib import crc32
 
+from gamedb.catalog.n64_rom import N64_LAYOUTS, N64_ROM_LIMIT, big_endian, rom_byte_order
 from gamedb.catalog.nes_rom import INES_HEADER_SIZE, ines_boundaries
 
 
@@ -56,6 +62,8 @@ class _PatchReader:
 
 
 def supports_patching(patch_format, layout):
+    if layout in N64_LAYOUTS:
+        return patch_format in {"bps", "ips", "ups", "xdelta"}
     return ((patch_format == "ips" and layout in ("headerless", "headered", "ines", "ines-payload"))
             or (patch_format in DELTA_MAGIC and layout in ("headerless", "ines", "ines-payload")))
 
@@ -90,14 +98,14 @@ def valid_ips(patch):
     return True
 
 
-def _apply_ips(source, patch, prefix_size):
+def _apply_ips(source, patch, prefix_size, max_rom_size):
     reader = _ips_reader(patch)
     target = bytearray(prefix_size)
     target.extend(source)
     for offset, content in _ips_edits(reader):
         end = offset + len(content)
-        if end > MAX_ROM_SIZE + prefix_size:
-            raise PatchError("The patched ROM would exceed 16 MiB.")
+        if end > max_rom_size + prefix_size:
+            raise PatchError(f"The patched ROM would exceed {max_rom_size // (1024 * 1024)} MiB.")
         if end > len(target):
             target.extend(bytes(end - len(target)))
         target[offset:end] = content
@@ -186,11 +194,11 @@ def embedded_input(patch, patch_format, *, same_size=False):
     return source_size, f"{source_crc:08x}"
 
 
-def _apply_delta(source, patch, patch_format):
+def _apply_delta(source, patch, patch_format, max_rom_size):
     reader, source_size, target_size, source_crc, target_crc = _delta_header(patch, patch_format)
     if source_size != len(source) or crc32(source) != source_crc:
         raise PatchError("The patch expects a different base ROM checksum or size.")
-    if not 0 < target_size <= MAX_ROM_SIZE:
+    if not 0 < target_size <= max_rom_size:
         raise PatchError("The patch declares an invalid ROM size.")
     apply = _apply_bps if patch_format == "bps" else _apply_ups
     target = apply(source, reader, target_size)
@@ -199,6 +207,33 @@ def _apply_delta(source, patch, patch_format):
     if crc32(target) != target_crc:
         raise PatchError("The patched ROM checksum does not match.")
     return target
+
+
+def _apply_xdelta(source, patch, max_rom_size):
+    if patch[:4] != b"\xd6\xc3\xc4\x00":
+        raise PatchError("Expected a VCDIFF patch.")
+    env = {key: value for key, value in os.environ.items() if key != "XDELTA"}
+    try:
+        with TemporaryDirectory(prefix="gamedb-xdelta-") as directory:
+            Path(directory, "base.rom").write_bytes(source)
+            Path(directory, "patch.vcdiff").write_bytes(patch)
+            # Disable external decompression and recompression. Bound the decoded stream.
+            command = ["xdelta3", "-d", "-D", "-R", "-c", "-s", "base.rom", "patch.vcdiff"]
+            with Popen(command, cwd=directory, env=env, stdin=DEVNULL, stdout=PIPE, stderr=DEVNULL) as decoder:
+                timeout = Timer(30, decoder.kill)
+                timeout.start()
+                try:
+                    result = decoder.stdout.read(max_rom_size + 1)
+                    if len(result) > max_rom_size:
+                        decoder.kill()
+                        raise PatchError("The patched ROM exceeds the size limit.")
+                    if decoder.wait() != 0 or not result:
+                        raise PatchError("xdelta3 could not decode this patch with the verified base ROM.")
+                finally:
+                    timeout.cancel()
+    except OSError as error:
+        raise PatchError("The xdelta3 decoder is unavailable.") from error
+    return result
 
 
 def _ines_program(data):
@@ -214,7 +249,9 @@ def _ines_program(data):
 def apply_translation(source, patch, patch_format, layout, *, pad_to_size=None, output_header=None):
     if not supports_patching(patch_format, layout):
         raise PatchError("The patch requires an unsupported input layout.")
-    if not 0 < len(source) <= MAX_ROM_SIZE:
+    nintendo64 = layout in N64_LAYOUTS
+    max_rom_size = N64_ROM_LIMIT if nintendo64 else MAX_ROM_SIZE
+    if not 0 < len(source) <= max_rom_size:
         raise PatchError("Invalid base ROM size.")
     if pad_to_size is not None:
         if (patch_format != "ips" or layout != "headerless" or type(pad_to_size) is not int
@@ -225,11 +262,18 @@ def apply_translation(source, patch, patch_format, layout, *, pad_to_size=None, 
         if _ines_program(source) != INES_HEADER_SIZE:
             raise PatchError("The patch requires a standard 16-byte iNES header.")
         header, source = source[:INES_HEADER_SIZE], source[INES_HEADER_SIZE:]
+    if nintendo64:
+        try:
+            source = rom_byte_order(source, layout)
+        except ValueError as error:
+            raise PatchError("Invalid Nintendo 64 base ROM.") from error
     if patch_format == "ips":
         prefix_size = COPIER_HEADER_SIZE if layout == "headered" else 0
-        result = _apply_ips(source, patch, prefix_size)
+        result = _apply_ips(source, patch, prefix_size, max_rom_size)
+    elif patch_format == "xdelta":
+        result = _apply_xdelta(source, patch, max_rom_size)
     else:
-        result = _apply_delta(source, patch, patch_format)
+        result = _apply_delta(source, patch, patch_format, max_rom_size)
     if layout == "ines-payload":
         result = bytearray(header) + result
     if output_header is not None:
@@ -239,4 +283,11 @@ def apply_translation(source, patch, patch_format, layout, *, pad_to_size=None, 
         result[:INES_HEADER_SIZE] = output_header
     if layout in ("ines", "ines-payload"):
         _ines_program(result)
+    if nintendo64:
+        try:
+            if len(result) < 64 or len(result) % 4:
+                raise ValueError("Invalid cartridge length")
+            result = big_endian(result)
+        except ValueError as error:
+            raise PatchError("The patch did not produce a valid Nintendo 64 ROM.") from error
     return result

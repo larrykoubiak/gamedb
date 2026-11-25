@@ -6,6 +6,7 @@ import json
 import mimetypes
 import re
 import shutil
+import subprocess
 import tempfile
 from collections import defaultdict
 from contextlib import ExitStack, contextmanager
@@ -18,13 +19,15 @@ from urllib.parse import quote, urlsplit
 from zipfile import BadZipFile, ZipFile
 
 from gamedb.catalog.manuals import manual_key
+from gamedb.catalog.n64_rom import N64_LAYOUTS, N64_ROM_LIMIT
 from gamedb.catalog.patching import MAX_ROM_SIZE, apply_translation, supports_patching
 from gamedb.catalog.translations import (
-    DISC_LAYOUT, DISC_PATCH_ARCHIVES, FORMATS, INDEX_NAME as TRANSLATION_INDEX, INDEX_VERSION, MAX_PATCH_SIZE,
-    translation_order,
+    CARTRIDGE_EXTENSIONS, DISC_LAYOUT, DISC_PATCH_ARCHIVES, DISC_PLATFORMS, FORMATS,
+    INDEX_NAME as TRANSLATION_INDEX, INDEX_VERSION, MAX_PATCH_SIZE, TRANSLATION_ROOTS, translation_order,
 )
 from gamedb.exo.media import location_path, open_location
 from gamedb.explorer.manuals import manual_location
+from gamedb.explorer.soundtrack_audio import browser_flac
 from gamedb.vgm.archives import open_vgm_location
 
 
@@ -52,13 +55,24 @@ def serve(handler, key, *, revision=None, preview_size=None):
     return _serve_file(handler, key, handler.server.exo_root, asset, revision, preview_size)
 
 
-def serve_vgm(handler, key):
+def serve_vgm(handler, key, *, flac=False):
     root = handler.server.vgm_root
     if root is None:
         return handler.send_error(HTTPStatus.NOT_FOUND)
     location = handler.server.repository.vgm_asset(key)
     if not location:
         return handler.send_error(HTTPStatus.NOT_FOUND)
+    if flac:
+        try:
+            track = browser_flac(handler.server.preview_cache.root, root, key, location)
+            size = track.stat().st_size
+        except (OSError, ValueError, subprocess.SubprocessError):
+            return handler.send_error(HTTPStatus.NOT_FOUND, "Soundtrack playback copy unavailable")
+        return _serve_file(handler, key, track.parent, {
+            "path": str(Path(location["name"]).with_suffix(".flac")),
+            "revision": location["mtime_ns"],
+            "locations": [{"size_bytes": size, "member_no": 0}],
+        }, open_media=lambda *_: track.open("rb"))
     return _serve_file(handler, key, root, {
         "path": location["name"],
         "revision": location["mtime_ns"],
@@ -110,7 +124,7 @@ def _serve_manual_file(handler, key, root, location, preview_size, page=1):
     }, revision=location["mtime_ns"], preview_size=preview_size, preview_page=page)
 
 
-@lru_cache(maxsize=4)
+@lru_cache(maxsize=len(TRANSLATION_ROOTS))
 def _read_translation_index(path, revision):
     document = json.loads(path.read_text(encoding="utf-8"))
     if document.get("version") != INDEX_VERSION:
@@ -120,8 +134,9 @@ def _read_translation_index(path, revision):
     for record in document["translations"]:
         key = record["key"]
         disc = record["layout"] == DISC_LAYOUT
+        cartridge_formats = FORMATS | {"xdelta"} if record["layout"] in N64_LAYOUTS else FORMATS
         valid_patch = (record["format"] in DISC_PATCH_ARCHIVES and record["size"] > 0) if disc else (
-            record["format"] in FORMATS and 0 < record["size"] <= MAX_PATCH_SIZE
+            record["format"] in cartridge_formats and 0 < record["size"] <= MAX_PATCH_SIZE
         )
         if (not re.fullmatch(r"[0-9a-f]{64}", key) or not re.fullmatch(r"[0-9a-f]{64}", record["sha256"])
                 or not valid_patch):
@@ -202,6 +217,9 @@ def add_local_translations(game, root, platform="snes"):
         if release["status"] != "matched":
             continue
         archives = release.get("archives", ())
+        if platform == "neogeo":
+            archives = [{"signature": arcade["installSignature"], "archiveNames": [f"{arcade['setName']}.zip"]}
+                        for arcade in release.get("arcadeSets", ()) if arcade["complete"]]
         matches = {}
         for archive in archives:
             for record in by_signature.get(archive["signature"], ()):
@@ -212,7 +230,7 @@ def add_local_translations(game, root, platform="snes"):
                 public["url"] = f"/related-media/{platform}-translation/{record['key']}"
                 if platform == "nes":
                     public["sourceUrl"] = f"https://neoromhacking.net/translationpage.php?id={record['rhdnId']}"
-                disc = platform == "playstation" and record["layout"] == DISC_LAYOUT
+                disc = platform in DISC_PLATFORMS and record["layout"] == DISC_LAYOUT
                 disc_location = _disc_set_location(root, record) if disc else None
                 if disc_location:
                     public["discDownloadSize"] = disc_location["size_bytes"]
@@ -265,7 +283,7 @@ def serve_retail_translation_rom(handler, signature, key, *, disc_only=False):
     from gamedb.explorer.server import _resolve_rom_path
 
     for platform, root in handler.server.retail_translation_roots.items():
-        if disc_only and platform != "playstation":
+        if disc_only and platform not in DISC_PLATFORMS:
             continue
         records, _ = _translation_index(root)
         record = records.get(key)
@@ -273,7 +291,7 @@ def serve_retail_translation_rom(handler, signature, key, *, disc_only=False):
             break
     else:
         return handler.send_error(HTTPStatus.NOT_FOUND)
-    if platform == "playstation" and record["layout"] == DISC_LAYOUT:
+    if platform in DISC_PLATFORMS and record["layout"] == DISC_LAYOUT:
         location = _disc_set_location(root, record)
         if location is None or not handler.server.repository.retail_has_archive(platform, signature):
             return handler._json_response({"error": "The verified disc set is unavailable."}, HTTPStatus.NOT_FOUND)
@@ -292,13 +310,14 @@ def serve_retail_translation_rom(handler, signature, key, *, disc_only=False):
     rom = handler.server.repository.retail_translation_base(platform, signature, record["baseSha1"])
     if rom is None:
         return handler._json_response({"error": "The verified base ROM is unavailable."}, HTTPStatus.CONFLICT)
+    rom_limit = N64_ROM_LIMIT if platform == "n64" else MAX_ROM_SIZE
     try:
         path = _resolve_rom_path(handler.server.rom_root, rom["path"])
         with ZipFile(path) as archive, archive.open(rom["member_path"]) as member:
-            original = member.read(MAX_ROM_SIZE + 1)
+            original = member.read(rom_limit + 1)
     except (BadZipFile, KeyError, NotImplementedError, OSError, RuntimeError, ValueError):
         return handler._json_response({"error": "The verified base ROM is unavailable."}, HTTPStatus.CONFLICT)
-    if len(original) > MAX_ROM_SIZE or hashlib.sha1(original).hexdigest() != record["baseSha1"]:
+    if len(original) > rom_limit or hashlib.sha1(original).hexdigest() != record["baseSha1"]:
         return handler._json_response({"error": "The base ROM checksum or size has changed."}, HTTPStatus.CONFLICT)
 
     try:
@@ -320,7 +339,7 @@ def serve_retail_translation_rom(handler, signature, key, *, disc_only=False):
 
     base_name = Path(rom["member_path"].replace("\\", "/")).stem
     tag = " ".join(item for item in (record["language"], record["version"]) if item)
-    extension = {"snes": "sfc", "megadrive": "md", "nes": "nes"}[platform]
+    extension = CARTRIDGE_EXTENSIONS[platform]
     filename = re.sub(r"[/\\\x00-\x1f\x7f]", "_", f"{base_name} [{tag}].{extension}")
     digest = hashlib.sha256(patched).hexdigest()
     return _serve_file(handler, key, root, {

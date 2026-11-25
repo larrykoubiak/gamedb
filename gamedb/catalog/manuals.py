@@ -120,6 +120,10 @@ def _sources(manual, cache, reviewed):
     if location.scheme != "https" or (hostname not in {
         "archive.org", "www.gamingalexandria.com", "www.nintendo.co.jp", "segaretro.org", "www.digitpress.com",
         "www.videogamemanual.com", "rq87.flyingomelette.com", "www.jamma-nation-x.com",
+        "necretro.org", "retrocdn.net", "dds.konami.com", "www.pcengine.co.uk", "www.videogameden.com",
+        "cdn-ak.f.st-hatena.com", "cdn.rwemulator.com", "www.emulation64.fr", "emulation64.fr",
+        "drive.usercontent.google.com", "goldeneyedepot.com", "m1.nintendo.net", "www.nintendo.com", "bdjogos.com.br",
+        "db.hfsplay.fr", "static.atariage.com", "www.gamesdatabase.org",
     } and not hostname.endswith(".archive.org")):
         raise ValueError("Unsupported manual source URL")
     if "pages" in manual:

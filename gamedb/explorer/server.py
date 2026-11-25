@@ -49,7 +49,7 @@ RETAIL_MANUAL_PAGES = re.compile(RETAIL_MANUAL.pattern + r"/pages(?:/([1-9][0-9]
 TRANSLATION_SYSTEM = "(" + "|".join(TRANSLATION_ROOTS) + ")"
 RETAIL_TRANSLATION = re.compile(rf"/related-media/{TRANSLATION_SYSTEM}-translation/([0-9a-f]{{64}})")
 RETAIL_TRANSLATION_DOWNLOAD = re.compile(r"/api/v1/releases/([0-9a-f]{32})/translations/([0-9a-f]{64})/download")
-SNES_ICON = re.compile(r"/(?:snes-flags/(?:jp|na|pal)|snes-inputs/(?:pad|mouse|lightgun|multitap))\.png")
+SNES_ICON = re.compile(r"/(?:snes-flags/(?:jp|na|pal|br)|snes-inputs/(?:pad|mouse|lightgun|multitap))\.png")
 SOFTWARE_FACTS = re.compile(r"/api/software/([0-9]+)/facts")
 SOFTWARE_PAGE = re.compile(r"/software/(?:([1-9][0-9]{0,18})-([0-9a-f]{32})|exo/([0-9a-f]{64}))")
 INSTALL_MANIFEST = re.compile(r"/api/v1/releases/([0-9a-f]{32})/install-manifest")
@@ -68,6 +68,7 @@ PREVIEW_PATH = re.compile(r"/previews/(128|320)/(.+)")
 MEDIA_EXTENSIONS = frozenset({".png", ".jpg", ".jpeg"})
 STREAM_CHUNK_SIZE = 1024 * 1024
 VGM_DECODER_PREFIX = "/vgm/zxtune-f59403a-2/"
+SSF_DECODER_PREFIX = "/vgm/ssfplay-a28e0d7/"
 SNDH_DECODER_PREFIX = "/vgm/ym2149-0.8.1/"
 VGM_STATIC_TYPES = {
     "/vgm/player.js": "text/javascript; charset=utf-8",
@@ -76,6 +77,9 @@ VGM_STATIC_TYPES = {
     "/vgm/credits.txt": "text/plain; charset=utf-8",
     VGM_DECODER_PREFIX + "zxtune.mjs": "text/javascript; charset=utf-8",
     VGM_DECODER_PREFIX + "zxtune.wasm": "application/wasm",
+    SSF_DECODER_PREFIX + "ssfplay.mjs": "text/javascript; charset=utf-8",
+    SSF_DECODER_PREFIX + "ssfplay.wasm": "application/wasm",
+    SSF_DECODER_PREFIX + "license.txt": "text/plain; charset=utf-8",
     VGM_DECODER_PREFIX + "licenses.txt": "text/plain; charset=utf-8",
     SNDH_DECODER_PREFIX + "ym2149_wasm.js": "text/javascript; charset=utf-8",
     SNDH_DECODER_PREFIX + "ym2149_wasm_bg.wasm": "application/wasm",
@@ -261,7 +265,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return self._json_response(detail)
             vgm_asset = re.fullmatch(r"/related-media/vgm/([0-9a-f]{64})", parsed.path)
             if vgm_asset:
-                return serve_vgm(self, vgm_asset[1])
+                return serve_vgm(self, vgm_asset[1], flac=query.get("audio") == ["flac"])
             if manual := RETAIL_MANUAL.fullmatch(parsed.path):
                 return serve_retail_manual(self, self.server.retail_manual_roots[manual[1]], manual[2])
             if manual := RETAIL_MANUAL_PAGES.fullmatch(parsed.path):
@@ -394,7 +398,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                     int(match.group(1)), software_id, title_filter
                 ))
 
-            if parsed.path in ("/", "/index.html"):
+            if parsed.path in ("/", "/index.html", "/archive", "/archive/"):
                 source_key = query.get("exo", [""])[0]
                 if re.fullmatch(r"[0-9a-f]{64}", source_key):
                     self.send_response(HTTPStatus.FOUND)
@@ -402,17 +406,18 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                     self.send_header("Content-Length", "0")
                     self.end_headers()
                     return
-                return self._asset_response("index.html", "text/html; charset=utf-8")
+                asset = "archive.html" if parsed.path.startswith("/archive") else "index.html"
+                return self._asset_response(asset, "text/html; charset=utf-8")
             if SOFTWARE_PAGE.fullmatch(parsed.path):
-                return self._asset_response("index.html", "text/html; charset=utf-8")
+                return self._asset_response("archive.html", "text/html; charset=utf-8")
             if RETAIL_PAGE.fullmatch(parsed.path):
                 return self._asset_response("retail.html", "text/html; charset=utf-8")
-            if parsed.path in ("/app.js", "/almanac.js", "/artwork-viewer.js", "/retail.js", "/manual-reader.js"):
+            if parsed.path in ("/home.js", "/app.js", "/almanac.js", "/artwork-viewer.js", "/retail.js", "/manual-reader.js"):
                 return self._asset_response(parsed.path[1:], "text/javascript; charset=utf-8")
             if content_type := VGM_STATIC_TYPES.get(parsed.path):
                 cache = (
                     "public, max-age=31536000, immutable"
-                    if parsed.path.startswith((VGM_DECODER_PREFIX, SNDH_DECODER_PREFIX)) else "no-store"
+                    if parsed.path.startswith((VGM_DECODER_PREFIX, SSF_DECODER_PREFIX, SNDH_DECODER_PREFIX)) else "no-store"
                 )
                 return self._asset_response(parsed.path[1:], content_type, cache)
             if parsed.path == "/system-icons.json":
@@ -427,7 +432,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 return self._asset_response(asset, "image/png", "public, max-age=3600")
             if SNES_ICON.fullmatch(parsed.path):
                 return self._asset_response(parsed.path[1:], "image/png", "public, max-age=3600")
-            if parsed.path in ("/styles.css", "/almanac.css", "/retail.css", "/manual-reader.css"):
+            if parsed.path in ("/home.css", "/styles.css", "/almanac.css", "/retail.css", "/manual-reader.css"):
                 return self._asset_response(parsed.path[1:], "text/css; charset=utf-8")
             self.send_error(HTTPStatus.NOT_FOUND)
         except (ValueError, TypeError):
@@ -449,6 +454,10 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             return self._disc_translation_post(translation[1], translation[2])
         if bundle := INSTALL_BUNDLE.fullmatch(parsed.path):
             return self._arcade_bundle_post(bundle[1])
+        if package := PACKAGE_DOWNLOAD.fullmatch(parsed.path):
+            if self._authorize_download_form():
+                return self._package_response(package[1], package[2])
+            return
         if parsed.path != "/api/software-corrections":
             return self.send_error(HTTPStatus.NOT_FOUND)
         if not self.server.corrections_enabled:
@@ -708,6 +717,15 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 continue
             archive = archives[match["linkNo"] - 1]
             archive["installManifestUrl"] = f"/api/v1/releases/{archive['signature']}/install-manifest"
+        for archive in archives:
+            if not archive.get("components"):
+                continue
+            try:
+                manifest = self._load_install_manifest(archive["signature"])
+            except (OSError, ValueError):
+                continue
+            if manifest:
+                archive["installManifestUrl"] = f"/api/v1/releases/{archive['signature']}/install-manifest"
 
     def _load_install_manifest(self, release_signature):
         manifest = self.server.repository.install_manifest(release_signature)

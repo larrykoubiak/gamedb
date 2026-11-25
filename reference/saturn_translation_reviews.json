@@ -1,0 +1,708 @@
+{
+  "projects": {
+    "2744": {
+      "archive": "[2744]Policenauts_English_Sega_Saturn_V101.7z",
+      "discs": [
+        {
+          "archiveName": "Policenauts (Japan) (Disc 1).zip",
+          "patches": [
+            "NautsSaturnENG-CD1.XDELTA"
+          ],
+          "inputSha1": "526bcd0ff248866f5d8c829c6c186f6c1a9c2405",
+          "inputIsoSha1": "fdfaf4efe6a451c220cb176bfdb2c09c418e97d2",
+          "outputSha1": "19538c0ec199c41fabd5e3a26edf9a6d43888ea0"
+        },
+        {
+          "archiveName": "Policenauts (Japan) (Disc 2).zip",
+          "patches": [
+            "NautsSaturnENG-CD2.XDELTA"
+          ],
+          "inputSha1": "20edac717f607b1e0a10443f3480c96acd725450",
+          "inputIsoSha1": "4f58d526c34718cbc8cbd6952144f1154c0e1458",
+          "outputSha1": "617173d28252aab657f068c16efa21c41c07eae9"
+        },
+        {
+          "archiveName": "Policenauts (Japan) (Disc 3).zip",
+          "patches": [
+            "NautsSaturnENG-CD3.XDELTA"
+          ],
+          "inputSha1": "7c837f0a3a1c12ba430c0bf4feefabf518629220",
+          "inputIsoSha1": "77ec55c679c3ebb66d2080c00c685c6a53cf8f08",
+          "outputSha1": "50b1aa207301c0e72601bf6ef5963c88da5bcace"
+        }
+      ],
+      "sourceUrl": "https://policenauts.net/english/patches.html",
+      "archiveSha256": "1566b3ac194098a2dc320a752bf245ec207376579c8cb34a3074a47226db7337"
+    },
+    "1622-1006": {
+      "archive": "[1622]Dragon_Force_II_English_RHDN_Package.rar",
+      "discs": [
+        {
+          "archiveName": "Dragon Force II - Kami Sarishi Daichi ni (Japan).zip",
+          "patches": [
+            "Dragon_Force_II_English_v1006.xdelta"
+          ],
+          "inputSha1": "af3d2c364b24e064450147cb0ee31259b94a08f9",
+          "inputIsoSha1": "c408e24536b5b896200c9e427247fb4bbe93c330",
+          "outputSha1": "62f553003bb9fbd9d16897334678fdf289114efe"
+        }
+      ],
+      "rhdnId": 1622,
+      "sourceUrl": "https://verve-fanworks.com/dragonforceii/",
+      "archiveSha256": "de19ff4a672a092fa0b049222d90c43dd7185644b3d5d43d789c20666b432b5a"
+    },
+    "1622-1007": {
+      "archive": "[1622]Dragon_Force_II_English_RHDN_Package.rar",
+      "discs": [
+        {
+          "archiveName": "Dragon Force II - Kami Sarishi Daichi ni (Japan) (Rev A).zip",
+          "patches": [
+            "Dragon_Force_II_English_v1007.xdelta"
+          ],
+          "inputSha1": "a6fec3c35045555487e078bbf310d89ff636887b",
+          "inputIsoSha1": "a7b1aa0e4364ee4c084e69f7919cffcf0a700c6f",
+          "outputSha1": "62f553003bb9fbd9d16897334678fdf289114efe"
+        }
+      ],
+      "rhdnId": 1622,
+      "sourceUrl": "https://verve-fanworks.com/dragonforceii/",
+      "archiveSha256": "de19ff4a672a092fa0b049222d90c43dd7185644b3d5d43d789c20666b432b5a"
+    },
+    "6515": {
+      "archive": "[6515]Yumimi Mix Remix EN [v1.0] RHDN Special Edition.zip",
+      "discs": [
+        {
+          "archiveName": "Yumimi Mix Remix (Japan).zip",
+          "patches": [
+            "auto_patch/Yumimi Mix Remix EN [v1.0] ISO.xdelta"
+          ],
+          "inputSha1": "6f7934bedae3bd577e115afc43dfd3b9bb5e338b",
+          "inputIsoSha1": "34806f871714038a641b0ea3f7fb23dacedf005b",
+          "outputSha1": "837f5cb096e5334232d09f7e72c5f16776a467c7"
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/6515/",
+      "archiveSha256": "307f4f4891f62b02a081e2ff41618497f1c1f3c3086fa3baf4a5c02db4372bac"
+    },
+    "3116-us": {
+      "archive": "[3116]tr1_sat_patch_es_es_2019_12_24.zip",
+      "discs": [
+        {
+          "archiveName": "Tomb Raider (USA).zip",
+          "patches": [
+            "patch/t-7910h.ppf"
+          ],
+          "inputSha1": "4ecca92d2c381edbe72acc32ac7dce2ffe6bac1d",
+          "outputSha1": "78fe70f62c83b98a99ad6ef3dd1a3bd91a48ec49"
+        }
+      ],
+      "rhdnId": 3116,
+      "sourceUrl": "https://www.romhacking.net/translations/3116/",
+      "archiveSha256": "6b4a5013005b5879fbf14deef72e831d2c75a86dcafbc7fb87df81b8a8a5c827"
+    },
+    "3116-pal": {
+      "archive": "[3116]tr1_sat_patch_es_es_2019_12_24.zip",
+      "discs": [
+        {
+          "archiveName": "Tomb Raider (Europe).zip",
+          "patches": [
+            "patch/mk81086-50.ppf"
+          ],
+          "inputSha1": "147585e31fa6a2a819711ee936fd149a86ef653c",
+          "outputSha1": "a38fe9d0bec2f749b66381f45a3504329b4b6f8b"
+        }
+      ],
+      "rhdnId": 3116,
+      "sourceUrl": "https://www.romhacking.net/translations/3116/",
+      "archiveSha256": "6b4a5013005b5879fbf14deef72e831d2c75a86dcafbc7fb87df81b8a8a5c827"
+    },
+    "3116-jp": {
+      "archive": "[3116]tr1_sat_patch_es_es_2019_12_24.zip",
+      "discs": [
+        {
+          "archiveName": "Tomb Raiders (Japan).zip",
+          "patches": [
+            "patch/t-6010g.ppf"
+          ],
+          "inputSha1": "e9aad4508a6b395357bfd4124c86faa31604373b",
+          "outputSha1": "3bc00f00b47a810c030fa5327e7111c07073208f"
+        }
+      ],
+      "rhdnId": 3116,
+      "sourceUrl": "https://www.romhacking.net/translations/3116/",
+      "archiveSha256": "6b4a5013005b5879fbf14deef72e831d2c75a86dcafbc7fb87df81b8a8a5c827"
+    },
+    "7275": {
+      "archive": "Jung.Rhythm.English.-.v1.0.zip",
+      "discs": [
+        {
+          "archiveName": "Jung Rhythm (Japan).zip",
+          "patches": [
+            "Jung Rhythm (English - v1.0).xdelta"
+          ],
+          "inputSha1": "1b99b615e6a2c2b6fea6f74a298892db859dafc6",
+          "outputSha1": "a192e2f9b67fca8d51413eaa7f75f7e5d494ee6c"
+        }
+      ],
+      "archivePage": "https://github.com/DerekPascarella/JungRhythm-EnglishPatchSaturn/releases/tag/1.0",
+      "sourceUrl": "https://github.com/DerekPascarella/JungRhythm-EnglishPatchSaturn",
+      "archiveSha256": "e9f7ade5c7f8a631b605110391fa97a8e9a6650a6982fd5798ede4294e96741c"
+    },
+    "7246": {
+      "archive": "Rabbit.English.-.v1.0.ssp",
+      "discs": [
+        {
+          "archiveName": "Rabbit (Japan).zip",
+          "inputSha1": "5bcf07467f103e82df977f43f4db77a70a2e22fa"
+        }
+      ],
+      "archivePage": "https://github.com/DerekPascarella/Rabbit-EnglishPatchSaturn/releases/tag/1.0",
+      "sourceUrl": "https://github.com/DerekPascarella/Rabbit-EnglishPatchSaturn",
+      "patchOnly": true,
+      "archiveSha256": "b59d3c0fb00101111db09a5c6362fba811ceed6b2f5b19d74e521b123f04b724"
+    },
+    "5999": {
+      "archive": "[5999]ss_cotton_2_eng_v0.9.zip",
+      "discs": [
+        {
+          "archiveName": "Magical Night Dreams - Cotton 2 (Japan).zip",
+          "inputSha1": "25366440f350ec6620e4f78ce61774238766caeb"
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/5999/",
+      "patchOnly": true,
+      "archiveSha256": "87736c626e215679cf9c90af29e9035eb29a4e4bddf63d7e9a4e96dcf44a1c08"
+    },
+    "6835": {
+      "archive": "[6835]TO_Patch_v1,0,1_(SS).7z",
+      "discs": [
+        {
+          "archiveName": "Tactics Ogre - Let Us Cling Together (Japan).zip",
+          "inputSha1": "24ce1a059c7172065204f0b22b0c82fc7cce53e3"
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/6835/",
+      "patchOnly": true,
+      "archiveSha256": "780d19248615b42d12dcb0612fbf063cfb7726bb271f2d959768a56513dee843"
+    },
+    "5700": {
+      "archive": "[5700]Valhollian_(v1,3).zip",
+      "discs": [
+        {
+          "archiveName": "Zanma Chou Ougi - Valhollian (Japan).zip",
+          "inputSha1": "7c1111dd03adc76fd53dbb746e79e4be7cf882ca"
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/5700/",
+      "patchOnly": true,
+      "archiveSha256": "755133817b8acafd985eeebfc869aa99352dc04421f5da88c43a406403b399b7"
+    },
+    "2652": {
+      "archive": "[2652]utena translator 104.rar",
+      "discs": [
+        {
+          "archiveName": "Shoujo Kakumei Utena - Itsuka Kakumei Sareru Monogatari (Japan) (Disc 1).zip",
+          "inputSha1": "02e80bf640c50da94633cd46a71ed856cd58468f"
+        },
+        {
+          "archiveName": "Shoujo Kakumei Utena - Itsuka Kakumei Sareru Monogatari (Japan) (Disc 2).zip",
+          "inputSha1": "7dee85e47594bd621f7dcdf284afc582476c0e5c"
+        }
+      ],
+      "sourceUrl": "http://ohtori.nu/saturn/",
+      "patchOnly": true,
+      "archiveSha256": "89f08528a61a653b0a773ce2fd2e05d0063e0406c280284f7699ab19fa248b3c"
+    },
+    "274": {
+      "archive": "[274]ninpenb.zip",
+      "discs": [
+        {
+          "archiveName": "Ninpen Manmaru (Japan).zip",
+          "inputSha1": "d70b79bd293faf38aa80b11adfc83be076560b9c"
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/274/",
+      "patchOnly": true,
+      "archiveSha256": "6513731c779c4bd252de04548eb1f33e8aabc695da906b5440ddae252a9c7db0"
+    },
+    "snatcher": {
+      "archive": "Snatcher-Saturn-English-v1.5.1.zip",
+      "discs": [
+        {
+          "archiveName": "Snatcher (Japan).zip",
+          "inputSha1": "a3ebab5b07a2b9a17aa68554072585be8839aba3",
+          "outputSha1": "23a6c177c4acfd1fe607cc98d34adc6d588e919f",
+          "patches": [
+            "Snatcher (Japan) (Track 1) [T-En by pepa v1.5.1].xdelta"
+          ],
+          "additionalTracks": [
+            {
+              "inputSha1": "b3b7c515cf676e1fb95707a9ebf5946d4fa5ea0e",
+              "outputSha1": "a7c4e8b4825092324fe3429b85ee4496f73d1654",
+              "patches": [
+                "Snatcher (Japan) (Track 2) [T-En by pepa v1.5.1].xdelta"
+              ]
+            }
+          ]
+        }
+      ],
+      "archivePage": "https://github.com/pepasjc/snatcher-translated/releases/tag/v1.5.3",
+      "sourceUrl": "https://github.com/pepasjc/snatcher-translated/releases/tag/v1.5.3",
+      "projectMetadata": {
+        "language": "English",
+        "authors": [
+          "pepa"
+        ],
+        "version": "1.5.1",
+        "status": "Complete",
+        "releasedAt": 1794607616
+      },
+      "archiveSha256": "4cbf4c7e37681832d1037755ebc1e521a6311b67e14e92ed8eaeb3167dd5ae31"
+    },
+    "silhouette-mirage-1": {
+      "archive": "Silhouette-Mirage-EN.zip",
+      "archiveSha256": "f1ed6ebdad6491f0b23ebd638cf7f497a509fe32205ef84eed456ebb366847e2",
+      "patchOnly": true,
+      "sourceUrl": "https://segaxtreme.net/resources/silhouette-mirage-english-retranslation-patch.298/",
+      "discs": [
+        {
+          "archiveName": "Silhouette Mirage (Japan) (Rev A).zip",
+          "inputSha1": "02dc51bc271f08c120b13a0285b9bc686e396fd0"
+        }
+      ],
+      "archivePage": "https://segaxtreme.net/resources/silhouette-mirage-english-retranslation-patch.298/download",
+      "projectMetadata": {
+        "language": "English",
+        "version": "1.0",
+        "authors": [
+          "Rasputin3000"
+        ],
+        "status": "Complete",
+        "releasedAt": 1787788800
+      }
+    },
+    "silhouette-mirage-2": {
+      "archive": "Silhouette-Mirage-EN.zip",
+      "archiveSha256": "f1ed6ebdad6491f0b23ebd638cf7f497a509fe32205ef84eed456ebb366847e2",
+      "patchOnly": true,
+      "sourceUrl": "https://segaxtreme.net/resources/silhouette-mirage-english-retranslation-patch.298/",
+      "discs": [
+        {
+          "archiveName": "Silhouette Mirage (Japan).zip",
+          "inputSha1": "dc46ccfbee8cd8f85ad35f1838a65c11e7ebad36"
+        }
+      ],
+      "archivePage": "https://segaxtreme.net/resources/silhouette-mirage-english-retranslation-patch.298/download",
+      "projectMetadata": {
+        "language": "English",
+        "version": "1.0",
+        "authors": [
+          "Rasputin3000"
+        ],
+        "status": "Complete",
+        "releasedAt": 1787788800
+      }
+    },
+    "sakura-wars-1": {
+      "archive": "Sakura-Wars-EN.zip",
+      "archiveSha256": "2a602a0174cc4ac9a3be29fa4cad101fbee7ccd7612c1740803a331f9f4319d3",
+      "patchOnly": true,
+      "sourceUrl": "https://segaxtreme.net/resources/sakura-wars-english-patch.96/",
+      "discs": [
+        {
+          "archiveName": "Sakura Taisen (Japan) (Disc 1) (6M).zip",
+          "inputSha1": "76f3b13c6dc7429b1df475c68edfd9dc37feca27"
+        },
+        {
+          "archiveName": "Sakura Taisen (Japan) (Disc 2) (6M).zip",
+          "inputSha1": "3577ad4f1a02b024bb34d8e823a96b7da0b3b6fe"
+        }
+      ],
+      "archivePage": "https://segaxtreme.net/resources/sakura-wars-english-patch.96/download",
+      "projectMetadata": {
+        "language": "English",
+        "version": "2.1.1",
+        "authors": [
+          "Sakura Wars Translation Team"
+        ],
+        "status": "Complete",
+        "releasedAt": 1626825600
+      }
+    },
+    "sakura-wars-2": {
+      "archive": "Sakura-Wars-EN.zip",
+      "archiveSha256": "2a602a0174cc4ac9a3be29fa4cad101fbee7ccd7612c1740803a331f9f4319d3",
+      "patchOnly": true,
+      "sourceUrl": "https://segaxtreme.net/resources/sakura-wars-english-patch.96/",
+      "discs": [
+        {
+          "archiveName": "Sakura Taisen (Japan) (Disc 1) (7M, 9M, 10M).zip",
+          "inputSha1": "76f3b13c6dc7429b1df475c68edfd9dc37feca27"
+        },
+        {
+          "archiveName": "Sakura Taisen (Japan) (Disc 2) (7M).zip",
+          "inputSha1": "3577ad4f1a02b024bb34d8e823a96b7da0b3b6fe"
+        }
+      ],
+      "archivePage": "https://segaxtreme.net/resources/sakura-wars-english-patch.96/download",
+      "projectMetadata": {
+        "language": "English",
+        "version": "2.1.1",
+        "authors": [
+          "Sakura Wars Translation Team"
+        ],
+        "status": "Complete",
+        "releasedAt": 1626825600
+      }
+    },
+    "sakura-wars-3": {
+      "archive": "Sakura-Wars-EN.zip",
+      "archiveSha256": "2a602a0174cc4ac9a3be29fa4cad101fbee7ccd7612c1740803a331f9f4319d3",
+      "patchOnly": true,
+      "sourceUrl": "https://segaxtreme.net/resources/sakura-wars-english-patch.96/",
+      "discs": [
+        {
+          "archiveName": "Sakura Taisen (Japan) (Disc 1) (7M, 9M, 10M).zip",
+          "inputSha1": "76f3b13c6dc7429b1df475c68edfd9dc37feca27"
+        },
+        {
+          "archiveName": "Sakura Taisen (Japan) (Disc 2) (8M, 9M).zip",
+          "inputSha1": "3577ad4f1a02b024bb34d8e823a96b7da0b3b6fe"
+        }
+      ],
+      "archivePage": "https://segaxtreme.net/resources/sakura-wars-english-patch.96/download",
+      "projectMetadata": {
+        "language": "English",
+        "version": "2.1.1",
+        "authors": [
+          "Sakura Wars Translation Team"
+        ],
+        "status": "Complete",
+        "releasedAt": 1626825600
+      }
+    },
+    "sakura-wars-4": {
+      "archive": "Sakura-Wars-EN.zip",
+      "archiveSha256": "2a602a0174cc4ac9a3be29fa4cad101fbee7ccd7612c1740803a331f9f4319d3",
+      "patchOnly": true,
+      "sourceUrl": "https://segaxtreme.net/resources/sakura-wars-english-patch.96/",
+      "discs": [
+        {
+          "archiveName": "Sakura Taisen (Japan) (Disc 1) (8M, 13M).zip",
+          "inputSha1": "76f3b13c6dc7429b1df475c68edfd9dc37feca27"
+        },
+        {
+          "archiveName": "Sakura Taisen (Japan) (Disc 2) (8M, 9M).zip",
+          "inputSha1": "3577ad4f1a02b024bb34d8e823a96b7da0b3b6fe"
+        }
+      ],
+      "archivePage": "https://segaxtreme.net/resources/sakura-wars-english-patch.96/download",
+      "projectMetadata": {
+        "language": "English",
+        "version": "2.1.1",
+        "authors": [
+          "Sakura Wars Translation Team"
+        ],
+        "status": "Complete",
+        "releasedAt": 1626825600
+      }
+    },
+    "sakura-wars-2-1": {
+      "archive": "Sakura-Wars-2-EN.zip",
+      "archiveSha256": "837d085743ebefdeb1b23bb3097f564442db7fe2ddd7007a2b2611e924ef97dd",
+      "patchOnly": true,
+      "sourceUrl": "https://segaxtreme.net/resources/sakura-wars-2-english-translation.412/",
+      "discs": [
+        {
+          "archiveName": "Sakura Taisen 2 - Kimi, Shinitamou Koto Nakare (Japan) (Disc 1) (Shokai Tokutenban).zip",
+          "inputSha1": "9abde77a4d14c62e2dcba2d58b627ed4cb0d770d"
+        },
+        {
+          "archiveName": "Sakura Taisen 2 - Kimi, Shinitamou Koto Nakare (Japan) (Disc 2) (Shokai Tokutenban).zip",
+          "inputSha1": "d81ca4e8711d2bda775a040e9242a6c3285153f0"
+        },
+        {
+          "archiveName": "Sakura Taisen 2 - Kimi, Shinitamou Koto Nakare (Japan) (Disc 3) (Shokai Tokutenban).zip",
+          "inputSha1": "2b3d50b0da785e9a4bca7175de99dd69d3511c50"
+        }
+      ],
+      "archivePage": "https://segaxtreme.net/resources/sakura-wars-2-english-translation.412/download",
+      "projectMetadata": {
+        "language": "English",
+        "version": "1.1.0",
+        "authors": [
+          "Sakura Wars Translation Team"
+        ],
+        "status": "Complete",
+        "releasedAt": 1775347200
+      }
+    },
+    "saturn-bomberman-fight-1": {
+      "archive": "Saturn-Bomberman-Fight.zip",
+      "archiveSha256": "c31e3de72ba2d5a0b37a8b451383b706b0f71f9557ae2fafbe4d614af038de3f",
+      "patchOnly": true,
+      "sourceUrl": "https://segaxtreme.net/resources/saturn-bomberman-fight.374/",
+      "discs": [
+        {
+          "archiveName": "Saturn Bomberman Fight!! (Japan).zip",
+          "inputSha1": "4dcd839956274f1316a311f487a22ad51e371f18"
+        }
+      ],
+      "archivePage": "https://segaxtreme.net/resources/saturn-bomberman-fight.374/download",
+      "projectMetadata": {
+        "language": "English",
+        "version": "1.0",
+        "authors": [
+          "Malenko"
+        ],
+        "status": "Complete",
+        "releasedAt": 1734825600
+      }
+    },
+    "blue-chicago-blues-1": {
+      "archive": "Blue-Chicago-Blues-EN.zip",
+      "archiveSha256": "e33686f1b398bcf921581a11bfa90eca30279d0f68d1333d136af133571f2e45",
+      "patchOnly": true,
+      "sourceUrl": "https://segaxtreme.net/resources/j-b-harold-blue-chicago-blues-english-patch.135/",
+      "discs": [
+        {
+          "archiveName": "J. B. Harold - Blue Chicago Blues (Japan) (Disc 1).zip",
+          "inputSha1": "27e064f348673c2922a3c3d1bde318f575395c2d"
+        },
+        {
+          "archiveName": "J. B. Harold - Blue Chicago Blues (Japan) (Disc 2).zip",
+          "inputSha1": "473910cbed557b83a435f6ff55b0122435e78366"
+        }
+      ],
+      "archivePage": "https://segaxtreme.net/resources/j-b-harold-blue-chicago-blues-english-patch.135/download",
+      "projectMetadata": {
+        "language": "English",
+        "version": "1.00",
+        "authors": [
+          "NoahSteam",
+          "TrekkiesUnite118"
+        ],
+        "status": "Complete",
+        "releasedAt": 1694390400
+      }
+    },
+    "6514-1": {
+      "archive": "[6514]Ogre_Battle_Patch_(v1,3,1).7z",
+      "archiveSha256": "ab1025d92453a30010bc3c692fd154acde6e8fd20dfd892c6dd2dc2c7aebe88a",
+      "patchOnly": true,
+      "sourceUrl": "https://www.romhacking.net/translations/6514/",
+      "discs": [
+        {
+          "archiveName": "Densetsu no Ogre Battle (Japan).zip",
+          "inputSha1": "d18f6cebf971cd8486e8f4c79bc2c7b7f21e83b5"
+        }
+      ],
+      "rhdnId": 6514,
+      "version": "1.3.1",
+      "authors": [
+        "paul_met",
+        "Pennywise",
+        "aishsha"
+      ]
+    },
+    "5871-1": {
+      "archive": "SS_Grandia_EN_v1.1.1.zip",
+      "archiveSha256": "ea1bb993a334c44450437a0010bc55a08c33ce655f4885c02fffa85aeff0538d",
+      "patchOnly": true,
+      "sourceUrl": "https://segaxtreme.net/resources/grandia-english-patch.67/",
+      "discs": [
+        {
+          "archiveName": "Grandia (Japan) (Disc 1) (1M).zip",
+          "inputSha1": "6ac02a31c36eaca966b1dc01657b097e078009d3"
+        },
+        {
+          "archiveName": "Grandia (Japan) (Disc 2) (1M, 2M).zip",
+          "inputSha1": "023f0894b5ba9ae1224aeb2e241a5c7b275fde0c"
+        }
+      ],
+      "archivePage": "https://segaxtreme.net/resources/grandia-english-patch.67/download",
+      "rhdnId": 5871,
+      "version": "1.1.1",
+      "authors": [
+        "TrekkiesUnite118"
+      ]
+    },
+    "5871-2": {
+      "archive": "SS_Grandia_EN_v1.1.1.zip",
+      "archiveSha256": "ea1bb993a334c44450437a0010bc55a08c33ce655f4885c02fffa85aeff0538d",
+      "patchOnly": true,
+      "sourceUrl": "https://segaxtreme.net/resources/grandia-english-patch.67/",
+      "discs": [
+        {
+          "archiveName": "Grandia (Japan) (Disc 1) (2M).zip",
+          "inputSha1": "6ac02a31c36eaca966b1dc01657b097e078009d3"
+        },
+        {
+          "archiveName": "Grandia (Japan) (Disc 2) (1M, 2M).zip",
+          "inputSha1": "023f0894b5ba9ae1224aeb2e241a5c7b275fde0c"
+        }
+      ],
+      "archivePage": "https://segaxtreme.net/resources/grandia-english-patch.67/download",
+      "rhdnId": 5871,
+      "version": "1.1.1",
+      "authors": [
+        "TrekkiesUnite118"
+      ]
+    },
+    "5871-3": {
+      "archive": "SS_Grandia_EN_v1.1.1.zip",
+      "archiveSha256": "ea1bb993a334c44450437a0010bc55a08c33ce655f4885c02fffa85aeff0538d",
+      "patchOnly": true,
+      "sourceUrl": "https://segaxtreme.net/resources/grandia-english-patch.67/",
+      "discs": [
+        {
+          "archiveName": "Grandia (Japan) (Disc 1) (4M).zip",
+          "inputSha1": "6ac02a31c36eaca966b1dc01657b097e078009d3"
+        },
+        {
+          "archiveName": "Grandia (Japan) (Disc 2) (4M).zip",
+          "inputSha1": "023f0894b5ba9ae1224aeb2e241a5c7b275fde0c"
+        }
+      ],
+      "archivePage": "https://segaxtreme.net/resources/grandia-english-patch.67/download",
+      "rhdnId": 5871,
+      "version": "1.1.1",
+      "authors": [
+        "TrekkiesUnite118"
+      ]
+    },
+    "shining-force-1-na-1": {
+      "archive": "SF3Patch V25.1.zip",
+      "archiveSha256": "bbf2c8c39fa989c2c95ab7855ac5f49663c42c4bec61260c5fbc3afc123fa891",
+      "patchOnly": true,
+      "sourceUrl": "https://sf3trans.shiningforcecentral.com/patch-instructions/",
+      "discs": [
+        {
+          "archiveName": "Shining Force III (USA).zip",
+          "inputSha1": "9b1033304091b3dea7c2fd6d88914a1c7d0c6727"
+        }
+      ],
+      "archivePage": "https://sf3transftp.shiningforcecentral.com/SF3Patch%20V25.1.zip",
+      "projectMetadata": {
+        "language": "English",
+        "version": "25.1",
+        "authors": [
+          "Shining Force III Translation Project"
+        ],
+        "status": "Complete",
+        "releasedAt": 1729123200
+      }
+    },
+    "shining-force-1-pal-1": {
+      "archive": "SF3Patch V25.1.zip",
+      "archiveSha256": "bbf2c8c39fa989c2c95ab7855ac5f49663c42c4bec61260c5fbc3afc123fa891",
+      "patchOnly": true,
+      "sourceUrl": "https://sf3trans.shiningforcecentral.com/patch-instructions/",
+      "discs": [
+        {
+          "archiveName": "Shining Force III (Europe) (R).zip",
+          "inputSha1": "9d8f601c9938acb39c7a2a5181dbc77e70117a6f"
+        }
+      ],
+      "archivePage": "https://sf3transftp.shiningforcecentral.com/SF3Patch%20V25.1.zip",
+      "projectMetadata": {
+        "language": "English",
+        "version": "25.1",
+        "authors": [
+          "Shining Force III Translation Project"
+        ],
+        "status": "Complete",
+        "releasedAt": 1729123200
+      }
+    },
+    "shining-force-2-1": {
+      "archive": "SF3Patch V25.1.zip",
+      "archiveSha256": "bbf2c8c39fa989c2c95ab7855ac5f49663c42c4bec61260c5fbc3afc123fa891",
+      "patchOnly": true,
+      "sourceUrl": "https://sf3trans.shiningforcecentral.com/patch-instructions/",
+      "discs": [
+        {
+          "archiveName": "Shining Force III - Scenario 2 - Nerawareta Miko (Japan) (Rev A).zip",
+          "inputSha1": "e21f7ad51af3ef57af9f9f7db58afb2dd642e3ad"
+        }
+      ],
+      "archivePage": "https://sf3transftp.shiningforcecentral.com/SF3Patch%20V25.1.zip",
+      "projectMetadata": {
+        "language": "English",
+        "version": "25.1",
+        "authors": [
+          "Shining Force III Translation Project"
+        ],
+        "status": "Complete",
+        "releasedAt": 1729123200
+      }
+    },
+    "shining-force-2-2": {
+      "archive": "SF3Patch V25.1.zip",
+      "archiveSha256": "bbf2c8c39fa989c2c95ab7855ac5f49663c42c4bec61260c5fbc3afc123fa891",
+      "patchOnly": true,
+      "sourceUrl": "https://sf3trans.shiningforcecentral.com/patch-instructions/",
+      "discs": [
+        {
+          "archiveName": "Shining Force III - Scenario 2 - Nerawareta Miko (Japan).zip",
+          "inputSha1": "82c157dbad2f50bd8d1fd9b417233221ab9fd8c8"
+        }
+      ],
+      "archivePage": "https://sf3transftp.shiningforcecentral.com/SF3Patch%20V25.1.zip",
+      "projectMetadata": {
+        "language": "English",
+        "version": "25.1",
+        "authors": [
+          "Shining Force III Translation Project"
+        ],
+        "status": "Complete",
+        "releasedAt": 1729123200
+      }
+    },
+    "shining-force-3-1": {
+      "archive": "SF3Patch V25.1.zip",
+      "archiveSha256": "bbf2c8c39fa989c2c95ab7855ac5f49663c42c4bec61260c5fbc3afc123fa891",
+      "patchOnly": true,
+      "sourceUrl": "https://sf3trans.shiningforcecentral.com/patch-instructions/",
+      "discs": [
+        {
+          "archiveName": "Shining Force III - Scenario 3 - Hyouheki no Jashinguu (Japan).zip",
+          "inputSha1": "6a2646030ff74a98b666726b78003e6505d24285"
+        }
+      ],
+      "archivePage": "https://sf3transftp.shiningforcecentral.com/SF3Patch%20V25.1.zip",
+      "projectMetadata": {
+        "language": "English",
+        "version": "25.1",
+        "authors": [
+          "Shining Force III Translation Project"
+        ],
+        "status": "Complete",
+        "releasedAt": 1729123200
+      }
+    },
+    "bulk-slash": {
+      "archive": "Bulk-Slash-English.zip",
+      "archivePage": "https://segaxtreme.net/resources/bulk-slash-english.105/download",
+      "archiveSha256": "efce226625cd64aeb4e471ea76b74fa9baf2e16e0d92ea97d8481eb5c7ea57ef",
+      "patchOnly": true,
+      "sourceUrl": "https://segaxtreme.net/resources/bulk-slash-english.105/",
+      "projectMetadata": {
+        "language": "English",
+        "authors": [
+          "Danthrax",
+          "Lacquerware"
+        ],
+        "version": "1.001",
+        "status": "Complete",
+        "releasedAt": 1639353600
+      },
+      "discs": [
+        {
+          "archiveName": "Bulk Slash (Japan).zip",
+          "inputSha1": "4a86915c45a914e54e7b610ba9bfa98d3a73c26f"
+        }
+      ]
+    }
+  }
+}

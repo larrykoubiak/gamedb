@@ -20,12 +20,22 @@ GameDB commands:
   seed-snes    Match the pinned SNES retail list against the catalog.
   seed-megadrive  Build the Mega Drive retail catalog.
   seed-mastersystem  Build the Master System and Mark III retail catalog.
+  seed-pcengine  Build the PC Engine / TurboGrafx-16 HuCard catalog.
+  seed-n64  Build the Nintendo 64 Game Pak catalog.
+  seed-saturn  Build the Sega Saturn retail disc catalog.
+  seed-jaguar  Build the Atari Jaguar retail cartridge catalog.
+  seed-optical  Build the PC-FX, Amiga CD32, or 3DO retail disc catalog.
   seed-nes        Build the NES and Famicom retail catalog.
   seed-playstation  Build the US PlayStation retail catalog.
   seed-neogeo     Build the Neo Geo MVS and AES retail catalog.
   sync-snes-manuals  Download the manuals linked by the SNES retail catalog.
   sync-megadrive-manuals  Download the manuals linked by the Mega Drive retail catalog.
   sync-mastersystem-manuals  Download the manuals linked by the Master System retail catalog.
+  sync-pcengine-manuals  Download the manuals linked by the HuCard catalog.
+  sync-n64-manuals  Download the manuals linked by the Nintendo 64 catalog.
+  sync-saturn-manuals  Download the manuals linked by the Sega Saturn catalog.
+  sync-jaguar-manuals  Download the manuals linked by the Atari Jaguar catalog.
+  sync-optical-manuals  Download the manuals linked by a PC-FX, Amiga CD32, or 3DO catalog.
   sync-nes-manuals       Download the manuals linked by the NES and Famicom retail catalog.
   sync-playstation-manuals  Download the manuals linked by the PlayStation retail catalog.
   sync-neogeo-manuals    Download the manuals linked by the Neo Geo retail catalog.
@@ -34,6 +44,13 @@ GameDB commands:
   sync-snes-translations  Match local translation patches to verified SNES retail ROMs.
   sync-megadrive-translations  Match local translation patches to verified Mega Drive retail ROMs.
   sync-nes-translations        Match local translation patches to verified NES retail ROMs.
+  sync-mastersystem-translations  Match local translation patches to verified Master System ROMs.
+  sync-pcengine-translations  Match local translation patches to verified HuCards.
+  sync-n64-translations  Match local translation patches to verified Nintendo 64 Game Paks.
+  sync-saturn-translations  Match local translation patches to verified Sega Saturn discs.
+  sync-pcfx-translations  Match local translation patches to verified PC-FX discs.
+  sync-3do-translations  Match local translation patches to verified 3DO discs.
+  sync-neogeo-translations  Index reviewed NeoSD patches for Neo Geo cartridges.
   sync-playstation-translations  Build translations for verified US PlayStation discs.
   promote-corrections  Move reviewed working corrections into reference.
   serve        Run the explorer.
@@ -93,7 +110,12 @@ def main(argv=None) -> int:
         "sync-megadrive-manuals", "sync-nes-manuals", "sync-playstation-manuals", "sync-snes-translations",
         "sync-megadrive-translations", "sync-nes-translations", "sync-playstation-translations", "promote-corrections",
         "sync-neogeo-manuals", "sync-neogeo-soundtracks", "seed-mastersystem", "sync-mastersystem-manuals",
-        "sync-mastersystem-soundtracks",
+        "sync-mastersystem-soundtracks", "seed-pcengine", "sync-pcengine-manuals",
+        "sync-mastersystem-translations", "sync-pcengine-translations", "sync-neogeo-translations",
+        "seed-n64", "sync-n64-manuals", "sync-n64-translations",
+        "seed-saturn", "sync-saturn-manuals", "sync-saturn-translations",
+        "seed-jaguar", "sync-jaguar-manuals", "seed-optical", "sync-optical-manuals",
+        "sync-pcfx-translations", "sync-3do-translations",
     }:
         from gamedb.catalog.cli import main as catalog_main
 

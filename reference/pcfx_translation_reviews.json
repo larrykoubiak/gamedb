@@ -1,0 +1,112 @@
+{
+  "projects": {
+    "1372": {
+      "archive": "[5204]PiaCarrot-addendum.zip",
+      "archiveSha256": "0e513b09174bddb2560891d30d89c582106fe4e5493f529f2cfe67ca36e2e6e5",
+      "discs": [
+        {
+          "archiveName": "Pia Carrot e Youkoso!! We've Been Waiting for You (Japan).zip",
+          "inputSha1": "2447ef1f755410c56fe2c1da3977679d6cd7bb67",
+          "patches": [
+            "Pia Carrot e Youkoso!! We've Been Waiting for You (Japan) (Track 2).xdelta"
+          ],
+          "outputSha1": "563ee10af57b14ab296f8ed67e4d59d367491ed9"
+        }
+      ],
+      "evidence": "Redump addendum for the original English translation",
+      "sourceUrl": "https://www.romhacking.net/translations/5204/"
+    },
+    "team-innocent-kr": {
+      "archive": "Team-Innocent-KR-v1.2.zip",
+      "archiveSha256": "95b9ca806c8e70f1450fbea9c0e492a182cc7724a5d3125dd512811c7d400f8b",
+      "discs": [
+        {
+          "archiveName": "Team Innocent - The Point of No Return - G.C.P.O.SS (Japan).zip",
+          "inputSha1": "1b3c2ad233065222de83694899da5c6435c2bc31",
+          "patches": [
+            "patches/Team-Innocent-KR-v1.2.xdelta"
+          ],
+          "outputSha1": "597eaaa2e853b47e139d21d7673f0a1e2a4fa7a3"
+        }
+      ],
+      "archivePage": "https://github.com/OldManCraveGuitars-bit/PC-FX-Team-Innocent-Kr/releases/tag/v1.2",
+      "sourceUrl": "https://github.com/OldManCraveGuitars-bit/PC-FX-Team-Innocent-Kr/releases/tag/v1.2",
+      "projectMetadata": {
+        "language": "Korean",
+        "authors": [
+          "GiKakNo"
+        ],
+        "version": "1.2",
+        "status": "Complete",
+        "releasedAt": 1791120084
+      }
+    },
+    "2451": {
+      "archive": "[2451]2015-08-23-zeroigar-release-1.0.1.zip",
+      "archiveSha256": "aa2c3e6b60492bd3fc886ea096f80d2ca2cbd1c8d02d6ab1dfca025b3600683b",
+      "discs": [
+        {
+          "archiveName": "Choujin Heiki Zeroigar (Japan).zip",
+          "inputSha1": "4f97e4037218e12fbb7e6088870c1243e5d93cc5"
+        }
+      ],
+      "patchOnly": true,
+      "sourceUrl": "https://www.romhacking.net/translations/2451/"
+    },
+    "team-innocent-en": {
+      "archive": "Team.Innocent.-.The.Point.of.No.Return.-.G.C.P.O.SS.English.v0.9.1.zip",
+      "archiveSha256": "99f9dd45e2233badab08836eb7c4f54b619d9183a22bb9d51d8e53f8f5dc4a40",
+      "discs": [
+        {
+          "archiveName": "Team Innocent - The Point of No Return - G.C.P.O.SS (Japan).zip",
+          "inputSha1": "1b3c2ad233065222de83694899da5c6435c2bc31",
+          "inputIsoSha1": "b2a5191d5769ad4d5a97fb490a077fb81659aac5",
+          "patches": [
+            "xdelta/Team Innocent (English v0.9.1).xdelta"
+          ],
+          "outputSha1": "1ef9bf836f57d39773182c0005b5b768ca1cfbaf"
+        }
+      ],
+      "archivePage": "https://github.com/DerekPascarella/TeamInnocent-EnglishPatchPCFX/releases/tag/0.9.1",
+      "sourceUrl": "https://github.com/DerekPascarella/TeamInnocent-EnglishPatchPCFX/releases/tag/0.9.1",
+      "projectMetadata": {
+        "language": "English",
+        "authors": [
+          "Elmer",
+          "EsperKnight",
+          "Derek Pascarella",
+          "Filler"
+        ],
+        "version": "0.9.1",
+        "status": "Nearly complete",
+        "releasedAt": 1739390235
+      }
+    },
+    "5672": {
+      "archive": "[5672]FSFX_Eng_R2.zip",
+      "archiveSha256": "c00cb33f08613ae23fcff9210f92356363e2271726aba1fe0bf2765a5143dca5",
+      "patchOnly": true,
+      "sourceUrl": "https://www.romhacking.net/translations/5672/",
+      "discs": [
+        {
+          "archiveName": "Farland Story FX (Japan).zip",
+          "inputSha1": "fdd99db168d5b8f936f5ce6999e53b7c95dd137e",
+          "inputIsoSha1": "3b0939a5134cb39b1579a0f949407c4adbd037a8"
+        }
+      ]
+    },
+    "1299": {
+      "archive": "[1299]ruruliararura_infinitely_small.zip",
+      "archiveSha256": "6e23cad8b0645c078e6cd498655a7bfcf81645429e5497869d7a2c3d35d342b1",
+      "patchOnly": true,
+      "sourceUrl": "https://www.romhacking.net/translations/1299/",
+      "discs": [
+        {
+          "archiveName": "Ruruli Ra Rura (Japan).zip",
+          "inputSha1": "63585e028ecd41d59dbc4b46e83279a8eb4d21dd",
+          "inputIsoSha1": "ce7ffc4aa1aa6ec7ae1f09e4d998bcfc84689fa4"
+        }
+      ]
+    }
+  }
+}

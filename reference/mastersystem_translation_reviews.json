@@ -1,0 +1,16 @@
+{
+  "publishedBps": [
+    {
+      "url": "https://github.com/maxim-zhao/psrp/releases/download/v2.6.1/PhantasyStar-SMS-EN-2.6.1.zip",
+      "sourceUrl": "https://github.com/maxim-zhao/psrp/releases/tag/v2.6.1",
+      "sha256": "1aff11dc86cf811695a90855e1fa3f8a5fc4baf7f2ab817b38bbb7ae3bed6867",
+      "members": ["ps1jert.en.bps", "ps1jert.literal.bps"],
+      "baseSha1": "c9a40ddd217c58dddcd6b5c0fe66c3a50d3e68e4",
+      "language": "English",
+      "authors": ["Phantasy Star Retranslation Project"],
+      "version": "2.6.1",
+      "versions": {"ps1jert.literal.bps": "2.6.1 (literal)"},
+      "released": "2025-12-22"
+    }
+  ]
+}

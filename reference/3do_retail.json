@@ -1,0 +1,954 @@
+{
+  "archiveTitles": {
+    "Advanced Dungeons & Dragons: DeathKeep": [
+      "DeathKeep"
+    ],
+    "Advanced Dungeons & Dragons: Slayer": [
+      "Slayer",
+      "Lost Dungeon"
+    ],
+    "AI Shogi": [
+      "AI Shougi"
+    ],
+    "Akagi Tōhaiden": [
+      "Touhaiden Akagi"
+    ],
+    "Alfred Hitchcock Presents": [
+      "Hitchcock ni Chousen"
+    ],
+    "Another World": [
+      "Out of This World",
+      "Outer World"
+    ],
+    "Aqua World: Umibi Monogatari": [
+      "Aqua World - Umi Monogatari"
+    ],
+    "Blue Forest Story: Kaze no Fūin": [
+      "BFS - Blue Forest Story"
+    ],
+    "Bust-a-Move": [
+      "Puzzle Bobble"
+    ],
+    "Doraemon Yūjō Densetsu": [
+      "Yuujou Densetsu - The Doraemons"
+    ],
+    "Eigo de Go!": [
+      "Gateway to English - Eigo de Go!"
+    ],
+    "Escape from Monster Manor": [
+      "Virtual Horror - Norowareta Yakata"
+    ],
+    "Firewall: Man vs. Machine": [
+      "Firewall"
+    ],
+    "Fun 'n Games": [
+      "Fun 'n Games - Soft no Omochabako"
+    ],
+    "Furopon World": [
+      "Flopon World"
+    ],
+    "Goal FH": [
+      "Goal FH (Field Hunter)"
+    ],
+    "Guardian War": [
+      "Powers Kingdom"
+    ],
+    "Igo Time Trial: Thumego 1": [
+      "Igo Time Trial - Tsumego I"
+    ],
+    "Immercenary": [
+      "Perfect World - Combat in a Digital World"
+    ],
+    "Insect War": [
+      "Insector War"
+    ],
+    "Iron Angel of the Apocalypse": [
+      "Iron Angel of the Apocalypse - Tetsujin",
+      "Tetsujin"
+    ],
+    "Iron Angel of the Apocalypse: The Return": [
+      "Tetsujin Returns"
+    ],
+    "John Madden Football": [
+      "John Madden NFL Football",
+      "NFL Madden Football"
+    ],
+    "Kakinoki Shogi": [
+      "Kakinoki Shougi"
+    ],
+    "Killing Time": [
+      "Tozasareta Yakata"
+    ],
+    "Kurokishi no Kamen": [
+      "Ghost Hunter Series - Kuroki Shi no Kamen"
+    ],
+    "Lucienne's Quest": [
+      "Sword & Sorcery"
+    ],
+    "Macaroni Hōren Shō Interactive": [
+      "Makaroni Hourensou Interactive"
+    ],
+    "Mahjong-kyo Jidai: AV Gal Seifukuhen": [
+      "Mahjong-kyou Jidai - AV Gal Seifuku-hen"
+    ],
+    "Mahjong-kyo Jidai: Ko Gal Hokagohen": [
+      "Mahjong-kyou Jidai Cogal Houkago-hen"
+    ],
+    "Masters: Harukanaru Augusta 3": [
+      "T&E VR Golf - Masters - Harukanaru Augusta 3"
+    ],
+    "Mirai Shōnen Konan Digital Library": [
+      "Mirai Shounen Conan - Digital Library"
+    ],
+    "Monoshiri Koro Yūgaku": [
+      "Monoshiri Jiyuugaku - Ogura Hyakunin Isshu-hen"
+    ],
+    "Nice Body All-Star Suiei Taikai": [
+      "Nice Body - For Professional Use"
+    ],
+    "Pebble Beach Golf Links": [
+      "T&E VR Golf - Pebble Beach no Hatou",
+      "True Golf Classics - Pebble Beach Golf Links"
+    ],
+    "Quarterback Attack with Mike Ditka": [
+      "Quarterback Attack"
+    ],
+    "Real Pinball": [
+      "Fire Ball!!"
+    ],
+    "Road & Track Presents: The Need for Speed": [
+      "Road & Track Presents - OverDrivin'"
+    ],
+    "Seal of the Pharaoh": [
+      "Virtual Quest - Pharaoh no Fuuin"
+    ],
+    "Shanghai: Triple-Threat": [
+      "Shanghai - Banri no Choujou - The Great Wall"
+    ],
+    "Shadow: War of Succession": [
+      "SHADOW Warriors"
+    ],
+    "Short Warp": [
+      "Short Warp - Warp's Short Game Collection"
+    ],
+    "Snow Job": [
+      "SnowJob Starring Tracy Scoggins"
+    ],
+    "Soccer Kid": [
+      "Great! Soccer Kid"
+    ],
+    "Sotsugyō II: Neo Generation Special": [
+      "Sotsugyou II Special - Neo Generation"
+    ],
+    "Space Hulk: Vengeance of the Blood Angels": [
+      "Blood Angels"
+    ],
+    "Striker: World Cup Special": [
+      "World Cup Special"
+    ],
+    "Super Street Fighter II Turbo": [
+      "Super Street Fighter II X - Grand Master Challenge"
+    ],
+    "Taiketsu! Rooms": [
+      "Taiketsu Rumiizu!"
+    ],
+    "The Daedalus Encounter": [
+      "Daedalus Encounter, The - Episode 1 - Nanpasen no Alien"
+    ],
+    "The Incredible Machine": [
+      "Pala Rancho",
+      "Incredible Machine, The - Pararancho"
+    ],
+    "Toki o Koeta Tegami: The Letter That Over Came Time": [
+      "Toki o Koeta Tegami"
+    ],
+    "Tokimeki Mahjong Paradise Special": [
+      "Tokimeki Mahjong Paradise Special - Koi no Tenpai Beat"
+    ],
+    "Totsugeki Kikan (Karakuri) Megadasu!!": [
+      "Totsugeki Karakuri! Megadas!!"
+    ],
+    "Twisted: The Game Show": [
+      "Twisted"
+    ],
+    "Virtual Cameraman Part 1: Sawada Naomi and Juri Anna": [
+      "Virtual Cameraman Part 1 - Naomi Sawada & Anna Juri"
+    ],
+    "Virtual Cameraman Part 2: Kawai Natsumi and Tachihara Kimi": [
+      "Virtual Cameraman Part 2 - Natsumi Kawai & Kimi Tachihara"
+    ],
+    "Virtual Cameraman Part 3: Sugimoto Yumika": [
+      "Virtual Cameraman Part 3 - Yumika Sugimoto"
+    ],
+    "Virtual Cameraman Part 4: Fujitani Shiori": [
+      "Virtual Cameraman Part 4 - Shiori Fujitani"
+    ],
+    "Virtual Cameraman Part 5: Ando Ari": [
+      "Virtual Cameraman Part 5 - Yuri Andou"
+    ],
+    "Waialae Country Club": [
+      "T&E VR Golf - Waialae no Kiseki",
+      "True Golf Classics - Waialae Country Club"
+    ],
+    "Wicked 18": [
+      "T&E VR Golf - Devil's Course"
+    ],
+    "Yamamura Misa Suspense: Kyōto Anba Sansō Satsujin Jiken": [
+      "Yamamura Misa Suspense - Kyoto Kurama Sansou Satsujin Jiken"
+    ],
+    "Īda Jōji Nightmare Interactive: Moon Cradle - Igyō no Hanayome": [
+      "Moon Cradle - Igyou no Hanayome"
+    ],
+    "Chiki Chiki Machine Mō Race": [
+      "Chiki Chiki Machine Mou Race - Kenken to Black Maou no Ijiwaru Daisakusen"
+    ],
+    "Chiki Chiki Machine Mō Race 2: In Space": [
+      "Chiki Chiki Machine Mou Race 2 - In Space"
+    ],
+    "D": [
+      "D no Shokutaku"
+    ],
+    "D's Diner: Director's Cut": [
+      "D's Diner - The Director's Cut"
+    ],
+    "Return Fire: Maps O' Death (expansion)": [
+      "Return Fire - Maps O' Death"
+    ],
+    "Shock Wave: Operation JumpGate (expansion)": [
+      "Shock Wave - Operation JumpGate"
+    ],
+    "Terasawa Takeichi no Takeru": [
+      "Takeru"
+    ],
+    "The Eye of Typhoon": [
+      "Eye of Typhoon"
+    ]
+  },
+  "manualAliases": {
+    "Advanced Dungeons & Dragons: DeathKeep": [
+      "Deathkeep"
+    ],
+    "Advanced Dungeons & Dragons: Slayer": [
+      "Slayer"
+    ],
+    "Another World": [
+      "Out of This World"
+    ],
+    "Shock Wave: Operation JumpGate (expansion)": [
+      "Shock Wave - Operation JumpGate"
+    ]
+  },
+  "omittedMarkets": {
+    "Armageddon": [
+      "JP"
+    ],
+    "Battle Blues": [
+      "JP"
+    ],
+    "Firewall: Man vs. Machine": [
+      "JP"
+    ],
+    "The Eye of Typhoon": [
+      "JP"
+    ]
+  },
+  "additionalReleases": [
+    {
+      "game": "Armageddon",
+      "market": "KR",
+      "date": "1996",
+      "source": {
+        "name": "3DO World",
+        "url": "https://3do.world/index.php?title=3DO_Games"
+      }
+    },
+    {
+      "game": "Battle Blues",
+      "market": "KR",
+      "date": "1996",
+      "source": {
+        "name": "3DO World",
+        "url": "https://3do.world/index.php?title=3DO_Games"
+      }
+    },
+    {
+      "game": "Firewall: Man vs. Machine",
+      "market": "KR",
+      "date": "1996",
+      "source": {
+        "name": "3DO World",
+        "url": "https://3do.world/index.php?title=3DO_Games"
+      }
+    },
+    {
+      "game": "The Eye of Typhoon",
+      "market": "KR",
+      "date": "1996",
+      "source": {
+        "name": "3DO World",
+        "url": "https://3do.world/index.php?title=3DO_Games"
+      }
+    },
+    {
+      "game": "D",
+      "edition": "D's Diner: Director's Cut",
+      "market": "JP",
+      "date": "1996",
+      "source": {
+        "name": "3DO World",
+        "url": "https://3do.world/index.php?title=3DO_Games"
+      }
+    }
+  ],
+  "discSets": [
+    {
+      "title": "Supreme Warrior",
+      "archives": [
+        "Supreme Warrior (Japan) (Ja,Zh) (Disc 1) (Fire & Earth).zip",
+        "Supreme Warrior (Japan) (Ja,Zh) (Disc 2) (Wind & Fang Tu).zip"
+      ],
+      "source": "https://www.mobygames.com/game/1240/supreme-warrior/"
+    },
+    {
+      "title": "Supreme Warrior",
+      "archives": [
+        "Supreme Warrior (USA) (Disc 1) (Fire & Earth).zip",
+        "Supreme Warrior (USA) (Disc 2) (Wind & Fang Tu).zip"
+      ],
+      "source": "https://www.mobygames.com/game/1240/supreme-warrior/"
+    }
+  ],
+  "unavailableManuals": [
+    "https://www.digitpress.com/library/manuals/3do/fflashback.pdf"
+  ],
+  "manuals": [
+    {
+      "edition": "Flashback: The Quest for Identity",
+      "market": "NA",
+      "name": "Flashback: The Quest for Identity — manual",
+      "url": "https://www.digitpress.com/library/manuals/3do/flashback.pdf",
+      "source": "Digital Press",
+      "sourceUrl": "https://www.digitpress.com/library/manuals/3do/",
+      "format": "PDF",
+      "regions": [
+        "US"
+      ]
+    }
+  ],
+  "verifiedArchives": [
+    {
+      "edition": "The Eye of Typhoon",
+      "market": "KR",
+      "archives": [
+        "Eye of Typhoon, The (Korea).zip"
+      ],
+      "source": "https://3do.world/index.php?title=The_Eye_of_Typhoon"
+    }
+  ],
+  "reviewedArtwork": [
+    {
+      "edition": "3DO Action Pak",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://3do.world/images/a/ab/3DO_Action_Pak_Front.jpg",
+          "source": {
+            "name": "3DO World",
+            "url": "https://3do.world/index.php?title=3DO_Action_Pak"
+          }
+        },
+        "logo": {
+          "url": "https://3do.world/images/0/0f/3DO_Action_pak_Logo.png",
+          "source": {
+            "name": "3DO World",
+            "url": "https://3do.world/index.php?title=3DO_Action_Pak"
+          }
+        }
+      }
+    },
+    {
+      "edition": "3DO Maniac Pack",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://3do.world/images/f/fc/3DO_Maniac_Pak_Front.jpg",
+          "source": {
+            "name": "3DO World",
+            "url": "https://3do.world/index.php?title=3DO_Maniac_Pak"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Advanced Dungeons & Dragons: DeathKeep",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://3do.world/images/9/97/AD%26D_Deathkeep_front.jpg",
+          "source": {
+            "name": "3DO World",
+            "url": "https://3do.world/index.php?title=AD%26D_DeathKeep(EU)"
+          }
+        },
+        "snap": {
+          "url": "https://3do.world/images/b/b5/AD%26D_Deathkeep_Screenshot_1.jpg",
+          "source": {
+            "name": "3DO World",
+            "url": "https://3do.world/index.php?title=AD%26D_DeathKeep(EU)"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Alone in the Dark",
+      "market": "JP",
+      "thumbnail": "Alone in the Dark (USA)",
+      "kinds": [
+        "logo"
+      ]
+    },
+    {
+      "edition": "Alone in the Dark",
+      "market": "PAL",
+      "thumbnail": "Alone in the Dark (USA)",
+      "kinds": [
+        "logo"
+      ]
+    },
+    {
+      "edition": "Alone in the Dark 2",
+      "market": "JP",
+      "thumbnail": "Alone in the Dark 2 (France)",
+      "kinds": [
+        "logo"
+      ]
+    },
+    {
+      "edition": "Another World",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-another-world.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/another-world"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Ballz: The Director's Cut",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://3do.world/images/0/09/Ballz_JP_Front.jpg",
+          "source": {
+            "name": "3DO World",
+            "url": "https://3do.world/index.php?title=Ballz(JP)"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Ballz: The Director's Cut",
+      "market": "NA",
+      "thumbnail": "Ballz - The Director's Cut (World) (En,Ja)",
+      "kinds": [
+        "boxart"
+      ]
+    },
+    {
+      "edition": "Ballz: The Director's Cut",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-ballz.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/ballz"
+          }
+        }
+      }
+    },
+    {
+      "edition": "BC Racers",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://3do.world/images/a/ad/BC_Racers_Front_EU.png",
+          "source": {
+            "name": "3DO World",
+            "url": "https://3do.world/index.php?title=BC_Racers(EU)"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Club 3DO: Station Invasion",
+      "market": "PAL",
+      "images": {
+        "title": {
+          "url": "https://3do.world/images/c/c7/Club_3DO_Station_Screenshot_1.jpg",
+          "source": {
+            "name": "3DO World",
+            "url": "https://3do.world/index.php?title=Club_3DO_Station_Invasion(EU)"
+          }
+        },
+        "snap": {
+          "url": "https://3do.world/images/c/c5/Club_3DO_Station_Screenshot_3.jpg",
+          "source": {
+            "name": "3DO World",
+            "url": "https://3do.world/index.php?title=Club_3DO_Station_Invasion(EU)"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Corpse Killer",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-corpse-killer-big-box_0.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/corpse-killer"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Cyberdillo",
+      "market": "NA",
+      "thumbnail": "Cyberdillo (USA)",
+      "kinds": [
+        "title",
+        "snap"
+      ]
+    },
+    {
+      "edition": "D",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://3do.world/images/4/4a/D_NA_Front.jpg",
+          "source": {
+            "name": "3DO World",
+            "url": "https://3do.world/index.php?title=D(NA)"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Demolition Man",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-demolition-man_0.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/demolition-man"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Doom",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-doom.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/doom"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Dragon Lore: The Legend Begins",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-dragon-lore.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/dragon-lore"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Flashback: The Quest for Identity",
+      "market": "JP",
+      "thumbnail": "Flashback (Japan) (En,Ja,Fr,De,It,Nl)",
+      "kinds": [
+        "title",
+        "snap"
+      ]
+    },
+    {
+      "edition": "Flashback: The Quest for Identity",
+      "market": "PAL",
+      "thumbnail": "Flashback (Europe) (En,Fr)",
+      "kinds": [
+        "title",
+        "snap",
+        "logo"
+      ]
+    },
+    {
+      "edition": "Gex",
+      "market": "PAL",
+      "thumbnail": "Gex (Europe)",
+      "kinds": [
+        "boxart"
+      ]
+    },
+    {
+      "edition": "Gridders",
+      "market": "NA",
+      "thumbnail": "Gridders (USA)",
+      "kinds": [
+        "boxart"
+      ]
+    },
+    {
+      "edition": "Gunslinger Collection",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://images.launchbox-app.com/fc1fb828-8734-4f07-84b9-d1f845b8e29e.jpg",
+          "source": {
+            "name": "LaunchBox",
+            "url": "https://gamesdb.launchbox-app.com/games/details/128792"
+          }
+        },
+        "logo": {
+          "url": "https://images.launchbox-app.com/0e3fa410-6942-4b6f-827e-9adbeca45b73.png",
+          "source": {
+            "name": "LaunchBox",
+            "url": "https://gamesdb.launchbox-app.com/games/details/128792"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Hell: A Cyberpunk Thriller",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-hell-a-cyberpunk-thriller.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/hell-cyberpunk-thriller"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Immercenary",
+      "market": "NA",
+      "thumbnail": "Immercenary (USA)",
+      "kinds": [
+        "title",
+        "snap"
+      ]
+    },
+    {
+      "edition": "Jurassic Park Interactive",
+      "market": "PAL",
+      "thumbnail": "Jurassic Park Interactive (Europe)",
+      "kinds": [
+        "boxart"
+      ]
+    },
+    {
+      "edition": "Kingdom: The Far Reaches",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-kingdom-the-far-reaches.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/kingdom-far-reaches"
+          }
+        }
+      }
+    },
+    {
+      "edition": "MegaRace",
+      "market": "NA",
+      "thumbnail": "MegaRace (USA)",
+      "kinds": [
+        "boxart"
+      ]
+    },
+    {
+      "edition": "Mind Teazzer",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-mind-teazzer.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/mind-teazzer"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Nemurenu Yoru no Chīsana Ohanashi",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://images.launchbox-app.com/96ef3ca9-5de3-4ddf-9df7-50e258a645b2.jpg",
+          "source": {
+            "name": "LaunchBox",
+            "url": "https://gamesdb.launchbox-app.com/games/details/79950"
+          }
+        },
+        "title": {
+          "url": "https://www.gavas.jp/upload/save_image/3670_1.jpg",
+          "source": {
+            "name": "Pikopiko Encyclopedia",
+            "url": "https://www.gavas.jp/products/detail.php?product_id=3670"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Night Trap",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-night-trap.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/night-trap"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Off-World Interceptor",
+      "market": "PAL",
+      "thumbnail": "Off-world Interceptor (USA, Europe)",
+      "kinds": [
+        "title",
+        "snap"
+      ],
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-off-world-interceptor.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/world-interceptor"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Panzer General",
+      "market": "NA",
+      "thumbnail": "Panzer General (USA, Europe)",
+      "kinds": [
+        "title"
+      ]
+    },
+    {
+      "edition": "Panzer General",
+      "market": "PAL",
+      "thumbnail": "Panzer General (USA, Europe)",
+      "kinds": [
+        "title",
+        "snap"
+      ]
+    },
+    {
+      "edition": "PaTaank",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-pataank.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/pataank"
+          }
+        }
+      }
+    },
+    {
+      "edition": "PO'ed",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-poed.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/poed"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Primal Rage",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://atarimuseum.de/games/tengen/3do_pr.jpg",
+          "source": {
+            "name": "Atari Museum",
+            "url": "https://atarimuseum.de/3do_pr.htm"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Quarantine",
+      "market": "PAL",
+      "thumbnail": "Quarantine (Europe)",
+      "kinds": [
+        "boxart"
+      ]
+    },
+    {
+      "edition": "Samurai Shodown",
+      "market": "PAL",
+      "thumbnail": "Samurai Shodown (Europe)",
+      "kinds": [
+        "boxart"
+      ]
+    },
+    {
+      "edition": "Sewer Shark",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://3do.world/images/9/98/Sewer_Shark_UK_Front.jpg",
+          "source": {
+            "name": "3DO World",
+            "url": "https://3do.world/index.php?title=Sewer_Shark(UK)"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Shadow: War of Succession",
+      "market": "NA",
+      "thumbnail": "Shadow - War of Succession (USA)",
+      "kinds": [
+        "title",
+        "snap"
+      ]
+    },
+    {
+      "edition": "Shanghai: Triple-Threat",
+      "market": "JP",
+      "thumbnail": "Shanghai - Banri no Choujou - The Great Wall (Japan) (Rev 1)",
+      "kinds": [
+        "boxart"
+      ]
+    },
+    {
+      "edition": "Shelley Duvall's It's a Bird's Life",
+      "market": "NA",
+      "thumbnail": "Shelley Duvall's It's A Bird's Life (USA)",
+      "kinds": [
+        "title"
+      ]
+    },
+    {
+      "edition": "Space Shuttle",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-space-shuttle-big-box_0.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/space-shuttle"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Star Control II",
+      "market": "PAL",
+      "thumbnail": "Star Control II (USA, Europe)",
+      "kinds": [
+        "title",
+        "snap"
+      ],
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-star-control-2.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/star-control-2"
+          }
+        }
+      }
+    },
+    {
+      "edition": "The Daedalus Encounter",
+      "market": "PAL",
+      "images": {
+        "title": {
+          "url": "https://3do.world/images/f/f2/Daedalus_Encounter_Screenshot_1.png",
+          "source": {
+            "name": "3DO World",
+            "url": "https://3do.world/index.php?title=Daedalus_Encounter(EU)"
+          }
+        },
+        "snap": {
+          "url": "https://3do.world/images/1/17/Daedalus_Encounter_Screenshot_3.png",
+          "source": {
+            "name": "3DO World",
+            "url": "https://3do.world/index.php?title=Daedalus_Encounter(EU)"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Trip'd",
+      "market": "NA",
+      "thumbnail": "Trip'd (USA)",
+      "kinds": [
+        "boxart"
+      ]
+    },
+    {
+      "edition": "Trip'd",
+      "market": "PAL",
+      "thumbnail": "Trip'd (USA, Europe)",
+      "kinds": [
+        "boxart"
+      ]
+    },
+    {
+      "edition": "Way of the Warrior",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-way-of-the-warrior.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/way-warrior"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Zhadnost: The People's Party",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://consolepassion.co.uk/sites/default/files/3do-zhadnost-the-peoples-party.jpg",
+          "source": {
+            "name": "Console Passion",
+            "url": "https://consolepassion.co.uk/products/3do/games/zhadnost-peoples-party"
+          }
+        }
+      }
+    }
+  ]
+}

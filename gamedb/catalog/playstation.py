@@ -3,18 +3,16 @@
 from collections import defaultdict
 import json
 
-from sqlalchemy import text
-
 from gamedb.config import PROJECT_ROOT
 from gamedb.database import create_database_engine
 from gamedb.vgm.inventory import BROWSER_AUDIO
 
 from . import retail
+from .disc_catalog import redump_archives
 from .playstation_media import add_manuals, apply_reviewed_artwork, manual_inventory
 from .playstation_source import retail_list
 from .references import read_index
 from .retail_media import add_descriptions_and_art
-from .software_identity import SOFTWARE_KEY_SQL
 from .soundtracks import add_soundtracks
 
 
@@ -24,55 +22,6 @@ THUMBNAILS = {"playstation": ("Sony - PlayStation", "ccee75c7744d81676b6725307ac
 SOURCE_DIRECTORY = PROJECT_ROOT / "data/media/cache/playstation-retail"
 REFERENCE = PROJECT_ROOT / "reference/playstation_retail.json"
 SOUNDTRACK_FORMATS = {"psf", "minipsf", "xa", "genh"} | {suffix[1:] for suffix in BROWSER_AUDIO}
-
-ARCHIVES = text(f"""
-    SELECT release.display_title AS title, signature.sha1_set_digest AS signature,
-        software.id AS "softwareId", {SOFTWARE_KEY_SQL} AS "softwareKey",
-        packages.names AS "archiveNames", packages.discs, ARRAY['US'] AS regions,
-        facts.versions, facts.revisions, 'optical-disc' AS channel
-    FROM catalog.system system
-    JOIN catalog.software software ON software.system_id = system.id
-    JOIN catalog.title title ON title.id = software.preferred_title_id
-    JOIN catalog.software_release membership ON membership.software_id = software.id
-    JOIN catalog.release release ON release.id = membership.release_id
-    JOIN catalog.release_content_signature signature ON signature.release_id = release.id
-    JOIN LATERAL (
-        SELECT array_agg(package.archive_name ORDER BY part.media_sequence, package.archive_name) AS names,
-            jsonb_agg(jsonb_strip_nulls(jsonb_build_object(
-                'name', package.archive_name, 'number', part.media_sequence,
-                'label', coalesce(nullif(part.media_description, ''), nullif(part.media_label, ''))
-            )) ORDER BY part.media_sequence, package.archive_name) AS discs
-        FROM catalog.release_package part
-        JOIN catalog.package package ON package.id = part.package_id
-        WHERE part.release_id = release.id
-        HAVING count(*) > 0 AND bool_and(
-            package.source_collection = 'Redump' AND package.resolved_path IS NOT NULL
-            AND EXISTS (SELECT FROM catalog.package_file file WHERE file.package_id = package.id)
-            AND NOT EXISTS (
-                SELECT FROM catalog.package_file file
-                WHERE file.package_id = package.id AND NOT file.sha1_verified
-            )
-        )
-        AND (release.expected_media_parts IS NULL
-             OR (count(DISTINCT part.media_sequence) = release.expected_media_parts
-                 AND min(part.media_sequence) = 1 AND max(part.media_sequence) = release.expected_media_parts))
-    ) packages ON true
-    JOIN LATERAL (
-        SELECT coalesce(array_agg(DISTINCT fact_value ORDER BY fact_value)
-                   FILTER (WHERE fact_key = 'version'), '{{}}') AS versions,
-               coalesce(array_agg(DISTINCT fact_value ORDER BY fact_value)
-                   FILTER (WHERE fact_key = 'revision'), '{{}}') AS revisions
-        FROM catalog.release_fact
-        WHERE release_id = release.id
-        HAVING bool_or(fact_key = 'region' AND fact_value = 'US')
-            AND NOT bool_or(fact_key IN ('bios', 'demo', 'release_status', 'dump_status', 'dump_modification')
-                       OR (fact_key = 'license' AND fact_value = 'unlicensed'))
-    ) facts ON true
-    WHERE system.manufacturer_name = 'Sony' AND system.system_name = 'PlayStation'
-        AND release.grouping_status <> 'media_ambiguous'
-    ORDER BY release.display_title, packages.names, release.id
-""")
-
 
 def match_releases(catalog, archives, reviews):
     archive_titles = defaultdict(list)
@@ -158,7 +107,7 @@ def seed_playstation(report=None, *, publish_catalog=False, sources=None):
                 connection.exec_driver_sql("SELECT pg_advisory_xact_lock(hashtext('gamedb.playstation-retail'))")
             else:
                 connection.exec_driver_sql("SET TRANSACTION READ ONLY")
-            archives = [dict(row) for row in connection.execute(ARCHIVES).mappings()]
+            archives = redump_archives(connection, *SYSTEM, MARKETS["NA"])
             aliases = match_releases(catalog, archives, reviews)
             add_descriptions_and_art(connection, catalog, {"thumbs-playstation.json": thumbs}, reference,
                                      platforms={"Sony Playstation"}, thumbnails=THUMBNAILS, thumbnail_key="playstation")

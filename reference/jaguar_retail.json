@@ -1,0 +1,151 @@
+{
+  "tosecArchives": [
+    {"edition": "AirCars", "archiveName": "Air Cars (1997)(ICD).zip", "mame": "aircars", "regions": ["US"]},
+    {"edition": "Iron Soldier 2", "archiveName": "Iron Soldier 2 (1997)(Telegames)[JA810].zip", "mame": "ironsol2", "regions": ["EU", "US"]},
+    {"edition": "Worms", "archiveName": "Worms (1998)(Telegames)[JA103].zip", "mame": "worms", "regions": ["EU", "US"]},
+    {"edition": "Zero 5", "archiveName": "Zero 5 (1997)(Telegames)[J4011].zip", "mame": "zero5", "regions": ["EU", "US"]}
+  ],
+  "manualAliases": {
+    "Bubsy in Fractured Furry Tales": "Bubsy",
+    "Dragon: The Bruce Lee Story": "Dragon",
+    "Evolution: Dino Dudes": "Dino Dudes",
+    "Flashback: The Quest for Identity": "Flashback",
+    "Missile Command 3D": "Missile Command 3-D",
+    "NBA Jam: Tournament Edition": "NBA Jam",
+    "Supercross 3D": "Supercross 3-D",
+    "Towers II: Plight of the Stargazer": "Towers 2",
+    "Troy Aikman NFL Football": "Troy Aikman Football",
+    "Wolfenstein 3D": "Wolfenstein 3-D"
+  },
+  "excludedDigitalPressManuals": {
+    "Iron Soldier 2": "The Digital Press scan is the Jaguar CD instruction booklet."
+  },
+  "palManuals": {
+    "Alien vs Predator": "English, French, German",
+    "Atari Karts": "English, French, German",
+    "Attack of the Mutant Penguins": "English, French, German",
+    "Bubsy in Fractured Furry Tales": "English, French, German",
+    "Checkered Flag": "English, French, German",
+    "Club Drive": "English, French, German",
+    "Defender 2000": "English, French, German",
+    "Doom": "English, French, German",
+    "Dragon: The Bruce Lee Story": "English, French, German",
+    "Fever Pitch Soccer": "English, French, German",
+    "Fight for Life": "English, French, German",
+    "Hover Strike": "English, French, German",
+    "I-War": "English, French, German",
+    "Iron Soldier": "English, French, German",
+    "Kasumi Ninja": "English, French, German",
+    "Missile Command 3D": "English, French, German",
+    "NBA Jam: Tournament Edition": "English, French, German",
+    "Pitfall: The Mayan Adventure": "English, French, German",
+    "Ruiner Pinball": "English, French, German",
+    "Super Burnout": "English, French, German",
+    "Supercross 3D": "English, French, German",
+    "Ultra Vortek": "English, French, German",
+    "Val d'Isère Skiing and Snowboarding": "English, French, German",
+    "White Men Can't Jump": "English, French, German",
+    "Zool 2": "English, French, German",
+    "Zoop": "English, French, German",
+    "Breakout 2000": "English",
+    "Towers II: Plight of the Stargazer": "English",
+    "Worms": "English",
+    "Zero 5": "English"
+  },
+  "manuals": [
+    {
+      "edition": "Double Dragon V: The Shadow Falls",
+      "markets": [
+        "NA"
+      ],
+      "name": "Double Dragon V: The Shadow Falls — manual",
+      "regions": [
+        "US"
+      ],
+      "language": "English",
+      "format": "PDF",
+      "url": "https://db.hfsplay.fr/files/2019/09/16/Double_Dragon_V_-_The_Shadow_Falls_World_tUeEgsF.pdf",
+      "sha1": "b62f4d8545bba063693099b46b427bace47b6d5e",
+      "size": 10372647,
+      "source": "HFS Play",
+      "sourceUrl": "https://db.hfsplay.fr/games/84843-double-dragon-v-the-shadow-falls?lang=en"
+    },
+    {
+      "edition": "Iron Soldier 2",
+      "markets": [
+        "NA",
+        "PAL"
+      ],
+      "name": "Iron Soldier 2 — cartridge manual",
+      "regions": [
+        "US",
+        "EU"
+      ],
+      "language": "English",
+      "format": "PDF",
+      "url": "https://static.atariage.com/manual_thumbs.php?SoftwareLabelID=1093",
+      "source": "AtariAge",
+      "sourceUrl": "https://static.atariage.com/manual_thumbs.php?SoftwareLabelID=1093",
+      "pages": [
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_1.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_2.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_3.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_4.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_5.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_6.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_7.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_8.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_9.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_10.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_11.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_12.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_13.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_14.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_15.jpg",
+        "https://static.atariage.com/Jaguar/manuals/IronSoldier2_Cart/m_IronSoldier2_Cart_16.jpg"
+      ]
+    }
+  ],
+  "cartridgeArt": [
+    {
+      "edition": "AirCars",
+      "market": "NA",
+      "image": {
+        "url": "https://static.atariage.com/Jaguar/carts/c_AirCars_front.jpg",
+        "regions": ["US"],
+        "source": {
+          "name": "AtariAge",
+          "url": "https://static.atariage.com/cart_page.php?SoftwareLabelID=1059"
+        }
+      }
+    }
+  ],
+  "unavailableImages": [
+    "https://raw.githubusercontent.com/libretro-thumbnails/Atari_-_Jaguar/2c8767a7de7422fc42ee1e2e2ecb9baf0eadc27e/Named_Boxarts/Air%20Cars%20%281997%29%28ICD%29.png",
+    "b802fb59-9a33-43ad-9f70-5213ef8956d3.png"
+  ],
+  "artworkRegions": [
+    {"archiveName":"Alien vs Predator (World).zip","kind":"boxart","markets":["NA","PAL"],"regions":["US","EU"],"source":"https://www.atarimuseum.de/s_vgjag.htm"},
+    {"archiveName":"Atari Karts (World).zip","kind":"boxart","markets":["PAL"],"regions":["EU"],"source":"https://www.atarimuseum.de/s_vgjag.htm"},
+    {"archiveName":"Breakout 2000 (USA, Europe).zip","kind":"title","markets":["NA","PAL"],"regions":["US","EU"],"source":"https://github.com/mamedev/mame/blob/mame0285/hash/jaguar.xml","filename":"Breakout 2000 (1996)(Telegames)[J9093E].png"},
+    {"archiveName":"Bubsy in Fractured Furry Tales (World).zip","kind":"boxart","markets":["PAL"],"regions":["EU"],"source":"https://www.atarimuseum.de/s_vgjag.htm"},
+    {"archiveName":"Checkered Flag (World).zip","kind":"boxart","markets":["PAL"],"regions":["EU"],"source":"https://www.atarimuseum.de/s_vgjag.htm"},
+    {"archiveName":"Cybermorph (World) (Rev B).zip","kind":"boxart","markets":["NA","PAL"],"regions":["US","EU"],"source":"https://www.atarimuseum.de/j9000.htm"},
+    {"archiveName":"Doom (World).zip","kind":"boxart","markets":["PAL"],"regions":["EU"],"source":"https://www.atarimuseum.de/s_vgjag.htm"},
+    {"archiveName":"Double Dragon V - The Shadow Falls (World).zip","kind":"boxart","markets":["NA"],"regions":["US"],"source":"https://db.hfsplay.fr/games/84843-double-dragon-v-the-shadow-falls?lang=en"},
+    {"archiveName":"Evolution - Dino Dudes (World).zip","kind":"boxart","markets":["NA"],"regions":["US"],"source":"https://static.atariage.com/software_page.php?SoftwareID=2519&SystemID=JAGUAR"},
+    {"archiveName":"Hover Strike (World).zip","kind":"boxart","markets":["PAL"],"regions":["EU"],"source":"https://www.atarimuseum.de/s_vgjag.htm"},
+    {"archiveName":"International Sensible Soccer (World).zip","kind":"boxart","markets":["NA","PAL"],"regions":["US","EU"],"source":"https://static.atariage.com/software_page.php?SoftwareID=2559&SystemID=JAGUAR"},
+    {"archiveName":"Iron Soldier (World).zip","kind":"boxart","markets":["PAL"],"regions":["EU"],"source":"https://www.atarimuseum.de/s_vgjag.htm"},
+    {"archiveName":"Iron Soldier 2 (1997)(Telegames)[JA810].zip","kind":"boxart","markets":["NA","PAL"],"regions":["US","EU"],"source":"https://static.atariage.com/box_page.php?BoxStyleID=76&SoftwareID=2506"},
+    {"archiveName":"Power Drive Rally (World).zip","kind":"boxart","markets":["NA"],"regions":["US"],"source":"https://static.atariage.com/software_page.php?SoftwareID=2534&SystemID=JAGUAR"},
+    {"archiveName":"Raiden (World).zip","kind":"boxart","markets":["NA","PAL"],"regions":["US","EU"],"source":"https://www.atarimuseum.de/s_vgjag.htm"},
+    {"archiveName":"Super Burnout (World).zip","kind":"boxart","markets":["PAL"],"regions":["EU"],"source":"https://www.atarimuseum.de/s_vgjag.htm"},
+    {"archiveName":"Tempest 2000 (World).zip","kind":"boxart","markets":["PAL"],"regions":["EU"],"source":"https://www.atarimuseum.de/s_vgjag.htm"},
+    {"archiveName":"Trevor McFur in the Crescent Galaxy (World).zip","kind":"boxart","markets":["PAL"],"regions":["EU"],"source":"https://www.atarimuseum.de/s_vgjag.htm"},
+    {"archiveName":"Val d'Isere Skiing and Snowboarding (World).zip","kind":"boxart","markets":["PAL"],"regions":["EU"],"source":"https://www.atarimuseum.de/s_vgjag.htm"},
+    {"archiveName":"Wolfenstein 3D (World).zip","kind":"boxart","markets":["PAL"],"regions":["EU"],"source":"https://www.atarimuseum.de/s_vgjag.htm"},
+    {"archiveName":"Worms (1998)(Telegames)[JA103].zip","kind":"boxart","markets":["NA","PAL"],"regions":["US","EU"],"source":"https://static.atariage.com/box_page.php?SoftwareLabelID=1117"},
+    {"archiveName":"Zoop (USA, Europe).zip","kind":"boxart","markets":["NA"],"regions":["US"],"source":"https://static.atariage.com/box_page.php?SoftwareLabelID=1114"}
+  ]
+}

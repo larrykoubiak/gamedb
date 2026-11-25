@@ -12,9 +12,11 @@ DEFAULT_SYSTEMS = {
     "nsf": ("Nintendo", "Nintendo Entertainment System"),
     "gbs": ("Nintendo", "Game Boy"),
     "usf": ("Nintendo", "Nintendo 64"),
+    "ssf": ("Sega", "Saturn"),
     "gsf": ("Nintendo", "Game Boy Advance"),
     "2sf": ("Nintendo", "Nintendo DS"),
     "psf": ("Sony", "PlayStation"),
+    "3do": ("The 3DO Company", "3DO Interactive Multiplayer"),
 }
 CARTRIDGES = {
     "smd": {"smd": ("Sega", "Mega Drive"), "32x": ("Sega", "32X"), "pico": ("Sega", "Pico")},
@@ -38,6 +40,7 @@ PLATFORM_NOTES = {
     "hes": {*CARTRIDGES["hes"], "tcd", "pc-fx", "pc-fxga"}, "wsr": set(CARTRIDGES["wsr"]),
     "kss": {"gg", "sms", "sg-1000"}, "cdi": {"jaguar", "amiga", "cd32", "cdtv"},
     "psf": {"ps1", "psx", "psf"},
+    "ssf": {"sat", "saturn", "ssf"}, "3do": {"3do"},
 }
 OTHER_NOTES = {"a", "ab", "alt", "en", "eu", "fixed", "jp", "mod", "rr", "tagged", "us", "ut", "z0", "z1"}
 
@@ -74,6 +77,8 @@ def platform(domain, path):
             return "Various", "Arcade"
     if domain == "spc" and stem.startswith("bs "):
         return "Nintendo", "Satellaview"
+    if domain == "ssf" and (tags & {"stv", "st-v", "arcade"} or re.search(r"\((?:st-?v|arcade)\)", stem)):
+        return None
     if domain == "usf" and (tags & {"64dd", "n64dd"} or "(64dd)" in stem or "(randnetdd)" in stem
                             or stem.startswith("mario artist paint studio ")):
         return "Nintendo", "Nintendo 64DD"

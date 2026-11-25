@@ -3,195 +3,137 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GameDB Explorer</title>
-  <meta name="description" content="Search GameDB across all platforms or browse by system.">
-  <link rel="stylesheet" href="/styles.css?v=18">
-  <link rel="stylesheet" href="/almanac.css?v=3">
+  <meta name="description" content="Browse GameDB's retail console catalogs by generation and manufacturer.">
+  <title>Retail catalogs | GameDB</title>
+  <link rel="stylesheet" href="/styles.css?v=20">
+  <link rel="stylesheet" href="/home.css">
+  <script src="/home.js" defer></script>
 </head>
-<body>
-  <header class="almanac-topbar">
-    <a id="catalog-home" class="almanac-brand" href="/" aria-label="GameDB Almanac home">GameDB <span>Almanac</span></a>
-    <nav class="retail-catalog-links" aria-label="Retail catalogs">
-      <a id="snes-retail-link" href="/catalog/snes" hidden>
-        <img src="/system-icons/retail-logo-snes.png" width="330" height="83" alt="SNES retail catalog">
-      </a>
-      <a id="megadrive-retail-link" href="/catalog/megadrive" hidden>
-        <img src="/system-icons/retail-logo-megadrive.png" width="330" height="53" alt="Mega Drive retail catalog">
-      </a>
-      <a id="mastersystem-retail-link" href="/catalog/mastersystem" hidden>
-        <img src="/system-icons/retail-logo-mastersystem.png" width="330" height="113" alt="Master System retail catalog">
-      </a>
-      <a id="nes-retail-link" href="/catalog/nes" hidden>
-        <img src="/system-icons/retail-logo-nes.png" width="330" height="122" alt="NES / Famicom retail catalog">
-      </a>
-      <a id="playstation-retail-link" href="/catalog/playstation" hidden>
-        <img src="/system-icons/retail-logo-playstation.png" width="330" height="251" alt="PlayStation (US) retail catalog">
-      </a>
-      <a id="neogeo-retail-link" href="/catalog/neogeo" hidden>
-        <img src="/system-icons/retail-logo-neogeo.png" width="330" height="87" alt="Neo Geo retail catalog">
-      </a>
-    </nav>
-    <a id="back-to-catalog" href="/" hidden><span aria-hidden="true">←</span> Back to catalog</a>
+<body class="catalog-home">
+  <header class="home-bar">
+    <div class="home-width">
+      <a class="home-brand" href="/" aria-current="page">GameDB</a>
+      <a class="home-archive" href="/archive">V1 archive <span aria-hidden="true">→</span></a>
+    </div>
   </header>
 
-  <main id="catalog-view" class="workspace" hidden>
-    <aside class="sidebar" aria-labelledby="platform-index-title">
-      <div class="sidebar-index">
-        <div class="sidebar-heading">
-          <h2 id="platform-index-title">Platforms</h2>
-          <span id="system-count" class="quiet-count">…</span>
-          <button id="system-browser-toggle" type="button" aria-controls="system-browser" aria-expanded="false">Browse platforms</button>
-        </div>
-        <div id="system-browser">
-          <label class="category-field" for="system-category">
-            <span>Category</span>
-            <select id="system-category">
-              <option value="">All categories</option>
-              <option value="console">Console</option>
-              <option value="handheld">Handheld</option>
-              <option value="computer">Computer</option>
-              <option value="arcade">Arcade</option>
-              <option value="other">Other</option>
-            </select>
-          </label>
-          <label class="filter-field">
-            <span class="sr-only">Filter platforms</span>
-            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
-            <input id="system-filter" type="search" placeholder="Filter platforms…">
-          </label>
-          <button id="all-platforms" class="system-button active" type="button">All platforms</button>
-          <nav id="system-tree" class="system-tree" aria-label="Platforms by manufacturer" aria-live="polite">
-            <div class="loading-row">Loading catalog…</div>
-          </nav>
-          <a class="icon-credits" href="/system-icon-credits.txt" target="_blank" rel="noopener">Platform icon credits</a>
-        </div>
-      </div>
-    </aside>
+  <main class="home-width">
+    <header class="home-intro">
+      <h1>Retail catalogs</h1>
+      <p>Browse console releases, artwork, manuals, and soundtracks.</p>
+    </header>
 
-    <section class="content" aria-labelledby="system-name">
-      <div class="content-heading">
-        <p id="manufacturer-name" class="eyebrow">Catalog index</p>
-        <h1 id="system-name">All platforms</h1>
-        <p id="system-summary" class="summary" aria-live="polite"></p>
-        <div class="layout-switch" role="group" aria-label="Results layout">
-          <button type="button" data-layout="tiles" aria-pressed="true">Tiles</button>
-          <button type="button" data-layout="table" aria-pressed="false">Table</button>
-        </div>
-      </div>
-
-      <div class="game-search-toolbar">
-        <label class="filter-field game-filter-field">
-          <span class="sr-only">Search games</span>
-          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
-          <input id="game-filter" type="search" placeholder="Search games across all platforms…">
-        </label>
-        <label class="rom-hack-filter" title="Keep translations and undubs in the results">
-          <input id="hide-rom-hacks" type="checkbox" checked> Hide ROM hacks
-        </label>
-        <div id="metadata-filters" class="metadata-filters" role="group" aria-label="Filter games by metadata">
-          <button id="clear-metadata-filters" type="button" hidden>Clear filters</button>
-        </div>
-      </div>
-      <div id="active-metadata-filters" class="active-metadata-filters" aria-label="Active metadata filters"></div>
-
-      <ul id="game-grid" class="game-grid" aria-label="Games" hidden></ul>
-      <div id="game-table-wrap" class="table-wrap" role="region" aria-label="Preferred releases" tabindex="0" hidden>
-        <div class="legend" role="group" aria-label="Score legend">
-          <span><i class="legend-dot positive"></i> preference match</span>
-          <span><i class="legend-dot tie"></i> tied choice</span>
-        </div>
-        <table class="game-table">
-          <thead>
-            <tr>
-              <th scope="col" class="expand-heading"><span class="sr-only">Release details</span></th>
-              <th scope="col" class="art-heading"><span class="sr-only">Artwork</span></th>
-              <th scope="col">Title</th>
-              <th scope="col">Platform</th>
-              <th scope="col">Preferred archive</th>
-              <th scope="col">Region</th>
-              <th scope="col">Language</th>
-              <th scope="col">Revision</th>
-              <th scope="col">Release date</th>
-              <th scope="col">Dump</th>
-              <th scope="col">Source</th>
-              <th scope="col" class="numeric-heading">Score</th>
-              <th scope="col">Choice</th>
-            </tr>
-          </thead>
-          <tbody id="game-table-body"></tbody>
-        </table>
-      </div>
-
-      <div id="game-empty" class="empty-state" role="status"></div>
-
-      <footer id="pagination" class="pagination" hidden>
-        <button id="previous-page" type="button">← Previous</button>
-        <span id="page-label"></span>
-        <button id="next-page" type="button">Next →</button>
-      </footer>
-    </section>
+    <table class="system-matrix" role="table" aria-label="Systems by generation and manufacturer">
+      <colgroup>
+        <col class="generation-column">
+        <col span="4">
+        <col class="other-makers-column">
+      </colgroup>
+      <thead role="rowgroup">
+        <tr role="row">
+          <th scope="col" role="columnheader">Generation</th>
+          <th scope="col" role="columnheader">Nintendo</th>
+          <th scope="col" role="columnheader">Sega</th>
+          <th scope="col" role="columnheader">NEC</th>
+          <th scope="col" role="columnheader">Sony</th>
+          <th scope="col" role="columnheader">Other makers</th>
+        </tr>
+      </thead>
+      <tbody role="rowgroup">
+        <tr role="row">
+          <th scope="row" role="rowheader">3rd<span class="generation-suffix"> generation</span></th>
+          <td role="cell">
+            <a class="catalog-card" href="/catalog/nes">
+              <span class="catalog-card-art"><img src="/system-icons/retail-logo-nes.png" width="330" height="122" alt=""></span>
+              <span class="catalog-card-label">NES <span>Famicom</span></span>
+            </a>
+          </td>
+          <td role="cell">
+            <a class="catalog-card" href="/catalog/mastersystem">
+              <span class="catalog-card-art"><img src="/system-icons/retail-logo-mastersystem.png" width="330" height="113" alt=""></span>
+              <span class="catalog-card-label">Master System <span>Mark III</span></span>
+            </a>
+          </td>
+          <td role="cell"></td>
+          <td role="cell"></td>
+          <td role="cell"></td>
+        </tr>
+        <tr role="row">
+          <th scope="row" role="rowheader">4th<span class="generation-suffix"> generation</span></th>
+          <td role="cell">
+            <a class="catalog-card" href="/catalog/snes">
+              <span class="catalog-card-art"><img src="/system-icons/retail-logo-snes.png" width="330" height="83" alt=""></span>
+              <span class="catalog-card-label">Super Nintendo <span>Super Famicom</span></span>
+            </a>
+          </td>
+          <td role="cell">
+            <a class="catalog-card" href="/catalog/megadrive">
+              <span class="catalog-card-art"><img src="/system-icons/retail-logo-megadrive.png" width="330" height="53" alt=""></span>
+              <span class="catalog-card-label">Mega Drive <span>Genesis</span></span>
+            </a>
+          </td>
+          <td role="cell">
+            <a class="catalog-card" href="/catalog/pcengine">
+              <span class="catalog-card-art"><img src="/system-icons/retail-logo-pcengine.png" width="330" height="160" alt=""></span>
+              <span class="catalog-card-label">PC Engine <span>TurboGrafx-16</span></span>
+            </a>
+          </td>
+          <td role="cell"></td>
+          <td role="cell" class="other-makers">
+            <div class="catalog-card-group">
+              <a class="catalog-card" href="/catalog/neogeo">
+                <span class="catalog-card-art"><img src="/system-icons/retail-logo-neogeo.png" width="330" height="87" alt=""></span>
+                <span class="catalog-card-label">Neo Geo <span>SNK · MVS / AES</span></span>
+              </a>
+            </div>
+          </td>
+        </tr>
+        <tr role="row">
+          <th scope="row" role="rowheader">5th<span class="generation-suffix"> generation</span></th>
+          <td role="cell">
+            <a class="catalog-card" href="/catalog/n64">
+              <span class="catalog-card-art"><img src="/system-icons/retail-logo-n64.png" width="330" height="54" alt=""></span>
+              <span class="catalog-card-label">Nintendo 64</span>
+            </a>
+          </td>
+          <td role="cell">
+            <a class="catalog-card" href="/catalog/saturn">
+              <span class="catalog-card-art"><img src="/system-icons/retail-logo-saturn.png" width="330" height="52" alt=""></span>
+              <span class="catalog-card-label">Sega Saturn</span>
+            </a>
+          </td>
+          <td role="cell">
+            <a class="catalog-card" href="/catalog/pcfx">
+              <span class="catalog-card-art"><img src="/system-icons/retail-logo-pcfx.png" width="330" height="111" alt=""></span>
+              <span class="catalog-card-label">PC-FX</span>
+            </a>
+          </td>
+          <td role="cell">
+            <a class="catalog-card" href="/catalog/playstation">
+              <span class="catalog-card-art"><img src="/system-icons/retail-logo-playstation.png" width="330" height="251" alt=""></span>
+              <span class="catalog-card-label">PlayStation <span>US library</span></span>
+            </a>
+          </td>
+          <td role="cell" class="other-makers">
+            <div class="catalog-card-group">
+              <a class="catalog-card" href="/catalog/jaguar">
+                <span class="catalog-card-art"><img src="/system-icons/retail-logo-jaguar.png" width="330" height="117" alt=""></span>
+                <span class="catalog-card-label">Jaguar <span>Atari</span></span>
+              </a>
+              <a class="catalog-card" href="/catalog/cd32">
+                <span class="catalog-card-art"><img src="/system-icons/retail-logo-cd32.png" width="330" height="44" alt=""></span>
+                <span class="catalog-card-label">Amiga CD32 <span>Commodore</span></span>
+              </a>
+              <a class="catalog-card" href="/catalog/3do">
+                <span class="catalog-card-art"><img src="/system-icons/retail-logo-3do.png" width="330" height="101" alt=""></span>
+                <span class="catalog-card-label">3DO <span>The 3DO Company</span></span>
+              </a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p id="no-retail-catalogs" hidden>No retail catalogs are available. <a href="/archive">Browse the V1 archive</a>.</p>
   </main>
-
-  <div id="almanac-view" hidden>
-    <main class="almanac-main">
-      <p id="almanac-status" class="almanac-status" role="status" tabindex="-1">Opening software entry…</p>
-      <article id="software-book" class="software-book" data-section="overview" aria-labelledby="software-title" hidden>
-        <header class="book-front">
-          <p id="software-platform" class="book-platform"></p>
-          <h1 id="software-title" tabindex="-1"></h1>
-          <figure id="software-cover" class="book-cover"></figure>
-          <div id="software-glance"></div>
-        </header>
-        <div class="book-tabs" role="tablist" aria-label="Software sections" aria-orientation="vertical">
-          <button type="button" role="tab" id="tab-overview" aria-controls="software-section" aria-selected="true" data-section="overview">Overview</button>
-          <button type="button" role="tab" id="tab-artwork" aria-controls="software-section" aria-selected="false" tabindex="-1" data-section="artwork">Artwork</button>
-          <button type="button" role="tab" id="tab-releases" aria-controls="software-section" aria-selected="false" tabindex="-1" data-section="releases">Releases</button>
-          <button type="button" role="tab" id="tab-media" aria-controls="software-section" aria-selected="false" tabindex="-1" data-section="media">Related media</button>
-          <button type="button" role="tab" id="tab-soundtracks" aria-controls="software-section" aria-selected="false" tabindex="-1" data-section="soundtracks">Soundtracks</button>
-        </div>
-        <section id="software-section" class="book-panel" role="tabpanel" aria-labelledby="tab-overview" tabindex="0"></section>
-      </article>
-    </main>
-  </div>
-
-  <dialog id="correction-dialog" class="correction-dialog">
-    <form id="correction-form" method="dialog">
-      <div class="dialog-heading">
-        <div>
-          <p class="eyebrow">Working correction</p>
-          <h2>Correct release attribution</h2>
-        </div>
-        <button id="correction-close" class="icon-button" type="button" aria-label="Close">×</button>
-      </div>
-      <p id="correction-subject" class="correction-subject"></p>
-      <code id="correction-signature" class="correction-signature"></code>
-
-      <fieldset class="correction-actions">
-        <legend>Decision</legend>
-        <label><input type="radio" name="correction-action" value="assign" checked> Move to existing software</label>
-        <label><input type="radio" name="correction-action" value="separate"> Keep as separate software</label>
-      </fieldset>
-
-      <div id="correction-target-panel">
-        <label class="dialog-label" for="correction-target-filter">Target software</label>
-        <input id="correction-target-filter" class="dialog-input" type="search" placeholder="Search software titles…" autocomplete="off">
-        <div id="correction-targets" class="correction-targets">Type a title to search.</div>
-      </div>
-
-      <label class="dialog-label" for="correction-note">Reason or note</label>
-      <textarea id="correction-note" class="dialog-input" rows="3" maxlength="1000" placeholder="Why do these releases belong together?"></textarea>
-      <p id="correction-status" class="correction-status"></p>
-      <div class="dialog-buttons">
-        <button id="correction-cancel" type="button" class="secondary-button">Cancel</button>
-        <button id="correction-save" type="submit" class="primary-button">Save and rebuild</button>
-      </div>
-    </form>
-  </dialog>
-
-  <script src="/vgm/player.js?v=5" defer></script>
-  <script src="/vgm/soundtracks.js" defer></script>
-  <script src="/artwork-viewer.js" defer></script>
-  <script src="/app.js?v=24" defer></script>
-  <script src="/almanac.js?v=5" defer></script>
 </body>
 </html>

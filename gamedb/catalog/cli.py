@@ -4,6 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
+from .retail import EARLY_DISC_PLATFORMS
 from .workflow import RebuildWorkflow, WorkflowConfig
 
 
@@ -43,6 +44,31 @@ def main(argv=None) -> int:
     mastersystem.add_argument("--report", type=Path, help="Write the full match report as JSON")
     mastersystem.add_argument("--publish", action="store_true", help="Publish the Master System catalog to Explorer")
     mastersystem.add_argument("--sources", type=Path, help="Directory of saved Master System reference indexes")
+    pcengine = commands.add_parser("seed-pcengine", help="Build the PC Engine / TurboGrafx-16 HuCard catalog")
+    pcengine.add_argument("--html", type=Path, help="Use a saved copy of the pinned Wikipedia HTML")
+    pcengine.add_argument("--report", type=Path, help="Write the full match report as JSON")
+    pcengine.add_argument("--publish", action="store_true", help="Publish the HuCard catalog to Explorer")
+    pcengine.add_argument("--sources", type=Path, help="Directory of saved PC Engine reference indexes")
+    n64 = commands.add_parser("seed-n64", help="Build the Nintendo 64 Game Pak catalog")
+    n64.add_argument("--html", type=Path, help="Use a saved copy of the pinned Wikipedia HTML")
+    n64.add_argument("--report", type=Path, help="Write the full match report as JSON")
+    n64.add_argument("--publish", action="store_true", help="Publish the Nintendo 64 catalog to Explorer")
+    n64.add_argument("--sources", type=Path, help="Directory of saved Nintendo 64 reference indexes")
+    saturn = commands.add_parser("seed-saturn", help="Build the Sega Saturn retail disc catalog")
+    saturn.add_argument("--html", type=Path, help="Use a saved copy of the pinned Wikipedia HTML")
+    saturn.add_argument("--report", type=Path, help="Write the full match report as JSON")
+    saturn.add_argument("--publish", action="store_true", help="Publish the Sega Saturn catalog to Explorer")
+    saturn.add_argument("--sources", type=Path, help="Directory of saved Sega Saturn reference indexes")
+    jaguar = commands.add_parser("seed-jaguar", help="Build the Atari Jaguar retail cartridge catalog")
+    jaguar.add_argument("--html", type=Path, help="Use a saved copy of the pinned Wikipedia HTML")
+    jaguar.add_argument("--report", type=Path, help="Write the full match report as JSON")
+    jaguar.add_argument("--publish", action="store_true", help="Publish the Atari Jaguar catalog to Explorer")
+    jaguar.add_argument("--sources", type=Path, help="Directory of saved Atari Jaguar reference indexes")
+    optical = commands.add_parser("seed-optical", help="Build the PC-FX, Amiga CD32, or 3DO retail disc catalog")
+    optical.add_argument("platform", choices=EARLY_DISC_PLATFORMS)
+    optical.add_argument("--report", type=Path, help="Write the full match report as JSON")
+    optical.add_argument("--publish", action="store_true", help="Publish the catalog to Explorer")
+    optical.add_argument("--sources", type=Path, help="Directory of saved platform reference indexes")
     nes = commands.add_parser("seed-nes", help="Build the NES and Famicom retail catalog")
     nes.add_argument("--html", type=Path, help="Use a saved copy of the pinned Wikipedia HTML")
     nes.add_argument("--report", type=Path, help="Write the full match report as JSON")
@@ -70,6 +96,27 @@ def main(argv=None) -> int:
     sms_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-mastersystem")
     sms_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
     sms_manuals.add_argument("--workers", type=int, default=4, help="Concurrent downloads (default: 4)")
+    pce_manuals = commands.add_parser("sync-pcengine-manuals", help="Download the linked HuCard manuals")
+    pce_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-pcengine")
+    pce_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
+    pce_manuals.add_argument("--workers", type=int, default=6, help="Concurrent downloads (default: 6)")
+    n64_manuals = commands.add_parser("sync-n64-manuals", help="Download the linked Nintendo 64 manuals")
+    n64_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-n64")
+    n64_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
+    n64_manuals.add_argument("--workers", type=int, default=8, help="Concurrent downloads (default: 8)")
+    saturn_manuals = commands.add_parser("sync-saturn-manuals", help="Download the linked Saturn manuals")
+    saturn_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-saturn")
+    saturn_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
+    saturn_manuals.add_argument("--workers", type=int, default=8, help="Concurrent downloads (default: 8)")
+    jaguar_manuals = commands.add_parser("sync-jaguar-manuals", help="Download the linked Jaguar manuals")
+    jaguar_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-jaguar")
+    jaguar_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
+    jaguar_manuals.add_argument("--workers", type=int, default=8, help="Concurrent downloads (default: 8)")
+    optical_manuals = commands.add_parser("sync-optical-manuals", help="Download linked PC-FX, Amiga CD32, or 3DO manuals")
+    optical_manuals.add_argument("platform", choices=EARLY_DISC_PLATFORMS)
+    optical_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-optical")
+    optical_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
+    optical_manuals.add_argument("--workers", type=int, default=8, help="Concurrent downloads (default: 8)")
     nes_manuals = commands.add_parser("sync-nes-manuals", help="Download the linked NES and Famicom manuals")
     nes_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-nes")
     nes_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
@@ -103,6 +150,20 @@ def main(argv=None) -> int:
     ps_translations.add_argument("--source", required=True, type=Path, help="RHDN backup root or translations/psx directory")
     ps_translations.add_argument("--root", type=Path, help="Local patch and disc library (default: data/media/playstation-translations)")
     ps_translations.add_argument("--report", type=Path, help="Write the list of verified builds and failures")
+    translation_commands = {"snes": translations, "megadrive": md_translations, "nes": nes_translations,
+                            "playstation": ps_translations}
+    for platform, label in (("mastersystem", "Master System ROMs"), ("pcengine", "HuCards"),
+                            ("n64", "Nintendo 64 Game Paks"), ("saturn", "Saturn discs"),
+                            ("pcfx", "PC-FX discs"), ("3do", "3DO discs")):
+        command = commands.add_parser(f"sync-{platform}-translations", help=f"Match patches to verified {label}")
+        command.add_argument("--source", type=Path, required=True, help="Local RHDN backup directory")
+        command.add_argument("--root", type=Path, help=f"Local patch library (default: data/media/{platform}-translations)")
+        command.add_argument("--report", type=Path, help="Write an audit of packages that could not be matched")
+        translation_commands[platform] = command
+    ng_translations = commands.add_parser("sync-neogeo-translations", help="Index reviewed NeoSD patches for Neo Geo cartridges")
+    ng_translations.add_argument("--source", type=Path, required=True, help="Directory of the original patch downloads")
+    ng_translations.add_argument("--root", type=Path, help="Local patch library (default: data/media/neogeo-translations)")
+    ng_translations.add_argument("--report", type=Path, help="Write the set and patch counts")
     promote = commands.add_parser("promote-corrections")
     promote.add_argument(
         "--reference",
@@ -159,7 +220,18 @@ def main(argv=None) -> int:
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return int(bool(result["failures"]))
 
-    if args.command in {"seed-megadrive", "seed-mastersystem", "seed-nes"}:
+    if args.command == "seed-optical":
+        from .early_disc import seed
+
+        try:
+            result = seed(args.platform, args.report, publish_catalog=args.publish, sources=args.sources)
+        except (OSError, ValueError) as error:
+            optical.error(str(error))
+        print(json.dumps(result, indent=2))
+        return 0
+
+    if args.command in {"seed-megadrive", "seed-mastersystem", "seed-pcengine", "seed-nes", "seed-n64", "seed-saturn",
+                        "seed-jaguar"}:
         if args.command == "seed-nes":
             from .nes import seed_nes as seed
 
@@ -168,6 +240,22 @@ def main(argv=None) -> int:
             from .mastersystem import seed_mastersystem as seed
 
             command = mastersystem
+        elif args.command == "seed-pcengine":
+            from .pcengine import seed_pcengine as seed
+
+            command = pcengine
+        elif args.command == "seed-n64":
+            from .n64 import seed_n64 as seed
+
+            command = n64
+        elif args.command == "seed-saturn":
+            from .saturn import seed_saturn as seed
+
+            command = saturn
+        elif args.command == "seed-jaguar":
+            from .jaguar import seed_jaguar as seed
+
+            command = jaguar
         else:
             from .megadrive import seed_megadrive as seed
 
@@ -190,8 +278,21 @@ def main(argv=None) -> int:
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return int(bool(result["failures"]))
 
-    if args.command in {"sync-megadrive-manuals", "sync-mastersystem-manuals", "sync-nes-manuals",
-                        "sync-playstation-manuals", "sync-neogeo-manuals"}:
+    if args.command == "sync-optical-manuals":
+        from .early_disc import SOURCE_DIRECTORY
+        from .manuals import sync_manuals
+
+        try:
+            result = sync_manuals(args.catalog, args.root, SOURCE_DIRECTORY / args.platform / "manual-items",
+                                  workers=args.workers, source_references=None)
+        except (OSError, ValueError) as error:
+            optical_manuals.error(str(error))
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return int(bool(result["failures"]))
+
+    if args.command in {"sync-megadrive-manuals", "sync-mastersystem-manuals", "sync-pcengine-manuals", "sync-nes-manuals",
+                        "sync-playstation-manuals", "sync-neogeo-manuals", "sync-n64-manuals", "sync-saturn-manuals",
+                        "sync-jaguar-manuals"}:
         from .manuals import sync_manuals
 
         if args.command == "sync-nes-manuals":
@@ -202,6 +303,22 @@ def main(argv=None) -> int:
             from .mastersystem import SOURCE_DIRECTORY
 
             command = sms_manuals
+        elif args.command == "sync-pcengine-manuals":
+            from .pcengine import SOURCE_DIRECTORY
+
+            command = pce_manuals
+        elif args.command == "sync-n64-manuals":
+            from .n64 import SOURCE_DIRECTORY
+
+            command = n64_manuals
+        elif args.command == "sync-saturn-manuals":
+            from .saturn import SOURCE_DIRECTORY
+
+            command = saturn_manuals
+        elif args.command == "sync-jaguar-manuals":
+            from .jaguar import SOURCE_DIRECTORY
+
+            command = jaguar_manuals
         elif args.command == "sync-playstation-manuals":
             from .playstation import SOURCE_DIRECTORY
 
@@ -223,13 +340,11 @@ def main(argv=None) -> int:
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return int(bool(result["failures"]))
 
-    if args.command in {"sync-snes-translations", "sync-megadrive-translations", "sync-nes-translations",
-                        "sync-playstation-translations"}:
+    if args.command in {f"sync-{name}-translations" for name in translation_commands}:
         from .translations import TRANSLATION_ROOTS, sync_translations
 
         platform = args.command.split("-")[1]
-        command = {"snes": translations, "megadrive": md_translations, "nes": nes_translations,
-                   "playstation": ps_translations}[platform]
+        command = translation_commands[platform]
         try:
             result = sync_translations(args.source, args.root or TRANSLATION_ROOTS[platform],
                                        platform=platform, report=getattr(args, "report", None))
@@ -237,6 +352,17 @@ def main(argv=None) -> int:
             command.error(str(error))
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return int(bool(result.get("failures")))
+
+    if args.command == "sync-neogeo-translations":
+        from .neogeo_translations import sync_neogeo_translations
+        from .translations import TRANSLATION_ROOTS
+
+        try:
+            result = sync_neogeo_translations(args.source, args.root or TRANSLATION_ROOTS["neogeo"], report=args.report)
+        except (OSError, ValueError) as error:
+            ng_translations.error(str(error))
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return 0
 
     if args.command == "promote-corrections":
         from gamedb.database import create_database_engine

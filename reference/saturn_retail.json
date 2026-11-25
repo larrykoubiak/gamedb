@@ -1,0 +1,1615 @@
+{
+  "exclude": {
+    "Delisoba Deluxe": "TBS gave away this game to studio audience members. https://www.segasaturnshiro.com/2019/10/25/prge-2019-round-up/"
+  },
+  "compilations": [
+    "Clockwork Knight: Pepperouchau no Fukubukuro",
+    "Sega Ages Volume 1"
+  ],
+  "archiveAliases": [
+    {
+      "edition": "Advanced World War: Sennen Teikoku no Kôbô: Last of the Millennium",
+      "market": "JP",
+      "archiveTitle": "Advanced World War - Sennen Teikoku no Koubou - Last of the Millennium",
+      "evidence": "Saturn Redump regional title and disc header (GS-9087); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (aww)"
+    },
+    {
+      "edition": "Akumajō Dracula X: Gekka no Yasōkyoku (Castlevania: Symphony of the Night)",
+      "market": "JP",
+      "archiveTitle": "Akumajou Dracula X - Gekka no Yasoukyoku",
+      "evidence": "Saturn Redump regional title and disc header (T-9527G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (draculax;draculaxa)"
+    },
+    {
+      "edition": "Album Club: Mune Kyun Saint Paulia Jogakuin",
+      "market": "JP",
+      "archiveTitle": "Album Club (Mune Kyun) - St. Paulia Jogakuin",
+      "evidence": "Saturn Redump regional title and disc header (T-21903G)"
+    },
+    {
+      "edition": "Aponashi Girls: Olympos",
+      "market": "JP",
+      "archiveTitle": "No-appointment Gals Olympos",
+      "evidence": "Saturn Redump regional title and disc header (T-4304G)"
+    },
+    {
+      "edition": "BackGuiner: Yomigaeru Yûsya-tati: Hisyô-hen \"Uragiri no Senzyô\"",
+      "market": "JP",
+      "archiveTitle": "BackGuiner - Yomigaeru Yuusha-tachi - Hishou-hen - Uragiri no Senjou",
+      "evidence": "Saturn Redump regional title and disc header (T-19907G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (backghh)"
+    },
+    {
+      "edition": "BackGuiner: Yomigaeru Yûsya-tati: Kakusei-hen \"Guiner Tensei\"",
+      "market": "JP",
+      "archiveTitle": "BackGuiner - Yomigaeru Yuusha-tachi - Kakusei-hen - Guiner Tensei",
+      "evidence": "Saturn Redump regional title and disc header (T-19906G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (backgkh)"
+    },
+    {
+      "edition": "Baku Baku Animal",
+      "market": "NA",
+      "archiveTitle": "Baku Baku Animal - World Zookeeper Contest",
+      "evidence": "Saturn Redump regional title and disc header (MK-81501)"
+    },
+    {
+      "edition": "Baku Baku Animal",
+      "market": "PAL",
+      "archiveTitle": "Baku Baku Animal - World Zookeeper Contest",
+      "evidence": "Saturn Redump regional title and disc header (MK-81501)"
+    },
+    {
+      "edition": "Baku Baku Animal",
+      "market": "JP",
+      "archiveTitle": "Baku Baku Animal - Sekai Shiiku Gakari Senshuken",
+      "evidence": "Saturn Redump regional title and disc header (GS-9040); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (bakubakuj)"
+    },
+    {
+      "edition": "Battle Arena Toshinden URA",
+      "market": "NA",
+      "archiveTitle": "Battle Arena Toshinden URA - Ultimate Revenge Attack",
+      "evidence": "Saturn Redump regional title and disc header (MK-81054); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (toshiurau)"
+    },
+    {
+      "edition": "Battle Arena Toshinden URA",
+      "market": "PAL",
+      "archiveTitle": "Battle Arena Toshinden URA - Ultimate Revenge Attack",
+      "evidence": "Saturn Redump regional title and disc header (MK-81054); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (toshiura)"
+    },
+    {
+      "edition": "Battle Arena Toshinden URA",
+      "market": "JP",
+      "archiveTitle": "Toushinden URA",
+      "evidence": "Saturn Redump regional title and disc header (T-10305G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (toshiuraj)"
+    },
+    {
+      "edition": "Battle Athletes: Daiundoukai",
+      "market": "JP",
+      "archiveTitle": "Battle Athletess Daiundoukai",
+      "evidence": "Saturn Redump regional title and disc header (T-24601G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (btathlet)"
+    },
+    {
+      "edition": "Beach de Reach!",
+      "market": "JP",
+      "archiveTitle": "Beach de Riichi!",
+      "evidence": "Saturn Redump regional title and disc header (T-29004G)"
+    },
+    {
+      "edition": "Bishōjo Variety Game: Rapyulus Panic",
+      "market": "JP",
+      "archiveTitle": "Rapyulus Panic",
+      "evidence": "Saturn Redump regional title and disc header (T-21503G)"
+    },
+    {
+      "edition": "Body Special 264: Girls in Motion Puzzle Vol. 2",
+      "market": "JP",
+      "archiveTitle": "Girls in Motion Puzzle Vol. 2 - Body Special 264",
+      "evidence": "Saturn Redump regional title and disc header (T-21003G)"
+    },
+    {
+      "edition": "Bubble Bobble featuring Rainbow Islands",
+      "market": "NA",
+      "archiveTitle": "Bubble Bobble also featuring Rainbow Islands",
+      "evidence": "Saturn Redump regional title and disc header (T-8131H); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (bublboblu)"
+    },
+    {
+      "edition": "Bubble Bobble featuring Rainbow Islands",
+      "market": "PAL",
+      "archiveTitle": "Bubble Bobble also featuring Rainbow Islands",
+      "evidence": "Saturn Redump regional title and disc header (T-8131H-50); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (bublbobl)"
+    },
+    {
+      "edition": "Bug Too!",
+      "market": "JP",
+      "archiveTitle": "Bug Too! Motto Motto Jump Shite, Funzukechatte, Petchanko",
+      "evidence": "Saturn Redump regional title and disc header (GS-9128)"
+    },
+    {
+      "edition": "Bug!",
+      "market": "JP",
+      "archiveTitle": "Bug! Jump Shite, Funzukechatte, Petchanko",
+      "evidence": "Saturn Redump regional title and disc header (GS-9063)"
+    },
+    {
+      "edition": "Capcom Generation: Dai 4 Shū - Kokô no Eiyû",
+      "market": "JP",
+      "archiveTitle": "Capcom Generation - Dai-4-shuu Kokou no Eiyuu",
+      "evidence": "Saturn Redump regional title and disc header (T-1235G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (capgen4)"
+    },
+    {
+      "edition": "Capcom Generation: Dai 5 Shū - Kakutôka-tati",
+      "market": "JP",
+      "archiveTitle": "Capcom Generation - Dai-5-shuu Kakutouka-tachi",
+      "evidence": "Saturn Redump regional title and disc header (T-1236G)"
+    },
+    {
+      "edition": "Chibi Maruko-Chan no Taisen Pazuru Dama",
+      "market": "JP",
+      "archiveTitle": "Chibi Maruko-chan no Taisen Puzzle-dama",
+      "evidence": "Saturn Redump regional title and disc header (T-9507G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (cpuzldam;cpuzldama)"
+    },
+    {
+      "edition": "Christmas Nights",
+      "market": "NA",
+      "archiveTitle": "Christmas NiGHTS into Dreams...",
+      "evidence": "Saturn Redump regional title and disc header (MK-81067)"
+    },
+    {
+      "edition": "Christmas Nights",
+      "market": "PAL",
+      "archiveTitle": "Christmas NiGHTS into Dreams...",
+      "evidence": "Saturn Redump regional title and disc header (610-6483); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (xmasnigh)"
+    },
+    {
+      "edition": "Christmas Nights",
+      "market": "JP",
+      "archiveTitle": "Christmas NiGHTS into Dreams...",
+      "evidence": "Saturn Redump regional title and disc header (610-6431); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (xmasnighj;xmasnighja)"
+    },
+    {
+      "edition": "Chō Aniki: Kyūkyoku Muteki Ginga Saikyō Otoko",
+      "market": "JP",
+      "archiveTitle": "Chou Aniki - Kyuukyoku... Otoko no Gyakushuu",
+      "evidence": "Saturn Redump regional title and disc header (T-2503G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (choaniki)"
+    },
+    {
+      "edition": "Chōjikū Yōsai Makurosu: Ai Oboete Imasu ka",
+      "market": "JP",
+      "archiveTitle": "Chou Jikuu Yousai Macross - Ai Oboete Imasu ka",
+      "evidence": "Saturn Redump regional title and disc header (T-23403G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (macross;macrossa)"
+    },
+    {
+      "edition": "Civilization: Shin Sekai Shichidai Bunmei",
+      "market": "JP",
+      "archiveTitle": "Sid Meier's Civilization - Shin Sekai Shichidai Bunmei",
+      "evidence": "Saturn Redump regional title and disc header (T-2003G)"
+    },
+    {
+      "edition": "Clockwork Knight",
+      "market": "NA",
+      "archiveTitle": "Clockwork Knight - Pepperouchau's Adventure",
+      "evidence": "Saturn Redump regional title and disc header (MK-81007)"
+    },
+    {
+      "edition": "Clockwork Knight",
+      "market": "PAL",
+      "archiveTitle": "Clockwork Knight - Pepperouchau's Adventure",
+      "evidence": "Saturn Redump regional title and disc header (MK-81007)"
+    },
+    {
+      "edition": "Clockwork Knight",
+      "market": "JP",
+      "archiveTitle": "Clockwork Knight - Pepperouchau no Daibouken Joukan",
+      "evidence": "Saturn Redump regional title and disc header (GS-9004)"
+    },
+    {
+      "edition": "Clockwork Knight 2",
+      "market": "NA",
+      "archiveTitle": "Clockwork Knight 2 - Pepperouchau's Adventure",
+      "evidence": "Saturn Redump regional title and disc header (MK-81036)"
+    },
+    {
+      "edition": "Clockwork Knight 2",
+      "market": "PAL",
+      "archiveTitle": "Clockwork Knight 2 - Pepperouchau's Adventure",
+      "evidence": "Saturn Redump regional title and disc header (MK-81021)"
+    },
+    {
+      "edition": "Clockwork Knight 2",
+      "market": "JP",
+      "archiveTitle": "Clockwork Knight - Pepperouchau no Daibouken Gekan",
+      "evidence": "Saturn Redump regional title and disc header (GS-9029)"
+    },
+    {
+      "edition": "Cotton 2: Magical Night Dreams",
+      "market": "JP",
+      "archiveTitle": "Magical Night Dreams - Cotton 2",
+      "evidence": "Saturn Redump regional title and disc header (T-9904G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (cotton2)"
+    },
+    {
+      "edition": "Cotton Boomerang",
+      "market": "JP",
+      "archiveTitle": "Magical Night Dreams - Cotton Boomerang",
+      "evidence": "Saturn Redump regional title and disc header (T-9906G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (cottonbm)"
+    },
+    {
+      "edition": "Courier Crisis",
+      "market": "NA",
+      "archiveTitle": "Courier Crisis - The Saga of the Modern Fatalist",
+      "evidence": "Saturn Redump regional title and disc header (T-25415H)"
+    },
+    {
+      "edition": "Courier Crisis",
+      "market": "PAL",
+      "archiveTitle": "Courier Crisis - The Saga of the Modern Fatalist",
+      "evidence": "Saturn Redump regional title and disc header (MK8109950)"
+    },
+    {
+      "edition": "Courier Crisis",
+      "market": "JP",
+      "archiveTitle": "Courier Crisis - The Saga of the Modern Fatalist",
+      "evidence": "Saturn Redump regional title and disc header (T-18010G)"
+    },
+    {
+      "edition": "Cross Romance: Ai to Mahjong to Hanafuda to",
+      "market": "JP",
+      "archiveTitle": "Cross Romance - Koi to Mahjong to Hanafuda to",
+      "evidence": "Saturn Redump regional title and disc header (T-7103G)"
+    },
+    {
+      "edition": "Cube Battler: Anna Mirai-hen",
+      "market": "JP",
+      "archiveTitle": "Cube Battler - Story of Anna",
+      "evidence": "Saturn Redump regional title and disc header (T-21006G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (cubeanna)"
+    },
+    {
+      "edition": "Cube Battler: Debugger Shouhen",
+      "market": "JP",
+      "archiveTitle": "Cube Battler - Story of Shou",
+      "evidence": "Saturn Redump regional title and disc header (T-21004G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (cubeshou;cubeshoua)"
+    },
+    {
+      "edition": "Daibouken: St. Elmo's no Kiseki",
+      "market": "JP",
+      "archiveTitle": "Daibouken - Great Adventure - St. Elmos no Kiseki",
+      "evidence": "Saturn Redump regional title and disc header (T-23101G)"
+    },
+    {
+      "edition": "Daina Airan",
+      "market": "JP",
+      "archiveTitle": "Dino Island",
+      "evidence": "Saturn Redump regional title and disc header (T-4503G)"
+    },
+    {
+      "edition": "Defcon 5",
+      "market": "NA",
+      "archiveTitle": "Defcon 5 - Peace Has a Price...",
+      "evidence": "Saturn Redump regional title and disc header (T-1301G)"
+    },
+    {
+      "edition": "Denpa Syônenteki Game",
+      "market": "JP",
+      "archiveTitle": "Denpa Shounen-teki Game",
+      "evidence": "Saturn Redump regional title and disc header (T-14316G, T-14318G)"
+    },
+    {
+      "edition": "Densetsu no Ōga Batoru",
+      "market": "JP",
+      "archiveTitle": "Densetsu no Ogre Battle",
+      "evidence": "Saturn Redump regional title and disc header (T-5305G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (ogrebatl;ogrebatla)"
+    },
+    {
+      "edition": "Dero~n Dero Dero",
+      "market": "JP",
+      "archiveTitle": "Deroon Dero Dero",
+      "evidence": "Saturn Redump regional title and disc header (T-3601G)"
+    },
+    {
+      "edition": "Detana TwinBee Yahho! Deluxe Pack",
+      "market": "JP",
+      "archiveTitle": "Detana Twinbee Yahoo! Deluxe Pack",
+      "evidence": "Saturn Redump regional title and disc header (T-9505G)"
+    },
+    {
+      "edition": "Dragon Ball Z: Idainaru Dragon Ball Densetsu",
+      "market": "PAL",
+      "archiveTitle": "Dragon Ball Z - La Grande Legende des Boules de Cristal",
+      "evidence": "Saturn Redump regional title and disc header (T-13301H)"
+    },
+    {
+      "edition": "Druid: Yami he no Tuisekisya",
+      "market": "JP",
+      "archiveTitle": "Druid - Yami e no Tsuisekisha",
+      "evidence": "Saturn Redump regional title and disc header (T-7670G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (druid)"
+    },
+    {
+      "edition": "DX Jinsei Game",
+      "market": "JP",
+      "archiveTitle": "Game of Life, The - DX Jinsei Game",
+      "evidence": "Saturn Redump regional title and disc header (T-10302G)"
+    },
+    {
+      "edition": "DX Jinsei Game II",
+      "market": "JP",
+      "archiveTitle": "Game of Life, The - DX Jinsei Game II",
+      "evidence": "Saturn Redump regional title and disc header (T-10310G)"
+    },
+    {
+      "edition": "DX Nippon Tokkyuu Ryokou Game",
+      "market": "JP",
+      "archiveTitle": "DX Nippon Tokkyuu Ryokou Game - Let's Travel in Japan",
+      "evidence": "Saturn Redump regional title and disc header (T-10306G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (traveljp;traveljpa)"
+    },
+    {
+      "edition": "Eberouge Special: Koi to Mahô no Gakuen Seikatsu",
+      "market": "JP",
+      "archiveTitle": "Eberouge Special - Koi to Mahou no Gakuen Seikatsu",
+      "evidence": "Saturn Redump regional title and disc header (T-10315G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (eberousp)"
+    },
+    {
+      "edition": "Elevator Action Returns",
+      "market": "JP",
+      "archiveTitle": "Elevator Action^2 - Returns",
+      "evidence": "Saturn Redump regional title and disc header (T-19903G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (elevact2)"
+    },
+    {
+      "edition": "EMIT Vol. 2: Meigake no Tabi",
+      "market": "JP",
+      "archiveTitle": "Emit Vol. 2 - Inochigake no Tabi",
+      "evidence": "Saturn Redump regional title and disc header (T-7603G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (emit2;emit2a)"
+    },
+    {
+      "edition": "Full Cowl Mini Yonku Super Factory",
+      "market": "JP",
+      "archiveTitle": "Fully Cowled Mini Yonku - Super Factory",
+      "evidence": "Saturn Redump regional title and disc header (T-26407G)"
+    },
+    {
+      "edition": "Fuusei Sensei",
+      "market": "JP",
+      "archiveTitle": "Fuusui Sensei - Feng-Shui Master",
+      "evidence": "Saturn Redump regional title and disc header (T-21701G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (fengshui;fengshuia)"
+    },
+    {
+      "edition": "Gambler Jiko Chūshinha: Tokyo Mahjongland",
+      "market": "JP",
+      "archiveTitle": "Gyuwambler Jiko Chuushinha - Tokyo Mahjongland",
+      "evidence": "Saturn Redump regional title and disc header (T-4504G)"
+    },
+    {
+      "edition": "Game Tengoku",
+      "market": "JP",
+      "archiveTitle": "Game Tengoku - The Game Paradise!",
+      "evidence": "Saturn Redump regional title and disc header (T-5712G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (gametngk)"
+    },
+    {
+      "edition": "Garō Densetsu 3: Harukanaru Tatakai",
+      "market": "JP",
+      "archiveTitle": "Garou Densetsu 3 - Road to the Final Victory",
+      "evidence": "Saturn Redump regional title and disc header (T-3102G)"
+    },
+    {
+      "edition": "Gekiretsu Pachinkazu",
+      "market": "JP",
+      "archiveTitle": "Gekiretsu Pachinkers",
+      "evidence": "Saturn Redump regional title and disc header (T-29601G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (gepachin)"
+    },
+    {
+      "edition": "Gekirindan Time Travel Shooting",
+      "market": "JP",
+      "archiveTitle": "Gekirindan",
+      "evidence": "Saturn Redump regional title and disc header (T-7008G)"
+    },
+    {
+      "edition": "Girl Doll Toy: Tamasî wo Kudasai",
+      "market": "JP",
+      "archiveTitle": "Girl Doll Toy - Tamashii o Kudasai",
+      "evidence": "Saturn Redump regional title and disc header (T-37002G)"
+    },
+    {
+      "edition": "Groove on Fight: Gōketsuji Ichizoku 3",
+      "market": "JP",
+      "archiveTitle": "Gouketsuji Ichizoku 3 - Groove on Fight",
+      "evidence": "Saturn Redump regional title and disc header (T-14411G)"
+    },
+    {
+      "edition": "Gun Frontier Arcade Gears",
+      "market": "JP",
+      "archiveTitle": "Arcade Gears Vol. 2 - Gun Frontier",
+      "evidence": "Saturn Redump regional title and disc header (T-26109G)"
+    },
+    {
+      "edition": "Hanagumi Taisen Columns",
+      "market": "JP",
+      "archiveTitle": "Sakura Taisen - Hanagumi Taisen Columns",
+      "evidence": "Saturn Redump regional title and disc header (GS-9138); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (hanacols;hanacolsa)"
+    },
+    {
+      "edition": "Hankou Shashin: Shibarareta Shoujo-tachi no Mita Mono ha?",
+      "market": "JP",
+      "archiveTitle": "Photograph of a Crime, The - Hankou Shashin - Shibarareta Shoujo-tachi no Mita Mono wa",
+      "evidence": "Saturn Redump regional title and disc header (T-15008G)"
+    },
+    {
+      "edition": "Hardcore 4x4",
+      "market": "JP",
+      "archiveTitle": "Deka 4-ku - Tough the Truck",
+      "evidence": "Saturn Redump regional title and disc header (T-4313G)"
+    },
+    {
+      "edition": "Hi-Octane",
+      "market": "NA",
+      "archiveTitle": "Hi-Octane - The Track Fights Back!",
+      "evidence": "Saturn Redump regional title and disc header (T-5002H)"
+    },
+    {
+      "edition": "Hiyake no Omoide & Himekuri: Girls in Motion Puzzle Vol. 1",
+      "market": "JP",
+      "archiveTitle": "Girls in Motion Puzzle Vol. 1 - Hiyake no Omoide + Himekuri",
+      "evidence": "Saturn Redump regional title and disc header (T-21002G)"
+    },
+    {
+      "edition": "Hyper 3D Taisen Battle Gebockers",
+      "market": "JP",
+      "archiveTitle": "Gebockers",
+      "evidence": "Saturn Redump regional title and disc header (T-5303G)"
+    },
+    {
+      "edition": "Ide Yosuke Meijin no Shin Jissen Mahjong",
+      "market": "JP",
+      "archiveTitle": "Ide Yousuke Meijin no Shin Jissen Mahjong",
+      "evidence": "Saturn Redump regional title and disc header (T-1208G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (ideyusmj)"
+    },
+    {
+      "edition": "Image Fight & X Multiply Arcade Gears",
+      "market": "JP",
+      "archiveTitle": "Arcade Gears Vol. 4 - ImageFight & XMultiply",
+      "evidence": "Saturn Redump regional title and disc header (T-26110G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (imgftxm)"
+    },
+    {
+      "edition": "Initial D: Kôdô Saisoku Densetsu",
+      "market": "JP",
+      "archiveTitle": "Koudou Saisoku Densetsu - Initial D",
+      "evidence": "Saturn Redump regional title and disc header (T-25503G)"
+    },
+    {
+      "edition": "Ippatsu Gyakuten: Gambling King he no Michi",
+      "market": "JP",
+      "archiveTitle": "Ippatsu Gyakuten - Gambling King e no Michi",
+      "evidence": "Saturn Redump regional title and disc header (T-29602G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (gamblkng)"
+    },
+    {
+      "edition": "Iron Man and X-O Manowar in Heavy Metal",
+      "market": "NA",
+      "archiveTitle": "Iron Man & X-O Manowar in Heavy Metal",
+      "evidence": "Saturn Redump regional title and disc header (T-8119H); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (ironmanu)"
+    },
+    {
+      "edition": "Iron Man and X-O Manowar in Heavy Metal",
+      "market": "PAL",
+      "archiveTitle": "Iron Man & X-O Manowar in Heavy Metal",
+      "evidence": "Saturn Redump regional title and disc header (T-8119H-50); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (ironman)"
+    },
+    {
+      "edition": "Iron Man and X-O Manowar in Heavy Metal",
+      "market": "JP",
+      "archiveTitle": "Iron Man & X-O Manowar in Heavy Metal",
+      "evidence": "Saturn Redump regional title and disc header (T-8115G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (ironmanj)"
+    },
+    {
+      "edition": "Jewels of the Oracle",
+      "market": "JP",
+      "archiveTitle": "Oracle no Houseki - Jewels of the Oracle",
+      "evidence": "Saturn Redump regional title and disc header (T-1511G)"
+    },
+    {
+      "edition": "Jikū Tantei DD: Maboroshi no Rōrerai",
+      "market": "JP",
+      "archiveTitle": "Jikuu Tantei DD (Dracula Detective) - Maboroshi no Lorelei",
+      "evidence": "Saturn Redump regional title and disc header (T-2103G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (jikudrac;jikudraca)"
+    },
+    {
+      "edition": "Jinzou Ningen Hakaider: Last Judgement",
+      "market": "JP",
+      "archiveTitle": "Mechanical Violator Hakaider - Last Judgement",
+      "evidence": "Saturn Redump regional title and disc header (GS-9088)"
+    },
+    {
+      "edition": "Jissen Pachinko Hisshouhou! 3",
+      "market": "JP",
+      "archiveTitle": "Jissen! Pachi-Slot Hisshou-hou! 3",
+      "evidence": "Saturn Redump regional title and disc header (T-2401G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (jpslot3;jpslot3a)"
+    },
+    {
+      "edition": "Jissen Pachinko Hisshouhou! 4",
+      "market": "JP",
+      "archiveTitle": "Jissen! Pachi-Slot Hisshou-hou! 4",
+      "evidence": "Saturn Redump regional title and disc header (T-2406G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (jpslot4)"
+    },
+    {
+      "edition": "Jissen! Pachi-Slot Hisshouhou! Iron Hook",
+      "market": "JP",
+      "archiveTitle": "Jissen! Pachi-Slot Hisshou-hou! Iron Hook - The Great Marine Adventures",
+      "evidence": "Saturn Redump regional title and disc header (T-2404G)"
+    },
+    {
+      "edition": "K-1 Fighting Illusion Shou",
+      "market": "JP",
+      "archiveTitle": "K-1 Grand Prix - Fighting Illusion Shou",
+      "evidence": "Saturn Redump regional title and disc header (T-26102G)"
+    },
+    {
+      "edition": "Kidō Senkan Nadesico: Yappari Saigo ha 'Ai ga Katsu'?",
+      "market": "JP",
+      "archiveTitle": "Kidou Senkan Nadesico - Yappari Saigo wa Ai ga Katsu",
+      "evidence": "Saturn Redump regional title and disc header (GS-9142); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (ksnyap)"
+    },
+    {
+      "edition": "Kidō Senshi Gundam",
+      "market": "JP",
+      "archiveTitle": "Mobile Suit Gundam",
+      "evidence": "Saturn Redump regional title and disc header (T-13303G)"
+    },
+    {
+      "edition": "Kidō Senshi Gundam Gaiden I: Senritsu no Blue",
+      "market": "JP",
+      "archiveTitle": "Mobile Suit Gundam Side Story I - Senritsu no Blue",
+      "evidence": "Saturn Redump regional title and disc header (T-13306G)"
+    },
+    {
+      "edition": "Kidō Senshi Gundam Gaiden II: Ao wo Uketsugu Mono",
+      "market": "JP",
+      "archiveTitle": "Mobile Suit Gundam Side Story II - Ao o Uketsugu Mono",
+      "evidence": "Saturn Redump regional title and disc header (T-13309G)"
+    },
+    {
+      "edition": "Kidō Senshi Gundam Gaiden III: Sabakareshi Mono",
+      "market": "JP",
+      "archiveTitle": "Mobile Suit Gundam Side Story III - Sabakareshi Mono",
+      "evidence": "Saturn Redump regional title and disc header (T-13312G)"
+    },
+    {
+      "edition": "Kidō Senshi Z Gundam: Kouhen Sora wo Kakeru",
+      "market": "JP",
+      "archiveTitle": "Kidou Senshi Z Gundam - Kouhen Uchuu o Kakeru",
+      "evidence": "Saturn Redump regional title and disc header (T-13320G)"
+    },
+    {
+      "edition": "Kurubushi Kyodai Gekijo Daiikkan Mah-jong Hen",
+      "market": "JP",
+      "archiveTitle": "Kurubushi Kyoudai Gekijou Dai-ikkan - Mahjong-hen",
+      "evidence": "Saturn Redump regional title and disc header (T-21803G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (kurubush)"
+    },
+    {
+      "edition": "Lunar Silver Star Story MPEG-ban",
+      "market": "JP",
+      "archiveTitle": "Lunar - Silver Star Story Complete",
+      "evidence": "Saturn Redump regional title and disc header (T-27904G)"
+    },
+    {
+      "edition": "Lupin the 3rd: Pyramid no Kenja",
+      "market": "JP",
+      "archiveTitle": "Lupin Sansei - Pyramid no Kenja",
+      "evidence": "Saturn Redump regional title and disc header (T-2004G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (lupinpy;lupinpya)"
+    },
+    {
+      "edition": "M: Kimi o Tsutaete",
+      "market": "JP",
+      "archiveTitle": "m [emu] - Kimi o Tsutaete",
+      "evidence": "Saturn Redump regional title and disc header (T-31202G)"
+    },
+    {
+      "edition": "Machi",
+      "market": "JP",
+      "archiveTitle": "Sound Novel Machi",
+      "evidence": "Saturn Redump regional title and disc header (T-34001G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (machi;machia)"
+    },
+    {
+      "edition": "Magical Drop II",
+      "market": "JP",
+      "archiveTitle": "Magical Drop 2",
+      "evidence": "Saturn Redump regional title and disc header (GS-9104); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (magdrop2;magdrop2a)"
+    },
+    {
+      "edition": "Mahou no Jansi Poe Poe Poemy",
+      "market": "JP",
+      "archiveTitle": "Mahou no Janshi - Poe Poe Poemy",
+      "evidence": "Saturn Redump regional title and disc header (T-15004G)"
+    },
+    {
+      "edition": "Mahôtukai ni naru Hôhô",
+      "market": "JP",
+      "archiveTitle": "Mahoutsukai ni Naru Houhou",
+      "evidence": "Saturn Redump regional title and disc header (T-32510G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (mahoutsu;mahoutsua)"
+    },
+    {
+      "edition": "Mario Mushano no Chou Shōgi Juku",
+      "market": "JP",
+      "archiveTitle": "Mario Mushano no Chou Shougi Juku - Mario Mushano's Hyper Shogi School",
+      "evidence": "Saturn Redump regional title and disc header (T-24905G)"
+    },
+    {
+      "edition": "MechWarrior 2: Arcade Combat Edition",
+      "market": "NA",
+      "archiveTitle": "MechWarrior 2 - 31st Century Combat - Arcade Combat Edition",
+      "evidence": "Saturn Redump regional title and disc header (T-13004H)"
+    },
+    {
+      "edition": "MechWarrior 2: Arcade Combat Edition",
+      "market": "PAL",
+      "archiveTitle": "MechWarrior 2 - 31st Century Combat - Arcade Combat Edition",
+      "evidence": "Saturn Redump regional title and disc header (T-13004H)"
+    },
+    {
+      "edition": "MechWarrior 2: Arcade Combat Edition",
+      "market": "JP",
+      "archiveTitle": "MechWarrior 2",
+      "evidence": "Saturn Redump regional title and disc header (T-23406G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (mechwar2j)"
+    },
+    {
+      "edition": "Mega Man 8",
+      "market": "JP",
+      "archiveTitle": "Rockman 8 - Metal Heroes",
+      "evidence": "Saturn Redump regional title and disc header (T-1214G)"
+    },
+    {
+      "edition": "Metal Slug",
+      "market": "JP",
+      "archiveTitle": "Metal Slug - Super Vehicle-001",
+      "evidence": "Saturn Redump regional title and disc header (T-3111G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (mslug)"
+    },
+    {
+      "edition": "Mizuki Sigeru no Yôkai Zukan Sôsyûhen",
+      "market": "JP",
+      "archiveTitle": "Mizuki Shigeru no Youkai Zukan Soushuuhen",
+      "evidence": "Saturn Redump regional title and disc header (T-25506G)"
+    },
+    {
+      "edition": "Murakosi Seikai no Bakutyô Nihon Rettô",
+      "market": "JP",
+      "archiveTitle": "Murakoshi Seikai no Bakuchou Nihon Rettou",
+      "evidence": "Saturn Redump regional title and disc header (T-9115G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (murakosh)"
+    },
+    {
+      "edition": "My Best Friends: St. Andrew Jogakuen Hen",
+      "market": "JP",
+      "archiveTitle": "My Best Friends - St. Andrew Jogakuin-hen",
+      "evidence": "Saturn Redump regional title and disc header (T-14404G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (mybest)"
+    },
+    {
+      "edition": "My Fair Lady: Virtual Mahjong II",
+      "market": "JP",
+      "archiveTitle": "Virtual Mahjong 2 - My Fair Lady",
+      "evidence": "Saturn Redump regional title and disc header (T-2207G)"
+    },
+    {
+      "edition": "Nightruth #01: Yami no Tobira",
+      "market": "JP",
+      "archiveTitle": "Nightruth - Explanation of the Paranormal 01 - Yami no Tobira",
+      "evidence": "Saturn Redump regional title and disc header (T-20204G)"
+    },
+    {
+      "edition": "Nightruth: Futatsu Dake no Shinjitsu",
+      "market": "JP",
+      "archiveTitle": "Nightruth - Explanation of the Paranormal - Futatsu dake no Shinjitsu",
+      "evidence": "Saturn Redump regional title and disc header (T-36201G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (ntruthfd)"
+    },
+    {
+      "edition": "Nightruth: Maria",
+      "market": "JP",
+      "archiveTitle": "Nightruth - Explanation of the Paranormal - Maria",
+      "evidence": "Saturn Redump regional title and disc header (T-20206G)"
+    },
+    {
+      "edition": "Ninku: Tsuyokina Yatsura no Daigekitotsu!",
+      "market": "JP",
+      "archiveTitle": "Ninkuu - Tsuyokina Yatsura no Daigekitotsu!",
+      "evidence": "Saturn Redump regional title and disc header (GS-9036); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (ninku)"
+    },
+    {
+      "edition": "Nippon Daihyô Team no Kantoku ni Narô! Sekaihatu Soccer RPG",
+      "market": "JP",
+      "archiveTitle": "Nihon Daihyou Team no Kantoku ni Naruu! Sekaihatsu Soccer RPG - Become the Coach for the National Team!",
+      "evidence": "Saturn Redump regional title and disc header (T-35504G)"
+    },
+    {
+      "edition": "Noël 3",
+      "market": "JP",
+      "archiveTitle": "NOeL 3 - Not Digital",
+      "evidence": "Saturn Redump regional title and disc header (T-22205G)"
+    },
+    {
+      "edition": "O-Chan no Oekaki Logic",
+      "market": "JP",
+      "archiveTitle": "Oh-chan no Oekaki Logic",
+      "evidence": "Saturn Redump regional title and disc header (T-1508G)"
+    },
+    {
+      "edition": "Ochige Designer Tsukutte pon!",
+      "market": "JP",
+      "archiveTitle": "Ochigee Designer Tsukutte Pon!",
+      "evidence": "Saturn Redump regional title and disc header (T-9108G)"
+    },
+    {
+      "edition": "Ojousama Tokkyuu",
+      "market": "JP",
+      "archiveTitle": "Ojousama Express",
+      "evidence": "Saturn Redump regional title and disc header (T-27803G)"
+    },
+    {
+      "edition": "Ojousama wo Nerae!!",
+      "market": "JP",
+      "archiveTitle": "Ojousama o Nerae!!",
+      "evidence": "Saturn Redump regional title and disc header (T-38101G)"
+    },
+    {
+      "edition": "Pachi-Slot Kanzen Kouryaku Uni-Colle'97",
+      "market": "JP",
+      "archiveTitle": "Pachi-Slot Kanzen Kouryaku Uni-Colle '97 - Universal Collection",
+      "evidence": "Saturn Redump regional title and disc header (T-36501G)"
+    },
+    {
+      "edition": "Paneltia Story: Karen no Daibouken",
+      "market": "JP",
+      "archiveTitle": "Paneltia Story - Koeln no Daibouken",
+      "evidence": "Saturn Redump regional title and disc header (T-21510G)"
+    },
+    {
+      "edition": "Pia Carrot e Yôkoso!!",
+      "market": "JP",
+      "archiveTitle": "Pia Carrot e Youkoso!! We've Been Waiting for You",
+      "evidence": "Saturn Redump regional title and disc header (T-19708G)"
+    },
+    {
+      "edition": "Purikura Daisakusen",
+      "market": "JP",
+      "archiveTitle": "PriKura (Princess Kurara) Daisakusen",
+      "evidence": "Saturn Redump regional title and disc header (T-14409G)"
+    },
+    {
+      "edition": "Puyo Puyo 2",
+      "market": "JP",
+      "archiveTitle": "Puyo Puyo Tsuu",
+      "evidence": "Saturn Redump regional title and disc header (T-6601G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (puyopuy2;puyopuy2a)"
+    },
+    {
+      "edition": "Puzzle & Action: 2-do Arukoto wa Sand-R",
+      "market": "JP",
+      "archiveTitle": "2do Aru Koto wa Sando R",
+      "evidence": "Saturn Redump regional title and disc header (T-6802G)"
+    },
+    {
+      "edition": "Pu·Li·Ru·La Arcade Gears",
+      "market": "JP",
+      "archiveTitle": "Arcade Gears Vol. 1 - Pu-Li-Ru-La",
+      "evidence": "Saturn Redump regional title and disc header (T-26106G)"
+    },
+    {
+      "edition": "Pyon Pyon Kyaruru no Mahjong Hiyori",
+      "market": "JP",
+      "archiveTitle": "Pyon Pyon Kyaruru no Mahjong Biyori",
+      "evidence": "Saturn Redump regional title and disc header (T-31101G)"
+    },
+    {
+      "edition": "Quarterback Attack with Mike Ditka",
+      "market": "NA",
+      "archiveTitle": "Quarterback Attack",
+      "evidence": "Saturn Redump regional title and disc header (T-16213H); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (qbattack)"
+    },
+    {
+      "edition": "QuoVadis 2: Wakusei Kyoushuu Orphan Rei",
+      "market": "JP",
+      "archiveTitle": "QuoVadis 2 - Wakusei Kyoushuu Ovan Rei",
+      "evidence": "Saturn Redump regional title and disc header (T-17402G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (quovadi2)"
+    },
+    {
+      "edition": "Revolution X",
+      "market": "NA",
+      "archiveTitle": "Revolution X - Music Is the Weapon",
+      "evidence": "Saturn Redump regional title and disc header (T-8107H)"
+    },
+    {
+      "edition": "Revolution X",
+      "market": "PAL",
+      "archiveTitle": "Revolution X - Music Is the Weapon",
+      "evidence": "Saturn Redump regional title and disc header (T-8107H-18, T-8107H-50)"
+    },
+    {
+      "edition": "Revolution X",
+      "market": "JP",
+      "archiveTitle": "Revolution X - Music Is the Weapon",
+      "evidence": "Saturn Redump regional title and disc header (T-8106G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (revxj)"
+    },
+    {
+      "edition": "Roommate: Ryōko Inoue",
+      "market": "JP",
+      "archiveTitle": "Roommate - Inoue Ryouko",
+      "evidence": "Saturn Redump regional title and disc header (T-19502G, T-19502G V)"
+    },
+    {
+      "edition": "Ryôko no Oshaberi Room",
+      "market": "JP",
+      "archiveTitle": "Ryouko no Oshaberi Room",
+      "evidence": "Saturn Redump regional title and disc header (T-19509G)"
+    },
+    {
+      "edition": "Sakura Taisen Teigeki Graph",
+      "market": "JP",
+      "archiveTitle": "Sakura Taisen - Teigeki Graph - Teigeki Graph in Sakura Wars",
+      "evidence": "Saturn Redump regional title and disc header (T-32602G)"
+    },
+    {
+      "edition": "Sakura Tsuushin: Remaking Memories",
+      "market": "JP",
+      "archiveTitle": "Sakura Tsuushin",
+      "evidence": "Saturn Redump regional title and disc header (T-38401G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (sakutsuu)"
+    },
+    {
+      "edition": "Sega Ages I Love Mickey Mouse: Fushigi no Oshiro Daibouken/I Love Donald Duck: Guruzia Ou no Hihou",
+      "market": "JP",
+      "archiveTitle": "Sega Ages - I Love Mickey Mouse - Fushigi no Oshiro Daibouken & I Love Donald Duck - Georgia Ou no Hihou",
+      "evidence": "Saturn Redump regional title and disc header (GS-9179); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (mickdnld;mickdnlda)"
+    },
+    {
+      "edition": "Sega Ages Rouka ni Ichidant-R",
+      "market": "JP",
+      "archiveTitle": "Sega Ages - Rouka ni Ichidanto R",
+      "evidence": "Saturn Redump regional title and disc header (GS-9043)"
+    },
+    {
+      "edition": "Sega Ages Vol. 1 Syukudai ga Tant-R",
+      "market": "JP",
+      "archiveTitle": "Sega Ages - Shukudai ga Tanto R",
+      "evidence": "Saturn Redump regional title and disc header (GS-9042 V1)"
+    },
+    {
+      "edition": "Sega Ages Vol. 2 Space Harrier",
+      "market": "JP",
+      "archiveTitle": "Sega Ages - Space Harrier",
+      "evidence": "Saturn Redump regional title and disc header (GS-9108); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (sharrier)"
+    },
+    {
+      "edition": "Sen Miyako Monogatari: Sono I",
+      "market": "JP",
+      "archiveTitle": "Sento Monogatari Sono I",
+      "evidence": "Saturn Redump regional title and disc header (T-6801G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (sentomon)"
+    },
+    {
+      "edition": "Sengoku Blade",
+      "market": "JP",
+      "archiveTitle": "Sengoku Blade - Sengoku Ace Episode II",
+      "evidence": "Saturn Redump regional title and disc header (T-14410G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (sengblad;sengblada)"
+    },
+    {
+      "edition": "Senken Kigyôden",
+      "market": "JP",
+      "archiveTitle": "Senken Kigyouden",
+      "evidence": "Saturn Redump regional title and disc header (T-37401G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (senken)"
+    },
+    {
+      "edition": "Senkutsu Katsuryuu Taisen Chaos Seed",
+      "market": "JP",
+      "archiveTitle": "Senkutsu Katsuryu Taisen - Chaos Seed",
+      "evidence": "Saturn Redump regional title and disc header (T-30902G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (chaossd)"
+    },
+    {
+      "edition": "Shanghai: Triple-Threat",
+      "market": "JP",
+      "archiveTitle": "Shanghai - Banri no Choujou - The Great Wall",
+      "evidence": "Saturn Redump regional title and disc header (T-1505G)"
+    },
+    {
+      "edition": "Shellshock",
+      "market": "JP",
+      "archiveTitle": "Shellshock - Jus' Keepin' da Peace",
+      "evidence": "Saturn Redump regional title and disc header (T-10607G)"
+    },
+    {
+      "edition": "Shienryu",
+      "market": "JP",
+      "archiveTitle": "Shienryuu",
+      "evidence": "Saturn Redump regional title and disc header (T-29102G)"
+    },
+    {
+      "edition": "Shining Force III",
+      "market": "JP",
+      "archiveTitle": "Shining Force III - Scenario 1 - Outo no Kyoshin",
+      "evidence": "Saturn Redump regional title and disc header (GS-9175); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (shinf3s1;shinf3s1a)"
+    },
+    {
+      "edition": "Shining Force III Scenario 2: Nerewareta Miko",
+      "market": "JP",
+      "archiveTitle": "Shining Force III - Scenario 2 - Nerawareta Miko",
+      "evidence": "Saturn Redump regional title and disc header (GS-9188); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (shinf3s2)"
+    },
+    {
+      "edition": "Shinobi Legions",
+      "market": "PAL",
+      "archiveTitle": "Shinobi-X - Shin Shinobi Den",
+      "evidence": "Saturn Redump regional title and disc header (MK-81082)"
+    },
+    {
+      "edition": "Shinpi no Sekai El-Hazard",
+      "market": "JP",
+      "archiveTitle": "Shinpi no Sekai El-Hazard - El-Hazard - The Magnificent World for Sega Saturn",
+      "evidence": "Saturn Redump regional title and disc header (T-22202G)"
+    },
+    {
+      "edition": "Shinseiki Evangerion",
+      "market": "JP",
+      "archiveTitle": "Shin Seiki Evangelion",
+      "evidence": "Saturn Redump regional title and disc header (GS-9051); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (shinev;shineva)"
+    },
+    {
+      "edition": "Shinseiki Evangerion: 2nd Impression",
+      "market": "JP",
+      "archiveTitle": "Shin Seiki Evangelion - 2nd Impression",
+      "evidence": "Saturn Redump regional title and disc header (GS-9129); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (shinev2i;shinev2ia)"
+    },
+    {
+      "edition": "Shinseiki Evangerion: Dejitaru Kaado Raiburari",
+      "market": "JP",
+      "archiveTitle": "Neon Genesis Evangelion - Digital Card Library",
+      "evidence": "Saturn Redump regional title and disc header (GS-9159)"
+    },
+    {
+      "edition": "Shinseiki Evangerion: Eva to Yukaina Nakama-tachi",
+      "market": "JP",
+      "archiveTitle": "Shin Seiki Evangelion - Eva to Yukaina Nakama-tachi",
+      "evidence": "Saturn Redump regional title and disc header (T-35103G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (shinevyu)"
+    },
+    {
+      "edition": "Shinseiki Evangerion: Kōtetsu no Gārufurendo",
+      "market": "JP",
+      "archiveTitle": "Neon Genesis - Evangelion - Koutetsu no Girlfriend",
+      "evidence": "Saturn Redump regional title and disc header (GS-9194); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (shinevgf;shinevgfa)"
+    },
+    {
+      "edition": "Shunsai: Keiba Data Stable",
+      "market": "JP",
+      "archiveTitle": "Shunsai",
+      "evidence": "Saturn Redump regional title and disc header (T-18703G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (shunsai)"
+    },
+    {
+      "edition": "Shutokō Battle '97",
+      "market": "JP",
+      "archiveTitle": "Drift King Shutokou Battle '97 - Tsuchiya Keiichi & Bandou Masaaki",
+      "evidence": "Saturn Redump regional title and disc header (T-15019G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (sbatl97;sbatl97a)"
+    },
+    {
+      "edition": "Shutsudou! Minisuka Police",
+      "market": "JP",
+      "archiveTitle": "Shutsudou! Miniskirt Police",
+      "evidence": "Saturn Redump regional title and disc header (T-30812G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (minipoli)"
+    },
+    {
+      "edition": "Simulation RPG Tsukuru",
+      "market": "JP",
+      "archiveTitle": "Simulation RPG Tkool",
+      "evidence": "Saturn Redump regional title and disc header (T-2106G)"
+    },
+    {
+      "edition": "Sitisei Tôsin Guyferd: Crown Kaimetu Sakusen",
+      "market": "JP",
+      "archiveTitle": "Shichisei Toushin Guyferd - Crown Kaimetsu Sakusen",
+      "evidence": "Saturn Redump regional title and disc header (T-1242G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (guyferd)"
+    },
+    {
+      "edition": "Slam 'N Jam '96 featuring Magic & Kareem",
+      "market": "NA",
+      "archiveTitle": "Slam 'n Jam '96 featuring Magic & Kareem - Signature Edition",
+      "evidence": "Saturn Redump regional title and disc header (T-159028H)"
+    },
+    {
+      "edition": "Slam 'N Jam '96 featuring Magic & Kareem",
+      "market": "PAL",
+      "archiveTitle": "Slam 'n Jam '96 featuring Magic & Kareem - Signature Edition",
+      "evidence": "Saturn Redump regional title and disc header (T-15902H50)"
+    },
+    {
+      "edition": "Sotsugyō S",
+      "market": "JP",
+      "archiveTitle": "Sotsugyou - Graduation S",
+      "evidence": "Saturn Redump regional title and disc header (T-20103G)"
+    },
+    {
+      "edition": "Sound Novel Tsukūru 2",
+      "market": "JP",
+      "archiveTitle": "Sound Novel Tkool 2",
+      "evidence": "Saturn Redump regional title and disc header (T-2108G)"
+    },
+    {
+      "edition": "Stakes Winner 2: Saikyou Uma Densetsu",
+      "market": "JP",
+      "archiveTitle": "Stakes Winner 2 - Saikyouba Densetsu",
+      "evidence": "Saturn Redump regional title and disc header (T-3115G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (stakewn2)"
+    },
+    {
+      "edition": "Stakes Winner: GI Kanzen Seiha Heno Michi",
+      "market": "JP",
+      "archiveTitle": "Stakes Winner - GI Kanzen Seiha e no Michi",
+      "evidence": "Saturn Redump regional title and disc header (T-3107G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (stakewin;stakewina)"
+    },
+    {
+      "edition": "Steeldom",
+      "market": "JP",
+      "archiveTitle": "Koutetsu Reiiki - Steeldom",
+      "evidence": "Saturn Redump regional title and disc header (T-1805G)"
+    },
+    {
+      "edition": "Sugobenchā: Dragon Master Silk Gaiden",
+      "market": "JP",
+      "archiveTitle": "Sugoventure - Dragon Master Silk Gaiden",
+      "evidence": "Saturn Redump regional title and disc header (T-19505G)"
+    },
+    {
+      "edition": "Suiko Enbu: Fuunsaiki",
+      "market": "JP",
+      "archiveTitle": "Suiko Enbu - Fuuun Saiki",
+      "evidence": "Saturn Redump regional title and disc header (T-1305G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (suikoen2)"
+    },
+    {
+      "edition": "Suikoden: Tendou 108 Sei",
+      "market": "JP",
+      "archiveTitle": "Suikoden - Tendou Hyaku Hachi-sei",
+      "evidence": "Saturn Redump regional title and disc header (T-7656G)"
+    },
+    {
+      "edition": "Söldnerschild",
+      "market": "JP",
+      "archiveTitle": "Soeldnerschild",
+      "evidence": "Saturn Redump regional title and disc header (GS-9155)"
+    },
+    {
+      "edition": "Tactics Ogre",
+      "market": "JP",
+      "archiveTitle": "Tactics Ogre - Let Us Cling Together",
+      "evidence": "Saturn Redump regional title and disc header (T-5306G)"
+    },
+    {
+      "edition": "Taito Chase H.Q. Plus S.C.I.",
+      "market": "JP",
+      "archiveTitle": "Taito Chase H.Q. + S.C.I.",
+      "evidence": "Saturn Redump regional title and disc header (T-1105G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (chasehqs)"
+    },
+    {
+      "edition": "Takuramakan: Tonkou Denki",
+      "market": "JP",
+      "archiveTitle": "Taklamakan - Tonkou Denki",
+      "evidence": "Saturn Redump regional title and disc header (T-25102G)"
+    },
+    {
+      "edition": "Tama",
+      "market": "JP",
+      "archiveTitle": "Tama - Adventurous Ball in Giddy Labyrinth",
+      "evidence": "Saturn Redump regional title and disc header (T-4801G)"
+    },
+    {
+      "edition": "Tanjou S: Debut",
+      "market": "JP",
+      "archiveTitle": "Tanjou - Debut S",
+      "evidence": "Saturn Redump regional title and disc header (T-20101G)"
+    },
+    {
+      "edition": "Tantei Jingūji Saburō: Mikan no Rupo",
+      "market": "JP",
+      "archiveTitle": "Tantei Jinguuji Saburou - Mikan no Report",
+      "evidence": "Saturn Redump regional title and disc header (T-1307G)"
+    },
+    {
+      "edition": "Tenchi wo Kurau 2: Sekiheki no Tatakai",
+      "market": "JP",
+      "archiveTitle": "Tenchi o Kurau II - Sekiheki no Tatakai",
+      "evidence": "Saturn Redump regional title and disc header (T-1207G)"
+    },
+    {
+      "edition": "Tengai Makyō: Daiyon no Mokushiroku",
+      "market": "JP",
+      "archiveTitle": "Tengai Makyou - Daiyon no Mokushiroku - The Apocalypse IV",
+      "evidence": "Saturn Redump regional title and disc header (T-14301G)"
+    },
+    {
+      "edition": "Tenka Seiha",
+      "market": "JP",
+      "archiveTitle": "Tenga Seiha",
+      "evidence": "Saturn Redump regional title and disc header (T-15026G)"
+    },
+    {
+      "edition": "The Conveni",
+      "market": "JP",
+      "archiveTitle": "Conveni, The - Ano Machi o Dokusen seyo",
+      "evidence": "Saturn Redump regional title and disc header (T-4310G)"
+    },
+    {
+      "edition": "The Conveni 2",
+      "market": "JP",
+      "archiveTitle": "Conveni 2, The - Zenkoku Chain Tenkai da!",
+      "evidence": "Saturn Redump regional title and disc header (T-4317G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (conveni2;conveni2a)"
+    },
+    {
+      "edition": "The Legend of Heroes I & The Legend of Heroes II Eiyû Densetu",
+      "market": "JP",
+      "archiveTitle": "Legend of Heroes I & II, The - Eiyuu Densetsu",
+      "evidence": "Saturn Redump regional title and disc header (T-37101G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (lohero)"
+    },
+    {
+      "edition": "The Need for Speed",
+      "market": "NA",
+      "archiveTitle": "Road & Track Presents - The Need for Speed",
+      "evidence": "Saturn Redump regional title and disc header (T-5009H)"
+    },
+    {
+      "edition": "The Need for Speed",
+      "market": "PAL",
+      "archiveTitle": "Road & Track Presents - The Need for Speed",
+      "evidence": "Saturn Redump regional title and disc header (T-5009H)"
+    },
+    {
+      "edition": "The Need for Speed",
+      "market": "JP",
+      "archiveTitle": "Nissan Presents - Over Drivin' GT-R",
+      "evidence": "Saturn Redump regional title and disc header (T-10613G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (nissangt)"
+    },
+    {
+      "edition": "Time Bokan Series: Bokan to Ippatsu! Doronboo Kanpekiban",
+      "market": "JP",
+      "archiveTitle": "Time Bokan Series - Bokan to Ippatsu! Doronbow Kanpekiban",
+      "evidence": "Saturn Redump regional title and disc header (T-20607G)"
+    },
+    {
+      "edition": "Tokusou Kidoutai J SWAT",
+      "market": "JP",
+      "archiveTitle": "Tokuso Kidoutai J-SWAT",
+      "evidence": "Saturn Redump regional title and disc header (T-20602G)"
+    },
+    {
+      "edition": "Tour Party: Sotsugyō Ryokô ni Ikô",
+      "market": "JP",
+      "archiveTitle": "Tour Party - Sotsugyou Ryokou ni Ikou",
+      "evidence": "Saturn Redump regional title and disc header (T-10312G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (tourpart)"
+    },
+    {
+      "edition": "Umanari 1 Furlong Gekijou",
+      "market": "JP",
+      "archiveTitle": "Umanari 1 Furlong Theater",
+      "evidence": "Saturn Redump regional title and disc header (T-35001G)"
+    },
+    {
+      "edition": "Vampire Savior: The Lord of Vampire",
+      "market": "JP",
+      "archiveTitle": "Vampire Savior",
+      "evidence": "Saturn Redump regional title and disc header (T-1229G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (vsav;vsava)"
+    },
+    {
+      "edition": "Victory Goal '96",
+      "market": "JP",
+      "archiveTitle": "J.League Victory Goal '96",
+      "evidence": "Saturn Redump regional title and disc header (GS-9048); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (jlv96;jlv96a)"
+    },
+    {
+      "edition": "Virtua Photo Studio",
+      "market": "JP",
+      "archiveTitle": "Virtua Photo Studio - Cameraman Simulation",
+      "evidence": "Saturn Redump regional title and disc header (T-8103G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (vphoto)"
+    },
+    {
+      "edition": "Virtual On: Cyber Troopers for SegaNet",
+      "market": "JP",
+      "archiveTitle": "Dennou Senki - Virtual On - Cyber Troopers for SegaNet",
+      "evidence": "Saturn Redump regional title and disc header (GS-7106)"
+    },
+    {
+      "edition": "VR Virtua Racing",
+      "market": "NA",
+      "archiveTitle": "Virtua Racing",
+      "evidence": "Saturn Redump regional title and disc header (T-4801H); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (vru)"
+    },
+    {
+      "edition": "VR Virtua Racing",
+      "market": "PAL",
+      "archiveTitle": "Virtua Racing",
+      "evidence": "Saturn Redump regional title and disc header (T-4803G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (vr)"
+    },
+    {
+      "edition": "VR Virtua Racing",
+      "market": "JP",
+      "archiveTitle": "Virtua Racing",
+      "evidence": "Saturn Redump regional title and disc header (T-4803G)"
+    },
+    {
+      "edition": "Wachenröder",
+      "market": "JP",
+      "archiveTitle": "Wachenroeder",
+      "evidence": "Saturn Redump regional title and disc header (GS-9183)"
+    },
+    {
+      "edition": "Waku Waku Monster",
+      "market": "JP",
+      "archiveTitle": "Waku^2 Monster",
+      "evidence": "Saturn Redump regional title and disc header (T-16608G)"
+    },
+    {
+      "edition": "Wara Wars: Gekitou! Daigundan Battle",
+      "market": "JP",
+      "archiveTitle": "Wara Wara Wars - Gekitou! Daigundan Battle",
+      "evidence": "Saturn Redump regional title and disc header (T-21507G)"
+    },
+    {
+      "edition": "Williams Arcade's Greatest Hits",
+      "market": "NA",
+      "archiveTitle": "Arcade's Greatest Hits",
+      "evidence": "Saturn Redump regional title and disc header (T-9703H); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (arcadegh)"
+    },
+    {
+      "edition": "Wizardry Nemesis",
+      "market": "JP",
+      "archiveTitle": "Wizardry Nemesis - The Wizardry Adventure",
+      "evidence": "Saturn Redump regional title and disc header (T-37001G); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (wizneme)"
+    },
+    {
+      "edition": "Wonder 3 Arcade Gears",
+      "market": "JP",
+      "archiveTitle": "Arcade Gears Vol. 3 - Wonder 3",
+      "evidence": "Saturn Redump regional title and disc header (T-26107G)"
+    },
+    {
+      "edition": "Zen-Nihon Pro Wrestling Featuring Virtua",
+      "market": "JP",
+      "archiveTitle": "Zen Nihon Pro Wres featuring Virtua",
+      "evidence": "Saturn Redump regional title and disc header (GS-9158); https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (znpwfv;znpwfva)"
+    },
+    {
+      "edition": "Clockwork Knight 2",
+      "market": "BR",
+      "archiveTitle": "Clockwork Knight 2 - Pepperouchau's Adventure",
+      "evidence": "https://www.vgdb.com.br/saturn/jogos/clockwork-knight-2/"
+    },
+    {
+      "edition": "Riven: The Sequel to Myst",
+      "market": "BR",
+      "archiveTitle": "Riven - A Sequencia de Myst",
+      "evidence": "https://www.satakore.com/sega-saturn-game,,191546,,Riven-A-Sequencia-de-Myst-BRA.html"
+    },
+    {
+      "edition": "Virtual On: Cyber Troopers",
+      "market": "KR",
+      "archiveTitle": "Dennou Senki - Virtual On - Cyber Troopers",
+      "evidence": "http://redump.org/discs/system/ss/"
+    },
+    {
+      "edition": "Worldwide Soccer: Sega International Victory Goal Edition",
+      "market": "KR",
+      "archiveTitle": "Worldwide Soccer - Sega International Victory Goal Edition",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml"
+    }
+  ],
+  "omittedReleases": {
+    "World Series Baseball '98": {
+      "markets": [
+        "JP"
+      ],
+      "evidence": "The Japanese league edition is already listed separately as Pro Yakyū Greatest Nine 97. https://www.mobygames.com/game/208393/pro-yakyu-greatest-nine-97/"
+    }
+  },
+  "additionalReleases": [
+    {
+      "game": "Clockwork Knight 2",
+      "market": "BR",
+      "title": "Clockwork Knight 2",
+      "source": {
+        "name": "Retail package record",
+        "url": "https://www.vgdb.com.br/saturn/jogos/clockwork-knight-2/"
+      },
+      "publisher": "TecToy"
+    },
+    {
+      "game": "Nights into Dreams",
+      "market": "BR",
+      "title": "NiGHTS into Dreams...",
+      "source": {
+        "name": "Redump",
+        "url": "http://redump.org/discs/system/ss/"
+      },
+      "publisher": "TecToy"
+    },
+    {
+      "game": "Riven: The Sequel to Myst",
+      "market": "BR",
+      "title": "Riven: A Sequência de Myst",
+      "source": {
+        "name": "Retail package record",
+        "url": "https://www.satakore.com/sega-saturn-game,,191546,,Riven-A-Sequencia-de-Myst-BRA.html"
+      },
+      "publisher": "TecToy"
+    },
+    {
+      "game": "Sonic R",
+      "market": "BR",
+      "title": "Sonic R",
+      "source": {
+        "name": "Redump",
+        "url": "http://redump.org/discs/system/ss/"
+      },
+      "publisher": "TecToy"
+    },
+    {
+      "game": "Virtual On: Cyber Troopers",
+      "market": "KR",
+      "title": "Dennou Senki: Virtual On",
+      "source": {
+        "name": "Redump",
+        "url": "http://redump.org/discs/system/ss/"
+      }
+    },
+    {
+      "game": "Fighting Vipers",
+      "market": "KR",
+      "title": "Fighting Vipers",
+      "source": {
+        "name": "MAME",
+        "url": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml"
+      }
+    },
+    {
+      "game": "Myst",
+      "market": "KR",
+      "title": "Myst",
+      "source": {
+        "name": "MAME",
+        "url": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml"
+      }
+    },
+    {
+      "game": "Nights into Dreams",
+      "market": "KR",
+      "title": "NiGHTS into Dreams...",
+      "source": {
+        "name": "Redump",
+        "url": "http://redump.org/discs/system/ss/"
+      }
+    },
+    {
+      "game": "Sega Rally Championship",
+      "market": "KR",
+      "title": "Sega Rally Championship",
+      "source": {
+        "name": "MAME",
+        "url": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml"
+      }
+    },
+    {
+      "game": "Virtua Fighter 2",
+      "market": "KR",
+      "title": "Virtua Fighter 2",
+      "source": {
+        "name": "MAME",
+        "url": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml"
+      }
+    },
+    {
+      "game": "Virtua Fighter Kids",
+      "market": "KR",
+      "title": "Virtua Fighter Kids",
+      "source": {
+        "name": "MAME",
+        "url": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml"
+      }
+    },
+    {
+      "game": "Virtua Fighter Remix",
+      "market": "KR",
+      "title": "Virtua Fighter Remix",
+      "source": {
+        "name": "MAME",
+        "url": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml"
+      }
+    },
+    {
+      "game": "Worldwide Soccer: Sega International Victory Goal Edition",
+      "market": "KR",
+      "title": "Worldwide Soccer: Sega International Victory Goal Edition",
+      "source": {
+        "name": "MAME",
+        "url": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml"
+      }
+    },
+    {
+      "game": "Myst",
+      "market": "AS",
+      "title": "Myst",
+      "source": {
+        "name": "Redump",
+        "url": "http://redump.org/discs/system/ss/"
+      }
+    },
+    {
+      "game": "Romance of the Three Kingdoms IV: Wall of Fire",
+      "market": "AS",
+      "title": "Sanguozhi IV",
+      "source": {
+        "name": "Redump",
+        "url": "http://redump.org/discs/system/ss/"
+      },
+      "publisher": "Koei"
+    },
+    {
+      "game": "Sangokushi V",
+      "market": "AS",
+      "title": "Sanguozhi V",
+      "source": {
+        "name": "Redump",
+        "url": "http://redump.org/discs/system/ss/"
+      },
+      "publisher": "Koei"
+    },
+    {
+      "game": "Sangokushi Eiketsuden",
+      "market": "AS",
+      "title": "Sanguozhi Yingjiezhuan",
+      "source": {
+        "name": "Redump",
+        "url": "http://redump.org/discs/system/ss/"
+      },
+      "publisher": "Koei"
+    },
+    {
+      "game": "Senken Kigyôden",
+      "market": "AS",
+      "title": "Xianjian Qixiazhuan",
+      "source": {
+        "name": "Retail package record",
+        "url": "https://collection.rcgs.jp/page/PACKAGE0002522"
+      },
+      "publisher": "Softstar"
+    }
+  ],
+  "verifiedArchives": [
+    {
+      "edition": "Street Fighter Alpha 2",
+      "market": "JP",
+      "signature": "fb9033fadd9f3504bd7b2f8c1d7d8cff",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (sfz2, T-1212G). Street Fighter Zero 2 Dash has a separate disc record."
+    },
+    {
+      "edition": "Ryougae Puzzle Game Moujiya",
+      "market": "JP",
+      "signature": "8bf50f04edee816b5771984d4f45550f",
+      "independentRetail": true,
+      "evidence": "Saturn disc boot header T-7010G and the MAME 0.285 Sega Saturn software list"
+    },
+    {
+      "edition": "Saturn Bomberman for SegaNet",
+      "market": "JP",
+      "signature": "3dce0f167d7fffad092d546a2c3c09c4",
+      "independentRetail": true,
+      "evidence": "Saturn disc boot header T-14305G and the MAME 0.285 Sega Saturn software list"
+    }
+  ],
+  "discSets": [
+    {
+      "edition": "Bakuretsu Hunter",
+      "market": "JP",
+      "archives": [
+        "Bakuretsu Hunter (Japan) (Disc 1).zip",
+        "Bakuretsu Hunter (Japan) (Disc 2) (Omake CD).zip"
+      ],
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (bakhunt, packaged disc order)"
+    },
+    {
+      "edition": "Can Can Bunny Premiere 2",
+      "market": "JP",
+      "archives": [
+        "Can Can Bunny Premiere 2 (Japan) (Disc 1).zip",
+        "Can Can Bunny Premiere 2 (Japan) (Disc 2) (Can Bani Himekuri Calendar).zip"
+      ],
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (cancanp2, packaged disc order)"
+    },
+    {
+      "edition": "EVE: The Lost One",
+      "market": "JP",
+      "archives": [
+        "Eve - The Lost One (Japan) (Disc 1) (Kyoko Disc) (1M).zip",
+        "Eve - The Lost One (Japan) (Disc 2) (Snake Disc) (2M).zip",
+        "Eve - The Lost One (Japan) (Disc 3) (Lost One Disc) (1M).zip",
+        "Eve - The Lost One (Japan) (Disc 4) (Extra Disc) (2M).zip"
+      ],
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (evelost, packaged disc order)"
+    },
+    {
+      "edition": "Phantasm",
+      "market": "JP",
+      "archives": [
+        "PhantasM (Japan) (Disc 1).zip",
+        "PhantasM (Japan) (Disc 2).zip",
+        "PhantasM (Japan) (Disc 3) (2M).zip",
+        "PhantasM (Japan) (Disc 4).zip",
+        "PhantasM (Japan) (Disc 5).zip",
+        "PhantasM (Japan) (Disc 6) (4M).zip",
+        "PhantasM (Japan) (Disc 7).zip",
+        "PhantasM (Japan) (Disc 8).zip"
+      ],
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (phantasm, packaged disc order)",
+      "label": "Disc six 4M pressing"
+    },
+    {
+      "edition": "Phantasm",
+      "market": "JP",
+      "archives": [
+        "PhantasM (Japan) (Disc 1).zip",
+        "PhantasM (Japan) (Disc 2).zip",
+        "PhantasM (Japan) (Disc 3) (2M).zip",
+        "PhantasM (Japan) (Disc 4).zip",
+        "PhantasM (Japan) (Disc 5).zip",
+        "PhantasM (Japan) (Disc 6) (5M).zip",
+        "PhantasM (Japan) (Disc 7).zip",
+        "PhantasM (Japan) (Disc 8).zip"
+      ],
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (phantasm, packaged disc order)",
+      "label": "Disc six 5M pressing"
+    },
+    {
+      "edition": "Pia Carrot e Yôkoso!! 2",
+      "market": "JP",
+      "archives": [
+        "Pia Carrot e Youkoso!! 2 (Japan) (Disc 1) (Game Disc) (2M).zip",
+        "Pia Carrot e Youkoso!! 2 (Japan) (Disc 2) (Special Disc) (2M).zip"
+      ],
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (picarro2, packaged disc order)"
+    },
+    {
+      "edition": "Thunder Storm & Road Blaster",
+      "market": "JP",
+      "archives": [
+        "Thunder Storm & Road Blaster (Japan) (Disc 1) (Thunder Storm).zip",
+        "Thunder Storm & Road Blaster (Japan) (Disc 2) (Road Blaster).zip"
+      ],
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml (tstrmrbl, packaged disc order)"
+    }
+  ],
+  "packagingEditions": [
+    {
+      "game": "Doukoku Soshite...",
+      "edition": "Doukoku Soshite... Final Edition",
+      "market": "JP",
+      "productCodes": ["T-1317G"],
+      "signatures": ["596274de85f8b1f2417d3a21d64d617b", "0a6a59f5d982bd90979f566e0c7476be"],
+      "sharedManual": true,
+      "evidence": "https://redump.info/discs?letter=D&order=desc&sort=system&system=SS (both 1M and 2M game-disc pressings were sold in T-1315G and T-1317G)"
+    }
+  ],
+  "covers": [
+    {
+      "edition": "Nights into Dreams",
+      "market": "BR",
+      "url": "https://images.launchbox-app.com/r2_bb409315-a4b5-41d6-9ad1-b99cafde9406.jpg",
+      "source": {
+        "name": "LaunchBox",
+        "url": "https://gamesdb.launchbox-app.com/games/images/45-nights-into-dreams"
+      }
+    },
+    {
+      "edition": "Sonic R",
+      "market": "BR",
+      "url": "https://sonicscene.net/wp-content/uploads/2017/07/Sonic_R_sat_tectoybrazil-10018.webp",
+      "source": {
+        "name": "Sonic Scene",
+        "url": "https://www.sonicscene.net/media-and-downloads/box-art/sonic-r"
+      }
+    }
+  ],
+  "manuals": [
+    {
+      "edition": "Nights into Dreams",
+      "market": "BR",
+      "language": "Portuguese",
+      "url": "https://bdjogos.com.br/manuais/462-nights-into-dreams-sega-saturn-manual-bra.pdf",
+      "source": "BD Jogos",
+      "sourceUrl": "https://bdjogos.com.br/jogo.php?id=214",
+      "sha1": "59b568b49318795e8ea5495939e167257b5904e2",
+      "size": 6280423
+    }
+  ],
+  "soundtrackAliases": [
+    {
+      "edition": "Shining Force III",
+      "title": "Shining Force 3"
+    }
+  ]
+}

@@ -1,0 +1,492 @@
+{
+  "archiveAliases": [
+    {
+      "edition": "Air Zonk",
+      "market": "JP",
+      "archiveTitle": "PC Denjin - Punkic Cyborgs",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (pcdenj, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Bonk 3: Bonk's Big Adventure",
+      "market": "JP",
+      "archiveTitle": "PC Genjin 3 - Pithecanthropus Computerurus",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (pcgenj3, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Bonk's Adventure",
+      "market": "JP",
+      "archiveTitle": "PC Genjin - Pithecanthropus Computerurus",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (pcgenj, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Bonk's Revenge",
+      "market": "JP",
+      "archiveTitle": "PC Genjin 2 - Pithecanthropus Computerurus",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (pcgenj2, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Bravoman",
+      "market": "JP",
+      "archiveTitle": "Chouzetsurinjin Bravoman",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (bravoman, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Bubblegum Crash!",
+      "market": "JP",
+      "archiveTitle": "Bubblegum Crash! - Knight Sabers 2034",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (bubblegm, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Chibi Maruko-chan: Quiz de Piihira",
+      "market": "JP",
+      "archiveTitle": "Chibi Maruko-chan - Quiz de Piihyara",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (chibim, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Chikudenya Tōbē",
+      "market": "JP",
+      "archiveTitle": "Chikudenya Toubei - Kubikiri Yakata Yori",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (chikuden, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Cyber Cross",
+      "market": "JP",
+      "archiveTitle": "Busou Keiji - Cyber Cross",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (cyberx, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Daichikun Crisis",
+      "market": "JP",
+      "archiveTitle": "Daichi-kun Crisis - Do Natural",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (donaturl, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Dead Moon",
+      "market": "JP",
+      "archiveTitle": "Dead Moon - Getsu Sekai no Akumu",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (deadmoon, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Devil's Crush",
+      "market": "JP",
+      "archiveTitle": "Devil Crash - Naxat Pinball",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (devlcrsh, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Digital Champ: Battle Boxing",
+      "market": "JP",
+      "archiveTitle": "Digital Champ",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (digichmp, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "F-1 Pilot",
+      "market": "JP",
+      "archiveTitle": "F-1 Pilot - You're King of Kings",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (f1pilot, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "F1 Circus '92",
+      "market": "JP",
+      "archiveTitle": "F1 Circus '92 - The Speed of Sound",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (f1circ92, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Fire Pro Wrestling 2nd Bout",
+      "market": "JP",
+      "archiveTitle": "Fire Pro Wrestling 2 - 2nd Bout",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (fireprw2, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Formation Armed F",
+      "market": "JP",
+      "archiveTitle": "Armed F",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (armedf, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Formation Soccer",
+      "market": "JP",
+      "archiveTitle": "Formation Soccer - Human Cup '90",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (fsoccr90, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Gokuraku! Chūka Daisen",
+      "market": "JP",
+      "archiveTitle": "Gokuraku! Chuuka Taisen",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (chukatai, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Hisō Kihei Kai-Serd",
+      "market": "JP",
+      "archiveTitle": "Hisou Kihei X-SERD",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (xserd, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Hit the Ice",
+      "market": "JP",
+      "archiveTitle": "Hit the Ice - VHL - The Video Hockey League",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (hitice, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Hit the Ice",
+      "market": "NA",
+      "archiveTitle": "Hit the Ice - VHL - The Official Video Hockey League",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/tg16.xml (hitice, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Honey in the Sky",
+      "market": "JP",
+      "archiveTitle": "Hanii in the Sky",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (haniisky, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Honey on the Road",
+      "market": "JP",
+      "archiveTitle": "Hanii on the Road",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (haniirod, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Honō no Dōkyūji: Dodge Danpei",
+      "market": "JP",
+      "archiveTitle": "Honoo no Toukyuuji - Dodge Danpei",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (ddanpei, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Jinmu Denshō Yaksa",
+      "market": "JP",
+      "archiveTitle": "Jinmu Denshou",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (jinmu, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Lode Runner: Ushina Wareta Meikyū",
+      "market": "JP",
+      "archiveTitle": "Lode Runner - Lost Labyrinth",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (ldrun, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Mahjong Gakuen - Tōma Sōhirō Tōjō",
+      "market": "JP",
+      "archiveTitle": "Mahjong Gakuen - Touma Soushirou Toujou",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (mjgakuen, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Mahjong Gakuen Mild",
+      "market": "JP",
+      "archiveTitle": "Mahjong Gakuen Mild - Touma Soushirou Toujou",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (mjgakmld, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Maniac Pro Wrestling",
+      "market": "JP",
+      "archiveTitle": "Maniac Pro Wres - Asu e no Tatakai",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (maniacpw, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Momotaro Densetsu Gaiden Dai Ichi Shu",
+      "market": "JP",
+      "archiveTitle": "Momotarou Densetsu Gaiden - Dai-1-shuu",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (momogdn, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Monster Pro Wrestling",
+      "market": "JP",
+      "archiveTitle": "Monster Pro Wres",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (mnstprow, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Morita Shogi PC",
+      "market": "JP",
+      "archiveTitle": "Morita Shougi PC",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (moritash, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Mr. Heli no Daibōken",
+      "market": "JP",
+      "archiveTitle": "Battle Chopper",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (mrheli, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "NHK Taiga Drama Taiheki",
+      "market": "JP",
+      "archiveTitle": "NHK Taiga Drama - Taiheiki",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (nhktaidr, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Ninja Warriors",
+      "market": "JP",
+      "archiveTitle": "Ninja Warriors, The",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (ninjawar, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Parodius Da!",
+      "market": "JP",
+      "archiveTitle": "Parodius Da! - Shinwa kara Owarai e",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (parodius, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Ryukyu",
+      "market": "JP",
+      "archiveTitle": "Ryuukyuu",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (ryukyu, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "S.C.I.",
+      "market": "JP",
+      "archiveTitle": "S.C.I. - Special Criminal Investigation",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (sci, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Sadakichi Sebun: Hideyoshi no Ōgon",
+      "market": "JP",
+      "archiveTitle": "Sadakichi Seven - Hideyoshi no Ougon",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (sadaki7, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Saint Dragon",
+      "market": "JP",
+      "archiveTitle": "Tenseiryuu - Saint Dragon",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (sdragon, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Shiryō Sensen",
+      "market": "JP",
+      "archiveTitle": "Shiryou Sensen - War of the Dead",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (shiryo, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Shogi Shodan Icchokusen",
+      "market": "JP",
+      "archiveTitle": "Shougi Shodan Icchokusen",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (shogisi, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Shogi Shoshinsha Muyō",
+      "market": "JP",
+      "archiveTitle": "Shougi Shoshinsha Muyou",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (shogism, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Side Arms Hyper Dyne",
+      "market": "JP",
+      "archiveTitle": "SideArms - Hyper Dyne",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (sidearms, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Side Arms Hyper Dyne",
+      "market": "NA",
+      "archiveTitle": "SideArms",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/tg16.xml (sidearms, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Sindibad: Chitei No Dai Makyu",
+      "market": "JP",
+      "archiveTitle": "Sindibad - Chitei no Daimakyuu",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (sindibad, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Sonic Spike",
+      "market": "NA",
+      "archiveTitle": "Sonic Spike - World Championship Beach Volleyball",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/tg16.xml (wbeach, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Super Momotaro Dentetsu",
+      "market": "JP",
+      "archiveTitle": "Super Momotarou Dentetsu",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (smomo, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Terra Cresta II: Mandler's Counterattack",
+      "market": "JP",
+      "archiveTitle": "Terra Cresta II - Mandoler no Gyakushuu",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (terracr2, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Tiger Road",
+      "market": "JP",
+      "archiveTitle": "Tora e no Michi",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (toramich, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Toshi Tensō Keikaku Eternal City",
+      "market": "JP",
+      "archiveTitle": "Eternal City - Toshi Tensou Keikaku",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (etercity, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Tsuru Teruto no Jissen Kabushiki Buy Game",
+      "market": "JP",
+      "archiveTitle": "Tsuru Teruhito no Jissen Kabushiki Bai Bai Game",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (baibai, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "TV Sports Hockey",
+      "market": "JP",
+      "archiveTitle": "TV Sports Hockey",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (tvhockey, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Veigues Tactical Gladiator",
+      "market": "JP",
+      "archiveTitle": "Veigues - Tactical Gladiator",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (veigues, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Victory Run",
+      "market": "JP",
+      "archiveTitle": "Victory Run - Eikou no 13,000km",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (victoryr, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Wai Wai Mahjong",
+      "market": "JP",
+      "archiveTitle": "Wai Wai Mahjong - Yukai na Janyuu-tachi",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (waiwaimj, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Wallaby!!",
+      "market": "JP",
+      "archiveTitle": "Wallaby!! - Usagi no Kuni no Kangaroo Race",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (wallaby, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Yōkai Dochuki",
+      "market": "JP",
+      "archiveTitle": "Youkai Douchuuki",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (youkaid, verified HuCard SHA-1)"
+    },
+    {
+      "edition": "Yūyū Jinsei",
+      "market": "JP",
+      "archiveTitle": "You-You Jinsei",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml (yuyu, verified HuCard SHA-1)"
+    }
+  ],
+  "verifiedArchives": [
+    {
+      "edition": "Darius Alpha",
+      "market": "JP",
+      "signature": "2617bc19ef72ab129899c7309ef509e6",
+      "archiveName": "Darius Alpha (Japan) (SG Enhanced).zip",
+      "evidence": "MAME pce.xml dariusa, SHA-1 f59c538fa632f687c356af70659fb07b37933f78"
+    },
+    {
+      "edition": "Darius Plus",
+      "market": "JP",
+      "signature": "117d1ff05dcb6d3703934c49527657a9",
+      "archiveName": "Darius Plus (Japan) (SG Enhanced).zip",
+      "evidence": "MAME pce.xml dariusp, SHA-1 a362c06e4466b2b3dc7a682f892988189117ef62"
+    },
+    {
+      "edition": "Zero4 Champ",
+      "market": "JP",
+      "signature": "46cc0e409ad5f59cf2a55ce515dac199",
+      "archiveName": "Zero4 Champ (Japan).zip",
+      "evidence": "MAME pce.xml zero4ca, SHA-1 79d9878e285e426b9ca58e15249a1bc98186d4e9"
+    },
+    {
+      "edition": "Zero4 Champ",
+      "market": "JP",
+      "signature": "b3c8cca22320977d2e5a5137f98ecab9",
+      "archiveName": "Zero4 Champ (Japan) (Alt).zip",
+      "alternateDump": true,
+      "evidence": "MAME pce.xml zero4c v1.5, SHA-1 2b664760931cc6011d31cae310410dab7cba2067"
+    }
+  ],
+  "soundtrackAliases": [
+    {
+      "edition": "Bullfight Ring no Hasha",
+      "title": "Bullfight - Ring no Haja"
+    },
+    {
+      "edition": "Chikudenya Tōbē",
+      "title": "Chikudenya Toubee - BIT2 no Kubikiri Yakata Yori"
+    },
+    {
+      "edition": "Daichikun Crisis",
+      "title": "Daichikun Crisis - Do Natural"
+    },
+    {
+      "edition": "Gokuraku! Chūka Daisen",
+      "title": "Gokuraku! Chuka Taisen"
+    },
+    {
+      "edition": "Jinmu Denshō Yaksa",
+      "title": "Jinmu Denshou Yaksa"
+    },
+    {
+      "edition": "Kaizō Chōjin Shubibinman",
+      "title": "Kaizou Chounin Shubibinman"
+    },
+    {
+      "edition": "Lode Runner: Ushina Wareta Meikyū",
+      "title": "Lode Runner - Ushinawareta Meikyuu"
+    },
+    {
+      "edition": "Maison Ikkoku",
+      "title": "Maison Ikkoku - Omoide no Shashin"
+    },
+    {
+      "edition": "Maniac Pro Wrestling",
+      "title": "Maniac Pro-Wrestling - Ashita he no Tatakai"
+    },
+    {
+      "edition": "Metal Stoker",
+      "title": "Metal Stoker - Neo Hardboiled Shooting"
+    },
+    {
+      "edition": "Momotaro Densetsu Gaiden Dai Ichi Shu",
+      "title": "Momotarou Densetsu Gaiden"
+    },
+    {
+      "edition": "NHK Taiga Drama Taiheki",
+      "title": "Taiheiki"
+    },
+    {
+      "edition": "Ninja Ryūkenden",
+      "title": "Ninja Ryukenden"
+    },
+    {
+      "edition": "Out Run",
+      "title": "OutRun"
+    },
+    {
+      "edition": "Parodius Da!",
+      "title": "Parodius Da! - Shinwa kara Owarai he"
+    },
+    {
+      "edition": "Ryukyu",
+      "title": "Ryuu Kyuu"
+    },
+    {
+      "edition": "Saint Dragon",
+      "title": "Tensei Ryuu - Saint Dragon"
+    },
+    {
+      "edition": "Terra Cresta II: Mandler's Counterattack",
+      "title": "Terra Cresta II - Mandler no Gyakushuu"
+    },
+    {
+      "edition": "Tsuppari Ōzumō Heisei Ban",
+      "title": "Tsuppari Oozumou - Heisei-han"
+    },
+    {
+      "edition": "Tsuru Teruto no Jissen Kabushiki Buy Game",
+      "title": "Tsuru Teruto no Jissen Kabushiki Bai-Bye Game"
+    },
+    {
+      "edition": "Wai Wai Mahjong",
+      "title": "Wai Wai Mahjong - Yukai na Jantomi-tachi"
+    },
+    {
+      "edition": "Xevious: Fardraut Saga",
+      "title": "Xevious - Fardraut Densetsu"
+    },
+    {
+      "edition": "Yūyū Jinsei",
+      "title": "Yuu Yuu Jinsei"
+    }
+  ],
+  "unavailableManuals": [
+    "https://archive.org/details/racingdamashiipcenginehiresscans"
+  ]
+}

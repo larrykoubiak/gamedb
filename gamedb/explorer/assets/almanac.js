@@ -263,7 +263,7 @@ function routePage(focus = false) {
   almanacView.hidden = true;
   catalogHome.setAttribute("aria-current", "page");
   backToCatalog.hidden = true;
-  document.title = "GameDB Explorer";
+  document.title = "V1 archive | GameDB";
   if (!catalogStarted) {
     catalogStarted = true;
     startCatalog();

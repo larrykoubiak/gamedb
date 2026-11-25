@@ -29,8 +29,8 @@
   background: #141718;
 }
 .snes-topbar > * { display: inline-flex; align-items: center; }
-.snes-brand { font-size: 1rem; font-weight: 700; letter-spacing: -.025em; }
 .snes-topbar a { color: var(--muted); font-size: .82rem; text-decoration: none; }
+.snes-topbar .snes-brand { color: var(--text); font-size: 1rem; font-weight: 700; letter-spacing: -.025em; }
 .snes-topbar a:hover { color: var(--text); text-decoration: underline; }
 .snes-topbar a:focus-visible { outline-offset: -2px; }
 .snes-archive { margin-inline-start: auto; }

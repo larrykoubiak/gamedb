@@ -37,3 +37,24 @@ It is distributed under the MIT license.
 /vgm/ym2149-0.8.1/LICENSE.txt
 https://registry.npmjs.org/ym2149-wasm/-/ym2149-wasm-0.8.1.tgz
 https://github.com/slippyex/ym2149-rs/tree/309e9439d47aafca81b546c62eefc267c00fb53f
+
+Sega Saturn SSF playback
+
+The SSF player uses ssfplay_tools by Niek Vlessert, based on Mednafen.
+It is available under the GNU GPL, version 2 or later.
+/vgm/ssfplay-a28e0d7/license.txt
+
+Corresponding source
+https://github.com/niekvlessert/ssfplay_tools/tree/a28e0d7e14a3dc04a486ea26f30bc52edad3dc4d
+https://github.com/niekvlessert/ssfplay_tools/archive/a28e0d7e14a3dc04a486ea26f30bc52edad3dc4d.tar.gz
+
+In the upstream CMakeLists.txt, add "SHELL:-sEXPORT_ES6=1" after
+"SHELL:-sMODULARIZE=1" in the ssfplay_wasm linker options. Export the
+additional functions _ssfplay_length_ms, _ssfplay_fade_ms, and _ssfplay_reset,
+and set the ssfplay_wasm output suffix to ".mjs". Build with Emscripten 4.0.21.
+
+  emcmake cmake -S . -B build-wasm -DCMAKE_BUILD_TYPE=Release -DSSFPLAY_BUILD_CLI=OFF -DSSFPLAY_BUILD_WASM=ON -DSSFPLAY_BUILD_LIBVGM_AB_PLAYER=OFF -DBUILD_TESTING=OFF
+  cmake --build build-wasm
+
+Copy ssfplay.mjs and ssfplay.wasm to Explorer's vgm/ssfplay-a28e0d7
+directory. Explorer loads this decoder in the audio worker for SSF tracks.

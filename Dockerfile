@@ -60,7 +60,7 @@ CMD ["python", "-m", "gamedb.catalog", "rebuild", "--plan"]
 FROM catalog-runtime AS explorer
 
 RUN apt-get update \
-    && apt-get install --yes --no-install-recommends poppler-utils \
+    && apt-get install --yes --no-install-recommends ffmpeg poppler-utils xdelta3 \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements-catalog.txt /app/requirements-catalog.txt

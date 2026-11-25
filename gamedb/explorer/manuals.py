@@ -12,6 +12,7 @@ from threading import Timer
 from PIL import Image
 
 from gamedb.catalog.manuals import INDEX_NAME, read_manual_index
+from gamedb.catalog.retail import EARLY_DISC_PLATFORMS
 from gamedb.exo.media import location_path
 from gamedb.explorer.previews import source_revision
 
@@ -20,11 +21,19 @@ def manual_roots():
     snes = os.environ.get("GAMEDB_SNES_MANUAL_ROOT")
     megadrive = os.environ.get("GAMEDB_MEGADRIVE_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Mega Drive"
     mastersystem = os.environ.get("GAMEDB_MASTERSYSTEM_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Master System"
+    pcengine = os.environ.get("GAMEDB_PCENGINE_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/PC Engine"
+    n64 = os.environ.get("GAMEDB_N64_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Nintendo 64"
+    saturn = os.environ.get("GAMEDB_SATURN_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Saturn"
+    jaguar = os.environ.get("GAMEDB_JAGUAR_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Jaguar"
     nes = os.environ.get("GAMEDB_NES_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/NES"
     playstation = os.environ.get("GAMEDB_PLAYSTATION_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/PlayStation"
     neogeo = os.environ.get("GAMEDB_NEOGEO_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Neo Geo"
     return {"snes": Path(snes) if snes else None, "megadrive": Path(megadrive), "mastersystem": Path(mastersystem), "nes": Path(nes),
-            "playstation": Path(playstation), "neogeo": Path(neogeo)}
+            "playstation": Path(playstation), "neogeo": Path(neogeo), "pcengine": Path(pcengine), "n64": Path(n64),
+            "saturn": Path(saturn), "jaguar": Path(jaguar), **{
+                platform: Path(os.environ.get(f"GAMEDB_{platform.upper()}_MANUAL_ROOT") or f"/mnt/synology/photo/Manuals/{label}")
+                for platform, label in EARLY_DISC_PLATFORMS.items()
+            }}
 
 
 @lru_cache(maxsize=4)

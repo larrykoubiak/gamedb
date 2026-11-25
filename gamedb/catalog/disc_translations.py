@@ -7,7 +7,7 @@ from html import unescape
 import json
 from pathlib import Path
 import re
-from shutil import copyfile, copyfileobj, which
+from shutil import copyfile, copyfileobj
 from tempfile import TemporaryDirectory
 from zipfile import BadZipFile, ZIP_DEFLATED, ZipFile
 
@@ -19,7 +19,10 @@ from gamedb.database import create_database_engine
 from gamedb.exo.media import location_path
 from gamedb.vgm.archives import safe_member
 
-from .disc_patching import DISC_PATCH_EXTENSIONS, patch_disc_image, repair_xa_form1_checksums
+from .disc_patching import (
+    DISC_PATCH_EXTENSIONS, MODE1_USER_DATA_SIZE, RAW_CD_SECTOR_SIZE, extract_mode1_iso,
+    patch_disc_image, repair_xa_form1_checksums,
+)
 from .retail import retail_tables, write_report
 from .translations import (
     DISC_LAYOUT, DISC_PATCH_ARCHIVES, INDEX_NAME, INDEX_VERSION, RHDN_CONSOLES, _archive_members, _dump_rows,
@@ -28,6 +31,7 @@ from .translations import (
 
 
 FILE_LINE = re.compile(r'^\s*FILE +"([^"\r\n]+)" +BINARY\s*$', re.I | re.M)
+MODE1_TRACK_LINE = r'(?m)^(FILE +"%s" +BINARY[ \t]*\r?\n[ \t]+TRACK +[0-9]{2} +)MODE1/2352(?=[ \t]*\r?$)'
 CHUNK_SIZE = 1024 * 1024
 
 BASE_FILES = text("""
@@ -58,23 +62,30 @@ def _reviewed_bases(connection, platform, reviews):
         raise ValueError(f"Publish the {platform} retail catalog before importing translations")
     wanted = {tuple(disc["archiveName"] for disc in review["discs"]) for review in reviews.values()}
     published = defaultdict(dict)
+    components = {}
     for game in catalog["games"]:
         for release in game["releases"]:
             if release["status"] != "matched":
                 continue
             for archive in release["archives"]:
                 names = tuple(archive["archiveNames"])
-                if names in wanted and archive["regions"] == ["US"]:
+                if names in wanted and (platform != "playstation" or archive["regions"] == ["US"]):
                     published[names].setdefault(archive["signature"], game["title"])
-    signatures = sorted({signature for matches in published.values() for signature in matches})
+                    if archive.get("components"):
+                        components[archive["signature"]] = archive["components"]
+    signatures = {signature for matches in published.values() for signature in matches}
+    signatures.update(part["signature"] for parts in components.values() for part in parts)
     files = defaultdict(list)
-    for row in connection.execute(BASE_FILES, {"signatures": signatures}).mappings():
+    for row in connection.execute(BASE_FILES, {"signatures": sorted(signatures)}).mappings():
         files[row["signature"], row["archive"]].append(dict(row))
+    for signature, parts in components.items():
+        for part in parts:
+            files[signature, part["name"]] = files[part["signature"], part["name"]]
     return published, files
 
 
 def _extract_patches(archive, plan, work):
-    wanted = {step for disc in plan for step in disc["patches"]}
+    wanted = {step for disc in plan for track in (disc, *disc.get("additionalTracks", ())) for step in track["patches"]}
     extracted = {}
     with closing(_archive_members(archive)) as members:
         for name, size, blocks in members:
@@ -115,6 +126,46 @@ def _write_verified(source, output, member):
         raise ValueError(f"Disc member checksum changed: {member['name']}")
 
 
+def _verified_data(members, disc):
+    data, = [member for member in members if Path(member["name"]).suffix.lower() == ".bin"
+             and member["sha1"] == disc["inputSha1"] and member["verified"] and member["size"]]
+    return data
+
+
+def _iso_cue(cue, data_name, iso_name):
+    track, count = re.subn(MODE1_TRACK_LINE % re.escape(data_name), r"\g<1>MODE1/2048", cue)
+    if count != 1:
+        raise ValueError("Expected a separate MODE1/2352 data track in the cue sheet")
+    return track.replace(f'FILE "{data_name}"', f'FILE "{iso_name}"', 1).encode("cp1252")
+
+
+def _patch_track(source, member, track, patches, work):
+    source_image = work / "source.bin"
+    repair_checksums = track.get("repairXaChecksums", False)
+    original, sector_size = source_image, RAW_CD_SECTOR_SIZE
+    with original.open("wb") as output:
+        _write_verified(source, output, member)
+    if iso_sha1 := track.get("inputIsoSha1"):
+        if repair_checksums:
+            raise ValueError("XA repair requires a raw data track")
+        original, sector_size = work / "source.iso", MODE1_USER_DATA_SIZE
+        extract_mode1_iso(source_image, original, pregap_sectors=track.get("isoPregapSectors", 0))
+        source_image.unlink()
+        if _digest(original, "sha1") != iso_sha1:
+            raise ValueError("Extracted MODE1 track checksum differs from the reviewed input")
+    for index, step in enumerate(track["patches"]):
+        target = work / f"target-{index}.bin"
+        patch_disc_image(original, patches[step], target, sector_size=sector_size)
+        if index or not repair_checksums:
+            original.unlink()
+        original = target
+    if repair_checksums:
+        repair_xa_form1_checksums(source_image, original)
+    if _digest(original, "sha1") != track["outputSha1"]:
+        raise ValueError(f"Patched disc checksum differs from the reviewed build: {member['name']}")
+    return original
+
+
 def _build_disc(bundle, members, disc, patches, work, rom_root):
     paths = {member["path"] for member in members}
     if len(paths) != 1 or not all(member["verified"] and member["size"] for member in members):
@@ -124,40 +175,42 @@ def _build_disc(bundle, members, disc, patches, work, rom_root):
                                         or not name.isprintable() or name in bundle.namelist() for name in names):
         raise ValueError(f"Conflicting disc member names: {disc['archiveName']}")
     cue, = [member for member in members if Path(member["name"]).suffix.lower() == ".cue"]
-    data, = [member for member in members if Path(member["name"]).suffix.lower() == ".bin"
-             and member["sha1"] == disc["inputSha1"]]
+    data = _verified_data(members, disc)
+    track_edits = {data["name"]: disc}
+    for track in disc.get("additionalTracks", ()):
+        member = _verified_data(members, track)
+        if member["name"] in track_edits or track.get("inputIsoSha1"):
+            raise ValueError("Invalid additional disc track patch")
+        track_edits[member["name"]] = track
     source_path = location_path(rom_root, paths.pop())
-    with ZipFile(source_path) as source, TemporaryDirectory(dir=work) as directory:
+    with ZipFile(source_path) as source:
         input_names = [member.filename for member in source.infolist() if not member.is_dir()]
         if set(input_names) != names or len(input_names) != len(names):
             raise ValueError(f"Disc archive contents changed: {disc['archiveName']}")
         if source.getinfo(cue["name"]).file_size != cue["size"]:
             raise ValueError(f"Disc member size changed: {cue['name']}")
-        if set(FILE_LINE.findall(source.read(cue["name"]).decode("cp1252"))) != {
+        cue_text = source.read(cue["name"]).decode("cp1252")
+        if set(FILE_LINE.findall(cue_text)) != {
             name for name in names if Path(name).suffix.lower() == ".bin"
         }:
             raise ValueError(f"The cue sheet does not describe the archived tracks: {cue['name']}")
-        temporary = Path(directory)
-        source_image = temporary / "source.bin"
-        repair_checksums = disc.get("repairXaChecksums", False)
-        original = source_image
-        with original.open("wb") as output:
-            _write_verified(source, output, data)
-        for index, step in enumerate(disc["patches"]):
-            target = temporary / f"target-{index}.bin"
-            patch_disc_image(original, patches[step], target)
-            if index or not repair_checksums:
-                original.unlink()
-            original = target
-        if repair_checksums:
-            repair_xa_form1_checksums(source_image, original)
-        if _digest(original, "sha1") != disc["outputSha1"]:
-            raise ValueError(f"Patched disc checksum differs from the reviewed build: {disc['archiveName']}")
+        data_name, cue_content = data["name"], None
+        if disc.get("inputIsoSha1"):
+            if sha1(cue_text.encode("cp1252")).hexdigest() != cue["sha1"]:
+                raise ValueError("The MODE1 cue sheet checksum has changed")
+            data_name = str(Path(data_name).with_suffix(".iso"))
+            if data_name in names or data_name in bundle.namelist():
+                raise ValueError("Conflicting ISO track name")
+            cue_content = _iso_cue(cue_text, data["name"], data_name)
         for member in members:
-            with bundle.open(member["name"], "w", force_zip64=True) as output:
-                if member == data:
-                    with original.open("rb") as stream:
-                        copyfileobj(stream, output, CHUNK_SIZE)
+            with bundle.open(data_name if member == data else member["name"], "w", force_zip64=True) as output:
+                if track := track_edits.get(member["name"]):
+                    with TemporaryDirectory(dir=work) as directory:
+                        original = _patch_track(source, member, track, patches, Path(directory))
+                        with original.open("rb") as stream:
+                            copyfileobj(stream, output, CHUNK_SIZE)
+                elif member == cue and cue_content:
+                    output.write(cue_content)
                 else:
                     _write_verified(source, output, member)
     return cue["name"]
@@ -194,37 +247,40 @@ def _project_archive(source, root, platform, review):
 
 def _publish_project(root, archive, review, title, signature, files, rom_root, metadata):
     plan = review["discs"]
+    build = not review.get("patchOnly")
+    for disc in plan:
+        _verified_data(files[signature, disc["archiveName"]], disc)
     with TemporaryDirectory(dir=root, prefix=".build-") as directory:
         work = Path(directory)
         local_patch = work / f"patch{archive.suffix.lower()}"
         copyfile(archive, local_patch)
         if _digest(local_patch, "sha256") != review["archiveSha256"]:
             raise ValueError("The source patch archive checksum changed")
-        patches = _extract_patches(local_patch, plan, work)
-        translated = work / "translated.zip"
-        with ZipFile(translated, "w", compression=ZIP_DEFLATED, compresslevel=1) as bundle:
-            cues = [_build_disc(bundle, files[signature, disc["archiveName"]], disc, patches, work, rom_root)
-                    for disc in plan]
-            if len(cues) > 1:
-                with bundle.open("Play.m3u", "w") as playlist:
-                    playlist.write(("\n".join(cues) + "\n").encode("utf-8"))
-        disc_set = _store_artifact(root / "discs", translated, _digest(translated, "sha256"))
+        if build:
+            patches = _extract_patches(local_patch, plan, work)
+            translated = work / "translated.zip"
+            with ZipFile(translated, "w", compression=ZIP_DEFLATED, compresslevel=1) as bundle:
+                cues = [_build_disc(bundle, files[signature, disc["archiveName"]], disc, patches, work, rom_root)
+                        for disc in plan]
+                if len(cues) > 1:
+                    with bundle.open("Play.m3u", "w") as playlist:
+                        playlist.write(("\n".join(cues) + "\n").encode("utf-8"))
+            disc_set = _store_artifact(root / "discs", translated, _digest(translated, "sha256"))
         patch = _store_artifact(root / "patches", local_patch, review["archiveSha256"])
     tag = " ".join(item for item in (metadata["language"], metadata["version"]) if item)
     filename = re.sub(r'[/\\\x00-\x1f\x7f]', "_", f"{title} [{tag}].zip")
-    fingerprint = f"disc-set\0{signature}\0{patch['sha256']}\0{disc_set['sha256']}"
+    fingerprint = f"disc-set\0{signature}\0{patch['sha256']}\0" + (disc_set["sha256"] if build else "")
     return {
         **metadata, **patch, "key": sha256(fingerprint.encode()).hexdigest(), "signatures": [signature],
         "format": archive.suffix.lower()[1:], "filename": re.sub(r"^\[\d+\]", "", review["archive"]),
-        "layout": DISC_LAYOUT, "evidence": review.get("evidence", "verified-disc-build"),
-        "baseDiscs": [{key: disc[key] for key in ("archiveName", "inputSha1", "outputSha1")} for disc in plan],
-        "discSet": {**disc_set, "filename": filename},
+        "layout": DISC_LAYOUT, "evidence": review.get("evidence", "verified-disc-build" if build else "patch-release"),
+        "baseDiscs": [{key: disc[key] for key in ("archiveName", "inputSha1", "outputSha1") if key in disc}
+                      for disc in plan],
+        **({"discSet": {**disc_set, "filename": filename}} if build else {}),
     }
 
 
 def sync_disc_translations(source, root, rom_root, *, platform, report=None):
-    if which("xdelta3") is None:
-        raise ValueError("xdelta3 is required to build reviewed disc translations")
     review_path = PROJECT_ROOT / "reference" / f"{platform}_translation_reviews.json"
     reviews = json.loads(review_path.read_text(encoding="utf-8"))["projects"]
     console_keys = {row["consolekey"]: row["consoleid"] for row in _dump_rows(source, "console")}
@@ -232,7 +288,7 @@ def sync_disc_translations(source, root, rom_root, *, platform, report=None):
     rows = {str(row["transkey"]): row for row in _dump_rows(source, "transdata") if row["consolekey"] == console}
     languages = {row["id"]: unescape(row["name"]) for row in _dump_rows(source, "language")}
     statuses = {row["id"]: row["description"] for row in _dump_rows(source, "patchstatus")}
-    selected = [rows[key] for key in reviews if key in rows]
+    selected = [rows[key] for project, review in reviews.items() if (key := str(review.get("rhdnId", project))) in rows]
     authors = _translation_authors(source, selected)
 
     engine = create_database_engine()
@@ -246,7 +302,7 @@ def sync_disc_translations(source, root, rom_root, *, platform, report=None):
     records, failures = [], {}
     for project, review in reviews.items():
         try:
-            row = rows[project]
+            row = rows.get(str(review.get("rhdnId", project)))
             names = tuple(disc["archiveName"] for disc in review["discs"])
             if len(matches := bases.get(names, {})) != 1:
                 raise ValueError("The reviewed disc set is unavailable or ambiguous")
@@ -258,7 +314,7 @@ def sync_disc_translations(source, root, rom_root, *, platform, report=None):
                 "version": review.get("version", unescape(row["patchver"] or "").strip()),
                 "status": statuses[row["patchstatus"]],
                 "releasedAt": review.get("releasedAt", row["patchrel_unix"] or 0),
-            }
+            } if row else {**review["projectMetadata"], "title": title}
             if source_url := review.get("sourceUrl"):
                 metadata["sourceUrl"] = source_url
             records.append(_publish_project(root, archive, review, title, signature, files, rom_root, metadata))
@@ -266,8 +322,9 @@ def sync_disc_translations(source, root, rom_root, *, platform, report=None):
             failures[project] = str(error)
 
     records.sort(key=translation_order)
+    builds = [record for record in records if record.get("discSet")]
     summary = {"sourceRecords": len(rows), "reviewedProjects": len(reviews), "matchedProjects": len(records),
-               "discDownloads": len(records), "patchedDiscs": sum(len(record["baseDiscs"]) for record in records),
+               "discDownloads": len(builds), "patchedDiscs": sum(len(record["baseDiscs"]) for record in builds),
                "languages": dict(Counter(record["language"] for record in records)),
                "failures": failures}
     if report is not None:

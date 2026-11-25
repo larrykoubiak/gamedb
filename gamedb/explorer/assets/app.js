@@ -1207,12 +1207,6 @@ function loadInterfaceOptions() {
       state.systemIcons = icons.value || {};
       state.correctionsEnabled = Boolean(capabilities.value?.softwareCorrections);
       state.vgmEnabled = Boolean(capabilities.value?.vgm);
-      document.querySelector("#snes-retail-link").hidden = !capabilities.value?.snesRetail;
-      document.querySelector("#megadrive-retail-link").hidden = !capabilities.value?.megadriveRetail;
-      document.querySelector("#mastersystem-retail-link").hidden = !capabilities.value?.mastersystemRetail;
-      document.querySelector("#nes-retail-link").hidden = !capabilities.value?.nesRetail;
-      document.querySelector("#playstation-retail-link").hidden = !capabilities.value?.playstationRetail;
-      document.querySelector("#neogeo-retail-link").hidden = !capabilities.value?.neogeoRetail;
     });
   }
   return optionsRequest;

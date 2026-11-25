@@ -93,6 +93,12 @@ League Bowling and Thrash Rally support single-cabinet bundles. The manifest
 records the undumped link MCU in `omittedOptional` for the reviewed DAT
 versions. [MAME Neo Geo driver](https://github.com/mamedev/mame/blob/mame0285/src/mame/neogeo/neogeo.cpp)
 
+**Has translation** filters the catalog to releases with a local patch. Put
+the patch files listed in `reference/neogeo_translation_reviews.json` in the
+source directory and run `python -m gamedb sync-neogeo-translations --source
+data/media/cache/neogeo-retail/translation-sources`. The patches use the
+original Japanese cartridges in NeoSD `.neo` format. [Quiz Detective patches](https://pepalacant.itch.io/neogeo-quiz-games-translation-to-spanish-and-english) · [Quiz Marukochan and Quiz KOF patches](https://pepalacant.itch.io/quiz-maruko-chan-and-quiz-kof-neogeo-translations-spa-eng)
+
 Omit `--publish` from the seed command for a read-only coverage report. Set
 `GAMEDB_NEOGEO_MANUAL_HOST_ROOT` for a different Compose manual directory or
 `GAMEDB_NEOGEO_MANUAL_ROOT` when running Explorer directly.
@@ -226,6 +232,7 @@ python -m gamedb sync-mastersystem-soundtracks
 python -m gamedb seed-mastersystem --report data/logs/mastersystem-retail/matches.json --publish
 python -m gamedb sync-mastersystem-manuals --catalog data/logs/mastersystem-retail/matches.json \
   --root "/mnt/synology/photo/Manuals/Master System"
+python -m gamedb sync-mastersystem-translations --source /mnt/synology/backup2/romhacking.net-20240801
 docker compose exec -T explorer nice -n 10 python -m gamedb.explorer warm-manual-cache mastersystem
 ```
 
@@ -240,6 +247,142 @@ uses the existing JoshW library and the reviewed, SHA-256-pinned SMS Power!
 packs. Set `GAMEDB_MASTERSYSTEM_MANUAL_HOST_ROOT` for an alternate Compose
 mount or `GAMEDB_MASTERSYSTEM_MANUAL_ROOT` when running Explorer directly.
 [Sega Retro manual scans](https://segaretro.org/Category:Master_System_EU_manual_scans) · [Internet Archive manual collection](https://archive.org/details/sega_master_system_manuals) · [SMS Power! VGM archive](https://www.smspower.org/Music/VGMs)
+
+## PC Engine and TurboGrafx-16 retail catalog
+
+Explorer serves the Japanese and North American HuCards at `/catalog/pcengine`,
+including the cards enhanced by SuperGrafx. Japan's two *R-Type* cards and the
+combined North American release each have their own date, artwork, manual,
+and ROM archives. The release list is adapted under CC BY-SA 4.0. [Pinned release list](https://en.wikipedia.org/wiki/Special:PermanentLink/1386073683#List_of_games)
+
+```sh
+python -m gamedb seed-pcengine --report data/logs/pcengine-retail/matches.json --publish
+python -m gamedb sync-pcengine-manuals --catalog data/logs/pcengine-retail/matches.json \
+  --root "/mnt/synology/photo/Manuals/PC Engine"
+python -m gamedb sync-pcengine-translations --source /mnt/synology/backup2/romhacking.net-20240801
+docker compose exec -T explorer nice -n 10 python -m gamedb.explorer warm-manual-cache pcengine
+```
+
+The seed matches SHA-1-verified No-Intro content and uses MAME cartridge
+records for Japanese titles, product codes, and regional variants.
+`reference/pcengine_retail.json` records reviewed matches. Omit `--publish`
+for a read-only report. Use `--sources` to reuse indexes cached in
+`data/media/cache/pcengine-retail`. [MAME PC Engine software list](https://github.com/mamedev/mame/blob/mame0285/hash/pce.xml) · [MAME TurboGrafx-16 software list](https://github.com/mamedev/mame/blob/mame0285/hash/tg16.xml)
+
+The soundtrack player uses the existing local HES library and reads named
+songs from its M3U playlists. Set
+`GAMEDB_PCENGINE_MANUAL_HOST_ROOT` for an alternate Compose mount or
+`GAMEDB_PCENGINE_MANUAL_ROOT` when running Explorer directly. [PC Engine Manual Project](https://www.pcemanuals.org/) · [Konami manuals](https://www.konami.com/games/pcemini/manual/jp/en/) · [JoshW HES archive](https://hes.joshw.info/)
+
+## Nintendo 64 retail catalog
+
+Explorer serves the original Game Paks at `/catalog/n64`. The catalog covers
+Japanese, North American, and PAL releases plus verified Brazilian cartridge
+variants. It lists Australia's *HSV Adventure Racing!* under *Beetle Adventure
+Racing!* with its own artwork, manual, and archive. The release list is adapted
+under CC BY-SA 4.0. [Pinned release list](https://en.wikipedia.org/wiki/Special:PermanentLink/1386089812#Games)
+
+```sh
+python -m gamedb seed-n64 --report data/logs/n64-retail/matches.json --publish
+python -m gamedb sync-n64-manuals --catalog data/logs/n64-retail/matches.json \
+  --root "/mnt/synology/photo/Manuals/Nintendo 64"
+python -m gamedb sync-n64-translations --source /mnt/synology/backup2/romhacking.net-20240801 \
+  --report data/logs/n64-retail/translations.json
+docker compose exec -T explorer nice -n 10 python -m gamedb.explorer warm-manual-cache n64
+```
+
+The seed matches verified No-Intro archives and compares their 16-bit
+byte-swapped SHA-1 fingerprints with MAME cartridge records. Reviewed matches
+are recorded in `reference/n64_retail.json`. Omit `--publish` for a read-only
+report. Use `--sources` to reuse saved indexes from `data/media/cache/n64-retail`.
+[MAME Nintendo 64 software list](https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml)
+
+Manuals are mirrored to the local library for flipbook browsing. Set
+`GAMEDB_N64_MANUAL_HOST_ROOT` to change the Compose mount or
+`GAMEDB_N64_MANUAL_ROOT` when running Explorer directly. The soundtrack player
+uses the existing USF library, including shared sound libraries needed by
+miniusf tracks. [Spoonman's manual archive](https://archive.org/details/N64Manuals) · [Emulation64.fr manuals](https://www.emulation64.fr/?page=notices) · [JoshW USF archive](https://usf.joshw.info/)
+
+The translation importer verifies the required cartridge byte order and tests
+each build against the local ROM. Explorer serves IPS, BPS, UPS, and supported
+xdelta patches and produces big-endian `.z64` images. Install `xdelta3` when
+running the importer or Explorer outside Compose.
+
+## Sega Saturn retail catalog
+
+Open `/catalog/saturn` in Explorer for the original Saturn game discs. The
+catalog covers Japan, North America, and PAL releases plus reviewed Brazilian,
+Korean, and Taiwanese variants. It adapts the release list under CC BY-SA 4.0.
+Verified Redump archives are grouped in disc order using their boot headers and
+documented pressings. [Pinned release list](https://en.wikipedia.org/wiki/Special:PermanentLink/1382248864#Games) · [MAME Saturn software list](https://github.com/mamedev/mame/blob/mame0285/hash/saturn.xml)
+
+```sh
+python -m gamedb import-vgm --root "/mnt/synology/music/VGM/By Format" --joshw-bucket ssf --publish
+python -m gamedb seed-saturn --report data/logs/saturn-retail/matches.json --publish
+python -m gamedb sync-saturn-manuals --catalog data/logs/saturn-retail/matches.json \
+  --root "/mnt/synology/photo/Manuals/Saturn"
+python -m gamedb sync-saturn-translations --source /mnt/synology/backup2/romhacking.net-20240801 \
+  --report data/logs/saturn-retail/translations.json
+docker compose exec -T explorer nice -n 10 python -m gamedb.explorer warm-manual-cache saturn
+```
+
+Use `--sources` on the seed command to reuse saved indexes and boot headers
+from `data/media/cache/saturn-retail`. Omit `--publish` for a read-only audit.
+Set `GAMEDB_SATURN_MANUAL_HOST_ROOT` for an alternate Compose manual mount or
+`GAMEDB_SATURN_MANUAL_ROOT` for a direct Explorer run. Soundtracks use SSF and
+shared sound libraries, streamed tracks, and lossless FLAC playback copies of
+APE recordings. Install `ffmpeg` for these copies when running outside Compose.
+[Original manual scans](https://archive.org/details/segasaturnmanuals) · [JoshW Saturn soundtracks](https://ssf.joshw.info/)
+
+`reference/saturn_translation_reviews.json` identifies the exact original
+discs and patch archives. The importer verifies source and output checksums
+before making translated disc sets available in Explorer. Projects that use
+their own patcher include the original patch and the authors’ instructions. Store
+the reviewed upstream packages under `data/media/saturn-translations/sources`
+and install `xdelta3` and `7z` to build locally.
+
+## PC-FX, Amiga CD32, and 3DO retail catalogs
+
+Explorer serves `/catalog/pcfx`, `/catalog/cd32`, and `/catalog/3do`. The
+versioned rosters cover original games and documented compilations. Redump
+pressings take precedence, and verified TOSEC-ISO editions fill gaps. Reviewed
+multi-disc sets retain their published order. [PC-FX release list](https://en.wikipedia.org/wiki/Special:PermanentLink/1358713489#Games) · [Amiga CD32 release list](https://en.wikipedia.org/wiki/Special:PermanentLink/1386160616#Games) · [3DO release list](https://en.wikipedia.org/wiki/Special:PermanentLink/1381196470#Commercially_released_games)
+
+```sh
+python -m gamedb import-vgm --joshw-bucket cdi --publish
+python -m gamedb import-vgm --joshw-bucket 3do --publish
+python -m gamedb seed-optical pcfx --report data/logs/early-disc-retail/pcfx-matches.json --publish
+python -m gamedb seed-optical cd32 --report data/logs/early-disc-retail/cd32-matches.json --publish
+python -m gamedb seed-optical 3do --report data/logs/early-disc-retail/3do-matches.json --publish
+python -m gamedb sync-optical-manuals 3do --catalog data/logs/early-disc-retail/3do-matches.json \
+  --root "/mnt/synology/photo/Manuals/3DO"
+```
+
+Omit `--publish` from the seed command for a read-only coverage report. Use
+`sync-pcfx-translations` or `sync-3do-translations` with the local RHDN backup
+and the reviewed patch archives. Explorer plays AIFF and AIFC tracks through
+cached FLAC conversions. [JoshW CD32 soundtracks](https://cdi.joshw.info/amiga/) · [JoshW 3DO soundtracks](https://3do.joshw.info/) · [Digital Press manuals](https://www.digitpress.com/library/manuals/3do/)
+
+## Atari Jaguar retail catalog
+
+Open `/catalog/jaguar` in Explorer for the 50 original retail cartridge games
+across North America, PAL territories, and Japan. Catalog matches use the local
+No-Intro inventory and four TOSEC cartridges verified against MAME ROM hashes.
+[Pinned release list](https://en.wikipedia.org/wiki/Special:PermanentLink/1374827177#Cartridge) · [MAME cartridge software list](https://github.com/mamedev/mame/blob/mame0285/hash/jaguar.xml)
+
+```sh
+python -m gamedb import-vgm --root "/mnt/synology/music/VGM/By Format" --joshw-bucket cdi --publish
+python -m gamedb seed-jaguar --report data/logs/jaguar-retail/matches.json --publish
+python -m gamedb sync-jaguar-manuals --catalog data/logs/jaguar-retail/matches.json \
+  --root "/mnt/synology/photo/Manuals/Jaguar"
+docker compose exec -T explorer python -m gamedb.explorer warm-manual-cache jaguar
+```
+
+Use `--sources` to reuse saved reference indexes from
+`data/media/cache/jaguar-retail`. Omit `--publish` for a read-only audit.
+Set `GAMEDB_JAGUAR_MANUAL_HOST_ROOT` for an alternate Compose manual mount or
+`GAMEDB_JAGUAR_MANUAL_ROOT` for a direct Explorer run.
+[Digital Press booklet scans](https://www.digitpress.com/library/manuals/jaguar/) · [JoshW Jaguar soundtracks](https://cdi.joshw.info/jaguar/)
 
 ## NES and Famicom retail catalog
 

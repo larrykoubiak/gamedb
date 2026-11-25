@@ -16,9 +16,11 @@ WITH snapshot AS (
         'status', release->'status', 'boxart', release->'artwork'->'boxart', 'productCodes', release->'productCodes',
         'cover', CASE WHEN release ? 'setNames' OR NOT (release->'artwork' ? 'boxart') THEN
             coalesce(release->'artwork'->'boxart', release->'artwork'->'flyer',
-                release->'artwork'->'marquee', release->'artwork'->'title', release->'artwork'->'snap') END,
+                release->'artwork'->'marquee', release->'artwork'->'cartridge',
+                release->'artwork'->'title', release->'artwork'->'snap') END,
         'archiveTitles', coalesce(release->'setNames', jsonb_path_query_array(release, '$.archives[*].title')),
         'archiveSignatures', jsonb_path_query_array(release, '$.archives[*].signature')
+            || jsonb_path_query_array(release, '$.arcadeSets[*] ? (@.complete == true).installSignature')
     ) ORDER BY release_order) AS items
     FROM releases
     GROUP BY game_order

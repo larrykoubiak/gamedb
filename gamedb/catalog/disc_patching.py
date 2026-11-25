@@ -8,6 +8,7 @@ from .patching import PatchError
 
 
 RAW_CD_SECTOR_SIZE = 2352
+MODE1_USER_DATA_SIZE = 2048
 XDELTA_EXTENSIONS = {".xdelta", ".xdelta3", ".vcdiff"}
 DISC_PATCH_EXTENSIONS = XDELTA_EXTENSIONS | {".ppf"}
 CD_SYNC = bytes.fromhex("00 ff ff ff ff ff ff ff ff ff ff 00")
@@ -98,8 +99,24 @@ def _apply_ppf3(image, patch):
             disc.write(data[:length])
 
 
-def patch_disc_image(source, patch, target):
-    """Write one forward patch to a separate raw CD image."""
+def extract_mode1_iso(source, target, *, pregap_sectors=0):
+    """Extract the user data from a Redump MODE1/2352 track."""
+    with source.open("rb") as original, target.open("wb") as cooked:
+        sector_number = 0
+        while block := original.read(512 * RAW_CD_SECTOR_SIZE):
+            if len(block) % RAW_CD_SECTOR_SIZE:
+                raise PatchError("Incomplete CD sector")
+            for offset in range(0, len(block), RAW_CD_SECTOR_SIZE):
+                sector = block[offset:offset + RAW_CD_SECTOR_SIZE]
+                silence = sector_number < pregap_sectors and not any(sector)
+                if not silence and (sector[:12] != CD_SYNC or sector[15] != 1):
+                    raise PatchError("Expected a MODE1/2352 data track")
+                cooked.write(sector[16:16 + MODE1_USER_DATA_SIZE])
+                sector_number += 1
+
+
+def patch_disc_image(source, patch, target, *, sector_size=RAW_CD_SECTOR_SIZE):
+    """Write one forward patch to a separate CD image."""
     extension = patch.suffix.lower()
     if extension in XDELTA_EXTENSIONS:
         try:
@@ -109,6 +126,8 @@ def patch_disc_image(source, patch, target):
         except subprocess.CalledProcessError as error:
             detail = error.stderr.decode(errors="replace").strip()
             raise PatchError(detail or "xdelta3 could not decode the disc patch") from error
+        except FileNotFoundError as error:
+            raise PatchError("xdelta3 is required to apply the disc patch") from error
         except subprocess.TimeoutExpired as error:
             raise PatchError("xdelta3 timed out on the disc patch") from error
     elif extension == ".ppf":
@@ -117,5 +136,5 @@ def patch_disc_image(source, patch, target):
     else:
         raise PatchError(f"Unsupported disc patch {extension}")
     size = target.stat().st_size
-    if not size or size % RAW_CD_SECTOR_SIZE:
-        raise PatchError("Patched image does not contain complete raw CD sectors")
+    if not size or size % sector_size:
+        raise PatchError("Patched image does not contain complete CD sectors")

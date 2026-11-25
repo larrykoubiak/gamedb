@@ -1,0 +1,107 @@
+{
+  "sets": {
+    "marukodq": {
+      "signatures": [
+        "a278ce5b3563a85d216b1e2bf335b419",
+        "cdba9a8d6517475e1eb52e30431ec30a"
+      ],
+      "baseSize": 15994880
+    },
+    "quizkof": {
+      "signatures": [
+        "0698096b43f2c797b8a7f1a4b3f983bd",
+        "476aad8372aad5695b6d050e86e83034"
+      ],
+      "baseSize": 15994880
+    },
+    "quizdais": {
+      "signatures": [
+        "66ee40a602115573c2f4fb10c602b3d2",
+        "44bcf1bd3bfb4eee5e311bb3881b17ff"
+      ],
+      "baseSize": 4460544,
+      "baseMd5": "9b043c1e1713ed2c4ffdbacba82de243"
+    },
+    "quizdai2": {
+      "signatures": [
+        "1ffe29e55b620d091cb1ed6566f95fc6",
+        "551b79c034f24d667a9b20526ac686fe"
+      ],
+      "baseSize": 6557696,
+      "baseMd5": "8d3cae48f7ad61e42ad1b4427140e616"
+    }
+  },
+  "projects": [
+    {
+      "sourceUrl": "https://pepalacant.itch.io/quiz-maruko-chan-and-quiz-kof-neogeo-translations-spa-eng",
+      "authors": [
+        "PepAlacant"
+      ],
+      "released": "2026-11-02",
+      "patches": [
+        {
+          "set": "marukodq",
+          "language": "English",
+          "filename": "Chibi_Maruko_Quiz_EN.ips",
+          "sha256": "fc67d58dcf9c6940e35bf471be3939d92851f31d3d218496c89d8158ca2296fc"
+        },
+        {
+          "set": "marukodq",
+          "language": "Spanish",
+          "filename": "Chibi_Maruko_Quiz_ES.ips",
+          "sha256": "7f702f767d79921f601572cb6974d7b20476eb802d23646c9cd1195f9ea41b49"
+        },
+        {
+          "set": "quizkof",
+          "language": "English",
+          "filename": "Quiz_King_of_Fighters_EN.ips",
+          "sha256": "36614f05edd4b630b8eda87fe6213f2f6e560fdc36b0c3e6c2e03adfce15cefd"
+        },
+        {
+          "set": "quizkof",
+          "language": "Spanish",
+          "filename": "Quiz_King_of_Fighters_ES.ips",
+          "sha256": "780f40ffe520a76b1ee067145ed8f32a9335bd73d329b38c621b90d48f221e12"
+        }
+      ]
+    },
+    {
+      "sourceUrl": "https://pepalacant.itch.io/neogeo-quiz-games-translation-to-spanish-and-english",
+      "authors": [
+        "PepAlacant"
+      ],
+      "released": "2026-10-28",
+      "archive": "Parches_IPS_Quiz_NeoGeo.zip",
+      "patches": [
+        {
+          "set": "quizdais",
+          "language": "English",
+          "filename": "Quiz_Big_Investigation_LastCountdown_EN_v5.ips",
+          "sha256": "0a537cff3514d7ccb0d39cb30efc09a2032aaef380f6846c40207eebc631c3d7",
+          "version": "5"
+        },
+        {
+          "set": "quizdais",
+          "language": "Spanish",
+          "filename": "Quiz_Gran_Investigacion_LastCountdown_ES_v12.ips",
+          "sha256": "fcac6ff993e1999bc72be1c2dbf75f4187e2b829dd8a3e46769d905458386a74",
+          "version": "12"
+        },
+        {
+          "set": "quizdai2",
+          "language": "English",
+          "filename": "Detective_Neo_Geo_EN_v8.ips",
+          "sha256": "3c338852e3c6f7e43a3a5622d0181ace6141d74a95ebbd66f29b37b006c1d47a",
+          "version": "8"
+        },
+        {
+          "set": "quizdai2",
+          "language": "Spanish",
+          "filename": "Detective_Neo_Geo_ES_v13.ips",
+          "sha256": "0c1e82e32890540aaacb3c484c0243b837850d25275af7e9ceffc1b82a7d3a4e",
+          "version": "13"
+        }
+      ]
+    }
+  ]
+}

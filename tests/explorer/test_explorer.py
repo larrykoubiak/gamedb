@@ -135,15 +135,15 @@ class ExplorerTests(unittest.TestCase):
         self.assertIn("/media/", script)
 
     def test_static_assets_are_packaged_with_the_module(self):
-        for name in ("index.html", "styles.css", "app.js"):
+        for name in ("index.html", "home.css", "home.js", "archive.html", "styles.css", "app.js"):
             self.assertTrue((ASSET_DIRECTORY / name).is_file())
 
     def test_explorer_exposes_correction_without_review_queue(self):
-        index = (ASSET_DIRECTORY / "index.html").read_text(encoding="utf-8")
+        archive = (ASSET_DIRECTORY / "archive.html").read_text(encoding="utf-8")
         script = (ASSET_DIRECTORY / "app.js").read_text(encoding="utf-8")
 
-        self.assertNotIn('value="confirm"', index)
-        self.assertIn('/app.js?v=', index)
+        self.assertNotIn('value="confirm"', archive)
+        self.assertIn('/app.js?v=', archive)
         self.assertIn('button.textContent = "Correct…"', script)
         self.assertNotIn("identityNeedsReview", script)
         self.assertIn("JSON.parse(body)", script)

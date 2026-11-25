@@ -1,0 +1,598 @@
+{
+  "archiveTitles": {
+    "Brutal Sports Football": [
+      "Brutal Football"
+    ],
+    "Castles II: Siege and Conquest": [
+      "Castles II - Siege & Conquest"
+    ],
+    "Donk!: Samurai Duck": [
+      "Donk! The Samurai Duck!"
+    ],
+    "Heimdall 2": [
+      "Heimdall 2 - Into the Hall of Worlds"
+    ],
+    "Humans 1 and 2": [
+      "Humans"
+    ],
+    "James Pond 2: Codename RoboCod": [
+      "James Pond 2 - Robocod"
+    ],
+    "James Pond 3: Operation Starfish": [
+      "James Pond 3 - Operation Starfi5h"
+    ],
+    "Jetstrike": [
+      "Jetstrike CD32"
+    ],
+    "Jungle Strike": [
+      "Jungle Strike - The Sequel to Desert Strike"
+    ],
+    "Liberation: Captive 2": [
+      "Liberation - Captive II"
+    ],
+    "Seek & Destroy": [
+      "Seek and Destroy"
+    ],
+    "Speedball 2: Brutal Deluxe": [
+      "Speedball 2"
+    ],
+    "Trivial Pursuit": [
+      "Trivial Pursuit - The CD32 Edition"
+    ],
+    "Zool": [
+      "Zool - Ninja of the Nth Dimension"
+    ]
+  },
+  "additionalReleases": [
+    {
+      "game": "Defender of the Crown II",
+      "market": "NA",
+      "date": "1993",
+      "source": {
+        "name": "Centre for Computing History",
+        "url": "https://www.computinghistory.org.uk/archive/Games/platform-Amiga%20CD32/"
+      }
+    }
+  ],
+  "tosecTitles": {
+    "Brian the Lion": [
+      "Brian the Lion Starring in Rumble in the Jungle"
+    ],
+    "Fire and Ice": [
+      "Fire & Ice - The Daring Adventures of Cool Coyote"
+    ],
+    "Sensible Soccer: International Edition": [
+      "International Sensible Soccer - World Champions"
+    ],
+    "Sports: Football (Amiga CD Football)": [
+      "Sports Football"
+    ],
+    "The Big 6": [
+      "Big 6, The - Original Dizzy Adventure Games"
+    ],
+    "Will Bridge: Initiation Junior": [
+      "Will Bridge - Practice 1 - Initiation - Junior"
+    ]
+  },
+  "includedIn": {
+    "Oscar": "Diggers/Oscar"
+  },
+  "tosecDiscSets": [
+    {
+      "title": "Acid Attack",
+      "archives": [
+        "Guardian (1995)(Acid Software)[!][GH33].zip",
+        "Roadkill (1995)(Acid Software)[!][GH 32].zip",
+        "Super Skidmarks v2.2 (1995)(Acid Software)[!][GH 1 10 AUG 95].zip"
+      ],
+      "source": "https://www.videoludomania.com/?idf=3&idm=18721&pag=cid508_alb"
+    }
+  ],
+  "verifiedTosecArchives": [
+    {
+      "edition": "Defender of the Crown II",
+      "market": "PAL",
+      "system": "Amiga CDTV",
+      "archives": ["Defender of the Crown II (1993)(Commodore)(CD32-CDTV).zip"],
+      "signature": "27634218724afd71c6a400fe5ecfc5b3",
+      "source": "https://gamesdb.launchbox-app.com/games/images/40667-defender-of-the-crown-ii"
+    },
+    {
+      "edition": "International Open Golf Championship",
+      "market": "PAL",
+      "archives": ["International Open Golf Championship (1993)(Ocean).zip"],
+      "signature": "70dd83bda55cf0f9da5c003f3e18cc5d",
+      "source": "https://openretro.org/browse/smd/cd32"
+    },
+    {
+      "edition": "MAG!!!",
+      "market": "PAL",
+      "system": "Amiga",
+      "archives": ["Mag!!! (1996)(Greenwood)(DE)[!][Amiga-CD32][M R-0568 A].zip"],
+      "signature": "c9e212c58e2d9da0390540b00e1a372f",
+      "source": "https://thumbnails.libretro.com/Commodore%20-%20CD32/Named_Titles/"
+    },
+    {
+      "edition": "Now That's What I Call Games 2",
+      "market": "PAL",
+      "archives": ["Now That's What I Call Games 2 (1993)(Multi Media Machine)[!][CD32-CDTV].zip"],
+      "signature": "7a7571704bfc1386ee6523525be4351b",
+      "source": "https://www.stone-oakvalley-studios.com/uploads/000931052017181244/datormagazin_dmz_1995-11.pdf"
+    },
+    {
+      "edition": "Pinocchio",
+      "market": "PAL",
+      "system": "Amiga CDTV",
+      "archives": ["Pinocchio (1993)(Giunti Multimedia)(M6)[!][Amiga-CD32-CDTV].zip"],
+      "signature": "207570c5cb7c11fdc737f9aa09109d9f",
+      "source": "https://www.lemonamiga.com/game/pinocchio-cd32-cdtv"
+    },
+    {
+      "edition": "The Final Gate",
+      "market": "PAL",
+      "archives": ["Final Gate, The (1997)(Alternative Software - Bigg Wolf).zip"],
+      "signature": "72fe7319d7cf360065002861e865b94f",
+      "source": "https://github.com/mamedev/mame/blob/mame0285/hash/cd32.xml"
+    },
+    {
+      "edition": "Thomas the Tank Engine & Friends Pinball",
+      "market": "PAL",
+      "archives": ["Thomas The Tank Engine & Friends Pinball (1995)(Alternative Software).zip"],
+      "signature": "e92fdfbdbd8ea132c0809f46b7f3cc7b",
+      "source": "https://github.com/mamedev/mame/blob/mame0285/hash/cd32.xml"
+    }
+  ],
+  "reviewedArtwork": [
+    {
+      "edition": "Acid Attack",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://www.videoludomania.com/files/3/38/?n=18721b.jpg",
+          "source": {
+            "name": "Videoludomania",
+            "url": "https://www.videoludomania.com/?idf=3&idm=18721&pag=cid508_alb"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Clockwiser",
+      "market": "PAL",
+      "thumbnail": "Clockwiser (Europe)",
+      "kinds": ["logo"]
+    },
+    {
+      "edition": "Defender of the Crown II",
+      "market": "PAL",
+      "thumbnail": "Defender of the Crown II (Europe)",
+      "kinds": ["boxart", "title", "snap"]
+    },
+    {
+      "edition": "Fire and Ice",
+      "market": "PAL",
+      "thumbnail": "Fire _ Ice - The Daring Adventures of Cool Coyote (Europe) (En,Fr,De,It)",
+      "kinds": ["logo"]
+    },
+    {
+      "edition": "Games & Goodies",
+      "market": "PAL",
+      "thumbnail": "Now That's What I Call Games 3 - Games & Goodies (Europe)",
+      "kinds": ["boxart"]
+    },
+    {
+      "edition": "Now That's What I Call Games 2",
+      "market": "PAL",
+      "thumbnail": "Now That's What I Call Games 2 (Europe)",
+      "kinds": ["boxart"]
+    },
+    {
+      "edition": "Oscar",
+      "market": "PAL",
+      "thumbnail": "Oscar (Europe)",
+      "kinds": ["boxart", "title", "snap"]
+    },
+    {
+      "edition": "Pinocchio",
+      "market": "PAL",
+      "thumbnail": "Pinocchio (Europe)",
+      "kinds": ["boxart", "title", "snap"]
+    },
+    {
+      "edition": "Top 100 Games CD32",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://www.wtsretro.dk/wp-content/uploads/2021/03/top-100-games-cd32.jpg",
+          "source": {
+            "name": "WTS Retro",
+            "url": "https://www.wtsretro.dk/shop/commodore-amiga/amiga/amiga-cd32/top-100-games-cd32-amiga-cd32/"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Word Construction Set",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://archive.org/download/word-construction-set-cd32/scan1-cover.jpg",
+          "source": {
+            "name": "Internet Archive",
+            "url": "https://archive.org/details/word-construction-set-cd32"
+          }
+        }
+      }
+    }
+  ],
+  "releaseNotes": {
+    "Top 100 Games CD32": {
+      "PAL": {
+        "text": "The local TOSEC disc is the Amiga 1200 edition.",
+        "source": {
+          "name": "CU Amiga review",
+          "url": "https://amigaland.com/dataz/press_magazine/CU_AMIGA/PDF_TXT/CU_AMIGA_Issue_069_1995_Nov.pdf#page=59"
+        }
+      }
+    },
+    "Word Construction Set": {
+      "PAL": {
+        "text": "An image of the original New Zealand CD32 disc is available online.",
+        "source": {
+          "name": "Internet Archive",
+          "url": "https://archive.org/details/word-construction-set-cd32"
+        }
+      }
+    }
+  },
+  "manuals": [
+    {
+      "edition": "Banshee",
+      "market": "PAL",
+      "name": "Banshee — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/banshee",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Banshee_-_Core_Design.pdf"
+    },
+    {
+      "edition": "Battletoads",
+      "market": "PAL",
+      "name": "Battletoads — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/battletoads",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Battletoads_-_Mindscape.pdf"
+    },
+    {
+      "edition": "Beavers",
+      "market": "PAL",
+      "name": "Beavers — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/beavers",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Beavers_-_Grandslam_Entertainment.pdf"
+    },
+    {
+      "edition": "Bubba 'n' Stix",
+      "market": "PAL",
+      "name": "Bubba 'n' Stix — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/bubba-n-stix",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Bubba_-n-_Stix_-_Core_Design.pdf"
+    },
+    {
+      "edition": "Bump 'N' Burn",
+      "market": "PAL",
+      "name": "Bump 'N' Burn — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/bump-n-burn",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Bump_-n-_Burn_-_Grandslam_Entertainment.pdf"
+    },
+    {
+      "edition": "Cannon Fodder",
+      "market": "PAL",
+      "name": "Cannon Fodder — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/cannon-fodder",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Cannon_Fodder_-_Virgin_Interactive.pdf"
+    },
+    {
+      "edition": "Chuck Rock",
+      "market": "PAL",
+      "name": "Chuck Rock — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/chuck-rock",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Chuck_Rock_-_Core_Design.pdf"
+    },
+    {
+      "edition": "D/Generation",
+      "market": "PAL",
+      "name": "D/Generation — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/d-generation",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/D-generation_-_Mindscape.pdf"
+    },
+    {
+      "edition": "Dark Seed",
+      "market": "PAL",
+      "name": "Dark Seed — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/dark-seed",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Dark_Seed_-_Cyberdreams.pdf"
+    },
+    {
+      "edition": "Dragonstone",
+      "market": "PAL",
+      "name": "Dragonstone — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/dragonstone",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Dragonstone_-_Core_Design.pdf"
+    },
+    {
+      "edition": "Flink",
+      "market": "PAL",
+      "name": "Flink — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/flink",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Flink_-_Psygnosis.pdf"
+    },
+    {
+      "edition": "Global Effect",
+      "market": "PAL",
+      "name": "Global Effect — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/global-effect",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Global_Effect_-_Millennium_Interactive.pdf"
+    },
+    {
+      "edition": "Gloom",
+      "market": "PAL",
+      "name": "Gloom — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/gloom",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Gloom_-_Guildhall_Leisure_Service.pdf"
+    },
+    {
+      "edition": "Grandslam Gamer Gold Collection",
+      "market": "PAL",
+      "name": "Grandslam Gamer Gold Collection — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/grandslam-gamer-gold-collection",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Grandslam_Gamer_Gold_Collection_-_Grandslam_Entertainment.pdf"
+    },
+    {
+      "edition": "Guardian",
+      "market": "PAL",
+      "name": "Guardian — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/guardian",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Guardian_-_Acid.pdf"
+    },
+    {
+      "edition": "Lamborghini American Challenge",
+      "market": "PAL",
+      "name": "Lamborghini American Challenge — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/lamborghini-american-challenge",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Lamborghini_-_American_Challenge_-_Paragon_Software.pdf"
+    },
+    {
+      "edition": "Litil Divil",
+      "market": "PAL",
+      "name": "Litil Divil — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/litil-divil",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Litil_Divil_-_Gremlin_Graphics_Software.pdf"
+    },
+    {
+      "edition": "Microcosm",
+      "market": "PAL",
+      "name": "Microcosm — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/microcosm",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Microcosm_-_Psygnosis.pdf"
+    },
+    {
+      "edition": "Naughty Ones",
+      "market": "PAL",
+      "name": "Naughty Ones — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/naughty-ones",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Naughty_Ones_-_Interactivision.pdf"
+    },
+    {
+      "edition": "Roadkill",
+      "market": "PAL",
+      "name": "Roadkill — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/roadkill",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Roadkill_-_Acid.pdf"
+    },
+    {
+      "edition": "Ryder Cup: Johnnie Walker",
+      "market": "PAL",
+      "name": "Ryder Cup: Johnnie Walker — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/ryder-cup-johnnie-walker",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Ryder_Cup_-_Johnnie_Walker_-_Ocean.pdf"
+    },
+    {
+      "edition": "Seek & Destroy",
+      "market": "PAL",
+      "name": "Seek & Destroy — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/seek-and-destroy",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Seek_And_Destroy_-_Mindscape.pdf"
+    },
+    {
+      "edition": "Shadow Fighter",
+      "market": "PAL",
+      "name": "Shadow Fighter — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/shadow-fighter",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Shadow_Fighter_-_Gremlin_Interactive.pdf"
+    },
+    {
+      "edition": "Simon the Sorcerer",
+      "market": "PAL",
+      "name": "Simon the Sorcerer — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/simon-the-sorcerer",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Simon_The_Sorcerer_-_Adventure_Soft.pdf"
+    },
+    {
+      "edition": "Speedball 2: Brutal Deluxe",
+      "market": "PAL",
+      "name": "Speedball 2: Brutal Deluxe — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/speedball-2-brutal-deluxe",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Speedball_2_-_Brutal_Deluxe_-_Renegade_Software.pdf"
+    },
+    {
+      "edition": "The Lost Vikings",
+      "market": "PAL",
+      "name": "The Lost Vikings — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/lost-vikings-the",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Lost_Vikings%2C_The_-_Interplay.pdf"
+    },
+    {
+      "edition": "Top Gear 2",
+      "market": "PAL",
+      "name": "Top Gear 2 — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/top-gear-2",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Top_Gear_2_-_Gremlin_Interactive.pdf"
+    },
+    {
+      "edition": "Total Carnage",
+      "market": "PAL",
+      "name": "Total Carnage — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/total-carnage",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/Total_Carnage_-_International_Computer_Entertainment.pdf"
+    },
+    {
+      "edition": "UFO: Enemy Unknown",
+      "market": "PAL",
+      "name": "UFO: Enemy Unknown — manual",
+      "regions": [
+        "PAL"
+      ],
+      "source": "Games Database",
+      "sourceUrl": "https://www.gamesdatabase.org/game/commodore-amiga-cd32/ufo-enemy-unknown",
+      "format": "PDF",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Commodore_Amiga_CD32//Manual/formated/UFO_-_Enemy_Unknown_-_Microprose.pdf"
+    }
+  ]
+}

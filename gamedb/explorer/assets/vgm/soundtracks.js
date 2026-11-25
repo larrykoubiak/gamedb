@@ -143,10 +143,15 @@ function renderSoundtracks(container, soundtracks, {compact = false} = {}) {
     ...album,
     tracks: album.assets.filter(asset => asset.kind === "track")
       .sort((first, second) => trackOrder.compare(first.name, second.name))
-      .map(asset => ({asset, name: soundtrackTitle(asset),
-        playable: asset.playable || canPlayVgm(asset), subsongs: asset.subsongs || 1,
-        defaultSubsong: asset.defaultSubsong})),
-    files: album.assets.filter(asset => asset.kind !== "track"),
+      .flatMap(asset => {
+        const playable = asset.playable || Boolean(asset.playbackUrl) || canPlayVgm(asset);
+        if (asset.playlistSongs?.length) return asset.playlistSongs.map(({number, title}, index) => ({
+          asset, playable, name: title || `Song ${index + 1}`, subsongs: 1, playlistSong: number,
+        }));
+        return [{asset, playable, name: soundtrackTitle(asset), subsongs: asset.subsongs || 1,
+          defaultSubsong: asset.defaultSubsong}];
+      }),
+    files: album.assets.filter(asset => asset.kind !== "track" || asset.playlistSongs?.length),
   }));
   if (!albums.length) return;
 
@@ -306,12 +311,14 @@ function renderSoundtracks(container, soundtracks, {compact = false} = {}) {
     volume.value = soundtrackVolume;
     const callbacks = {
       volume: soundtrackVolume,
-      subsong: subtune,
+      subsong: selected.playlistSong || subtune,
       started(info) {
         if (request !== revision) return;
         ready = true;
-        if (info?.subsongs > 0) selected.subsongs = info.subsongs;
-        if (info?.defaultSubsong > 0) selected.defaultSubsong = info.defaultSubsong;
+        if (!selected.playlistSong) {
+          if (info?.subsongs > 0) selected.subsongs = info.subsongs;
+          if (info?.defaultSubsong > 0) selected.defaultSubsong = info.defaultSubsong;
+        }
         if (phase !== "paused") phase = "playing";
         updatePlayer();
       },
@@ -328,8 +335,10 @@ function renderSoundtracks(container, soundtracks, {compact = false} = {}) {
     };
 
     try {
-      transport = selected.asset.playable ? startBrowserMusic(selected.asset, callbacks) :
-        startVgmPlayback(selected.asset, libraries, callbacks);
+      const {asset} = selected;
+      transport = asset.playable || asset.playbackUrl
+        ? startBrowserMusic({...asset, url: asset.playbackUrl || asset.url}, callbacks)
+        : startVgmPlayback(asset, libraries, callbacks);
       activeSoundtrack = {root, stop};
       clock = setInterval(updateTimeline, 200);
     } catch {
@@ -408,7 +417,8 @@ function renderSoundtracks(container, soundtracks, {compact = false} = {}) {
       meta.className = "soundtrack-track-format";
       const songs = soundtrackElement("span", track.subsongs > 1 ? ` · ${track.subsongs} songs` : "");
       meta.append(songs);
-      row.append(number, name, meta, soundtrackDownload(track.asset, true));
+      row.append(number, name, meta);
+      if (!track.playlistSong) row.append(soundtrackDownload(track.asset, true));
       rows.set(track, {row, button: name, songs});
       return row;
     }));

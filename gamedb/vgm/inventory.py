@@ -44,6 +44,7 @@ SET_FOLDERS = {
     PSF_COLLECTION: PLAYSTATION,
     "The GameBoy Music Collection": GB,
     "Sega Game Gear": ("Sega", "Game Gear"),
+    "PC-FX Disc Audio": ("NEC", "PC-FX"),
     NEOGEO_COLLECTION: NEOGEO,
     SMS_POWER_COLLECTION: MASTER_SYSTEM,
 }
@@ -52,14 +53,14 @@ BROWSER_AUDIO = {".mp3", ".flac", ".ogg", ".opus", ".wav", ".m4a", ".aac"}
 DEPENDENCIES = {".psflib", ".psf2lib", ".snsflib", ".m3u", ".m3u8", ".cue", ".wd", ".wi", ".sep", ".seb"}
 JOSHW_TRACKS = {
     ".2sf", ".adx", ".gsf", ".gym", ".hes", ".hwas", ".kss", ".mgb", ".mini2sf", ".minigsf",
-    ".minincsf", ".miniusf", ".ncsf", ".strm", ".swav", ".usf", ".wsr",
+    ".minincsf", ".minissf", ".miniusf", ".ncsf", ".ssf", ".strm", ".swav", ".usf", ".wsr",
 }
-JOSHW_LIBRARIES = {".2sflib", ".gsflib", ".ncsflib", ".usflib"}
+JOSHW_LIBRARIES = {".2sflib", ".gsflib", ".ncsflib", ".ssflib", ".usflib"}
 NATIVE_AUDIO = {
     ".nsf", ".nsfe", ".sid", ".gbs", ".ay", ".ym", ".snd", ".sndh", ".sc68", ".vgm", ".vgz",
     ".spc", ".sgc", ".psf", ".minipsf", ".psf2", ".minipsf2", ".snsf", ".minisnsf", ".vsv",
     ".mib", ".ss2", ".genh", ".xa", ".str", ".bgm", ".mod", ".xm", ".stx", ".sa", ".mid",
-    ".mmf", ".ape", ".it", ".s3m", ".med", ".okt",
+    ".mmf", ".ape", ".aif", ".aiff", ".aifc", ".it", ".s3m", ".med", ".okt",
 }
 SUFFIXES = ARCHIVES | BROWSER_AUDIO | NATIVE_AUDIO | DEPENDENCIES
 NOTES_COLLECTIONS = frozenset({

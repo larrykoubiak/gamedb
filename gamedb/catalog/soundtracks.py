@@ -83,6 +83,10 @@ def _compatible_release(release, version, markets, platform):
         return False
     if not version:
         return True
+    if platform == ("Nintendo", "Nintendo 64") and version == "1.0" and any(
+        not (archive["revisions"] or archive["versions"]) for archive in release["archives"]
+    ):
+        return True
     facts = [(kind, value) for archive in release["archives"]
              for kind, field in (("revision", "revisions"), ("version", "versions"))
              for value in archive[field]]

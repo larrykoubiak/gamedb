@@ -34,20 +34,21 @@ PACKAGING_DETAIL = re.compile(r"\b(?:backcover|back|spine|top|bottom|side|photog
 MINI_REGION = re.compile(r"\bMD ([A-Z]{2}) MDMini2? manual\b", re.I)
 
 
-def _category_pages(directory, category):
+def _category_pages(directory, category, *, site=SEGA_RETRO):
     arguments = {
         "action": "query", "generator": "categorymembers", "gcmtitle": f"Category:{category}",
         "gcmtype": "file", "gcmlimit": 100, "prop": "imageinfo|fileusage",
         "iiprop": "url|mime|size|sha1", "funamespace": 0, "fulimit": 500, "format": "json",
     }
     continuation = {}
-    folder = "segaretro-" + category.casefold().replace(" ", "-")
+    wiki = urlsplit(site).hostname.split(".", 1)[0]
+    folder = wiki + "-" + category.casefold().replace(" ", "-")
     for page in range(1, 101):
-        url = f"{SEGA_RETRO}/api.php?{urlencode(arguments | continuation)}"
+        url = f"{site}/api.php?{urlencode(arguments | continuation)}"
         source = read_index(directory / folder / f"{page}.json", url)
         payload = json.loads(source.content)
         if "error" in payload:
-            raise ValueError(f"Sega Retro rejected {category}")
+            raise ValueError(f"{wiki} rejected {category}")
         yield source, payload.get("query", {}).get("pages", {})
         continuation = payload.get("continue")
         if not continuation:

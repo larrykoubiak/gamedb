@@ -4,7 +4,8 @@ import unittest
 
 from sqlalchemy import text
 
-from gamedb.catalog.playstation import ARCHIVES, add_pressings, match_releases
+from gamedb.catalog.disc_catalog import ARCHIVES
+from gamedb.catalog.playstation import add_pressings, match_releases
 from gamedb.catalog.playstation_media import _catalogue_manuals, add_manuals
 from gamedb.catalog.playstation_source import game_record
 from gamedb.database import create_database_engine
@@ -123,7 +124,7 @@ class PlaystationArchiveTests(unittest.TestCase):
                 CREATE TEMP TABLE release_package (release_id int, package_id int, media_sequence int,
                     media_description text, media_label text) ON COMMIT DROP;
                 CREATE TEMP TABLE package (id int, archive_name text, source_collection text, resolved_path text) ON COMMIT DROP;
-                CREATE TEMP TABLE package_file (package_id int, sha1_verified bool) ON COMMIT DROP;
+                CREATE TEMP TABLE package_file (package_id int, sha1_verified bool, sha1_hex text) ON COMMIT DROP;
                 CREATE TEMP TABLE release_fact (release_id int, fact_key text, fact_value text) ON COMMIT DROP;
 
                 INSERT INTO system VALUES (1, 'Sony', 'PlayStation');
@@ -138,11 +139,13 @@ class PlaystationArchiveTests(unittest.TestCase):
                 INSERT INTO release_package VALUES (1, 2, 2, 'Final disc', NULL), (1, 1, 1, NULL, NULL),
                     (2, 3, 1, NULL, NULL), (3, 4, NULL, NULL, NULL), (4, 5, NULL, NULL, NULL),
                     (5, 6, NULL, NULL, NULL), (6, 7, NULL, NULL, NULL), (7, 8, 1, NULL, NULL);
-                INSERT INTO package_file SELECT id, id <> 7 FROM package WHERE id <> 6;
+                INSERT INTO package_file SELECT id, id <> 7, repeat('a', 40) FROM package WHERE id <> 6;
                 INSERT INTO release_fact SELECT id, 'region', CASE WHEN id = 3 THEN 'JP' ELSE 'US' END FROM release;
                 INSERT INTO release_fact VALUES (4, 'demo', 'standalone');
             """)
-            result = connection.execute(sql).mappings().all()
+            result = connection.execute(sql, {
+                "manufacturer": "Sony", "system": "PlayStation", "regions": ["US"],
+            }).mappings().all()
         release, = result
         self.assertEqual(release["archiveNames"], ["1.zip", "2.zip"])
         self.assertEqual(release["discs"], [

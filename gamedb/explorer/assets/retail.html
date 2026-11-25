@@ -7,17 +7,17 @@
   <link rel="stylesheet" href="/styles.css?v=17">
   <link rel="stylesheet" href="/retail.css">
   <link rel="stylesheet" href="/manual-reader.css">
-  <script src="/vgm/player.js?v=5" defer></script>
-  <script src="/vgm/soundtracks.js" defer></script>
+  <script src="/vgm/player.js?v=6" defer></script>
+  <script src="/vgm/soundtracks.js?v=3" defer></script>
   <script src="/artwork-viewer.js" defer></script>
   <script src="/manual-reader.js" defer></script>
-  <script src="/retail.js" defer></script>
+  <script src="/retail.js?v=6" defer></script>
 </head>
 <body class="snes-page">
   <nav class="snes-topbar" aria-label="Catalog navigation">
-    <span class="snes-brand">GameDB</span>
+    <a class="snes-brand" href="/" aria-label="GameDB retail catalogs">GameDB</a>
     <a id="snes-back" href="/" hidden>← Retail catalog</a>
-    <a class="snes-archive" href="/">Open archive</a>
+    <a class="snes-archive" href="/archive">V1 archive</a>
   </nav>
   <main class="snes-catalog">
     <header class="snes-heading">
@@ -30,7 +30,7 @@
         <select id="snes-genre" class="snes-genre" aria-label="Genre">
           <option value="">All genres</option>
         </select>
-        <label class="snes-translation-filter">
+        <label class="snes-translation-filter" hidden>
           <input id="snes-translated" type="checkbox">
           Has translation
         </label>

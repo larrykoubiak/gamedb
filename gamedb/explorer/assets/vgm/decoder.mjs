@@ -20,24 +20,102 @@ function withDecoderBytes(bytes, use) {
   }
 }
 
+function findLibrary(path, libraries) {
+  const name = path.split(/[\\/]/).at(-1).normalize("NFC");
+  const exact = libraries.filter(file => file.name.normalize("NFC") === name);
+  const matches = exact.length ? exact : libraries.filter(file =>
+    file.name.normalize("NFC").toLowerCase() === name.toLowerCase());
+  if (matches.length !== 1) throw new Error(`Could not resolve the soundtrack library ${name}.`);
+  return matches[0];
+}
+
 async function loadLibraries(track, libraries) {
   const supplied = new Set();
   let missing = track.getAdditionalFiles();
   while (missing.length) {
     for (const path of missing) {
-      const name = path.split(/[\\/]/).at(-1).normalize("NFC");
-      const matches = libraries.filter(file => file.name.normalize("NFC") === name);
-      const candidates = matches.length ? matches : libraries.filter(file =>
-        file.name.normalize("NFC").toLowerCase() === name.toLowerCase());
-      if (candidates.length !== 1 || supplied.has(path)) {
-        throw new Error(`Could not resolve the soundtrack library ${name}.`);
-      }
-      const bytes = await readAudioFile(candidates[0].url);
+      if (supplied.has(path)) throw new Error(`Could not resolve the soundtrack library ${path}.`);
+      const bytes = await readAudioFile(findLibrary(path, libraries).url);
       withDecoderBytes(bytes, (pointer, size) => track.resolveAdditionalFile(path, pointer, size));
       supplied.add(path);
     }
     missing = track.getAdditionalFiles();
   }
+}
+
+function ssfLibraries(bytes) {
+  if (bytes.length < 16 || String.fromCharCode(...bytes.subarray(0, 4)) !== "PSF\x11") {
+    throw new Error("Invalid Sega Saturn soundtrack file.");
+  }
+  const header = new DataView(bytes.buffer, bytes.byteOffset, 16);
+  const offset = 16 + header.getUint32(4, true) + header.getUint32(8, true);
+  if (offset > bytes.length) throw new Error("Incomplete Sega Saturn soundtrack file.");
+  if (String.fromCharCode(...bytes.subarray(offset, offset + 5)) !== "[TAG]") return [];
+  const raw = bytes.subarray(offset + 5);
+  let tags;
+  try {
+    tags = new TextDecoder("utf-8", {fatal: true}).decode(raw);
+  } catch {
+    tags = new TextDecoder("windows-1252").decode(raw);
+  }
+  return [...tags.matchAll(/^_lib\d*[ \t]*=([^\r\n]+)$/gmi)].map(match => match[1].trim());
+}
+
+async function mountSsf(fs, path, bytes, libraries, mounted) {
+  const folder = path.slice(0, path.lastIndexOf("/") + 1);
+  fs.mkdirTree(folder);
+  fs.writeFile(path, bytes);
+  mounted.add(path);
+  for (const library of ssfLibraries(bytes)) {
+    const pieces = library.replaceAll("\\", "/").split("/");
+    if (!pieces[0] || pieces.includes("..") || /[:\x00-\x1f]/.test(library)) {
+      throw new Error("Invalid Sega Saturn soundtrack library path.");
+    }
+    const target = folder + pieces.filter(piece => piece && piece !== ".").join("/");
+    if (mounted.has(target)) continue;
+    if (mounted.size > libraries.length) throw new Error("Too many Sega Saturn soundtrack libraries.");
+    await mountSsf(fs, target, await readAudioFile(findLibrary(library, libraries).url), libraries, mounted);
+  }
+}
+
+async function openSsf({url, libraries, sampleRate}) {
+  const [{default: createSsf}, bytes] = await Promise.all([
+    import("./ssfplay-a28e0d7/ssfplay.mjs"), readAudioFile(url),
+  ]);
+  const player = await createSsf();
+  const filename = "/soundtrack/track.ssf";
+  await mountSsf(player.FS, filename, bytes, libraries, new Set());
+  const open = player.cwrap("ssfplay_wasm_open", "number", ["string", "number", "number", "number", "number"]);
+  const handle = open(filename, sampleRate, 3, -1n, -1n);
+  if (!handle) throw new Error(player.UTF8ToString(player._ssfplay_wasm_last_error()));
+  const duration = Number(player._ssfplay_length_ms(handle) + player._ssfplay_fade_ms(handle)) / 1000;
+  const frames = Math.round(sampleRate / 4);
+  const buffer = player._malloc(frames * 4);
+  if (!buffer) throw new Error("The playback engine ran out of memory.");
+  let position = 0;
+  function renderFrames(count) {
+    const countRendered = player._ssfplay_wasm_render(handle, buffer, count);
+    position += countRendered;
+    return countRendered;
+  }
+  return {
+    duration,
+    seek(seconds) {
+      const target = Math.round(Math.min(seconds, duration) * sampleRate);
+      if (target < position) {
+        if (player._ssfplay_reset(handle)) throw new Error("Could not restart the Sega Saturn soundtrack.");
+        position = 0;
+      }
+      while (position < target) {
+        if (!renderFrames(Math.min(frames, target - position))) break;
+      }
+    },
+    render() {
+      const count = renderFrames(frames);
+      const samples = player.HEAP16.slice(buffer / 2, buffer / 2 + count * 2);
+      return {samples, done: count < frames, sampleRate};
+    },
+  };
 }
 
 function readSubsongInfo(bytes, format) {
@@ -136,7 +214,8 @@ async function openSndh({url, subsong}) {
 self.addEventListener("message", async ({data}) => {
   try {
     if (data.type === "open") {
-      playback = await (data.format === "sndh" ? openSndh(data) : openZXTune(data));
+      if (data.format === "ssf" || data.format === "minissf") playback = await openSsf(data);
+      else playback = await (data.format === "sndh" ? openSndh(data) : openZXTune(data));
     } else if (data.type === "seek") {
       playback.seek(data.position);
     }

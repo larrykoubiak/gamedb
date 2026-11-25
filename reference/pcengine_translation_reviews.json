@@ -1,0 +1,26 @@
+{
+  "publishedBps": [
+    {
+      "url": "https://github.com/second-save/benkei-gaiden-pce-en/releases/download/v1.0/benkei-gaiden-pce-en.bps",
+      "sourceUrl": "https://github.com/second-save/benkei-gaiden-pce-en/releases/tag/v1.0",
+      "sha256": "51e56e3040d4fad3f7b5d0b8297b0879da6463cea9a6662e36cf2edb172df377",
+      "filename": "benkei-gaiden-pce-en.bps",
+      "baseSha1": "4bc46592f3707a7c3e514abc23e640e3194879ad",
+      "language": "English",
+      "authors": ["Second Save"],
+      "version": "1.0",
+      "released": "2026-11-24"
+    },
+    {
+      "url": "https://stargood.org/trans/files/Zero4%20Champ%20EN%20%5Bv1.0%5D.zip",
+      "sourceUrl": "https://stargood.org/trans/zero4.php",
+      "sha256": "0960fe7f2e61bf273d8c56d20107d8a6c4659785d6ff113c450288b1721bde6e",
+      "members": ["Zero4 Champ EN [v1.0].bps"],
+      "baseSha1": "2b664760931cc6011d31cae310410dab7cba2067",
+      "language": "English",
+      "authors": ["Supper", "cccmar", "Xanathis", "Oddoai-sama"],
+      "version": "1.0",
+      "released": "2025-05-03"
+    }
+  ]
+}

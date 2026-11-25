@@ -1,0 +1,680 @@
+{
+  "regionalCorrections": {
+    "Beetle Adventure Racing!": {
+      "PAL": {
+        "source": {
+          "name": "MAME",
+          "url": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml",
+          "record": "beetlear"
+        },
+        "titles": [
+          "Beetle Adventure Racing!"
+        ]
+      }
+    },
+    "International Superstar Soccer 64": {
+      "JP": {
+        "source": {
+          "name": "MAME",
+          "url": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml",
+          "record": "jikkscr3"
+        },
+        "titles": [
+          "Jikkyō World Soccer 3"
+        ],
+        "date": "September 18, 1997"
+      }
+    },
+    "Jikkyō J-League Perfect Striker": {
+      "JP": {
+        "source": {
+          "name": "MAME",
+          "url": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml",
+          "record": "jikkjlea"
+        },
+        "date": "December 20, 1996"
+      }
+    },
+    "Paper Mario": {
+      "JP": {
+        "source": {
+          "name": "MAME",
+          "url": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml",
+          "record": "mariosto"
+        },
+        "titles": [
+          "Mario Story"
+        ]
+      }
+    },
+    "Resident Evil 2": {
+      "JP": {
+        "source": {
+          "name": "MAME",
+          "url": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml",
+          "record": "biohaz2"
+        },
+        "titles": [
+          "Biohazard 2"
+        ]
+      }
+    },
+    "Pokémon Stadium 2": {
+      "JP": {
+        "source": {
+          "name": "MAME",
+          "url": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml",
+          "record": "pokestdk"
+        },
+        "titles": [
+          "Pokémon Stadium Kin Gin"
+        ]
+      }
+    },
+    "Racing Simulation: Monaco Grand Prix": {
+      "PAL": {
+        "source": {
+          "name": "MAME",
+          "url": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml",
+          "record": "monacogp"
+        },
+        "titles": [
+          "Monaco Grand Prix – Racing Simulation 2",
+          "Racing Simulation 2"
+        ]
+      }
+    }
+  },
+  "additionalReleases": [
+    {
+      "game": "Beetle Adventure Racing!",
+      "edition": "HSV Adventure Racing!",
+      "market": "PAL",
+      "date": "1999",
+      "publisher": "Electronic Arts",
+      "source": {
+        "name": "MAME",
+        "url": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml",
+        "record": "hsvadvr"
+      }
+    },
+    {
+      "game": "F1 Racing Championship",
+      "market": "BR",
+      "publisher": "Gradiente",
+      "source": {
+        "name": "MAME",
+        "url": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml",
+        "record": "f1racingb"
+      }
+    },
+    {
+      "game": "Shadow Man",
+      "market": "BR",
+      "date": "August 1999",
+      "publisher": "Gradiente / Acclaim Entertainment",
+      "source": {
+        "name": "MAME",
+        "url": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml",
+        "record": "shadowmnb"
+      },
+      "dateSource": {
+        "name": "Nintendo Brasil Wiki",
+        "url": "https://nintendobrasilwiki.org/n64:shadow_man"
+      }
+    },
+    {
+      "game": "South Park",
+      "market": "BR",
+      "publisher": "Acclaim Entertainment",
+      "source": {
+        "name": "MAME",
+        "url": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml",
+        "record": "southprkb"
+      }
+    }
+  ],
+  "verifiedArchives": [
+    {
+      "edition": "HSV Adventure Racing!",
+      "market": "PAL",
+      "signature": "ad05e9b79585a426478ca66e406eeeec",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (hsvadvr, cartridge SHA-1)"
+    },
+    {
+      "edition": "F1 Racing Championship",
+      "market": "BR",
+      "signature": "f79768197c2362a10c70b990a665d891",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (f1racingb, cartridge SHA-1)"
+    },
+    {
+      "edition": "Shadow Man",
+      "market": "BR",
+      "signature": "18d7866549b14cb863294dd986e9bd10",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (shadowmnb, cartridge SHA-1)"
+    },
+    {
+      "edition": "South Park",
+      "market": "BR",
+      "signature": "727c772b62211b2bee4b4d3df0a5e7ec",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (southprkb, cartridge SHA-1)"
+    }
+  ],
+  "manualTitles": {
+    "GoldenEye 007": [
+      "007 - GoldenEye"
+    ],
+    "Bomberman 64 (2001)": [
+      "Bomberman 64 - Arcade Edition"
+    ],
+    "Donald Duck: Quack Attack": [
+      "Disney's Donald Duck - Goin' Quackers"
+    ],
+    "NFL QB Club 2001": [
+      "NFL Quarterback Club 2001"
+    ],
+    "Superman: The New Superman Adventures": [
+      "Superman"
+    ],
+    "Tarzan": [
+      "Disney's Tarzan"
+    ],
+    "Toy Story 2: Buzz Lightyear to the Rescue!": [
+      "Toy Story 2"
+    ],
+    "Bakuretsu Muteki Bangaiō": [
+      "Bakuretsu Muteki Bangai-O"
+    ],
+    "Centre Court Tennis": [
+      "Lets Smash Tennis"
+    ],
+    "Choro Q 64 2: Hachamecha Grand Prix Race": [
+      "Choro Q 64 II - Hacha Mecha Grand Prix Race"
+    ],
+    "Chōkūkan Night: Pro Yakyū King": [
+      "Chou Kuukan Night Pro Yakyuu King"
+    ],
+    "Chōkūkan Night: Pro Yakyū King 2": [
+      "Chou Kuukan Night Pro Yakyuu King 2"
+    ],
+    "Duke Nukem: Zero Hour": [
+      "Duke Nukem - ZER0 H0UR"
+    ],
+    "Goemon Mononoke Sugoroku": [
+      "Ganbare Goemon - Mononoke Sugoroku"
+    ],
+    "Jango Simulation Mahjong-do 64": [
+      "Jangou Simulation Mahjong Do 64"
+    ],
+    "Jikkyō Powerful Pro Yakyu Basic-ban 2001": [
+      "Jikkyou Powerful Pro Yakyuu - Basic Han 2001"
+    ],
+    "Kiratto Kaiketsu! 64 Tanteidan": [
+      "Kira to Kaiketsu 64 Tanteidan"
+    ],
+    "Power League 64": [
+      "Power League Baseball 64"
+    ],
+    "Puyo Puyo~n Party": [
+      "Puyo Puyo 4 - Puyo Puyo Party"
+    ],
+    "Roadsters": [
+      "Roadsters Trophy"
+    ],
+    "Robot Ponkottsu 64: Nanatsu no Umi no Caramel": [
+      "Robot Ponkotsu 64 - 7tsu no Umi no Caramel"
+    ],
+    "Susume! Taisen Puzzle Dama: Tōkon! Marutama Chō": [
+      "Susume Taisen Puzzle Dama Toukon Marumata Chou"
+    ],
+    "Ucchan Nanchan no Hono no Challenge: Denryu Ira Ira Bo": [
+      "Uchhannanchan no Hono no Challenger - Denryu IraIra Bou"
+    ],
+    "Vigilante 8: 2nd Offense": [
+      "Vigilante 8 - 2nd Offence"
+    ],
+    "Yakochu II: Satsujin Koro": [
+      "Yakouchuu II - Satsujin Kouru"
+    ],
+    "Zool: Majū Tsukai Densetsu": [
+      "Zool - Majou Tsukai Densetsu"
+    ]
+  },
+  "archiveAliases": [
+    {
+      "edition": "AI Shogi 3",
+      "market": "JP",
+      "archiveTitle": "AI Shougi 3",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (aishogi3)"
+    },
+    {
+      "edition": "Bakuretsu Muteki Bangaiō",
+      "market": "JP",
+      "archiveTitle": "Bakuretsu Muteki Bangaioh",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (bangaioh)"
+    },
+    {
+      "edition": "Chōkūkan Night: Pro Yakyū King",
+      "market": "JP",
+      "archiveTitle": "Chou Kuukan Nighter Pro Yakyuu King",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (cknight)"
+    },
+    {
+      "edition": "Chōkūkan Night: Pro Yakyū King 2",
+      "market": "JP",
+      "archiveTitle": "Chou Kuukan Nighter Pro Yakyuu King 2",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (cknight2)"
+    },
+    {
+      "edition": "Daikatana",
+      "market": "JP",
+      "archiveTitle": "John Romero's Daikatana",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (daikatanj)"
+    },
+    {
+      "edition": "Daikatana",
+      "market": "NA",
+      "archiveTitle": "John Romero's Daikatana",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (daikatanu)"
+    },
+    {
+      "edition": "Daikatana",
+      "market": "PAL",
+      "archiveTitle": "John Romero's Daikatana",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (daikatan)"
+    },
+    {
+      "edition": "Doraemon: Nobita to Mittsu no Seireiseki",
+      "market": "JP",
+      "archiveTitle": "Doraemon - Nobita to 3tsu no Seireiseki",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (doraemon)"
+    },
+    {
+      "edition": "Eiko no Saint Andrews",
+      "market": "JP",
+      "archiveTitle": "Eikou no Saint Andrews",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (eikousa)"
+    },
+    {
+      "edition": "Extreme-G 2",
+      "market": "JP",
+      "archiveTitle": "Extreme-G XG2",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (extremg2j)"
+    },
+    {
+      "edition": "Extreme-G 2",
+      "market": "NA",
+      "archiveTitle": "Extreme-G XG2",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (extremg2u)"
+    },
+    {
+      "edition": "Extreme-G 2",
+      "market": "PAL",
+      "archiveTitle": "Extreme-G XG2",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (extremg2)"
+    },
+    {
+      "edition": "Getter Love!!",
+      "market": "JP",
+      "archiveTitle": "Getter Love!! - Cho Renai Party Game Tanjou",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (gettlove)"
+    },
+    {
+      "edition": "Itoi Shigesato no Bass Tsuri No. 1 Kettehan!",
+      "market": "JP",
+      "archiveTitle": "Itoi Shigesato no Bass Tsuri No. 1 Kettei Ban!",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (itoishig)"
+    },
+    {
+      "edition": "Jango Simulation Mahjong-do 64",
+      "market": "JP",
+      "archiveTitle": "Jangou Simulation Mahjong Dou 64",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (jangsim)"
+    },
+    {
+      "edition": "Jikkyō GI Stable",
+      "market": "JP",
+      "archiveTitle": "Jikkyou G1 Stable",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (jikkg1)"
+    },
+    {
+      "edition": "Jikkyō Powerful Pro Yakyu Basic-ban 2001",
+      "market": "JP",
+      "archiveTitle": "Jikkyou Powerful Pro Yakyuu - Basic Ban 2001",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (powyk2k1)"
+    },
+    {
+      "edition": "Mahjong Horoki Classic",
+      "market": "JP",
+      "archiveTitle": "Mahjong Hourouki Classic",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (mjhoroki)"
+    },
+    {
+      "edition": "Mario no Photopi",
+      "market": "JP",
+      "archiveTitle": "Mario no Photopie",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (mariopho)"
+    },
+    {
+      "edition": "Morita Shogi 64",
+      "market": "JP",
+      "archiveTitle": "Morita Shougi 64",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (moritash)"
+    },
+    {
+      "edition": "Parlor! Pro 64: Pachinko Jikki Simulation",
+      "market": "JP",
+      "archiveTitle": "Parlor! Pro 64 - Pachinko Jikki Simulation Game",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (parlpro)"
+    },
+    {
+      "edition": "Pro Shinan Mahjong Tsuwamono 64: Jansō Battle ni Chōsen",
+      "market": "JP",
+      "archiveTitle": "Pro Mahjong Tsuwamono 64 - Jansou Battle ni Chousen",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (mjtsuwa)"
+    },
+    {
+      "edition": "Puyo Puyo~n Party",
+      "market": "JP",
+      "archiveTitle": "Puyo Puyoon Party",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (puyopuy4)"
+    },
+    {
+      "edition": "Ridge Racer 64",
+      "market": "NA",
+      "archiveTitle": "RR64 - Ridge Racer 64",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (rr64u)"
+    },
+    {
+      "edition": "Ridge Racer 64",
+      "market": "PAL",
+      "archiveTitle": "RR64 - Ridge Racer 64",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (rr64)"
+    },
+    {
+      "edition": "Robot Ponkottsu 64: Nanatsu no Umi no Caramel",
+      "market": "JP",
+      "archiveTitle": "Robot Poncots 64 - 7tsu no Umi no Caramel",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (robotpon)"
+    },
+    {
+      "edition": "Shin Nippon Pro Wrestling: Toukon Road - Brave Spirits",
+      "market": "JP",
+      "archiveTitle": "Shin Nihon Pro Wrestling Toukon Road - Brave Spirits",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (sprowres)"
+    },
+    {
+      "edition": "Shin Nippon Pro Wrestling: Toukon Road 2- Next Generation",
+      "market": "JP",
+      "archiveTitle": "Shin Nihon Pro Wrestling Toukon Road 2 - The Next Generation",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (sprowrs2)"
+    },
+    {
+      "edition": "Superman: The New Superman Adventures",
+      "market": "NA",
+      "archiveTitle": "Superman - The New Superman Aventures",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (supermanu)"
+    },
+    {
+      "edition": "The World Is Not Enough",
+      "market": "NA",
+      "archiveTitle": "007 - The World Is Not Enough",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (007twineu)"
+    },
+    {
+      "edition": "The World Is Not Enough",
+      "market": "PAL",
+      "archiveTitle": "007 - The World Is Not Enough",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (007twine)"
+    },
+    {
+      "edition": "Ucchan Nanchan no Hono no Challenge: Denryu Ira Ira Bo",
+      "market": "JP",
+      "archiveTitle": "Utchan Nanchan no Hono no Challenger - Denryuu Ira Ira Bou",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (utchan)"
+    },
+    {
+      "edition": "Wonder Project J2: Koruro no Mori no Josette",
+      "market": "JP",
+      "archiveTitle": "Wonder Project J2 - Koruro no Mori no Jozet",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (wprojj2)"
+    },
+    {
+      "edition": "Yakochu II: Satsujin Koro",
+      "market": "JP",
+      "archiveTitle": "Yakouchuu II - Satsujin Kouro",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (yakouch2)"
+    }
+  ],
+  "soundtrackAliases": [
+    {
+      "edition": "Bakuretsu Muteki Bangaiō",
+      "title": "Bakuretsu Muteki Bangai-O"
+    },
+    {
+      "edition": "In-Fisherman Bass Hunter 64",
+      "title": "Bass Hunter 64 (In-Fisherman Bass Hunter 64)"
+    },
+    {
+      "edition": "Chōkūkan Night: Pro Yakyū King",
+      "title": "Chōkukan Night Pro Yakyu King"
+    },
+    {
+      "edition": "Chōkūkan Night: Pro Yakyū King 2",
+      "title": "Chōkukan Night Pro Yakyu King 2"
+    },
+    {
+      "edition": "ClayFighter: Sculptor's Cut",
+      "title": "Clay Fighter 63 1-3 - Sculptor's Cut"
+    },
+    {
+      "edition": "Eiko no Saint Andrews",
+      "title": "Eikou no St. Andrews"
+    },
+    {
+      "edition": "Fushigi no Dungeon: Fūrai no Shiren 2: Oni Shūrai! Shiren-jō!",
+      "title": "Fuurai no Shiren 2 - Oni Shuurai! Shiren Jou!"
+    },
+    {
+      "edition": "Getter Love!!",
+      "title": "Getter Love!! - Cho Renai Party Game"
+    },
+    {
+      "edition": "Jikkyō Powerful Pro Yakyū 2000",
+      "title": "Jikkyo Powerful Pro Yakyu 2000"
+    },
+    {
+      "edition": "Jikkyō Powerful Pro Yakyū 6",
+      "title": "Jikkyo Powerful Pro Yakyu 6"
+    },
+    {
+      "edition": "Duck Dodgers Starring Daffy Duck",
+      "title": "Looney Tunes Daffy Duck Starring as Duck Dodgers"
+    },
+    {
+      "edition": "Onegai Monsters",
+      "title": "Onegai Monster"
+    },
+    {
+      "edition": "Star Wars Episode I: Battle for Naboo",
+      "title": "Star Wars - Episode 1 Battle for Naboo"
+    },
+    {
+      "edition": "Ucchan Nanchan no Hono no Challenge: Denryu Ira Ira Bo",
+      "title": "Ucchannanchan no Honoo no Challenger - Denryuu Iraira-Bou"
+    },
+    {
+      "edition": "WCW/nWo Revenge",
+      "title": "WCW vs. nWo Revenge"
+    }
+  ],
+  "manuals": [
+    {
+      "edition": "GoldenEye 007",
+      "market": "JP",
+      "url": "https://goldeneyedepot.com/manuals/manual-japanese",
+      "source": "The GoldenEye Depot",
+      "sourceUrl": "https://goldeneyedepot.com/manuals/manual-japanese",
+      "language": "Japanese",
+      "pages": [
+        "https://goldeneyedepot.com/manuals/manualJ-front.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-0.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-1.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-2.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-3.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-4.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-5.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-6.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-7.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-8.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-9.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-10.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-11.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-12.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-13.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-14.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-15.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-16.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-17.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-18.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-19.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-20.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-21.jpg",
+        "https://goldeneyedepot.com/manuals/manualJ-back.jpg"
+      ]
+    },
+    {
+      "edition": "F1 Racing Championship",
+      "market": "BR",
+      "url": "https://drive.usercontent.google.com/download?id=1okcJlgXdwE-3aLyBO-oUjHdD612sKdwF&export=download",
+      "source": "Nintendo Brasil Wiki",
+      "sourceUrl": "https://nintendobrasilwiki.org/n64:f1_racing_championship",
+      "language": "Portuguese",
+      "size": 6648621,
+      "sha1": "a3ea3d2515df926ec48abfd2834f979a324424ac"
+    },
+    {
+      "edition": "Shadow Man",
+      "market": "BR",
+      "url": "https://drive.usercontent.google.com/download?id=1AS4nfoLABSC8WvxF9afh_kANPjjLsFxz&export=download",
+      "source": "Nintendo Brasil Wiki",
+      "sourceUrl": "https://nintendobrasilwiki.org/n64:shadow_man",
+      "language": "Portuguese",
+      "size": 49749711,
+      "sha1": "640f7c48c38a2a8081cd7d05c79927f32a3daf51"
+    },
+    {
+      "edition": "Itoi Shigesato no Bass Tsuri No. 1 Kettehan!",
+      "market": "JP",
+      "url": "https://emulation64.fr/pdf/N64%20-%20Shigesato%20Itois%20No%201%20Bass%20Fishing%20Definitive%20Edition%20%28Japonais%29.pdf",
+      "source": "Emulation64.fr",
+      "sourceUrl": "https://www.emulation64.fr/?page=notices",
+      "language": "Japanese"
+    }
+  ],
+  "archiveEligibility": [
+    {
+      "archiveName": "Super Mario 64 (Japan) (Rev 3) (Shindou Edition).zip",
+      "signature": "bfbe5c6348924e35e38d0e10411c7e88",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (Super Mario 64 - Shindou Pak Taiou)"
+    },
+    {
+      "archiveName": "Wave Race 64 - Kawasaki Jet Ski (Japan) (Rev 2) (Shindou Edition).zip",
+      "signature": "ca060a3be3a908a4cd6a3cf597fe2f07",
+      "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/n64.xml (Wave Race 64 - Shindou Pak Taiou)"
+    }
+  ],
+  "unavailableImages": [
+    "07252e61-ea56-43c2-9556-09defe822e49.jpg",
+    "0c7c57ec-22f9-4176-a960-3209dd114938.jpg",
+    "14532eca-f48f-4120-9461-db09643dd730.jpg",
+    "35eb3c0e-f398-47ce-8094-16cd5c84a2dc.jpg",
+    "4a12ee71-5018-4ed3-bef1-e904619caf4b.jpg",
+    "5c420d7a-8d3b-4fb1-ad32-79d38bd3c275.png",
+    "7af60fec-db9c-4f23-a330-fa1f164c9570.jpg",
+    "899bbe66-2048-4b3a-8a47-1fbe627e7482.png",
+    "93bd5d69-1917-4a05-a6a2-3be66e5195f4.png",
+    "c8137df3-cf68-436e-80ab-d5b744d9273c.jpg",
+    "fc7cb430-61b0-4fec-9de6-a12adeeb7888.jpg"
+  ],
+  "artworkRegions": [
+    {
+      "archiveName": "Major League Baseball Featuring Ken Griffey Jr. (Australia).zip",
+      "kind": "title",
+      "market": "PAL",
+      "regions": [
+        "AU"
+      ],
+      "filename": "Major League Baseball featuring Ken Griffey Jr. (Australia).png",
+      "source": "https://github.com/libretro-thumbnails/Nintendo_-_Nintendo_64/tree/ff0badea277f2d2d15e9008b04f1a0fd6abc40a3"
+    },
+    {
+      "archiveName": "Major League Baseball Featuring Ken Griffey Jr. (Australia).zip",
+      "kind": "snap",
+      "market": "PAL",
+      "regions": [
+        "AU"
+      ],
+      "filename": "Major League Baseball featuring Ken Griffey Jr. (Australia).png",
+      "source": "https://github.com/libretro-thumbnails/Nintendo_-_Nintendo_64/tree/ff0badea277f2d2d15e9008b04f1a0fd6abc40a3"
+    },
+    {
+      "archiveName": "Major League Baseball Featuring Ken Griffey Jr. (USA).zip",
+      "kind": "title",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "filename": "Major League Baseball featuring Ken Griffey Jr. (USA).png",
+      "source": "https://github.com/libretro-thumbnails/Nintendo_-_Nintendo_64/tree/ff0badea277f2d2d15e9008b04f1a0fd6abc40a3"
+    },
+    {
+      "archiveName": "Major League Baseball Featuring Ken Griffey Jr. (USA).zip",
+      "kind": "snap",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "filename": "Major League Baseball featuring Ken Griffey Jr. (USA).png",
+      "source": "https://github.com/libretro-thumbnails/Nintendo_-_Nintendo_64/tree/ff0badea277f2d2d15e9008b04f1a0fd6abc40a3"
+    },
+    {
+      "archiveName": "1080 Snowboarding (Japan, USA) (En,Ja).zip",
+      "kind": "boxart",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "filename": "1080 Snowboarding (Japan, USA) (En,Ja).png",
+      "source": "https://github.com/libretro-thumbnails/Nintendo_-_Nintendo_64/tree/ff0badea277f2d2d15e9008b04f1a0fd6abc40a3"
+    }
+  ],
+  "artwork": [
+    {
+      "edition": "1080° Snowboarding",
+      "market": "JP",
+      "kind": "boxart",
+      "regions": [
+        "JP"
+      ],
+      "url": "https://images.launchbox-app.com/bf2e016d-12da-46d8-96a3-fdbacb1ffc09.jpg",
+      "source": {
+        "name": "LaunchBox",
+        "url": "https://gamesdb.launchbox-app.com/games/images/224-1080-snowboarding"
+      }
+    },
+    {
+      "edition": "Star Wars: Rogue Squadron",
+      "market": "NA",
+      "kind": "snap",
+      "regions": [
+        "US"
+      ],
+      "url": "https://images.launchbox-app.com/8bc989db-d0a1-4993-b1ef-5f5a2de789b6.jpg",
+      "source": {
+        "name": "LaunchBox",
+        "url": "https://gamesdb.launchbox-app.com/games/images/384-star-wars-rogue-squadron"
+      }
+    }
+  ]
+}

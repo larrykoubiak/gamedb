@@ -1,0 +1,47 @@
+{
+  "projects": {
+    "5654": {
+      "archive": "[5654]Doctor Hauzer English v1.2.1.zip",
+      "archiveSha256": "48ed7b2d1b59c9e49e1c48269136e16d6add5c84c9cd5c24ebc98cb0ee69c388",
+      "discs": [
+        {
+          "archiveName": "Doctor Hauzer (Japan).zip",
+          "inputSha1": "e2e06c69be167b88ae94c00e06d022a7da6a1cc1",
+          "inputIsoSha1": "609a40e28bb7432457bf0b40e3b245036bbdc4c3",
+          "patches": [
+            "patch_data/doctor-hauzer-1.2.1-patch.xdelta3"
+          ],
+          "outputSha1": "21a3f38d3ab49b6518272d1f7876bf4681698a37"
+        }
+      ]
+    },
+    "oyaji-hunter-en": {
+      "archive": "Oyaji.Hunter.Mahjong.-.English.Patch.v1.1.1.zip",
+      "archiveSha256": "73e20ee09f1eb0ef144e698d112a2d7e24e449fba09f48bb6ee64119037ff9db",
+      "discs": [
+        {
+          "archiveName": "Oyaji Hunter Mahjong (Japan).zip",
+          "inputSha1": "3d727843e8b5b42db979e800f13441027220db25",
+          "inputIsoSha1": "c99ecc1a4c8240158d7dda2cbc69c1755f3e39c0",
+          "patches": [
+            "patch_data/Oyaji-Hunter-patch.xdelta"
+          ],
+          "outputSha1": "ec1d2c37d16985b2640bfd2b7a84badf94069a52"
+        }
+      ],
+      "archivePage": "https://github.com/Eight-Mansions/Oyaji-Hunter-Mahjong/releases/tag/v1.1.1",
+      "sourceUrl": "https://github.com/Eight-Mansions/Oyaji-Hunter-Mahjong/releases/tag/v1.1.1",
+      "projectMetadata": {
+        "language": "English",
+        "authors": [
+          "SnowyAria",
+          "YuviApp",
+          "BlametheRobots"
+        ],
+        "version": "1.1.1",
+        "status": "Complete",
+        "releasedAt": 1792788892
+      }
+    }
+  }
+}

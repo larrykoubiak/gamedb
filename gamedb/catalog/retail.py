@@ -16,8 +16,11 @@ from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.launchbox.matching import title_key
 
 
+EARLY_DISC_PLATFORMS = {"pcfx": "PC-FX", "cd32": "Amiga CD32", "3do": "3DO"}
 RETAIL_PLATFORMS = {"snes": "SNES", "megadrive": "Mega Drive", "nes": "NES / Famicom",
-                    "playstation": "PlayStation (US)", "neogeo": "Neo Geo", "mastersystem": "Master System"}
+                    "playstation": "PlayStation (US)", "neogeo": "Neo Geo", "mastersystem": "Master System",
+                    "pcengine": "PC Engine / TurboGrafx-16", "n64": "Nintendo 64", "saturn": "Sega Saturn",
+                    "jaguar": "Atari Jaguar", **EARLY_DISC_PLATFORMS}
 ARCHIVE_MARKETS = {
     "JP": {"JP"},
     "NA": {"US", "CA", "MX"},
@@ -26,7 +29,8 @@ ARCHIVE_MARKETS = {
 LONG_VOWELS = {"ā": ("a", "aa"), "ē": ("e", "ee", "ei"), "ī": ("i", "ii"),
                "ō": ("o", "ou", "oo"), "ū": ("u", "uu")}
 
-def base_archives_query(manufacturer=":manufacturer", commercial_labels=":commercial_labels"):
+def base_archives_query(manufacturer=":manufacturer", commercial_labels=":commercial_labels", *,
+                        alternate_labels="'{}'"):
     return text(f"""
     SELECT release.display_title AS title, signature.sha1_set_digest AS signature,
            software.id AS "softwareId", {SOFTWARE_KEY_SQL} AS "softwareKey",
@@ -74,8 +78,10 @@ def base_archives_query(manufacturer=":manufacturer", commercial_labels=":commer
         FROM catalog.release_fact fact
         WHERE fact.release_id = release.id
         HAVING NOT bool_or(
-            fact_key IN ('bios', 'demo', 'release_status', 'dump_status',
-                         'dump_modification', 'distribution_channel')
+            fact_key IN ('bios', 'demo', 'release_status', 'dump_modification', 'distribution_channel')
+            OR (fact_key = 'dump_status' AND (
+                fact_value IS DISTINCT FROM 'alternate' OR packages.names IS DISTINCT FROM
+                    ARRAY[CAST({alternate_labels} AS jsonb) ->> signature.sha1_set_digest]))
             OR (fact_key = 'license' AND fact_value = 'unlicensed'
                 AND packages.names IS DISTINCT FROM
                     ARRAY[CAST({commercial_labels} AS jsonb) ->> signature.sha1_set_digest])
@@ -87,7 +93,7 @@ def base_archives_query(manufacturer=":manufacturer", commercial_labels=":commer
 """)
 
 
-BASE_ARCHIVES = base_archives_query()
+BASE_ARCHIVES = base_archives_query(alternate_labels=":alternate_labels")
 
 PUBLICATION_SCHEMA = """
     CREATE SCHEMA IF NOT EXISTS app;
@@ -110,7 +116,8 @@ PUBLICATION_SCHEMA = """
 def retail_tables(platform):
     if platform not in RETAIL_PLATFORMS:
         raise ValueError(f"Unknown retail platform {platform!r}")
-    return tuple(f"app.{platform}_retail_{part}" for part in ("catalog", "image", "soundtrack"))
+    prefix = "threedo" if platform == "3do" else platform
+    return tuple(f"app.{prefix}_retail_{part}" for part in ("catalog", "image", "soundtrack"))
 
 
 def read_archives(connection, manufacturer, system, verified_archives=(), *, secondary_system=None):
@@ -118,9 +125,12 @@ def read_archives(connection, manufacturer, system, verified_archives=(), *, sec
                        if "archiveName" in record}
     commercial_labels = {record["signature"]: record["archiveName"] for record in verified_archives
                          if record.get("independentRetail")}
+    alternate_labels = {record["signature"]: record["archiveName"] for record in verified_archives
+                        if record.get("alternateDump")}
     return [dict(row) for row in connection.execute(
         BASE_ARCHIVES, {"manufacturer": manufacturer, "system": system, "sufami": secondary_system,
-                        "verified_labels": json.dumps(verified_labels), "commercial_labels": json.dumps(commercial_labels)},
+                        "verified_labels": json.dumps(verified_labels), "commercial_labels": json.dumps(commercial_labels),
+                        "alternate_labels": json.dumps(alternate_labels)},
     ).mappings()]
 
 

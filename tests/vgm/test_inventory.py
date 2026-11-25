@@ -170,6 +170,25 @@ class InventoryTests(unittest.TestCase):
             self.assertEqual((nsf["subsongs"], nsf["default_subsong"]), (5, 2))
             self.assertEqual(nsf["subsong_titles"], ["Embedded", "", "Stage, part two", "", ""])
 
+    def test_hes_playlist_keeps_sparse_song_ids_in_playlist_order(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / "JoshW/hes/e/Example (1991)(Hudson)[PCE].zip"
+            path.parent.mkdir(parents=True)
+            with ZipFile(path, "w") as archive:
+                archive.writestr("set/First.hes", b"HESM" + bytes(32))
+                archive.writestr("set/Second.hes", b"HESM" + bytes(32))
+                archive.writestr("set/Example.m3u", "First.hes::HES,$33,Title,4,-,3\n"
+                                 "First.hes::HES,$01,Stage\\, part two,0:55\n"
+                                 "Second.hes::HES,$00,Ending,1:23\n"
+                                 "Second.hes::HES,256,Out of range\n")
+                archive.writestr("other/Example.m3u", "First.hes::HES,$20,Wrong folder\n")
+            album, = scan(root)
+            add_track_tags(root, album.assets, {"hes"})
+            first, second = [asset["playlist_songs"] for asset in album.assets if asset["format"] == "hes"]
+            self.assertEqual(first, [{"number": 52, "title": "Title"}, {"number": 2, "title": "Stage, part two"}])
+            self.assertEqual(second, [{"number": 1, "title": "Ending"}])
+
     def test_loose_spc_and_archive_copies_form_one_soundtrack(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

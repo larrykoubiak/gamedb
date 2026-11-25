@@ -342,11 +342,19 @@ def _libretro_paths(indexes, thumbnails=THUMBNAILS):
     return paths
 
 
+def libretro_asset(folder, revision, path):
+    repository = folder.replace(" ", "_")
+    source = f"https://github.com/libretro-thumbnails/{repository}"
+    return {
+        "url": f"https://raw.githubusercontent.com/libretro-thumbnails/{repository}/{revision}/{quote(path)}",
+        "source": {"name": "Libretro", "url": source, "revision": revision},
+    }
+
+
 def _libretro_art(release, paths, reviewed=(), *,
                   thumbnails=THUMBNAILS, thumbnail_key="snes", country_markets=COUNTRY_MARKETS):
     folder_key = "sufami" if release["channel"] == "sufami-turbo" else thumbnail_key
     folder, revision = thumbnails[folder_key]
-    repository = folder.replace(" ", "_")
     local_titles = {title_key(title) for title in release["titles"]}
     for archive in release.get("archives", ()):
         regions = archive["regions"]
@@ -356,7 +364,7 @@ def _libretro_art(release, paths, reviewed=(), *,
             stem = PurePosixPath(name).stem.translate(BAD_CHARS)
             for directory, kind in LIBRETRO_KINDS.items():
                 review = reviewed.get((name, kind)) if reviewed else None
-                if review and review["market"] != release["market"]:
+                if review and release["market"] not in review.get("markets", [review.get("market")]):
                     continue
                 if kind == "boxart" and not (exclusive or review):
                     continue
@@ -368,10 +376,8 @@ def _libretro_art(release, paths, reviewed=(), *,
                     rank = 2 if exclusive else 0
                     if not archive["revisions"] and not archive["versions"]:
                         rank += 1
-                    source = f"https://github.com/libretro-thumbnails/{repository}"
                     asset = {
-                        "url": f"https://raw.githubusercontent.com/libretro-thumbnails/{repository}/{revision}/{quote(path)}",
-                        "source": {"name": "Libretro", "url": source, "revision": revision},
+                        **libretro_asset(folder, revision, path),
                         "regions": regions, "basis": "archive" if exclusive else "shared-rom",
                         "archive": name,
                     }
@@ -432,7 +438,7 @@ def add_descriptions_and_art(connection, catalog, indexes, reference, *,
                 country_markets=country_markets, checksum_reviews=checksum_reviews,
             ))
             for _, kind, asset in sorted(candidates, key=lambda item: (-item[0], item[2]["url"])):
-                if asset.get("filename") not in unavailable:
+                if asset.get("filename") not in unavailable and asset["url"] not in unavailable:
                     art.setdefault(kind, asset)
             if art:
                 release["artwork"] = art

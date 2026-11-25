@@ -1,0 +1,282 @@
+{
+  "patchInputs": {
+    "1074": {
+      "archive": "[1074]wpj2e_v1.zip",
+      "patches": {
+        "Wpj2e_v1_z64.ips": {
+          "sha256": "ea20fec4344ecb68a56235ee7772f1bbffe2705b1f5b94236fcfa40c29ebd85c",
+          "baseSha1": "3a311ec0d77d4e0fc425a99cb6b9416f072e268e",
+          "layout": "z64",
+          "evidence": "RHDN explicitly gives source CRC32 5e8fc436 and target CRC32 e1094e29 for this member."
+        },
+        "Wpj2e_v1_v64.ips": {
+          "sha256": "15b91313734f1cebcf4eba28da436dbc89aae0357aff482b607e0790273983ae",
+          "baseSha1": "3a311ec0d77d4e0fc425a99cb6b9416f072e268e",
+          "layout": "v64",
+          "evidence": "RHDN explicitly gives source CRC32 8aaf74a3 and target CRC32 38401ddb in v64 order."
+        }
+      },
+      "outputSha1": {
+        "Wpj2e_v1_z64.ips": "27c4c8f199d1045c697c5d79d216d33e1c715760",
+        "Wpj2e_v1_v64.ips": "27c4c8f199d1045c697c5d79d216d33e1c715760"
+      },
+      "versions": {
+        "Wpj2e_v1_z64.ips": "1.0",
+        "Wpj2e_v1_v64.ips": "1.0"
+      }
+    },
+    "1639": {
+      "archive": "[1639]gespanishtranslationv20[sogun-ilducci].zip",
+      "patches": {
+        "GE-ESP-NTSC.xdelta": {
+          "sha256": "b3c9bc628200ae3c6e1056e1f7a5ed646b89fea056e6a47fab40010802c2207e",
+          "baseSha1": "abe01e4aeb033b6c0836819f549c791b26cfde83",
+          "layout": "z64",
+          "evidence": "RHDN source SHA-1 for the USA ROM and the VCDIFF source name agree."
+        },
+        "GE-ESP-PAL.xdelta": {
+          "sha256": "bc206d90da9a21b88fbb07063e61b1108539b9999ec7c9cc036e1d5c809f2db3",
+          "baseSha1": "167c3c433dec1f1eb921736f7d53fac8cb45ee31",
+          "layout": "z64",
+          "evidence": "The VCDIFF header identifies GoldenEye 007 (E) [!].z64 as the base for the PAL patch."
+        }
+      },
+      "outputSha1": {
+        "GE-ESP-NTSC.xdelta": "a1dca6b3d769e5f1dd53f5b33a9af68ce75b0a0c",
+        "GE-ESP-PAL.xdelta": "f1fc35b9ee9e5555e6c0c1224b304ab39e37e6f1"
+      },
+      "versions": {
+        "GE-ESP-NTSC.xdelta": "2.0",
+        "GE-ESP-PAL.xdelta": "2.0"
+      }
+    },
+    "2501": {
+      "archive": "[2501]SinAndPunishmentCastellano10b.7z",
+      "patches": {
+        "SAPESP.10.DOBLADO.xdelta": {
+          "sha256": "ba4715789829566566fda24436edaa5b1c188c685b5180eb88c566d732ba67a3",
+          "baseSha1": "581297b9d5c3a4c33169ae0aae218c742cd9cbcf",
+          "layout": "z64",
+          "evidence": "Author identifies the unbyteswapped Japanese cartridge with internal checksum B6BC0FB0 E3812198."
+        },
+        "SAPESP.10.SUBTITULADO.xdelta": {
+          "sha256": "1bec805d1ff78117537f3ca6fa68a5587cb14269c599d7feb82dbd0545036225",
+          "baseSha1": "581297b9d5c3a4c33169ae0aae218c742cd9cbcf",
+          "layout": "z64",
+          "evidence": "Author identifies the unbyteswapped Japanese cartridge with internal checksum B6BC0FB0 E3812198."
+        }
+      },
+      "outputSha1": {
+        "SAPESP.10.DOBLADO.xdelta": "99a6462e43f1685c49c60e0cc523ba92384edd43",
+        "SAPESP.10.SUBTITULADO.xdelta": "be095eceb5dff536fc15dd445fc7cc493172a7d8"
+      }
+    },
+    "2755": {
+      "archive": "[2755]Bomberman64.rev1.7z",
+      "patches": {
+        "NHAE-16MB.xdelta": {
+          "sha256": "0e8a96bd5d000f1ef196cac5e2511946ac6c65f410501bd3125979a1b6487795",
+          "baseSha1": "62f091b8b951238a7fb98459257ecc8a9095f6e9",
+          "layout": "z64",
+          "evidence": "The package contains a separate 16 MiB patch for the Japanese Arcade Edition alongside a BPS for the older 12 MiB dump."
+        }
+      },
+      "outputSha1": {
+        "NHAE-16MB.xdelta": "0f691f3383de294e85e7ddb939e5533a15b6b15d"
+      }
+    },
+    "2940": {
+      "archive": "[2940]Conker Bad Fur Day [ESP] v1.1b.rar",
+      "patches": {
+        "Conker Bad Fur Day [ESP] v1.1.xdelta": {
+          "sha256": "3314c994454955e21ac48df392ad6fbeb2d034216d8dddfbba9d331cd52d8b17",
+          "baseSha1": "4cbadd3c4e0729dec46af64ad018050eada4f47a",
+          "layout": "z64",
+          "evidence": "RHDN source SHA-1 for the USA ROM and the VCDIFF source name agree."
+        },
+        "Conker Bad Fur Day [ESP] v1.1beta.xdelta": {
+          "sha256": "27f99a23cdb9991604a5e8770218db4717608f69b848a88aede80109a32e1206",
+          "baseSha1": "4cbadd3c4e0729dec46af64ad018050eada4f47a",
+          "layout": "z64",
+          "evidence": "RHDN source SHA-1 for the USA ROM and the VCDIFF source name agree."
+        }
+      },
+      "outputSha1": {
+        "Conker Bad Fur Day [ESP] v1.1.xdelta": "6b3647e675855b3e148a1f738b1170657cdd8df7",
+        "Conker Bad Fur Day [ESP] v1.1beta.xdelta": "e7503215110c72babd1c275136a39323121706a8"
+      },
+      "versions": {
+        "Conker Bad Fur Day [ESP] v1.1.xdelta": "1.1",
+        "Conker Bad Fur Day [ESP] v1.1beta.xdelta": "1.1 beta"
+      }
+    },
+    "2942": {
+      "archive": "[2942]Super Mario 64 (ES) V.3.9.rar",
+      "patches": {
+        "Super Mario 64 (ES) V.3.9.xdelta": {
+          "sha256": "f795c077085f97b37645cc89e8d92528b6d5e07490201675121767f3935a95b5",
+          "baseSha1": "9bef1128717f958171a4afac3ed78ee2bb4e86ce",
+          "layout": "z64",
+          "evidence": "RHDN source SHA-1 for the USA ROM and the VCDIFF source name agree."
+        }
+      },
+      "outputSha1": {
+        "Super Mario 64 (ES) V.3.9.xdelta": "0b7292ccadaea6ae5c7d1194eb41c68e88406307"
+      },
+      "versions": {
+        "Super Mario 64 (ES) V.3.9.xdelta": "3.9"
+      }
+    },
+    "5064": {
+      "archive": "[5064]Mario's Photo Studio (USA).7z",
+      "patches": {
+        "Mario's Photo Studio (USA) (old art).xdelta": {
+          "sha256": "a05cecff90ead8950c6b33af909955f2fa4f641ba57bd73d72f2f276db6fddec",
+          "baseSha1": "3d591ea869696f067913308886edea544b77ed3f",
+          "layout": "z64",
+          "evidence": "The release lists the verified MD5 in native big-endian order. This member preserves the older translated art."
+        },
+        "Mario's Photo Studio (USA).xdelta": {
+          "sha256": "a8402ebcb7b32d4098e0d7aba9febb2fd9dc14656266f7fe4b1c79bb8c8d65e3",
+          "baseSha1": "3d591ea869696f067913308886edea544b77ed3f",
+          "layout": "z64",
+          "evidence": "The release lists the verified MD5 in native big-endian order."
+        }
+      },
+      "outputSha1": {
+        "Mario's Photo Studio (USA) (old art).xdelta": "d98ee346024279d6a01ff642408b0269652e629f",
+        "Mario's Photo Studio (USA).xdelta": "bf5d347f4047f79f7a89a5f3e28fbbf1d0fa9a0a"
+      }
+    },
+    "5583": {
+      "archive": "[5583]sm64tur_v1.0.zip",
+      "patches": {
+        "patch.xdelta3": {
+          "sha256": "371872177725d8c9258fcf29b53339302d64f0716b00390ef9c9f826695c5992",
+          "baseSha1": "9bef1128717f958171a4afac3ed78ee2bb4e86ce",
+          "layout": "z64",
+          "evidence": "RHDN separately lists the No-Intro ROM SHA-1 9bef1128717f958171a4afac3ed78ee2bb4e86ce in ROM order."
+        }
+      },
+      "outputSha1": {
+        "patch.xdelta3": "b63c2498b06d282c895ee1aa44114b1baaca2166"
+      }
+    },
+    "6260": {
+      "archive": "[6260]Neon Genesis Evangelion (K)_210902.7z",
+      "patches": {
+        "Neon Genesis Evangelion (K)_210902_별과그대.xdelta": {
+          "sha256": "9faecd900ea64e5673358c1803534fba1b9da2d9630f677bbd96995e90e5536f",
+          "baseSha1": "a9ba0a4afeed48080f54aa237850f3676b3d9980",
+          "layout": "z64",
+          "evidence": "Both font options specify the same verified Japanese base SHA-1 and VCDIFF source filename."
+        },
+        "Neon Genesis Evangelion (K)_210902_순명조체.xdelta": {
+          "sha256": "37a6a0477d711d080945be22d41eebea569eb9ef0fc64c1c5e4ee1d25449616e",
+          "baseSha1": "a9ba0a4afeed48080f54aa237850f3676b3d9980",
+          "layout": "z64",
+          "evidence": "Both font options specify the same verified Japanese base SHA-1 and VCDIFF source filename."
+        }
+      },
+      "outputSha1": {
+        "Neon Genesis Evangelion (K)_210902_별과그대.xdelta": "0bc021f161325cc9ea42d05bf866d2474ca38c76",
+        "Neon Genesis Evangelion (K)_210902_순명조체.xdelta": "b440b3f93d42a6df0a748e326a16282130f8a599"
+      }
+    },
+    "6425": {
+      "archive": "[6425]WR64PTBR.rar",
+      "patches": {
+        "WAVE RACE 64 PTBR.xdelta": {
+          "sha256": "9c6f9aeaa98e3665aad60ffce8aae98b44fa09815edb2e25b47dc060a5aaa42c",
+          "baseSha1": "c20aa97dc25aec7a9b9c6889286bbd216fc7caa4",
+          "layout": "z64",
+          "evidence": "The documented MD5 matches in little-endian order. The VCDIFF source names the big-endian European image."
+        }
+      },
+      "outputSha1": {
+        "WAVE RACE 64 PTBR.xdelta": "bae1ccf59500a83acdbb202d58ff86340a1ad0b8"
+      }
+    },
+    "6906": {
+      "archive": "[6906]StarFox64[PT-BR][v1.0-R2A][Por WolfferroW].zip",
+      "patches": {
+        "SF64v1.1[PTBR_1.0_r2a][Por_WolfferroW].xdelta": {
+          "sha256": "ae4112b5e0fd752399c1a5f1742a07c7d609757e0adc6c2cd2b265f6e4d5f984",
+          "baseSha1": "09f0d105f476b00efa5303a3ebc42e60a7753b7a",
+          "layout": "z64",
+          "evidence": "The author gives separate SHA-1s for both USA revisions and labels the patch for v1.1."
+        }
+      },
+      "outputSha1": {
+        "SF64v1.1[PTBR_1.0_r2a][Por_WolfferroW].xdelta": "d5d3e65ef3f6006be48fb93536971377dfb7d125"
+      }
+    },
+    "6918": {
+      "archive": "[6918]CBFD_PT-BR_CC_SC.rar",
+      "patches": {
+        "CBFD_PT-BR_CC_Ver 1.01.xdelta": {
+          "sha256": "94ce0af0c3ef17fa10839f60744211d3fec48a566e20638925ad9861648397c5",
+          "baseSha1": "4cbadd3c4e0729dec46af64ad018050eada4f47a",
+          "layout": "z64",
+          "evidence": "The author's z64 CRC32 and VCDIFF source filename match the verified USA image."
+        },
+        "CBFD_PT-BR_SC_Ver 1.01.xdelta": {
+          "sha256": "f8ceaa08a9eb6bdca2c9b829d6324124ba237749c6a6e793fd7ef48a348e53ab",
+          "baseSha1": "4cbadd3c4e0729dec46af64ad018050eada4f47a",
+          "layout": "z64",
+          "evidence": "The author's z64 CRC32 and VCDIFF source filename match the verified USA image."
+        }
+      },
+      "outputSha1": {
+        "CBFD_PT-BR_CC_Ver 1.01.xdelta": "e2a97e664a31f6483c88890403b7ee39630210b8",
+        "CBFD_PT-BR_SC_Ver 1.01.xdelta": "66ec6c14f97068b096f6252ab699ffa8f266878f"
+      },
+      "versions": {
+        "CBFD_PT-BR_CC_Ver 1.01.xdelta": "1.01",
+        "CBFD_PT-BR_SC_Ver 1.01.xdelta": "1.01"
+      }
+    },
+    "7095": {
+      "archive": "[7095]ClayFighters63_[PT-BR]_[DREAM64]_V1.0.zip",
+      "patches": {
+        "ClayFighters63_[PT-BR]_[DREAM64]_V1.0.xdelta": {
+          "sha256": "70d9515115e4b6499ca2dbbec89d819d511208de8b8f93b3c8d51391cab1e704",
+          "baseSha1": "036873ab0d3107b2d9b3225a180f67daf0899365",
+          "layout": "z64",
+          "evidence": "The published little-endian MD5 matches the verified USA cartridge named in the release; the patch targets z64."
+        }
+      },
+      "outputSha1": {
+        "ClayFighters63_[PT-BR]_[DREAM64]_V1.0.xdelta": "4663a73bf7e56b20683cc9c9764b768fc04bcf1e"
+      }
+    },
+    "7102": {
+      "archive": "[7102]F-ZERO X_PTBR_BYFTR_VER_0.99.rar",
+      "patches": {
+        "F-ZERO X_PTBR_BYFTR_VER_0.99.xdelta": {
+          "sha256": "6fa448c6078ee462aa19af63b3a9b3e453ea2b5afa2c5d816ddc971874e9d492",
+          "baseSha1": "5f658e88ffa9de23cba6986a8fd3d3a90d7b4340",
+          "layout": "z64",
+          "evidence": "The published MD5 identifies the USA cartridge, and the release specifies the z64 file."
+        }
+      },
+      "outputSha1": {
+        "F-ZERO X_PTBR_BYFTR_VER_0.99.xdelta": "0964b8858a7507735e216d70151fddf0ff76a7ee"
+      }
+    },
+    "7330": {
+      "archive": "[7330]AeroGauge_PT-BR_por_Dream64_ver_1.1.zip",
+      "patches": {
+        "AeroGauge_PT-BR_por_Dream64_ver_1.1.xdelta": {
+          "sha256": "3c995b25086e5703ed0c3b47338ae9f897b71ebd52aab06742ae8c89bb22ca19",
+          "baseSha1": "77626171c35fb1a4dfebb0927280897f362225ed",
+          "layout": "z64",
+          "evidence": "The documented MD5 matches in little-endian order. The VCDIFF source names the big-endian USA image."
+        }
+      },
+      "outputSha1": {
+        "AeroGauge_PT-BR_por_Dream64_ver_1.1.xdelta": "4e143b14775284a136977415ae9225196cedb488"
+      }
+    }
+  }
+}

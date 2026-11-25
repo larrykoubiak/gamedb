@@ -12,7 +12,7 @@ from gamedb.database import create_database_engine
 
 from .importer import publish, resolve, summarize
 from .inventory import C64, PLAYSTATION, PS2, scan
-from .joshw import COLLECTION, DOMAINS
+from .joshw import COLLECTION, DEFAULT_SYSTEMS, DOMAINS
 from .tags import COMPOSER_TAG_FORMATS, PSF_VERSIONS, RELATED_PSF_VERSIONS, add_track_tags
 
 
@@ -50,9 +50,9 @@ def main(argv=None):
             resolved = list(resolve(connection, library))
 
         tagged = (item for item, row in zip(library, resolved, strict=True)
-                  if row["status"] == "matched"
-                  or any(asset["format"] in COMPOSER_TAG_FORMATS for asset in item.assets))
-        enrich(args.root, tagged, {"spc", "nsf", "gbs", *RELATED_PSF_VERSIONS, *COMPOSER_TAG_FORMATS})
+                  if row["status"] == "matched" or item.system == DEFAULT_SYSTEMS["ssf"]
+                  or any(asset["format"] in COMPOSER_TAG_FORMATS | {"hes"} for asset in item.assets))
+        enrich(args.root, tagged, {"spc", "nsf", "gbs", "hes", *RELATED_PSF_VERSIONS, *COMPOSER_TAG_FORMATS})
         if args.publish:
             with engine.begin() as connection:
                 publish(connection, library, resolved, joshw_bucket=args.joshw_bucket)

@@ -13,6 +13,7 @@ from .archives import open_vgm_location, packed_locations
 
 PSF_VERSIONS = {"psf": 1, "minipsf": 1, "psf2": 2, "minipsf2": 2}
 RELATED_PSF_VERSIONS = {
+    "ssf": 0x11, "minissf": 0x11,
     "usf": 0x21, "miniusf": 0x21, "gsf": 0x22, "minigsf": 0x22, "snsf": 0x23, "minisnsf": 0x23,
     "2sf": 0x24, "mini2sf": 0x24, "ncsf": 0x25, "minincsf": 0x25,
 }
@@ -25,8 +26,8 @@ MAX_PSF_TAG_BYTES = 64 * 1024
 MAX_COMPOSER_TAG_BYTES = 64 * 1024
 MAX_NSF_TAG_BYTES = 64 * 1024
 MAX_VGZ_TAG_SCAN = 64 * 1024**2
-NSF_PLAYLIST_FORMATS = {"m3u", "m3u8"}
-NSF_PLAYLIST_ENTRY = re.compile(rb"(.+)::NSF,\s*([0-9]{1,3})\s*,\s*((?:\\.|[^,\\])*)", re.I)
+PLAYLIST_FORMATS = {"m3u", "m3u8"}
+PLAYLIST_ENTRY = re.compile(rb"(.+)::(NSF|HES),\s*(\$[a-f0-9]{1,2}|[0-9]{1,3})\s*,\s*((?:\\.|[^,\\])*)", re.I)
 
 
 def tag_text(raw):
@@ -154,35 +155,47 @@ def nsf_tags(stream, header, size):
             **nsf_subsong_tags(header[6], header[7], labels)}
 
 
-def nsf_location(asset):
+def playlist_location(asset):
     if member := asset.get("member_name"):
         return asset["source_path"], PurePosixPath(member)
     return None, PurePosixPath(asset["source_path"])
 
 
-def read_nsf_playlist(stream, asset, playlists):
-    archive, path = nsf_location(asset)
+def read_track_playlist(stream, asset, playlists, formats):
+    archive, path = playlist_location(asset)
     for line in stream.read(MAX_NSF_TAG_BYTES).removeprefix(b"\xef\xbb\xbf").splitlines():
         line = line.strip()
-        if line.startswith(b"#") or not (entry := NSF_PLAYLIST_ENTRY.match(line)):
+        if line.startswith(b"#") or not (entry := PLAYLIST_ENTRY.match(line)):
             continue
-        name, number, label = entry.groups()
+        name, kind, number, label = entry.groups()
+        format_name = kind.decode("ascii").lower()
+        if format_name not in formats or (format_name == "nsf" and number.startswith(b"$")):
+            continue
+        index = int(number[1:], 16) if number.startswith(b"$") else int(number)
+        if format_name == "hes":
+            # M3U uses the HES driver ID. ZXTune addresses the same song from one.
+            if index > 255:
+                continue
+            index += 1
         filename = tag_text(name).replace("\\,", ",").replace("\\", "/")
-        if not filename.lower().endswith(".nsf"):
-            filename += ".nsf"
+        if not filename.lower().endswith(f".{format_name}"):
+            filename += f".{format_name}"
         title = tag_text(re.sub(rb"\\([,\\])", rb"\1", label))
-        if title:
+        if title or format_name == "hes":
             songs = playlists[archive, path.parent / filename]
-            index = int(number)
             if songs.setdefault(index, title) != title:
                 songs[index] = ""
 
 
-def add_nsf_playlist_titles(assets, playlists):
+def add_playlist_tracks(assets, playlists):
     for asset in assets:
-        if asset["format"] != "nsf" or not (count := asset.get("subsongs")):
+        format_name = asset["format"]
+        if format_name not in {"nsf", "hes"} or not (songs := playlists.get(playlist_location(asset))):
             continue
-        if not (songs := playlists.get(nsf_location(asset))):
+        if format_name == "hes":
+            asset["playlist_songs"] = [{"number": number, "title": title} for number, title in songs.items()]
+            continue
+        if not (count := asset.get("subsongs")):
             continue
         titles = list(asset.get("subsong_titles", ()))
         titles.extend([""] * (count - len(titles)))
@@ -243,18 +256,18 @@ def read_tags(root, asset):
 def add_track_tags(root, assets, formats):
     packed = defaultdict(list)
     playlists = defaultdict(dict)
-    read_playlists = "nsf" in formats and any(asset["format"] == "nsf" for asset in assets)
+    playlist_targets = {asset["format"] for asset in assets} & formats & {"nsf", "hes"}
 
     def enrich(asset, stream):
-        if asset["format"] in NSF_PLAYLIST_FORMATS:
-            read_nsf_playlist(stream, asset, playlists)
+        if asset["format"] in PLAYLIST_FORMATS:
+            read_track_playlist(stream, asset, playlists, playlist_targets)
         else:
             asset.update(stream_tags(stream, asset))
 
     for asset in assets:
-        playlist = (read_playlists and asset["format"] in NSF_PLAYLIST_FORMATS
+        playlist = (playlist_targets and asset["format"] in PLAYLIST_FORMATS
                     and asset["size_bytes"] <= MAX_NSF_TAG_BYTES)
-        if asset["format"] not in formats and not playlist:
+        if (asset["format"] not in formats or asset["format"] == "hes") and not playlist:
             continue
         if asset.get("archive_format"):
             packed[asset["source_path"]].append(asset)
@@ -275,7 +288,7 @@ def add_track_tags(root, assets, formats):
             # An unavailable member should not prevent importing the other sets.
             continue
     if playlists:
-        add_nsf_playlist_titles(assets, playlists)
+        add_playlist_tracks(assets, playlists)
 
 
 def stream_tags(stream, asset):

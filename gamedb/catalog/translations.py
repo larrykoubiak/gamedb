@@ -2,9 +2,11 @@
 
 from collections import Counter, defaultdict
 from contextlib import closing
+from datetime import date
 from functools import partial
 from hashlib import sha1, sha256
 from html import unescape
+from io import BytesIO
 import json
 import os
 from pathlib import Path
@@ -19,27 +21,38 @@ from libarchive import file_reader
 from libarchive.exception import ArchiveError
 
 from gamedb.catalog.cartridges import VERIFIED_ROM_SQL, read_verified_rom
+from gamedb.catalog.n64_rom import N64_ROM_LIMIT
 from gamedb.catalog.patching import PatchError, apply_translation, embedded_input, supports_patching, valid_ips
+from gamedb.catalog.references import read_index
 from gamedb.catalog.retail import RETAIL_PLATFORMS, retail_tables, write_report
 from gamedb.config import PROJECT_ROOT, ProjectEnvironment
 from gamedb.database import create_database_engine
 from gamedb.vgm.archives import member_name, safe_member
 
 
-RHDN_CONSOLES = {"snes": "snes", "megadrive": "genesis", "nes": "nes", "playstation": "psx"}
-TRANSLATION_ROOTS = {platform: PROJECT_ROOT / f"data/media/{platform}-translations" for platform in RHDN_CONSOLES}
+RHDN_CONSOLES = {"snes": "snes", "megadrive": "genesis", "nes": "nes", "playstation": "psx",
+                 "mastersystem": "sms", "pcengine": "tg16", "n64": "n64", "saturn": "saturn",
+                 "pcfx": "pcfx", "3do": "3do"}
+TRANSLATION_ROOTS = {platform: PROJECT_ROOT / f"data/media/{platform}-translations"
+                     for platform in (*RHDN_CONSOLES, "neogeo")}
+CARTRIDGE_EXTENSIONS = {
+    "snes": "sfc", "megadrive": "md", "nes": "nes", "mastersystem": "sms", "pcengine": "pce", "n64": "z64",
+}
 AUTHOR_REFERENCE = PROJECT_ROOT / "reference/translation_authors.json"
 REVIEW_REFERENCES = {platform: PROJECT_ROOT / f"reference/{platform}_translation_reviews.json"
-                     for platform in ("megadrive", "nes")}
+                     for platform in ("megadrive", "nes", "mastersystem", "pcengine", "n64")}
 INDEX_NAME = ".gamedb-translations.json"
 INDEX_VERSION = 1
 DISC_LAYOUT = "disc-set"
-DISC_PATCH_ARCHIVES = {"zip", "rar", "7z"}
+DISC_PLATFORMS = {"playstation", "saturn", "pcfx", "3do"}
+DISC_PATCH_ARCHIVES = {"zip", "rar", "7z", "ssp"}
 FORMATS = {"bps", "ips", "ups"}
 OTHER_PATCH_FORMATS = {"aps", "ips32", "pat", "ppf", "rup", "vcdiff", "xdelta", "xpatch"}
 SNES_LAYOUTS = {3: "headered", 4: "headerless", 5: "interleaved-headered", 6: "interleaved"}
 MEGADRIVE_LAYOUTS = {8: "headerless", 9: "interleaved-headered"}
 NES_LAYOUTS = {1: "ines", 2: "ines"}
+CARTRIDGE_LAYOUTS = {"snes": SNES_LAYOUTS, "megadrive": MEGADRIVE_LAYOUTS, "nes": NES_LAYOUTS,
+                     "mastersystem": {1: "headerless"}, "pcengine": {14: "headerless"}, "n64": {}}
 MAX_PATCH_SIZE = 16 * 1024 * 1024
 MAX_PACKAGE_PATCH_BYTES = 64 * 1024 * 1024
 TOKEN = re.compile(r"\s*('(?:''|\\.|[^'\\])*'|NULL|-?\d+(?:\.\d+)?|[(),;])", re.S)
@@ -174,7 +187,13 @@ def _verified_bases(connection, platform):
         from gamedb.catalog.nes_rom import ines_fingerprints
 
         fingerprints = ines_fingerprints(SOURCE_DIRECTORY / "rom-fingerprints.json", verified)
-    roms = BaseRoms(verified, ines_fingerprints=fingerprints)
+    if platform == "n64":
+        from gamedb.catalog.n64 import SOURCE_DIRECTORY
+        from gamedb.catalog.n64_translations import Nintendo64Roms
+
+        roms = Nintendo64Roms(verified, SOURCE_DIRECTORY / "translation-fingerprints.json")
+    else:
+        roms = BaseRoms(verified, ines_fingerprints=fingerprints)
     if not roms.by_sha1:
         raise ValueError(f"The published {label} catalog has no verified retail ROMs")
     return roms
@@ -217,7 +236,9 @@ def _archive_members(path):
                 yield member_name(member), member.size, member.get_blocks
 
 
-def _patch_members(path):
+def _patch_members(path, *, extra_formats=None):
+    extra_formats = extra_formats or {}
+    supported = FORMATS | extra_formats.keys()
     members = []
     total_size = 0
     with closing(_archive_members(path)) as archive:
@@ -225,10 +246,10 @@ def _patch_members(path):
             name = member_path.replace("\\", "/")
             filename = Path(name).name
             patch_format = Path(filename).suffix.lower().removeprefix(".")
-            if patch_format not in FORMATS | OTHER_PATCH_FORMATS:
+            if patch_format not in supported | OTHER_PATCH_FORMATS:
                 continue
             payload = None
-            if (patch_format in FORMATS and safe_member(name) and filename.isprintable()
+            if (patch_format in supported and safe_member(name) and filename.isprintable()
                     and size is not None and 0 < size <= MAX_PATCH_SIZE):
                 total_size += size
                 if total_size > MAX_PACKAGE_PATCH_BYTES:
@@ -246,7 +267,7 @@ def _patch_members(path):
                 if len(data) != size:
                     raise ValueError("Incomplete translation patch")
                 payload = data
-            members.append((filename, patch_format, payload))
+            members.append((filename, extra_formats.get(patch_format, patch_format), payload))
     return members
 
 
@@ -274,12 +295,18 @@ def _documented_input(rominfo, layout):
 
 
 def _package_matches(row, path, bases, *, layouts=SNES_LAYOUTS, review=None, native_layout="headerless"):
+    nintendo64 = native_layout == "z64"
+    if nintendo64:
+        from gamedb.catalog.n64_translations import EXTENSIONS, match_members
+
     try:
-        members = _patch_members(path)
+        members = _patch_members(path, extra_formats=EXTENSIONS if nintendo64 else None)
     except (ArchiveError, BadZipFile, NotImplementedError, OSError, RuntimeError, SubprocessError, ValueError):
         return [], "unreadable package"
     if not any(data is not None for _, _, data in members):
         return [], "no supported patch file"
+    if nintendo64:
+        return match_members(row, path, members, bases, review)
     matches = []
     for name, patch_format, data in members:
         if data is None:
@@ -374,11 +401,44 @@ def _translation_authors(source, rows, additional=None):
     return authors
 
 
+def _published_bps_patches(root, sources, bases):
+    for source in sources:
+        base = bases.by_sha1.get(source["baseSha1"])
+        if not base or (original := read_verified_rom(bases.roms[base["sha1"]])) is None:
+            continue
+        digest = source["sha256"]
+        content = read_index(root / "sources" / digest, source["url"], max_bytes=MAX_PATCH_SIZE).content
+        if sha256(content).hexdigest() != digest:
+            raise ValueError(f"Translation package checksum differs for {source['sourceUrl']}")
+        if "members" in source:
+            with ZipFile(BytesIO(content)) as archive:
+                patches = {}
+                for name in source["members"]:
+                    if archive.getinfo(name).file_size > MAX_PATCH_SIZE:
+                        raise ValueError(f"Translation patch is too large: {name}")
+                    patches[name] = archive.read(name)
+        else:
+            patches = {source["filename"]: content}
+        released = (date.fromisoformat(source["released"]) - date(1970, 1, 1)).days * 86400
+        for name, patch in patches.items():
+            patched = apply_translation(original, patch, "bps", "headerless")
+            checksum = sha256(patch).hexdigest()
+            key = sha256(f"{base['sha1']}:{source['language'].casefold()}:headerless:{checksum}".encode()).hexdigest()
+            _store_patch(root / "patches" / f"{checksum}.bps", patch)
+            yield {
+                "key": key, "language": source["language"], "authors": source["authors"],
+                "version": source.get("versions", {}).get(name, source["version"]), "status": "Fully Playable",
+                "releasedAt": released, "filename": name, "format": "bps", "layout": "headerless",
+                "evidence": "embedded", "size": len(patch), "sha256": checksum, "baseSha1": base["sha1"],
+                "signatures": base["signatures"], "sourceUrl": source["sourceUrl"], "outputSha1": sha1(patched).hexdigest(),
+            }
+
+
 def _import_translations(source, root, bases, *, platform="snes", report=None):
     label = RETAIL_PLATFORMS[platform]
     reference = REVIEW_REFERENCES.get(platform)
     reviews = json.loads(reference.read_text(encoding="utf-8")) if reference else {}
-    layouts = {"snes": SNES_LAYOUTS, "megadrive": MEGADRIVE_LAYOUTS, "nes": NES_LAYOUTS}[platform]
+    layouts = CARTRIDGE_LAYOUTS[platform]
     consoles = {row["consolekey"]: row["consoleid"] for row in _dump_rows(source, "console")}
     languages = {row["id"]: unescape(row["name"]) for row in _dump_rows(source, "language")}
     statuses = {row["id"]: row["description"] for row in _dump_rows(source, "patchstatus")}
@@ -413,9 +473,10 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
     patch_root.mkdir(parents=True, exist_ok=True)
     translations = {}
     for row, path in packages:
-        review = reviews.get("ips", {}).get(str(row["transkey"]))
+        review = reviews.get("patchInputs" if platform == "n64" else "ips", {}).get(str(row["transkey"]))
+        native_layout = {"nes": "ines", "n64": "z64"}.get(platform, "headerless")
         matches, reason = _package_matches(row, path, bases, layouts=layouts, review=review,
-                                           native_layout="ines" if platform == "nes" else "headerless")
+                                           native_layout=native_layout)
         if reason:
             skip(row, reason)
             continue
@@ -431,6 +492,19 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
                                            bytes.fromhex(header) if header else None)
                 if layout is None:
                     continue
+            if platform in {"mastersystem", "pcengine", "n64"}:
+                original = (read_verified_rom(bases.roms[base["sha1"]], max_size=N64_ROM_LIMIT) if platform == "n64"
+                            else read_verified_rom(bases.roms[base["sha1"]]))
+                if original is None:
+                    continue
+                try:
+                    patched = apply_translation(original, data, patch_format, layout)
+                except PatchError:
+                    continue
+                if expected_sha1 and sha1(patched).hexdigest() != expected_sha1:
+                    continue
+                if platform == "n64":
+                    expected_sha1 = sha1(patched).hexdigest()
             digest = sha256(data).hexdigest()
             fingerprint = f"{base['sha1']}:{language.casefold()}:{layout}:{digest}"
             pad_to_size = member_review.get("padToSize")
@@ -461,7 +535,9 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
                 translations[key] = record
             imported = True
         if not imported:
-            skip(row, "reviewed NES output checksum did not match")
+            skip(row, "patch could not be applied to the verified ROM")
+    published = list(_published_bps_patches(root, reviews.get("publishedBps", ()), bases))
+    translations.update((record["key"], record) for record in published)
     records = sorted(translations.values(), key=translation_order)
     if not records:
         raise ValueError(f"No translation patches matched the verified {label} catalog")
@@ -485,7 +561,7 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
 def sync_translations(source, root, *, platform="snes", report=None):
     if source.name == RHDN_CONSOLES[platform] and source.parent.name == "translations":
         source = source.parent.parent
-    if platform == "playstation":
+    if platform in DISC_PLATFORMS:
         from .disc_translations import sync_disc_translations
 
         ProjectEnvironment().load()

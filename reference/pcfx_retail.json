@@ -1,0 +1,61 @@
+{
+  "archiveTitles": {
+    "Albarea no Otome": [
+      "Albaria no Otome"
+    ],
+    "Cutie Honey FX": [
+      "Cutey Honey FX"
+    ],
+    "Der Langrisser FX": [
+      "Langrisser FX, Der"
+    ],
+    "Ginga Ojōsama Densetsu Yuna FX: Kanashimi no Sirene": [
+      "Ginga Ojousama Densetsu Yuna FX - Kanashimi no Selene"
+    ],
+    "Megami Tengoku II": [
+      "Megami Paradise II"
+    ],
+    "Pachio-kun FX: Maboroshi no Shima Daikessen": [
+      "Pachio-kun FX - Maboroshi no Shima Daisakusen"
+    ],
+    "Pia Carrot e Yōkoso": [
+      "Pia Carrot e Youkoso!! We've Been Waiting for You"
+    ],
+    "Shanghai: The Great Wall": [
+      "Shanghai - Banri no Choujou"
+    ],
+    "Sotsugyō II: Neo Generation FX": [
+      "Sotsugyou II FX - Neo Generation"
+    ],
+    "Super Real Mahjong PV": [
+      "Super Real Mahjong P.V FX"
+    ],
+    "Team Innocent: The Point of No Return": [
+      "Team Innocent - The Point of No Return - G.C.P.O.SS"
+    ],
+    "Tekipaki: Working Love FX": [
+      "Hataraku Shoujo - Tekipaki Working Love FX"
+    ],
+    "Wakusei Kōgekitai: Little Cats": [
+      "Wakusei Koukitai - Little Cats"
+    ]
+  },
+  "discSets": [
+    {
+      "title": "Tenchi Muyō!: Ryō-ōki FX",
+      "archives": [
+        "Tenchi Muyou! Ryououki FX (Japan) (Disc A) (Hakua Kaikou).zip",
+        "Tenchi Muyou! Ryououki FX (Japan) (Disc B) (Kiyone Houguu).zip"
+      ],
+      "source": "https://www.ne.jp/asahi/krk/kct/game_catalog/nec.htm"
+    },
+    {
+      "title": "Zen-Nihon Joshi Pro Wrestling: Queen of Queens",
+      "archives": [
+        "Zen Nihon Joshi Pro Wres - Queen of Queens (Japan) (Disc A) (Zenjo vs Zenjo).zip",
+        "Zen Nihon Joshi Pro Wres - Queen of Queens (Japan) (Disc B) (Zenjo vs KWP).zip"
+      ],
+      "source": "https://www.ne.jp/asahi/krk/kct/game_catalog/nec.htm"
+    }
+  ]
+}

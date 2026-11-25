@@ -84,16 +84,16 @@ def read_cartridge_roms(connection, catalog):
     return {row.signature: row for row in connection.execute(VERIFIED_ROM_SQL, {"signatures": signatures})}
 
 
-def read_verified_rom(rom):
+def read_verified_rom(rom, *, max_size=16 * 1024 * 1024):
     path = Path(rom.path)
     if path.suffix.lower() != ".zip":
         return None
     try:
         with ZipFile(path) as archive, archive.open(rom.member_path) as stream:
-            content = stream.read(16 * 1024 * 1024 + 1)
+            content = stream.read(max_size + 1)
     except (OSError, BadZipFile, KeyError, RuntimeError):
         return None
-    if len(content) > 16 * 1024 * 1024 or sha1(content).hexdigest() != rom.sha1:
+    if len(content) > max_size or sha1(content).hexdigest() != rom.sha1:
         return None
     return content
 

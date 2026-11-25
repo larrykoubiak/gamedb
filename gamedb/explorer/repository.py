@@ -9,6 +9,7 @@ import subprocess
 
 from gamedb.catalog.cartridges import verified_roms_sql
 from gamedb.catalog.neogeo import PLATFORM as NEOGEO, SET_NAME as NEOGEO_SET, add_arcade_sets, arcade_sets_sql
+from gamedb.catalog.disc_catalog import DISC_SYSTEMS
 from gamedb.catalog.retail import RETAIL_PLATFORMS, retail_tables
 from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.config import PROJECT_ROOT
@@ -386,12 +387,13 @@ class CatalogRepository:
             return None
         table, _, _ = retail_tables(platform)
         if game_key is not None:
+            key = quote_sql_text(game_key)
             catalog = self._read_listing(f"""
                 SELECT jsonb_build_object('source', payload->'source', 'game', game)
                 FROM {table}
                 CROSS JOIN LATERAL jsonb_array_elements(payload->'games') AS games(game)
-                WHERE singleton AND game->>'key' =
-            """ + quote_sql_text(game_key))
+                WHERE singleton AND (game->>'key' = {key} OR (game->'formerKeys') ? {key})
+            """)
             if catalog:
                 game = catalog["game"]
                 if platform == NEOGEO:
@@ -715,7 +717,20 @@ class CatalogRepository:
             FROM (VALUES {tables}) AS retail(platform, relation)
             WHERE to_regclass(relation) IS NOT NULL
         """)
-        return self._read_listing(self.install_manifest_sql(release_signature, platforms))
+        manifest = self._read_listing(self.install_manifest_sql(release_signature, platforms))
+        if manifest is None and (available := [platform for platform in platforms if platform in DISC_SYSTEMS]):
+            catalogs = []
+            for platform in available:
+                manufacturer, system = DISC_SYSTEMS[platform]
+                catalogs.append(
+                    f"SELECT payload, {quote_sql_text(manufacturer)} AS manufacturer, {quote_sql_text(system)} AS system_name "
+                    f"FROM {retail_tables(platform)[0]} WHERE singleton"
+                )
+            return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "disc_install_manifest.sql").render(
+                release_signature=quote_sql_text(self._signature(release_signature, "release_signature")),
+                catalogs_sql=" UNION ALL ".join(catalogs),
+            ))
+        return manifest
 
     def correction_targets(
         self, system_id: int, exclude_software_id: int, title_filter: str
