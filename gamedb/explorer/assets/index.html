@@ -26,9 +26,9 @@
     <table class="system-matrix" role="table" aria-label="Systems by generation and manufacturer">
       <colgroup>
         <col class="generation-column">
-        <col span="4">
-        <col class="other-makers-column">
+        <col span="6">
       </colgroup>
+      <colgroup span="2"></colgroup>
       <thead role="rowgroup">
         <tr role="row">
           <th scope="col" role="columnheader">Generation</th>
@@ -36,7 +36,9 @@
           <th scope="col" role="columnheader">Sega</th>
           <th scope="col" role="columnheader">NEC</th>
           <th scope="col" role="columnheader">Sony</th>
-          <th scope="col" role="columnheader">Other makers</th>
+          <th scope="col" role="columnheader">Atari</th>
+          <th scope="col" role="columnheader">SNK</th>
+          <th scope="colgroup" colspan="2" role="columnheader">Other makers</th>
         </tr>
       </thead>
       <tbody role="rowgroup">
@@ -57,6 +59,8 @@
           <td role="cell"></td>
           <td role="cell"></td>
           <td role="cell"></td>
+          <td role="cell"></td>
+          <td role="cell" colspan="2"></td>
         </tr>
         <tr role="row">
           <th scope="row" role="rowheader">4th<span class="generation-suffix"> generation</span></th>
@@ -79,14 +83,14 @@
             </a>
           </td>
           <td role="cell"></td>
-          <td role="cell" class="other-makers">
-            <div class="catalog-card-group">
-              <a class="catalog-card" href="/catalog/neogeo">
-                <span class="catalog-card-art"><img src="/system-icons/retail-logo-neogeo.png" width="330" height="87" alt=""></span>
-                <span class="catalog-card-label">Neo Geo <span>SNK · MVS / AES</span></span>
-              </a>
-            </div>
+          <td role="cell"></td>
+          <td role="cell">
+            <a class="catalog-card" href="/catalog/neogeo">
+              <span class="catalog-card-art"><img src="/system-icons/retail-logo-neogeo.png" width="330" height="87" alt=""></span>
+              <span class="catalog-card-label">Neo Geo <span>MVS / AES</span></span>
+            </a>
           </td>
+          <td role="cell" colspan="2"></td>
         </tr>
         <tr role="row">
           <th scope="row" role="rowheader">5th<span class="generation-suffix"> generation</span></th>
@@ -114,21 +118,24 @@
               <span class="catalog-card-label">PlayStation <span>US library</span></span>
             </a>
           </td>
-          <td role="cell" class="other-makers">
-            <div class="catalog-card-group">
-              <a class="catalog-card" href="/catalog/jaguar">
-                <span class="catalog-card-art"><img src="/system-icons/retail-logo-jaguar.png" width="330" height="117" alt=""></span>
-                <span class="catalog-card-label">Jaguar <span>Atari</span></span>
-              </a>
-              <a class="catalog-card" href="/catalog/cd32">
-                <span class="catalog-card-art"><img src="/system-icons/retail-logo-cd32.png" width="330" height="44" alt=""></span>
-                <span class="catalog-card-label">Amiga CD32 <span>Commodore</span></span>
-              </a>
-              <a class="catalog-card" href="/catalog/3do">
-                <span class="catalog-card-art"><img src="/system-icons/retail-logo-3do.png" width="330" height="101" alt=""></span>
-                <span class="catalog-card-label">3DO <span>The 3DO Company</span></span>
-              </a>
-            </div>
+          <td role="cell">
+            <a class="catalog-card" href="/catalog/jaguar">
+              <span class="catalog-card-art"><img src="/system-icons/retail-logo-jaguar.png" width="330" height="117" alt=""></span>
+              <span class="catalog-card-label">Atari Jaguar</span>
+            </a>
+          </td>
+          <td role="cell"></td>
+          <td role="cell" class="other-maker">
+            <a class="catalog-card" href="/catalog/cd32">
+              <span class="catalog-card-art"><img src="/system-icons/retail-logo-cd32.png" width="330" height="44" alt=""></span>
+              <span class="catalog-card-label">Amiga CD32 <span>Commodore</span></span>
+            </a>
+          </td>
+          <td role="cell" class="other-maker">
+            <a class="catalog-card" href="/catalog/3do">
+              <span class="catalog-card-art"><img src="/system-icons/retail-logo-3do.png" width="330" height="101" alt=""></span>
+              <span class="catalog-card-label">3DO <span>The 3DO Company</span></span>
+            </a>
           </td>
         </tr>
       </tbody>
