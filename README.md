@@ -61,6 +61,42 @@ After a full derivation, build the complete consumer projection with
 `python -m gamedb rebuild`. Use `--plan`, `--layers`, `--from-layer`, or
 `--through-layer` to inspect or select its SQL layers.
 
+## Neo Geo retail catalog
+
+Explorer’s **Neo Geo retail catalog** at `/catalog/neogeo` covers 148 original
+MVS games, including 117 with AES releases. Each title has one page with its
+cartridge release dates and numbers. The roster adapts the pinned release list
+under CC BY-SA 4.0 and uses MAME’s cartridge records for set and revision
+names. [Pinned release list](https://en.wikipedia.org/wiki/Special:PermanentLink/1378818686#Games) · [MAME cartridge records](https://github.com/mamedev/mame/blob/mame0285/hash/neogeo.xml)
+
+```sh
+python -m gamedb sync-neogeo-soundtracks
+python -m gamedb seed-neogeo --report data/logs/neogeo-retail/matches.json --publish
+python -m gamedb sync-neogeo-manuals --catalog data/logs/neogeo-retail/matches.json \
+  --root "/mnt/synology/photo/Manuals/Neo Geo"
+docker compose exec -T explorer nice -n 10 python -m gamedb.explorer warm-manual-cache neogeo
+```
+
+Catalog cards prefer verified AES covers. MVS galleries show arcade art,
+title screens, and gameplay captures. Each gallery's manual
+thumbnail follows the selected release. The MVS release table can link an
+AES booklet when an arcade document is unavailable. [MVS Archive](https://www.mvs-archive.net/) · [Neo Geo cover scans](https://www.vgmuseum.com/scans/neogeo.html) · [RQ87’s AES manuals](https://rq87.flyingomelette.com/RQ/NG/MS/aes.html) · [Manual scans](https://archive.org/details/SNKNeoGeoMVSManuals)
+
+The soundtrack sync verifies the reviewed VGM archives by SHA-256 and indexes
+their tracks and composer tags in the shared VGM library. The library includes
+VGMRips packs mirrored in JoshW’s Hoot archive and the Internet Archive.
+[VGMRips Neo Geo](https://vgmrips.net/packs/system/snk/neo-geo) · [JoshW Hoot archive](https://hoot.joshw.info/!MDScene_Arcade_VGM/)
+
+The release pages link your existing FinalBurn Neo and MAME sets and offer
+authenticated Arcade bundles with the required BIOS and parent packages.
+League Bowling and Thrash Rally support single-cabinet bundles. The manifest
+records the undumped link MCU in `omittedOptional` for the reviewed DAT
+versions. [MAME Neo Geo driver](https://github.com/mamedev/mame/blob/mame0285/src/mame/neogeo/neogeo.cpp)
+
+Omit `--publish` from the seed command for a read-only coverage report. Set
+`GAMEDB_NEOGEO_MANUAL_HOST_ROOT` for a different Compose manual directory or
+`GAMEDB_NEOGEO_MANUAL_ROOT` when running Explorer directly.
+
 ## US PlayStation retail catalog
 
 The Game-Rave US checklist sets the scope for retail games and licensed
@@ -175,6 +211,35 @@ library lives in `data/media/megadrive-translations` and both Compose
 configurations mount it read-only. Set `GAMEDB_MEGADRIVE_TRANSLATION_ROOT` when
 running Explorer directly with a library created using `--root`. Some older
 patch archives require `7z` to extract their members.
+
+## Master System and Mark III retail catalog
+
+Explorer serves the catalog at `/catalog/mastersystem`. The pinned list
+provides Japanese, North American, PAL, and Brazilian releases, including
+Sega Cards and retail compilations. SMS Power! supplies additional documented
+Brazilian editions and scans. Dates remain blank where the source gives only
+the region. The regional picker selects the cover, manual, and ROM
+for that edition. Pack-in games link to their compilation. [Pinned release list](https://en.wikipedia.org/wiki/Special:PermanentLink/1383992196) · [SMS Power! release index](https://www.smspower.org/Games/SMS)
+
+```sh
+python -m gamedb sync-mastersystem-soundtracks
+python -m gamedb seed-mastersystem --report data/logs/mastersystem-retail/matches.json --publish
+python -m gamedb sync-mastersystem-manuals --catalog data/logs/mastersystem-retail/matches.json \
+  --root "/mnt/synology/photo/Manuals/Master System"
+docker compose exec -T explorer nice -n 10 python -m gamedb.explorer warm-manual-cache mastersystem
+```
+
+The seed uses SHA-1-verified No-Intro content and MAME cartridge records.
+`reference/mastersystem_retail.json` records reviewed title aliases, regional
+reissues, and archive exceptions. Omit `--publish` for a read-only report.
+Use `--sources` to reuse the source indexes cached under
+`data/media/cache/mastersystem-retail`. [MAME Master System software list](https://github.com/mamedev/mame/blob/mame0285/hash/sms.xml)
+
+Manuals come from Sega Retro and the Internet Archive. The soundtrack player
+uses the existing JoshW library and the reviewed, SHA-256-pinned SMS Power!
+packs. Set `GAMEDB_MASTERSYSTEM_MANUAL_HOST_ROOT` for an alternate Compose
+mount or `GAMEDB_MASTERSYSTEM_MANUAL_ROOT` when running Explorer directly.
+[Sega Retro manual scans](https://segaretro.org/Category:Master_System_EU_manual_scans) · [Internet Archive manual collection](https://archive.org/details/sega_master_system_manuals) · [SMS Power! VGM archive](https://www.smspower.org/Music/VGMs)
 
 ## NES and Famicom retail catalog
 
@@ -1000,7 +1065,7 @@ the dependency ZIPs. Bundles stream without recompressing CHDs or making a
 multi-GB temporary copy; generated bundle downloads do not support resumption.
 
 Completeness is separate from MAME's reported emulation status. Missing ROMs,
-undumped requirements, samples, missing host files or changed ZIP member
+undumped required chips, samples, missing host files or changed ZIP member
 size/CRC produce an incomplete manifest and block bundle downloads with HTTP
 409. This first MAME implementation has no samples inventory importer, so
 sample-dependent machines explicitly remain incomplete. Disk requirements use

@@ -193,6 +193,14 @@ function renderSoundtracks(container, soundtracks, {compact = false} = {}) {
     optionsSummary = soundtrackElement("summary", "Options");
     const tools = picker.parentElement;
     tools.append(credits);
+    const sources = [...new Set(albums.map(album => album.sourceUrl).filter(Boolean))];
+    for (const url of sources) {
+      const link = soundtrackElement("a", "VGMRips source");
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      tools.append(link);
+    }
     options.append(optionsSummary, tools);
     playlistBar.append(trackList, options);
     root.querySelector(".soundtrack-playlist-label").hidden = true;

@@ -1,0 +1,106 @@
+{
+  "archiveAliases": [
+    {"edition": "Battletoads in Battlemaniacs", "market": "BR", "archiveTitle": "Battlemaniacs", "evidence": "https://www.smspower.org/Games/Battlemaniacs-SMS"},
+    {"edition": "Chase H.Q.", "market": "PAL", "archiveTitle": "Taito Chase H.Q.", "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/sms.xml"},
+    {"edition": "Desert Speedtrap Starring Road Runner & Wile E. Coyote", "market": "PAL", "archiveTitle": "Desert Speedtrap Starring Road Runner and Wile E. Coyote", "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/sms.xml"},
+    {"edition": "Fire and Ice", "market": "BR", "archiveTitle": "Fire & Ice", "evidence": "https://www.smspower.org/Games/FireAndIce-SMS"},
+    {"edition": "Golvellius: Valley of Doom", "market": "JP", "archiveTitle": "Maou Golvellius", "evidence": "https://www.smspower.org/Games/Golvellius-SMS"},
+    {"edition": "As Aventuras da TV Colosso", "market": "BR", "archiveTitle": "Aventuras da TV Colosso, As", "evidence": "https://www.smspower.org/Games/TVColosso-SMS"},
+    {"edition": "Sapo Xulé: S.O.S. Lagoa Poluída", "market": "BR", "archiveTitle": "Sapo Xule - S.O.S. Lagoa Poluida", "evidence": "https://www.smspower.org/Games/SapoXuleSOSLagoaPoluida-SMS"},
+    {"edition": "Sapo Xulé: O Mestre do Kung Fu", "market": "BR", "archiveTitle": "Sapo Xule - O Mestre do Kung Fu", "evidence": "https://www.smspower.org/Games/SapoXuleOMestreDoKungFu-SMS"},
+    {"edition": "Indiana Jones and the Last Crusade: The Action Game", "market": "PAL", "archiveTitle": "Indiana Jones and the Last Crusade", "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/sms.xml"},
+    {"edition": "Montezuma's Revenge", "market": "NA", "archiveTitle": "Montezuma's Revenge - Featuring PANAMA JOE", "evidence": "https://www.smspower.org/Games/MontezumasRevenge-SMS"},
+    {"edition": "The Quest for the Shaven Yak Starring Ren Hoëk & Stimpy", "market": "BR", "archiveTitle": "Quest for the Shaven Yak Starring Ren Hoek & Stimpy", "evidence": "https://github.com/mamedev/mame/blob/mame0285/hash/sms.xml"},
+    {"edition": "The Smurfs Travel the World", "market": "PAL", "archiveTitle": "Schtroumpfs Autour du Monde, Les", "evidence": "https://www.smspower.org/Games/SmurfsTravelTheWorld-SMS"},
+    {"edition": "World Soccer", "market": "NA", "archiveTitle": "World Soccer", "evidence": "MAME sms.xml worldsoc identifies the US Great Soccer release"},
+    {"edition": "Zool", "market": "PAL", "archiveTitle": "Zool - Ninja of the 'Nth' Dimension", "evidence": "https://www.smspower.org/Games/Zool-SMS"}
+  ],
+  "verifiedArchives": [
+    {
+      "edition": "Assault City", "market": "PAL", "signature": "5235b9ab4e5fddb9b0fb611ab688516f",
+      "archiveName": "Assault City (Europe) (Joypad).zip",
+      "evidence": "MAME sms.xml assaultc1, SHA-1 ea46350ce4827b282b73600a7f4feadbec7c0ed4 (control pad edition)"
+    },
+    {
+      "edition": "Assault City", "market": "PAL", "signature": "33c68c86d3cc907a80dd7c16b9d8e39e",
+      "archiveName": "Assault City (USA, Europe, Brazil) (En) (Light Phaser).zip",
+      "evidence": "MAME sms.xml assaultc, SHA-1 835217550ecb92422d887a3353ff43890c71566b (Light Phaser edition)"
+    },
+    {
+      "edition": "Great Baseball (JP)", "market": "JP", "signature": "cc6de2cca7a31a4a4545b4a78d0d5760",
+      "evidence": "MAME sms.xml greatbasj matches the 1985 My Card Mark III, SHA-1 e6eaaec61bec32dee5161ae59a7a0902f0d05dc9"
+    },
+    {
+      "edition": "Great Golf (JP)", "market": "JP", "signature": "572e28403d6c6f47ab1d3aef2b6e644b",
+      "evidence": "MAME sms.xml greatglj matches the 1986 Mark III cartridge, SHA-1 417739aa248032f5aebe05750a5de85346e36712"
+    },
+    {
+      "edition": "Great Golf", "market": "JP", "signature": "f47f588a7f6c1b8e97c646a55f4ef277",
+      "evidence": "MAME sms.xml greatglf identifies this World ROM as the 1987 Japanese Masters Golf, SHA-1 3c0b12cfb70f2515429b6e88e0753d69dbb907ab"
+    },
+    {
+      "edition": "4 PAK All Action", "market": "PAL", "signature": "73f396a5b1a4525f4082150430bff104",
+      "archiveName": "4 PAK All Action (Australia) (Unl).zip", "independentRetail": true,
+      "evidence": "Original HES retail cartridge. MAME sms.xml 4pak, SHA-1 2f8b5a66381dbbe7524af7af6372fbb6a6575ac5"
+    }
+  ],
+  "additionalReleases": [
+    {
+      "game": "4 PAK All Action", "newGame": true, "market": "PAL", "date": "1995", "publisher": "HES",
+      "source": {"name": "SMS Power!", "url": "https://www.smspower.org/Games/4PakAllAction-SMS"}
+    },
+    {"game": "Asterix and the Secret Mission", "market": "BR", "edition": "As Aventuras da TV Colosso", "publisher": "Tec Toy", "source": {"name": "SMS Power!", "url": "https://www.smspower.org/Games/TVColosso-SMS"}},
+    {"game": "Astro Warrior", "market": "BR", "edition": "Sapo Xulé: S.O.S. Lagoa Poluída", "publisher": "Tec Toy", "source": {"name": "SMS Power!", "url": "https://www.smspower.org/Games/SapoXuleSOSLagoaPoluida-SMS"}},
+    {"game": "Ghost House", "market": "BR", "edition": "Chapolim x Drácula: Um Duelo Assustador", "publisher": "Tec Toy", "source": {"name": "SMS Power!", "url": "https://www.smspower.org/Games/ChapolimXDracula-SMS"}},
+    {"game": "Kung Fu Kid", "market": "BR", "edition": "Sapo Xulé: O Mestre do Kung Fu", "publisher": "Tec Toy", "source": {"name": "SMS Power!", "url": "https://www.smspower.org/Games/SapoXuleOMestreDoKungFu-SMS"}},
+    {"game": "Psycho Fox", "market": "BR", "edition": "Sapo Xulé vs. Os Invasores do Brejo", "publisher": "Tec Toy", "source": {"name": "SMS Power!", "url": "https://www.smspower.org/Games/SapoXuleVsOsInvasoresDoBrejo-SMS"}},
+    {"game": "Teddy Boy", "market": "BR", "edition": "Geraldinho", "publisher": "Tec Toy", "source": {"name": "SMS Power!", "url": "https://www.smspower.org/Games/Geraldinho-SMS"}},
+    {"game": "World Soccer", "market": "JP", "edition": "Sports Pad Soccer", "date": "October 29, 1988", "publisher": "Sega", "source": {"name": "Sega", "url": "https://www.sega.jp/history/hard/segamark3/software.html"}}
+  ],
+  "scanTitles": {
+    "Great Baseball (JP)": ["Great Baseball (Japan)", "Great Baseball (Sega Card)"],
+    "Great Golf (JP)": ["Great Golf (Japan)", "Great Golf [Japan]"]
+  },
+  "smsPowerTitles": {
+    "Ayrton Senna's Super Monaco GP II": "/Games/SuperMonacoGPII-SMS",
+    "Asterix and the Secret Mission": "/Games/AsterixAndTheSecretMission-SMS",
+    "Great Baseball (JP)": "/Games/GreatBaseballCard-SMS",
+    "Great Golf (JP)": "/Games/GreatGolfJP-SMS"
+  },
+  "unavailableImages": [
+    "ac97d8ef-77b4-4e5a-9cfc-d837a5e57534.png",
+    "4a3abd84-faf6-4aad-b2fb-b1681abe3679.jpg",
+    "0a20ee92-1829-486e-af0a-242f117996db.jpg",
+    "282b0c37-4388-4f9a-bac4-184346a6d206.jpg",
+    "baa8e1b5-1c0a-4df0-8d7c-5016ee291dee.png",
+    "5212d2b5-bbd9-4627-a110-7bee923a4fc5.jpg",
+    "684242d9-742c-459b-8720-5f7e14e30ab8.jpg",
+    "b8efda31-8bbc-40cd-81ba-03f9bbfa53e4.jpg"
+  ],
+  "artwork": [
+    {"edition": "Asterix and the Secret Mission", "markets": ["BR"], "kind": "boxart", "file": "Scans/AsterixAndTheSecretMission-SMS-BR-medium.jpg", "page": "Scans/AsterixAndTheSecretMission-SMS-BR", "preferred": true},
+    {"edition": "Ayrton Senna's Super Monaco GP II", "markets": ["PAL"], "kind": "boxart", "file": "Scans/SuperMonacoGPII-SMS-EU-B-medium.jpg", "page": "Scans/SuperMonacoGPII-SMS-EU-B"},
+    {"edition": "Dragon Crystal", "markets": ["PAL"], "kind": "boxart", "file": "Scans/DragonCrystal-SMS-EU-medium.jpg", "page": "Scans/DragonCrystal-SMS-EU"},
+    {"edition": "Enduro Racer", "markets": ["JP"], "kind": "boxart", "file": "Scans/EnduroRacer-SMS-JP-Front-medium.jpg", "page": "Scans/EnduroRacer-SMS-JP-Front"},
+    {"edition": "Enduro Racer", "markets": ["NA"], "kind": "boxart", "file": "Scans/EnduroRacer-SMS-US-Front-medium.jpg", "page": "Scans/EnduroRacer-SMS-US-Front"},
+    {"edition": "Enduro Racer", "markets": ["PAL"], "kind": "boxart", "file": "Scans/EnduroRacer-SMS-EU-NoR-medium.jpg", "page": "Scans/EnduroRacer-SMS-EU-NoR"},
+    {"edition": "George Foreman's KO Boxing", "markets": ["BR"], "kind": "boxart", "file": "Scans/HeavyweightChamp-SMS-BR-GeorgeForemansKOBoxing-medium.jpg", "page": "Scans/HeavyweightChamp-SMS-BR-GeorgeForemansKOBoxing"},
+    {"edition": "George Foreman's KO Boxing", "markets": ["PAL"], "kind": "boxart", "file": "Scans/HeavyweightChamp-SMS-EU-GeorgeForemansKOBoxing-medium.jpg", "page": "Scans/HeavyweightChamp-SMS-EU-GeorgeForemansKOBoxing"},
+    {"edition": "Great Baseball (JP)", "markets": ["JP"], "kind": "boxart", "file": "Scans/GreatBaseballCard-SMS-JP-Front-medium.jpg", "page": "Scans/GreatBaseballCard-SMS-JP-Front"},
+    {"edition": "Great Baseball (JP)", "markets": ["JP"], "kind": "title", "file": "Screenshots/GreatBaseballCard-SMS-TitleScreen.png", "page": "Screenshots/GreatBaseballCard-SMS"},
+    {"edition": "Great Baseball (JP)", "markets": ["JP"], "kind": "snap", "file": "Screenshots/GreatBaseballCard-SMS-1.png", "page": "Screenshots/GreatBaseballCard-SMS"},
+    {"edition": "Great Golf (JP)", "markets": ["JP"], "kind": "boxart", "file": "Scans/GreatGolfJP-SMS-JP-Front-medium.jpg", "page": "Scans/GreatGolfJP-SMS-JP-Front"},
+    {"edition": "Great Golf (JP)", "markets": ["JP"], "kind": "title", "file": "Screenshots/GreatGolfJP-SMS-TitleScreen.png", "page": "Screenshots/GreatGolfJP-SMS"},
+    {"edition": "Great Golf (JP)", "markets": ["JP"], "kind": "snap", "file": "Screenshots/GreatGolfJP-SMS-02.png", "page": "Screenshots/GreatGolfJP-SMS"},
+    {"edition": "Great Golf", "markets": ["JP"], "kind": "boxart", "file": "Scans/GreatGolf-SMS-JP-MastersGolf-Front-medium.jpg", "page": "Scans/GreatGolf-SMS-JP-MastersGolf-Front"},
+    {"edition": "Megumi Rescue", "markets": ["JP"], "kind": "boxart", "file": "Scans/MegumiRescue-SMS-JP-Front-medium.jpg", "page": "Scans/MegumiRescue-SMS-JP-Front"},
+    {"edition": "Miracle Warriors: Seal of the Dark Lord", "markets": ["PAL"], "kind": "boxart", "file": "Scans/MiracleWarriors-SMS-EU-R-medium.jpg", "page": "Scans/MiracleWarriors-SMS-EU-R"},
+    {"edition": "Safari Hunt", "markets": ["NA"], "kind": "title", "file": "Screenshots/HangOnAndSafariHunt-SMS-TitleScreen-SafariHunt.png", "page": "Screenshots/HangOnAndSafariHunt-SMS"},
+    {"edition": "Safari Hunt", "markets": ["NA"], "kind": "snap", "file": "Screenshots/HangOnAndSafariHunt-SMS-Forest.png", "page": "Screenshots/HangOnAndSafariHunt-SMS"},
+    {"edition": "Snail Maze", "markets": ["NA", "PAL", "BR"], "kind": "snap", "file": "Screenshots/SnailMaze-SMS-01.png", "page": "Screenshots/SnailMaze-SMS"},
+    {"edition": "Sonic the Hedgehog", "markets": ["NA"], "kind": "boxart", "file": "Scans/SonicTheHedgehog-SMS-EU-medium.jpg", "page": "Games/SonicTheHedgehog-SMS"},
+    {"edition": "Thunder Blade", "markets": ["NA"], "kind": "boxart", "file": "Scans/ThunderBlade-SMS-US-Front-medium.jpg", "page": "Scans/ThunderBlade-SMS-US-Front"},
+    {"edition": "Thunder Blade", "markets": ["PAL"], "kind": "boxart", "file": "Scans/ThunderBlade-SMS-EU-R-medium.jpg", "page": "Scans/ThunderBlade-SMS-EU-R"},
+    {"edition": "TransBot", "markets": ["JP"], "kind": "boxart", "file": "Scans/TransBot-SMS-JP-AstroFlash-Front-medium.jpg", "page": "Scans/TransBot-SMS-JP-AstroFlash-Front"}
+  ]
+}

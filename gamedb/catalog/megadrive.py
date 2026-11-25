@@ -41,7 +41,7 @@ class Cartridge:
     evidence: dict
 
 
-def cartridge_records(xml):
+def cartridge_records(xml, *, filename=MAME_FILE, regions=SCAN_MARKETS):
     for software in ElementTree.fromstring(xml).findall("software"):
         label = software.findtext("description", "")
         if EXCLUDED_MAME.search(label):
@@ -49,8 +49,8 @@ def cartridge_records(xml):
         names, markets = [], set()
         for local in label.split(" ~ "):
             if match := re.search(r"\s*\(([^()]*)\)$", local):
-                territories = {SCAN_MARKETS[region.strip()] for region in match[1].split(",")
-                               if region.strip() in SCAN_MARKETS}
+                territories = {regions[region.strip()] for region in match[1].split(",")
+                               if region.strip() in regions}
                 if territories or "World" in match[1]:
                     markets.update(territories)
                     local = local[:match.start()]
@@ -64,11 +64,11 @@ def cartridge_records(xml):
             boards = [model for pcb in part.findall("feature[@name='pcb']")
                       if re.fullmatch(r"[A-Z0-9]+(?:-[A-Z0-9]+){1,5}", model := pcb.get("value", ""))]
             serials = [{
-                "code": match[1], "market": SCAN_MARKETS.get(match[2]) if match[2] else None,
+                "code": match[1], "market": regions.get(match[2]) if match[2] else None,
             } for serial in (info.get("serial") or "").split(",")
                 if (match := re.fullmatch(r"\s*([A-Za-z0-9-]+)(?:\s*\(([^()]+)\))?\s*", serial))]
             detail = {
-                "source": {"name": "MAME", "url": MAME + MAME_FILE, "record": software.get("name")},
+                "source": {"name": "MAME", "url": MAME + filename, "record": software.get("name")},
                 "boards": boards, "productCodes": serials,
             }
             slot = part.find("feature[@name='slot']")
@@ -83,7 +83,7 @@ def mame_matches(catalog, archives, roms, records):
     return retail.cartridge_group_matches(catalog, archives, roms, records, markets=ARCHIVE_MARKETS)
 
 
-def add_cartridge_details(catalog, roms, records, rdb=()):
+def add_cartridge_details(catalog, roms, records, rdb=(), *, markets=ARCHIVE_MARKETS):
     by_digest, headers = defaultdict(list), defaultdict(dict)
     for record in records:
         by_digest[record.digest].append(record)
@@ -91,7 +91,7 @@ def add_cartridge_details(catalog, roms, records, rdb=()):
         serial = (row.serial or "").strip()
         if re.fullmatch(r"[A-Z0-9-]{2,24}(?:\.\d+)?", serial) and re.search(r"[1-9]", serial):
             headers[row.sha1][serial] = row.source_revision
-    coverage = dict.fromkeys(ARCHIVE_MARKETS, 0)
+    coverage = dict.fromkeys(markets, 0)
     for game in catalog["games"]:
         for release in game["releases"]:
             market = release["market"]

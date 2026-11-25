@@ -2,16 +2,24 @@
 
 const params = new URLSearchParams(location.search);
 const platform = location.pathname.split("/").at(-1);
-const catalogLabel = {snes: "SNES", megadrive: "Mega Drive", nes: "NES / Famicom", playstation: "PlayStation (US)"}[platform];
+const catalogLabel = {
+  snes: "SNES", megadrive: "Mega Drive", nes: "NES / Famicom", playstation: "PlayStation (US)", neogeo: "Neo Geo",
+  mastersystem: "Master System",
+}[platform];
 const catalogApi = `/api/${platform}-retail`;
 const romExtension = {snes: ".sfc", megadrive: ".md", nes: ".nes"}[platform];
 const optical = platform === "playstation";
+const neoGeo = platform === "neogeo";
+const masterSystem = platform === "mastersystem";
 const marketNames = {
   JP: "Japan", NA: optical ? "United States" : "North America", PAL: "PAL region", BR: "Brazil", KR: "South Korea", AS: "Asia",
+  MVS: "MVS arcade", AES: "AES home",
 };
 const channelNames = {"nintendo-power": "Nintendo Power", "sufami-turbo": "SuFami Turbo"};
 const matchNames = {ambiguous: "Needs review", unmatched: optical ? "No verified discs" : "No base ROM match"};
-const artworkNames = {boxart: "Box art", title: "Title screen", snap: "Gameplay", logo: "Clear logo"};
+const artworkNames = {
+  boxart: "Box art", flyer: "Arcade flyer", marquee: "Mini marquee", title: "Title screen", snap: "Gameplay", logo: "Clear logo",
+};
 const inputDevices = {
   mouse: {name: "SNES Mouse", icon: "mouse"},
   "super-scope": {name: "Super Scope", icon: "lightgun"},
@@ -131,9 +139,15 @@ function renderPageLinks(total, filters) {
   }));
 }
 
+function hasAesCover(release) {
+  return release.market === "AES" && (release.boxart || release.artwork?.boxart);
+}
+
 function preferredCover(releases, title) {
+  if (neoGeo) return releases.find(hasAesCover) || releases.find(release => release.cover);
   return releases.find(release => release.boxart && release.titles.includes(title))
-    || releases.find(release => release.boxart);
+    || releases.find(release => release.boxart)
+    || (masterSystem ? releases.find(release => release.cover) : null);
 }
 
 function renderBrowse() {
@@ -161,9 +175,12 @@ function renderBrowse() {
     const detailRelease = coverRelease || (filters.translated ? releases[0] : null);
     if (detailRelease) {
       detailQuery.set("market", detailRelease.market);
-      if (filters.translated) detailQuery.set("release", detailRelease.key);
+      if (filters.translated || (masterSystem && game.releases.some(
+        release => release !== detailRelease && release.market === detailRelease.market
+      ))) detailQuery.set("release", detailRelease.key);
     }
-    const cover = coverRelease?.boxart || (filters.translated && preferredCover(game.releases, game.title)?.boxart);
+    const cover = coverRelease?.boxart || ((neoGeo || masterSystem) && coverRelease?.cover)
+      || (filters.translated && preferredCover(game.releases, game.title)?.boxart);
     const stage = element("span", "", "snes-game-cover");
     if (cover) {
       const image = artworkImage(cover.preview || cover.url, "");
@@ -296,7 +313,7 @@ function renderDescription(text) {
 function renderArt(release) {
   const art = element("div", "", "snes-art");
   const title = release.titles.join(" / ");
-  const hasCover = Boolean(release.artwork?.boxart);
+  const hasCover = Boolean(release.artwork?.boxart || release.artwork?.flyer || release.artwork?.marquee);
   const kinds = hasCover ? Object.keys(artworkNames) : ["logo", "title", "snap"];
   const items = kinds.filter(kind => release.artwork?.[kind]).map(kind => {
     const label = artworkNames[kind];
@@ -395,18 +412,26 @@ function manualCell(manuals) {
   }));
 }
 
-function openRomDownload(translation) {
-  romDownload = translation;
-  const discs = Boolean(translation.discDownloadSize);
-  document.querySelector("#snes-rom-title").textContent = discs ? "Download translated disc set" : "Download translated ROM";
-  romSubmit.textContent = discs ? "Download disc set" : "Download ROM";
+function releaseTableManuals(game, release) {
+  if (!neoGeo || release.market !== "MVS" || release.manuals?.length) return release.manuals || [];
+  const aes = game.releases.find(other => other.market === "AES");
+  return (aes?.manuals || []).map(manual => ({...manual, name: manual.name.replace(/ — Game manual$/, " — AES manual")}));
+}
+
+function openRomDownload(download) {
+  romDownload = download;
+  const discs = Boolean(download.discDownloadSize);
+  const label = download.manifestUrl ? "Download arcade bundle" : discs ? "Download disc set" : "Download ROM";
+  document.querySelector("#snes-rom-title").textContent = download.manifestUrl ? label
+    : discs ? "Download translated disc set" : "Download translated ROM";
+  romSubmit.textContent = label;
   romKey.value = rememberedRomKey;
   romStatus.hidden = true;
   romDialog.showModal();
   if (rememberedRomKey) romForm.requestSubmit();
 }
 
-function submitDiscDownload(url, key) {
+function submitDownload(url, key) {
   const form = element("form");
   form.method = "post";
   form.action = url;
@@ -425,15 +450,16 @@ romForm.addEventListener("submit", async event => {
   event.preventDefault();
   if (romRequest || !romDownload) return;
   const key = romKey.value.trim();
-  const translation = romDownload;
-  const discs = Boolean(translation.discDownloadSize);
+  const download = romDownload;
+  const discs = Boolean(download.discDownloadSize);
+  const arcade = Boolean(download.manifestUrl);
   const request = new AbortController();
   romRequest = request;
   romSubmit.disabled = true;
-  romStatus.textContent = discs ? "Preparing disc download…" : "Building translated ROM…";
+  romStatus.textContent = arcade ? "Checking arcade ROMs…" : discs ? "Preparing disc download…" : "Building translated ROM…";
   romStatus.hidden = false;
   try {
-    const response = await fetch(translation.romDownloadUrl, {
+    const response = await fetch(download.manifestUrl || download.romDownloadUrl, {
       method: discs ? "HEAD" : "GET",
       headers: {Authorization: `Bearer ${key}`},
       mode: "same-origin", redirect: "error", signal: request.signal,
@@ -446,15 +472,20 @@ romForm.addEventListener("submit", async event => {
     }
     if (!response.ok) {
       const error = await response.json().catch(() => null);
-      throw new Error(error?.error || (discs ? "The disc set could not be downloaded." : "Could not build the translated ROM."));
+      throw new Error(error?.error || "The download could not be prepared.");
     }
-    if (discs) {
-      submitDiscDownload(translation.romDownloadUrl, key);
+    if (arcade) {
+      const manifest = await response.json();
+      if (request.signal.aborted) return;
+      if (!manifest.complete || !manifest.bundleUrl) throw new Error("Required arcade files are unavailable.");
+      submitDownload(manifest.bundleUrl, key);
+    } else if (discs) {
+      submitDownload(download.romDownloadUrl, key);
     } else {
       const file = await response.blob();
       if (request.signal.aborted) return;
       const encoded = response.headers.get("Content-Disposition")?.match(/filename\*=UTF-8''([^;]+)/i)?.[1];
-      const name = encoded ? decodeURIComponent(encoded) : translation.filename.replace(/\.[^.]+$/, romExtension);
+      const name = encoded ? decodeURIComponent(encoded) : download.filename.replace(/\.[^.]+$/, romExtension);
       const url = URL.createObjectURL(file);
       const link = element("a");
       link.href = url;
@@ -578,6 +609,43 @@ function showTranslations(section, translations) {
 }
 
 function romCell(release) {
+  if (release.includedIn) {
+    const link = element("a", release.includedIn.title);
+    const query = new URLSearchParams({game: release.includedIn.key, market: release.market});
+    link.href = `${location.pathname}?${query}`;
+    return releaseListCell([link]);
+  }
+  if (release.channel === "built-in") return element("td", "Included in the console BIOS");
+  if (neoGeo) {
+    const sets = release.arcadeSets || [];
+    if (!sets.length) {
+      return element("td", release.setNames.length ? "No matching arcade set" : "See the MVS release for arcade sets");
+    }
+    return releaseListCell(sets.map(set => {
+      const entry = element("div");
+      const emulator = set.emulator === "FBNeo" ? "FinalBurn Neo" : set.emulator;
+      const label = `${set.setName}.zip · ${emulator} ${set.version}`;
+      const link = element("a", label);
+      link.href = `/software/${set.softwareId}-${set.softwareKey}#releases`;
+      entry.append(link);
+      if (set.complete) {
+        const button = element("button", "Download bundle", "snes-text-button");
+        button.type = "button";
+        button.setAttribute("aria-haspopup", "dialog");
+        button.setAttribute("aria-label", `Download bundle for ${label}`);
+        const manifestUrl = `/api/v1/releases/${set.installSignature}/install-manifest`;
+        button.addEventListener("click", () => openRomDownload({manifestUrl}));
+        const action = element("small");
+        action.append(button);
+        entry.append(action);
+        if (set.singleCabinet) entry.append(element("small", "Single-cabinet play"));
+      } else {
+        const reason = set.issues?.includes("undumped") ? "Undumped chip listed in the DAT" : "Required files missing";
+        entry.append(element("small", reason));
+      }
+      return entry;
+    }));
+  }
   const matched = release.status === "matched";
   const archives = matched ? release.archives : release.candidates;
   const entries = (archives || []).map(archive => {
@@ -633,7 +701,8 @@ function labelReleaseCells(cells, columns) {
 }
 
 function renderReleaseTable(game, picker, targets, onSelection) {
-  const columns = optical ? ["Market", "Released", "Manuals", "Verified discs", "Serials"]
+  const columns = neoGeo ? ["Release", "Released", "Manuals and instructions", "Arcade sets", "Cartridge no."]
+    : optical ? ["Market", "Released", "Manuals", "Verified discs", "Serials"]
     : ["Market", "Released", "Manuals", "ROM archives", "Product code", "PCB"];
   const table = releaseTable("Releases", columns);
   table.id = "snes-releases";
@@ -651,8 +720,14 @@ function renderReleaseTable(game, picker, targets, onSelection) {
       ["Developer", release.developer !== game.developer ? release.developer : ""],
     ]);
     if (credits.childElementCount) market.append(releaseDisclosure("Credits", credits));
-    const date = element("td", release.date);
-    if (channelNames[release.channel]) date.append(element("small", channelNames[release.channel]));
+    const date = element("td", release.date || "—");
+    const medium = release.medium || channelNames[release.channel];
+    if (medium) date.append(element("small", medium));
+    if (masterSystem && release.source?.url) {
+      const citation = element("small");
+      citation.append(newTabLink(release.source.name, release.source.url));
+      date.append(citation);
+    }
     const {serials, headerCodes, boards, chips} = cartridgeDetails(release);
     const productCodes = releaseListCell((release.productCodes || serials).map(code => element("code", code)));
     if (headerCodes.length) {
@@ -664,8 +739,8 @@ function renderReleaseTable(game, picker, targets, onSelection) {
       pcb.append(releaseDisclosure(chips.length === 1 ? "ROM chip" : "ROM chips",
         releaseList(chips.map(chip => element("code", chip)))));
     }
-    const cells = [date, manualCell(release.manuals || []), romCell(release), productCodes];
-    if (!optical) cells.push(pcb);
+    const cells = [date, manualCell(releaseTableManuals(game, release)), romCell(release), productCodes];
+    if (!optical && !neoGeo) cells.push(pcb);
     labelReleaseCells(cells, columns);
     row.append(market, ...cells);
     const flag = element("button", "", "snes-region-button");
@@ -694,7 +769,8 @@ function renderReleaseTable(game, picker, targets, onSelection) {
   for (const entry of rows) {
     entry.flag.addEventListener("click", () => select(entry));
   }
-  const selectedMarket = params.get("market");
+  const defaultMarket = neoGeo && game.releases.some(hasAesCover) ? "AES" : null;
+  const selectedMarket = params.get("market") || defaultMarket;
   const selectedStatus = params.get("match") || "matched";
   const selectedRelease = params.get("release");
   const selected = rows.find(({release}) => release.key === selectedRelease)
@@ -724,7 +800,7 @@ function renderDetail(game, soundtracks) {
   const pageHeading = title.parentElement;
   const picker = element("div", "", "snes-release-picker");
   picker.setAttribute("role", "group");
-  picker.setAttribute("aria-label", "Regional releases");
+  picker.setAttribute("aria-label", neoGeo ? "Cartridge releases" : "Regional releases");
   picker.hidden = game.releases.length < 2;
   masthead.append(picker);
 
@@ -809,6 +885,7 @@ async function start() {
     }));
     search.value = params.get("q") || "";
     if (optical) search.placeholder = "Search by title or serial";
+    if (neoGeo) search.placeholder = "Search by title, cartridge number, or set";
     const genres = [...new Set(games.flatMap(game => game.genres))].sort((a, b) => a.localeCompare(b));
     for (const genre of genres) genreSelect.add(new Option(genre, genre));
     genreSelect.disabled = !genres.length;

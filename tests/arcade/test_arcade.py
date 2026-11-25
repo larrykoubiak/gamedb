@@ -5,7 +5,7 @@ import unittest
 import zipfile
 from pathlib import Path
 
-from gamedb.arcade.bundle import prepare_manifest, public_manifest, write_bundle
+from gamedb.arcade.bundle import partition_link_firmware, prepare_manifest, public_manifest, write_bundle
 from gamedb.arcade.importer import validate_graph
 from gamedb.arcade.resolver import Resolver, install_signature, safe_path
 
@@ -207,6 +207,25 @@ class BundleTests(unittest.TestCase):
                 ],
             },
         }
+        self.assertFalse(prepare_manifest(source, Path("/roms"))["complete"])
+
+    def test_reviewed_neo_geo_link_firmware_allows_single_cabinet_install(self):
+        firmware = {"kind": "rom", "name": "hd6301v1p_k78.com", "owner": "lbowling",
+                    "reason": "undumped", "status": "nodump", "size": "4096"}
+        source = {
+            "releaseSignature": "a" * 32, "sourceKey": "MAME:0.285",
+            "plan": {"shortname": "lbowling", "family": "lbowling", "emulationStatus": "good",
+                     "launchPath": "lbowling.zip", "missing": [firmware], "assets": []},
+        }
+        manifest = prepare_manifest(source, Path("/roms"))
+        self.assertTrue(manifest["complete"])
+        self.assertEqual(manifest["missing"], [])
+        self.assertEqual(manifest["omittedOptional"][0]["feature"], "Linked cabinet play")
+
+        required, optional = partition_link_firmware("MAME:0.286", "lbowling", [firmware])
+        self.assertEqual(required, [firmware])
+        self.assertFalse(optional)
+        source["plan"]["missing"].append({**firmware, "name": "other.bin"})
         self.assertFalse(prepare_manifest(source, Path("/roms"))["complete"])
 
 

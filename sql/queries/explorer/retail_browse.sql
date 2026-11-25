@@ -14,7 +14,10 @@ WITH snapshot AS (
     SELECT game_order, jsonb_agg(jsonb_build_object(
         'key', release->'key', 'market', release->'market', 'titles', release->'titles',
         'status', release->'status', 'boxart', release->'artwork'->'boxart', 'productCodes', release->'productCodes',
-        'archiveTitles', jsonb_path_query_array(release, '$.archives[*].title'),
+        'cover', CASE WHEN release ? 'setNames' OR NOT (release->'artwork' ? 'boxart') THEN
+            coalesce(release->'artwork'->'boxart', release->'artwork'->'flyer',
+                release->'artwork'->'marquee', release->'artwork'->'title', release->'artwork'->'snap') END,
+        'archiveTitles', coalesce(release->'setNames', jsonb_path_query_array(release, '$.archives[*].title')),
         'archiveSignatures', jsonb_path_query_array(release, '$.archives[*].signature')
     ) ORDER BY release_order) AS items
     FROM releases
@@ -23,7 +26,7 @@ WITH snapshot AS (
 SELECT jsonb_build_object('source', payload->'source', 'summary', payload->'summary', 'games', (
     SELECT jsonb_agg(jsonb_build_object(
         'key', game->'key', 'title', game->'title', 'aliases', game->'aliases',
-        'genres', coalesce(game_genres.items, '[]'::jsonb), 'releases', game_releases.items
+        'genres', coalesce(game_genres.items, game->'genres', '[]'::jsonb), 'releases', game_releases.items
     ) ORDER BY games.game_order)
     FROM games
     LEFT JOIN game_genres USING (game_order)

@@ -404,6 +404,7 @@ def add_descriptions_and_art(connection, catalog, indexes, reference, *,
                              platforms=LAUNCHBOX_PLATFORMS, thumbnails=THUMBNAILS,
                              thumbnail_key="snes", country_markets=COUNTRY_MARKETS):
     reviewed = reference.get("metadata", {})
+    unavailable = set(reference.get("unavailableImages", ()))
     artwork_regions = {(record["archiveName"], record["kind"]): record
                        for record in reference.get("artworkRegions", ())}
     checksum_reviews = {(filename, review["previousCrc32"]): review["crc32"]
@@ -431,6 +432,7 @@ def add_descriptions_and_art(connection, catalog, indexes, reference, *,
                 country_markets=country_markets, checksum_reviews=checksum_reviews,
             ))
             for _, kind, asset in sorted(candidates, key=lambda item: (-item[0], item[2]["url"])):
-                art.setdefault(kind, asset)
+                if asset.get("filename") not in unavailable:
+                    art.setdefault(kind, asset)
             if art:
                 release["artwork"] = art

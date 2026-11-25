@@ -27,6 +27,7 @@ INDEX_NAME = ".gamedb-manuals.json"
 SOURCE_REFERENCES = PROJECT_ROOT / "reference/snes_retail_manual_files.json"
 MARKET_DIRECTORIES = {
     "JP": "Japan", "NA": "North America", "PAL": "PAL", "BR": "Brazil", "KR": "South Korea", "AS": "Asia",
+    "MVS": "MVS", "AES": "AES",
 }
 USER_AGENT = "GameDB/2.0 (retail manual library)"
 CHUNK_SIZE = 1024 * 1024
@@ -118,9 +119,14 @@ def _sources(manual, cache, reviewed):
     hostname = location.hostname or ""
     if location.scheme != "https" or (hostname not in {
         "archive.org", "www.gamingalexandria.com", "www.nintendo.co.jp", "segaretro.org", "www.digitpress.com",
-        "www.videogamemanual.com",
+        "www.videogamemanual.com", "rq87.flyingomelette.com", "www.jamma-nation-x.com",
     } and not hostname.endswith(".archive.org")):
         raise ValueError("Unsupported manual source URL")
+    if "pages" in manual:
+        pages = manual["pages"]
+        if not pages or any(page.scheme != "https" or page.netloc != location.netloc for page in map(urlsplit, pages)):
+            raise ValueError("Manual page scans must use the same HTTPS origin")
+        return [(page, None, None) for page in pages], True
     if hostname == "archive.org" and location.path.startswith("/details/"):
         item = location.path.split("/")[2]
         files = _archive_files(item, cache)

@@ -26,6 +26,7 @@ RETAIL_ALBUMS = text("""
     WHERE album.platform IN (
         CAST(:platform AS text[]), CAST(:secondary_platform AS text[])
     )
+    AND album.collection IS DISTINCT FROM :excluded_collection
     AND EXISTS (
         SELECT FROM vgm.asset asset
         WHERE asset.soundtrack_key = album.key AND (
@@ -159,7 +160,8 @@ def link_soundtracks(catalog, albums, *, reviews=None, aliases=(), system=SNES, 
 
 
 def add_soundtracks(connection, catalog, aliases=(), *,
-                    platform=SNES, secondary_platform=SUFAMI, formats=("spc",), joshw_archive_bucket=None):
+                    platform=SNES, secondary_platform=SUFAMI, formats=("spc",), joshw_archive_bucket=None,
+                    excluded_collection=None):
     present = connection.execute(text("""
         SELECT to_regclass('vgm.soundtrack') IS NOT NULL AND to_regclass('vgm.asset') IS NOT NULL
     """)).scalar_one()
@@ -167,6 +169,7 @@ def add_soundtracks(connection, catalog, aliases=(), *,
         "platform": list(platform), "secondary_platform": list(secondary_platform) if secondary_platform else None,
         "formats": list(formats), "joshw_collection": COLLECTION,
         "joshw_archive_prefix": f"{joshw_archive_bucket}/" if joshw_archive_bucket else None,
+        "excluded_collection": excluded_collection,
     }).mappings()) if present else []
     return link_soundtracks(catalog, albums, reviews=reviewed_titles(), aliases=aliases, system=platform,
                             secondary_platform=secondary_platform)

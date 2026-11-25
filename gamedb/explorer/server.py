@@ -447,6 +447,8 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         parsed = urlparse(self.path)
         if translation := RETAIL_TRANSLATION_DOWNLOAD.fullmatch(parsed.path):
             return self._disc_translation_post(translation[1], translation[2])
+        if bundle := INSTALL_BUNDLE.fullmatch(parsed.path):
+            return self._arcade_bundle_post(bundle[1])
         if parsed.path != "/api/software-corrections":
             return self.send_error(HTTPStatus.NOT_FOUND)
         if not self.server.corrections_enabled:
@@ -488,7 +490,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 HTTPStatus.INTERNAL_SERVER_ERROR,
             )
 
-    def _disc_translation_post(self, signature, key):
+    def _authorize_download_form(self):
         try:
             length = int(self.headers.get("Content-Length", "0"))
             if not 0 < length <= 16_384 or self.headers.get_content_type() != "application/x-www-form-urlencoded":
@@ -496,9 +498,24 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             form = parse_qs(self.rfile.read(length).decode("ascii"), strict_parsing=True, max_num_fields=1)
             token, = form["key"]
         except (KeyError, ValueError):
-            return self._json_response({"error": "Invalid download form."}, HTTPStatus.BAD_REQUEST)
+            self._json_response({"error": "Invalid download form."}, HTTPStatus.BAD_REQUEST)
+            return False
         if not _api_authorized(f"Bearer {token}", self.server.api_key):
-            return self._unauthorized_response()
+            self._unauthorized_response()
+            return False
+        return True
+
+    def _arcade_bundle_post(self, signature):
+        if self._authorize_download_form():
+            try:
+                return self._install_bundle_response(signature)
+            except (SQLAlchemyError, subprocess.CalledProcessError) as error:
+                output = getattr(error, "orig", None) or getattr(error, "stderr", None) or str(error)
+                return self._json_response({"error": _database_error(str(output))}, HTTPStatus.INTERNAL_SERVER_ERROR)
+
+    def _disc_translation_post(self, signature, key):
+        if not self._authorize_download_form():
+            return
         try:
             return serve_retail_translation_rom(self, signature, key, disc_only=True)
         except SQLAlchemyError as error:

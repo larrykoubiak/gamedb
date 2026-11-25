@@ -237,15 +237,21 @@ def resolve(connection, soundtracks):
         }
 
 
-def publish(connection, soundtracks, resolved, *, joshw_bucket=None):
+def publish(connection, soundtracks, resolved, *, joshw_bucket=None, collection=None):
+    if joshw_bucket is not None and collection is not None:
+        raise ValueError("Choose one VGM publication scope")
     prefix = None if joshw_bucket is None else f"{joshw_bucket}/"
     if prefix is not None and any(
         row["collection"] != JOSHW_COLLECTION or not row["source_name"].startswith(prefix) for row in resolved
     ):
         raise ValueError(f"Soundtracks outside the JoshW {joshw_bucket} bucket")
+    if collection is not None and any(row["collection"] != collection for row in resolved):
+        raise ValueError(f"Soundtracks outside the {collection} collection")
     connection.execute(text("SELECT pg_advisory_xact_lock(hashtext('gamedb.vgm.publish'))"))
     connection.exec_driver_sql((PROJECT_ROOT / "sql/layers/vgm/schema.sql").read_text())
-    if prefix is None:
+    if collection is not None:
+        connection.execute(text("DELETE FROM vgm.soundtrack WHERE collection = :collection"), {"collection": collection})
+    elif prefix is None:
         connection.execute(text("DELETE FROM vgm.soundtrack"))
     else:
         connection.execute(text("""

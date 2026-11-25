@@ -17,7 +17,7 @@ from gamedb.launchbox.matching import title_key
 
 
 RETAIL_PLATFORMS = {"snes": "SNES", "megadrive": "Mega Drive", "nes": "NES / Famicom",
-                    "playstation": "PlayStation (US)"}
+                    "playstation": "PlayStation (US)", "neogeo": "Neo Geo", "mastersystem": "Master System"}
 ARCHIVE_MARKETS = {
     "JP": {"JP"},
     "NA": {"US", "CA", "MX"},

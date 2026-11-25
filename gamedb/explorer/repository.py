@@ -8,6 +8,7 @@ import re
 import subprocess
 
 from gamedb.catalog.cartridges import verified_roms_sql
+from gamedb.catalog.neogeo import PLATFORM as NEOGEO, SET_NAME as NEOGEO_SET, add_arcade_sets, arcade_sets_sql
 from gamedb.catalog.retail import RETAIL_PLATFORMS, retail_tables
 from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.config import PROJECT_ROOT
@@ -392,8 +393,18 @@ class CatalogRepository:
                 WHERE singleton AND game->>'key' =
             """ + quote_sql_text(game_key))
             if catalog:
-                add_release_metadata(catalog["game"], self.retail_release_facts(catalog["game"]),
-                                     snes_peripherals=platform == "snes")
+                game = catalog["game"]
+                if platform == NEOGEO:
+                    names = sorted({name for release in game["releases"] for name in release["setNames"]
+                                    if NEOGEO_SET.fullmatch(name)})
+                    names_sql = ", ".join(map(quote_sql_text, names))
+                    records = self._read_listing(
+                        "SELECT coalesce(jsonb_agg(to_jsonb(sets)), '[]'::jsonb) FROM ("
+                        + arcade_sets_sql(f"ARRAY[{names_sql}]::text[]") + ") sets"
+                    )
+                    add_arcade_sets([game], records)
+                else:
+                    add_release_metadata(game, self.retail_release_facts(game), snes_peripherals=platform == "snes")
             return catalog
         if browse:
             return self.retail_browse(platform)
@@ -402,7 +413,7 @@ class CatalogRepository:
     def retail_browse(self, platform):
         table, _, _ = retail_tables(platform)
         genres = "SELECT NULL::bigint AS game_order, NULL::jsonb AS items WHERE false"
-        if self._retail_facts_available():
+        if platform != NEOGEO and self._retail_facts_available():
             verified = self._retail_verified_releases_sql("""
                 SELECT release->>'key' AS release_key, (archive->>'softwareId')::bigint AS software_id,
                     archive->>'softwareKey' AS software_key, archive->>'signature' AS signature
@@ -633,7 +644,8 @@ class CatalogRepository:
             album_filter=f"soundtrack.key IN ({keys})",
         ))
         return prefer_playstation_sources([
-            {**album, "releases": links[album["key"]]["releases"], "titleMatches": links[album["key"]]["titleMatches"]}
+            {**album, **{name: links[album["key"]][name] for name in ("releases", "titleMatches", "sourceUrl")
+                         if name in links[album["key"]]}}
             for album in albums if album["assets"]
         ])
 

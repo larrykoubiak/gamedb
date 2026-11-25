@@ -38,6 +38,11 @@ def main(argv=None) -> int:
     megadrive.add_argument("--report", type=Path, help="Write the full match report as JSON")
     megadrive.add_argument("--publish", action="store_true", help="Publish the Mega Drive catalog to Explorer")
     megadrive.add_argument("--sources", type=Path, help="Directory of saved Mega Drive reference indexes")
+    mastersystem = commands.add_parser("seed-mastersystem", help="Build the Master System and Mark III retail catalog")
+    mastersystem.add_argument("--html", type=Path, help="Use a saved copy of the pinned Wikipedia HTML")
+    mastersystem.add_argument("--report", type=Path, help="Write the full match report as JSON")
+    mastersystem.add_argument("--publish", action="store_true", help="Publish the Master System catalog to Explorer")
+    mastersystem.add_argument("--sources", type=Path, help="Directory of saved Master System reference indexes")
     nes = commands.add_parser("seed-nes", help="Build the NES and Famicom retail catalog")
     nes.add_argument("--html", type=Path, help="Use a saved copy of the pinned Wikipedia HTML")
     nes.add_argument("--report", type=Path, help="Write the full match report as JSON")
@@ -47,6 +52,9 @@ def main(argv=None) -> int:
     playstation.add_argument("--report", type=Path, help="Write the full match report as JSON")
     playstation.add_argument("--publish", action="store_true", help="Publish the PlayStation catalog to Explorer")
     playstation.add_argument("--sources", type=Path, help="Directory of saved PlayStation reference indexes")
+    neogeo = commands.add_parser("seed-neogeo", help="Build the Neo Geo MVS and AES retail catalog")
+    neogeo.add_argument("--report", type=Path, help="Write the full match report as JSON")
+    neogeo.add_argument("--publish", action="store_true", help="Publish the Neo Geo catalog to Explorer")
     manuals = commands.add_parser("sync-snes-manuals", help="Download the manuals linked by a SNES match report")
     manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-snes")
     manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
@@ -58,6 +66,10 @@ def main(argv=None) -> int:
     md_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-megadrive")
     md_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
     md_manuals.add_argument("--workers", type=int, default=4, help="Concurrent downloads (default: 4)")
+    sms_manuals = commands.add_parser("sync-mastersystem-manuals", help="Download the linked Master System manuals")
+    sms_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-mastersystem")
+    sms_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
+    sms_manuals.add_argument("--workers", type=int, default=4, help="Concurrent downloads (default: 4)")
     nes_manuals = commands.add_parser("sync-nes-manuals", help="Download the linked NES and Famicom manuals")
     nes_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-nes")
     nes_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
@@ -66,6 +78,16 @@ def main(argv=None) -> int:
     ps_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-playstation")
     ps_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
     ps_manuals.add_argument("--workers", type=int, default=4, help="Concurrent downloads (default: 4)")
+    ng_manuals = commands.add_parser("sync-neogeo-manuals", help="Download the linked Neo Geo manuals")
+    ng_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-neogeo")
+    ng_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
+    ng_manuals.add_argument("--workers", type=int, default=6, help="Concurrent manual downloads")
+    ng_music = commands.add_parser("sync-neogeo-soundtracks", help="Mirror and index verified Neo Geo VGM packs")
+    ng_music.add_argument("--root", type=Path, help="VGM library root")
+    ng_music.add_argument("--workers", type=int, default=4, help="Concurrent soundtrack downloads")
+    sms_music = commands.add_parser("sync-mastersystem-soundtracks", help="Mirror and index reviewed SMS Power VGM packs")
+    sms_music.add_argument("--root", type=Path, help="VGM library root")
+    sms_music.add_argument("--workers", type=int, default=4, help="Concurrent soundtrack downloads")
     translations = commands.add_parser("sync-snes-translations", help="Match RHDN patches to verified SNES retail ROMs")
     translations.add_argument("--source", required=True, type=Path, help="Local RHDN backup directory")
     translations.add_argument("--root", type=Path, help="Local patch library (default: data/media/snes-translations)")
@@ -110,11 +132,42 @@ def main(argv=None) -> int:
         print(json.dumps(result, indent=2))
         return 0
 
-    if args.command in {"seed-megadrive", "seed-nes"}:
+    if args.command == "seed-neogeo":
+        from .neogeo import seed_neogeo
+
+        try:
+            result = seed_neogeo(args.report, publish_catalog=args.publish)
+        except (OSError, ValueError) as error:
+            neogeo.error(str(error))
+        print(json.dumps(result, indent=2))
+        return 0
+
+    if args.command in {"sync-neogeo-soundtracks", "sync-mastersystem-soundtracks"}:
+        if args.command == "sync-mastersystem-soundtracks":
+            from .mastersystem_music import sync_soundtracks
+
+            command = sms_music
+        else:
+            from .neogeo_music import sync_soundtracks
+
+            command = ng_music
+
+        try:
+            result = sync_soundtracks(args.root, workers=args.workers)
+        except (OSError, ValueError) as error:
+            command.error(str(error))
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return int(bool(result["failures"]))
+
+    if args.command in {"seed-megadrive", "seed-mastersystem", "seed-nes"}:
         if args.command == "seed-nes":
             from .nes import seed_nes as seed
 
             command = nes
+        elif args.command == "seed-mastersystem":
+            from .mastersystem import seed_mastersystem as seed
+
+            command = mastersystem
         else:
             from .megadrive import seed_megadrive as seed
 
@@ -137,17 +190,26 @@ def main(argv=None) -> int:
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return int(bool(result["failures"]))
 
-    if args.command in {"sync-megadrive-manuals", "sync-nes-manuals", "sync-playstation-manuals"}:
+    if args.command in {"sync-megadrive-manuals", "sync-mastersystem-manuals", "sync-nes-manuals",
+                        "sync-playstation-manuals", "sync-neogeo-manuals"}:
         from .manuals import sync_manuals
 
         if args.command == "sync-nes-manuals":
             from .nes import SOURCE_DIRECTORY
 
             command = nes_manuals
+        elif args.command == "sync-mastersystem-manuals":
+            from .mastersystem import SOURCE_DIRECTORY
+
+            command = sms_manuals
         elif args.command == "sync-playstation-manuals":
             from .playstation import SOURCE_DIRECTORY
 
             command = ps_manuals
+        elif args.command == "sync-neogeo-manuals":
+            from .neogeo import SOURCE_DIRECTORY
+
+            command = ng_manuals
         else:
             from .megadrive import SOURCE_DIRECTORY
 

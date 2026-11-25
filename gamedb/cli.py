@@ -19,12 +19,18 @@ GameDB commands:
   rebuild      Project catalog, identity, and scores from derived data.
   seed-snes    Match the pinned SNES retail list against the catalog.
   seed-megadrive  Build the Mega Drive retail catalog.
+  seed-mastersystem  Build the Master System and Mark III retail catalog.
   seed-nes        Build the NES and Famicom retail catalog.
   seed-playstation  Build the US PlayStation retail catalog.
+  seed-neogeo     Build the Neo Geo MVS and AES retail catalog.
   sync-snes-manuals  Download the manuals linked by the SNES retail catalog.
   sync-megadrive-manuals  Download the manuals linked by the Mega Drive retail catalog.
+  sync-mastersystem-manuals  Download the manuals linked by the Master System retail catalog.
   sync-nes-manuals       Download the manuals linked by the NES and Famicom retail catalog.
   sync-playstation-manuals  Download the manuals linked by the PlayStation retail catalog.
+  sync-neogeo-manuals    Download the manuals linked by the Neo Geo retail catalog.
+  sync-neogeo-soundtracks  Download and index verified Neo Geo VGM packs.
+  sync-mastersystem-soundtracks  Download and index verified SMS Power VGM packs.
   sync-snes-translations  Match local translation patches to verified SNES retail ROMs.
   sync-megadrive-translations  Match local translation patches to verified Mega Drive retail ROMs.
   sync-nes-translations        Match local translation patches to verified NES retail ROMs.
@@ -83,9 +89,11 @@ def main(argv=None) -> int:
 
         return launchbox_main(remaining)
     if command in {
-        "rebuild", "seed-snes", "seed-megadrive", "seed-nes", "seed-playstation", "sync-snes-manuals",
+        "rebuild", "seed-snes", "seed-megadrive", "seed-nes", "seed-playstation", "seed-neogeo", "sync-snes-manuals",
         "sync-megadrive-manuals", "sync-nes-manuals", "sync-playstation-manuals", "sync-snes-translations",
         "sync-megadrive-translations", "sync-nes-translations", "sync-playstation-translations", "promote-corrections",
+        "sync-neogeo-manuals", "sync-neogeo-soundtracks", "seed-mastersystem", "sync-mastersystem-manuals",
+        "sync-mastersystem-soundtracks",
     }:
         from gamedb.catalog.cli import main as catalog_main
 

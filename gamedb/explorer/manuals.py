@@ -19,10 +19,12 @@ from gamedb.explorer.previews import source_revision
 def manual_roots():
     snes = os.environ.get("GAMEDB_SNES_MANUAL_ROOT")
     megadrive = os.environ.get("GAMEDB_MEGADRIVE_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Mega Drive"
+    mastersystem = os.environ.get("GAMEDB_MASTERSYSTEM_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Master System"
     nes = os.environ.get("GAMEDB_NES_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/NES"
     playstation = os.environ.get("GAMEDB_PLAYSTATION_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/PlayStation"
-    return {"snes": Path(snes) if snes else None, "megadrive": Path(megadrive), "nes": Path(nes),
-            "playstation": Path(playstation)}
+    neogeo = os.environ.get("GAMEDB_NEOGEO_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Neo Geo"
+    return {"snes": Path(snes) if snes else None, "megadrive": Path(megadrive), "mastersystem": Path(mastersystem), "nes": Path(nes),
+            "playstation": Path(playstation), "neogeo": Path(neogeo)}
 
 
 @lru_cache(maxsize=4)

@@ -55,7 +55,7 @@ def _category_pages(directory, category):
     raise ValueError(f"Too many pages for {category}")
 
 
-def sega_retro_scans(directory):
+def sega_retro_scans(directory, categories=SCAN_CATEGORY):
     def fetch(category):
         try:
             files, sources = {}, []
@@ -71,7 +71,7 @@ def sega_retro_scans(directory):
             return category, [], [], f"{category}: {error}"
 
     with ThreadPoolExecutor(max_workers=3) as pool:
-        return list(pool.map(fetch, SCAN_CATEGORY))
+        return list(pool.map(fetch, categories))
 
 
 def _scan_file(item, kind):
@@ -92,7 +92,8 @@ def _scan_file(item, kind):
     return image
 
 
-def add_scans(catalog, categories, press=None, aliases=(), *, reviewed_titles=None):
+def add_scans(catalog, categories, press=None, aliases=(), *, reviewed_titles=None,
+              scan_categories=SCAN_CATEGORY, scan_markets=SCAN_MARKETS):
     claims, by_edition = defaultdict(set), {}
     releases = {}
     for game in catalog["games"]:
@@ -117,12 +118,12 @@ def add_scans(catalog, categories, press=None, aliases=(), *, reviewed_titles=No
 
     manuals, covers = defaultdict(dict), defaultdict(list)
     for category, items, _, _ in categories:
-        kind, country = SCAN_CATEGORY[category]
+        kind, country = scan_categories[category]
         for item in items:
             if kind == "mini" and not (region := MINI_REGION.search(item["title"])):
                 continue
             local = region[1].upper() if kind == "mini" else country
-            market = SCAN_MARKETS.get(local)
+            market = scan_markets.get(local)
             if market is None or not (image := _scan_file(item, kind)):
                 continue
             usages = item.get("fileusage", ())

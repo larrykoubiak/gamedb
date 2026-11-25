@@ -21,11 +21,15 @@ GB = ("Nintendo", "Game Boy")
 GBC = ("Nintendo", "Game Boy Color")
 SNES = ("Nintendo", "Super Nintendo Entertainment System")
 GENESIS = ("Sega", "Mega Drive")
+MASTER_SYSTEM = ("Sega", "Master System")
+SMS_POWER_COLLECTION = "SMS Power VGM"
 CPC = ("Amstrad", "CPC")
 C64 = ("Commodore", "C64")
 ST = ("Atari", "ST")
 PLAYSTATION = ("Sony", "PlayStation")
 PS2 = ("Sony", "PlayStation 2")
+NEOGEO = ("SNK", "Neo-Geo")
+NEOGEO_COLLECTION = "VGMRips Neo Geo"
 
 # A title at the root of one of these collections names a game set. Alphabet,
 # composer and disc directories in the other collections have different roles.
@@ -40,6 +44,8 @@ SET_FOLDERS = {
     PSF_COLLECTION: PLAYSTATION,
     "The GameBoy Music Collection": GB,
     "Sega Game Gear": ("Sega", "Game Gear"),
+    NEOGEO_COLLECTION: NEOGEO,
+    SMS_POWER_COLLECTION: MASTER_SYSTEM,
 }
 ARCHIVES = {".zip", ".rar", ".7z", ".rsn", ".vgm7z", ".lha", ".iso", ".d64", ".d71", ".d81", ".dfi"}
 BROWSER_AUDIO = {".mp3", ".flac", ".ogg", ".opus", ".wav", ".m4a", ".aac"}
@@ -140,6 +146,8 @@ def describe(path: Path, collection: str, group: str):
     if collection == JOSHW_COLLECTION:
         return soundtrack_name(path.parts[1], path) if len(path.parts) > 2 else (path.stem, ())
     label = group if collection in SET_FOLDERS or group in path.parts else path.stem
+    if collection == NEOGEO_COLLECTION:
+        return label.partition(" - ")[2] or label, ()
     if collection == "spcsets":
         # The long archive/directory name is the evidence. The bracketed code
         # identifies the rip, and track names and ID666 tags identify its audio.
@@ -225,6 +233,8 @@ def tracks_for_set(root, album):
         formats = formats | JOSHW_TRACKS | JOSHW_LIBRARIES | {".txt"}
     elif album.collection == PSF_COLLECTION:
         formats = formats | {".txt"}
+    elif album.collection in {NEOGEO_COLLECTION, SMS_POWER_COLLECTION}:
+        formats = {".vgm", ".vgz", ".txt"}
     for asset in assets[:]:
         try:
             if asset["format"] == "zip":
@@ -233,7 +243,7 @@ def tracks_for_set(root, album):
                 tracks = list(packed_tracks(root, asset, amiga=True))
             elif asset["format"] == "7z" and album.collection == "GBS":
                 tracks = list(packed_tracks(root, asset, formats={".gbs", ".m3u", ".txt"}))
-            elif asset["format"] == "7z" and album.collection in {JOSHW_COLLECTION, PSF_COLLECTION}:
+            elif asset["format"] == "7z" and album.collection in {JOSHW_COLLECTION, PSF_COLLECTION, NEOGEO_COLLECTION}:
                 amiga = album.system in {AMIGA, AMIGA_CD32, AMIGA_CDTV}
                 tracks = list(packed_tracks(root, asset, amiga=amiga, formats=None if amiga else formats))
             else:
@@ -246,7 +256,7 @@ def tracks_for_set(root, album):
             break
 
 
-def scan(root: Path, *, subdirectory: Path | None = None) -> list[Soundtrack]:
+def scan(root: Path, *, subdirectory: Path | None = None, source_paths: set[str] | None = None) -> list[Soundtrack]:
     source = root / subdirectory if subdirectory else root
     if not source.is_dir():
         raise FileNotFoundError(f"VGM source is unavailable: {source}")
@@ -260,6 +270,8 @@ def scan(root: Path, *, subdirectory: Path | None = None) -> list[Soundtrack]:
         for name in sorted(files):
             path = Path(directory, name)
             relative = path.relative_to(root)
+            if source_paths is not None and relative.as_posix() not in source_paths:
+                continue
             suffix = path.suffix.lower()
             is_note = suffix == ".txt" and relative.parts[0] in NOTES_COLLECTIONS
             joshw = relative.parts[0] == JOSHW_COLLECTION
