@@ -12,7 +12,7 @@ from threading import Timer
 from PIL import Image
 
 from gamedb.catalog.manuals import INDEX_NAME, read_manual_index
-from gamedb.catalog.retail import OPTICAL_RETAIL_PLATFORMS, SECOND_GENERATION_PLATFORMS
+from gamedb.catalog.retail import ADDITIONAL_CARTRIDGE_PLATFORMS, OPTICAL_RETAIL_PLATFORMS, SECOND_GENERATION_PLATFORMS
 from gamedb.exo.media import location_path
 from gamedb.explorer.previews import source_revision
 
@@ -38,7 +38,8 @@ def manual_roots():
                 platform: Path(os.environ.get(f"GAMEDB_{platform.upper()}_MANUAL_ROOT")
                                or f"/mnt/synology/photo/Manuals/{label.removesuffix(' (US)')}")
                 for platform, label in OPTICAL_RETAIL_PLATFORMS.items()
-            }, **{platform: second_generation / platform for platform in SECOND_GENERATION_PLATFORMS}}
+            }, **{platform: second_generation / platform
+                  for platform in (*SECOND_GENERATION_PLATFORMS, *ADDITIONAL_CARTRIDGE_PLATFORMS)}}
 
 
 @lru_cache(maxsize=4)

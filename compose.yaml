@@ -51,6 +51,7 @@ services:
       GAMEDB_CDI_MANUAL_ROOT: /mnt/cdi-manuals
       GAMEDB_PCFX_MANUAL_ROOT: /mnt/pcfx-manuals
       GAMEDB_CD32_MANUAL_ROOT: /mnt/cd32-manuals
+      GAMEDB_CDTV_MANUAL_ROOT: /mnt/cdtv-manuals
       GAMEDB_3DO_MANUAL_ROOT: /mnt/3do-manuals
       GAMEDB_PLAYDIA_MANUAL_ROOT: /mnt/playdia-manuals
       GAMEDB_PIPPIN_MANUAL_ROOT: /mnt/pippin-manuals
@@ -90,6 +91,7 @@ services:
       - ./data/media/playstation2-translations:/app/data/media/playstation2-translations:ro
       - ./data/media/gamecube-translations:/app/data/media/gamecube-translations:ro
       - ./data/media/colecovision-translations:/app/data/media/colecovision-translations:ro
+      - ./data/media/virtualboy-translations:/app/data/media/virtualboy-translations:ro
       - "${GAMEDB_VGM_HOST_ROOT:-/mnt/synology/music/VGM/By Format}:/mnt/vgm:ro"
       - "${GAMEDB_SNES_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/SNES}:/mnt/snes-manuals:ro"
       - "${GAMEDB_MEGADRIVE_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Mega Drive}:/mnt/megadrive-manuals:ro"
@@ -103,6 +105,7 @@ services:
       - "${GAMEDB_CDI_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Philips CD-i}:/mnt/cdi-manuals:ro"
       - "${GAMEDB_PCFX_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/PC-FX}:/mnt/pcfx-manuals:ro"
       - "${GAMEDB_CD32_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Amiga CD32}:/mnt/cd32-manuals:ro"
+      - "${GAMEDB_CDTV_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Commodore CDTV}:/mnt/cdtv-manuals:ro"
       - "${GAMEDB_3DO_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/3DO}:/mnt/3do-manuals:ro"
       - "${GAMEDB_PLAYDIA_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Bandai Playdia}:/mnt/playdia-manuals:ro"
       - "${GAMEDB_PIPPIN_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Apple Bandai Pippin}:/mnt/pippin-manuals:ro"

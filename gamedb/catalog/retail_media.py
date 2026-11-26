@@ -358,14 +358,18 @@ def add_reviewed_artwork(catalog, platform, indexes, reviewed, *, thumbnails):
     for record in reviewed:
         release = releases[record["edition"], record["market"]]
         images = record.get("images", {}).copy()
+        remove_kinds = record.get("removeKinds", ())
         if stem := record.get("thumbnail"):
             folder, revision = thumbnails[platform]
             for directory, kind in LIBRETRO_KINDS.items():
                 path = f"{directory}/{stem}.png"
                 if kind in record["kinds"] and path in paths:
                     images[kind] = libretro_asset(folder, revision, path)
-        if images:
-            release.setdefault("artwork", {}).update({
+        if images or remove_kinds:
+            artwork = release.setdefault("artwork", {})
+            for kind in remove_kinds:
+                artwork.pop(kind, None)
+            artwork.update({
                 kind: {"basis": "reviewed-image", "regions": [release["market"]], **asset}
                 for kind, asset in images.items()
             })

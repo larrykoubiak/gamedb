@@ -2,12 +2,13 @@
 
 from collections import defaultdict
 from datetime import datetime
+from hashlib import sha256
 from pathlib import PurePosixPath
 import re
 
 from sqlalchemy import text
 
-from gamedb.vgm.joshw import COLLECTION, EDITION, supports_version, superseded_sources, title_revision
+from gamedb.vgm.joshw import COLLECTION, EDITION, RETAIL_BUCKETS, supports_version, superseded_sources, title_revision
 from gamedb.vgm.matching import reviewed_titles, spelling_key
 
 
@@ -17,6 +18,23 @@ RIP_DATE = re.compile(r"\(((?:19|20)\d{2}(?:-\d{2}){0,2})\)")
 PLAYSTATION_PREVIEW = re.compile(r"\b(?:demo|preview|prototype|trial|taikenban|sampler|homebrew|unlicensed)\b", re.I)
 RIP_MARKETS = {"JP": "JP", "JPN": "JP", "US": "NA", "USA": "NA", "EU": "PAL", "EUR": "PAL", "PAL": "PAL",
                "BR": "BR", "KR": "KR"}
+
+
+def add_soundtrack_sources(catalog, platform, records):
+    by_game = defaultdict(list)
+    for record in records:
+        by_game[record["game"]].append(record)
+    for game in catalog["games"]:
+        for source in by_game.get(game["title"], ()):
+            url = source["url"]
+            item = {"title": source["title"], "url": url,
+                    "releases": [release["key"] for release in game["releases"]
+                                 if release["market"] in source["markets"]]}
+            if platform in RETAIL_BUCKETS and "size" in source and "revision" in source:
+                key = sha256(url.encode()).hexdigest()
+                item.update(size=source["size"], revision=source["revision"],
+                            loadUrl=f"/related-media/joshw/{platform}/{game['key']}/{key}")
+            game.setdefault("soundtrackSources", []).append(item)
 
 RETAIL_ALBUMS = text("""
     SELECT album.key, album.title, album.collection, album.source_name, album.platform,
@@ -165,7 +183,7 @@ def link_soundtracks(catalog, albums, *, reviews=None, aliases=(), system=SNES, 
 
 def add_soundtracks(connection, catalog, aliases=(), *,
                     platform=SNES, secondary_platform=SUFAMI, formats=("spc",), joshw_archive_bucket=None,
-                    excluded_collection=None):
+                    excluded_collection=None, reviewed_sources=None):
     present = connection.execute(text("""
         SELECT to_regclass('vgm.soundtrack') IS NOT NULL AND to_regclass('vgm.asset') IS NOT NULL
     """)).scalar_one()
@@ -175,5 +193,7 @@ def add_soundtracks(connection, catalog, aliases=(), *,
         "joshw_archive_prefix": f"{joshw_archive_bucket}/" if joshw_archive_bucket else None,
         "excluded_collection": excluded_collection,
     }).mappings()) if present else []
+    if reviewed_sources is not None:
+        albums = [album for album in albums if album["source_name"] in reviewed_sources]
     return link_soundtracks(catalog, albums, reviews=reviewed_titles(), aliases=aliases, system=platform,
                             secondary_platform=secondary_platform)

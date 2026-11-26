@@ -29,7 +29,7 @@ INDEX_NAME = ".gamedb-manuals.json"
 SOURCE_REFERENCES = PROJECT_ROOT / "reference/snes_retail_manual_files.json"
 MARKET_DIRECTORIES = {
     "JP": "Japan", "NA": "North America", "PAL": "PAL", "BR": "Brazil", "KR": "South Korea", "AS": "Asia",
-    "MVS": "MVS", "AES": "AES",
+    "MVS": "MVS", "AES": "AES", "UNK": "Unconfirmed",
 }
 USER_AGENT = "GameDB/2.0 (retail manual library)"
 CHUNK_SIZE = 1024 * 1024

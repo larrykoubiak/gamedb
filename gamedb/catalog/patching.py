@@ -1,5 +1,6 @@
 """Apply cartridge translation patches to a verified base ROM in memory."""
 
+from io import BytesIO
 import os
 from pathlib import Path
 from subprocess import DEVNULL, PIPE, Popen
@@ -13,6 +14,8 @@ from gamedb.catalog.nes_rom import INES_HEADER_SIZE, ines_boundaries
 
 MAX_ROM_SIZE = 16 * 1024 * 1024
 COPIER_HEADER_SIZE = 512
+N64_DISK_LAYOUT = "ndd"
+N64_DISK_SIZE = 64_931_840
 DELTA_MAGIC = {"bps": b"BPS1", "ups": b"UPS1"}
 
 
@@ -62,6 +65,8 @@ class _PatchReader:
 
 
 def supports_patching(patch_format, layout):
+    if layout == N64_DISK_LAYOUT:
+        return patch_format == "ppf"
     if layout in N64_LAYOUTS:
         return patch_format in {"bps", "ips", "ups", "xdelta"}
     return ((patch_format == "ips" and layout in ("headerless", "headered", "ines", "ines-payload"))
@@ -246,9 +251,39 @@ def _ines_program(data):
     return start
 
 
+def apply_ppf3(image, delta, size):
+    header = delta.read(60)
+    if len(header) != 60 or not header.startswith(b"PPF30\x02"):
+        raise PatchError("Expected a PPF3 patch")
+    image_type, block_check, undo = header[56:59]
+    if image_type != 0 or block_check not in (0, 1) or undo not in (0, 1):
+        raise PatchError("Unsupported PPF3 image type or flags")
+    if block_check:
+        block = delta.read(1024)
+        image.seek(0x9320)
+        if len(block) != 1024 or image.read(1024) != block:
+            raise PatchError("PPF3 source block does not match")
+    while record := delta.read(9):
+        if len(record) != 9:
+            raise PatchError("Incomplete PPF3 record")
+        offset = int.from_bytes(record[:8], "little")
+        length = record[8]
+        data = delta.read(length * (1 + undo))
+        if not length or len(data) != length * (1 + undo) or offset + length > size:
+            raise PatchError("Invalid PPF3 edit")
+        image.seek(offset)
+        image.write(data[:length])
+
+
 def apply_translation(source, patch, patch_format, layout, *, pad_to_size=None, output_header=None):
     if not supports_patching(patch_format, layout):
         raise PatchError("The patch requires an unsupported input layout.")
+    if layout == N64_DISK_LAYOUT:
+        if len(source) != N64_DISK_SIZE or pad_to_size is not None or output_header is not None:
+            raise PatchError("The patch requires a 64DD SDK disk image.")
+        with BytesIO(source) as disk, BytesIO(patch) as delta:
+            apply_ppf3(disk, delta, len(source))
+            return disk.getvalue()
     nintendo64 = layout in N64_LAYOUTS
     max_rom_size = N64_ROM_LIMIT if nintendo64 else MAX_ROM_SIZE
     if not 0 < len(source) <= max_rom_size:

@@ -73,7 +73,12 @@
   max-width: 100%;
   object-fit: contain;
 }
-.snes-platform-logo[data-platform="atari5200"] { background: #221f25; }
+.snes-platform-logo .system-logo-crop {
+  --wordmark-height: var(--snes-logo-height);
+}
+.snes-platform-logo[data-platform="atari5200"],
+.snes-platform-logo[data-platform="creativision"],
+.snes-platform-logo[data-platform="loopy"] { background: #221f25; }
 .snes-platform-logo[data-platform="neogeo"] img {
   /* Trim the transparent margins around the original wordmark. */
   height: calc(1.5 * var(--snes-logo-height));
@@ -210,10 +215,16 @@
   content: "";
   width: min(40%, 4.5rem);
   aspect-ratio: 1;
-  background: url("/system-icons/pixel-nintendo-super-nintendo-entertainment-system-5f48a934.png") center / contain no-repeat;
+  background: var(--cover-placeholder, url("/system-icons/pixel-nintendo-super-nintendo-entertainment-system-5f48a934.png")) center / contain no-repeat;
   filter: grayscale(1);
   opacity: .5;
   image-rendering: pixelated;
+}
+.snes-game-cover[data-hardware="satellaview"]:empty::before {
+  background-image: url("/system-icons/pixel-nintendo-satellaview-eecbc234.png");
+}
+.snes-game-cover[data-hardware="nuon"]:empty::before {
+  background-image: radial-gradient(circle, transparent 12%, #b0b0b0 13% 22%, #707070 23% 67%, transparent 68%);
 }
 .snes-game-label {
   display: flex;

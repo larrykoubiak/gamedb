@@ -2,24 +2,43 @@
 
 const params = new URLSearchParams(location.search);
 const platform = location.pathname.split("/").at(-1);
+const cartridgeIcons = {
+  astrocade: "monochrome-bally-astrocade-725396c9.png", arcadia: "monochrome-emerson-arcadia-2001-66429201.png",
+  vc4000: "monochrome-interton-vc-4000-02a0d329.png", studio2: "monochrome-rca-studio-ii-d6131116.png",
+  creativision: "monochrome-vtech-creativision-c7a96d5e.png", vectrex: "pixel-gce-vectrex-0fbb0983.png",
+  advision: "monochrome-entex-adventure-vision-84743a1e.png", pv1000: "monochrome-casio-pv-1000-093af8d0.png",
+  scv: "monochrome-epoch-super-cassette-vision-d8a161c3.png", myvision: "monochrome-nichibutsu-my-vision-755d7d47.png",
+  superacan: "monochrome-funtech-super-acan-cbb59803.png", loopy: "monochrome-casio-loopy-4f8b3b59.png",
+  virtualboy: "pixel-nintendo-virtual-boy-bf364885.png", pico: "monochrome-sega-pico-605066e8.png",
+  copera: "monochrome-yamaha-copera-e1e43d6a.png", picno: "monochrome-konami-picno-7cb04bb6.png",
+  vsmile: "monochrome-vtech-v-smile-a5e50e65.png",
+  gx4000: "monochrome-amstrad-gx4000-675eae7c.png",
+};
 const catalogLabel = {
   snes: "SNES", megadrive: "Mega Drive", nes: "NES / Famicom", playstation: "PlayStation (US)", neogeo: "Neo Geo",
   mastersystem: "Master System", pcengine: "PC Engine / TurboGrafx-16", n64: "Nintendo 64", saturn: "Sega Saturn",
-  jaguar: "Atari Jaguar", pcfx: "PC-FX", cd32: "Amiga CD32", "3do": "3DO",
+  jaguar: "Atari Jaguar", pcfx: "PC-FX", cd32: "Amiga CD32", cdtv: "Commodore CDTV", "3do": "3DO",
   playdia: "Bandai Playdia", pippin: "Apple Bandai Pippin", cdi: "Philips CD-i",
   dreamcast: "Sega Dreamcast", playstation2: "PlayStation 2 (US)", gamecube: "GameCube (US)",
   channelf: "Fairchild Channel F", atari2600: "Atari 2600", atari5200: "Atari 5200", atari7800: "Atari 7800", xegs: "Atari XEGS",
   odyssey2: "Magnavox Odyssey² / Philips Videopac", intellivision: "Intellivision", colecovision: "ColecoVision",
+  astrocade: "Bally Astrocade", arcadia: "Emerson Arcadia 2001", vc4000: "Interton VC 4000",
+  studio2: "RCA Studio II / Toshiba Visicom", creativision: "VTech CreatiVision", vectrex: "GCE Vectrex",
+  advision: "Entex Adventure Vision", pv1000: "Casio PV-1000", scv: "Epoch Super Cassette Vision",
+  myvision: "Nichibutsu My Vision", superacan: "Funtech Super A’Can", loopy: "Casio Loopy",
+  virtualboy: "Nintendo Virtual Boy", pico: "Sega Pico", copera: "Yamaha Copera", picno: "Konami Picno",
+  vsmile: "VTech V.Smile", nuon: "VM Labs NUON", gx4000: "Amstrad GX4000", marty: "Fujitsu FM Towns Marty",
 }[platform];
 const catalogApi = `/api/${platform}-retail`;
 const romExtension = {
-  snes: ".sfc", megadrive: ".md", nes: ".nes", mastersystem: ".sms", pcengine: ".pce", n64: ".z64", colecovision: ".col",
+  snes: ".sfc", megadrive: ".md", nes: ".nes", mastersystem: ".sms", pcengine: ".pce", n64: ".z64", colecovision: ".col", virtualboy: ".vb",
 }[platform];
 const playStation = platform === "playstation";
 const saturn = platform === "saturn";
 const jaguar = platform === "jaguar";
-const classicCartridge = ["channelf", "atari2600", "atari5200", "atari7800", "xegs", "odyssey2", "intellivision", "colecovision"].includes(platform);
-const earlyDisc = ["pcfx", "cd32", "3do", "playdia", "pippin", "cdi"].includes(platform);
+const classicCartridge = Boolean(cartridgeIcons[platform])
+  || ["channelf", "atari2600", "atari5200", "atari7800", "xegs", "odyssey2", "intellivision", "colecovision"].includes(platform);
+const earlyDisc = ["pcfx", "cd32", "cdtv", "3do", "playdia", "pippin", "cdi", "nuon", "marty"].includes(platform);
 const sixthGeneration = ["dreamcast", "playstation2", "gamecube"].includes(platform);
 const optical = playStation || saturn || earlyDisc || sixthGeneration;
 const neoGeo = platform === "neogeo";
@@ -30,22 +49,26 @@ const useCoverFallback = neoGeo || masterSystem || pcEngine || jaguar || earlyDi
 const marketNames = {
   JP: "Japan", NA: playStation || ["gamecube", "playstation2", "pippin"].includes(platform) ? "United States" : "North America",
   PAL: "PAL region", BR: "Brazil", WORLD: "Worldwide", UNK: "Market unconfirmed",
-  KR: "South Korea", AS: saturn ? "Taiwan" : "Asia",
+  KR: "South Korea", AS: saturn || platform === "superacan" ? "Taiwan" : "Asia",
   MVS: "MVS arcade", AES: "AES home",
 };
 const channelNames = {"nintendo-power": "Nintendo Power", "sufami-turbo": "SuFami Turbo"};
 const hardwareNames = {
+  snes: "SNES / Super Famicom", n64: "Nintendo 64",
+  satellaview: "Satellaview", "sufami-turbo": "SuFami Turbo", n64dd: "Nintendo 64DD",
   nes: "NES / Famicom", megadrive: "Mega Drive / Genesis", pcengine: "PC Engine / TurboGrafx-16",
   mastersystem: "Master System / Mark III", sg1000: "SG-1000",
   fds: "Famicom Disk System", "32x": "32X", supergrafx: "SuperGrafx",
   segacd: "Sega CD / Mega-CD", "32x-cd": "Sega CD + 32X", pcecd: "PC Engine CD", neogeocd: "Neo Geo CD",
   mvs: "MVS arcade", aes: "AES home",
   odyssey2: "Odyssey² / Videopac", "videopac-plus": "Videopac+ / Jopac",
+  studio2: "RCA Studio II", visicom: "Toshiba Visicom",
 };
-const hardwareLabels = {fds: "FDS", segacd: "Sega CD", neogeocd: "CD", mvs: "MVS", aes: "AES"};
+const hardwareLabels = {fds: "FDS", segacd: "Sega CD", neogeocd: "CD", mvs: "MVS", aes: "AES", n64dd: "64DD", visicom: "Visicom"};
 const cdAddons = new Set(["segacd", "32x-cd", "pcecd", "neogeocd"]);
 const addonDownloads = {
   fds: "Download disk", "32x": "Download cartridge", supergrafx: "Download HuCard", sg1000: "Download cartridge",
+  satellaview: "Download broadcast", "sufami-turbo": "Download cartridge", n64dd: "Download disk",
 };
 const matchNames = {ambiguous: "Needs review", unmatched: optical ? "No verified discs" : "No base ROM match"};
 const artworkNames = {
@@ -195,6 +218,7 @@ function preferredCover(releases, title) {
     || releases.find(release => release.boxart || release.cover);
   return releases.find(release => release.boxart && release.titles.includes(title))
     || releases.find(release => release.boxart)
+    || releases.find(release => release.hardware === "satellaview" && release.status === "matched" && release.cover)
     || releases.find(release => (useCoverFallback || release.hardware) && release.cover);
 }
 
@@ -235,6 +259,12 @@ function renderBrowse() {
     const cover = coverRelease?.boxart || coverRelease?.cover
       || (filters.translated && !filters.hardware && preferredCover(game.releases, game.title)?.boxart);
     const stage = element("span", "", "snes-game-cover");
+    const placeholderIcon = platform === "cdtv" ? "retail-logo-cdtv.png" : cartridgeIcons[platform];
+    if (placeholderIcon) {
+      stage.style.setProperty("--cover-placeholder", `url("/system-icons/${placeholderIcon}")`);
+    }
+    if (platform === "nuon") stage.dataset.hardware = "nuon";
+    if (detailRelease?.hardware === "satellaview") stage.dataset.hardware = "satellaview";
     if (cover) {
       const image = artworkImage(cover.preview || cover.url, "");
       image.addEventListener("error", () => image.remove(), {once: true});
@@ -374,8 +404,8 @@ function renderArt(release) {
     || release.artwork?.flyer || release.artwork?.marquee);
   const kinds = hasCover ? Object.keys(artworkNames) : ["logo", "title", "snap"];
   const items = kinds.filter(kind => release.artwork?.[kind]).map(kind => {
-    const label = artworkNames[kind];
     const asset = release.artwork[kind];
+    const label = asset.label ?? artworkNames[kind];
     return {kind, label, asset, source: asset.url, caption: `${title} — ${label}`,
       pixelArt: kind === "title" || kind === "snap"};
   });
@@ -593,6 +623,7 @@ function translationRow(translation, columns) {
     z64: "Big-endian .z64 input",
     v64: "Byte-swapped .v64 input",
     n64: "Little-endian .n64 input",
+    ndd: "64DD disk image input",
     neosd: "Requires a NeoSD .neo image",
   };
   const row = element("tr");
@@ -634,7 +665,7 @@ function translationRow(translation, columns) {
     });
   }
   if (translation.romDownloadUrl) {
-    const label = translation.discDownloadSize ? "Download disc set" : "Download ROM";
+    const label = translation.discDownloadSize ? "Download disc set" : translation.layout === "ndd" ? "Download disk" : "Download ROM";
     const download = element("button", label, "snes-text-button");
     download.type = "button";
     download.setAttribute("aria-haspopup", "dialog");
@@ -776,13 +807,23 @@ function romCell(release) {
   if (!matched) {
     if (!entries.length) cell.replaceChildren();
     const message = release.status === "unmatched" && discRelease(release) ? "No verified discs" : matchNames[release.status];
-    cell.prepend(element("p", message, "snes-release-status"));
-    if (release.reviewNote?.text) {
-      const note = element("small", release.reviewNote.text);
-      if (release.reviewNote.source?.url) {
-        note.append(" ", newTabLink(release.reviewNote.source.name, release.reviewNote.source.url));
-      }
-      cell.append(note);
+    const status = element("p", release.dumpSource ? "Local ROM unavailable" : message, "snes-release-status");
+    if (release.dumpSource) status.append(" · ", newTabLink(release.dumpSource.name, release.dumpSource.url));
+    cell.prepend(status);
+  }
+  if (release.reviewNote?.text && (!matched || release.reviewNote.showWhenMatched)) {
+    const note = element("small", release.reviewNote.text);
+    if (release.reviewNote.source?.url) {
+      note.append(" ", newTabLink(release.reviewNote.source.name, release.reviewNote.source.url));
+    }
+    cell.append(note);
+    const related = release.reviewNote.related;
+    if (related?.url) {
+      const link = element("a", related.name);
+      link.href = related.url;
+      const row = element("p", "", "snes-release-status");
+      row.append(link);
+      cell.append(row);
     }
   }
   return cell;
@@ -1090,7 +1131,14 @@ async function start() {
     logo.addEventListener("error", () => { heading.textContent = catalogLabel; }, {once: true});
     const filename = platform === "odyssey2" ? "odyssey2-wordmark" : platform;
     logo.src = `/system-icons/retail-logo-${filename}.png`;
-    plate.append(logo);
+    if (["copera", "myvision", "picno"].includes(platform)) {
+      const crop = element("span", "", "system-logo-crop");
+      crop.dataset.platform = platform;
+      crop.append(logo);
+      plate.append(crop);
+    } else {
+      plate.append(logo);
+    }
     heading.replaceChildren(plate);
   }
   document.querySelector("#snes-back").textContent = `← ${catalogLabel} catalog`;

@@ -1,5 +1,11 @@
 Retail catalog logos
 
+Amstrad GX4000 original logo, rendered as PNG
+https://commons.wikimedia.org/wiki/File:Amstrad_GX4000_logo.svg
+
+Fujitsu FM Towns Marty original logo
+https://commons.wikimedia.org/wiki/File:FM_Towns_Marty_Logo.png
+
 Super Nintendo Entertainment System
 https://commons.wikimedia.org/wiki/File:SNES_logo.svg
 
@@ -41,6 +47,9 @@ https://github.com/RetroPie/es-theme-carbon/blob/b09973e0b0c589cb11fe772c169a6ff
 
 Amiga CD32 wordmark by Commodore, rendered as PNG.
 https://commons.wikimedia.org/wiki/File:Amigacd32-logo.svg
+
+Commodore CDTV logo, vectorized by Dan Patrick and rendered as PNG.
+https://commons.wikimedia.org/wiki/File:CDTV01.svg
 
 Atari 2600, Atari 5200 and Atari 7800 wordmarks, rendered as PNG.
 https://commons.wikimedia.org/wiki/File:Atari2600logo.svg
@@ -100,6 +109,37 @@ https://commons.wikimedia.org/wiki/File:PlayStation_Vita_logo.svg
 
 Watara Supervision wordmark, vectorized by Suspiciouscelery.
 https://commons.wikimedia.org/wiki/File:Watara_Supervision_logo.svg
+
+Additional catalog wordmarks
+
+Adventure Vision, Arcadia 2001, Astrocade, CreatiVision, Vectrex, PV-1000,
+Super Cassette Vision, Super A'Can, Loopy, Virtual Boy, Pico, V.Smile and
+VC 4000 from the ES-theme-Carbon fork maintained by Fabrice Caruso.
+The Carbon theme was created by Rookervik and is based on Simple by Nils Bonenberger.
+The vector images were rendered as PNG.
+https://github.com/fabricecaruso/ES-theme-Carbon/blob/c4876264bbacad363a6f1717bf9c1feeaefafd38/art/logos/astrocade.svg
+https://github.com/fabricecaruso/ES-theme-Carbon/blob/c4876264bbacad363a6f1717bf9c1feeaefafd38/art/logos/arcadia.svg
+https://github.com/fabricecaruso/ES-theme-Carbon/blob/c4876264bbacad363a6f1717bf9c1feeaefafd38/art/logos/vc4000.svg
+https://github.com/fabricecaruso/ES-theme-Carbon/blob/c4876264bbacad363a6f1717bf9c1feeaefafd38/art/logos/creativision.svg
+https://github.com/fabricecaruso/ES-theme-Carbon/blob/c4876264bbacad363a6f1717bf9c1feeaefafd38/art/logos/vectrex.svg
+https://github.com/fabricecaruso/ES-theme-Carbon/blob/c4876264bbacad363a6f1717bf9c1feeaefafd38/art/logos/advision.svg
+https://github.com/fabricecaruso/ES-theme-Carbon/blob/c4876264bbacad363a6f1717bf9c1feeaefafd38/art/logos/pv1000.svg
+https://github.com/fabricecaruso/ES-theme-Carbon/blob/c4876264bbacad363a6f1717bf9c1feeaefafd38/art/logos/scv.svg
+https://github.com/fabricecaruso/ES-theme-Carbon/blob/c4876264bbacad363a6f1717bf9c1feeaefafd38/art/logos/supracan.svg
+https://github.com/fabricecaruso/ES-theme-Carbon/blob/c4876264bbacad363a6f1717bf9c1feeaefafd38/art/logos/loopy.svg
+https://github.com/fabricecaruso/ES-theme-Carbon/blob/c4876264bbacad363a6f1717bf9c1feeaefafd38/art/logos/virtualboy.svg
+https://github.com/fabricecaruso/ES-theme-Carbon/blob/c4876264bbacad363a6f1717bf9c1feeaefafd38/art/logos/pico.svg
+https://github.com/fabricecaruso/ES-theme-Carbon/blob/c4876264bbacad363a6f1717bf9c1feeaefafd38/art/logos/vsmile.svg
+
+RCA Studio II and VM Labs NUON wordmarks from Wikimedia Commons.
+https://commons.wikimedia.org/wiki/File:RCA_Studio_II_Logo.png
+https://commons.wikimedia.org/wiki/File:VM_Labs_Nuon_logo.svg
+
+Konami Picno and Nichibutsu My Vision wordmarks from Reagan Ray's Video Game Console Logos.
+https://reaganray.com/2019/11/12/video-game-console-logos.html
+
+Yamaha Copera wordmark displayed from the Melody Land packaging scan at LaunchBox.
+https://gamesdb.launchbox-app.com/games/images/97166-melody-land
 
 Platform icons from RetroArch assets (Libretro contributors), pixel and monochrome themes.
 Source: https://github.com/libretro/retroarch-assets/tree/d9f969054dc7fbb6fa89519036d2b971e0855b51

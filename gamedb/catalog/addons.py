@@ -10,8 +10,8 @@ from gamedb.catalog.cartridges import VERIFIED_ROM_SQL
 from gamedb.catalog.disc_catalog import DISC_SYSTEMS, addon_disc_archives, approved_disc_matches
 from gamedb.catalog.megadrive_media import add_scans, sega_retro_scans
 from gamedb.catalog.references import read_index
-from gamedb.catalog.retail_media import add_descriptions_and_art
-from gamedb.catalog.soundtracks import add_soundtracks
+from gamedb.catalog.retail_media import add_descriptions_and_art, add_reviewed_artwork
+from gamedb.catalog.soundtracks import add_soundtrack_sources, add_soundtracks
 from gamedb.config import PROJECT_ROOT
 
 
@@ -24,9 +24,20 @@ class Addon:
     formats: tuple[str, ...]
     medium: str
     channel: str = "cartridge"
+    distribution_channels: tuple[str, ...] = ()
 
 
 ADDONS = {
+    "snes": Addon(
+        "satellaview", ("Nintendo", "Satellaview"), "Nintendo Satellaview",
+        ("Nintendo - Satellaview", "e9fd89a13ce967d79c26714a10831f434f5ac0cf"),
+        ("spc",), "Satellaview broadcast", "broadcast", ("soundlink",),
+    ),
+    "n64": Addon(
+        "n64dd", ("Nintendo", "Nintendo 64DD"), "Nintendo 64DD",
+        ("Nintendo - Nintendo 64DD", "66b0dd14e911f1a0ffc1956fc45254f4758d9b1d"),
+        ("usf", "miniusf", "flac"), "64DD disk", "disk",
+    ),
     "mastersystem": Addon(
         "sg1000", ("Sega", "SG-1000"), "Sega SG-1000",
         ("Sega - SG-1000", "3a0e96504581c36cbb8a0d6860099565142ef7fd"),
@@ -79,12 +90,15 @@ def _addon_catalog(addon, reference):
     source = reference["source"]
     games, archive_aliases, parents = {}, [], {}
     for row in reference["titles"]:
+        release_source = row.get("source", source)
         edition = row["title"]
         title = row.get("gameTitle", edition)
         game = games.setdefault(title, {
             "key": _key(addon.key, "game", title), "title": title, "aliases": [],
             "developer": row["developer"], "publisher": row["publisher"], "releases": [],
         })
+        if display_title := row.get("displayTitle"):
+            game["title"] = display_title
         if parent := row.get("parentTitle"):
             if parents.setdefault(title, parent) != parent:
                 raise ValueError(f"Conflicting parent titles for {title!r}")
@@ -100,23 +114,30 @@ def _addon_catalog(addon, reference):
                 raise ValueError(f"Duplicate {addon.key} edition {edition!r} in {market}")
             release = {
                 "key": key, "edition": edition, "market": market, "titles": [local],
-                "date": date, "hardware": row.get("hardware", addon.key), "source": source,
+                "date": date, "hardware": row.get("hardware", addon.key), "source": release_source,
                 "medium": row.get("medium", addon.medium), "channel": row.get("channel", addon.channel),
-                **credits, "creditSources": dict.fromkeys(credits, source),
+                **credits, "creditSources": dict.fromkeys(credits, release_source),
             }
             if product_codes := row.get("productCodes"):
                 release["productCodes"] = product_codes
             if required := row.get("requiredHardware"):
                 release["requiredHardware"] = required
+            if accessories := row.get("requiredAccessories"):
+                release["requiredAccessories"] = accessories
+            if note := row.get("reviewNote"):
+                release["reviewNote"] = note
+            if dump_source := row.get("dumpSource"):
+                release["dumpSource"] = dump_source
             game["releases"].append(release)
             if local != title:
                 alias = {"title": local, "regions": [market]}
                 if alias not in game["aliases"]:
                     game["aliases"].append(alias)
             archive_aliases.extend(
-                {"edition": edition, "market": market, "archiveTitle": name, "evidence": source["url"]}
+                {"edition": edition, "market": market, "archiveTitle": name, "evidence": release_source["url"]}
                 for name in row.get("archiveTitles", ()) if retail._title_key(name) != retail._title_key(local)
             )
+    parents = {games[title]["title"]: parent for title, parent in parents.items()}
     return {"source": source, "games": list(games.values())}, archive_aliases, parents
 
 
@@ -145,8 +166,9 @@ def _merge_games(catalog, addon_catalog, parents):
         if description := extra.get("description"):
             for release in extra["releases"]:
                 release["description"] = description
-        if extra.get("soundtrackLinks"):
-            game.setdefault("soundtrackLinks", []).extend(extra["soundtrackLinks"])
+        for field in ("soundtrackLinks", "soundtrackSources"):
+            if values := extra.get(field):
+                game.setdefault(field, []).extend(values)
     catalog["games"].sort(key=lambda game: game["title"].casefold())
 
 
@@ -172,9 +194,15 @@ def add_retail_addon(connection, catalog, directory, addon, markets):
         verified = list(approved_disc_matches(archives, reference.get("verifiedArchives", ())))
     else:
         verified = reference.get("verifiedArchives", ())
-        archives = retail.read_archives(connection, *addon.system, verified)
+        eligibility = [*verified, *reference.get("archiveEligibility", ())]
+        archives = retail.read_archives(connection, *addon.system, eligibility,
+                                        distribution_channels=addon.distribution_channels)
         if addon.key == "fds":
             archives = _fds_archives(connection, archives)
+        elif addon.channel != "cartridge":
+            archives = [dict(archive, channel=addon.channel) for archive in archives]
+    if excluded := {item["signature"] for item in reference.get("excludedArchives", ())}:
+        archives = [archive for archive in archives if archive["signature"] not in excluded]
     retail.match_archives(additions, archives, aliases, verified, markets=markets)
     if included := reference.get("includedIn"):
         games = {game["title"]: game for game in additions["games"]}
@@ -202,6 +230,13 @@ def add_retail_addon(connection, catalog, directory, addon, markets):
         connection, additions, {index_name: index}, reference, platforms={addon.launchbox},
         thumbnails={addon.key: addon.thumbnails}, thumbnail_key=addon.key,
     )
+    if artwork := reference.get("reviewedArtwork"):
+        add_reviewed_artwork(additions, addon.key, {index_name: index}, artwork,
+                             thumbnails={addon.key: addon.thumbnails})
+    if addon.channel == "broadcast":
+        for game in additions["games"]:
+            for release in game["releases"]:
+                release.get("artwork", {}).pop("boxart", None)
     sources = [index]
     warnings = []
     if addon.key == "32x":
@@ -210,16 +245,26 @@ def add_retail_addon(connection, catalog, directory, addon, markets):
         sources.extend(source for _, _, indexes, _ in scans for source in indexes)
         warnings.extend(error for _, _, _, error in scans if error)
     _add_manuals(additions, reference)
+    if addon.key == "satellaview":
+        for game in additions["games"]:
+            game["releases"] = [
+                release for release in game["releases"]
+                if release["status"] == "matched" or release.get("dumpSource")
+            ]
+        additions["games"] = [game for game in additions["games"] if game["releases"]]
+        retail.summarize_matches(additions, len(archives), markets)
     addon_summary = additions["summary"]
     addon_summary["metadata"] = retail.enrichment_coverage(additions, markets)
     addon_summary["soundtracks"] = add_soundtracks(
         connection, additions, platform=addon.system, secondary_platform=None, formats=addon.formats,
         aliases=[{"edition": item["edition"], "title": item["archiveTitle"]} for item in aliases],
     )
+    add_soundtrack_sources(additions, addon.key, reference.get("soundtrackSources", ()))
     base_summary = catalog["summary"]
     base_count = len(catalog["games"])
     _merge_games(catalog, additions, parents)
     catalog.setdefault("addonSources", {})[addon.key] = additions["source"]
+    catalog["enrichmentSources"].extend(reference.get("additionalSources", ()))
     catalog["enrichmentSources"].extend({"url": source.url, "sha256": source.digest} for source in sources)
     retail.summarize_matches(catalog, base_summary.get("eligibleArchives", 0) + len(archives), markets)
     summary = catalog["summary"]

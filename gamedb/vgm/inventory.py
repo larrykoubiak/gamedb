@@ -50,6 +50,7 @@ SET_FOLDERS = {
     "The GameBoy Music Collection": GB,
     "Sega Game Gear": ("Sega", "Game Gear"),
     "PC-FX Disc Audio": ("NEC", "PC-FX"),
+    "Planet Virtual Boy": ("Nintendo", "Virtual Boy"),
     NEOGEO_COLLECTION: NEOGEO,
     SMS_POWER_COLLECTION: MASTER_SYSTEM,
     **EARLY_CONSOLE_COLLECTIONS,

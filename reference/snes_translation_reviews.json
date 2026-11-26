@@ -1,0 +1,49 @@
+{
+  "source": "RHDN translation 2349",
+  "ips": {
+    "2349": {
+      "archive": "[2349]BS Zelda - Inishie no Sekiban English.7z",
+      "layout": "headerless",
+      "patches": {
+        "bszelda_ast1.ips": "a2bcf1499de7958ada0ab6699b830d9f924cae2cea44d6872826e50561473bad",
+        "bszelda_ast2.ips": "179b8bbd503acde7e35e641801314a965173a3c288fde4e825603b7376bc0585",
+        "bszelda_ast3.ips": "1b4cbe87325b6ca3a3d425de7861ffb6094e91376f5b48457ea5b45f078a0bca",
+        "bszelda_ast4.ips": "09d009ea5014ab4094fd5c7791ef88449b3ad745a91c8960c4eb724edf45635f",
+        "bszelda_mq1.ips": "2652f5bfddf1aad99784654c8899e945269e0500b3bf30e3dea66cd0be96d383",
+        "bszelda_mq2.ips": "b5fbd5828c15ff32ca4f27a28064e98db3c4cd36d5e66eedcc250378a24da73a",
+        "bszelda_mq3.ips": "cf30b8a85ad58e706d44c181295d9ee1d4c1f20d67033c6e7e07b4a9bef3eac6",
+        "bszelda_mq4.ips": "ab1813bef28b656bacd3a95cad1c3f31dc09de9449603d8167f0df4bca9efc17"
+      },
+      "baseSha1ByPatch": {
+        "bszelda_ast1.ips": "e784f04736f354a05a19a0e86efd8a1f40589aa4",
+        "bszelda_ast2.ips": "0877f63d8d096e7a35a5721ec1e4ce2cb86a7211",
+        "bszelda_ast3.ips": "25efee5199c9da0805306edac3367d60253ea828",
+        "bszelda_ast4.ips": "63c1110e32d4b3b2d6525919e10e50abcc7677a3",
+        "bszelda_mq1.ips": "e784f04736f354a05a19a0e86efd8a1f40589aa4",
+        "bszelda_mq2.ips": "0877f63d8d096e7a35a5721ec1e4ce2cb86a7211",
+        "bszelda_mq3.ips": "25efee5199c9da0805306edac3367d60253ea828",
+        "bszelda_mq4.ips": "63c1110e32d4b3b2d6525919e10e50abcc7677a3"
+      },
+      "outputSha1": {
+        "bszelda_ast1.ips": "4a5255d7a9232930171615d20697907117354d89",
+        "bszelda_ast2.ips": "481be34dcd63f9093a2b3f7359b2bb18a3c87a4b",
+        "bszelda_ast3.ips": "4285dd801a5e389a56c16323767f4705931a0d08",
+        "bszelda_ast4.ips": "f4d4981c8c5f33a4838e24f3d2d49439df9421e7",
+        "bszelda_mq1.ips": "db5d92c3c2262f1d88a8b696f55dc3ef2e895dbd",
+        "bszelda_mq2.ips": "0a76a97106a50c7a500425f6ee7a3d40d9cf9f52",
+        "bszelda_mq3.ips": "fa3a91d2763acc726e6e73eea32701ec6e2b2e44",
+        "bszelda_mq4.ips": "150110b19d73e5842078e20d589c904ddd87e89c"
+      },
+      "versions": {
+        "bszelda_ast1.ips": "1.0",
+        "bszelda_ast2.ips": "1.0",
+        "bszelda_ast3.ips": "1.0",
+        "bszelda_ast4.ips": "1.0",
+        "bszelda_mq1.ips": "1.0 Master Quest",
+        "bszelda_mq2.ips": "1.0 Master Quest",
+        "bszelda_mq3.ips": "1.0 Master Quest",
+        "bszelda_mq4.ips": "1.0 Master Quest"
+      }
+    }
+  }
+}

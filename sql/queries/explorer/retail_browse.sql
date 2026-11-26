@@ -20,7 +20,7 @@ WITH snapshot AS (
         'cover', CASE WHEN release ? 'setNames' OR NOT (release->'artwork' ? 'boxart') THEN
             coalesce(release->'artwork'->'boxart', release->'artwork'->'flyer',
                 release->'artwork'->'marquee', release->'artwork'->'cartridge',
-                release->'artwork'->'title', release->'artwork'->'snap') END,
+                release->'artwork'->'title', release->'artwork'->'snap', release->'artwork'->'logo') END,
         'archiveTitles', coalesce(release->'setNames', jsonb_path_query_array(release, '$.archives[*].title')),
         'archiveSignatures', jsonb_path_query_array(release, '$.archives[*].signature')
             || jsonb_path_query_array(release, '$.arcadeSets[*] ? (@.complete == true).installSignature')

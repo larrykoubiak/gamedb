@@ -3,6 +3,7 @@
 import json
 
 from gamedb.catalog import retail
+from gamedb.catalog.addons import ADDONS, add_retail_addon
 from gamedb.catalog.retail import enrichment_coverage, match_archives, read_aliases, write_report as write_report
 from gamedb.catalog.cartridges import add_cartridge_evidence, cartridge_hashes, read_cartridge_roms
 from gamedb.catalog.retail_media import add_descriptions_and_art, add_manuals
@@ -15,6 +16,8 @@ from gamedb.database import create_database_engine
 
 SYSTEM_NAME = "Super Nintendo Entertainment System"
 SUFAMI_SYSTEM = "Sufami Turbo"
+SUFAMI_HARDWARE = "sufami-turbo"
+SUFAMI_SOURCE = {"name": "SNES Central", "url": "https://snescentral.com/article.php?id=0802"}
 BASE_ARCHIVES = retail.base_archives_query("'Nintendo'", "'{}'")
 
 
@@ -61,6 +64,12 @@ def seed_snes(html_path=None, report=None, *, publish_catalog=False, sources=Non
             )
             if warnings:
                 catalog["summary"]["sourceWarnings"] = warnings
+            for game in catalog["games"]:
+                for release in game["releases"]:
+                    if release["channel"] == SUFAMI_HARDWARE:
+                        release["hardware"] = SUFAMI_HARDWARE
+            catalog["addonSources"] = {SUFAMI_HARDWARE: SUFAMI_SOURCE}
+            add_retail_addon(connection, catalog, sources, ADDONS["snes"], retail.ARCHIVE_MARKETS)
             if publish_catalog:
                 retail.publish(connection, catalog, "snes")
     finally:

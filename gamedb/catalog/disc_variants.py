@@ -45,11 +45,11 @@ def add_disc_variants(connection, catalog, system, markets, *, reviewed=()):
     by_edition = {}
     for game in catalog["games"]:
         for release in game["releases"]:
+            by_edition[release["edition"], release["market"]] = release
             if release["status"] != "matched":
                 continue
             scope = frozenset(markets[release["market"]])
             owner = (scope, release)
-            by_edition[release["edition"], release["market"]] = release
             archives = release.get("archives", ())
             for name in {*release["titles"], game["title"], *(archive["title"] for archive in archives)}:
                 by_name[_title_key(name)][release["key"]] = owner
@@ -64,7 +64,7 @@ def add_disc_variants(connection, catalog, system, markets, *, reviewed=()):
         review = reviews.get(record["signature"])
         if review:
             release = by_edition.get((review["edition"], review["market"]))
-            if release is None:
+            if release is None or (release["status"] != "matched" and not review.get("allowMissingBase")):
                 continue
         else:
             regions = set(record["regions"] or ())

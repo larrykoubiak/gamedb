@@ -20,7 +20,7 @@ from zipfile import BadZipFile, ZipFile
 
 from gamedb.catalog.manuals import manual_key
 from gamedb.catalog.n64_rom import N64_LAYOUTS, N64_ROM_LIMIT
-from gamedb.catalog.patching import MAX_ROM_SIZE, apply_translation, supports_patching
+from gamedb.catalog.patching import MAX_ROM_SIZE, N64_DISK_LAYOUT, apply_translation, supports_patching
 from gamedb.catalog.translations import (
     ADDON_CONSOLES, ADDON_EXTENSIONS, CARTRIDGE_EXTENSIONS, DISC_LAYOUT, DISC_PATCH_ARCHIVES, DISC_PLATFORMS, FORMATS,
     INDEX_NAME as TRANSLATION_INDEX, INDEX_VERSION, MAX_PATCH_SIZE, TRANSLATION_ROOTS, translation_order,
@@ -142,6 +142,9 @@ def _read_translation_index(path, revision):
         valid_patch = (record["format"] in DISC_PATCH_ARCHIVES and record["size"] > 0) if disc else (
             record["format"] in cartridge_formats and 0 < record["size"] <= MAX_PATCH_SIZE
         )
+        if record["layout"] == N64_DISK_LAYOUT:
+            valid_patch = (record["format"] == "ppf" and 0 < record["size"] <= MAX_PATCH_SIZE
+                           and re.fullmatch(r"[0-9a-f]{40}", record.get("outputSha1", "")))
         if (not re.fullmatch(r"[0-9a-f]{64}", key) or not re.fullmatch(r"[0-9a-f]{64}", record["sha256"])
                 or not valid_patch):
             continue
@@ -352,6 +355,8 @@ def serve_retail_translation_rom(handler, signature, key, *, disc_only=False):
     tag = " ".join(item for item in (record["language"], record["version"]) if item)
     addon_extension = ADDON_EXTENSIONS.get(ADDON_CONSOLES.get(platform))
     extension = addon_extension if addon_extension and record.get("extension") == addon_extension else CARTRIDGE_EXTENSIONS[platform]
+    if record["layout"] == N64_DISK_LAYOUT:
+        extension = "ndd"
     filename = re.sub(r"[/\\\x00-\x1f\x7f]", "_", f"{base_name} [{tag}].{extension}")
     digest = hashlib.sha256(patched).hexdigest()
     return _serve_file(handler, key, root, {

@@ -1,0 +1,1659 @@
+{
+  "source": {
+    "name": "Wikipedia contributors, CDTV software list and verified retail discs",
+    "url": "https://en.wikipedia.org/w/index.php?title=CDTV&oldid=1370221495#Software",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "revision": "1370221495",
+    "sha256": "be22fca25f4ecb71076342cfb4d89297731ba53c70aac10d792c8672296ae626",
+    "rowCount": 92,
+    "additionalSources": [
+      "https://www.historybit.it/wp-content/uploads/2024/03/CDTV-Interactive-Multimedia.pdf",
+      "https://github.com/mamedev/mame/blob/mame0289/hash/cdtv.xml",
+      "https://www.redump.info/datfile/cdtv/serial,version",
+      "https://www.tosecdev.org/",
+      "https://gamesdb.launchbox-app.com/platforms/games/120-commodore-cdtv",
+      "https://wiki.redump.info/Commodore_Amiga_CDTV_-_Undumped_Discs"
+    ]
+  },
+  "rows": [
+    {
+      "title": "A Bun for Barney",
+      "aliases": [
+        {
+          "title": "Bun for Barney, A",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Interactive Story"
+      ],
+      "releases": {
+        "NA": "1991",
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "MultiMedia Corporation"
+      }
+    },
+    {
+      "title": "A Long, Hard Day at the Ranch",
+      "aliases": [
+        {
+          "title": "A Long Hard Day at the Ranch",
+          "regions": []
+        },
+        {
+          "title": "Long Hard Day at the Ranch, A",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Interactive Story"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Discis Knowledge Research"
+      }
+    },
+    {
+      "title": "Air Warrior",
+      "aliases": [],
+      "genres": [
+        "Simulation"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "On-Line"
+      },
+      "developer": {
+        "default": "Kesmai"
+      }
+    },
+    {
+      "title": "Alistair in Outer Space",
+      "aliases": [
+        {
+          "title": "Alistair in Outer Space Makes Learning Fun",
+          "regions": []
+        },
+        {
+          "title": "Alistar in Outer Space",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": "1993"
+      },
+      "publisher": {
+        "default": "Altered Images"
+      },
+      "developer": {
+        "default": "Altered Images"
+      }
+    },
+    {
+      "title": "All Dogs Go to Heaven: Talking Electric Crayon",
+      "aliases": [
+        {
+          "title": "All Dogs Go to Heaven",
+          "regions": []
+        },
+        {
+          "title": "Electric Crayon - All Dogs Go to Heaven",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "NA": "1991"
+      },
+      "publisher": {
+        "default": "Merit Software"
+      }
+    },
+    {
+      "title": "Apprenez l’anglais avec Astérix: Astérix and Son",
+      "aliases": [
+        {
+          "title": "Apprenez L'Anglais Avec Asterix - Asterix and Son - Disque 1",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "EuroTalk"
+      }
+    },
+    {
+      "title": "Barney Bear Goes Camping",
+      "aliases": [],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Free Spirit"
+      },
+      "developer": {
+        "default": "Free Spirit"
+      }
+    },
+    {
+      "title": "Barney Bear Goes to School",
+      "aliases": [],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "NA": "1991",
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Free Spirit"
+      },
+      "developer": {
+        "default": "Free Spirit"
+      }
+    },
+    {
+      "title": "Battle Chess",
+      "aliases": [
+        {
+          "title": "Battle Chess CDTV",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Board Game"
+      ],
+      "releases": {
+        "PAL": "1994"
+      },
+      "publisher": {
+        "default": "Interplay"
+      },
+      "developer": {
+        "default": "Quicksilver"
+      }
+    },
+    {
+      "title": "Battlestorm",
+      "aliases": [],
+      "genres": [
+        "Shooter"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Titus"
+      },
+      "developer": {
+        "default": "Titus"
+      }
+    },
+    {
+      "title": "Camel Racer",
+      "aliases": [],
+      "genres": [
+        "Racing"
+      ],
+      "releases": {
+        "PAL": "1998"
+      },
+      "publisher": {
+        "default": "MMM Group"
+      }
+    },
+    {
+      "title": "Casino Games",
+      "aliases": [],
+      "genres": [
+        "Casino"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Saen Software"
+      },
+      "developer": {
+        "default": "Saen Software"
+      }
+    },
+    {
+      "title": "Chaos in Andromeda: Eyes of the Eagle",
+      "aliases": [],
+      "genres": [
+        "Role-Playing"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "On-line"
+      },
+      "developer": {
+        "default": "KirkMoreno"
+      }
+    },
+    {
+      "title": "Cinderella: The Original Fairy Tale",
+      "aliases": [
+        {
+          "title": "Cinderella - Original Fairy Tale The,",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Interactive Story"
+      ],
+      "releases": {
+        "NA": "1992"
+      },
+      "publisher": {
+        "default": "Discis Knowledge Research"
+      }
+    },
+    {
+      "title": "Classic Board Games",
+      "aliases": [],
+      "genres": [
+        "Board Game"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Merit"
+      },
+      "developer": {
+        "default": "Merit"
+      }
+    },
+    {
+      "title": "Cover Girl Strip Poker",
+      "aliases": [],
+      "genres": [
+        "Card Game"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "On-line"
+      },
+      "developer": {
+        "default": "Emotional Pictures"
+      }
+    },
+    {
+      "title": "Cubulus & Magic Serpent",
+      "aliases": [],
+      "genres": [
+        "Compilation"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Software 2000"
+      },
+      "developer": {
+        "default": "Software 2000"
+      }
+    },
+    {
+      "title": "Defender of the Crown",
+      "aliases": [
+        {
+          "title": "Defender of the Crown CDTV",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Strategy"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "CDTV Publishing"
+      },
+      "developer": {
+        "default": "Cinemaware"
+      }
+    },
+    {
+      "title": "Defender of the Crown II",
+      "aliases": [],
+      "genres": [
+        "Strategy"
+      ],
+      "releases": {
+        "PAL": "1993",
+        "NA": "1993"
+      },
+      "publisher": {
+        "default": "Commodore"
+      }
+    },
+    {
+      "title": "Die Stadt der Löwen",
+      "aliases": [
+        {
+          "title": "Stadt der Loewen, Die",
+          "regions": []
+        },
+        {
+          "title": "Die Stadt der Loewen",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Adventure"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Software 2000"
+      },
+      "developer": {
+        "default": "PM Entertainment"
+      }
+    },
+    {
+      "title": "E.S.S. Mega",
+      "aliases": [
+        {
+          "title": "E.S.S Mega",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Simulation"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Coktel"
+      },
+      "developer": {
+        "default": "Tomahawk"
+      }
+    },
+    {
+      "title": "Falcon",
+      "aliases": [],
+      "genres": [
+        "Simulation"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Mirrorsoft"
+      },
+      "developer": {
+        "default": "Rowan"
+      }
+    },
+    {
+      "title": "Fantastic Voyage",
+      "aliases": [
+        {
+          "title": "Fantastic Voyage CDTV",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Shooter"
+      ],
+      "releases": {
+        "NA": "1992",
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Centaur"
+      },
+      "developer": {
+        "default": "Centaur"
+      }
+    },
+    {
+      "title": "Fun School 3: For 5 to 7 Year Olds",
+      "aliases": [
+        {
+          "title": "Fun School 3 - for 5 to 7 year olds",
+          "regions": []
+        },
+        {
+          "title": "Fun School 3 - for the 5 to 7 year olds",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Database Educational Software"
+      },
+      "developer": {
+        "default": "Database Educational Software"
+      }
+    },
+    {
+      "title": "Fun School 3: For the Over 7s",
+      "aliases": [
+        {
+          "title": "Fun School 3 - for the over 7s",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Database Educational Software"
+      },
+      "developer": {
+        "default": "Database Educational Software"
+      }
+    },
+    {
+      "title": "Fun School 3: For the Under 5s",
+      "aliases": [
+        {
+          "title": "Fun School 3 - for the under 5s",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Database Educational Software"
+      },
+      "developer": {
+        "default": "Database Educational Software"
+      }
+    },
+    {
+      "title": "Gamers’ Delight",
+      "aliases": [
+        {
+          "title": "Gamers' Delight",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Compilation"
+      ],
+      "releases": {
+        "PAL": "1994"
+      },
+      "publisher": {
+        "default": "GTI / Schatztruhe"
+      }
+    },
+    {
+      "title": "Games & Goodies",
+      "aliases": [],
+      "genres": [
+        "Compilation"
+      ],
+      "releases": {
+        "PAL": ""
+      },
+      "publisher": {
+        "default": "Weird Science"
+      }
+    },
+    {
+      "title": "Global Chaos",
+      "aliases": [
+        {
+          "title": "Top Banana",
+          "regions": []
+        },
+        {
+          "title": "Global Chaos CDTV",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Platform"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Hex"
+      },
+      "developer": {
+        "default": "Hex"
+      }
+    },
+    {
+      "title": "Guy Spy and the Crystals of Armageddon",
+      "aliases": [],
+      "genres": [
+        "Action"
+      ],
+      "releases": {
+        "PAL": "1993"
+      },
+      "publisher": {
+        "default": "ReadySoft"
+      },
+      "developer": {
+        "default": "ReadySoft"
+      }
+    },
+    {
+      "title": "Heather Hits Her First Home Run",
+      "aliases": [],
+      "genres": [
+        "Interactive Story"
+      ],
+      "releases": {
+        "UNK": "1991"
+      },
+      "publisher": {
+        "default": "Discis Knowledge Research"
+      }
+    },
+    {
+      "title": "Holiday Maker",
+      "aliases": [],
+      "genres": [
+        "Adventure"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Software 2000"
+      },
+      "developer": {
+        "default": "PM Entertainment"
+      }
+    },
+    {
+      "title": "Indiana Jones and the Last Crusade: The Graphic Adventure",
+      "aliases": [
+        {
+          "title": "Indiana Jones and the Last Crusade",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Adventure"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Softgold"
+      },
+      "developer": {
+        "default": "Lucasfilm"
+      }
+    },
+    {
+      "title": "Language TV: English",
+      "aliases": [],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Jériko"
+      }
+    },
+    {
+      "title": "Learn French with Astérix: Le Fils d’Astérix — Disk One",
+      "aliases": [
+        {
+          "title": "Learn French with Asterix - Le Fils d'Asterix - Disk One",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "EuroTalk"
+      }
+    },
+    {
+      "title": "Learn French with Astérix: Le Fils d’Astérix — Disk Two",
+      "aliases": [
+        {
+          "title": "Learn French with Asterix - Le Fils d'Asterix - Disk Two",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "EuroTalk"
+      }
+    },
+    {
+      "title": "Lemmings",
+      "aliases": [],
+      "genres": [
+        "Puzzle"
+      ],
+      "releases": {
+        "PAL": "1994"
+      },
+      "publisher": {
+        "default": "Psygnosis"
+      },
+      "developer": {
+        "default": "DMA Design"
+      }
+    },
+    {
+      "title": "Log!cal",
+      "aliases": [
+        {
+          "title": "Logical",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Puzzle"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Rainbow Arts"
+      },
+      "developer": {
+        "default": "Rainbow Arts"
+      }
+    },
+    {
+      "title": "Loom",
+      "aliases": [],
+      "genres": [
+        "Adventure"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Softgold"
+      },
+      "developer": {
+        "default": "Lucasfilm"
+      }
+    },
+    {
+      "title": "Mind Run",
+      "aliases": [],
+      "genres": [
+        "Puzzle"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Créalude"
+      },
+      "developer": {
+        "default": "Créalude"
+      }
+    },
+    {
+      "title": "Moving Gives Me a Stomach Ache",
+      "aliases": [],
+      "genres": [
+        "Interactive Story"
+      ],
+      "releases": {
+        "UNK": "1992"
+      },
+      "publisher": {
+        "default": "Discis Knowledge Research"
+      }
+    },
+    {
+      "title": "Mud Puddle",
+      "aliases": [],
+      "genres": [
+        "Interactive Story"
+      ],
+      "releases": {
+        "NA": "1992"
+      },
+      "publisher": {
+        "default": "Discis Knowledge Research"
+      }
+    },
+    {
+      "title": "Murder Makes Strange Deadfellows",
+      "aliases": [],
+      "genres": [
+        "Adventure"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Tiger Media"
+      },
+      "developer": {
+        "default": "Tiger Media"
+      }
+    },
+    {
+      "title": "Musicolor",
+      "aliases": [],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Virgin Multimedia"
+      }
+    },
+    {
+      "title": "North Polar Expedition",
+      "aliases": [],
+      "genres": [
+        "Adventure"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Virgin Interactive"
+      },
+      "developer": {
+        "default": "Virgin Interactive"
+      }
+    },
+    {
+      "title": "Now That’s What I Call Games",
+      "aliases": [],
+      "genres": [
+        "Compilation"
+      ],
+      "releases": {
+        "PAL": ""
+      },
+      "publisher": {
+        "default": "The Guild"
+      }
+    },
+    {
+      "title": "Pinocchio",
+      "aliases": [],
+      "genres": [
+        "Interactive Story"
+      ],
+      "releases": {
+        "PAL": "1993"
+      },
+      "publisher": {
+        "default": "Giunti Multimedia"
+      }
+    },
+    {
+      "title": "Power Pinball",
+      "aliases": [],
+      "genres": [
+        "Pinball"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "KarmaSoft"
+      },
+      "developer": {
+        "default": "KarmaSoft"
+      }
+    },
+    {
+      "title": "Prehistorik",
+      "aliases": [],
+      "genres": [
+        "Platform"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Titus"
+      },
+      "developer": {
+        "default": "Titus"
+      }
+    },
+    {
+      "title": "Prey: An Alien Encounter",
+      "aliases": [],
+      "genres": [
+        "Role-Playing"
+      ],
+      "releases": {
+        "PAL": "1993"
+      },
+      "publisher": {
+        "default": "KirkMoreno"
+      },
+      "developer": {
+        "default": "KirkMoreno"
+      }
+    },
+    {
+      "title": "Psycho Killer",
+      "aliases": [],
+      "genres": [
+        "Adventure"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "On-line"
+      },
+      "developer": {
+        "default": "Delta 4 Interactive"
+      }
+    },
+    {
+      "title": "Raffles",
+      "aliases": [],
+      "genres": [
+        "Adventure"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "The Edge"
+      },
+      "developer": {
+        "default": "Softek"
+      }
+    },
+    {
+      "title": "Read with Astérix: Astérix and Son",
+      "aliases": [],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "EuroTalk"
+      }
+    },
+    {
+      "title": "Read with Astérix: The Secret Weapon",
+      "aliases": [],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "EuroTalk"
+      }
+    },
+    {
+      "title": "Scary Poems for Rotten Kids",
+      "aliases": [],
+      "genres": [
+        "Interactive Story"
+      ],
+      "releases": {
+        "UNK": "1991"
+      },
+      "publisher": {
+        "default": "Discis Knowledge Research"
+      }
+    },
+    {
+      "title": "Sherlock Holmes: Consulting Detective",
+      "aliases": [],
+      "genres": [
+        "Adventure"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Icom"
+      },
+      "developer": {
+        "default": "Icom"
+      }
+    },
+    {
+      "title": "Shiftrix & Lettrix",
+      "aliases": [
+        {
+          "title": "Lettrix & Shiftrix",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Compilation"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Software 2000"
+      },
+      "developer": {
+        "default": "Software 2000"
+      }
+    },
+    {
+      "title": "SimCity",
+      "aliases": [
+        {
+          "title": "Sim City",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Strategy"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Infogrames"
+      },
+      "developer": {
+        "default": "Maxis"
+      }
+    },
+    {
+      "title": "Snoopy: The Case of the Missing Blanket",
+      "aliases": [
+        {
+          "title": "Snoopy In The Case Of The Missing Blanket",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Adventure"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "The Edge"
+      },
+      "developer": {
+        "default": "Softek"
+      }
+    },
+    {
+      "title": "Space Wars",
+      "aliases": [],
+      "genres": [
+        "Shooter"
+      ],
+      "releases": {
+        "NA": "1992"
+      },
+      "publisher": {
+        "default": "Odyssey"
+      },
+      "developer": {
+        "default": "Odyssey"
+      }
+    },
+    {
+      "title": "Spirit of Excalibur",
+      "aliases": [],
+      "genres": [
+        "Adventure"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Virgin Mastertronic"
+      },
+      "developer": {
+        "default": "Synergistic"
+      }
+    },
+    {
+      "title": "Sprachrätsel Englisch 1: Spielend Sprachen lernen!",
+      "aliases": [
+        {
+          "title": "Sprachraetsel Englisch 1 - Spielend Sprachen lernen!",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": ""
+      },
+      "publisher": {
+        "default": "Ingenio"
+      },
+      "developer": {
+        "default": "Ingenio"
+      }
+    },
+    {
+      "title": "Sprachrätsel Englisch 2: Spielend Sprachen lernen!",
+      "aliases": [
+        {
+          "title": "Sprachraetsel Englisch 2 - Spielend Sprachen lernen!",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": ""
+      },
+      "publisher": {
+        "default": "Ingenio"
+      },
+      "developer": {
+        "default": "Ingenio"
+      }
+    },
+    {
+      "title": "Sprachrätsel Englisch 3: Spielend Sprachen lernen!",
+      "aliases": [
+        {
+          "title": "Sprachraetsel Englisch 3 - Spielend Sprachen lernen!",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": ""
+      },
+      "publisher": {
+        "default": "Ingenio"
+      },
+      "developer": {
+        "default": "Ingenio"
+      }
+    },
+    {
+      "title": "Sprachrätsel Französisch 1: Spielend Sprachen lernen!",
+      "aliases": [
+        {
+          "title": "Sprachraetsel Franzoesisch 1 - Spielend Sprachen lernen!",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": ""
+      },
+      "publisher": {
+        "default": "Ingenio"
+      },
+      "developer": {
+        "default": "Ingenio"
+      }
+    },
+    {
+      "title": "Sprachrätsel Latein 1: Spielend Sprachen lernen!",
+      "aliases": [
+        {
+          "title": "Sprachraetsel Latein 1 - Spielend Sprachen lernen!",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": ""
+      },
+      "publisher": {
+        "default": "Ingenio"
+      },
+      "developer": {
+        "default": "Ingenio"
+      }
+    },
+    {
+      "title": "Sprachrätsel Spanisch 1: Spielend Sprachen lernen!",
+      "aliases": [
+        {
+          "title": "Sprachraetsel Spanisch 1 - Spielend Sprachen lernen!",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Educational"
+      ],
+      "releases": {
+        "PAL": ""
+      },
+      "publisher": {
+        "default": "Ingenio"
+      },
+      "developer": {
+        "default": "Ingenio"
+      }
+    },
+    {
+      "title": "Strip Poker Live",
+      "aliases": [],
+      "genres": [
+        "Card Game"
+      ],
+      "releases": {
+        "NA": "1993"
+      },
+      "publisher": {
+        "default": "Porky's Production"
+      },
+      "developer": {
+        "default": "Porky's Production"
+      }
+    },
+    {
+      "title": "Super Games Pak",
+      "aliases": [],
+      "genres": [
+        "Compilation"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Odyssey"
+      },
+      "developer": {
+        "default": "Odyssey"
+      }
+    },
+    {
+      "title": "Team Yankee",
+      "aliases": [
+        {
+          "title": "Team Yankee - Enhanced CDTV",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Simulation"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Empire"
+      },
+      "developer": {
+        "default": "Oxford Digital Enterprises"
+      }
+    },
+    {
+      "title": "The Case of the Cautious Condor",
+      "aliases": [],
+      "genres": [
+        "Adventure"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Tiger Media"
+      },
+      "developer": {
+        "default": "Tiger Media"
+      }
+    },
+    {
+      "title": "The Curse of Ra",
+      "aliases": [],
+      "genres": [
+        "Puzzle"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Rainbow Arts"
+      },
+      "developer": {
+        "default": "Cyberstyle"
+      }
+    },
+    {
+      "title": "The Hound of the Baskervilles",
+      "aliases": [],
+      "genres": [
+        "Adventure"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "On-line"
+      },
+      "developer": {
+        "default": "On-line"
+      }
+    },
+    {
+      "title": "The Night Before Christmas",
+      "aliases": [],
+      "genres": [
+        "Interactive Story"
+      ],
+      "releases": {
+        "UNK": "1991"
+      },
+      "publisher": {
+        "default": "Discis Knowledge Research"
+      }
+    },
+    {
+      "title": "The Paper Bag Princess",
+      "aliases": [],
+      "genres": [
+        "Interactive Story"
+      ],
+      "releases": {
+        "UNK": "1992"
+      },
+      "publisher": {
+        "default": "Discis Knowledge Research"
+      }
+    },
+    {
+      "title": "The Tale of Benjamin Bunny",
+      "aliases": [],
+      "genres": [
+        "Interactive Story"
+      ],
+      "releases": {
+        "UNK": "1991"
+      },
+      "publisher": {
+        "default": "Discis Knowledge Research"
+      }
+    },
+    {
+      "title": "The Tale of Peter Rabbit",
+      "aliases": [],
+      "genres": [
+        "Interactive Story"
+      ],
+      "releases": {
+        "UNK": "1992"
+      },
+      "publisher": {
+        "default": "Discis Knowledge Research"
+      }
+    },
+    {
+      "title": "The Town with No Name",
+      "aliases": [
+        {
+          "title": "Town With No Name",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Adventure"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "On-line"
+      },
+      "developer": {
+        "default": "Delta 4 Interactive"
+      }
+    },
+    {
+      "title": "Thomas’ Snowsuit",
+      "aliases": [],
+      "genres": [
+        "Interactive Story"
+      ],
+      "releases": {
+        "UNK": "1991"
+      },
+      "publisher": {
+        "default": "Discis Knowledge Research"
+      }
+    },
+    {
+      "title": "Tie Break",
+      "aliases": [],
+      "genres": [
+        "Sports"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Starbyte"
+      },
+      "developer": {
+        "default": "Starbyte"
+      }
+    },
+    {
+      "title": "Trivial Pursuit: The CDTV Edition",
+      "aliases": [
+        {
+          "title": "Trivial Pursuit",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Quiz"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Domark"
+      },
+      "developer": {
+        "default": "Domark"
+      }
+    },
+    {
+      "title": "Turrican",
+      "aliases": [],
+      "genres": [
+        "Shooter"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Rainbow Arts"
+      },
+      "developer": {
+        "default": "Factor 5"
+      }
+    },
+    {
+      "title": "Turrican II: The Final Fight",
+      "aliases": [],
+      "genres": [
+        "Shooter"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Rainbow Arts"
+      },
+      "developer": {
+        "default": "Factor 5"
+      }
+    },
+    {
+      "title": "Ultimate Basketball",
+      "aliases": [
+        {
+          "title": "Ultimate Basketball!",
+          "regions": []
+        },
+        {
+          "title": "Omni-Play Basketball",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Sports"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Context Systems"
+      },
+      "developer": {
+        "default": "Context Systems"
+      }
+    },
+    {
+      "title": "Will Bridge: Competition",
+      "aliases": [
+        {
+          "title": "Will Bridge - Practice 4 - Competition",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Card Game"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Will-Bridge"
+      },
+      "developer": {
+        "default": "Will-Bridge"
+      }
+    },
+    {
+      "title": "Will Bridge: Haute Competition",
+      "aliases": [
+        {
+          "title": "Will Bridge - Practice 5 - Haute Competition",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Card Game"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Will-Bridge"
+      },
+      "developer": {
+        "default": "Will-Bridge"
+      }
+    },
+    {
+      "title": "Will Bridge: Intermediate",
+      "aliases": [
+        {
+          "title": "Will Bridge - Practice 2 - Intermediate",
+          "regions": []
+        },
+        {
+          "title": "Will Bridge - Practice 2 - Perfectionnement",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Compilation"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Will-Bridge"
+      },
+      "developer": {
+        "default": "Will-Bridge"
+      }
+    },
+    {
+      "title": "Will Bridge: Introduction to Bidding",
+      "aliases": [
+        {
+          "title": "Will Bridge - Practice 1 - Introduction to Bidding",
+          "regions": []
+        },
+        {
+          "title": "Will Bridge Vol. 1 - Initiation aux Encheres - Practice",
+          "regions": []
+        },
+        {
+          "title": "Will Bridge: Initiation aux Enchères",
+          "regions": []
+        },
+        {
+          "title": "Will Bridge 1 - Introduction to Bidding",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Compilation"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Will-Bridge"
+      },
+      "developer": {
+        "default": "Will-Bridge"
+      }
+    },
+    {
+      "title": "Will Bridge: Standard",
+      "aliases": [
+        {
+          "title": "Will Bridge - Practice 3 - Standard",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Card Game"
+      ],
+      "releases": {
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "Will-Bridge"
+      },
+      "developer": {
+        "default": "Will-Bridge"
+      }
+    },
+    {
+      "title": "Winzer",
+      "aliases": [],
+      "genres": [
+        "Strategy"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Starbyte"
+      },
+      "developer": {
+        "default": "Golden Gate Crew"
+      }
+    },
+    {
+      "title": "Wrath of the Demon",
+      "aliases": [],
+      "genres": [
+        "Action"
+      ],
+      "releases": {
+        "NA": "1991",
+        "PAL": "1991"
+      },
+      "publisher": {
+        "default": "ReadySoft"
+      },
+      "developer": {
+        "default": "Abstrax"
+      }
+    },
+    {
+      "title": "Xenon 2: Megablast",
+      "aliases": [
+        {
+          "title": "Xenon 2 - Megablast",
+          "regions": []
+        }
+      ],
+      "genres": [
+        "Shooter"
+      ],
+      "releases": {
+        "PAL": "1992"
+      },
+      "publisher": {
+        "default": "Image Works"
+      },
+      "developer": {
+        "default": "Assembly Line, The"
+      }
+    }
+  ]
+}

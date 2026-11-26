@@ -1,0 +1,332 @@
+{
+  "verifiedTosecArchives": [
+    {
+      "edition": "America Oudan Ultra Quiz",
+      "market": "JP",
+      "archives": [
+        "America Oudan Ultra Quiz - King of Quiz (1994)(Fujitsu)(JP).zip"
+      ],
+      "signature": "eb3b98e888e0e1d54d54d241cb6a6e6c",
+      "region": "JP",
+      "source": "https://img1.wsimg.com/blobby/go/90627e89-ffc8-4a43-b7b8-8d0aa14bdb3a/downloads/8c3189ef-d6ce-4e50-8fcb-8cc21d6e664a/FM%20Towns%20Marty%20Master%20Compatibility%20List%20-%20v1..pdf?ver=1741488246114"
+    },
+    {
+      "edition": "ElFish Lite",
+      "market": "JP",
+      "archives": [
+        "ElFish Lite (1993)(Fujitsu)(JP).zip"
+      ],
+      "signature": "3571bf7cdd7b7ea79f317c3839e3b2eb",
+      "region": "JP",
+      "source": "https://img1.wsimg.com/blobby/go/90627e89-ffc8-4a43-b7b8-8d0aa14bdb3a/downloads/8c3189ef-d6ce-4e50-8fcb-8cc21d6e664a/FM%20Towns%20Marty%20Master%20Compatibility%20List%20-%20v1..pdf?ver=1741488246114"
+    },
+    {
+      "edition": "Galaxy Wars: Regional Power II",
+      "market": "JP",
+      "archives": [
+        "Galaxy Wars - Regional Power II (1992)(Cosmos)(JP).zip"
+      ],
+      "signature": "53fd1e6a82e5d89542f819d7d21fa235",
+      "region": "JP",
+      "source": "https://img1.wsimg.com/blobby/go/90627e89-ffc8-4a43-b7b8-8d0aa14bdb3a/downloads/8c3189ef-d6ce-4e50-8fcb-8cc21d6e664a/FM%20Towns%20Marty%20Master%20Compatibility%20List%20-%20v1..pdf?ver=1741488246114"
+    },
+    {
+      "edition": "Kiwame II",
+      "market": "JP",
+      "archives": [
+        "Kiwame II (1994)(LOG)(JP).zip"
+      ],
+      "signature": "8b8a4001da45200e82e15cc488a31cea",
+      "region": "JP",
+      "source": "https://img1.wsimg.com/blobby/go/90627e89-ffc8-4a43-b7b8-8d0aa14bdb3a/downloads/8c3189ef-d6ce-4e50-8fcb-8cc21d6e664a/FM%20Towns%20Marty%20Master%20Compatibility%20List%20-%20v1..pdf?ver=1741488246114"
+    },
+    {
+      "edition": "Populous & The Promised Lands",
+      "market": "JP",
+      "archives": [
+        "Populous & The Promised Lands (1990)(Imagineer)(JP).zip"
+      ],
+      "signature": "eefd7b1b707a06d820219e9feee86f00",
+      "region": "JP",
+      "source": "https://img1.wsimg.com/blobby/go/90627e89-ffc8-4a43-b7b8-8d0aa14bdb3a/downloads/8c3189ef-d6ce-4e50-8fcb-8cc21d6e664a/FM%20Towns%20Marty%20Master%20Compatibility%20List%20-%20v1..pdf?ver=1741488246114"
+    }
+  ],
+  "prepatchedVariants": [
+    {
+      "edition": "Lemmings 2: The Tribes",
+      "market": "JP",
+      "language": "English",
+      "signature": "440be7f7e6f90ce23baf490fc8e00770",
+      "baseEdition": "Lemmings 2: The Tribes (Japan)",
+      "allowMissingBase": true
+    },
+    {
+      "edition": "Mad Paradox",
+      "market": "JP",
+      "language": "English",
+      "signature": "9dd9e8bd4bd9816d3eef1c84cb77b837",
+      "baseEdition": "Mad Paradox (Japan)",
+      "allowMissingBase": true
+    }
+  ],
+  "releaseNotes": {
+    "ElFish Lite": {
+      "JP": {
+        "text": "Requires a user floppy disk to start.",
+        "showWhenMatched": true,
+        "source": {
+          "name": "Marty hardware test",
+          "url": "https://img1.wsimg.com/blobby/go/90627e89-ffc8-4a43-b7b8-8d0aa14bdb3a/downloads/8c3189ef-d6ce-4e50-8fcb-8cc21d6e664a/FM%20Towns%20Marty%20Master%20Compatibility%20List%20-%20v1..pdf?ver=1741488246114"
+        }
+      }
+    },
+    "Galaxy Wars: Regional Power II": {
+      "JP": {
+        "text": "Use a mouse and disconnect the gamepad to prevent freezes.",
+        "showWhenMatched": true,
+        "source": {
+          "name": "Marty hardware test",
+          "url": "https://img1.wsimg.com/blobby/go/90627e89-ffc8-4a43-b7b8-8d0aa14bdb3a/downloads/8c3189ef-d6ce-4e50-8fcb-8cc21d6e664a/FM%20Towns%20Marty%20Master%20Compatibility%20List%20-%20v1..pdf?ver=1741488246114"
+        }
+      }
+    },
+    "Populous & The Promised Lands": {
+      "JP": {
+        "text": "Partially compatible. Keyboard input can freeze the game, which prevents saving.",
+        "showWhenMatched": true,
+        "source": {
+          "name": "Marty hardware test",
+          "url": "https://img1.wsimg.com/blobby/go/90627e89-ffc8-4a43-b7b8-8d0aa14bdb3a/downloads/8c3189ef-d6ce-4e50-8fcb-8cc21d6e664a/FM%20Towns%20Marty%20Master%20Compatibility%20List%20-%20v1..pdf?ver=1741488246114"
+        }
+      }
+    },
+    "Mad Paradox": {
+      "JP": {
+        "text": "The original FM Towns release was tested on Marty with a Doc Brown optical drive emulator. The NAS copy is already patched into English.",
+        "showWhenMatched": true,
+        "source": {
+          "name": "Marty hardware test",
+          "url": "https://img1.wsimg.com/blobby/go/90627e89-ffc8-4a43-b7b8-8d0aa14bdb3a/downloads/8c3189ef-d6ce-4e50-8fcb-8cc21d6e664a/FM%20Towns%20Marty%20Master%20Compatibility%20List%20-%20v1..pdf?ver=1741488246114"
+        }
+      }
+    },
+    "Lemmings 2: The Tribes": {
+      "JP": {
+        "text": "The NAS copy is already patched into English.",
+        "showWhenMatched": true,
+        "source": {
+          "name": "Marty hardware test",
+          "url": "https://img1.wsimg.com/blobby/go/90627e89-ffc8-4a43-b7b8-8d0aa14bdb3a/downloads/8c3189ef-d6ce-4e50-8fcb-8cc21d6e664a/FM%20Towns%20Marty%20Master%20Compatibility%20List%20-%20v1..pdf?ver=1741488246114"
+        }
+      }
+    }
+  },
+  "reviewedArtwork": [
+    {
+      "edition": "America Oudan Ultra Quiz",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://images.launchbox-app.com/d5587bfb-5f8c-4d85-b680-85bac1339be8.jpg",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/137739-america-oudan-ultra-quiz"
+          }
+        },
+        "snap": {
+          "url": "https://images.launchbox-app.com/7c952ce9-aea1-4caa-8893-9da127b5aabf.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/137739-america-oudan-ultra-quiz"
+          }
+        },
+        "title": {
+          "url": "https://images.launchbox-app.com/0529cc6f-0fa1-4af2-b3df-4db81fe7bdb4.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/137739-america-oudan-ultra-quiz"
+          }
+        }
+      }
+    },
+    {
+      "edition": "ElFish Lite",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://images.launchbox-app.com/981bd5ce-2e34-4297-b37e-5e3dfc723493.jpg",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/138368-elfish-lite"
+          }
+        },
+        "title": {
+          "url": "https://images.launchbox-app.com/1e26d471-8b45-4e20-82bd-1106e5d4219f.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/138368-elfish-lite"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Galaxy Wars: Regional Power II",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://images.launchbox-app.com/36f40d65-c419-43d3-92a5-b8d380602945.jpg",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/138301-galaxy-wars-regional-power-ii"
+          }
+        },
+        "snap": {
+          "url": "https://images.launchbox-app.com/c6a78008-e005-496f-9566-4f610cf09f05.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/138301-galaxy-wars-regional-power-ii"
+          }
+        },
+        "cartridge": {
+          "url": "https://images.launchbox-app.com/6e70f04c-0e57-4db4-9144-f06481c0b705.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/138301-galaxy-wars-regional-power-ii"
+          },
+          "label": "Disc"
+        },
+        "title": {
+          "url": "https://images.launchbox-app.com/55629a90-3f5d-4d53-a18f-1b566f77991a.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/138301-galaxy-wars-regional-power-ii"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Kiwame II",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://images.launchbox-app.com/cfaba123-0702-4c9a-bcd1-04fbfc55a2ac.jpg",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/138194-kiwame-ii"
+          }
+        },
+        "title": {
+          "url": "https://images.launchbox-app.com/aa3374ba-4115-4957-a5c5-c94665dc72fb.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/138194-kiwame-ii"
+          }
+        },
+        "snap": {
+          "url": "https://images.launchbox-app.com/0b46d48a-e906-45f0-b7ca-bb352715b4b4.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/138194-kiwame-ii"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Lemmings 2: The Tribes",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://images.launchbox-app.com/4c9851cb-af0a-4f49-8df1-e36b5d048239.jpg",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/134572-lemmings-2-the-tribes"
+          }
+        },
+        "snap": {
+          "url": "https://images.launchbox-app.com/dc7aa2f2-c014-4fff-bc65-2295ac07ae80.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/134572-lemmings-2-the-tribes"
+          }
+        },
+        "title": {
+          "url": "https://images.launchbox-app.com/ea057499-bdd3-4874-9bed-ff354d2b151f.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/134572-lemmings-2-the-tribes"
+          }
+        },
+        "cartridge": {
+          "url": "https://images.launchbox-app.com/406b92e0-43a5-43eb-9c5e-4e3b4fe528de.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/134572-lemmings-2-the-tribes"
+          },
+          "label": "Disc"
+        }
+      }
+    },
+    {
+      "edition": "Mad Paradox",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://images.launchbox-app.com/0423696e-bdef-48b1-b026-760fdbce42a2.jpg",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/138204-mad-paradox"
+          }
+        },
+        "snap": {
+          "url": "https://images.launchbox-app.com/2c2dc99b-e4ec-4677-b780-dc0ed0b0b1ba.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/138204-mad-paradox"
+          }
+        },
+        "title": {
+          "url": "https://images.launchbox-app.com/14078579-0550-46c5-8342-2433e37f0302.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/138204-mad-paradox"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Populous & The Promised Lands",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://images.launchbox-app.com/cf0f9f15-3e96-4c55-9926-6b5aa512641f.jpg",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/134615-populous-the-promised-lands"
+          }
+        },
+        "snap": {
+          "url": "https://images.launchbox-app.com/ec067e87-2829-4b60-81d8-86bdf3488725.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/134615-populous-the-promised-lands"
+          }
+        },
+        "cartridge": {
+          "url": "https://images.launchbox-app.com/f3ef748a-77cd-4d88-a41a-0a5509682977.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/134615-populous-the-promised-lands"
+          },
+          "label": "Disc"
+        },
+        "title": {
+          "url": "https://images.launchbox-app.com/1cfb2b14-fe20-4f44-8113-c29358bf2d83.png",
+          "source": {
+            "name": "LaunchBox Games Database",
+            "url": "https://gamesdb.launchbox-app.com/games/images/134615-populous-the-promised-lands"
+          }
+        }
+      }
+    }
+  ]
+}

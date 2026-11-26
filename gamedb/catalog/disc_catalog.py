@@ -12,11 +12,14 @@ from .software_identity import SOFTWARE_KEY_SQL
 DISC_ADDON_PARENTS = {"segacd": "megadrive", "pcecd": "pcengine", "neogeocd": "neogeo"}
 DISC_SYSTEMS = {
     "saturn": ("Sega", "Saturn"), "pcfx": ("NEC", "PC-FX"), "cd32": ("Commodore", "Amiga CD32"),
+    "cdtv": ("Commodore", "Amiga CDTV"),
+    "marty": ("Fujitsu", "FM Towns"),
     "3do": ("The 3DO Company", "3DO Interactive Multiplayer"),
     "playdia": ("Bandai", "Playdia"), "pippin": ("Apple", "Pippin"), "cdi": ("Philips", "CD-i"),
     "segacd": ("Sega", "Mega-CD"), "pcecd": ("NEC", "PC Engine CD / TurboGrafx-CD"),
     "neogeocd": ("SNK", "Neo Geo CD"),
     "dreamcast": ("Sega", "Dreamcast"), "playstation2": ("Sony", "PlayStation 2"), "gamecube": ("Nintendo", "GameCube"),
+    "nuon": ("VM Labs", "NUON"),
 }
 NUMBERED_DISC = re.compile(r"\(Disc\s+(\d+|[A-D])(?:[ )-])", re.I)
 

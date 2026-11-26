@@ -1,6 +1,8 @@
+import pytest
+
 from gamedb.catalog.n64_rom import N64_LAYOUTS, Z64_MAGIC, rom_byte_order
 from gamedb.catalog.n64_source import REVISION, parse_retail_list
-from gamedb.catalog.patching import apply_translation
+from gamedb.catalog.patching import PatchError, apply_translation
 
 
 def test_nintendo64_distinguishes_the_two_bomberman_64_cartridges():
@@ -29,3 +31,13 @@ def test_nintendo64_patch_uses_the_expected_byte_order_and_returns_z64():
         expected = rom_byte_order(ordered[:64] + b"abcd", "z64")
         patch = b"PATCH\x00\x00\x40\x00\x04abcdEOF"
         assert apply_translation(base, patch, "ips", layout) == expected
+
+
+def test_64dd_ppf_keeps_the_disk_layout_and_rejects_out_of_range_edits(monkeypatch):
+    base = b"abcdefgh"
+    monkeypatch.setattr("gamedb.catalog.patching.N64_DISK_SIZE", len(base))
+    header = b"PPF30\x02".ljust(60, b"\x00")
+    delta = header + (3).to_bytes(8, "little") + b"\x02XY"
+    assert apply_translation(base, delta, "ppf", "ndd") == b"abcXYfgh"
+    with pytest.raises(PatchError, match="Invalid PPF3 edit"):
+        apply_translation(base, header + (7).to_bytes(8, "little") + b"\x02XY", "ppf", "ndd")

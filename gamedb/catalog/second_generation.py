@@ -23,6 +23,7 @@ from .soundtracks import add_soundtracks
 
 
 REFERENCE = PROJECT_ROOT / "reference" / "second_generation_retail.json"
+ADDITIONAL_REFERENCE = REFERENCE.with_name("additional_cartridge_retail.json")
 SOURCE_DIRECTORY = PROJECT_ROOT / "data/media/cache/second-generation-retail"
 SYSTEMS = {
     "channelf": ("Fairchild", "Channel F"),
@@ -33,11 +34,20 @@ SYSTEMS = {
     "odyssey2": ("Magnavox", "Odyssey 2"),
     "intellivision": ("Mattel", "Intellivision"),
     "colecovision": ("Coleco", "ColecoVision"),
+    "astrocade": ("Bally", "Astrocade"), "arcadia": ("Emerson", "Arcadia 2001"),
+    "vc4000": ("Interton", "VC 4000"), "studio2": ("RCA", "Studio II"), "creativision": ("VTech", "CreatiVision"),
+    "vectrex": ("GCE", "Vectrex"), "advision": ("Entex", "Adventure Vision"), "pv1000": ("Casio", "PV-1000"),
+    "scv": ("Epoch", "Super Cassette Vision"), "myvision": ("Nichibutsu", "My Vision"),
+    "superacan": ("Funtech", "Super A'can"), "loopy": ("Casio", "Loopy"), "virtualboy": ("Nintendo", "Virtual Boy"),
+    "pico": ("Sega", "Pico"), "copera": ("Yamaha", "Copera"), "picno": ("Konami", "Picno"), "vsmile": ("VTech", "V.Smile"),
+    "gx4000": ("Amstrad", "GX4000"),
 }
 LAUNCHBOX = {
     "channelf": "Fairchild Channel F", "atari2600": "Atari 2600", "atari5200": "Atari 5200", "atari7800": "Atari 7800",
     "xegs": "Atari XEGS",
     "odyssey2": "Magnavox Odyssey 2", "intellivision": "Mattel Intellivision", "colecovision": "ColecoVision",
+    **{key: " ".join(SYSTEMS[key]) for key in retail.ADDITIONAL_CARTRIDGE_PLATFORMS},
+    "superacan": "Funtech Super Acan",
 }
 THUMBNAILS = {
     "channelf": ("Fairchild - Channel F", "f4463eafc549fe8dd371becc107a153f9d5e9b53"),
@@ -47,16 +57,34 @@ THUMBNAILS = {
     "odyssey2": ("Magnavox - Odyssey2", "6740e62db09fa268240247c3ba18cd9e4a2b957f"),
     "intellivision": ("Mattel - Intellivision", "502182a9802bc77a534b75f8d730bc48153fb6c8"),
     "colecovision": ("Coleco - ColecoVision", "d260c1e4f2840e03403c28f33f126ff1e09d7c35"),
+    "arcadia": ("Emerson - Arcadia 2001", "3e099e570648484868c83520a9cce71680a4af72"),
+    "studio2": ("RCA - Studio II", "fc594abc77c4cd1c9db11d9e0131e105b7f54b40"),
+    "creativision": ("VTech - CreatiVision", "5e793f9e426bfa30b588704be49cf9833dd8b980"),
+    "vectrex": ("GCE - Vectrex", "337252e121ec8cc3ca134c873b45d5b081a168e8"),
+    "advision": ("Entex - Adventure Vision", "159846f40fab9d4452ee885d37cb7ad1509927ee"),
+    "pv1000": ("Casio - PV-1000", "45f03515406bdd7a566b66e0a6312797e6ead5e9"),
+    "scv": ("Epoch - Super Cassette Vision", "c5974b448b6ee2ad37f15b29e32e213d04100e9d"),
+    "superacan": ("Funtech - Super Acan", "42814d92de3badeca39e9b0d613f4a2edc13bde1"),
+    "loopy": ("Casio - Loopy", "f8579c29b9e68da2673cc0d1fa0cfd7d6fe147ab"),
+    "virtualboy": ("Nintendo - Virtual Boy", "75693093d5c9bce8fc61ec073877384c47c82cb6"),
+    "pico": ("Sega - PICO", "05941f83fcbd2885d2dc8fd3c24e4c11f44701f6"),
+    "vsmile": ("VTech - V.Smile", "2dc4a0e0c28bc707b0eb384cba213ec54b835e2b"),
 }
 MAME_LISTS = {
     "channelf": ("channelf",), "atari2600": ("a2600",), "atari5200": ("a5200",), "atari7800": ("a7800",),
     "xegs": ("xegs", "a800"),
     "odyssey2": ("videopac",), "intellivision": ("intv", "intvecs"), "colecovision": ("coleco",),
+    "astrocade": ("astrocde",), "arcadia": ("arcadia",), "vc4000": ("vc4000",), "studio2": ("studio2", "visicom"),
+    "creativision": ("crvision",), "vectrex": ("vectrex",), "advision": ("advision",), "pv1000": ("pv1000",),
+    "scv": ("scv",), "myvision": ("myvision",), "superacan": ("supracan",), "loopy": ("casloopy",),
+    "virtualboy": ("vboy",), "pico": ("pico",), "copera": ("copera",), "picno": ("picno",), "vsmile": ("vsmile_cart",),
+    "gx4000": ("gx4000",),
 }
 TOSEC_MANUALS = {
     "channelf": "Fairchild/VES & Channel F", "atari2600": "Atari/2600 & VCS", "atari5200": "Atari/5200",
     "atari7800": "Atari/7800", "xegs": "Atari/8bit",
     "odyssey2": "Magnavox/Odyssey2", "intellivision": "Mattel/Intellivision", "colecovision": "Coleco/ColecoVision",
+    "astrocade": "Bally/Professional Arcade & Astrocade", "vectrex": "GCE/Vectrex", "virtualboy": "Nintendo/Virtual Boy",
 }
 MANUAL_SITES = {
     "atari2600": ("Digital Press", "https://www.digitpress.com/library/manuals/atari2600/index.html"),
@@ -64,9 +92,15 @@ MANUAL_SITES = {
     "odyssey2": ("The Odyssey² Homepage", "https://odyssey2.info/library/"),
 }
 MARKETS = {**retail.ARCHIVE_MARKETS, "BR": {"BR"}}
-DEFAULT_REGIONS = {"NA": "US", "PAL": "EU", "JP": "JP", "BR": "BR"}
-COUNTRIES = {**COUNTRY_MARKETS, "BR": "BR", "Brazil": "BR", "PAL": "PAL"}
+ADDITIONAL_MARKETS = {
+    **MARKETS, "PAL": MARKETS["PAL"] | {"DK", "NL", "SE", "NO", "FI", "PT", "BE", "CH", "AT", "IT"},
+    "AS": {"AS", "TW", "HK"}, "KR": {"KR"}, "WORLD": {"WORLD"},
+}
+DEFAULT_REGIONS = {"NA": "US", "PAL": "EU", "JP": "JP", "BR": "BR", "AS": "TW", "KR": "KR", "WORLD": "WORLD"}
+COUNTRIES = {**COUNTRY_MARKETS, "BR": "BR", "Brazil": "BR", "PAL": "PAL", "TW": "AS",
+             "Taiwan": "AS", "Asia": "AS", "KR": "KR", "Korea": "KR"}
 PLUS = "videopac-plus"
+VISICOM = "visicom"
 TOSEC = "https://www.tosecdev.org/"
 MANUAL_CLASSES = {"Games", "Educational", "Software", "Applications"}
 XEGS_REISSUES = {"dkong", "eastfrnt"}
@@ -123,6 +157,8 @@ def build_catalog(platform, reference):
         credits = {field: item.get(field, "") for field in ("developer", "publisher")}
         releases = [_new_release(platform, title, **{**credits, **fields}) for fields in item["releases"]]
         for release in releases:
+            if platform in retail.ADDITIONAL_CARTRIDGE_PLATFORMS:
+                release.setdefault("source", source)
             release["creditSources"] = {field: release.get("source", source) for field in credits if release[field]}
         games.append({"key": _key(platform, "game", title), "title": title, "aliases": [],
                       "releases": releases, **credits, **({"genre": item["genre"]} if item.get("genre") else {})})
@@ -132,6 +168,8 @@ def build_catalog(platform, reference):
     catalog = {"source": source, "games": games}
     if platform == "odyssey2":
         catalog["addonSources"] = {PLUS: source}
+    if addon_sources := reference.get("addonSources"):
+        catalog.setdefault("addonSources", {}).update(addon_sources)
     return catalog
 
 
@@ -181,7 +219,7 @@ def _observed_releases(platform, catalog, archives):
                 titles=[game["title"]], needsRegionEvidence=True))
 
 
-def _reviewed_matches(catalog, archives, reference):
+def _reviewed_matches(catalog, archives, reference, markets):
     aliases = {(item["edition"], item["market"], retail._title_key(item["archiveTitle"])): item
                for item in reference.get("archiveAliases", ())}
     for game in catalog["games"]:
@@ -191,7 +229,7 @@ def _reviewed_matches(catalog, archives, reference):
             for archive in archives:
                 if " ~ " not in archive["title"] or archive["channel"] != release["channel"]:
                     continue
-                if not (MARKETS[scope].intersection(archive["regions"]) or "WORLD" in archive["regions"]):
+                if not (markets[scope].intersection(archive["regions"]) or "WORLD" in archive["regions"]):
                     continue
                 if titles.intersection(map(retail._title_key, _archive_names(archive))):
                     name = archive["title"]
@@ -203,8 +241,9 @@ def _reviewed_matches(catalog, archives, reference):
 
 
 def _tosec_fallback(connection, platform, catalog, archives, records, *, headered_digests=None):
-    # A fingerprint can identify a verified CART-wrapped copy of the same ROM.
+    # Reviewed fingerprints can identify cartridge programs stored in a container format.
     headered_digests = headered_digests or {}
+    default_market = "PAL" if platform == "gx4000" else "NA"
     by_title = defaultdict(list)
     for record in records:
         for name in record.names:
@@ -226,14 +265,19 @@ def _tosec_fallback(connection, platform, catalog, archives, records, *, headere
 
     wanted = {record.digest for release, names in pending for name in names for record in by_title[name]
               if title_counts[release["market"], name] == {release["edition"]}
-              and (release["market"] in record.markets or not record.markets and release["market"] == "NA")}
+              and release["market"] in (record.markets or {default_market})}
     if not wanted:
         return {}
     known_signatures = {archive["signature"] for archive in archives}
     maker, system = SYSTEMS[platform]
+    if platform == "gx4000":
+        # TOSEC groups the retail GX4000 cartridge dumps under CPC.
+        system = "CPC"
     packages = defaultdict(list)
-    digests = wanted | {wrapped for wrapped, digest in headered_digests.items() if digest in wanted}
-    allowed_dump_status = ["verified", "alternate"] if platform == "xegs" else []
+    digests = {wrapped for wrapped, digest in headered_digests.items() if digest in wanted}
+    if platform != "gx4000":
+        digests.update(wanted)
+    allowed_dump_status = ["verified", "alternate"] if platform in {"xegs", "gx4000"} else []
     for row in connection.execute(TOSEC_PROGRAMS, {"manufacturer": maker, "system": system,
                                                    "digests": sorted(digests),
                                                    "allowed_dump_status": allowed_dump_status}).mappings():
@@ -247,7 +291,7 @@ def _tosec_fallback(connection, platform, catalog, archives, records, *, headere
             if title_counts[market, name] != {release["edition"]}:
                 continue
             for record in by_title[name]:
-                if not (market in record.markets or not record.markets and market == "NA"):
+                if market not in (record.markets or {default_market}):
                     continue
                 for row in packages[record.digest]:
                     if claimed.get(row["signature"], release["edition"]) != release["edition"]:
@@ -256,7 +300,9 @@ def _tosec_fallback(connection, platform, catalog, archives, records, *, headere
                     if (territories and market not in territories) or (row["video"] == "NTSC" and market == "PAL"):
                         continue
                     evidence = record.evidence["source"]
-                    fingerprint = "cartridge SHA-1 after CART header" if row["sha1"] != record.digest else "cartridge SHA-1"
+                    fingerprint = "cartridge SHA-1"
+                    if row["sha1"] != record.digest:
+                        fingerprint += " of the CPR program banks" if platform == "gx4000" else " after CART header"
                     choices.setdefault(row["signature"], ({
                         "title": release["titles"][0], "archiveNames": [row["archiveName"]],
                         "signature": row["signature"], "softwareId": row["softwareId"], "softwareKey": row["softwareKey"],
@@ -273,7 +319,7 @@ def _tosec_fallback(connection, platform, catalog, archives, records, *, headere
     return matches
 
 
-def _match(connection, platform, catalog, reference, indexes):
+def _match(connection, platform, catalog, reference, indexes, markets):
     reviewed = reference.get("verifiedArchives", [])
     archives = retail.read_archives(connection, *SYSTEMS[platform], reviewed)
     corrected_regions = {item["signature"]: item["regions"] for item in reviewed if item.get("regions")}
@@ -283,6 +329,9 @@ def _match(connection, platform, catalog, reference, indexes):
     if platform == "odyssey2":
         archives.extend({**archive, "channel": PLUS} for archive in
                         retail.read_archives(connection, "Philips", "Videopac+"))
+    elif platform == "studio2":
+        archives.extend({**archive, "channel": VISICOM} for archive in
+                        retail.read_archives(connection, "Toshiba", "Visicom", reviewed))
     records = [record for name in MAME_LISTS[platform] if (index := indexes.get(f"{name}.xml"))
                for record in cartridge_records(index.content, filename=f"{name}.xml", regions=COUNTRIES)
                if name != "a800" or record.evidence["source"]["record"] in XEGS_REISSUES]
@@ -295,18 +344,18 @@ def _match(connection, platform, catalog, reference, indexes):
         roms = {signature: headered_digests.get(digest, digest) for signature, digest in roms.items()}
         archives = [archive for archive in archives if roms.get(archive["signature"]) in expected]
     _observed_releases(platform, catalog, archives)
-    aliases = _reviewed_matches(catalog, archives, reference)
+    aliases = _reviewed_matches(catalog, archives, reference, markets)
     for game in catalog["games"]:
         for release in game["releases"]:
             for title in release["titles"]:
                 alias = {"title": title, "regions": [release["market"]]}
                 if title != game["title"] and alias not in game["aliases"]:
                     game["aliases"].append(alias)
-    retail.match_archives(catalog, archives, aliases, reviewed, markets=MARKETS)
+    retail.match_archives(catalog, archives, aliases, reviewed, markets=markets)
     if platform != "odyssey2":
-        supplemental = list(retail.cartridge_group_matches(catalog, archives, roms, records, markets=MARKETS))
+        supplemental = list(retail.cartridge_group_matches(catalog, archives, roms, records, markets=markets))
         if supplemental:
-            retail.match_archives(catalog, archives, aliases, [*reviewed, *supplemental], markets=MARKETS)
+            retail.match_archives(catalog, archives, aliases, [*reviewed, *supplemental], markets=markets)
     fallback = _tosec_fallback(connection, platform, catalog, archives, records, headered_digests=headered_digests)
     roms.update(fallback)
     for game in catalog["games"]:
@@ -315,17 +364,19 @@ def _match(connection, platform, catalog, reference, indexes):
         game["releases"] = good or game["releases"][:1]
         for release in game["releases"]:
             release.pop("needsRegionEvidence", None)
-    retail.summarize_matches(catalog, len(archives) + len(fallback), MARKETS)
-    add_cartridge_details(catalog, roms, records, markets=MARKETS)
+    retail.summarize_matches(catalog, len(archives) + len(fallback), markets)
+    add_cartridge_details(catalog, roms, records, markets=markets)
 
 
 def _tosec_manuals(platform):
+    if platform not in TOSEC_MANUALS:
+        return
     root = Path(os.environ.get("GAMEDB_ROM_ROOT") or "/mnt/synology") / "roms/TOSEC-PIX"
     directory = root / TOSEC_MANUALS[platform] / "Manuals"
     for file in sorted(directory.glob("*/*.zip")):
         if file.parent.name not in MANUAL_CLASSES:
             continue
-        match = re.fullmatch(r"(.+?) \((?:19\d[\dx])(?:-\d{2}){0,2}\)\([^)]*\)((?:\([^)]*\))*)", file.stem)
+        match = re.fullmatch(r"(.+?) \((?:19\d[\dx])(?:-\d{2}){0,2}\)\([^)]*\)((?:\([^)]*\)|\[[^\]]*\])*)", file.stem)
         if match is None:
             continue
         name, labels = match.groups()
@@ -401,9 +452,14 @@ def _manual_matches(platform, catalog, reference, index):
 
 
 def seed_cartridge(platform, report=None, *, publish_catalog=False, sources=None):
+    markets = MARKETS
     if platform in retail.SECOND_GENERATION_PLATFORMS:
         reference = json.loads(REFERENCE.read_text(encoding="utf-8"))[platform]
         source_directory = SOURCE_DIRECTORY / platform
+    elif platform in retail.ADDITIONAL_CARTRIDGE_PLATFORMS:
+        reference = json.loads(ADDITIONAL_REFERENCE.read_text(encoding="utf-8"))[platform]
+        source_directory = SOURCE_DIRECTORY.parent / f"{platform}-retail"
+        markets = ADDITIONAL_MARKETS
     else:
         reference = json.loads((REFERENCE.parent / f"{platform}_retail.json").read_text(encoding="utf-8"))
         source_directory = SOURCE_DIRECTORY.parent / f"{platform}-retail"
@@ -417,17 +473,21 @@ def seed_cartridge(platform, report=None, *, publish_catalog=False, sources=None
         with engine.connect().execution_options(isolation_level="REPEATABLE READ") as connection, connection.begin():
             connection.exec_driver_sql(f"SELECT pg_advisory_xact_lock(hashtext('gamedb.{platform}-retail'))"
                                        if publish_catalog else "SET TRANSACTION READ ONLY")
-            _match(connection, platform, catalog, reference, indexes)
+            _match(connection, platform, catalog, reference, indexes, markets)
             add_descriptions_and_art(connection, catalog, indexes, reference,
                                      platforms={LAUNCHBOX[platform], *({"Philips Videopac+"} if platform == "odyssey2" else ())},
                                      thumbnails=THUMBNAILS, thumbnail_key=platform, country_markets=COUNTRIES)
             if artwork := reference.get("reviewedArtwork"):
                 add_reviewed_artwork(catalog, platform, indexes, artwork, thumbnails=THUMBNAILS)
             add_manuals(catalog, {}, reviewed=_manual_matches(platform, catalog, reference, indexes.get("manuals.html")))
+            soundtrack_review = reference.get("soundtracks", {})
+            formats = ("vgm", "vgz", "kss", "mp3", "ogg", "flac") if platform == "virtualboy" else ("vgm", "vgz", "kss")
             catalog["summary"]["soundtracks"] = add_soundtracks(
-                connection, catalog, platform=SYSTEMS[platform], secondary_platform=None, formats=("vgm", "vgz", "kss"),
+                connection, catalog, platform=tuple(soundtrack_review.get("system", SYSTEMS[platform])),
+                secondary_platform=None, formats=soundtrack_review.get("formats", formats),
+                aliases=soundtrack_review.get("aliases", ()), reviewed_sources=soundtrack_review.get("sources"),
             )
-            catalog["summary"]["metadata"] = retail.enrichment_coverage(catalog, markets=MARKETS)
+            catalog["summary"]["metadata"] = retail.enrichment_coverage(catalog, markets=markets)
             if issues:
                 catalog["summary"]["sourceWarnings"] = issues
             if publish_catalog:

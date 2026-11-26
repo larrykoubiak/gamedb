@@ -12,7 +12,6 @@ from bs4 import BeautifulSoup
 from gamedb.config import PROJECT_ROOT
 from gamedb.database import create_database_engine
 from gamedb.vgm.inventory import BROWSER_AUDIO
-from gamedb.vgm.joshw import RETAIL_BUCKETS
 
 from . import retail
 from .cartridges import COUNTRY_MARKETS
@@ -21,28 +20,36 @@ from .disc_variants import add_disc_variants
 from .references import read_index
 from .retail_media import _manual_key, add_descriptions_and_art, add_manuals, add_reviewed_artwork, release_names
 from .retail_source import add_reviewed_releases, cell_text
-from .soundtracks import add_soundtracks
+from .soundtracks import add_soundtrack_sources, add_soundtracks
 
 
 SOURCE_DIRECTORY = PROJECT_ROOT / "data/media/cache/early-disc-retail"
 SYSTEMS = {platform: DISC_SYSTEMS[platform] for platform in retail.OPTICAL_RETAIL_PLATFORMS}
 MARKETS = {"pcfx": {"JP": retail.ARCHIVE_MARKETS["JP"]},
+           "marty": {"JP": retail.ARCHIVE_MARKETS["JP"]},
            "cd32": {market: retail.ARCHIVE_MARKETS[market] for market in ("PAL", "NA")},
+           "cdtv": {"PAL": retail.ARCHIVE_MARKETS["PAL"] | {"BE", "CH", "DK", "FI", "NO", "PT"},
+                    "NA": retail.ARCHIVE_MARKETS["NA"], "UNK": {"UNK"}},
            "3do": {**retail.ARCHIVE_MARKETS, "KR": {"KR"}, "BR": {"BR"}, "AS": {"TW", "HK", "AS"}},
            "playdia": {"JP": {"JP"}}, "pippin": {"JP": {"JP"}, "NA": {"US"}},
            "cdi": {**retail.ARCHIVE_MARKETS, "PAL": retail.ARCHIVE_MARKETS["PAL"] | {"BE", "PT", "DK", "NO", "FI", "CH"},
                    "KR": {"KR"}, "BR": {"BR"}, "WORLD": {"WORLD"}, "UNK": set()},
            "dreamcast": {**retail.ARCHIVE_MARKETS, "KR": {"KR"}, "BR": {"BR"}, "AS": {"TW", "HK", "AS"}},
-           "playstation2": {"NA": {"US"}}, "gamecube": {"NA": {"US"}}}
+           "playstation2": {"NA": {"US"}}, "gamecube": {"NA": {"US"}},
+           "nuon": {**retail.ARCHIVE_MARKETS, "KR": {"KR"}}}
 SCAN_MARKETS = COUNTRY_MARKETS | {"KR": "KR", "Korea": "KR", "South Korea": "KR",
                                   "BR": "BR", "Brazil": "BR", "TW": "AS", "Taiwan": "AS"}
-LAUNCHBOX = {"pcfx": "NEC PC-FX", "cd32": "Commodore Amiga CD32", "3do": "3DO Interactive Multiplayer",
+LAUNCHBOX = {"pcfx": "NEC PC-FX", "cd32": "Commodore Amiga CD32", "cdtv": "Commodore CDTV",
+             "marty": "Fujitsu FM Towns Marty",
+             "3do": "3DO Interactive Multiplayer",
              "dreamcast": "Sega Dreamcast", "playstation2": "Sony Playstation 2", "gamecube": "Nintendo GameCube",
-             "cdi": "Philips CD-i"}
+             "cdi": "Philips CD-i", "nuon": "Nuon"}
 THUMBNAILS = {
     "pcfx": ("NEC - PC-FX", "1d82abb896d8dd5b125e70a3b7dd23118045ef2e"),
     "cd32": ("Commodore - CD32", "4bcde3a68b854bbb07add8b4f6403649b7fd75c6"),
+    "cdtv": ("Commodore - CDTV", "b92a49943adfa6782332d2c4cb50eab4bedf0b12"),
     "3do": ("The 3DO Company - 3DO", "72a17178bbd4f3bc4cdcbadce746821dab84688f"),
+    "cdi": ("Philips - CD-i", "714bad9fc04be864fe49fcc4cd0e8cb03525ace7"),
     "dreamcast": ("Sega - Dreamcast", "28b140d16f188301ad697e5935c6dbb412a4ceda"),
     "playstation2": ("Sony - PlayStation 2", "9be559835a99124720badc6ec3ec4f3f2351deb3"),
     "gamecube": ("Nintendo - GameCube", "c0e778f3242811f31f4815ff2807022c1c5ac7bd"),
@@ -133,12 +140,12 @@ def _archive_aliases(catalog, review, field):
                        "evidence": catalog["source"]["url"]}
 
 
-def _reviewed_cd32_discs(connection, regions, records):
-    manufacturer, system = SYSTEMS["cd32"]
+def _reviewed_tosec_discs(connection, platform, regions, records):
+    manufacturer, system = SYSTEMS[platform]
     for record in records:
         candidates = verified_disc_archives(
             connection, manufacturer, record.get("system", system), regions, "TOSEC-ISO",
-            inferred_region="EU", archive_names=record["archives"],
+            inferred_region=record.get("region", "EU"), archive_names=record["archives"],
         )
         yield from (archive for archive in candidates if archive["signature"] == record["signature"])
 
@@ -180,11 +187,13 @@ def match_discs(connection, catalog, platform, review):
                                  inferred_region="EU" if platform == "cd32" else None)
     tosec = list(complete_disc_archives(platform, raw, review.get("tosecDiscSets", ())))
     reviewed_tosec = review.get("verifiedTosecArchives", ())
-    if platform == "cd32" and reviewed_tosec:
-        # Exact, reviewed discs can also be stored with the Amiga or CDTV collection.
+    if platform in {"cd32", "cdtv"} and reviewed_tosec:
+        # Reviews can identify discs with an omitted country or a cross-platform pressing.
         existing = {archive["signature"] for archive in tosec}
-        tosec.extend(archive for archive in _reviewed_cd32_discs(connection, regions, reviewed_tosec)
-                     if archive["signature"] not in existing)
+        for archive in _reviewed_tosec_discs(connection, platform, regions, reviewed_tosec):
+            if archive["signature"] not in existing:
+                tosec.append(archive)
+                existing.add(archive["signature"])
     aliases = (*_archive_aliases(remaining, review, "archiveTitles"), *_archive_aliases(remaining, review, "tosecTitles"))
     approved = list(approved_disc_matches(tosec, reviewed_tosec))
     remaining_editions = {(release["edition"], release["market"]) for game in remaining["games"]
@@ -245,25 +254,6 @@ def _archive_collection_manuals(content, url, source, market, claims):
                "sha1": doc["sha1"], "size": int(doc["size"])}
 
 
-def _add_soundtrack_sources(catalog, platform, records):
-    by_game = defaultdict(list)
-    for record in records:
-        by_game[record["game"]].append(record)
-    for game in catalog["games"]:
-        if sources := by_game.get(game["title"]):
-            game["soundtrackSources"] = []
-            for source in sources:
-                url = source["url"]
-                item = {"title": source["title"], "url": url,
-                        "releases": [release["key"] for release in game["releases"]
-                                     if release["market"] in source["markets"]]}
-                if platform in RETAIL_BUCKETS and "size" in source and "revision" in source:
-                    key = sha256(url.encode()).hexdigest()
-                    item.update(size=source["size"], revision=source["revision"],
-                                loadUrl=f"/related-media/joshw/{platform}/{game['key']}/{key}")
-                game["soundtrackSources"].append(item)
-
-
 def seed(platform, report=None, *, publish_catalog=False, sources=None):
     roster = json.loads((PROJECT_ROOT / f"reference/{platform}_retail_roster.json").read_text(encoding="utf-8"))
     review = json.loads((PROJECT_ROOT / f"reference/{platform}_retail.json").read_text(encoding="utf-8"))
@@ -296,7 +286,7 @@ def seed(platform, report=None, *, publish_catalog=False, sources=None):
             else:
                 connection.exec_driver_sql("SET TRANSACTION READ ONLY")
             match_discs(connection, catalog, platform, review)
-            if platform in retail.SIXTH_GENERATION_PLATFORMS:
+            if platform in retail.SIXTH_GENERATION_PLATFORMS or review.get("prepatchedVariants"):
                 catalog["summary"]["prepatchedVariants"] = add_disc_variants(
                     connection, catalog, SYSTEMS[platform], MARKETS[platform], reviewed=review.get("prepatchedVariants", ()),
                 )
@@ -312,7 +302,7 @@ def seed(platform, report=None, *, publish_catalog=False, sources=None):
                 connection, catalog, platform=SYSTEMS[platform], secondary_platform=None, formats=sorted(TRACK_FORMATS),
                 aliases=review.get("soundtrackAliases", ()),
             )
-            _add_soundtrack_sources(catalog, platform, review.get("soundtrackSources", ()))
+            add_soundtrack_sources(catalog, platform, review.get("soundtrackSources", ()))
             catalog["summary"]["metadata"] = retail.enrichment_coverage(catalog, MARKETS[platform])
             catalog["summary"]["mediaTitles"] = dict(Counter(
                 field for game in catalog["games"] for field in ("manuals", "artwork")

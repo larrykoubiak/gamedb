@@ -8,6 +8,7 @@ import re
 from xml.etree import ElementTree
 
 from gamedb.catalog import retail
+from gamedb.catalog.addons import ADDONS, add_retail_addon
 from gamedb.catalog.cartridges import COUNTRY_MARKETS, VERIFIED_ROM_SQL, read_verified_rom
 from gamedb.catalog.megadrive import Cartridge, add_cartridge_details
 from gamedb.catalog.n64_media import MANUAL_SOURCES, add_manuals, add_reviewed_artwork
@@ -168,6 +169,7 @@ def seed_n64(html_path=None, report=None, *, publish_catalog=False, sources=None
             )
             if warnings:
                 catalog["summary"]["sourceWarnings"] = warnings
+            add_retail_addon(connection, catalog, directory, ADDONS[PLATFORM], ARCHIVE_MARKETS)
             if publish_catalog:
                 retail.publish(connection, catalog, PLATFORM)
     finally:

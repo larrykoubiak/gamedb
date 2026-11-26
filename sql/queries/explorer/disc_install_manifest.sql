@@ -29,7 +29,8 @@ verified AS MATERIALIZED (
     WHERE system.manufacturer_name = (SELECT manufacturer FROM bundles)
       AND system.system_name = (SELECT system_name FROM bundles)
       AND (package.source_collection = 'Redump'
-          OR (package.source_collection = 'TOSEC-ISO' AND system.system_name = 'Amiga CD32'))
+          OR (package.source_collection = 'TOSEC-ISO' AND system.manufacturer_name = 'Commodore'
+              AND system.system_name IN ('Amiga CD32', 'Amiga CDTV')))
       AND package.resolved_path IS NOT NULL
       AND EXISTS (SELECT FROM catalog.package_file file WHERE file.package_id = package.id)
       AND NOT EXISTS (

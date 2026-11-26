@@ -7,7 +7,7 @@ from shutil import copyfile
 import subprocess
 from zlib import crc32
 
-from .patching import PatchError, _delta_header, _ips_edits, _ips_reader
+from .patching import PatchError, _delta_header, _ips_edits, _ips_reader, apply_ppf3
 
 
 RAW_CD_SECTOR_SIZE = 2352
@@ -79,27 +79,7 @@ def repair_xa_form1_checksums(source, target):
 def _apply_ppf3(image, patch):
     size = image.stat().st_size
     with image.open("r+b") as disc, patch.open("rb") as delta:
-        header = delta.read(60)
-        if len(header) != 60 or not header.startswith(b"PPF30\x02"):
-            raise PatchError("Expected a PPF3 patch")
-        image_type, block_check, undo = header[56:59]
-        if image_type != 0 or block_check not in (0, 1) or undo not in (0, 1):
-            raise PatchError("Unsupported PPF3 image type or flags")
-        if block_check:
-            block = delta.read(1024)
-            disc.seek(0x9320)
-            if len(block) != 1024 or disc.read(1024) != block:
-                raise PatchError("PPF3 source block does not match")
-        while record := delta.read(9):
-            if len(record) != 9:
-                raise PatchError("Incomplete PPF3 record")
-            offset = int.from_bytes(record[:8], "little")
-            length = record[8]
-            data = delta.read(length * (1 + undo))
-            if not length or len(data) != length * (1 + undo) or offset + length > size:
-                raise PatchError("Invalid PPF3 edit")
-            disc.seek(offset)
-            disc.write(data[:length])
+        apply_ppf3(disc, delta, size)
 
 
 def extract_mode1_iso(source, target, *, pregap_sectors=0, pregap_target=None):

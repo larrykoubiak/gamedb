@@ -1,0 +1,187 @@
+{
+  "source": {
+    "name": "OMPeaRetro Marty hardware tests and verified discs on the NAS",
+    "url": "https://img1.wsimg.com/blobby/go/90627e89-ffc8-4a43-b7b8-8d0aa14bdb3a/downloads/8c3189ef-d6ce-4e50-8fcb-8cc21d6e664a/FM%20Towns%20Marty%20Master%20Compatibility%20List%20-%20v1..pdf?ver=1741488246114",
+    "revision": "1.03",
+    "additionalSources": [
+      "https://raw.githubusercontent.com/mamedev/mame/mame0289/hash/fmtowns_cd.xml",
+      "https://www.tosecdev.org/"
+    ],
+    "rowCount": 7
+  },
+  "rows": [
+    {
+      "title": "America Oudan Ultra Quiz",
+      "genres": [
+        "Trivia"
+      ],
+      "releases": {
+        "JP": "November 1994"
+      },
+      "developer": {
+        "default": "Fujitsu"
+      },
+      "publisher": {
+        "default": "Fujitsu"
+      },
+      "aliases": [
+        {
+          "title": "America Oudan Ultra Quiz - King of Quiz",
+          "regions": [
+            "JP"
+          ]
+        },
+        {
+          "title": "アメリカ横断ウルトラクイズ",
+          "regions": [
+            "JP"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ElFish Lite",
+      "genres": [
+        "Simulation"
+      ],
+      "releases": {
+        "JP": "November 1993"
+      },
+      "developer": {
+        "default": "AnimaTek International"
+      },
+      "publisher": {
+        "default": "Fujitsu"
+      },
+      "aliases": [
+        {
+          "title": "エル・フィッシュ LITE",
+          "regions": [
+            "JP"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Galaxy Wars: Regional Power II",
+      "genres": [
+        "Strategy"
+      ],
+      "releases": {
+        "JP": "September 1992"
+      },
+      "developer": {
+        "default": "Cosmos Computer"
+      },
+      "publisher": {
+        "default": "Cosmos Computer"
+      },
+      "aliases": [
+        {
+          "title": "Galaxy Wars - Regional Power II",
+          "regions": [
+            "JP"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Kiwame II",
+      "genres": [
+        "Shogi"
+      ],
+      "releases": {
+        "JP": "June 1994"
+      },
+      "developer": {
+        "default": "LOG Corporation"
+      },
+      "publisher": {
+        "default": "LOG Corporation"
+      },
+      "aliases": [
+        {
+          "title": "極II",
+          "regions": [
+            "JP"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lemmings 2: The Tribes",
+      "genres": [
+        "Puzzle"
+      ],
+      "releases": {
+        "JP": "June 1994"
+      },
+      "developer": {
+        "default": "DMA Design"
+      },
+      "publisher": {
+        "default": "Fujitsu"
+      },
+      "aliases": [
+        {
+          "title": "Lemmings 2 - The Tribes",
+          "regions": [
+            "JP"
+          ]
+        },
+        {
+          "title": "レミングス2",
+          "regions": [
+            "JP"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Mad Paradox",
+      "genres": [
+        "Role-Playing"
+      ],
+      "releases": {
+        "JP": "February 1994"
+      },
+      "developer": {
+        "default": "Queen Soft"
+      },
+      "publisher": {
+        "default": "Queen Soft"
+      },
+      "aliases": [
+        {
+          "title": "マッドパラドックス",
+          "regions": [
+            "JP"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Populous & The Promised Lands",
+      "genres": [
+        "Strategy"
+      ],
+      "releases": {
+        "JP": "July 1990"
+      },
+      "developer": {
+        "default": "Infinity"
+      },
+      "publisher": {
+        "default": "Imagineer"
+      },
+      "aliases": [
+        {
+          "title": "ポピュラス",
+          "regions": [
+            "JP"
+          ]
+        }
+      ]
+    }
+  ]
+}

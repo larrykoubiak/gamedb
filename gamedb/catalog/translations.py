@@ -22,7 +22,7 @@ from libarchive.exception import ArchiveError
 
 from gamedb.catalog.cartridges import VERIFIED_ROM_SQL, read_verified_rom
 from gamedb.catalog.n64_rom import N64_ROM_LIMIT
-from gamedb.catalog.patching import PatchError, apply_translation, embedded_input, supports_patching, valid_ips
+from gamedb.catalog.patching import N64_DISK_LAYOUT, PatchError, apply_translation, embedded_input, supports_patching, valid_ips
 from gamedb.catalog.references import read_index
 from gamedb.catalog.retail import RETAIL_PLATFORMS, SIXTH_GENERATION_PLATFORMS, retail_tables, write_report
 from gamedb.catalog.disc_catalog import DISC_ADDON_PARENTS
@@ -39,15 +39,15 @@ ADDON_CONSOLES = {"nes": "fds", "megadrive": "32x", "mastersystem": "sg1k"}
 ADDON_LAYOUTS = {"fds": {1: "headerless"}, "32x": {1: "headerless", 8: "headerless"}, "sg1k": {1: "headerless"}}
 ADDON_EXTENSIONS = {"fds": "fds", "32x": "32x", "sg1k": "sg"}
 TRANSLATION_ROOTS = {platform: PROJECT_ROOT / f"data/media/{platform}-translations"
-                     for platform in (*RHDN_CONSOLES, "neogeo")}
+                     for platform in (*RHDN_CONSOLES, "neogeo", "virtualboy")}
 TRANSLATION_ROOTS.update({addon: TRANSLATION_ROOTS[parent] / addon for addon, parent in DISC_ADDON_PARENTS.items()})
 CARTRIDGE_EXTENSIONS = {
     "snes": "sfc", "megadrive": "md", "nes": "nes", "mastersystem": "sms", "pcengine": "pce", "n64": "z64",
-    "colecovision": "col",
+    "colecovision": "col", "virtualboy": "vb",
 }
 AUTHOR_REFERENCE = PROJECT_ROOT / "reference/translation_authors.json"
 REVIEW_REFERENCES = {platform: PROJECT_ROOT / f"reference/{platform}_translation_reviews.json"
-                     for platform in ("megadrive", "nes", "mastersystem", "pcengine", "n64", "colecovision")}
+                     for platform in ("snes", "megadrive", "nes", "mastersystem", "pcengine", "n64", "colecovision")}
 INDEX_NAME = ".gamedb-translations.json"
 INDEX_VERSION = 1
 DISC_LAYOUT = "disc-set"
@@ -410,10 +410,19 @@ def _translation_authors(source, rows, additional=None):
     return authors
 
 
-def _published_bps_patches(root, sources, bases):
+def _published_patches(root, sources, bases):
     for source in sources:
+        layout = source.get("layout", "headerless")
+        patch_format = source.get("format", "bps")
+        is_disk = layout == N64_DISK_LAYOUT
         base = bases.by_sha1.get(source["baseSha1"])
-        if not base or (original := read_verified_rom(bases.roms[base["sha1"]])) is None:
+        if not base:
+            continue
+        rom = bases.roms[base["sha1"]]
+        if is_disk and not rom.member_path.casefold().endswith(".ndd"):
+            continue
+        original = read_verified_rom(rom, max_size=N64_ROM_LIMIT) if is_disk else read_verified_rom(rom)
+        if original is None:
             continue
         digest = source["sha256"]
         content = read_index(root / "sources" / digest, source["url"], max_bytes=MAX_PATCH_SIZE).content
@@ -430,16 +439,21 @@ def _published_bps_patches(root, sources, bases):
             patches = {source["filename"]: content}
         released = (date.fromisoformat(source["released"]) - date(1970, 1, 1)).days * 86400
         for name, patch in patches.items():
-            patched = apply_translation(original, patch, "bps", "headerless")
+            patched = apply_translation(original, patch, patch_format, layout)
+            output = sha1(patched).hexdigest()
+            if is_disk and output != source["outputSha1"]:
+                raise ValueError(f"The verified 64DD patch produced a different disk image: {name}")
             checksum = sha256(patch).hexdigest()
-            key = sha256(f"{base['sha1']}:{source['language'].casefold()}:headerless:{checksum}".encode()).hexdigest()
-            _store_patch(root / "patches" / f"{checksum}.bps", patch)
+            key = sha256(f"{base['sha1']}:{source['language'].casefold()}:{layout}:{checksum}".encode()).hexdigest()
+            _store_patch(root / "patches" / f"{checksum}.{patch_format}", patch)
             yield {
                 "key": key, "language": source["language"], "authors": source["authors"],
-                "version": source.get("versions", {}).get(name, source["version"]), "status": "Fully Playable",
-                "releasedAt": released, "filename": name, "format": "bps", "layout": "headerless",
-                "evidence": "embedded", "size": len(patch), "sha256": checksum, "baseSha1": base["sha1"],
-                "signatures": base["signatures"], "sourceUrl": source["sourceUrl"], "outputSha1": sha1(patched).hexdigest(),
+                "version": source.get("versions", {}).get(name, source["version"]),
+                "status": source.get("status", "Fully Playable"),
+                "releasedAt": released, "filename": name, "format": patch_format, "layout": layout,
+                "evidence": "reviewed" if is_disk else "embedded", "size": len(patch), "sha256": checksum,
+                "baseSha1": base["sha1"], "signatures": base["signatures"], "sourceUrl": source["sourceUrl"],
+                "outputSha1": output,
             }
 
 
@@ -556,7 +570,7 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
             imported = True
         if not imported:
             skip(row, "patch could not be applied to the verified ROM")
-    published = list(_published_bps_patches(root, reviews.get("publishedBps", ()), bases))
+    published = list(_published_patches(root, [*reviews.get("publishedBps", ()), *reviews.get("publishedDiskPatches", ())], bases))
     translations.update((record["key"], record) for record in published)
     records = sorted(translations.values(), key=translation_order)
     if not records:

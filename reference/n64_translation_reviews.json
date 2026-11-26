@@ -278,5 +278,26 @@
         "AeroGauge_PT-BR_por_Dream64_ver_1.1.xdelta": "4e143b14775284a136977415ae9225196cedb488"
       }
     }
-  }
+  },
+  "publishedDiskPatches": [
+    {
+      "members": [
+        "SimCity 64 ENG 2017-11-01 VWFv0.6.38.ppf"
+      ],
+      "sha256": "38341c9aef715b4a45f2025fcac5c11d5fb021e7b418e37c5773afc9d2f2ef89",
+      "baseSha1": "5d7d5046d702dcc0ea56ce1b96eb90f0c984b51a",
+      "outputSha1": "33b4f0f3dddd447b27d2920c618028fab217e845",
+      "url": "https://64dd.org/patches.zip",
+      "sourceUrl": "https://64dd.org/patch.html",
+      "language": "English",
+      "authors": [
+        "Ozidual"
+      ],
+      "version": "0.6.38",
+      "released": "2017-11-01",
+      "layout": "ndd",
+      "format": "ppf",
+      "status": "Partial translation"
+    }
+  ]
 }

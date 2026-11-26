@@ -833,3 +833,48 @@ body:has(#artwork-dialog[open]) { overflow: hidden; }
 .release-details summary { cursor: pointer; font-weight: 600; }
 .release-details li { margin: .3rem 0; overflow-wrap: anywhere; }
 .release-details dd { overflow-wrap: anywhere; white-space: pre-line; }
+
+/* These historical marks are displayed from the printed artwork. */
+.system-logo-crop {
+  --wordmark-height: 1.8rem;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: calc(var(--wordmark-height) * var(--crop-width) / var(--crop-height));
+  max-width: 100%;
+  aspect-ratio: var(--crop-width) / var(--crop-height);
+}
+
+.system-logo-crop > img[alt] {
+  position: absolute;
+  left: calc(-100% * var(--crop-x) / var(--crop-width));
+  top: calc(-100% * var(--crop-y) / var(--crop-height));
+  width: calc(100% * var(--image-width) / var(--crop-width));
+  max-width: none;
+  height: auto;
+  padding: 0;
+}
+
+.system-logo-crop[data-platform="copera"] {
+  --image-width: 800;
+  --crop-x: 302;
+  --crop-y: 14;
+  --crop-width: 197;
+  --crop-height: 57;
+}
+
+.system-logo-crop[data-platform="myvision"] {
+  --image-width: 600;
+  --crop-x: 67;
+  --crop-y: 143;
+  --crop-width: 466;
+  --crop-height: 114;
+}
+
+.system-logo-crop[data-platform="picno"] {
+  --image-width: 600;
+  --crop-x: 83;
+  --crop-y: 82;
+  --crop-width: 437;
+  --crop-height: 224;
+}

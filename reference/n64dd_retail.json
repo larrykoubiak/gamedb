@@ -1,0 +1,50 @@
+{
+  "source": {"name": "64DD.org", "url": "https://64dd.org/games.html", "sha256": "c2a8429fd5946ca65985a2ffcf9474513fe27f6ee6e9ab93c848f96cb644b443", "rowCount": 10},
+  "titles": [
+    {"title": "Mario Artist: Paint Studio", "aliases": ["マリオアーティスト ペイントスタジオ"], "dates": {"JP": "1999-12-13"}, "developer": "Software Creations", "publisher": "Nintendo", "productCodes": ["NUD-DMPJ-JPN"], "archiveTitles": ["Mario Artist - Paint Studio"]},
+    {"title": "Mario Artist: Talent Studio", "aliases": ["マリオアーティスト タレントスタジオ"], "dates": {"JP": "2000-02-23"}, "developer": "Nintendo R&D1", "publisher": "Nintendo", "productCodes": ["NUD-DMTJ-JPN"], "archiveTitles": ["Mario Artist - Talent Studio"]},
+    {"title": "Mario Artist: Communication Kit", "aliases": ["マリオアーティスト コミュニケーションキット"], "dates": {"JP": "2000-06-29"}, "developer": "Nintendo", "publisher": "Nintendo", "productCodes": ["NUD-DMBJ-JPN"], "archiveTitles": ["Mario Artist - Communication Kit"]},
+    {"title": "Mario Artist: Polygon Studio", "aliases": ["マリオアーティスト ポリゴンスタジオ"], "dates": {"JP": "2000-08-29"}, "developer": "Nintendo EAD", "publisher": "Nintendo", "productCodes": ["NUD-DMGJ-JPN"], "archiveTitles": ["Mario Artist - Polygon Studio"]},
+    {"title": "Doshin the Giant", "aliases": ["巨人のドシン1", "Doshin the Giant 1"], "dates": {"JP": "1999-12-13"}, "developer": "Param", "publisher": "Nintendo", "productCodes": ["NUD-DKDJ-JPN"], "archiveTitles": ["Kyojin no Doshin"]},
+    {"title": "SimCity 64", "aliases": ["シムシティー64"], "dates": {"JP": "2000-02-23"}, "developer": "HAL Laboratory", "publisher": "Nintendo", "productCodes": ["NUD-DSCJ-JPN"]},
+    {"title": "F-Zero X Expansion Kit", "aliases": ["エフゼロ エックス エクスパンション キット"], "dates": {"JP": "2000-04-21"}, "developer": "Nintendo EAD", "publisher": "Nintendo", "productCodes": ["NUD-EFZJ-JPN"], "archiveTitles": ["F-Zero X - Expansion Kit"], "parentTitle": "F-Zero X", "requiredAccessories": ["F-Zero X Japanese Game Pak"]},
+    {"title": "Japan Pro Golf Tour 64", "aliases": ["日本プロゴルフツアー64"], "dates": {"JP": "2000-05-02"}, "developer": "Media Factory", "publisher": "Media Factory", "productCodes": ["NUD-DPGJ-JPN"], "archiveTitles": ["Nihon Pro Golf Tour 64"], "reviewNote": {"text": "The local disk image is marked as a bad dump.", "source": {"name": "64DD.org disk database", "url": "https://64dd.org/database.html"}}},
+    {"title": "Doshin the Giant: Tinkling Toddler Liberation Front! Assemble!", "aliases": ["巨人のドシン解放戦線 チビッコチッコ大集合"], "dates": {"JP": "2000-05-17"}, "developer": "Param", "publisher": "Nintendo", "productCodes": ["NUD-DKKJ-JPN"], "archiveTitles": ["Kyojin no Doshin - Kaihou Sensen Chibikko Chikko Daishuugou"], "requiredAccessories": ["Doshin the Giant disk"], "reviewNote": {"text": "The local disk image is marked as a bad dump.", "source": {"name": "64DD.org disk database", "url": "https://64dd.org/database.html"}}},
+    {"title": "Randnet Disk", "aliases": ["ランドネットディスク"], "dates": {"JP": "2000-02-23"}, "developer": "Randnet DD", "publisher": "Randnet DD", "productCodes": ["NUD-DRDJ-JPN"], "reviewNote": {"text": "The local disk image is marked as a bad dump.", "source": {"name": "64DD.org disk database", "url": "https://64dd.org/database.html"}}}
+  ],
+  "reviewedArtwork": [
+    {"edition": "Mario Artist: Paint Studio", "market": "JP", "thumbnail": "Mario Artist - Paint Studio (Japan)", "kinds": ["boxart", "title", "snap", "logo"]},
+    {"edition": "Mario Artist: Talent Studio", "market": "JP", "thumbnail": "Mario Artist - Talent Studio (Japan)", "kinds": ["boxart", "title", "snap", "logo"]},
+    {"edition": "Mario Artist: Communication Kit", "market": "JP", "thumbnail": "Mario Artist - Communication Kit (Japan)", "kinds": ["boxart", "title", "snap", "logo"]},
+    {"edition": "Mario Artist: Polygon Studio", "market": "JP", "thumbnail": "Mario Artist - Polygon Studio (Japan)", "kinds": ["boxart", "title", "snap", "logo"]},
+    {"edition": "Doshin the Giant", "market": "JP", "thumbnail": "Kyojin no Doshin (Japan)", "kinds": ["boxart", "title", "snap", "logo"]},
+    {"edition": "SimCity 64", "market": "JP", "thumbnail": "SimCity 64 (Japan)", "kinds": ["boxart", "title", "snap", "logo"]},
+    {"edition": "F-Zero X Expansion Kit", "market": "JP", "thumbnail": "F-Zero X - Expansion Kit (Japan)", "kinds": ["boxart", "title", "snap", "logo"]},
+    {"edition": "Japan Pro Golf Tour 64", "market": "JP", "thumbnail": "Nihon Pro Golf Tour 64 (Japan)", "kinds": ["boxart", "title", "snap"]},
+    {"edition": "Doshin the Giant: Tinkling Toddler Liberation Front! Assemble!", "market": "JP", "thumbnail": "Kyojin no Doshin - Kaihou Sensen Chibikko Chikko Daishuugou (Japan)", "kinds": ["boxart", "title", "snap"]},
+    {"edition": "Randnet Disk", "market": "JP", "thumbnail": "Randnet Disk (Japan)", "kinds": ["boxart", "title", "snap"]}
+  ],
+  "manuals": [
+    {"edition": "Mario Artist: Paint Studio", "market": "JP", "name": "Mario Artist: Paint Studio — manual", "format": "Scans", "regions": ["JP"], "language": "Japanese", "url": "https://64dd.org/manual/Mario%20Artist%20Paint%20Studio%20Manual.7z", "source": "64DD.org", "sourceUrl": "https://64dd.org/games.html"},
+    {"edition": "Mario Artist: Talent Studio", "market": "JP", "name": "Mario Artist: Talent Studio — manual", "format": "Scans", "regions": ["JP"], "language": "Japanese", "url": "https://64dd.org/manual/Mario%20Artist%20Talent%20Studio%20Manual.7z", "source": "64DD.org", "sourceUrl": "https://64dd.org/games.html"},
+    {"edition": "Mario Artist: Communication Kit", "market": "JP", "name": "Mario Artist: Communication Kit — manual", "format": "Scans", "regions": ["JP"], "language": "Japanese", "url": "https://64dd.org/manual/Mario%20Artist%20Communication%20Kit%20Manual.7z", "source": "64DD.org", "sourceUrl": "https://64dd.org/games.html"},
+    {"edition": "Mario Artist: Polygon Studio", "market": "JP", "name": "Mario Artist: Polygon Studio — manual", "format": "Scans", "regions": ["JP"], "language": "Japanese", "url": "https://64dd.org/manual/Mario%20Artist%20Polygon%20Studio%20Manual.7z", "source": "64DD.org", "sourceUrl": "https://64dd.org/games.html"},
+    {"edition": "Doshin the Giant", "market": "JP", "name": "Doshin the Giant — manual", "format": "Scans", "regions": ["JP"], "language": "Japanese", "url": "https://64dd.org/manual/Doshin%20The%20Giant%20Manual.7z", "source": "64DD.org", "sourceUrl": "https://64dd.org/games.html"},
+    {"edition": "SimCity 64", "market": "JP", "name": "SimCity 64 — manual", "format": "Scans", "regions": ["JP"], "language": "Japanese", "url": "https://64dd.org/manual/Sim%20City%2064%20Manual.7z", "source": "64DD.org", "sourceUrl": "https://64dd.org/games.html"},
+    {"edition": "F-Zero X Expansion Kit", "market": "JP", "name": "F-Zero X Expansion Kit — manual", "format": "Scans", "regions": ["JP"], "language": "Japanese", "url": "https://64dd.org/manual/F-Zero%20X%20Expansion%20Kit%20Manual.7z", "source": "64DD.org", "sourceUrl": "https://64dd.org/games.html"},
+    {"edition": "Japan Pro Golf Tour 64", "market": "JP", "name": "Japan Pro Golf Tour 64 — manual", "format": "Scans", "regions": ["JP"], "language": "Japanese", "url": "https://64dd.org/manual/Japan%20Pro%20Golf%20Tour%2064%20Manual.7z", "source": "64DD.org", "sourceUrl": "https://64dd.org/games.html"},
+    {"edition": "Doshin the Giant: Tinkling Toddler Liberation Front! Assemble!", "market": "JP", "name": "Doshin the Giant: Tinkling Toddler Liberation Front! Assemble! — manual", "format": "Scans", "regions": ["JP"], "language": "Japanese", "url": "https://64dd.org/manual/Doshin2Scans.zip", "source": "64DD.org", "sourceUrl": "https://64dd.org/games.html"},
+    {"edition": "Randnet Disk", "market": "JP", "name": "Randnet Disk — manual", "format": "Scans", "regions": ["JP"], "language": "Japanese", "url": "https://64dd.org/manual/Randnet%20DD%20Manual.7z", "source": "64DD.org", "sourceUrl": "https://64dd.org/database.html"}
+  ],
+  "soundtrackSources": [
+    {"game": "Mario Artist: Paint Studio", "title": "Mario Artist: Paint Studio — soundtrack", "url": "https://64dd.org/download/music/Mario%20Artist%20Paint%20Studio%20OST%20[FLAC].zip", "markets": ["JP"]},
+    {"game": "Mario Artist: Talent Studio", "title": "Mario Artist: Talent Studio — soundtrack", "url": "https://64dd.org/download/music/Mario%20Artist%20Talent%20Studio%20OST%20[FLAC].zip", "markets": ["JP"]},
+    {"game": "Mario Artist: Communication Kit", "title": "Mario Artist: Communication Kit — soundtrack", "url": "https://64dd.org/download/music/Mario%20Artist%20Communication%20Kit%20OST%20[FLAC].zip", "markets": ["JP"]},
+    {"game": "Mario Artist: Polygon Studio", "title": "Mario Artist: Polygon Studio — soundtrack", "url": "https://64dd.org/download/music/Mario%20Artist%20Polygon%20Studio%20OST%20[FLAC].zip", "markets": ["JP"]},
+    {"game": "Doshin the Giant", "title": "Doshin the Giant — soundtrack", "url": "https://linkco.re/rypnRnn7", "markets": ["JP"]},
+    {"game": "SimCity 64", "title": "SimCity 64 — soundtrack", "url": "https://64dd.org/download/music/Sim%20City%2064%20OST%20[FLAC].zip", "markets": ["JP"]},
+    {"game": "F-Zero X Expansion Kit", "title": "F-Zero X Expansion Kit — soundtrack", "url": "https://64dd.org/download/music/F-Zero%20X%20Expansion%20Kit%20OST%20[FLAC].zip", "markets": ["JP"]},
+    {"game": "Japan Pro Golf Tour 64", "title": "Japan Pro Golf Tour 64 — soundtrack", "url": "https://64dd.org/download/music/Japan%20Pro%20Golf%20Tour%2064%20OST%20[FLAC].zip", "markets": ["JP"]},
+    {"game": "Doshin the Giant: Tinkling Toddler Liberation Front! Assemble!", "title": "Doshin the Giant: Tinkling Toddler Liberation Front! Assemble! — soundtrack", "url": "https://64dd.org/download/music/Doshin%20the%20Giant%20Tinkling%20Toddler%20Liberation%20Front!%20Assemble!%20OST%20[FLAC].zip", "markets": ["JP"]}
+  ]
+}

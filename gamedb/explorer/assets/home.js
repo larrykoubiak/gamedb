@@ -28,7 +28,15 @@ function showCatalogs(capabilities = {}) {
     section.hidden = available === 0;
     total += available;
   }
-  document.querySelector("#no-retail-catalogs").hidden = total > 0;
+  let handheldRetail = 0;
+  for (const link of document.querySelectorAll('.handheld-grid .catalog-card[href^="/catalog/"]')) {
+    const platform = link.pathname.split("/").at(-1);
+    link.hidden = capabilities[`${platform}Retail`] === false;
+    if (!link.hidden) handheldRetail += 1;
+  }
+  document.querySelector(".handheld-section .catalog-count").textContent = handheldRetail
+    ? "V1 and V2 libraries" : "V1 libraries";
+  document.querySelector("#no-retail-catalogs").hidden = total + handheldRetail > 0;
 }
 
 showCatalogs();

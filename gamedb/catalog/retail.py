@@ -18,17 +18,28 @@ from gamedb.launchbox.matching import title_key
 
 EARLY_DISC_PLATFORMS = {
     "pcfx": "PC-FX", "cd32": "Amiga CD32", "3do": "3DO", "playdia": "Bandai Playdia", "pippin": "Apple Bandai Pippin",
-    "cdi": "Philips CD-i",
+    "cdi": "Philips CD-i", "cdtv": "Commodore CDTV", "marty": "Fujitsu FM Towns Marty",
 }
 SIXTH_GENERATION_PLATFORMS = {
     "dreamcast": "Sega Dreamcast", "playstation2": "PlayStation 2 (US)", "gamecube": "GameCube (US)",
 }
-OPTICAL_RETAIL_PLATFORMS = {**EARLY_DISC_PLATFORMS, **SIXTH_GENERATION_PLATFORMS}
+OPTICAL_RETAIL_PLATFORMS = {**EARLY_DISC_PLATFORMS, **SIXTH_GENERATION_PLATFORMS, "nuon": "VM Labs NUON"}
 SECOND_GENERATION_PLATFORMS = {
     "channelf": "Fairchild Channel F", "atari2600": "Atari 2600", "atari5200": "Atari 5200",
     "odyssey2": "Magnavox Odyssey² / Philips Videopac", "intellivision": "Intellivision", "colecovision": "ColecoVision",
 }
-CLASSIC_CARTRIDGE_PLATFORMS = {**SECOND_GENERATION_PLATFORMS, "atari7800": "Atari 7800", "xegs": "Atari XEGS"}
+ADDITIONAL_CARTRIDGE_PLATFORMS = {
+    "astrocade": "Bally Astrocade", "arcadia": "Emerson Arcadia 2001", "vc4000": "Interton VC 4000",
+    "studio2": "RCA Studio II / Toshiba Visicom", "creativision": "VTech CreatiVision",
+    "vectrex": "GCE Vectrex", "advision": "Entex Adventure Vision", "pv1000": "Casio PV-1000",
+    "scv": "Epoch Super Cassette Vision", "myvision": "Nichibutsu My Vision", "superacan": "Funtech Super A’Can",
+    "loopy": "Casio Loopy", "virtualboy": "Nintendo Virtual Boy",
+    "pico": "Sega Pico", "copera": "Yamaha Copera", "picno": "Konami Picno", "vsmile": "VTech V.Smile",
+    "gx4000": "Amstrad GX4000",
+}
+CLASSIC_CARTRIDGE_PLATFORMS = {
+    **SECOND_GENERATION_PLATFORMS, "atari7800": "Atari 7800", "xegs": "Atari XEGS", **ADDITIONAL_CARTRIDGE_PLATFORMS,
+}
 RETAIL_PLATFORMS = {"snes": "SNES", "megadrive": "Mega Drive", "nes": "NES / Famicom",
                     "playstation": "PlayStation (US)", "neogeo": "Neo Geo", "mastersystem": "Master System",
                     "pcengine": "PC Engine / TurboGrafx-16", "n64": "Nintendo 64", "saturn": "Sega Saturn",
@@ -42,7 +53,8 @@ LONG_VOWELS = {"ā": ("a", "aa"), "ē": ("e", "ee", "ei"), "ī": ("i", "ii"),
                "ō": ("o", "ou", "oo"), "ū": ("u", "uu")}
 
 def base_archives_query(manufacturer=":manufacturer", commercial_labels=":commercial_labels", *,
-                        alternate_labels="'{}'", promotional_labels="'{}'"):
+                        alternate_labels="'{}'", legacy_bad_dump_labels="'{}'",
+                        promotional_labels="'{}'", distribution_channels="'{}'"):
     return text(f"""
     SELECT release.display_title AS title, signature.sha1_set_digest AS signature,
            software.id AS "softwareId", {SOFTWARE_KEY_SQL} AS "softwareKey",
@@ -90,13 +102,16 @@ def base_archives_query(manufacturer=":manufacturer", commercial_labels=":commer
         FROM catalog.release_fact fact
         WHERE fact.release_id = release.id
         HAVING NOT bool_or(
-            fact_key IN ('bios', 'demo', 'dump_modification', 'distribution_channel')
+            fact_key IN ('bios', 'demo', 'dump_modification')
+            OR (fact_key = 'distribution_channel' AND fact_value <> ALL(CAST({distribution_channels} AS text[])))
             OR (fact_key = 'release_status' AND (
                 fact_value IS DISTINCT FROM 'promotional' OR packages.names IS DISTINCT FROM
                     ARRAY[CAST({promotional_labels} AS jsonb) ->> signature.sha1_set_digest]))
-            OR (fact_key = 'dump_status' AND (
-                fact_value IS DISTINCT FROM 'alternate' OR packages.names IS DISTINCT FROM
-                    ARRAY[CAST({alternate_labels} AS jsonb) ->> signature.sha1_set_digest]))
+            OR (fact_key = 'dump_status' AND packages.names IS DISTINCT FROM ARRAY[
+                CASE fact_value
+                    WHEN 'alternate' THEN CAST({alternate_labels} AS jsonb) ->> signature.sha1_set_digest
+                    WHEN 'bad_or_hacked' THEN CAST({legacy_bad_dump_labels} AS jsonb) ->> signature.sha1_set_digest
+                END])
             OR (fact_key = 'license' AND fact_value = 'unlicensed'
                 AND packages.names IS DISTINCT FROM
                     ARRAY[CAST({commercial_labels} AS jsonb) ->> signature.sha1_set_digest])
@@ -108,7 +123,9 @@ def base_archives_query(manufacturer=":manufacturer", commercial_labels=":commer
 """)
 
 
-BASE_ARCHIVES = base_archives_query(alternate_labels=":alternate_labels", promotional_labels=":promotional_labels")
+BASE_ARCHIVES = base_archives_query(alternate_labels=":alternate_labels", legacy_bad_dump_labels=":legacy_bad_dump_labels",
+                                   promotional_labels=":promotional_labels",
+                                   distribution_channels=":distribution_channels")
 
 PUBLICATION_SCHEMA = """
     CREATE SCHEMA IF NOT EXISTS app;
@@ -135,19 +152,24 @@ def retail_tables(platform):
     return tuple(f"app.{prefix}_retail_{part}" for part in ("catalog", "image", "soundtrack"))
 
 
-def read_archives(connection, manufacturer, system, verified_archives=(), *, secondary_system=None):
+def read_archives(connection, manufacturer, system, verified_archives=(), *, secondary_system=None, distribution_channels=()):
     verified_labels = {record["signature"]: record["archiveName"] for record in verified_archives
                        if "archiveName" in record}
     commercial_labels = {record["signature"]: record["archiveName"] for record in verified_archives
                          if record.get("independentRetail")}
     alternate_labels = {record["signature"]: record["archiveName"] for record in verified_archives
                         if record.get("alternateDump")}
+    legacy_bad_dump_labels = {record["signature"]: record["archiveName"] for record in verified_archives
+                              if record.get("legacyBadDumpLabel")}
     promotional_labels = {record["signature"]: record["archiveName"] for record in verified_archives
                           if record.get("promotionalRetail")}
     return [dict(row) for row in connection.execute(
         BASE_ARCHIVES, {"manufacturer": manufacturer, "system": system, "sufami": secondary_system,
                         "verified_labels": json.dumps(verified_labels), "commercial_labels": json.dumps(commercial_labels),
-                        "alternate_labels": json.dumps(alternate_labels), "promotional_labels": json.dumps(promotional_labels)},
+                        "alternate_labels": json.dumps(alternate_labels),
+                        "legacy_bad_dump_labels": json.dumps(legacy_bad_dump_labels),
+                        "promotional_labels": json.dumps(promotional_labels),
+                        "distribution_channels": list(distribution_channels)},
     ).mappings()]
 
 
