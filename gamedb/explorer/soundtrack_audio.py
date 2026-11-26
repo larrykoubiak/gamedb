@@ -12,8 +12,8 @@ from gamedb.vgm.archives import open_vgm_location
 
 _conversions = BoundedSemaphore(2)
 _locks = [Lock() for _ in range(32)]
-INPUT_FORMATS = {"ape": "ape", **dict.fromkeys(("aif", "aiff", "aifc"), "aiff")}
-STREAM_FORMATS = frozenset({"adp", "ads", "afc", "aix", "ast", "at3", "brstm", "dsp", "ss2", "vag"})
+INPUT_FORMATS = {"ape": "ape", "mpg": "mpeg", **dict.fromkeys(("aif", "aiff", "aifc"), "aiff")}
+STREAM_FORMATS = frozenset({"adp", "ads", "afc", "aix", "ast", "at3", "brstm", "dsp", "grn", "ss2", "vag", "xa"})
 
 
 def flac_formats():
@@ -44,6 +44,10 @@ def browser_flac(cache, root, key, location):
                 copyfileobj(source, destination, 1024 * 1024)
             if format_name in STREAM_FORMATS:
                 wave = Path(work) / "decoded.wav"
+                if options := location.get("streamOptions"):
+                    playlist = original.with_suffix(".txtp")
+                    playlist.write_text(original.name + options + "\n", encoding="ascii")
+                    original = playlist
                 subprocess.run(["vgmstream-cli", "-i", "-o", str(wave), str(original)],
                                check=True, capture_output=True, timeout=90)
                 _transcode(wave, output.name, "wav")

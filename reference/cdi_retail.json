@@ -1,0 +1,522 @@
+{
+  "archiveTitles": {
+    "ADI 3ème – Français et Maths": [
+      "ADI Francais-Maths 3eme"
+    ],
+    "ADI 4ème – Français et Maths": [
+      "ADI Francais-Maths 4eme"
+    ],
+    "ADI 5ème – Français et Maths": [
+      "ADI Francais-Maths 5eme"
+    ],
+    "ADI 6ème – Français et Maths": [
+      "ADI Francais-Maths 6eme"
+    ],
+    "ADI CE1 – Français et Maths": [
+      "ADI Francais-Maths CE1"
+    ],
+    "ADI CE2 – Français et Maths": [
+      "ADI Francais-Maths CE2"
+    ],
+    "ADI CM1 – Français et Maths": [
+      "ADI Francais-Maths CM1"
+    ],
+    "ADI CM2 – Français et Maths": [
+      "ADI Francais-Maths CM2"
+    ],
+    "L'affaire Morlov": [
+      "Affaire Morlov, L'"
+    ],
+    "All the Fun of the Fair": [
+      "No Problem - All the Fun of the Fair",
+      "All the Fun of the Fair - Engels voor Kinderen"
+    ],
+    "L'Ange et le Demon": [
+      "Ange et le Demon, L'"
+    ],
+    "Axis & Allies": [
+      "Axis and Allies"
+    ],
+    "The Berenstain Bears On Their Own, And You On Your Own": [
+      "Berenstain Bears, The - On Their Own"
+    ],
+    "Cartoon Carnival": [
+      "Hanna-Barbera Cartoon Carnival"
+    ],
+    "Cluedo: The Mysteries Continue": [
+      "Clue - The Mysteries Continue",
+      "Cluedo - The Mystery Continues"
+    ],
+    "Crime Patrol 2: Drug Wars": [
+      "Drug Wars"
+    ],
+    "De Zaak Van Sam": [
+      "Zaak van Sam, De"
+    ],
+    "Die CD-i mit der Maus – Auf dem Bauernhof": [
+      "CD-i mit der Maus, Die"
+    ],
+    "Family Games": [
+      "Family Games I"
+    ],
+    "Flashback: The Quest for Identity": [
+      "Flashback"
+    ],
+    "Golden Oldies 1: Guardian and Invaders": [
+      "Golden Oldies I"
+    ],
+    "Golden Oldies 2: Blockbuster and Bughunt": [
+      "Golden Oldies II"
+    ],
+    "Il Tesoro dell’Isola dei Giochi": [
+      "Tesoro dell'Isola dei Giochi, Il"
+    ],
+    "Kingdom II: Shadoan": [
+      "Shadoan"
+    ],
+    "L’Albero Azzuro": [
+      "Albero Azzurro, L'"
+    ],
+    "La Famille Papyrus": [
+      "Famille Papyrus, La"
+    ],
+    "La Machine à Remonter le temps": [
+      "Machine a Remonter le Temps, La"
+    ],
+    "Le Journal Interactif 94 TF1": [
+      "TF1 - Le Journal Interactif 94 et le Jeu des Stars de l'Info"
+    ],
+    "Le Journal Interactif 95 TF1": [
+      "TF1 - Le Journal Interactif 1995 et le Jeu des Stars de l'Info"
+    ],
+    "Les Guignols de l’Info": [
+      "Guignols de l'Info, Les... le Jeu!"
+    ],
+    "Little Monster at School": [
+      "Mercer Mayer's Little Monster at School"
+    ],
+    "Mother Goose – Rhymes to Colour": [
+      "Mother Goose - Rhymes to Color"
+    ],
+    "Les Schtroumpfs: Le Téléportaschtroumpf": [
+      "Schtroumpfs, Les - Le Teleportaschtroumpf"
+    ],
+    "Tell Me Why I": [
+      "Tell Me Why - One"
+    ],
+    "Tell Me Why II": [
+      "Tell Me Why - Two"
+    ],
+    "Tim & Bear at the Hospital": [
+      "Tim et Ted a l'Hopital"
+    ],
+    "USGA Presents Great American Golf 1": [
+      "USGA Great American Golf 1"
+    ],
+    "Video Speedway": [
+      "Video Speedway - Grand Prix"
+    ]
+  },
+  "standaloneDiscs": [
+    "7th Guest, The (Europe) (Disc 1) (The Game) (EDC).zip",
+    "7th Guest, The (Europe) (Disc 1) (The Game).zip",
+    "7th Guest, The (France) (Disc 1) (Le Jeu) (Rev 1).zip",
+    "7th Guest, The (France) (Disc 1) (Le Jeu).zip",
+    "7th Guest, The (Germany) (Disc 1) (Das Spiel) (Rev 1).zip",
+    "7th Guest, The (Germany) (Disc 1) (Das Spiel).zip",
+    "7th Guest, The (USA) (Disc 1) (The Game).zip",
+    "Burn-Cycle (USA, Europe) (Disc 1) (The Game).zip",
+    "Thunder in Paradise (Europe) (Disc 1) (The Game).zip",
+    "Thunder in Paradise (USA) (Disc 1) (The Game).zip"
+  ],
+  "discSets": [
+    {
+      "title": "Marco Polo",
+      "archives": [
+        "Marco Polo (Europe) (Disc 1) (The Game).zip",
+        "Marco Polo (Europe) (Disc 2) (The Documentation).zip"
+      ],
+      "source": "http://redump.org/discs/system/cdi/"
+    },
+    {
+      "title": "Marco Polo",
+      "archives": [
+        "Marco Polo (France) (Disc 1) (Le Jeu).zip",
+        "Marco Polo (France) (Disc 2) (La Documentation).zip"
+      ],
+      "source": "http://redump.org/discs/system/cdi/"
+    },
+    {
+      "title": "TF1 - Le Journal Interactif 94 et le Jeu des Stars de l'Info",
+      "archives": [
+        "TF1 - Le Journal Interactif 94 et le Jeu des Stars de l'Info (France) (Disc 1) (Le Journal Interactif 94).zip",
+        "TF1 - Le Journal Interactif 94 et le Jeu des Stars de l'Info (France) (Disc 2) (Le Jeu des Stars de l'Info).zip"
+      ],
+      "source": "http://redump.org/discs/system/cdi/"
+    },
+    {
+      "title": "TF1 - Le Journal Interactif 1995 et le Jeu des Stars de l'Info",
+      "archives": [
+        "TF1 - Le Journal Interactif 1995 et le Jeu des Stars de l'Info (France) (Disc 1) (Le Journal Interactif 1995).zip",
+        "TF1 - Le Journal Interactif 1995 et le Jeu des Stars de l'Info (France) (Disc 2) (Le Jeu des Stars de l'Info).zip"
+      ],
+      "source": "http://redump.org/discs/system/cdi/"
+    }
+  ],
+  "manuals": [
+    {
+      "edition": "Arcade Classics",
+      "market": "PAL",
+      "name": "Arcade Classics — manual",
+      "format": "PDF",
+      "regions": [],
+      "localArchive": "Philips/CD-i/Manuals/Games/Arcade Classics (1996)(Phillips).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Arcade%20Classics%20%281996%29%28Phillips%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Burn Cycle",
+      "market": "NA",
+      "name": "Burn Cycle — manual",
+      "format": "PDF",
+      "regions": [],
+      "localArchive": "Philips/CD-i/Manuals/Games/Burn Cycle (1994)(Phillips).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Burn%20Cycle%20%281994%29%28Phillips%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Burn Cycle",
+      "market": "PAL",
+      "name": "Burn Cycle — manual",
+      "format": "PDF",
+      "regions": [],
+      "localArchive": "Philips/CD-i/Manuals/Games/Burn Cycle (1994)(Phillips).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Burn%20Cycle%20%281994%29%28Phillips%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Cluedo",
+      "market": "PAL",
+      "name": "Cluedo — manual",
+      "format": "PDF",
+      "regions": [
+        "EU"
+      ],
+      "localArchive": "Philips/CD-i/Manuals/Games/Cluedo (1994)(Philips)(EU).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Cluedo%20%281994%29%28Philips%29%28EU%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Lemmings",
+      "market": "PAL",
+      "name": "Lemmings — manual",
+      "format": "PDF",
+      "regions": [],
+      "localArchive": "Philips/CD-i/Manuals/Games/Lemmings (1993)(Psygnosis).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Lemmings%20%281993%29%28Psygnosis%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Link: The Faces of Evil",
+      "market": "NA",
+      "name": "Link: The Faces of Evil — manual",
+      "format": "PDF",
+      "regions": [],
+      "localArchive": "Philips/CD-i/Manuals/Games/Link The Faces of Evil (1993)(Nintendo).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Link%20The%20Faces%20of%20Evil%20%281993%29%28Nintendo%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Link: The Faces of Evil",
+      "market": "PAL",
+      "name": "Link: The Faces of Evil — manual",
+      "format": "PDF",
+      "regions": [],
+      "localArchive": "Philips/CD-i/Manuals/Games/Link The Faces of Evil (1993)(Nintendo).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Link%20The%20Faces%20of%20Evil%20%281993%29%28Nintendo%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Mad Dog II: The Lost Gold",
+      "market": "PAL",
+      "name": "Mad Dog II: The Lost Gold — manual",
+      "format": "PDF",
+      "regions": [],
+      "localArchive": "Philips/CD-i/Manuals/Games/Mad Dog II - the Lost Gold (1994)(American Laser Games).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Mad%20Dog%20II%20-%20the%20Lost%20Gold%20%281994%29%28American%20Laser%20Games%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Mutant Rampage: BodySlam",
+      "market": "NA",
+      "name": "Mutant Rampage: BodySlam — manual",
+      "format": "PDF",
+      "regions": [],
+      "localArchive": "Philips/CD-i/Manuals/Games/Mutant Rampage BodySlam (1994)(Phillips).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Mutant%20Rampage%20BodySlam%20%281994%29%28Phillips%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Mutant Rampage: BodySlam",
+      "market": "PAL",
+      "name": "Mutant Rampage: BodySlam — manual",
+      "format": "PDF",
+      "regions": [],
+      "localArchive": "Philips/CD-i/Manuals/Games/Mutant Rampage BodySlam (1994)(Phillips).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Mutant%20Rampage%20BodySlam%20%281994%29%28Phillips%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Othello",
+      "market": "PAL",
+      "name": "Othello — manual",
+      "format": "PDF",
+      "regions": [],
+      "localArchive": "Philips/CD-i/Manuals/Games/Othello (1993)(Phillips).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Othello%20%281993%29%28Phillips%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Sargon Chess",
+      "market": "PAL",
+      "name": "Sargon Chess — manual",
+      "format": "PDF",
+      "regions": [
+        "EU"
+      ],
+      "localArchive": "Philips/CD-i/Manuals/Games/Sargon Chess (1992)(Philips)[EU].zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Sargon%20Chess%20%281992%29%28Philips%29%5BEU%5D.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Strip Poker Live",
+      "market": "PAL",
+      "name": "Strip Poker Live — manual",
+      "format": "PDF",
+      "regions": [],
+      "localArchive": "Philips/CD-i/Manuals/Games/Strip Poker Live (1991)(Phillips).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Strip%20Poker%20Live%20%281991%29%28Phillips%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Surf City",
+      "market": "NA",
+      "name": "Surf City — manual",
+      "format": "PDF",
+      "regions": [
+        "US"
+      ],
+      "localArchive": "Philips/CD-i/Manuals/Educational/Surf City (1994)(Philips)(US).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Educational/Surf%20City%20%281994%29%28Philips%29%28US%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Zelda: The Wand of Gamelon",
+      "market": "NA",
+      "name": "Zelda: The Wand of Gamelon — manual",
+      "format": "PDF",
+      "regions": [],
+      "localArchive": "Philips/CD-i/Manuals/Games/Zelda the Wand Of Gamelon (1995)(Nintendo).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Zelda%20the%20Wand%20Of%20Gamelon%20%281995%29%28Nintendo%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Zelda: The Wand of Gamelon",
+      "market": "PAL",
+      "name": "Zelda: The Wand of Gamelon — manual",
+      "format": "PDF",
+      "regions": [],
+      "localArchive": "Philips/CD-i/Manuals/Games/Zelda the Wand Of Gamelon (1995)(Nintendo).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Zelda%20the%20Wand%20Of%20Gamelon%20%281995%29%28Nintendo%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    },
+    {
+      "edition": "Zelda's Adventure",
+      "market": "PAL",
+      "name": "Zelda's Adventure — manual",
+      "format": "PDF",
+      "regions": [],
+      "localArchive": "Philips/CD-i/Manuals/Games/Zeldas Adventure (1995)(Nintendo).zip",
+      "url": "https://www.tosecdev.org/#pix/Philips/CD-i/Manuals/Games/Zeldas%20Adventure%20%281995%29%28Nintendo%29.zip",
+      "source": "TOSEC PIX",
+      "sourceUrl": "https://www.tosecdev.org/"
+    }
+  ],
+  "soundtrackSources": [
+    {
+      "game": "Hotel Mario",
+      "title": "Hotel Mario — JoshW archive",
+      "markets": [
+        "NA",
+        "PAL"
+      ],
+      "url": "https://cdi.joshw.info/cdi/h/Hotel%20Mario%20(1994-04-05)(Fantasy%20Factory)(Philips%20Interactive%20Media)%5bCD-i%5d.7z",
+      "size": 84277189,
+      "revision": 1709744836
+    },
+    {
+      "game": "Link: The Faces of Evil",
+      "title": "Link: The Faces of Evil — JoshW archive",
+      "markets": [
+        "NA",
+        "PAL"
+      ],
+      "url": "https://cdi.joshw.info/cdi/l/Link%20-%20The%20Faces%20of%20Evil%20(1993-09-10)(Animation%20Magic)(Philips%20Interactive%20Media)%5bCD-i%5d.7z",
+      "size": 58130907,
+      "revision": 1506758138
+    },
+    {
+      "game": "Lost Eden",
+      "title": "Lost Eden — JoshW archive",
+      "markets": [
+        "PAL"
+      ],
+      "url": "https://cdi.joshw.info/cdi/l/Lost%20Eden%20(1995)(Cryo%20Interactive)(Virgin%20Interactive%20Entertainment)%5bCD-I%5d.7z",
+      "size": 48514207,
+      "revision": 1577428936
+    },
+    {
+      "game": "Micro Machines",
+      "title": "Micro Machines — JoshW archive",
+      "markets": [
+        "PAL"
+      ],
+      "url": "https://cdi.joshw.info/cdi/m/Micro%20Machines%20(1994-06-01)(Codemasters)(Philips)%5bCD-i%5d.7z",
+      "size": 83580662,
+      "revision": 1614198552
+    },
+    {
+      "game": "Pac-Panic",
+      "title": "Pac-Panic — JoshW archive",
+      "markets": [
+        "PAL"
+      ],
+      "url": "https://cdi.joshw.info/cdi/p/Pac-Attack%20(1995)(Animation%20Magic)(Philips%20Interactive%20Media)%5bCD-i%5d.7z",
+      "size": 8236677,
+      "revision": 1597953175
+    },
+    {
+      "game": "Tetris",
+      "title": "Tetris — JoshW archive",
+      "markets": [
+        "NA",
+        "PAL"
+      ],
+      "url": "https://cdi.joshw.info/cdi/t/Tetris%20(1992)(Philips%20POV)(Philips%20Interactive%20Media)%5bCD-i%5d.7z",
+      "size": 93646547,
+      "revision": 1597953196
+    },
+    {
+      "game": "Zelda: The Wand of Gamelon",
+      "title": "Zelda: The Wand of Gamelon — JoshW archive",
+      "markets": [
+        "NA",
+        "PAL"
+      ],
+      "url": "https://cdi.joshw.info/cdi/z/Zelda%20-%20The%20Wand%20of%20Gamelon%20(1993-09-10)(Animation%20Magic)(Philips%20Interactive%20Media)%5bCD-i%5d.7z",
+      "size": 52990002,
+      "revision": 1539126264
+    }
+  ],
+  "reviewedArtwork": [
+    {
+      "edition": "Lost Eden",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://www.theworldofcdi.com/wp-content/uploads/2018/06/lost-eden-front.jpg.webp",
+          "source": {
+            "name": "The World of CD-i",
+            "url": "https://www.theworldofcdi.com/cd-i_encyclopedia/lost-eden/"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Micro Machines",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://www.theworldofcdi.com/wp-content/uploads/2018/06/micro-machines-front.jpg.webp",
+          "source": {
+            "name": "The World of CD-i",
+            "url": "https://www.theworldofcdi.com/cd-i_encyclopedia/micro-machines/"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Pac-Panic",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://www.theworldofcdi.com/wp-content/uploads/2018/06/pac-panic_jacket_av.jpg.webp",
+          "source": {
+            "name": "The World of CD-i",
+            "url": "https://www.theworldofcdi.com/cd-i_encyclopedia/pac-panic/"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Zelda's Adventure",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://www.theworldofcdi.com/wp-content/uploads/2018/06/Zeldas-Adventure-Front-150x150.jpg.webp",
+          "source": {
+            "name": "The World of CD-i",
+            "url": "https://www.theworldofcdi.com/cd-i_encyclopedia/zeldas-adventure/"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Flashback: The Quest for Identity",
+      "market": "PAL",
+      "images": {
+        "boxart": {
+          "url": "https://www.theworldofcdi.com/wp-content/uploads/2018/06/Flashback-Front-150x150.jpg.webp",
+          "source": {
+            "name": "The World of CD-i",
+            "url": "https://www.theworldofcdi.com/cd-i_encyclopedia/flashback/"
+          }
+        }
+      }
+    }
+  ],
+  "releaseNotes": {
+    "Burn Cycle": {
+      "NA": {
+        "text": "The game disc is playable on its own. The bonus disc contains audio.",
+        "source": {
+          "name": "International CD-i Association",
+          "url": "https://www.icdia.co.uk/archive/games.html"
+        }
+      },
+      "PAL": {
+        "text": "The game disc is playable on its own. The bonus disc contains audio.",
+        "source": {
+          "name": "International CD-i Association",
+          "url": "https://www.icdia.co.uk/archive/games.html"
+        }
+      }
+    }
+  }
+}

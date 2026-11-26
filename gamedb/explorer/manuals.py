@@ -29,11 +29,12 @@ def manual_roots():
     playstation = os.environ.get("GAMEDB_PLAYSTATION_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/PlayStation"
     neogeo = os.environ.get("GAMEDB_NEOGEO_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Neo Geo"
     atari7800 = os.environ.get("GAMEDB_ATARI7800_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Atari 7800"
+    xegs = os.environ.get("GAMEDB_XEGS_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Atari XEGS"
     second_generation = Path(os.environ.get("GAMEDB_SECOND_GENERATION_MANUAL_ROOT")
                              or "/mnt/synology/photo/Manuals/Second Generation")
     return {"snes": Path(snes) if snes else None, "megadrive": Path(megadrive), "mastersystem": Path(mastersystem), "nes": Path(nes),
             "playstation": Path(playstation), "neogeo": Path(neogeo), "pcengine": Path(pcengine), "n64": Path(n64),
-            "saturn": Path(saturn), "jaguar": Path(jaguar), "atari7800": Path(atari7800), **{
+            "saturn": Path(saturn), "jaguar": Path(jaguar), "atari7800": Path(atari7800), "xegs": Path(xegs), **{
                 platform: Path(os.environ.get(f"GAMEDB_{platform.upper()}_MANUAL_ROOT")
                                or f"/mnt/synology/photo/Manuals/{label.removesuffix(' (US)')}")
                 for platform, label in OPTICAL_RETAIL_PLATFORMS.items()

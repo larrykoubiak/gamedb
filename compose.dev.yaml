@@ -20,6 +20,8 @@ services:
       GAMEDB_SATURN_MANUAL_ROOT: /mnt/saturn-manuals
       GAMEDB_JAGUAR_MANUAL_ROOT: /mnt/jaguar-manuals
       GAMEDB_ATARI7800_MANUAL_ROOT: /mnt/atari7800-manuals
+      GAMEDB_XEGS_MANUAL_ROOT: /mnt/xegs-manuals
+      GAMEDB_CDI_MANUAL_ROOT: /mnt/cdi-manuals
       GAMEDB_PCFX_MANUAL_ROOT: /mnt/pcfx-manuals
       GAMEDB_CD32_MANUAL_ROOT: /mnt/cd32-manuals
       GAMEDB_3DO_MANUAL_ROOT: /mnt/3do-manuals
@@ -61,6 +63,8 @@ services:
       - "${GAMEDB_SATURN_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Saturn}:/mnt/saturn-manuals:ro"
       - "${GAMEDB_JAGUAR_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Jaguar}:/mnt/jaguar-manuals:ro"
       - "${GAMEDB_ATARI7800_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Atari 7800}:/mnt/atari7800-manuals:ro"
+      - "${GAMEDB_XEGS_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Atari XEGS}:/mnt/xegs-manuals:ro"
+      - "${GAMEDB_CDI_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Philips CD-i}:/mnt/cdi-manuals:ro"
       - "${GAMEDB_PCFX_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/PC-FX}:/mnt/pcfx-manuals:ro"
       - "${GAMEDB_CD32_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Amiga CD32}:/mnt/cd32-manuals:ro"
       - "${GAMEDB_3DO_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/3DO}:/mnt/3do-manuals:ro"

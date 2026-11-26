@@ -6,9 +6,9 @@ const catalogLabel = {
   snes: "SNES", megadrive: "Mega Drive", nes: "NES / Famicom", playstation: "PlayStation (US)", neogeo: "Neo Geo",
   mastersystem: "Master System", pcengine: "PC Engine / TurboGrafx-16", n64: "Nintendo 64", saturn: "Sega Saturn",
   jaguar: "Atari Jaguar", pcfx: "PC-FX", cd32: "Amiga CD32", "3do": "3DO",
-  playdia: "Bandai Playdia", pippin: "Apple Bandai Pippin",
+  playdia: "Bandai Playdia", pippin: "Apple Bandai Pippin", cdi: "Philips CD-i",
   dreamcast: "Sega Dreamcast", playstation2: "PlayStation 2 (US)", gamecube: "GameCube (US)",
-  channelf: "Fairchild Channel F", atari2600: "Atari 2600", atari5200: "Atari 5200", atari7800: "Atari 7800",
+  channelf: "Fairchild Channel F", atari2600: "Atari 2600", atari5200: "Atari 5200", atari7800: "Atari 7800", xegs: "Atari XEGS",
   odyssey2: "Magnavox Odyssey² / Philips Videopac", intellivision: "Intellivision", colecovision: "ColecoVision",
 }[platform];
 const catalogApi = `/api/${platform}-retail`;
@@ -18,8 +18,8 @@ const romExtension = {
 const playStation = platform === "playstation";
 const saturn = platform === "saturn";
 const jaguar = platform === "jaguar";
-const classicCartridge = ["channelf", "atari2600", "atari5200", "atari7800", "odyssey2", "intellivision", "colecovision"].includes(platform);
-const earlyDisc = ["pcfx", "cd32", "3do", "playdia", "pippin"].includes(platform);
+const classicCartridge = ["channelf", "atari2600", "atari5200", "atari7800", "xegs", "odyssey2", "intellivision", "colecovision"].includes(platform);
+const earlyDisc = ["pcfx", "cd32", "3do", "playdia", "pippin", "cdi"].includes(platform);
 const sixthGeneration = ["dreamcast", "playstation2", "gamecube"].includes(platform);
 const optical = playStation || saturn || earlyDisc || sixthGeneration;
 const neoGeo = platform === "neogeo";
@@ -29,7 +29,7 @@ const nintendo64 = platform === "n64";
 const useCoverFallback = neoGeo || masterSystem || pcEngine || jaguar || earlyDisc || classicCartridge || sixthGeneration;
 const marketNames = {
   JP: "Japan", NA: playStation || ["gamecube", "playstation2", "pippin"].includes(platform) ? "United States" : "North America",
-  PAL: "PAL region", BR: "Brazil",
+  PAL: "PAL region", BR: "Brazil", WORLD: "Worldwide", UNK: "Market unconfirmed",
   KR: "South Korea", AS: saturn ? "Taiwan" : "Asia",
   MVS: "MVS arcade", AES: "AES home",
 };
@@ -1041,6 +1041,7 @@ function renderDetail(game, soundtracks) {
       ["Developer", release.developer || game.developer], ["Publisher", release.publisher || game.publisher],
       ["Genre", metadata.genres?.join(" · ") || release.genre], ["Players", release.players],
       ["Controls", discRelease(release) || classicCartridge ? release.accessories : renderInputs(metadata)],
+      ["Required hardware", release.requiredAccessories?.join(" · ")],
       ["Memory card", release.memoryCard], ["ESRB", release.rating],
     ], {inline: true});
     const editionDescription = release.description ? renderDescription(release.description.text) : description;

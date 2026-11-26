@@ -7,7 +7,7 @@ from pathlib import PurePosixPath
 COLLECTION = "JoshW"
 PSF_COLLECTION = "The PlayStation Music Collection PSF"
 INDEX_URL = "https://vgm.hcs64.com/index-clean.json"
-SIXTH_GENERATION_BUCKETS = {"dreamcast": "dsf", "playstation2": "psf2", "gamecube": "gcn"}
+RETAIL_BUCKETS = {"dreamcast": "dsf", "playstation2": "psf2", "gamecube": "gcn", "cdi": "cdi"}
 DEFAULT_SYSTEMS = {
     "spc": ("Nintendo", "Super Nintendo Entertainment System"),
     "nsf": ("Nintendo", "Nintendo Entertainment System"),
@@ -18,6 +18,7 @@ DEFAULT_SYSTEMS = {
     "2sf": ("Nintendo", "Nintendo DS"),
     "psf": ("Sony", "PlayStation"),
     "3do": ("The 3DO Company", "3DO Interactive Multiplayer"),
+    "cdi": ("Philips", "CD-i"),
     "dsf": ("Sega", "Dreamcast"),
     "gcn": ("Nintendo", "GameCube"),
     "psf2": ("Sony", "PlayStation 2"),
@@ -28,7 +29,7 @@ CARTRIDGES = {
     "wsr": {"ws": ("Bandai", "WonderSwan"), "wsc": ("Bandai", "WonderSwan Color")},
 }
 KSS_SYSTEMS = {name: ("Sega", name) for name in ("Game Gear", "Master System")}
-DOMAINS = DEFAULT_SYSTEMS.keys() | CARTRIDGES.keys() | {"kss", "cdi"}
+DOMAINS = DEFAULT_SYSTEMS.keys() | CARTRIDGES.keys() | {"kss"}
 BRACKET = re.compile(r"\[([^\[\]]+)\]")
 TRAILING_TAGS = re.compile(r"(?:\s*\[[^\[\]]+\])+$")
 RELEASE_DATE = re.compile(r"\s*\((?:19|20)[0-9x]{2}(?:-\d{1,2}){0,2}\)", re.IGNORECASE)
@@ -42,7 +43,7 @@ PLATFORM_NOTES = {
     "gbs": {"gb", "gbc", "sgb"}, "usf": {"n64", "64dd", "n64dd"}, "gsf": {"gba"},
     "2sf": {"nds", "dsi", "dsiware", "ncsf"}, "smd": {*CARTRIDGES["smd"], "scd"},
     "hes": {*CARTRIDGES["hes"], "tcd", "pc-fx", "pc-fxga"}, "wsr": set(CARTRIDGES["wsr"]),
-    "kss": {"gg", "sms", "sg-1000"}, "cdi": {"jaguar", "amiga", "cd32", "cdtv"},
+    "kss": {"gg", "sms", "sg-1000"}, "cdi": {"cd-i", "jaguar", "amiga", "cd32", "cdtv"},
     "psf": {"ps1", "psx", "psf"},
     "ssf": {"sat", "saturn", "ssf"}, "3do": {"3do"},
     "dsf": {"dc", "dsf"}, "gcn": {"gcn", "gc"}, "psf2": {"ps2", "psf2"},
@@ -66,6 +67,8 @@ def platform(domain, path):
             return "Sega", "SG-1000"
         return KSS_SYSTEMS.get(path.parts[0])
     if domain == "cdi":
+        if path.parts[0] == "cdi" and "cd-i" in tags:
+            return DEFAULT_SYSTEMS["cdi"]
         if path.parts[0] == "amiga" and "amiga" in tags:
             discs = (tags & {"cd32", "cdtv"}) | set(AMIGA_DISC.findall(stem))
             if len(discs) > 1:

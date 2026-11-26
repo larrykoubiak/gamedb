@@ -242,6 +242,8 @@ def tracks_for_set(root, album):
     formats = SUFFIXES - ARCHIVES
     if album.collection == JOSHW_COLLECTION:
         formats = formats | JOSHW_TRACKS | JOSHW_LIBRARIES | {".txt"}
+        if album.system == ("Philips", "CD-i"):
+            formats |= {".grn", ".mpg", ".txtp"}
     elif album.collection == PSF_COLLECTION:
         formats = formats | {".txt"}
     elif album.collection in {NEOGEO_COLLECTION, SMS_POWER_COLLECTION}:

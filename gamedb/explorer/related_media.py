@@ -76,7 +76,7 @@ def serve_vgm_file(handler, root, key, location, *, flac=False):
             "path": str(Path(location["name"]).with_suffix(".flac")),
             "revision": location["mtime_ns"],
             "locations": [{"size_bytes": size, "member_no": 0}],
-        }, open_media=lambda *_: track.open("rb"))
+        }, open_media=lambda *_: track.open("rb"), content_type="audio/flac")
     return _serve_file(handler, key, root, {
         "path": location["name"],
         "revision": location["mtime_ns"],
@@ -363,7 +363,7 @@ def serve_retail_translation_rom(handler, signature, key, *, disc_only=False):
 
 def _serve_file(handler, key, root, asset, revision=None, preview_size=None, *,
                 force_download=False, open_media=open_location, preview_page=1, cache_control=None,
-                representation_sha256=None):
+                representation_sha256=None, content_type=None):
     from gamedb.explorer.server import _byte_range
 
     name = Path(asset["path"]).name
@@ -377,7 +377,7 @@ def _serve_file(handler, key, root, asset, revision=None, preview_size=None, *,
         else:
             return handler.send_error(HTTPStatus.NOT_FOUND, "Archived item unavailable")
         size = location["size_bytes"]
-        mime = mimetypes.guess_type(name)[0] or "application/octet-stream"
+        mime = content_type or mimetypes.guess_type(name)[0] or "application/octet-stream"
         if preview_size:
             cache = handler.server.preview_cache
             try:

@@ -18,6 +18,7 @@ from gamedb.launchbox.matching import title_key
 
 EARLY_DISC_PLATFORMS = {
     "pcfx": "PC-FX", "cd32": "Amiga CD32", "3do": "3DO", "playdia": "Bandai Playdia", "pippin": "Apple Bandai Pippin",
+    "cdi": "Philips CD-i",
 }
 SIXTH_GENERATION_PLATFORMS = {
     "dreamcast": "Sega Dreamcast", "playstation2": "PlayStation 2 (US)", "gamecube": "GameCube (US)",
@@ -27,7 +28,7 @@ SECOND_GENERATION_PLATFORMS = {
     "channelf": "Fairchild Channel F", "atari2600": "Atari 2600", "atari5200": "Atari 5200",
     "odyssey2": "Magnavox Odyssey² / Philips Videopac", "intellivision": "Intellivision", "colecovision": "ColecoVision",
 }
-CLASSIC_CARTRIDGE_PLATFORMS = {**SECOND_GENERATION_PLATFORMS, "atari7800": "Atari 7800"}
+CLASSIC_CARTRIDGE_PLATFORMS = {**SECOND_GENERATION_PLATFORMS, "atari7800": "Atari 7800", "xegs": "Atari XEGS"}
 RETAIL_PLATFORMS = {"snes": "SNES", "megadrive": "Mega Drive", "nes": "NES / Famicom",
                     "playstation": "PlayStation (US)", "neogeo": "Neo Geo", "mastersystem": "Master System",
                     "pcengine": "PC Engine / TurboGrafx-16", "n64": "Nintendo 64", "saturn": "Sega Saturn",

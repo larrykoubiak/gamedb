@@ -2,6 +2,7 @@
 
 from collections import OrderedDict
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import closing
 from dataclasses import dataclass
 from hashlib import sha256
 from http import HTTPStatus
@@ -19,16 +20,18 @@ from sqlalchemy.exc import SQLAlchemyError
 from gamedb.catalog.retail import write_report
 from gamedb.explorer.related_media import serve_vgm_file
 from gamedb.explorer.soundtrack_audio import flac_formats
+from gamedb.vgm.archives import packed_locations
 from gamedb.vgm.fetch_joshw import fetch_file, same_version
 from gamedb.vgm.inventory import Soundtrack, asset_for, key_for, tracks_for_set
-from gamedb.vgm.joshw import COLLECTION, DEFAULT_SYSTEMS, SIXTH_GENERATION_BUCKETS, parse_path
+from gamedb.vgm.joshw import COLLECTION, DEFAULT_SYSTEMS, RETAIL_BUCKETS, parse_path, platform as archive_system
 
 
-_PLATFORMS = "|".join(SIXTH_GENERATION_BUCKETS)
+_PLATFORMS = "|".join(RETAIL_BUCKETS)
 JOSHW_AUDIO_PATH = re.compile(rf"/related-media/joshw/({_PLATFORMS})/([0-9a-f]{{32}})/([0-9a-f]{{64}})"
                              r"(?:/([0-9a-f]{64}))?")
 _WORKERS = 2
 _CACHE_BYTES = 16 * 1024**3
+XA_RECIPE = re.compile(r"([^/\\#\r\n]+\.xa)\s*(#[A-Za-z0-9 #.+,*-]*)?", re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -40,7 +43,7 @@ class ArchiveSource:
 
     @classmethod
     def from_catalog(cls, platform, record):
-        bucket = SIXTH_GENERATION_BUCKETS[platform]
+        bucket = RETAIL_BUCKETS[platform]
         url = urlsplit(record["url"])
         if (url.scheme != "https" or url.netloc != f"{bucket}.joshw.info"
                 or url.query or url.fragment):
@@ -50,6 +53,8 @@ class ArchiveSource:
         if (path.suffix.casefold() not in {".7z", ".zip"} or type(size) is not int
                 or not 0 < size <= _CACHE_BYTES or type(revision) is not int or revision <= 0):
             raise ValueError("Invalid JoshW soundtrack archive")
+        if bucket == "cdi" and archive_system(bucket, path) != DEFAULT_SYSTEMS[bucket]:
+            raise ValueError("Invalid CD-i soundtrack archive")
         return cls(bucket, path, size, revision)
 
     @property
@@ -122,6 +127,8 @@ class JoshwAudioCache:
         tracks_for_set(archive.parent, album)
         if album.issues:
             raise ValueError("Could not read the soundtrack archive")
+        if source.bucket == "cdi":
+            album.assets = _cdi_tracks(archive.parent, album.assets)
         write_report(directory / "assets.json", album.assets)
 
     def _make_space(self, source):
@@ -143,6 +150,27 @@ class JoshwAudioCache:
             remaining -= used
         if disk_usage(self.root).free < source.size:
             raise OSError("Soundtrack cache has insufficient free space")
+
+
+def _cdi_tracks(root, assets):
+    """Use the ripper's titles and mix settings for single-file XA recipes."""
+    recipes = [item for item in assets if item["format"] == "txtp"
+               and item.get("archive_format") == "7z" and item["size_bytes"] <= 1024]
+    tracks = {item["member_name"]: item for item in assets if item["format"] == "xa"}
+    result = [item for item in assets if item["format"] != "txtp"]
+    used = set()
+    if recipes:
+        with closing(packed_locations(root, recipes)) as members:
+            for recipe, content in members:
+                match = XA_RECIPE.fullmatch(content.read().decode("ascii", errors="replace").strip())
+                if not match:
+                    continue
+                member = PurePosixPath(recipe["member_name"]).with_name(match[1].strip()).as_posix()
+                if track := tracks.get(member):
+                    used.add(track["key"])
+                    result.append({**track, "key": recipe["key"], "name": recipe["name"][:-5] + ".xa",
+                                   "streamOptions": match[2] or ""})
+    return [item for item in result if item["key"] not in used]
 
 
 def _album(record, source, assets):

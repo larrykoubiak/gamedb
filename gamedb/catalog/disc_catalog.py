@@ -13,7 +13,7 @@ DISC_ADDON_PARENTS = {"segacd": "megadrive", "pcecd": "pcengine", "neogeocd": "n
 DISC_SYSTEMS = {
     "saturn": ("Sega", "Saturn"), "pcfx": ("NEC", "PC-FX"), "cd32": ("Commodore", "Amiga CD32"),
     "3do": ("The 3DO Company", "3DO Interactive Multiplayer"),
-    "playdia": ("Bandai", "Playdia"), "pippin": ("Apple", "Pippin"),
+    "playdia": ("Bandai", "Playdia"), "pippin": ("Apple", "Pippin"), "cdi": ("Philips", "CD-i"),
     "segacd": ("Sega", "Mega-CD"), "pcecd": ("NEC", "PC Engine CD / TurboGrafx-CD"),
     "neogeocd": ("SNK", "Neo Geo CD"),
     "dreamcast": ("Sega", "Dreamcast"), "playstation2": ("Sony", "PlayStation 2"), "gamecube": ("Nintendo", "GameCube"),

@@ -351,6 +351,26 @@ def libretro_asset(folder, revision, path):
     }
 
 
+def add_reviewed_artwork(catalog, platform, indexes, reviewed, *, thumbnails):
+    paths = _libretro_paths(indexes, thumbnails).get(platform, ())
+    releases = {(release["edition"], release["market"]): release
+                for game in catalog["games"] for release in game["releases"]}
+    for record in reviewed:
+        release = releases[record["edition"], record["market"]]
+        images = record.get("images", {}).copy()
+        if stem := record.get("thumbnail"):
+            folder, revision = thumbnails[platform]
+            for directory, kind in LIBRETRO_KINDS.items():
+                path = f"{directory}/{stem}.png"
+                if kind in record["kinds"] and path in paths:
+                    images[kind] = libretro_asset(folder, revision, path)
+        if images:
+            release.setdefault("artwork", {}).update({
+                kind: {"basis": "reviewed-image", "regions": [release["market"]], **asset}
+                for kind, asset in images.items()
+            })
+
+
 def _libretro_art(release, paths, reviewed=(), *,
                   thumbnails=THUMBNAILS, thumbnail_key="snes", country_markets=COUNTRY_MARKETS):
     folder_key = "sufami" if release["channel"] == "sufami-turbo" else thumbnail_key

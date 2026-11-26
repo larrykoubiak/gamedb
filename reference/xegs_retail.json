@@ -1,0 +1,194 @@
+{
+  "source": {
+    "name": "Atari Explorer",
+    "url": "https://atari-explorer.ctrl-alt-rees.com/8bit/XE-Carts.html",
+    "label": "XE Game Cartridges",
+    "sha256": "e6e35a3d8c4db8211b886045b54c851f4fe93411331053c9012743599c83a933",
+    "rowCount": 32
+  },
+  "additionalSources": [
+    {
+      "name": "Atari software catalog",
+      "url": "https://www.atarimania.com/documents/atari-flying-high-catalog.pdf"
+    },
+    {
+      "name": "Atari sales brochure",
+      "url": "https://www.atarimania.com/documents/atari-the-winning-package-1988.pdf"
+    }
+  ],
+  "headeredCartridgeDigests": {
+    "08dabc18f049ef429b20b570ab2318a12911aa1e": "79aafc04d41d5167502b4ea74c531f9c2e706580",
+    "0a9217ab937d8c57221612e2fe48fb07ddcff4e6": "7acfd4a8205cbfe9528ab86bb53c2bb791a69bd6",
+    "0e90c1d692cf89077ee51b7f07e8c4217c3e6bdf": "48eeec190dbb27e1311938498b087088077dd530",
+    "235ee91bd150bfff4b9853dc06aa2abc24c17df7": "e397ec3fd8ebfb9626c56e63c9186846f87ad57b",
+    "2b8531fd35823ff6e2ee8e60026f74336c0ca98b": "cc602bee2c589e78332f729dfe08832763aec714",
+    "377434478ed2a70d9e67905fa245e68c40bcfbcb": "7082c5304cfdb2ecc2421a4feb36f4dfc0c62132",
+    "38ac17fcaf98e77b6d22ec8f0f58db5c5f9412fc": "03600f288ecedaa61fe7976dfe32ce9a6fdfe03e",
+    "4a4124a41f18b322869ae5e346a31db5c11efcbc": "7778002227315ab9fa3410b3a686634877cdd22e",
+    "501fac4b4939f931c0e3f9a8ea4ba0f7c182329a": "de57b3d79a5bb44e7d0af66abe3b9d643865b360",
+    "57e2c3b20678d33f072c346d93c42fd912eb8b4f": "e6d26417365c6ed89b84683a73b31a7423b1a1fb",
+    "5e5cbd9e14a98ee42640c7e75f98c6b8a32781a3": "be8532d6f1c4024bc13bf7ea01832f07d387623d",
+    "5edc2579142b7c9f6bc1bcc531637a5ffa026952": "6ce6431474d7189f30820768f3cafee54d1ddf6e",
+    "6dc9a7021cb018cba83f9534d360f457bf524d66": "cabb1effa554d915521b2a49961d8e61b67ec9b3",
+    "7f8ce0313d619c4722c9e9eca285e745433a4063": "d936dee2676d4fb8ea84960bf6c7cef707dc45a2",
+    "8492b3a3044ca4ebb8582a9054cb6b1f2fea84d3": "e4b22790fce8e2e0f7c972960aec692b7fd5e016",
+    "9767bf2814b439a01f303011e9c13efe0eef4244": "fd4666796a4498339835d75ddb63c7b99d1d93bb",
+    "a9f3709c98ec6b38cd3f4f1029b95b2d193dad14": "cf7b224a4477597c872da00aebb3dcf11955b569",
+    "abf90186352a7d71dc27176129549ec3bff1d475": "2b3a785d134251272ab606e6b9b2cd9eb25f6714",
+    "c5200dfd8bb97742467c57cb0922a0083b524455": "7d87658412d983b368b9f6c75d3d6be05485acf9",
+    "f6eb3e7a4803df6c8cc7051161ddfe5807518014": "7e04d33d17a5dfcab5e41fca4ae6880730583dce"
+  },
+  "reviewedArtwork": [
+    {
+      "edition": "Archon",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://atari-explorer.ctrl-alt-rees.com/images/Archon.gif",
+          "source": {
+            "name": "Atari Explorer",
+            "url": "https://atari-explorer.ctrl-alt-rees.com/8bit/XE-Carts.html"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Battlezone",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://atari-explorer.ctrl-alt-rees.com/images/Battlezone.gif",
+          "source": {
+            "name": "Atari Explorer",
+            "url": "https://atari-explorer.ctrl-alt-rees.com/8bit/XE-Carts.html"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Crime Buster",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://atari-explorer.ctrl-alt-rees.com/images/CrimeBusters.gif",
+          "source": {
+            "name": "Atari Explorer",
+            "url": "https://atari-explorer.ctrl-alt-rees.com/8bit/XE-Carts.html"
+          }
+        }
+      }
+    },
+    {
+      "edition": "David's Midnight Magic",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://atari-explorer.ctrl-alt-rees.com/images/DavidsMidnightMagic.gif",
+          "source": {
+            "name": "Atari Explorer",
+            "url": "https://atari-explorer.ctrl-alt-rees.com/8bit/XE-Carts.html"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Desert Falcon",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://atari-explorer.ctrl-alt-rees.com/images/DesertFalcon.gif",
+          "source": {
+            "name": "Atari Explorer",
+            "url": "https://atari-explorer.ctrl-alt-rees.com/8bit/XE-Carts.html"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Lode Runner",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://atari-explorer.ctrl-alt-rees.com/images/LodeRunner.gif",
+          "source": {
+            "name": "Atari Explorer",
+            "url": "https://atari-explorer.ctrl-alt-rees.com/8bit/XE-Carts.html"
+          }
+        }
+      }
+    },
+    {
+      "edition": "One-on-One Basketball",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://atari-explorer.ctrl-alt-rees.com/images/OneOnOne.gif",
+          "source": {
+            "name": "Atari Explorer",
+            "url": "https://atari-explorer.ctrl-alt-rees.com/8bit/XE-Carts.html"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Star Raiders II",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://atari-explorer.ctrl-alt-rees.com/images/StarRaiders.gif",
+          "source": {
+            "name": "Atari Explorer",
+            "url": "https://atari-explorer.ctrl-alt-rees.com/8bit/XE-Carts.html"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Summer Games",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://atari-explorer.ctrl-alt-rees.com/images/SummerGames.gif",
+          "source": {
+            "name": "Atari Explorer",
+            "url": "https://atari-explorer.ctrl-alt-rees.com/8bit/XE-Carts.html"
+          }
+        }
+      }
+    }
+  ],
+  "games": [
+    {"title": "Ace of Aces", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1988", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8099"]}]},
+    {"title": "Airball", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1988", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8109"]}]},
+    {"title": "Archon", "publisher": "Atari Corporation", "releases": [{"market": "NA", "titles": ["Archon", "Archon: The Light and the Dark"], "date": "1987", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8092"]}]},
+    {"title": "Ballblazer", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1987", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8064"]}]},
+    {"title": "Barnyard Blaster", "publisher": "Atari Corporation", "releases": [{"market": "NA", "accessories": ["Atari XG-1 light gun"], "date": "1987", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8086"]}]},
+    {"title": "Battlezone", "publisher": "Atari Corporation", "releases": [{"market": "NA", "productCodes": ["RX8077"]}]},
+    {"title": "Blue Max", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1987", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8081"]}]},
+    {"title": "Bug Hunt", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1987", "reviewNote": {"text": "Included with the Atari XE Game System", "source": {"name": "Atari sales brochure", "url": "https://www.atarimania.com/documents/atari-the-winning-package-1988.pdf"}}, "dateSource": {"name": "Atari sales brochure", "url": "https://www.atarimania.com/documents/atari-the-winning-package-1988.pdf"}, "accessories": ["Atari XG-1 light gun"], "productCodes": ["RX8087"]}]},
+    {"title": "Choplifter!", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1987", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8096"]}]},
+    {"title": "Crime Buster", "publisher": "Atari Corporation", "releases": [{"market": "NA", "accessories": ["Atari XG-1 light gun"], "date": "1988", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8104"]}]},
+    {"title": "Crossbow", "publisher": "Atari Corporation", "releases": [{"market": "NA", "accessories": ["Atari XG-1 light gun"], "date": "1988", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8088"]}]},
+    {"title": "Crystal Castles", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1988", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8102"]}]},
+    {"title": "Dark Chambers", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1988", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8101"]}]},
+    {"title": "David's Midnight Magic", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1987", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8083"]}]},
+    {"title": "Desert Falcon", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1988", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8089"]}]},
+    {"title": "Donkey Kong", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1988", "productCodes": ["RX8031"], "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/a800.xml"}}]},
+    {"title": "Eastern Front (1941)", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1988", "productCodes": ["RX8039"], "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/a800.xml"}}]},
+    {"title": "Fight Night", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1987", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8085"]}]},
+    {"title": "Flight Simulator II", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1987", "reviewNote": {"text": "Included with the Atari XE Game System", "source": {"name": "Atari sales brochure", "url": "https://www.atarimania.com/documents/atari-the-winning-package-1988.pdf"}}, "dateSource": {"name": "Atari sales brochure", "url": "https://www.atarimania.com/documents/atari-the-winning-package-1988.pdf"}, "titles": ["Flight Simulator II", "Flight Simulator 2"], "productCodes": ["RX8091"]}]},
+    {"title": "Food Fight", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1987", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8079"]}]},
+    {"title": "Gato", "publisher": "Atari Corporation", "releases": [{"market": "NA", "titles": ["Gato", "GATO Submarine Simulation"], "date": "1987", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8090"]}]},
+    {"title": "HardBall!", "publisher": "Atari Corporation", "releases": [{"market": "NA", "productCodes": ["RX8084"]}]},
+    {"title": "Into the Eagle's Nest", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1988", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8114"]}]},
+    {"title": "Karateka", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1988", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8095"]}]},
+    {"title": "Lode Runner", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1987", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8082"]}]},
+    {"title": "Mario Bros.", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1988", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8103"]}]},
+    {"title": "Necromancer", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1988", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8108"]}]},
+    {"title": "One-on-One Basketball", "publisher": "Atari Corporation", "releases": [{"market": "NA", "titles": ["One-on-One Basketball", "One-on-One", "Julius Erving and Larry Bird Go One-on-One"], "date": "1987", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8093"]}]},
+    {"title": "Rescue on Fractalus!", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1987", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8063"]}]},
+    {"title": "Star Raiders II", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1987", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8078"]}]},
+    {"title": "Summer Games", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1987", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8098"]}]},
+    {"title": "Thunderfox", "publisher": "Atari Corporation", "releases": [{"market": "NA", "date": "1988", "dateSource": {"name": "MAME software list", "url": "https://github.com/mamedev/mame/blob/mame0285/hash/xegs.xml"}, "productCodes": ["RX8113"]}]}
+  ]
+}
