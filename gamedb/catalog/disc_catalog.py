@@ -1,16 +1,24 @@
 """Read verified Redump releases for the optical retail catalogs."""
 
+from collections import defaultdict
 from hashlib import sha256
+import re
 
 from sqlalchemy import text
 
 from .software_identity import SOFTWARE_KEY_SQL
 
 
+DISC_ADDON_PARENTS = {"segacd": "megadrive", "pcecd": "pcengine", "neogeocd": "neogeo"}
 DISC_SYSTEMS = {
     "saturn": ("Sega", "Saturn"), "pcfx": ("NEC", "PC-FX"), "cd32": ("Commodore", "Amiga CD32"),
     "3do": ("The 3DO Company", "3DO Interactive Multiplayer"),
+    "playdia": ("Bandai", "Playdia"), "pippin": ("Apple", "Pippin"),
+    "segacd": ("Sega", "Mega-CD"), "pcecd": ("NEC", "PC Engine CD / TurboGrafx-CD"),
+    "neogeocd": ("SNK", "Neo Geo CD"),
+    "dreamcast": ("Sega", "Dreamcast"), "playstation2": ("Sony", "PlayStation 2"), "gamecube": ("Nintendo", "GameCube"),
 }
+NUMBERED_DISC = re.compile(r"\(Disc\s+(\d+|[A-D])(?:[ )-])", re.I)
 
 
 ARCHIVES = text(f"""
@@ -101,3 +109,48 @@ def disc_bundle(title, entries, *, pressing=None, platform="saturn"):
         "archiveNames": names, "discs": [dict(disc, number=index) for index, (_, disc) in enumerate(entries, 1)],
         "components": components, "pressing": pressing, "revisions": [], "versions": [],
     }
+
+
+def complete_disc_archives(platform, archives, reviews, *, standalone=()):
+    """Keep complete pressings and join explicitly named multi-disc editions."""
+    individual = defaultdict(list)
+    for archive in archives:
+        if len(archive["discs"]) == 1:
+            (disc,) = archive["discs"]
+            name = disc["name"]
+            individual[name].append((archive, disc))
+            if name not in standalone and (disc.get("number") is not None or NUMBERED_DISC.search(name)):
+                continue
+        yield archive
+    for review in reviews:
+        candidates = [individual[name] for name in review["archives"]]
+        if all(len(group) == 1 for group in candidates):
+            entries = [group[0] for group in candidates]
+            if len({tuple(archive["regions"]) for archive, _ in entries}) != 1:
+                raise ValueError(f"Disc regions disagree for {review['title']!r}")
+            yield {**disc_bundle(review["title"], entries, platform=platform), "evidence": review["source"]}
+
+
+def approved_disc_matches(archives, reviews):
+    by_name = defaultdict(list)
+    for archive in archives:
+        by_name[tuple(archive["archiveNames"])].append(archive)
+    for review in reviews:
+        signature = review.get("signature")
+        matches = [archive for archive in by_name[tuple(review["archives"])]
+                   if signature is None or archive["signature"] == signature]
+        if len(matches) == 1:
+            yield {"edition": review["edition"], "market": review["market"], "signature": matches[0]["signature"],
+                   "evidence": review["source"]}
+
+
+def addon_disc_archives(connection, platform, markets, reference):
+    regions = set().union(*markets.values(), {"WORLD"})
+    raw = redump_archives(connection, *DISC_SYSTEMS[platform], regions)
+    for archive in complete_disc_archives(
+        platform, raw, reference.get("discSets", ()), standalone=reference.get("standaloneDiscs", ()),
+    ):
+        if platform == "segacd" and any(re.search(r"\([^()]*\b32X\b[^()]*\)", name, re.I)
+                                       for name in archive["archiveNames"]):
+            archive = dict(archive, channel="32x-cd")
+        yield archive

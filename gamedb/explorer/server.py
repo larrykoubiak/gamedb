@@ -18,11 +18,14 @@ from urllib.parse import parse_qs, quote, unquote, urlparse
 from sqlalchemy.exc import SQLAlchemyError
 
 from gamedb.arcade.bundle import prepare_manifest, public_manifest, write_bundle
+from gamedb.catalog.disc_catalog import DISC_ADDON_PARENTS
 from gamedb.catalog.retail import RETAIL_PLATFORMS
 from gamedb.catalog.translations import TRANSLATION_ROOTS
 from gamedb.config import PROJECT_ROOT, ProjectEnvironment
 from gamedb.database import create_database_engine
 from gamedb.explorer.cache import JsonResponseCache
+from gamedb.explorer.disc_audio import DISC_AUDIO_PATH, disc_soundtracks, serve_disc_audio
+from gamedb.explorer.joshw_audio import JOSHW_AUDIO_PATH, JoshwAudioCache, cached_joshw_albums, serve_joshw_audio
 from gamedb.explorer.manuals import manual_roots
 from gamedb.explorer.previews import ArtworkPreviewCache
 from gamedb.explorer.related_media import (
@@ -75,6 +78,7 @@ VGM_STATIC_TYPES = {
     "/vgm/soundtracks.js": "text/javascript; charset=utf-8",
     "/vgm/decoder.mjs": "text/javascript; charset=utf-8",
     "/vgm/credits.txt": "text/plain; charset=utf-8",
+    "/vgm/vgmstream-license.txt": "text/plain; charset=utf-8",
     VGM_DECODER_PREFIX + "zxtune.mjs": "text/javascript; charset=utf-8",
     VGM_DECODER_PREFIX + "zxtune.wasm": "application/wasm",
     SSF_DECODER_PREFIX + "ssfplay.mjs": "text/javascript; charset=utf-8",
@@ -266,6 +270,10 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             vgm_asset = re.fullmatch(r"/related-media/vgm/([0-9a-f]{64})", parsed.path)
             if vgm_asset:
                 return serve_vgm(self, vgm_asset[1], flac=query.get("audio") == ["flac"])
+            if joshw := JOSHW_AUDIO_PATH.fullmatch(parsed.path):
+                return serve_joshw_audio(self, *joshw.groups(), flac=query.get("audio") == ["flac"])
+            if disc_audio := DISC_AUDIO_PATH.fullmatch(parsed.path):
+                return serve_disc_audio(self, *disc_audio.groups())
             if manual := RETAIL_MANUAL.fullmatch(parsed.path):
                 return serve_retail_manual(self, self.server.retail_manual_roots[manual[1]], manual[2])
             if manual := RETAIL_MANUAL_PAGES.fullmatch(parsed.path):
@@ -302,10 +310,14 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 if game_key is not None:
                     self._add_retail_install_urls(catalog["game"])
                     add_local_manuals(catalog["game"], self.server.retail_manual_roots[platform], platform)
-                    if platform in self.server.retail_translation_roots:
-                        add_local_translations(catalog["game"], self.server.retail_translation_roots[platform], platform)
+                    for media_platform, root in self._translation_sources(platform):
+                        add_local_translations(catalog["game"], root, media_platform)
                     if self.server.vgm_root:
                         catalog["soundtracks"] = self.server.repository.retail_soundtracks(catalog["game"])
+                    if not catalog.get("soundtracks") and catalog["game"].get("soundtrackSources"):
+                        catalog["soundtracks"] = cached_joshw_albums(self.server.joshw_audio, platform, catalog["game"])
+                    if albums := disc_soundtracks(self, platform, catalog["game"]):
+                        catalog.setdefault("soundtracks", []).extend(albums)
                 return self._json_response(catalog)
             if parsed.path == "/api/capabilities":
                 return self._json_response({
@@ -339,7 +351,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
 
             match = INSTALL_MANIFEST.fullmatch(parsed.path)
             if match:
-                return self._install_manifest_response(match.group(1))
+                return self._install_manifest_response(match.group(1), software_key=query.get("software_key", [None])[0])
 
             match = INSTALL_BUNDLE.fullmatch(parsed.path)
             if match:
@@ -347,7 +359,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
 
             match = PACKAGE_DOWNLOAD.fullmatch(parsed.path)
             if match:
-                return self._package_response(match.group(1), match.group(2))
+                return self._package_response(*match.groups(), software_key=query.get("software_key", [None])[0])
 
             match = SYSTEM_TITLES.fullmatch(parsed.path)
             if match or parsed.path == "/api/titles":
@@ -450,13 +462,16 @@ class ExplorerHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):  # noqa: N802 - BaseHTTPRequestHandler API
         parsed = urlparse(self.path)
+        if joshw := JOSHW_AUDIO_PATH.fullmatch(parsed.path):
+            return serve_joshw_audio(self, *joshw.groups(), start=True)
         if translation := RETAIL_TRANSLATION_DOWNLOAD.fullmatch(parsed.path):
             return self._disc_translation_post(translation[1], translation[2])
         if bundle := INSTALL_BUNDLE.fullmatch(parsed.path):
             return self._arcade_bundle_post(bundle[1])
         if package := PACKAGE_DOWNLOAD.fullmatch(parsed.path):
             if self._authorize_download_form():
-                return self._package_response(package[1], package[2])
+                software_key = parse_qs(parsed.query).get("software_key", [None])[0]
+                return self._package_response(*package.groups(), software_key=software_key)
             return
         if parsed.path != "/api/software-corrections":
             return self.send_error(HTTPStatus.NOT_FOUND)
@@ -555,12 +570,16 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         if self.command != "HEAD":
             self.wfile.write(body)
 
+    def _translation_sources(self, platform):
+        return [(key, root) for key, root in self.server.retail_translation_roots.items()
+                if DISC_ADDON_PARENTS.get(key, key) == platform]
+
     def _retail_browse_response(self, platform):
         repository = self.server.repository
-        root = self.server.retail_translation_roots.get(platform)
+        roots = [root for _, root in self._translation_sources(platform)]
 
         def current_revision():
-            return repository.retail_browse_revision(platform), translation_index_revision(root)
+            return repository.retail_browse_revision(platform), tuple(translation_index_revision(root) for root in roots)
 
         revision = current_revision()
         if revision[0] is None:
@@ -573,8 +592,8 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             catalog = repository.retail_browse(platform)
             if catalog is None:
                 raise CatalogChanged()
-            if root is not None:
-                add_translation_availability(catalog["games"], root)
+            if roots:
+                add_translation_availability(catalog["games"], roots[0], roots[1:])
             if current_revision() != revision:
                 raise CatalogChanged()
             return catalog
@@ -717,6 +736,8 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                 continue
             archive = archives[match["linkNo"] - 1]
             archive["installManifestUrl"] = f"/api/v1/releases/{archive['signature']}/install-manifest"
+            if key := archive.get("softwareKey"):
+                archive["installManifestUrl"] += f"?software_key={key}"
         for archive in archives:
             if not archive.get("components"):
                 continue
@@ -727,14 +748,15 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             if manifest:
                 archive["installManifestUrl"] = f"/api/v1/releases/{archive['signature']}/install-manifest"
 
-    def _load_install_manifest(self, release_signature):
-        manifest = self.server.repository.install_manifest(release_signature)
+    def _load_install_manifest(self, release_signature, *, software_key=None):
+        manifest = self.server.repository.install_manifest(release_signature, software_key=software_key)
         if not isinstance(manifest, dict):
             return None
         packages = manifest.get("packages")
         if not isinstance(packages, list) or not packages:
             return None
         enriched = []
+        scope = f"?software_key={software_key}" if software_key is not None else ""
         for item in packages:
             if not isinstance(item, dict):
                 raise ValueError("Invalid package metadata")
@@ -743,7 +765,7 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             package["archiveSize"] = path.stat().st_size
             package["downloadUrl"] = (
                 f"/api/v1/releases/{release_signature}/packages/"
-                f"{package['packageSignature']}/download"
+                f"{package['packageSignature']}/download{scope}"
             )
             package["_path"] = path
             enriched.append(package)
@@ -751,11 +773,12 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         result["packages"] = enriched
         return result
 
-    def _install_manifest_response(self, release_signature):
-        arcade = self.server.repository.arcade_install_manifest(release_signature)
-        if arcade is not None:
-            return self._json_response(public_manifest(prepare_manifest(arcade, self.server.rom_root)))
-        manifest = self._load_install_manifest(release_signature)
+    def _install_manifest_response(self, release_signature, *, software_key=None):
+        if software_key is None:
+            arcade = self.server.repository.arcade_install_manifest(release_signature)
+            if arcade is not None:
+                return self._json_response(public_manifest(prepare_manifest(arcade, self.server.rom_root)))
+        manifest = self._load_install_manifest(release_signature, software_key=software_key)
         if manifest is None:
             return self.send_error(HTTPStatus.NOT_FOUND)
         public = dict(manifest)
@@ -788,8 +811,10 @@ class ExplorerHandler(BaseHTTPRequestHandler):
         except (BrokenPipeError, ConnectionResetError, OSError):
             self.log_message('arcade bundle interrupted release=%s', release_signature)
 
-    def _package_response(self, release_signature, package_signature):
-        manifest = self._load_install_manifest(release_signature)
+    def _package_response(self, release_signature, package_signature, *, software_key=None):
+        if software_key is not None and not re.fullmatch(r"[0-9a-f]{32}", software_key):
+            return self._json_response({"error": "Invalid software key"}, HTTPStatus.BAD_REQUEST)
+        manifest = self._load_install_manifest(release_signature, software_key=software_key)
         if manifest is None:
             return self.send_error(HTTPStatus.NOT_FOUND)
         package = next(
@@ -883,15 +908,20 @@ class ExplorerServer(ThreadingHTTPServer):
         self.exo_root = Path(os.environ.get("GAMEDB_EXO_ROOT", "/mnt/exo"))
         vgm_root = os.environ.get("GAMEDB_VGM_ROOT")
         self.vgm_root = Path(vgm_root) if vgm_root else None
+        self.joshw_audio = JoshwAudioCache(self.preview_cache.root, self.vgm_root)
         self.retail_manual_roots = manual_roots()
         self.retail_translation_roots = {
             platform: Path(os.environ.get(f"GAMEDB_{platform.upper()}_TRANSLATION_ROOT") or root)
             for platform, root in TRANSLATION_ROOTS.items()
         }
+        for addon, parent in DISC_ADDON_PARENTS.items():
+            if not os.environ.get(f"GAMEDB_{addon.upper()}_TRANSLATION_ROOT"):
+                self.retail_translation_roots[addon] = self.retail_translation_roots[parent] / addon
         self.rom_root = Path(os.environ.get("GAMEDB_ROM_ROOT", "/data/roms"))
 
     def server_close(self):
         super().server_close()
+        self.joshw_audio.workers.shutdown(wait=False)
         self.listing_engine.dispose()
 
     def rebuild_software(self):

@@ -47,11 +47,12 @@
       "discs": [
         {
           "archiveName": "Choujin Heiki Zeroigar (Japan).zip",
-          "inputSha1": "4f97e4037218e12fbb7e6088870c1243e5d93cc5"
+          "inputSha1": "4f97e4037218e12fbb7e6088870c1243e5d93cc5",
+          "outputSha1": "cfd86b86c4e4b1c9310cab124efd37ff871296bc"
         }
       ],
-      "patchOnly": true,
-      "sourceUrl": "https://www.romhacking.net/translations/2451/"
+      "sourceUrl": "https://www.romhacking.net/translations/2451/",
+      "preparedDiscSha256": "e75b32284e940279ed150bc45edb08bd37f9cb5ea2ae1d4d1be9166a9ef1b4a3"
     },
     "team-innocent-en": {
       "archive": "Team.Innocent.-.The.Point.of.No.Return.-.G.C.P.O.SS.English.v0.9.1.zip",
@@ -85,26 +86,36 @@
     "5672": {
       "archive": "[5672]FSFX_Eng_R2.zip",
       "archiveSha256": "c00cb33f08613ae23fcff9210f92356363e2271726aba1fe0bf2765a5143dca5",
-      "patchOnly": true,
       "sourceUrl": "https://www.romhacking.net/translations/5672/",
       "discs": [
         {
           "archiveName": "Farland Story FX (Japan).zip",
           "inputSha1": "fdd99db168d5b8f936f5ce6999e53b7c95dd137e",
-          "inputIsoSha1": "3b0939a5134cb39b1579a0f949407c4adbd037a8"
+          "inputIsoSha1": "3b0939a5134cb39b1579a0f949407c4adbd037a8",
+          "outputSha1": "29c40cc14f293a0571509a0f6a09148a2f18787b",
+          "isoPregapSectors": 225,
+          "patchIsoAfterPregap": true,
+          "patches": [
+            "FSFX_Eng_R2.xdelta"
+          ]
         }
       ]
     },
     "1299": {
       "archive": "[1299]ruruliararura_infinitely_small.zip",
       "archiveSha256": "6e23cad8b0645c078e6cd498655a7bfcf81645429e5497869d7a2c3d35d342b1",
-      "patchOnly": true,
       "sourceUrl": "https://www.romhacking.net/translations/1299/",
       "discs": [
         {
           "archiveName": "Ruruli Ra Rura (Japan).zip",
           "inputSha1": "63585e028ecd41d59dbc4b46e83279a8eb4d21dd",
-          "inputIsoSha1": "ce7ffc4aa1aa6ec7ae1f09e4d998bcfc84689fa4"
+          "inputIsoSha1": "ce7ffc4aa1aa6ec7ae1f09e4d998bcfc84689fa4",
+          "outputSha1": "a46c329f45006b389e53c2dddfa2f39258d901ed",
+          "isoPregapSectors": 225,
+          "patchIsoAfterPregap": true,
+          "patches": [
+            "rurulirarura.ups"
+          ]
         }
       ]
     }

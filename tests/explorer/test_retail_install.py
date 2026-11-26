@@ -18,7 +18,7 @@ class RetailInstallLinksTests(unittest.TestCase):
             root = Path(directory)
             package = root / "japan.zip"
             package.touch()
-            japan = {"signature": "a" * 32}
+            japan = {"signature": "a" * 32, "softwareKey": "d" * 32}
             missing = {"signature": "b" * 32}
             ambiguous = {"signature": "c" * 32}
             game = {"releases": [
@@ -32,7 +32,8 @@ class RetailInstallLinksTests(unittest.TestCase):
             ]
             handler = SimpleNamespace(server=SimpleNamespace(rom_root=root, repository=repository))
             ExplorerHandler._add_retail_install_urls(handler, game)
-            self.assertEqual(japan["installManifestUrl"], f"/api/v1/releases/{'a' * 32}/install-manifest")
+            self.assertEqual(japan["installManifestUrl"],
+                             f"/api/v1/releases/{'a' * 32}/install-manifest?software_key={'d' * 32}")
             self.assertNotIn("installManifestUrl", missing)
             self.assertNotIn("installManifestUrl", ambiguous)
             repository.retail_install_paths.assert_called_once_with([japan, missing])
@@ -112,6 +113,12 @@ class RetailInstallLookupTests(unittest.TestCase):
             self.assertEqual([(p["archiveName"], p["mediaSequence"]) for p in manifest["packages"]],
                              [("Japan Z.zip", 1), ("Japan A.zip", 2)])
             self.assertEqual(manifest["packages"][0]["files"][0]["sha1"], "b" * 40)
+            connection.exec_driver_sql("INSERT INTO pg_temp.user_preferred_release VALUES (1, 1, 2)")
+            self.assertEqual(repository.install_manifest(japan)["packages"][0]["archiveName"], "Mirror 1.zip")
+            scoped = repository.install_manifest(japan, software_key=software_key)
+            self.assertEqual(scoped["packages"][0]["archiveName"], "Japan Z.zip")
+            self.assertIsNone(repository.install_manifest(japan, software_key="f" * 32))
+            connection.exec_driver_sql("DELETE FROM pg_temp.user_preferred_release WHERE release_id = 2")
             self.assertEqual(repository.retail_install_paths([archive]), [{
                 "linkNo": 1, "paths": ["/roms/Japan Z.zip", "/roms/Japan A.zip"],
             }])

@@ -1,0 +1,340 @@
+{
+  "archiveTitles": {
+    "@Card SD Gundam Gaiden": [
+      "Card SD Gundam Gaiden"
+    ],
+    "Gakkō no Kowai Uwasa: Hanako-san ga Kita!!": [
+      "Gakkou no Kowai Uwasa - Hanako-san ga Kita!!"
+    ],
+    "Gundam Tactics: Mobility Fleet 0079": [
+      "Gundam Tactics - Mobility Fleet0079"
+    ]
+  },
+  "additionalReleases": [
+    {
+      "game": "Shichi Sokusen",
+      "market": "JP",
+      "date": "1996",
+      "publisher": "Media Five",
+      "source": {
+        "name": "MAME Pippin software list",
+        "url": "https://github.com/mamedev/mame/blob/954def46685cd0276671138fbd032036b1a771fb/hash/pippin.xml"
+      },
+      "newGame": true
+    },
+    {
+      "game": "Fortullia",
+      "market": "JP",
+      "date": "1996",
+      "publisher": "Bandai Digital Entertainment",
+      "source": {
+        "name": "MAME Pippin software list",
+        "url": "https://github.com/mamedev/mame/blob/954def46685cd0276671138fbd032036b1a771fb/hash/pippin.xml"
+      },
+      "newGame": true
+    },
+    {
+      "game": "Dazzeloids",
+      "market": "JP",
+      "date": "1996",
+      "publisher": "Voyager",
+      "source": {
+        "name": "MAME Pippin software list",
+        "url": "https://github.com/mamedev/mame/blob/954def46685cd0276671138fbd032036b1a771fb/hash/pippin.xml"
+      },
+      "newGame": true
+    },
+    {
+      "game": "Anime Designer: Dragon Ball Z",
+      "market": "JP",
+      "date": "1996",
+      "publisher": "Bandai Digital Entertainment",
+      "source": {
+        "name": "MAME Pippin software list",
+        "url": "https://github.com/mamedev/mame/blob/954def46685cd0276671138fbd032036b1a771fb/hash/pippin.xml"
+      },
+      "newGame": true
+    },
+    {
+      "game": "Action Designer: Ultraman Tiga",
+      "market": "JP",
+      "date": "1996",
+      "publisher": "Bandai Digital Entertainment",
+      "source": {
+        "name": "MAME Pippin software list",
+        "url": "https://github.com/mamedev/mame/blob/954def46685cd0276671138fbd032036b1a771fb/hash/pippin.xml"
+      },
+      "newGame": true
+    },
+    {
+      "game": "Gundam Virtual Modeler Light",
+      "market": "JP",
+      "date": "1996",
+      "publisher": "Bandai Digital Entertainment",
+      "source": {
+        "name": "MAME Pippin software list",
+        "url": "https://github.com/mamedev/mame/blob/954def46685cd0276671138fbd032036b1a771fb/hash/pippin.xml"
+      },
+      "newGame": true
+    }
+  ],
+  "reviewedArtwork": [
+    {
+      "edition": "@Card SD Gundam Gaiden",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Box%20%283%29.jpg",
+          "source": {
+            "name": "Incog’s Pippin scans",
+            "url": "https://archive.org/details/incog-pippin-scans"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Hashitte Asobou! Kikansha Thomas",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/Box%20%283%29.jpg",
+          "source": {
+            "name": "Incog’s Pippin scans",
+            "url": "https://archive.org/details/incog-pippin-scans"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Ultraman: The Digital Board Game",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Ultraman%20The%20Digital%20Board%20Game/box-front.jpg",
+          "source": {
+            "name": "Incog’s Pippin scans",
+            "url": "https://archive.org/details/incog-pippin-scans"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Gundam Tactics: Mobility Fleet 0079",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://www.journaldulapin.com/wp-content/uploads/2018/07/Gundam-Tactics.jpeg",
+          "source": {
+            "name": "Pierre Dandumont",
+            "url": "https://www.journaldulapin.com/2018/07/22/gundam-tactics/"
+          }
+        }
+      }
+    },
+    {
+      "edition": "L-Zone",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://www.journaldulapin.com/wp-content/uploads/2020/04/Cover-01-1.jpeg",
+          "source": {
+            "name": "Pierre Dandumont",
+            "url": "https://www.journaldulapin.com/2020/04/19/l-zone-pippin/"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Tamagotchi CD-ROM",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://www.journaldulapin.com/wp-content/uploads/2018/02/Tamagotchi-01.jpeg",
+          "source": {
+            "name": "Pierre Dandumont",
+            "url": "https://www.journaldulapin.com/2018/02/18/lets-play-pippin-tamagotchi/"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Tunin' Glue",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://www.journaldulapin.com/wp-content/uploads/2018/08/Num%C3%A9riser-3.jpeg",
+          "source": {
+            "name": "Pierre Dandumont",
+            "url": "https://www.journaldulapin.com/2018/08/12/tunin-glue/"
+          }
+        }
+      }
+    },
+    {
+      "edition": "Super Marathon",
+      "market": "NA",
+      "images": {
+        "boxart": {
+          "url": "https://marathon.bungie.org/story/_images/superm_front.jpg",
+          "source": {
+            "name": "Chris Butcher",
+            "url": "https://marathon.bungie.org/story/newjan-feb01.html"
+          }
+        }
+      }
+    }
+  ],
+  "manuals": [
+    {
+      "edition": "@Card SD Gundam Gaiden",
+      "market": "JP",
+      "name": "@Card SD Gundam Gaiden — Game manual",
+      "url": "https://archive.org/details/incog-pippin-scans#BDE-10034",
+      "format": "PDF",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ],
+      "source": "Incog’s Pippin scans",
+      "sourceUrl": "https://archive.org/details/incog-pippin-scans",
+      "pages": [
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/2-3.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/4-5.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/6-7.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/8-9.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/10-11.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/12-13.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/14-15.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/16-17.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/18-19.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/20-21.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/22-23.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/24-25.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/26-27.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/28-29.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/30-31.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/%40Card%20SD%20Gundam%20Gaiden/Manual/back-cover.jpg"
+      ]
+    },
+    {
+      "edition": "Gakkō no Kowai Uwasa: Hanako-san ga Kita!!",
+      "market": "JP",
+      "name": "Gakkō no Kowai Uwasa: Hanako-san ga Kita!! — Game manual",
+      "url": "https://archive.org/details/incog-pippin-scans#BDS-20012",
+      "format": "PDF",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ],
+      "source": "Incog’s Pippin scans",
+      "sourceUrl": "https://archive.org/details/incog-pippin-scans",
+      "pages": [
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gakko%20no%20Kowai%20Uwasa%20Hanakosan%20ga%20Kita%21%21/kita-manual/0-1.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gakko%20no%20Kowai%20Uwasa%20Hanakosan%20ga%20Kita%21%21/kita-manual/2-3.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gakko%20no%20Kowai%20Uwasa%20Hanakosan%20ga%20Kita%21%21/kita-manual/4-5.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gakko%20no%20Kowai%20Uwasa%20Hanakosan%20ga%20Kita%21%21/kita-manual/6-7.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gakko%20no%20Kowai%20Uwasa%20Hanakosan%20ga%20Kita%21%21/kita-manual/8-9.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gakko%20no%20Kowai%20Uwasa%20Hanakosan%20ga%20Kita%21%21/kita-manual/10-11.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gakko%20no%20Kowai%20Uwasa%20Hanakosan%20ga%20Kita%21%21/kita-manual/12-13.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gakko%20no%20Kowai%20Uwasa%20Hanakosan%20ga%20Kita%21%21/kita-manual/back-cover.jpg"
+      ]
+    },
+    {
+      "edition": "Gundam Tactics: Mobility Fleet 0079",
+      "market": "JP",
+      "name": "Gundam Tactics: Mobility Fleet 0079 — Game manual",
+      "url": "https://archive.org/details/incog-pippin-scans#BDE-10008",
+      "format": "PDF",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ],
+      "source": "Incog’s Pippin scans",
+      "sourceUrl": "https://archive.org/details/incog-pippin-scans",
+      "pages": [
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-0-1.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-2-3.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-4-5.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-6-7.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-8-9.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-10-11.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-12-13.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-14-15.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-16-17.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-18-19.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-20-21.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-22-23.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-24-25.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-26-27.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/page-28-29.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Gundam%20Tactics%20-Mobility%20Fleet0079-/Manual/back-cover.jpg"
+      ]
+    },
+    {
+      "edition": "Hashitte Asobou! Kikansha Thomas",
+      "market": "JP",
+      "name": "Hashitte Asobou! Kikansha Thomas — Game manual",
+      "url": "https://archive.org/details/incog-pippin-scans#BDE-70024",
+      "format": "PDF",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ],
+      "source": "Incog’s Pippin scans",
+      "sourceUrl": "https://archive.org/details/incog-pippin-scans",
+      "pages": [
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%20Cover%20and%20Back.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%201-2.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%2011-12.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%2013-14.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%2015-16.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%2017-18.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%2019-20.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%2021-22.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%2023-24.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%2025-26.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%2027-28.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%2029-30.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%203-4.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%2031-32.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%2033-34.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%206-5.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%207-8.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Hashitte%20Asobou%21%20Kikan%20Sha%20Toomasu/manual/Hashitte%20Asobou%21%20Kikansha%20Thomas%20%281996%29%28Bandai%29%28Jp%29%20-%20Manual%20-%209-10.jpg"
+      ]
+    },
+    {
+      "edition": "Tunin' Glue",
+      "market": "JP",
+      "name": "Tunin' Glue — Game manual",
+      "url": "https://archive.org/details/incog-pippin-scans#BDE-10005",
+      "format": "PDF",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ],
+      "source": "Incog’s Pippin scans",
+      "sourceUrl": "https://archive.org/details/incog-pippin-scans",
+      "pages": [
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-cover.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-1-2.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-3-4.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-5-6.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-7-8.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-9-10.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-11-12.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-13-14.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-15-16.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-17-18.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-19-20.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-21-22.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-23-24.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-25-26.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-27-28.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-29-30.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-31-32.jpg",
+        "https://archive.org/download/incog-pippin-scans/Pippin_images.zip/Pippin/Games/Tunin%27%20Glue/tunin-glue-manual/manual-page-33-34.jpg"
+      ]
+    }
+  ]
+}

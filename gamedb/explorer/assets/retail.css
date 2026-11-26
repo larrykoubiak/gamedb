@@ -52,7 +52,33 @@
   letter-spacing: -.025em;
   overflow-wrap: anywhere;
 }
-.snes-heading h1 { font-size: clamp(1.25rem, 2.8vw, 2.5rem); }
+.snes-heading h1 {
+  min-width: 0;
+  max-width: 100%;
+  font-size: clamp(1.25rem, 2.8vw, 2.5rem);
+}
+.snes-platform-logo {
+  --snes-logo-height: 3.25rem;
+  display: block;
+  max-width: 100%;
+  padding: .45rem .65rem;
+  border: 1px solid #fff1dd33;
+  border-radius: .4rem;
+  background: linear-gradient(150deg, #e5dac8, #cfc4b1);
+}
+.snes-platform-logo img {
+  display: block;
+  width: auto;
+  height: var(--snes-logo-height);
+  max-width: 100%;
+  object-fit: contain;
+}
+.snes-platform-logo[data-platform="atari5200"] { background: #221f25; }
+.snes-platform-logo[data-platform="neogeo"] img {
+  /* Trim the transparent margins around the original wordmark. */
+  height: calc(1.5 * var(--snes-logo-height));
+  margin-block: calc(-.4 * var(--snes-logo-height)) calc(-.1 * var(--snes-logo-height));
+}
 .snes-heading .summary { flex-basis: 100%; }
 .snes-browse-controls {
   display: flex;
@@ -60,10 +86,10 @@
   gap: .5rem;
   flex: 1 1 28rem;
   min-width: 0;
-  max-width: 43rem;
+  max-width: 50rem;
 }
 .snes-search { flex: 1 1 9.5rem; min-width: 0; }
-.snes-search input, .snes-genre, .snes-translation-filter {
+.snes-search input, .snes-genre, .snes-hardware, .snes-translation-filter {
   min-height: 2.6rem;
   padding: .4rem .75rem;
   border: 1px solid var(--line);
@@ -72,7 +98,8 @@
   background: var(--panel);
 }
 .snes-search input { width: 100%; }
-.snes-genre { flex: 0 1 10rem; min-width: 0; text-overflow: ellipsis; }
+.snes-genre, .snes-hardware { flex: 0 1 10rem; min-width: 0; text-overflow: ellipsis; }
+.snes-hardware { flex-basis: 12.5rem; }
 .snes-translation-filter {
   display: inline-flex;
   align-items: center;
@@ -81,11 +108,13 @@
   cursor: pointer;
 }
 .snes-translation-filter input { margin: 0; accent-color: var(--accent); }
-.snes-genre:has(option:checked:not([value=""])), .snes-translation-filter:has(input:checked) {
+.snes-genre:has(option:checked:not([value=""])), .snes-hardware:has(option:checked:not([value=""])),
+.snes-translation-filter:has(input:checked) {
   border-color: var(--accent);
   background: var(--panel-selected);
 }
-.snes-search input:focus-visible, .snes-genre:focus-visible, .snes-translation-filter:has(:focus-visible) {
+.snes-search input:focus-visible, .snes-genre:focus-visible, .snes-hardware:focus-visible,
+.snes-translation-filter:has(:focus-visible) {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
@@ -124,6 +153,10 @@
   }
   .snes-search { grid-area: search; }
   .snes-browse-controls:has(.snes-pagination[hidden]) .snes-search { grid-column: 1 / -1; }
+  .snes-browse-controls:has(.snes-hardware:not([hidden])) {
+    grid-template-areas: "search search pager" "hardware hardware hardware" "genre translation translation";
+  }
+  .snes-hardware { grid-area: hardware; width: 100%; }
   .snes-genre { grid-area: genre; width: 100%; }
   .snes-translation-filter { grid-area: translation; }
   .snes-browse-controls .snes-pagination { grid-area: pager; justify-self: end; }
@@ -228,11 +261,15 @@
 }
 .snes-game-heading .snes-game-title { min-width: 0; font-size: clamp(1.45rem, 2.6vw, 2.25rem); text-align: center; }
 .snes-release-picker {
+  display: grid;
+  gap: .3rem;
+  min-width: 0;
+}
+.snes-release-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: .3rem;
-  min-width: 0;
 }
 .snes-region-button {
   display: inline-flex;
@@ -496,7 +533,8 @@
   .snes-game-heading { grid-template-columns: minmax(9rem, 1fr) minmax(0, 2fr) minmax(9rem, 1fr); }
   .snes-game-title { grid-column: 1 / -1; }
   .snes-game-heading:has(.snes-release-picker:not([hidden])) .snes-game-title { grid-column: 2; }
-  .snes-release-picker { grid-column: 3; align-self: end; justify-content: flex-end; }
+  .snes-release-picker { grid-column: 3; align-self: end; }
+  .snes-release-buttons { justify-content: flex-end; }
 }
 
 @media (max-width: 54rem) {

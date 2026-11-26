@@ -1,0 +1,337 @@
+{
+  "source": {
+    "name": "MAME software list",
+    "url": "https://github.com/mamedev/mame/blob/mame0285/hash/sgx.xml",
+    "revision": "0.285",
+    "sha256": "cd86e3f5b7996d5b417513b95ed9b93e789de7e694db058b21563bef4c56fe6a",
+    "rowCount": 5
+  },
+  "titles": [
+    {
+      "title": "1941: Counter Attack",
+      "developer": "",
+      "publisher": "Hudson",
+      "dates": {
+        "JP": "August 23, 1991"
+      },
+      "productCodes": [
+        "HC91048"
+      ],
+      "archiveTitles": [
+        "1941 - Counter Attack"
+      ]
+    },
+    {
+      "title": "Aldynes",
+      "developer": "",
+      "publisher": "Hudson",
+      "dates": {
+        "JP": "February 22, 1991"
+      },
+      "productCodes": [
+        "HC91044"
+      ],
+      "archiveTitles": [
+        "Aldynes - The Misson Code for Rage Crisis"
+      ]
+    },
+    {
+      "title": "Battle Ace",
+      "developer": "",
+      "publisher": "Hudson",
+      "dates": {
+        "JP": "November 30, 1989"
+      },
+      "productCodes": [
+        "HC89026"
+      ]
+    },
+    {
+      "title": "Daimakaimura",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "July 27, 1990"
+      },
+      "productCodes": [
+        "NAPH-1008"
+      ],
+      "archiveTitles": [
+        "Dai Makaimura"
+      ]
+    },
+    {
+      "title": "Madō King Granzort",
+      "developer": "",
+      "publisher": "Hudson",
+      "dates": {
+        "JP": "April 6, 1990"
+      },
+      "productCodes": [
+        "HC90029"
+      ],
+      "archiveTitles": [
+        "Madou Ou Granzort",
+        "Madou King Granzort"
+      ]
+    }
+  ],
+  "artworkRegions": [
+    {
+      "archiveName": "Aldynes - The Misson Code for Rage Crisis (Japan).zip",
+      "kind": "boxart",
+      "filename": "Aldynes - The Misson Code for Rage Crisis (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Aldynes - The Misson Code for Rage Crisis (Japan).zip",
+      "kind": "title",
+      "filename": "Aldynes - The Misson Code for Rage Crisis (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Aldynes - The Misson Code for Rage Crisis (Japan).zip",
+      "kind": "snap",
+      "filename": "Aldynes - The Misson Code for Rage Crisis (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Aldynes - The Misson Code for Rage Crisis (Japan).zip",
+      "kind": "logo",
+      "filename": "Aldynes - The Misson Code for Rage Crisis (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Battle Ace (Japan).zip",
+      "kind": "boxart",
+      "filename": "Battle Ace (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Battle Ace (Japan).zip",
+      "kind": "title",
+      "filename": "Battle Ace (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Battle Ace (Japan).zip",
+      "kind": "snap",
+      "filename": "Battle Ace (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Battle Ace (Japan).zip",
+      "kind": "logo",
+      "filename": "Battle Ace (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Daimakaimura (Japan).zip",
+      "kind": "boxart",
+      "filename": "Daimakaimura (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Daimakaimura (Japan).zip",
+      "kind": "title",
+      "filename": "Daimakaimura (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Daimakaimura (Japan).zip",
+      "kind": "snap",
+      "filename": "Daimakaimura (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Daimakaimura (Japan).zip",
+      "kind": "logo",
+      "filename": "Daimakaimura (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Madou King Granzort (Japan).zip",
+      "kind": "boxart",
+      "filename": "Madou King Granzort (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Madou King Granzort (Japan).zip",
+      "kind": "title",
+      "filename": "Madou King Granzort (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Madou King Granzort (Japan).zip",
+      "kind": "snap",
+      "filename": "Madou King Granzort (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    },
+    {
+      "archiveName": "Madou King Granzort (Japan).zip",
+      "kind": "logo",
+      "filename": "Madou King Granzort (Japan) (En).png",
+      "markets": [
+        "JP"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "source": "Libretro SuperGrafx thumbnails for this Japanese HuCard"
+    }
+  ],
+  "manuals": [
+    {
+      "edition": "Battle Ace",
+      "market": "JP",
+      "name": "Battle Ace — SuperGrafx manual",
+      "url": "https://cdn-ak.f.st-hatena.com/images/fotolife/j/jackallsasaki/20220606/20220606132714.jpg",
+      "pages": [
+        "https://cdn-ak.f.st-hatena.com/images/fotolife/j/jackallsasaki/20220606/20220606132714.jpg",
+        "https://cdn-ak.f.st-hatena.com/images/fotolife/j/jackallsasaki/20220606/20220606132718.jpg",
+        "https://cdn-ak.f.st-hatena.com/images/fotolife/j/jackallsasaki/20220606/20220606132722.jpg",
+        "https://cdn-ak.f.st-hatena.com/images/fotolife/j/jackallsasaki/20220606/20220606132726.jpg",
+        "https://cdn-ak.f.st-hatena.com/images/fotolife/j/jackallsasaki/20220606/20220606132730.jpg",
+        "https://cdn-ak.f.st-hatena.com/images/fotolife/j/jackallsasaki/20220606/20220606132734.jpg"
+      ],
+      "source": "Jackall Sasaki",
+      "sourceUrl": "https://gamemanual.midnightmeattrain.com/entry/%E3%83%90%E3%83%88%E3%83%AB%E3%82%A8%E3%83%BC%E3%82%B9",
+      "format": "PDF",
+      "language": "Japanese"
+    },
+    {
+      "edition": "1941: Counter Attack",
+      "market": "JP",
+      "name": "1941: Counter Attack — SuperGrafx manual",
+      "url": "https://cdn-ak.f.st-hatena.com/images/fotolife/j/jackallsasaki/20220824/20220824213039.jpg",
+      "pages": [
+        "https://cdn-ak.f.st-hatena.com/images/fotolife/j/jackallsasaki/20220824/20220824213039.jpg",
+        "https://cdn-ak.f.st-hatena.com/images/fotolife/j/jackallsasaki/20220824/20220824213045.jpg",
+        "https://cdn-ak.f.st-hatena.com/images/fotolife/j/jackallsasaki/20220824/20220824213050.jpg",
+        "https://cdn-ak.f.st-hatena.com/images/fotolife/j/jackallsasaki/20220824/20220824213055.jpg",
+        "https://cdn-ak.f.st-hatena.com/images/fotolife/j/jackallsasaki/20220824/20220824213100.jpg",
+        "https://cdn-ak.f.st-hatena.com/images/fotolife/j/jackallsasaki/20220824/20220824213105.jpg"
+      ],
+      "source": "Jackall Sasaki",
+      "sourceUrl": "https://gamemanual.midnightmeattrain.com/entry/1941_COUNTER_ATACK",
+      "format": "PDF",
+      "language": "Japanese"
+    },
+    {
+      "edition": "Aldynes",
+      "market": "JP",
+      "name": "Aldynes — SuperGrafx manual",
+      "format": "PDF",
+      "source": "Konami",
+      "sourceUrl": "https://dds.konami.com/games/manual/pcemini/jp_Aldynes.pdf",
+      "url": "https://dds.konami.com/games/manual/pcemini/jp_Aldynes.pdf",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Daimakaimura",
+      "market": "JP",
+      "name": "Daimakaimura — SuperGrafx manual",
+      "format": "PDF",
+      "source": "Konami",
+      "sourceUrl": "https://dds.konami.com/games/manual/pcemini/jp_Daimakaimura.pdf",
+      "url": "https://dds.konami.com/games/manual/pcemini/jp_Daimakaimura.pdf",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "VGMRips Atari 5200": {
+    "name": "Mario Bros.",
+    "extension": ".zip",
+    "size": 3308,
+    "sha256": "3ef4ff652c87285bc248ab15483afcb26278c8afad9075a89d7f837f031ec54e",
+    "sourceUrl": "https://new.vgmrips.net/pack/mario-bros-atari-5200",
+    "download": "https://archive.org/download/vgmrips-all-of-them/VGMRips_all_of_them_2024-05-18.zip/Other%2FMario_Bros_%28Atari_5200%29.zip"
+  },
+  "VGMRips Atari 7800": {
+    "name": "Commando",
+    "extension": ".zip",
+    "size": 22434,
+    "sha256": "d7dd15947c480fe1268b57dddeea11d997f4f0b772ea5b3358497c4121532542",
+    "sourceUrl": "https://new.vgmrips.net/pack/commando-atari-7800",
+    "download": "https://archive.org/download/vgmrips-all-of-them/VGMRips_all_of_them_2024-05-18.zip/Other%2FCommando_%28Atari_7800%29.zip"
+  },
+  "VGMRips Intellivision": {
+    "name": "Snafu",
+    "extension": ".zip",
+    "size": 3804,
+    "sha256": "adad287827fb256e12d64ae332e3fb9625d7b86cda42d952de7f2101335df6de",
+    "sourceUrl": "https://new.vgmrips.net/pack/snafu-intellivision",
+    "download": "https://archive.org/download/vgmrips-all-of-them/VGMRips_all_of_them_2024-05-18.zip/Other%2FSnafu_%28Intellivision%29.zip"
+  }
+}

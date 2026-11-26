@@ -3,144 +3,305 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Browse GameDB's retail console catalogs by generation and manufacturer.">
-  <title>Retail catalogs | GameDB</title>
+  <meta name="description" content="Browse GameDB’s home consoles by generation and discover its handheld libraries.">
+  <title>GameDB</title>
   <link rel="stylesheet" href="/styles.css?v=20">
-  <link rel="stylesheet" href="/home.css">
-  <script src="/home.js" defer></script>
+  <link rel="stylesheet" href="/home.css?v=6">
+  <script src="/home.js?v=2" defer></script>
 </head>
 <body class="catalog-home">
   <header class="home-bar">
-    <div class="home-width">
-      <a class="home-brand" href="/" aria-current="page">GameDB</a>
-      <a class="home-archive" href="/archive">V1 archive <span aria-hidden="true">→</span></a>
-    </div>
+    <nav class="home-width" aria-label="GameDB">
+      <a class="home-brand" href="/" aria-current="page"><span class="home-mark" aria-hidden="true"></span>GameDB</a>
+      <div class="home-navigation">
+        <a class="home-jump" href="#handhelds">Handhelds</a>
+        <a class="home-archive" href="/archive">V1 archive <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
   </header>
 
   <main class="home-width">
-    <header class="home-intro">
-      <h1>Retail catalogs</h1>
-      <p>Browse console releases, artwork, manuals, and soundtracks.</p>
-    </header>
-
-    <table class="system-matrix" role="table" aria-label="Systems by generation and manufacturer">
-      <colgroup>
-        <col class="generation-column">
-        <col span="6">
-      </colgroup>
-      <colgroup span="2"></colgroup>
-      <thead role="rowgroup">
-        <tr role="row">
-          <th scope="col" role="columnheader">Generation</th>
-          <th scope="col" role="columnheader">Nintendo</th>
-          <th scope="col" role="columnheader">Sega</th>
-          <th scope="col" role="columnheader">NEC</th>
-          <th scope="col" role="columnheader">Sony</th>
-          <th scope="col" role="columnheader">Atari</th>
-          <th scope="col" role="columnheader">SNK</th>
-          <th scope="colgroup" colspan="2" role="columnheader">Other makers</th>
-        </tr>
-      </thead>
-      <tbody role="rowgroup">
-        <tr role="row">
-          <th scope="row" role="rowheader">3rd<span class="generation-suffix"> generation</span></th>
-          <td role="cell">
-            <a class="catalog-card" href="/catalog/nes">
-              <span class="catalog-card-art"><img src="/system-icons/retail-logo-nes.png" width="330" height="122" alt=""></span>
-              <span class="catalog-card-label">NES <span>Famicom</span></span>
-            </a>
-          </td>
-          <td role="cell">
-            <a class="catalog-card" href="/catalog/mastersystem">
-              <span class="catalog-card-art"><img src="/system-icons/retail-logo-mastersystem.png" width="330" height="113" alt=""></span>
-              <span class="catalog-card-label">Master System <span>Mark III</span></span>
-            </a>
-          </td>
-          <td role="cell"></td>
-          <td role="cell"></td>
-          <td role="cell"></td>
-          <td role="cell"></td>
-          <td role="cell" colspan="2"></td>
-        </tr>
-        <tr role="row">
-          <th scope="row" role="rowheader">4th<span class="generation-suffix"> generation</span></th>
-          <td role="cell">
-            <a class="catalog-card" href="/catalog/snes">
-              <span class="catalog-card-art"><img src="/system-icons/retail-logo-snes.png" width="330" height="83" alt=""></span>
-              <span class="catalog-card-label">Super Nintendo <span>Super Famicom</span></span>
-            </a>
-          </td>
-          <td role="cell">
-            <a class="catalog-card" href="/catalog/megadrive">
-              <span class="catalog-card-art"><img src="/system-icons/retail-logo-megadrive.png" width="330" height="53" alt=""></span>
-              <span class="catalog-card-label">Mega Drive <span>Genesis</span></span>
-            </a>
-          </td>
-          <td role="cell">
-            <a class="catalog-card" href="/catalog/pcengine">
-              <span class="catalog-card-art"><img src="/system-icons/retail-logo-pcengine.png" width="330" height="160" alt=""></span>
-              <span class="catalog-card-label">PC Engine <span>TurboGrafx-16</span></span>
-            </a>
-          </td>
-          <td role="cell"></td>
-          <td role="cell"></td>
-          <td role="cell">
-            <a class="catalog-card" href="/catalog/neogeo">
-              <span class="catalog-card-art"><img src="/system-icons/retail-logo-neogeo.png" width="330" height="87" alt=""></span>
-              <span class="catalog-card-label">Neo Geo <span>MVS / AES</span></span>
-            </a>
-          </td>
-          <td role="cell" colspan="2"></td>
-        </tr>
-        <tr role="row">
-          <th scope="row" role="rowheader">5th<span class="generation-suffix"> generation</span></th>
-          <td role="cell">
-            <a class="catalog-card" href="/catalog/n64">
-              <span class="catalog-card-art"><img src="/system-icons/retail-logo-n64.png" width="330" height="54" alt=""></span>
-              <span class="catalog-card-label">Nintendo 64</span>
-            </a>
-          </td>
-          <td role="cell">
-            <a class="catalog-card" href="/catalog/saturn">
-              <span class="catalog-card-art"><img src="/system-icons/retail-logo-saturn.png" width="330" height="52" alt=""></span>
-              <span class="catalog-card-label">Sega Saturn</span>
-            </a>
-          </td>
-          <td role="cell">
-            <a class="catalog-card" href="/catalog/pcfx">
-              <span class="catalog-card-art"><img src="/system-icons/retail-logo-pcfx.png" width="330" height="111" alt=""></span>
-              <span class="catalog-card-label">PC-FX</span>
-            </a>
-          </td>
-          <td role="cell">
-            <a class="catalog-card" href="/catalog/playstation">
-              <span class="catalog-card-art"><img src="/system-icons/retail-logo-playstation.png" width="330" height="251" alt=""></span>
-              <span class="catalog-card-label">PlayStation <span>US library</span></span>
-            </a>
-          </td>
-          <td role="cell">
-            <a class="catalog-card" href="/catalog/jaguar">
-              <span class="catalog-card-art"><img src="/system-icons/retail-logo-jaguar.png" width="330" height="117" alt=""></span>
-              <span class="catalog-card-label">Atari Jaguar</span>
-            </a>
-          </td>
-          <td role="cell"></td>
-          <td role="cell" class="other-maker">
-            <a class="catalog-card" href="/catalog/cd32">
-              <span class="catalog-card-art"><img src="/system-icons/retail-logo-cd32.png" width="330" height="44" alt=""></span>
-              <span class="catalog-card-label">Amiga CD32 <span>Commodore</span></span>
-            </a>
-          </td>
-          <td role="cell" class="other-maker">
-            <a class="catalog-card" href="/catalog/3do">
-              <span class="catalog-card-art"><img src="/system-icons/retail-logo-3do.png" width="330" height="101" alt=""></span>
-              <span class="catalog-card-label">3DO <span>The 3DO Company</span></span>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <section class="catalog-section" aria-labelledby="home-consoles">
+      <header class="catalog-heading">
+        <h1 id="home-consoles">Home consoles</h1>
+        <span class="catalog-count" hidden></span>
+      </header>
+      <table class="system-matrix" role="table" aria-label="Home consoles by manufacturer and generation">
+        <colgroup>
+          <col class="maker-column">
+          <col>
+          <col>
+          <col>
+          <col>
+          <col>
+        </colgroup>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th scope="col" role="columnheader">Manufacturer</th>
+            <th scope="col" role="columnheader" data-era="2nd"><span>2nd</span> generation</th>
+            <th scope="col" role="columnheader" data-era="3rd"><span>3rd</span> generation</th>
+            <th scope="col" role="columnheader" data-era="4th"><span>4th</span> generation</th>
+            <th scope="col" role="columnheader" data-era="5th"><span>5th</span> generation</th>
+            <th scope="col" role="columnheader" data-era="6th"><span>6th</span> generation</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th scope="row" role="rowheader">Atari</th>
+            <td role="cell" data-era="2nd">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="2nd" href="/catalog/atari2600" title="Atari 2600 / VCS">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-atari2600.png" width="960" height="300" alt="Atari 2600 / VCS"></span>
+                </a>
+                <a class="catalog-card" data-era="2nd" href="/catalog/atari5200" title="Atari 5200 SuperSystem">
+                  <span class="catalog-card-art catalog-card-art-dark"><img src="/system-icons/retail-logo-atari5200.png" width="960" height="299" alt="Atari 5200 SuperSystem"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="3rd">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="3rd" href="/catalog/atari7800" title="Atari 7800 ProSystem">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-atari7800.png" width="512" height="117" alt="Atari 7800 ProSystem"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="5th" href="/catalog/jaguar" title="Atari Jaguar">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-jaguar.png" width="330" height="117" alt="Atari Jaguar"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="6th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Bandai</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="5th" href="/catalog/pippin" title="Apple Bandai Pippin">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-pippin.png" width="220" height="209" alt="Apple Bandai Pippin"></span>
+                </a>
+                <a class="catalog-card" data-era="5th" href="/catalog/playdia" title="Bandai Playdia">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-playdia.png" width="416" height="117" alt="Bandai Playdia"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="6th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">NEC</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="4th" href="/catalog/pcengine" title="PC Engine / TurboGrafx-16">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-pcengine.png" width="330" height="160" alt="PC Engine / TurboGrafx-16"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="5th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="5th" href="/catalog/pcfx" title="NEC PC-FX">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-pcfx.png" width="330" height="111" alt="NEC PC-FX"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="6th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Nintendo</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="3rd" href="/catalog/nes" title="NES / Famicom">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-nes.png" width="330" height="122" alt="NES / Famicom"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="4th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="4th" href="/catalog/snes" title="Super Nintendo / Super Famicom">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-snes.png" width="330" height="83" alt="Super Nintendo / Super Famicom"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="5th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="5th" href="/catalog/n64" title="Nintendo 64">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-n64.png" width="330" height="54" alt="Nintendo 64"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="6th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="6th" href="/catalog/gamecube" title="Nintendo GameCube (US)">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-gamecube.png" width="330" height="75" alt="Nintendo GameCube (US)"></span>
+                </a>
+              </div>
+            </td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Sega</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="3rd" href="/catalog/mastersystem" title="Sega Master System / Mark III / SG-1000">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-mastersystem.png" width="330" height="113" alt="Sega Master System / Mark III / SG-1000"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="4th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="4th" href="/catalog/megadrive" title="Sega Mega Drive / Genesis">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-megadrive.png" width="330" height="53" alt="Sega Mega Drive / Genesis"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="5th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="5th" href="/catalog/saturn" title="Sega Saturn">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-saturn.png" width="330" height="52" alt="Sega Saturn"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="6th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="6th" href="/catalog/dreamcast" title="Sega Dreamcast">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-dreamcast.png" width="330" height="250" alt="Sega Dreamcast"></span>
+                </a>
+              </div>
+            </td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">SNK</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="4th" href="/catalog/neogeo" title="Neo Geo (MVS / AES / CD)">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-neogeo.png" width="330" height="87" alt="Neo Geo (MVS / AES / CD)"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Sony</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="5th" href="/catalog/playstation" title="PlayStation (US)">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-playstation.png" width="330" height="251" alt="PlayStation (US)"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="6th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="6th" href="/catalog/playstation2" title="PlayStation 2 (US)">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-playstation2.png" width="330" height="99" alt="PlayStation 2 (US)"></span>
+                </a>
+              </div>
+            </td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Other makers</th>
+            <td role="cell" data-era="2nd">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="2nd" href="/catalog/channelf" title="Fairchild Channel F">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-channelf.png" width="500" height="98" alt="Fairchild Channel F"></span>
+                </a>
+                <a class="catalog-card" data-era="2nd" href="/catalog/intellivision" title="Mattel Intellivision">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-intellivision.png" width="960" height="152" alt="Mattel Intellivision"></span>
+                </a>
+                <a class="catalog-card" data-era="2nd" href="/catalog/odyssey2" title="Magnavox Odyssey² / Philips Videopac">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-odyssey2-wordmark.png" width="330" height="106" alt="Magnavox Odyssey² / Philips Videopac"></span>
+                </a>
+                <a class="catalog-card" data-era="2nd" href="/catalog/colecovision" title="ColecoVision">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-colecovision.png" width="960" height="315" alt="ColecoVision"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="5th" href="/catalog/cd32" title="Commodore Amiga CD32">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-cd32.png" width="330" height="44" alt="Commodore Amiga CD32"></span>
+                </a>
+                <a class="catalog-card" data-era="5th" href="/catalog/3do" title="3DO Interactive Multiplayer">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-3do.png" width="330" height="101" alt="3DO Interactive Multiplayer"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="6th"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
     <p id="no-retail-catalogs" hidden>No retail catalogs are available. <a href="/archive">Browse the V1 archive</a>.</p>
+    <section class="handheld-section" aria-labelledby="handhelds">
+      <header class="catalog-heading">
+        <h2 id="handhelds">Handhelds</h2>
+        <span class="catalog-count">V1 libraries</span>
+      </header>
+      <div class="handheld-grid">
+        <a class="catalog-card" href="/archive?system=863086d1521a97b1745bc1f9387435e0" title="Atari Lynx">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-lynx.png" width="330" height="38" alt="Atari Lynx"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=5c473ba6740d36ebb624d66c9650db1a" title="Bandai WonderSwan">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-wonderswan.png" width="330" height="50" alt="Bandai WonderSwan"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=819282a94afcd129f3e3dae79730aa59" title="Bandai WonderSwan Color">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-wonderswancolor.png" width="330" height="70" alt="Bandai WonderSwan Color"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=15a807447103ba5d7dc573625154c385" title="Nintendo Game Boy">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-gb.png" width="330" height="58" alt="Nintendo Game Boy"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=5353eaf6585a6e363193cde24c1cdc45" title="Nintendo Game Boy Color">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-gbc.png" width="330" height="39" alt="Nintendo Game Boy Color"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=b6ae64027002cc3547f2d709f9340263" title="Nintendo Game Boy Advance">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-gba.png" width="330" height="39" alt="Nintendo Game Boy Advance"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=bc64107a4c5d538ebb6eaa3c9bf5b2ad" title="Pokémon Mini">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-pokemini.png" width="330" height="52" alt="Pokémon Mini"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=ddb5637adfabbda569477db47d73e36d" title="Nintendo DS">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-nds.png" width="330" height="46" alt="Nintendo DS"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=5eea9018ad802c2f27dcf0218a5509ba" title="Nintendo 3DS">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-3ds.png" width="330" height="40" alt="Nintendo 3DS"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=173f2cf2be138aab4d8600de2b47bfce" title="Nokia N-Gage">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-ngage.png" width="330" height="75" alt="Nokia N-Gage"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=c2dd2b7d76fd8f11a382ebf0572a1c7c" title="Sega Game Gear">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-gamegear.png" width="330" height="41" alt="Sega Game Gear"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=e548fdff6c2752e4f8ca2dbf9c3d582c" title="SNK Neo Geo Pocket">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-ngp.png" width="330" height="73" alt="SNK Neo Geo Pocket"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=36275f44d8b314a9dd5c4754ed4f4f2c" title="SNK Neo Geo Pocket Color">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-ngpc.png" width="330" height="98" alt="SNK Neo Geo Pocket Color"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=0331be696210cddee0ab6a3e1dac0315" title="PlayStation Portable">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-psp.png" width="330" height="108" alt="PlayStation Portable"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=1e889c81320622772484947a5996b261" title="PlayStation Vita">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-psvita.png" width="330" height="95" alt="PlayStation Vita"></span>
+        </a>
+        <a class="catalog-card" href="/archive?system=0c3c322f29036ce636e8b0a4a96d9f43" title="Watara Supervision">
+          <span class="catalog-card-art"><img src="/system-icons/retail-logo-supervision.png" width="331" height="46" alt="Watara Supervision"></span>
+        </a>
+      </div>
+    </section>
   </main>
 </body>
 </html>

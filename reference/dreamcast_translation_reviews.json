@@ -1,0 +1,229 @@
+{
+  "projects": {
+    "5921": {
+      "rhdnId": 5921,
+      "archive": "[5921]Evangelion - Typing Project E - ENG v2.0.zip",
+      "archiveSha256": "66b8ec497d0b27192ba1ae5f3283fb84d27424266cb2165147810f86104671e8",
+      "sourceUrl": "https://www.romhacking.net/translations/5921/",
+      "patchOnly": true,
+      "discs": [
+        {
+          "archiveName": "Shin Seiki Evangelion - Typing E Keikaku (Japan).zip",
+          "inputSha1": "3446ccc41c519adc7735e7015865682f0ce45a1a"
+        }
+      ]
+    },
+    "1483": {
+      "rhdnId": 1483,
+      "archive": "[1483]hlg-aw21_v95.zip",
+      "archiveSha256": "138a763e4a803ccc322dd5a93dbc22a8ad4065b13ded549eb4ff24f4b39b908a",
+      "sourceUrl": "https://www.romhacking.net/translations/1483/",
+      "patchOnly": true,
+      "discs": [
+        {
+          "archiveName": "Advanced Daisenryaku 2001 (Japan).zip",
+          "inputSha1": "2e4679bd631d717fa8bf7f9df7e1b979c8d6b999"
+        }
+      ]
+    },
+    "645": {
+      "rhdnId": 645,
+      "archive": "[645]ddr_club.zip",
+      "archiveSha256": "000fc940958d94c013df8c313139ed62ae43fa7e6e7b75c1317307fbd8a3daf2",
+      "sourceUrl": "https://www.romhacking.net/translations/645/",
+      "patchOnly": true,
+      "discs": [
+        {
+          "archiveName": "Dance Dance Revolution - Club Version - Dreamcast Edition (Japan).zip",
+          "inputSha1": "e46cc136fc7a4abbca55ede544a08a3aeb97285c"
+        }
+      ]
+    },
+    "6412": {
+      "rhdnId": 6412,
+      "archive": "[6412]Chaos Field (English - v1.0).zip",
+      "archiveSha256": "5a7f54c0cb995ea7179dfe5efb07a54f37a22fe6cb54f3fe8b24629dcc5fc995",
+      "preparedDiscSha256": "109374b33a56160d05607eb5681f3321d6c8154138e55f05713b5c67e86aa476",
+      "sourceUrl": "https://www.romhacking.net/translations/6412/",
+      "discs": [
+        {
+          "archiveName": "Chaos Field (Japan).zip",
+          "inputSha1": "7b1a382a46516d72b53f7ab4d8d516383d247635",
+          "outputSha1": "d06705498e9717b6ce005621e82c38b552fd9c05"
+        }
+      ]
+    },
+    "6603": {
+      "rhdnId": 6603,
+      "archive": "[6603]Neon Genesis Evangelion - Typing Project Advanced (ENG v1.0).dcp.zip",
+      "archiveSha256": "205150df30eaefcb624df846d41397f863425b7b820ddea284bcc9efd77acae4",
+      "preparedDiscSha256": "272d962f4ffaf29afc198e6b89eff72ab020a86e5b70512c62c2013b1b463c2f",
+      "sourceUrl": "https://www.romhacking.net/translations/6603/",
+      "discs": [
+        {
+          "archiveName": "Shin Seiki Evangelion - Typing Hokan Keikaku (Japan).zip",
+          "inputSha1": "31e46deb60d2c82918be85ac44f3df115fc5b9d7",
+          "outputSha1": "7e768fc866e29d1fcbe362012435358ff8ed27ef"
+        }
+      ]
+    },
+    "6680": {
+      "rhdnId": 6680,
+      "archive": "[6680]Puyo~n [Oct 8th, 2022](1).zip",
+      "archiveSha256": "2162e190d0c5947acb8e42732e9f3db77afe7779444c14585bc1a55bd29291ea",
+      "preparedDiscSha256": "56dc21ced5ae9caa0932f3b86c7d3a634d65c316ca548c6abe0a8bfa56f730d6",
+      "sourceUrl": "https://www.romhacking.net/translations/6680/",
+      "discs": [
+        {
+          "archiveName": "Puyo Puyoon (Japan).zip",
+          "inputSha1": "6e5515fcc8e35e0c45083e9de9b9880d6c918420",
+          "outputSha1": "85575cd46489a0e77209afd9e1b4a98c54e8279d"
+        }
+      ]
+    },
+    "6860": {
+      "rhdnId": 6860,
+      "archive": "[6860]Samba.de.Amigo.Ver.2000.English.v0.9.1.zip",
+      "archiveSha256": "45c765634511979bd946fd695623d81703aca92df40ffa35bb6cc9b5d1aa61fa",
+      "preparedDiscSha256": "466be339e707e2e7c7f6f7ce0f57eff44dc3216c9154f4a0ea5490cc8b02ee07",
+      "sourceUrl": "https://www.romhacking.net/translations/6860/",
+      "discs": [
+        {
+          "archiveName": "Samba de Amigo Ver. 2000 (Japan).zip",
+          "inputSha1": "2cc81c9db384b6bbea4d7d932bf68ef59b31d097",
+          "outputSha1": "9d565a6e28b1b5641504559efc1f8863112e1a50"
+        }
+      ]
+    },
+    "6925": {
+      "rhdnId": 6925,
+      "archive": "[6925]Rent-A-Hero NO1 [ENG][GDI] v.1.0.7z",
+      "archiveSha256": "cc13a905c5e2b98615af1169f48447ac42ddf19f16be0a3eb6373ec5b03a2f12",
+      "preparedDiscSha256": "094da3a207f5b35818c1757e1af35a616e6b43a90caa88fd7a31f7534306c750",
+      "sourceUrl": "https://www.romhacking.net/translations/6925/",
+      "discs": [
+        {
+          "archiveName": "Rent a Hero No.1 (Japan).zip",
+          "inputSha1": "373e768443649bdbc505ed17b1aa6fbd29ecbc3d",
+          "outputSha1": "a2d64b0730699594cab1696b3ab7bad01906886d"
+        }
+      ]
+    },
+    "6952": {
+      "rhdnId": 6952,
+      "archive": "[6952]Super Puzzle Fighter IIX for Matching Service v1.001 (2001)(Capcom)(JP)[!] (English v1.0).zip",
+      "archiveSha256": "2b18e08857b238b4634ee142a75de447d03e73d7103c7942c16180e930c83783",
+      "preparedDiscSha256": "ef23c4b62ffde755b2f05e7baffc00fa6a3186bb81acecbd01d2295fc587086d",
+      "sourceUrl": "https://www.romhacking.net/translations/6952/",
+      "discs": [
+        {
+          "archiveName": "Super Puzzle Fighter II X for Matching Service (Japan).zip",
+          "inputSha1": "8ab6e351b8f4e29536c619c712cbabf0227bef29",
+          "outputSha1": "580e3f7a0e60db364b209ee81cbd945adc72668b"
+        }
+      ]
+    },
+    "6507": {
+      "rhdnId": 6507,
+      "archive": "[6507]Yukawa Treasure Hunt English 1.0.zip",
+      "archiveSha256": "b0756e37d841c8ba4a54275bd1db06c0ef2b0cc75bddbd113f79f12588d0283d",
+      "preparedDiscSha256": "b2a1230fd2db9bc8194a24ead454fe408d7335a5db6b15b8c9ba2f32d7551f34",
+      "sourceUrl": "https://www.romhacking.net/translations/6507/",
+      "discs": [
+        {
+          "archiveName": "Yukawa Moto Senmu no Otakara Sagashi (Japan).zip",
+          "inputSha1": "b5504373d0e2b582ebfab55addcd1fae7416ef33",
+          "outputSha1": "90e67e329c8dbda9e597d849e28bae9de2ddf8d9"
+        }
+      ]
+    },
+    "4098": {
+      "rhdnId": 4098,
+      "archive": "[4098]DoA2 v1 (S).rar",
+      "archiveSha256": "49ec8e5eeb975a3e3e41d20000bb7547f26db639255e66a25cd8bf9c51b1ff91",
+      "sourceUrl": "https://www.romhacking.net/translations/4098/",
+      "patchOnly": true,
+      "discs": [
+        {
+          "archiveName": "Dead or Alive 2 (USA).zip",
+          "inputSha1": "d6ef17c1043613ec330be935b86c294e1e06f933"
+        }
+      ]
+    },
+    "capcom-vs-snk-2-english": {
+      "rhdnId": "capcom-vs-snk-2-english",
+      "archive": "Capcom.vs.SNK.2.-.Millionaire.Fighting.2001.English.v1.2.dcp",
+      "archiveSha256": "aa4253537e805b8cf465c9312aee6788c51c6d655457b8c664bb928c7dfd3155",
+      "preparedDiscSha256": "9a72ff11ea62ee9a6a7bceceef6fc860f2a961b9919477335db3be4ed5f2ae0a",
+      "sourceUrl": "https://github.com/DerekPascarella/Capcomvs.SNK2-EnglishPatchDreamcast",
+      "discs": [
+        {
+          "archiveName": "Capcom vs. SNK 2 - Millionaire Fighting 2001 (Japan).zip",
+          "inputSha1": "7cad2adf8f04784838e5559291b178fcb0aa7fac",
+          "outputSha1": "f94dc74f8dab1738f9cc697d26748bc9d1ca7de2"
+        }
+      ],
+      "archivePage": "https://github.com/DerekPascarella/Capcomvs.SNK2-EnglishPatchDreamcast/releases/download/1.2/Capcom.vs.SNK.2.-.Millionaire.Fighting.2001.English.v1.2.dcp",
+      "projectMetadata": {
+        "rhdnId": "capcom-vs-snk-2-english",
+        "language": "English",
+        "version": "1.2",
+        "status": "Fully Playable",
+        "releasedAt": 1778240105,
+        "authors": [
+          "Derek Pascarella and contributors"
+        ]
+      }
+    },
+    "nakoruru-english-v14": {
+      "rhdnId": "nakoruru-english-v14",
+      "archive": "Nakoruru.-.The.Gift.She.Gave.Me.English.v1.4.dcp",
+      "archiveSha256": "8b9d7873c3c4432f363eba45b18eec877cfaf08e7d64d806ae18009949a7fb4b",
+      "preparedDiscSha256": "bcc356aaccdad6f4f6ab42dd45e4bb8847d92b8fcc8f8edea9c4eef3ae322533",
+      "sourceUrl": "https://github.com/DerekPascarella/NakoruruTheGiftSheGaveMe-EnglishPatchDreamcast",
+      "discs": [
+        {
+          "archiveName": "Nakoruru - Ano Hito kara no Okurimono (Japan).zip",
+          "inputSha1": "50ba485733f16ed060424cfe9d2ffc591e1882fd",
+          "outputSha1": "e7d2432f211eaf8bd42ab9dc115f19e7c97910ad"
+        }
+      ],
+      "archivePage": "https://github.com/DerekPascarella/NakoruruTheGiftSheGaveMe-EnglishPatchDreamcast/releases/download/1.4/Nakoruru.-.The.Gift.She.Gave.Me.English.v1.4.dcp",
+      "projectMetadata": {
+        "rhdnId": "nakoruru-english-v14",
+        "language": "English",
+        "version": "1.4",
+        "status": "Fully Playable",
+        "releasedAt": 1790170820,
+        "authors": [
+          "Derek Pascarella and contributors"
+        ]
+      }
+    },
+    "di-gi-charat-fantasy-english": {
+      "rhdnId": "di-gi-charat-fantasy-english",
+      "archive": "Di.Gi.Charat.Fantasy.English.v1.0.dcp",
+      "archiveSha256": "70d72784650e33ee3896ae6a6767e4de3c804af4f07bdbe81e2025e1cf1dfed6",
+      "preparedDiscSha256": "a094cf57029b52e9f6f3bc58a0f77b00ebb691d1e2ebdfe698e2ff1747b42ae1",
+      "sourceUrl": "https://github.com/DerekPascarella/DiGiCharatFantasy-EnglishPatchDreamcast",
+      "discs": [
+        {
+          "archiveName": "Di Gi Charat Fantasy (Japan).zip",
+          "inputSha1": "1eefcd921904020a50792c7fb989ce0aad362064",
+          "outputSha1": "a7605da861c8a6e782a1551bf289c55e769a360a"
+        }
+      ],
+      "archivePage": "https://github.com/DerekPascarella/DiGiCharatFantasy-EnglishPatchDreamcast/releases/download/1.0/Di.Gi.Charat.Fantasy.English.v1.0.dcp",
+      "projectMetadata": {
+        "rhdnId": "di-gi-charat-fantasy-english",
+        "language": "English",
+        "version": "1.0",
+        "status": "Fully Playable",
+        "releasedAt": 1765835651,
+        "authors": [
+          "Derek Pascarella and contributors"
+        ]
+      }
+    }
+  }
+}

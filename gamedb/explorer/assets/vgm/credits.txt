@@ -13,15 +13,14 @@ https://github.com/hhungry2/zxtune-web/archive/f59403aa92cd798cadc3a8de4b5ea3f17
 
 Build used for Explorer
 
-GameDB disabled the Saturn and Dreamcast decoder and exposed all 256 HES
-track indices. After checking out f59403aa92cd798cadc3a8de4b5ea3f174659614,
-apply these source changes in the ZXTune directory.
+GameDB exposes all 256 HES track indices. After checking out
+f59403aa92cd798cadc3a8de4b5ea3f174659614, apply this change in the ZXTune
+directory.
 
-  sed -i 's/ gme he ht hvl / gme he hvl /' apps/zxtune-web/Makefile
-  sed -i '/RegisterSDSFSupport/d' src/core/plugins/players/plugins_list.cpp
   sed -i 's/TOTAL_TRACKS_COUNT = 32;/TOTAL_TRACKS_COUNT = 256;/' src/formats/multitrack/hes.cpp
 
-Compile with Emscripten 4.0.21.
+Compile with Emscripten 4.0.21. The Explorer build compiles the
+3rdparty/ht/Core/c68k/c68kexec.c object with -O0.
 
   make platform=emscripten -C apps/zxtune-web
 
@@ -58,3 +57,13 @@ and set the ssfplay_wasm output suffix to ".mjs". Build with Emscripten 4.0.21.
 
 Copy ssfplay.mjs and ssfplay.wasm to Explorer's vgm/ssfplay-a28e0d7
 directory. Explorer loads this decoder in the audio worker for SSF tracks.
+
+Streamed audio playback
+
+The Linux Explorer image uses the vgmstream CLI r2168 to prepare FLAC
+copies of streamed tracks such as Nintendo AFC. The vgmstream contributors
+distribute the decoder under the license below.
+
+/vgm/vgmstream-license.txt
+https://github.com/vgmstream/vgmstream/releases/tag/r2168
+https://github.com/vgmstream/vgmstream/archive/refs/tags/r2168.tar.gz

@@ -30,6 +30,11 @@ PLAYSTATION = ("Sony", "PlayStation")
 PS2 = ("Sony", "PlayStation 2")
 NEOGEO = ("SNK", "Neo-Geo")
 NEOGEO_COLLECTION = "VGMRips Neo Geo"
+EARLY_CONSOLE_COLLECTIONS = {
+    "VGMRips Atari 5200": ("Atari", "5200"),
+    "VGMRips Atari 7800": ("Atari", "7800"),
+    "VGMRips Intellivision": ("Mattel", "Intellivision"),
+}
 
 # A title at the root of one of these collections names a game set. Alphabet,
 # composer and disc directories in the other collections have different roles.
@@ -47,15 +52,18 @@ SET_FOLDERS = {
     "PC-FX Disc Audio": ("NEC", "PC-FX"),
     NEOGEO_COLLECTION: NEOGEO,
     SMS_POWER_COLLECTION: MASTER_SYSTEM,
+    **EARLY_CONSOLE_COLLECTIONS,
 }
 ARCHIVES = {".zip", ".rar", ".7z", ".rsn", ".vgm7z", ".lha", ".iso", ".d64", ".d71", ".d81", ".dfi"}
 BROWSER_AUDIO = {".mp3", ".flac", ".ogg", ".opus", ".wav", ".m4a", ".aac"}
 DEPENDENCIES = {".psflib", ".psf2lib", ".snsflib", ".m3u", ".m3u8", ".cue", ".wd", ".wi", ".sep", ".seb"}
 JOSHW_TRACKS = {
-    ".2sf", ".adx", ".gsf", ".gym", ".hes", ".hwas", ".kss", ".mgb", ".mini2sf", ".minigsf",
+    ".2sf", ".adp", ".ads", ".adx", ".afc", ".aix", ".at3", ".gsf", ".gym", ".hes", ".hwas",
+    ".kss", ".mgb", ".mini2sf", ".minigsf",
     ".minincsf", ".minissf", ".miniusf", ".ncsf", ".ssf", ".strm", ".swav", ".usf", ".wsr",
+    ".dsf", ".minidsf", ".hps", ".dsp", ".ast", ".brstm", ".ss2", ".vag", ".vgmstream",
 }
-JOSHW_LIBRARIES = {".2sflib", ".gsflib", ".ncsflib", ".ssflib", ".usflib"}
+JOSHW_LIBRARIES = {".2sflib", ".gsflib", ".ncsflib", ".ssflib", ".usflib", ".dsflib"}
 NATIVE_AUDIO = {
     ".nsf", ".nsfe", ".sid", ".gbs", ".ay", ".ym", ".snd", ".sndh", ".sc68", ".vgm", ".vgz",
     ".spc", ".sgc", ".psf", ".minipsf", ".psf2", ".minipsf2", ".snsf", ".minisnsf", ".vsv",
@@ -107,6 +115,8 @@ def identify(path: Path):
                 return collection, collection, None, True
             label = label.removesuffix(".zophar").removesuffix(" (EMU)")
         platform = SET_FOLDERS[collection]
+        if collection == SMS_POWER_COLLECTION and label.endswith("-SG"):
+            platform = "Sega", "SG-1000"
         group = label
         if collection == "spcsets_tmp":
             collection = "spcsets"

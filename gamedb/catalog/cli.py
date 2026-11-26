@@ -4,7 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
-from .retail import EARLY_DISC_PLATFORMS
+from .retail import CLASSIC_CARTRIDGE_PLATFORMS, OPTICAL_RETAIL_PLATFORMS, SIXTH_GENERATION_PLATFORMS
 from .workflow import RebuildWorkflow, WorkflowConfig
 
 
@@ -64,11 +64,17 @@ def main(argv=None) -> int:
     jaguar.add_argument("--report", type=Path, help="Write the full match report as JSON")
     jaguar.add_argument("--publish", action="store_true", help="Publish the Atari Jaguar catalog to Explorer")
     jaguar.add_argument("--sources", type=Path, help="Directory of saved Atari Jaguar reference indexes")
-    optical = commands.add_parser("seed-optical", help="Build the PC-FX, Amiga CD32, or 3DO retail disc catalog")
-    optical.add_argument("platform", choices=EARLY_DISC_PLATFORMS)
+    optical = commands.add_parser("seed-optical", help="Build an optical retail catalog")
+    optical.add_argument("platform", choices=OPTICAL_RETAIL_PLATFORMS)
     optical.add_argument("--report", type=Path, help="Write the full match report as JSON")
     optical.add_argument("--publish", action="store_true", help="Publish the catalog to Explorer")
     optical.add_argument("--sources", type=Path, help="Directory of saved platform reference indexes")
+    cartridge = commands.add_parser("seed-cartridge", aliases=["seed-second-generation"],
+                                    help="Build an early cartridge retail catalog")
+    cartridge.add_argument("platform", choices=CLASSIC_CARTRIDGE_PLATFORMS)
+    cartridge.add_argument("--report", type=Path, help="Write the full match report as JSON")
+    cartridge.add_argument("--publish", action="store_true", help="Publish the catalog to Explorer")
+    cartridge.add_argument("--sources", type=Path, help="Directory of saved reference indexes")
     nes = commands.add_parser("seed-nes", help="Build the NES and Famicom retail catalog")
     nes.add_argument("--html", type=Path, help="Use a saved copy of the pinned Wikipedia HTML")
     nes.add_argument("--report", type=Path, help="Write the full match report as JSON")
@@ -112,8 +118,14 @@ def main(argv=None) -> int:
     jaguar_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-jaguar")
     jaguar_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
     jaguar_manuals.add_argument("--workers", type=int, default=8, help="Concurrent downloads (default: 8)")
-    optical_manuals = commands.add_parser("sync-optical-manuals", help="Download linked PC-FX, Amiga CD32, or 3DO manuals")
-    optical_manuals.add_argument("platform", choices=EARLY_DISC_PLATFORMS)
+    cartridge_manuals = commands.add_parser("sync-cartridge-manuals", aliases=["sync-second-generation-manuals"],
+                                           help="Mirror the manuals linked by an early cartridge catalog")
+    cartridge_manuals.add_argument("platform", choices=CLASSIC_CARTRIDGE_PLATFORMS)
+    cartridge_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-cartridge")
+    cartridge_manuals.add_argument("--root", type=Path, help="Local directory for this platform's manual library")
+    cartridge_manuals.add_argument("--workers", type=int, default=4, help="Concurrent manual downloads")
+    optical_manuals = commands.add_parser("sync-optical-manuals", help="Download manuals linked by an optical retail catalog")
+    optical_manuals.add_argument("platform", choices=OPTICAL_RETAIL_PLATFORMS)
     optical_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-optical")
     optical_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
     optical_manuals.add_argument("--workers", type=int, default=8, help="Concurrent downloads (default: 8)")
@@ -135,6 +147,9 @@ def main(argv=None) -> int:
     sms_music = commands.add_parser("sync-mastersystem-soundtracks", help="Mirror and index reviewed SMS Power VGM packs")
     sms_music.add_argument("--root", type=Path, help="VGM library root")
     sms_music.add_argument("--workers", type=int, default=4, help="Concurrent soundtrack downloads")
+    cartridge_music = commands.add_parser("sync-cartridge-soundtracks", aliases=["sync-second-generation-soundtracks"],
+                                         help="Mirror and index reviewed early-console VGM packs")
+    cartridge_music.add_argument("--root", type=Path, help="VGM library root")
     translations = commands.add_parser("sync-snes-translations", help="Match RHDN patches to verified SNES retail ROMs")
     translations.add_argument("--source", required=True, type=Path, help="Local RHDN backup directory")
     translations.add_argument("--root", type=Path, help="Local patch library (default: data/media/snes-translations)")
@@ -154,7 +169,10 @@ def main(argv=None) -> int:
                             "playstation": ps_translations}
     for platform, label in (("mastersystem", "Master System ROMs"), ("pcengine", "HuCards"),
                             ("n64", "Nintendo 64 Game Paks"), ("saturn", "Saturn discs"),
-                            ("pcfx", "PC-FX discs"), ("3do", "3DO discs")):
+                            ("pcfx", "PC-FX discs"), ("3do", "3DO discs"),
+                            ("segacd", "Sega CD discs"), ("pcecd", "PC Engine CD discs"),
+                            ("neogeocd", "Neo Geo CD discs"), ("colecovision", "ColecoVision cartridges"),
+                            *SIXTH_GENERATION_PLATFORMS.items()):
         command = commands.add_parser(f"sync-{platform}-translations", help=f"Match patches to verified {label}")
         command.add_argument("--source", type=Path, required=True, help="Local RHDN backup directory")
         command.add_argument("--root", type=Path, help=f"Local patch library (default: data/media/{platform}-translations)")
@@ -220,6 +238,16 @@ def main(argv=None) -> int:
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return int(bool(result["failures"]))
 
+    if args.command in {"sync-cartridge-soundtracks", "sync-second-generation-soundtracks"}:
+        from .second_generation_music import sync_soundtracks
+
+        try:
+            result = sync_soundtracks(args.root)
+        except (OSError, ValueError) as error:
+            cartridge_music.error(str(error))
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return 0
+
     if args.command == "seed-optical":
         from .early_disc import seed
 
@@ -227,6 +255,16 @@ def main(argv=None) -> int:
             result = seed(args.platform, args.report, publish_catalog=args.publish, sources=args.sources)
         except (OSError, ValueError) as error:
             optical.error(str(error))
+        print(json.dumps(result, indent=2))
+        return 0
+
+    if args.command in {"seed-cartridge", "seed-second-generation"}:
+        from .second_generation import seed_cartridge
+
+        try:
+            result = seed_cartridge(args.platform, args.report, publish_catalog=args.publish, sources=args.sources)
+        except (OSError, ValueError) as error:
+            cartridge.error(str(error))
         print(json.dumps(result, indent=2))
         return 0
 
@@ -287,6 +325,20 @@ def main(argv=None) -> int:
                                   workers=args.workers, source_references=None)
         except (OSError, ValueError) as error:
             optical_manuals.error(str(error))
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return int(bool(result["failures"]))
+
+    if args.command in {"sync-cartridge-manuals", "sync-second-generation-manuals"}:
+        from gamedb.explorer.manuals import manual_roots
+
+        from .manuals import sync_manuals
+        from .second_generation import SOURCE_DIRECTORY
+
+        try:
+            result = sync_manuals(args.catalog, args.root or manual_roots()[args.platform],
+                                  SOURCE_DIRECTORY / "manual-items", workers=args.workers, source_references=None)
+        except (OSError, ValueError) as error:
+            cartridge_manuals.error(str(error))
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return int(bool(result["failures"]))
 

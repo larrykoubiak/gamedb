@@ -1,0 +1,26 @@
+{
+  "ips": {
+    "3694": {
+      "archive": "[3694]2010 - The Graphic Action Game (1984) (Coleco) (T+Por-Patryck).zip",
+      "baseSha1": "b1621d39a2a6d1cda7eceb882a612a4baf3da70c",
+      "layout": "headerless",
+      "patches": {
+        "2010 - The Graphic Action Game (1984) (Coleco) (T+Por-Patryck).ips": "4a3de104fa29297c71bc106fb7e23a3d5d28e1f4c21b010a58279e9ce646675c"
+      },
+      "outputSha1": {
+        "2010 - The Graphic Action Game (1984) (Coleco) (T+Por-Patryck).ips": "6acb91b12697273013c48ce245ac57b25a855520"
+      }
+    },
+    "4484": {
+      "archive": "[4484]antarcticadventurecol.zip",
+      "baseSha1": "00db7cf9bd66aecac3d9368dd205680781b2e542",
+      "layout": "headerless",
+      "patches": {
+        "antarcticadventurecol.ips": "d9083f479eab04ab4a82ed69e83fffbef109146672d0698345c9c4754d9cc519"
+      },
+      "outputSha1": {
+        "antarcticadventurecol.ips": "8082d30bc379e7bf19d40f2b77c3297409bdeedb"
+      }
+    }
+  }
+}

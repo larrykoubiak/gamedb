@@ -24,7 +24,8 @@ from gamedb.catalog.cartridges import VERIFIED_ROM_SQL, read_verified_rom
 from gamedb.catalog.n64_rom import N64_ROM_LIMIT
 from gamedb.catalog.patching import PatchError, apply_translation, embedded_input, supports_patching, valid_ips
 from gamedb.catalog.references import read_index
-from gamedb.catalog.retail import RETAIL_PLATFORMS, retail_tables, write_report
+from gamedb.catalog.retail import RETAIL_PLATFORMS, SIXTH_GENERATION_PLATFORMS, retail_tables, write_report
+from gamedb.catalog.disc_catalog import DISC_ADDON_PARENTS
 from gamedb.config import PROJECT_ROOT, ProjectEnvironment
 from gamedb.database import create_database_engine
 from gamedb.vgm.archives import member_name, safe_member
@@ -32,27 +33,34 @@ from gamedb.vgm.archives import member_name, safe_member
 
 RHDN_CONSOLES = {"snes": "snes", "megadrive": "genesis", "nes": "nes", "playstation": "psx",
                  "mastersystem": "sms", "pcengine": "tg16", "n64": "n64", "saturn": "saturn",
-                 "pcfx": "pcfx", "3do": "3do"}
+                 "pcfx": "pcfx", "3do": "3do", "segacd": "segacd", "pcecd": "tgcd", "neogeocd": "ngcd",
+                 "colecovision": "cole", "dreamcast": "dc", "playstation2": "ps2", "gamecube": "gc"}
+ADDON_CONSOLES = {"nes": "fds", "megadrive": "32x", "mastersystem": "sg1k"}
+ADDON_LAYOUTS = {"fds": {1: "headerless"}, "32x": {1: "headerless", 8: "headerless"}, "sg1k": {1: "headerless"}}
+ADDON_EXTENSIONS = {"fds": "fds", "32x": "32x", "sg1k": "sg"}
 TRANSLATION_ROOTS = {platform: PROJECT_ROOT / f"data/media/{platform}-translations"
                      for platform in (*RHDN_CONSOLES, "neogeo")}
+TRANSLATION_ROOTS.update({addon: TRANSLATION_ROOTS[parent] / addon for addon, parent in DISC_ADDON_PARENTS.items()})
 CARTRIDGE_EXTENSIONS = {
     "snes": "sfc", "megadrive": "md", "nes": "nes", "mastersystem": "sms", "pcengine": "pce", "n64": "z64",
+    "colecovision": "col",
 }
 AUTHOR_REFERENCE = PROJECT_ROOT / "reference/translation_authors.json"
 REVIEW_REFERENCES = {platform: PROJECT_ROOT / f"reference/{platform}_translation_reviews.json"
-                     for platform in ("megadrive", "nes", "mastersystem", "pcengine", "n64")}
+                     for platform in ("megadrive", "nes", "mastersystem", "pcengine", "n64", "colecovision")}
 INDEX_NAME = ".gamedb-translations.json"
 INDEX_VERSION = 1
 DISC_LAYOUT = "disc-set"
-DISC_PLATFORMS = {"playstation", "saturn", "pcfx", "3do"}
-DISC_PATCH_ARCHIVES = {"zip", "rar", "7z", "ssp"}
+DISC_PLATFORMS = {"playstation", "saturn", "pcfx", "3do", *DISC_ADDON_PARENTS, *SIXTH_GENERATION_PLATFORMS}
+DISC_PATCH_ARCHIVES = {"zip", "rar", "7z", "ssp", "dcp"}
 FORMATS = {"bps", "ips", "ups"}
 OTHER_PATCH_FORMATS = {"aps", "ips32", "pat", "ppf", "rup", "vcdiff", "xdelta", "xpatch"}
 SNES_LAYOUTS = {3: "headered", 4: "headerless", 5: "interleaved-headered", 6: "interleaved"}
 MEGADRIVE_LAYOUTS = {8: "headerless", 9: "interleaved-headered"}
 NES_LAYOUTS = {1: "ines", 2: "ines"}
 CARTRIDGE_LAYOUTS = {"snes": SNES_LAYOUTS, "megadrive": MEGADRIVE_LAYOUTS, "nes": NES_LAYOUTS,
-                     "mastersystem": {1: "headerless"}, "pcengine": {14: "headerless"}, "n64": {}}
+                     "mastersystem": {1: "headerless"}, "pcengine": {14: "headerless"}, "n64": {},
+                     "colecovision": {1: "headerless"}}
 MAX_PATCH_SIZE = 16 * 1024 * 1024
 MAX_PACKAGE_PATCH_BYTES = 64 * 1024 * 1024
 TOKEN = re.compile(r"\s*('(?:''|\\.|[^'\\])*'|NULL|-?\d+(?:\.\d+)?|[(),;])", re.S)
@@ -107,15 +115,13 @@ def _dump_rows(source, table):
             offset = end.end()
 
 
-def _source_archives(source, platform):
+def _source_archives(source, console):
     packages = defaultdict(list)
-    for path in (source / "translations" / RHDN_CONSOLES[platform] / "patches").iterdir():
+    for path in (source / "translations" / console / "patches").iterdir():
         if ((prefix := re.match(r"^\[(\d+)\]", path.name))
                 and (path.suffix.lower() in {".zip", ".rar", ".7z", ".tar"} or path.name.lower().endswith(".tar.gz"))
                 and path.is_file()):
             packages[int(prefix[1])].append(path)
-    if not packages:
-        raise ValueError(f"No {RETAIL_PLATFORMS[platform]} translation packages in the RHDN backup")
     return packages
 
 
@@ -186,7 +192,10 @@ def _verified_bases(connection, platform):
         from gamedb.catalog.nes import SOURCE_DIRECTORY
         from gamedb.catalog.nes_rom import ines_fingerprints
 
-        fingerprints = ines_fingerprints(SOURCE_DIRECTORY / "rom-fingerprints.json", verified)
+        fingerprints = ines_fingerprints(
+            SOURCE_DIRECTORY / "rom-fingerprints.json",
+            (rom for rom in verified if not rom.member_path.casefold().endswith(".fds")),
+        )
     if platform == "n64":
         from gamedb.catalog.n64 import SOURCE_DIRECTORY
         from gamedb.catalog.n64_translations import Nintendo64Roms
@@ -323,7 +332,7 @@ def _package_matches(row, path, bases, *, layouts=SNES_LAYOUTS, review=None, nat
                     native_layout == "ines" and review.get("standalone") and review.get("outputSha1", {}).get(name)
                 ):
                     continue
-                base = bases.by_sha1.get(review["baseSha1"])
+                base = bases.by_sha1.get(review.get("baseSha1ByPatch", {}).get(name, review.get("baseSha1")))
                 layout = review.get("layout", layout)
                 evidence = "reviewed"
             elif eligible and len(members) == 1:
@@ -442,12 +451,16 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
     consoles = {row["consolekey"]: row["consoleid"] for row in _dump_rows(source, "console")}
     languages = {row["id"]: unescape(row["name"]) for row in _dump_rows(source, "language")}
     statuses = {row["id"]: row["description"] for row in _dump_rows(source, "patchstatus")}
-    console = consoles[RHDN_CONSOLES[platform]]
-    rows = [row for row in _dump_rows(source, "transdata") if row["consolekey"] == console]
+    primary = RHDN_CONSOLES[platform]
+    source_consoles = {consoles[primary]: primary}
+    addon = ADDON_CONSOLES.get(platform)
+    if addon in consoles and (source / "translations" / addon / "patches").is_dir():
+        source_consoles[consoles[addon]] = addon
+    rows = [row for row in _dump_rows(source, "transdata") if row["consolekey"] in source_consoles]
     authors = _translation_authors(source, rows, reviews.get("authors"))
-    archives = _source_archives(source, platform)
+    archives = {console: _source_archives(source, key) for console, key in source_consoles.items()}
     titles = ({r["gamekey"]: unescape(r["gametitle"] or "") for r in _dump_rows(source, "gamedata")
-               if r["platformid"] == console} if report and (source / "scripts/gamedata.sql").is_file() else {})
+               if r["platformid"] in source_consoles} if report and (source / "scripts/gamedata.sql").is_file() else {})
     skipped = Counter()
     unresolved = []
 
@@ -459,7 +472,7 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
 
     packages = []
     for row in rows:
-        paths = archives.get(row["transkey"], ())
+        paths = archives[row["consolekey"]].get(row["transkey"], ())
         filename = unescape(row["patchfile"] or "").casefold()
         paths = [path for path in paths if path.name.casefold() == filename] or paths
         if len(paths) != 1:
@@ -474,9 +487,12 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
     translations = {}
     for row, path in packages:
         review = reviews.get("patchInputs" if platform == "n64" else "ips", {}).get(str(row["transkey"]))
-        native_layout = {"nes": "ines", "n64": "z64"}.get(platform, "headerless")
-        matches, reason = _package_matches(row, path, bases, layouts=layouts, review=review,
-                                           native_layout=native_layout)
+        hardware = source_consoles[row["consolekey"]]
+        addon_layouts = ADDON_LAYOUTS.get(hardware)
+        addon_extension = ADDON_EXTENSIONS.get(hardware)
+        native_layout = "headerless" if addon_layouts else {"nes": "ines", "n64": "z64"}.get(platform, "headerless")
+        matches, reason = _package_matches(row, path, bases, layouts=addon_layouts or layouts,
+                                           review=review, native_layout=native_layout)
         if reason:
             skip(row, reason)
             continue
@@ -487,12 +503,14 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
             member_review = review if evidence == "reviewed" else {}
             expected_sha1 = member_review.get("outputSha1", {}).get(name)
             header = member_review.get("outputHeaders", {}).get(name)
-            if platform == "nes":
+            if platform == "nes" and not addon_layouts:
                 layout = _check_ines_build(bases, base, data, patch_format, layout, expected_sha1,
                                            bytes.fromhex(header) if header else None)
                 if layout is None:
                     continue
-            if platform in {"mastersystem", "pcengine", "n64"}:
+            if addon_layouts or platform in {"mastersystem", "pcengine", "n64", "colecovision"}:
+                if addon_layouts and Path(bases.roms[base["sha1"]].member_path).suffix.casefold() != f".{addon_extension}":
+                    continue
                 original = (read_verified_rom(bases.roms[base["sha1"]], max_size=N64_ROM_LIMIT) if platform == "n64"
                             else read_verified_rom(bases.roms[base["sha1"]]))
                 if original is None:
@@ -530,6 +548,8 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
                 record["outputSha1"] = expected_sha1
             if header:
                 record["outputHeader"] = header
+            if addon_layouts:
+                record["extension"] = addon_extension
             _store_patch(patch_root / f"{digest}.{patch_format}", data)
             if key not in translations or record["releasedAt"] > translations[key]["releasedAt"]:
                 translations[key] = record
@@ -559,7 +579,7 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
 
 
 def sync_translations(source, root, *, platform="snes", report=None):
-    if source.name == RHDN_CONSOLES[platform] and source.parent.name == "translations":
+    if source.name in (RHDN_CONSOLES[platform], ADDON_CONSOLES.get(platform)) and source.parent.name == "translations":
         source = source.parent.parent
     if platform in DISC_PLATFORMS:
         from .disc_translations import sync_disc_translations

@@ -1,0 +1,671 @@
+{
+  "archiveTitles": {
+    "Dragon Ball Z - Shin Saiyajin Zetsumetsu Keikaku Chikyū Hen": [
+      "Dragon Ball Z - Shin Saiyajin Zetsumetsu Keikaku - Chikyuu-hen"
+    ],
+    "Bishōjo Senshi Sailor Moon S - Quiz Taiketsu! Sailor Power Shūketsu!!": [
+      "Bishoujo Senshi Sailor Moon S - Quiz Taiketsu! Sailor Power Shuketsu!!"
+    ],
+    "SD Gundam Daizukan": [
+      "SD Gundam - Daizukan"
+    ],
+    "Newton museum - Kyōryū Nendaiki Zenpen": [
+      "Newton Museum - Kyoryu Nendaiki Zenpen"
+    ],
+    "Newton museum - Kyōryū Nendaiki Kōhen": [
+      "Newton Museum - Kyoryu Nendaiki Kohen"
+    ],
+    "Ultra Seven - Chikyū Bōei Sakusen": [
+      "Ultra Seven - Chikyu Boei Sakusen"
+    ],
+    "Dragon Ball Z - Shin Saiyajin Zetsumetsu Keikaku Uchū Hen": [
+      "Dragon Ball Z - Shin Saiyajin Zetsumetsu Keikaku - Uchuu-hen"
+    ],
+    "Elements Voice Series vol.1 Mika Kanai - Wind & Breeze": [
+      "Elements Voice Series - Mika Kanai - Wind & Breeze"
+    ],
+    "Elements Voice Series vol.2 Rica Fukami - Private Step": [
+      "Elements Voice Series - Rica Fukami - Private Step"
+    ],
+    "Elements Voice Series vol.3 Aya Hisakawa - Forest Sways": [
+      "Elements Voice Series - Aya Hisakawa - Forest Sways"
+    ],
+    "Chōgōkin Selections": [
+      "Chougoukin Selections"
+    ],
+    "Elements Voice Series vol.4 Yuri Shiratori - Rainbow Harmony": [
+      "Elements Voice Series - Yuri Shiratori - Rainbow Harmony"
+    ],
+    "Elements Voice Series vol.5 Mariko Kouda - Welcome to the Marikotown!": [
+      "Elements Voice Series - Mariko Kouda - Welcome to the Marikotown!"
+    ],
+    "Bishōjo Senshi Sailor Moon SuperS - Sailor Moon to Hiragana Lesson!": [
+      "Playdia iQ Kids - Bishoujo Senshi Sailor Moon SuperS - Sailor Moon to Hiragana Lesson!"
+    ],
+    "Ultraman - Hiragana Dai Sakusen": [
+      "Playdia iQ Kids - Ultraman - Hiragana Daisakusen"
+    ],
+    "Bishōjo Senshi Sailor Moon SuperS - Sailor Moon to Hajimete no Eigo": [
+      "Playdia iQ Kids - Bishoujo Senshi Sailor Moon SuperS - Sailor Moon to Hajimete no Eigo"
+    ],
+    "Bishōjo Senshi Sailor Moon SuperS - Yōkoso! Sailor Yōchien": [
+      "Playdia iQ Kids - Bishoujo Senshi Sailor Moon SuperS - Youkoso! Sailor Youchien"
+    ],
+    "Ultraman - Oide yo! Ultra Yōchien": [
+      "Playdia iQ Kids - Ultraman - Oide yo! Ultra Youchien"
+    ],
+    "Soreike! Anpanman - Picnic de Obenkyō": [
+      "Playdia iQ Kids - Soreike! Anpanman - Picnic de Obenkyou"
+    ],
+    "Ultraman - Sūji de Asobō Ultra Land": [
+      "Playdia iQ Kids - Ultraman - Suuji de Asobou Ultra Land"
+    ],
+    "Ultraman - Ultraman Chinō UP Dai Sakusen": [
+      "Playdia iQ Kids - Ultraman - Chinou UP Daisakusen"
+    ],
+    "Nintama Rantarō - Gungun Nobiru Chinō Hen": [
+      "Playdia iQ Kids - Nintama Rantarou - Gungun Nobiru Chinou-hen"
+    ],
+    "Nintama Rantarō - Hajimete Oboeru Chishiki Hen": [
+      "Playdia iQ Kids - Nintama Rantarou - Hajimete Oboeru Chishiki-hen"
+    ]
+  },
+  "reviewedArtwork": [
+    {
+      "edition": "Dragon Ball Z - Shin Saiyajin Zetsumetsu Keikaku Chikyū Hen",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-01_DBZ_Plan_to_Eradicate_the_Saiyans_Earth_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-01_DBZ_Plan_to_Eradicate_the_Saiyans_Earth_cover-286x300.jpg"
+        }
+      }
+    },
+    {
+      "edition": "Bishōjo Senshi Sailor Moon S - Quiz Taiketsu! Sailor Power Shūketsu!!",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-02_PS_Sailor_Moon_S_Quiz_Challenge_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-02_PS_Sailor_Moon_S_Quiz_Challenge_cover-288x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "SD Gundam Daizukan",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-03_SD_Gundam_Daizukan_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-03_SD_Gundam_Daizukan_cover-290x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Ultraman Powered - Kaijū Gekimetsu Sakusen",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-04_Ultraman_Powered_Kaiju_Destruction_Tactics_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-04_Ultraman_Powered_Kaiju_Destruction_Tactics_cover-290x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Hello Kitty - Yume no Kuni Daibōken",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-05_Hello_Kitty_Yume_no_Kuni_Daiboken_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-05_Hello_Kitty_Yume_no_Kuni_Daiboken_cover-283x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Aqua Adventure - Blue Lilty",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-06_Aqua_Adventure_Blue_Lilty_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-06_Aqua_Adventure_Blue_Lilty_cover-281x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Newton museum - Kyōryū Nendaiki Zenpen",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-07_Newton_museum_Dinosaurs_Encyclopedia_v1_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-07_Newton_museum_Dinosaurs_Encyclopedia_v1_cover-283x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Newton museum - Kyōryū Nendaiki Kōhen",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-08_Newton_museum_Dinosaurs_Encyclopedia_v2_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-08_Newton_museum_Dinosaurs_Encyclopedia_v2_cover-284x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Shuppatsu! Dōbutsu Tankentai",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-09_Shuppatsu_Dobutsu_Tankentai_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-09_Shuppatsu_Dobutsu_Tankentai_cover-283x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Ultra Seven - Chikyū Bōei Sakusen",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-10_Ultra_Seven_Global_Defense_Tactics_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-10_Ultra_Seven_Global_Defense_Tactics_cover-285x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Dragon Ball Z - Shin Saiyajin Zetsumetsu Keikaku Uchū Hen",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-11_DBZ_Plan_to_Eradicate_the_Saiyans_Space_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-11_DBZ_Plan_to_Eradicate_the_Saiyans_Space_cover-286x300.jpg"
+        }
+      }
+    },
+    {
+      "edition": "Norimono Banzai!! - Kuruma Daishūgō!!",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-12_Norimono_Banzai_Kuruma_Daishugo_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-12_Norimono_Banzai_Kuruma_Daishugo_cover-287x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Norimono Banzai!! - Densha Daishūgō!!",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-13_Norimono_Banzai_Densha_Daishugo_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-13_Norimono_Banzai_Densha_Daishugo_cover-284x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Ie Naki Ko - Suzu no Sentaku",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/VPRJ-09722_Nobodys_Child_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/VPRJ-09722_Nobodys_Child_cover-278x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Gamera - The Time Adventure",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-15_Gamera_The_Time_Adventure_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-15_Gamera_The_Time_Adventure_cover-285x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Elements Voice Series vol.1 Mika Kanai - Wind & Breeze",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-18_Elements_Voice_Series_v1_Mika_Kanai_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-18_Elements_Voice_Series_v1_Mika_Kanai_cover-213x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Elements Voice Series vol.2 Rica Fukami - Private Step",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-19_Elements_Voice_Series_v2_Rica_Fukami_cover.png",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-19_Elements_Voice_Series_v2_Rica_Fukami_cover-214x300.png.webp"
+        }
+      }
+    },
+    {
+      "edition": "Elements Voice Series vol.3 Aya Hisakawa - Forest Sways",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-20_Elements_Voice_Series_v3_Aya_Hisakawa_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-20_Elements_Voice_Series_v3_Aya_Hisakawa_cover-210x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Bishōjo Senshi Sailor Moon SuperS - Sailor Moon to Hiragana Lesson!",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-21_PS_Sailor_Moon_SS_Hiragana_Lessons_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-21_PS_Sailor_Moon_SS_Hiragana_Lessons_cover-300x182.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Ultraman - Hiragana Dai Sakusen",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-22_Ultraman_Hiragana_Mission_armband_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-22_Ultraman_Hiragana_Mission_armband_cover-261x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Ultraman - Alphabet TV e Yōkoso",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-23_Ultraman_Welcome_to_Alphabet_TV_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-23_Ultraman_Welcome_to_Alphabet_TV_cover-268x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Bishōjo Senshi Sailor Moon SuperS - Sailor Moon to Hajimete no Eigo",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-24_PS_Sailor_Moon_SS_Lets_Play_English_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-24_PS_Sailor_Moon_SS_Lets_Play_English_cover-263x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Bishōjo Senshi Sailor Moon SuperS - Yōkoso! Sailor Yōchien",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-25_PS_Sailor_Moon_SS_Welcome_Sailor_Kindergarten_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-25_PS_Sailor_Moon_SS_Welcome_Sailor_Kindergarten_cover-262x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Ultraman - Oide yo! Ultra Yōchien",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-26_Ultraman_Come_On_Ultra_Kindergarten_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-26_Ultraman_Come_On_Ultra_Kindergarten_cover-269x300.jpg"
+        }
+      }
+    },
+    {
+      "edition": "Chōgōkin Selections",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BKPD-01_Chogokin_Selections_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BKPD-01_Chogokin_Selections_cover-213x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Elements Voice Series vol.4 Yuri Shiratori - Rainbow Harmony",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BKPD-02_Elements_Voice_Series_v4_Yuri_Shiratori_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BKPD-02_Elements_Voice_Series_v4_Yuri_Shiratori_cover-213x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Soreike! Anpanman - Picnic de Obenkyō",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-27_Soreike_Anpanman_Picnic_de_Obenkyo_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-27_Soreike_Anpanman_Picnic_de_Obenkyo_cover-263x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Ultraman - Sūji de Asobō Ultra Land",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-28_Ultraman_Lets_Play_with_Numbers_in_Ultraland_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-28_Ultraman_Lets_Play_with_Numbers_in_Ultraland_cover-261x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Ultraman - Ultraman Chinō UP Dai Sakusen",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-29_Ultraman_Intelligence_Upgrade_Mission_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BAPD-29_Ultraman_Intelligence_Upgrade_Mission_cover-259x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Elements Voice Series vol.5 Mariko Kouda - Welcome to the Marikotown!",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BKPD-03_Elements_Voice_Series_v5_Mariko_Kouda_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BKPD-03_Elements_Voice_Series_v5_Mariko_Kouda_cover-210x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Nintama Rantarō - Gungun Nobiru Chinō Hen",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BKPD-04_Ninjaboy_Rantaro_Gungun_Nobiru_Chino_Hen_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BKPD-04_Ninjaboy_Rantaro_Gungun_Nobiru_Chino_Hen_cover-263x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Nintama Rantarō - Hajimete Oboeru Chishiki Hen",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BKPD-05_Ninjaboy_Rantaro_Hajimete_Oboeru_Chishiki_Hen_cover.jpg",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BKPD-05_Ninjaboy_Rantaro_Hajimete_Oboeru_Chishiki_Hen_cover-266x300.jpg.webp"
+        }
+      }
+    },
+    {
+      "edition": "Gekisō Sentai Carranger - Tatakae! Hiragana Racer",
+      "market": "JP",
+      "images": {
+        "boxart": {
+          "url": "https://videogamekraken.com/wp-content/uploads/2019/10/BKPD-06_Gekisou_Sentai_Carranger_Fight_Hiragana_Racer_cover.gif",
+          "source": {
+            "name": "The Video Game Kraken",
+            "url": "https://videogamekraken.com/playdia-by-bandai"
+          },
+          "preview": "https://videogamekraken.com/wp-content/uploads/2019/10/BKPD-06_Gekisou_Sentai_Carranger_Fight_Hiragana_Racer_cover-264x300.gif"
+        }
+      }
+    }
+  ],
+  "manuals": [
+    {
+      "edition": "Bishōjo Senshi Sailor Moon S - Quiz Taiketsu! Sailor Power Shūketsu!!",
+      "market": "JP",
+      "name": "Bishōjo Senshi Sailor Moon S - Quiz Taiketsu! Sailor Power Shūketsu!! — Game manual",
+      "url": "https://archive.org/details/incog-playdia-scans#BAPD-02",
+      "format": "PDF",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ],
+      "source": "Incog’s Playdia scans",
+      "sourceUrl": "https://archive.org/details/incog-playdia-scans",
+      "pages": [
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Bish%C5%8Djo%20Senshi%20Sailor%20Moon%20S%20-%20Quiz%20Taiketsu%21%20Sailor%20Power%20Sh%C5%ABketsu%21%21/Manual/Manual.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Bish%C5%8Djo%20Senshi%20Sailor%20Moon%20S%20-%20Quiz%20Taiketsu%21%20Sailor%20Power%20Sh%C5%ABketsu%21%21/Manual/Manual%20%282%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Bish%C5%8Djo%20Senshi%20Sailor%20Moon%20S%20-%20Quiz%20Taiketsu%21%20Sailor%20Power%20Sh%C5%ABketsu%21%21/Manual/Manual%20%283%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Bish%C5%8Djo%20Senshi%20Sailor%20Moon%20S%20-%20Quiz%20Taiketsu%21%20Sailor%20Power%20Sh%C5%ABketsu%21%21/Manual/Manual%20%284%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Bish%C5%8Djo%20Senshi%20Sailor%20Moon%20S%20-%20Quiz%20Taiketsu%21%20Sailor%20Power%20Sh%C5%ABketsu%21%21/Manual/Manual%20%285%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Bish%C5%8Djo%20Senshi%20Sailor%20Moon%20S%20-%20Quiz%20Taiketsu%21%20Sailor%20Power%20Sh%C5%ABketsu%21%21/Manual/Manual%20%286%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Bish%C5%8Djo%20Senshi%20Sailor%20Moon%20S%20-%20Quiz%20Taiketsu%21%20Sailor%20Power%20Sh%C5%ABketsu%21%21/Manual/Manual%20%287%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Bish%C5%8Djo%20Senshi%20Sailor%20Moon%20S%20-%20Quiz%20Taiketsu%21%20Sailor%20Power%20Sh%C5%ABketsu%21%21/Manual/Manual%20%288%29.jpg"
+      ]
+    },
+    {
+      "edition": "SD Gundam Daizukan",
+      "market": "JP",
+      "name": "SD Gundam Daizukan — Game manual",
+      "url": "https://archive.org/details/incog-playdia-scans#BAPD-03",
+      "format": "PDF",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ],
+      "source": "Incog’s Playdia scans",
+      "sourceUrl": "https://archive.org/details/incog-playdia-scans",
+      "pages": [
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/SD%20Gundam%20Daizukan/Manual/Manual.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/SD%20Gundam%20Daizukan/Manual/Manual%20%282%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/SD%20Gundam%20Daizukan/Manual/Manual%20%283%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/SD%20Gundam%20Daizukan/Manual/Manual%20%284%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/SD%20Gundam%20Daizukan/Manual/Manual%20%285%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/SD%20Gundam%20Daizukan/Manual/Manual%20%286%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/SD%20Gundam%20Daizukan/Manual/Manual%20%287%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/SD%20Gundam%20Daizukan/Manual/Manual%20%288%29.jpg"
+      ]
+    },
+    {
+      "edition": "Hello Kitty - Yume no Kuni Daibōken",
+      "market": "JP",
+      "name": "Hello Kitty - Yume no Kuni Daibōken — Game manual",
+      "url": "https://archive.org/details/incog-playdia-scans#BAPD-05",
+      "format": "PDF",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ],
+      "source": "Incog’s Playdia scans",
+      "sourceUrl": "https://archive.org/details/incog-playdia-scans",
+      "pages": [
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Hello%20Kitty%20-%20Yume%20no%20Kuni%20Daib%C5%8Dken/Manual/Manual.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Hello%20Kitty%20-%20Yume%20no%20Kuni%20Daib%C5%8Dken/Manual/Manual%20%282%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Hello%20Kitty%20-%20Yume%20no%20Kuni%20Daib%C5%8Dken/Manual/Manual%20%283%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Hello%20Kitty%20-%20Yume%20no%20Kuni%20Daib%C5%8Dken/Manual/Manual%20%284%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Hello%20Kitty%20-%20Yume%20no%20Kuni%20Daib%C5%8Dken/Manual/Manual%20%285%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Hello%20Kitty%20-%20Yume%20no%20Kuni%20Daib%C5%8Dken/Manual/Manual%20%286%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Hello%20Kitty%20-%20Yume%20no%20Kuni%20Daib%C5%8Dken/Manual/Manual%20%287%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Hello%20Kitty%20-%20Yume%20no%20Kuni%20Daib%C5%8Dken/Manual/Manual%20%288%29.jpg"
+      ]
+    },
+    {
+      "edition": "Newton museum - Kyōryū Nendaiki Kōhen",
+      "market": "JP",
+      "name": "Newton museum - Kyōryū Nendaiki Kōhen — Game manual",
+      "url": "https://archive.org/details/incog-playdia-scans#BAPD-08",
+      "format": "PDF",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ],
+      "source": "Incog’s Playdia scans",
+      "sourceUrl": "https://archive.org/details/incog-playdia-scans",
+      "pages": [
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Newton%20museum%20-%20Ky%C5%8Dry%C5%AB%20Nendaiki%20K%C5%8Dhen/Manual/Manual.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Newton%20museum%20-%20Ky%C5%8Dry%C5%AB%20Nendaiki%20K%C5%8Dhen/Manual/Manual%20%282%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Newton%20museum%20-%20Ky%C5%8Dry%C5%AB%20Nendaiki%20K%C5%8Dhen/Manual/Manual%20%283%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Newton%20museum%20-%20Ky%C5%8Dry%C5%AB%20Nendaiki%20K%C5%8Dhen/Manual/Manual%20%284%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Newton%20museum%20-%20Ky%C5%8Dry%C5%AB%20Nendaiki%20K%C5%8Dhen/Manual/Manual%20%285%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Newton%20museum%20-%20Ky%C5%8Dry%C5%AB%20Nendaiki%20K%C5%8Dhen/Manual/Manual%20%286%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Newton%20museum%20-%20Ky%C5%8Dry%C5%AB%20Nendaiki%20K%C5%8Dhen/Manual/Manual%20%287%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Newton%20museum%20-%20Ky%C5%8Dry%C5%AB%20Nendaiki%20K%C5%8Dhen/Manual/Manual%20%288%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Newton%20museum%20-%20Ky%C5%8Dry%C5%AB%20Nendaiki%20K%C5%8Dhen/Manual/Manual%20%289%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Newton%20museum%20-%20Ky%C5%8Dry%C5%AB%20Nendaiki%20K%C5%8Dhen/Manual/Manual%20%2810%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Newton%20museum%20-%20Ky%C5%8Dry%C5%AB%20Nendaiki%20K%C5%8Dhen/Manual/Manual%20%2811%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Newton%20museum%20-%20Ky%C5%8Dry%C5%AB%20Nendaiki%20K%C5%8Dhen/Manual/Manual%20%2812%29.jpg"
+      ]
+    },
+    {
+      "edition": "Shuppatsu! Dōbutsu Tankentai",
+      "market": "JP",
+      "name": "Shuppatsu! Dōbutsu Tankentai — Game manual",
+      "url": "https://archive.org/details/incog-playdia-scans#BAPD-09",
+      "format": "PDF",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ],
+      "source": "Incog’s Playdia scans",
+      "sourceUrl": "https://archive.org/details/incog-playdia-scans",
+      "pages": [
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Shuppatsu%21%20D%C5%8Dbutsu%20Tankentai/Manual/Manual.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Shuppatsu%21%20D%C5%8Dbutsu%20Tankentai/Manual/Manual%20%282%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Shuppatsu%21%20D%C5%8Dbutsu%20Tankentai/Manual/Manual%20%283%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Shuppatsu%21%20D%C5%8Dbutsu%20Tankentai/Manual/Manual%20%284%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Shuppatsu%21%20D%C5%8Dbutsu%20Tankentai/Manual/Manual%20%285%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Shuppatsu%21%20D%C5%8Dbutsu%20Tankentai/Manual/Manual%20%286%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Shuppatsu%21%20D%C5%8Dbutsu%20Tankentai/Manual/Manual%20%287%29.jpg",
+        "https://archive.org/download/incog-playdia-scans/Playdia_images.zip/Playdia/CDs/Shuppatsu%21%20D%C5%8Dbutsu%20Tankentai/Manual/Manual%20%288%29.jpg"
+      ]
+    },
+    {
+      "edition": "Bishōjo Senshi Sailor Moon SuperS - Yōkoso! Sailor Yōchien",
+      "market": "JP",
+      "name": "Bishōjo Senshi Sailor Moon SuperS - Yōkoso! Sailor Yōchien — Game manual",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Bandai%20Playdia%20-%20Manuals%20-%20Games#BAPD-25",
+      "format": "PDF",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ],
+      "source": "TOSEC-PIX",
+      "localArchive": "Bandai/Playdia/Manuals/Games/Bishojo Senshi Sailor Moon SS - Yokoso! Sailor Yochien (1995)(Bandai)(JP)[BAPD-25].zip"
+    }
+  ]
+}

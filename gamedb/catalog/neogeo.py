@@ -11,6 +11,7 @@ from sqlalchemy import text
 
 from gamedb.arcade.bundle import partition_link_firmware
 from gamedb.catalog import retail
+from gamedb.catalog.addons import DISC_ADDONS, add_retail_addon
 from gamedb.catalog.retail_media import _scope_launchbox
 from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.config import PROJECT_ROOT
@@ -116,6 +117,8 @@ def add_arcade_sets(games, records):
         by_name[row["setName"]].append(availability)
     for game in games:
         for release in game["releases"]:
+            if "setNames" not in release:
+                continue
             names = release["setNames"]
             releases = [row for name in names for row in by_name[name]]
             release["arcadeSets"] = sorted(releases, key=lambda row: (
@@ -213,6 +216,8 @@ def seed_neogeo(report=None, *, publish_catalog=False):
                     game["description"] = description
             add_soundtracks(connection, catalog, media)
             catalog["summary"] = coverage(catalog)
+            markets = {**retail.ARCHIVE_MARKETS, "MVS": set(), "AES": set()}
+            add_retail_addon(connection, catalog, SOURCE_DIRECTORY, DISC_ADDONS[PLATFORM], markets)
             if publish_catalog:
                 retail.publish(connection, catalog, PLATFORM)
     finally:

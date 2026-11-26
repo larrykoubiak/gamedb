@@ -63,6 +63,16 @@ RUN apt-get update \
     && apt-get install --yes --no-install-recommends ffmpeg poppler-utils xdelta3 \
     && rm -rf /var/lib/apt/lists/*
 
+RUN if [ "$(uname -m)" = x86_64 ]; then \
+        python -c 'import hashlib, io, pathlib, urllib.request, zipfile; \
+url = "https://github.com/vgmstream/vgmstream/releases/download/r2168/vgmstream-linux.zip"; \
+data = urllib.request.urlopen(url, timeout=30).read(); \
+assert hashlib.sha256(data).hexdigest() == "2dfdfddda68e0e36e62f20dc050a4e45f4bc3318c7efeadf8a063df646d57c84"; \
+output = pathlib.Path("/usr/local/bin/vgmstream-cli"); \
+output.write_bytes(zipfile.ZipFile(io.BytesIO(data)).read("vgmstream-cli")); \
+output.chmod(0o755)'; \
+    fi
+
 COPY requirements-catalog.txt /app/requirements-catalog.txt
 RUN pip install --no-cache-dir -r /app/requirements-catalog.txt
 

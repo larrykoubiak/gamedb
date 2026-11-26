@@ -9,12 +9,13 @@ import subprocess
 
 from gamedb.catalog.cartridges import verified_roms_sql
 from gamedb.catalog.neogeo import PLATFORM as NEOGEO, SET_NAME as NEOGEO_SET, add_arcade_sets, arcade_sets_sql
-from gamedb.catalog.disc_catalog import DISC_SYSTEMS
+from gamedb.catalog.disc_catalog import DISC_ADDON_PARENTS, DISC_SYSTEMS
 from gamedb.catalog.retail import RETAIL_PLATFORMS, retail_tables
 from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.config import PROJECT_ROOT
 from gamedb.explorer.cache import JsonResponseCache
 from gamedb.explorer.retail_metadata import add_release_metadata
+from gamedb.explorer.soundtrack_audio import flac_formats
 from gamedb.vgm.joshw import (
     COLLECTION as JOSHW_COLLECTION, prefer_playstation_sources, superseded_sources, supports_version, title_revision,
 )
@@ -244,7 +245,7 @@ class CatalogRepository:
             QUERY_DIRECTORY / "system_software_facts.sql"
         ).render(system_id=sql_integer(system_id, "system_id", 1))
 
-    def install_manifest_sql(self, release_signature: str, retail_platforms=()) -> str:
+    def install_manifest_sql(self, release_signature: str, retail_platforms=(), *, software_key=None) -> str:
         published = " UNION ALL ".join(
             f"SELECT payload FROM {retail_tables(platform)[0]} WHERE singleton"
             for platform in retail_platforms
@@ -254,6 +255,7 @@ class CatalogRepository:
             release_signature=quote_sql_text(
                 self._signature(release_signature, "release_signature")
             ),
+            software_key="NULL" if software_key is None else quote_sql_text(self._signature(software_key, "software_key")),
             retail_catalogs_sql=published or "SELECT NULL::jsonb AS payload WHERE false",
             retail_install_releases_sql=self._retail_install_releases_sql(
                 "SELECT link_no, archive FROM retail_links", signature_source="inventory",
@@ -389,7 +391,7 @@ class CatalogRepository:
         if game_key is not None:
             key = quote_sql_text(game_key)
             catalog = self._read_listing(f"""
-                SELECT jsonb_build_object('source', payload->'source', 'game', game)
+                SELECT jsonb_build_object('source', payload->'source', 'addonSources', payload->'addonSources', 'game', game)
                 FROM {table}
                 CROSS JOIN LATERAL jsonb_array_elements(payload->'games') AS games(game)
                 WHERE singleton AND (game->>'key' = {key} OR (game->'formerKeys') ? {key})
@@ -397,16 +399,16 @@ class CatalogRepository:
             if catalog:
                 game = catalog["game"]
                 if platform == NEOGEO:
-                    names = sorted({name for release in game["releases"] for name in release["setNames"]
+                    names = sorted({name for release in game["releases"] for name in release.get("setNames", ())
                                     if NEOGEO_SET.fullmatch(name)})
-                    names_sql = ", ".join(map(quote_sql_text, names))
-                    records = self._read_listing(
-                        "SELECT coalesce(jsonb_agg(to_jsonb(sets)), '[]'::jsonb) FROM ("
-                        + arcade_sets_sql(f"ARRAY[{names_sql}]::text[]") + ") sets"
-                    )
-                    add_arcade_sets([game], records)
-                else:
-                    add_release_metadata(game, self.retail_release_facts(game), snes_peripherals=platform == "snes")
+                    if names:
+                        names_sql = ", ".join(map(quote_sql_text, names))
+                        records = self._read_listing(
+                            "SELECT coalesce(jsonb_agg(to_jsonb(sets)), '[]'::jsonb) FROM ("
+                            + arcade_sets_sql(f"ARRAY[{names_sql}]::text[]") + ") sets"
+                        )
+                        add_arcade_sets([game], records)
+                add_release_metadata(game, self.retail_release_facts(game), snes_peripherals=platform == "snes")
             return catalog
         if browse:
             return self.retail_browse(platform)
@@ -626,6 +628,7 @@ class CatalogRepository:
         additional_targets = "OR soundtrack.additional_target_keys @> ARRAY[target.key]" if has_additional_targets else ""
         albums_sql = SqlTemplate(QUERY_DIRECTORY / "vgm_albums.sql").render(
             album_filter="soundtrack.target_key = target.key " + additional_targets,
+            flac_formats=", ".join(map(quote_sql_text, sorted(flac_formats()))),
         )
         payload = self._read_listing(SqlTemplate(QUERY_DIRECTORY / "vgm_soundtracks.sql").render(
             software_id=sql_integer(software_id, "software_id", 1), software_key_sql=SOFTWARE_KEY_SQL,
@@ -644,6 +647,7 @@ class CatalogRepository:
         keys = ", ".join(map(quote_sql_text, links))
         albums = self._read_listing(SqlTemplate(QUERY_DIRECTORY / "vgm_albums.sql").render(
             album_filter=f"soundtrack.key IN ({keys})",
+            flac_formats=", ".join(map(quote_sql_text, sorted(flac_formats()))),
         ))
         return prefer_playstation_sources([
             {**album, **{name: links[album["key"]][name] for name in ("releases", "titleMatches", "sourceUrl")
@@ -710,21 +714,25 @@ class CatalogRepository:
             release_signature=quote_sql_text(self._signature(release_signature, "release_signature"))
         ))
 
-    def install_manifest(self, release_signature: str):
+    def install_manifest(self, release_signature: str, *, software_key=None):
         tables = ", ".join(f"('{platform}', '{retail_tables(platform)[0]}')" for platform in RETAIL_PLATFORMS)
         platforms = self._read_listing(f"""
             SELECT coalesce(jsonb_agg(platform ORDER BY platform), '[]'::jsonb)
             FROM (VALUES {tables}) AS retail(platform, relation)
             WHERE to_regclass(relation) IS NOT NULL
         """)
-        manifest = self._read_listing(self.install_manifest_sql(release_signature, platforms))
-        if manifest is None and (available := [platform for platform in platforms if platform in DISC_SYSTEMS]):
+        manifest = self._read_listing(self.install_manifest_sql(release_signature, platforms, software_key=software_key))
+        if software_key is not None:
+            return manifest
+        available = {disc: DISC_ADDON_PARENTS.get(disc, disc) for disc in DISC_SYSTEMS
+                     if DISC_ADDON_PARENTS.get(disc, disc) in platforms}
+        if manifest is None and available:
             catalogs = []
-            for platform in available:
-                manufacturer, system = DISC_SYSTEMS[platform]
+            for disc, parent in available.items():
+                manufacturer, system = DISC_SYSTEMS[disc]
                 catalogs.append(
                     f"SELECT payload, {quote_sql_text(manufacturer)} AS manufacturer, {quote_sql_text(system)} AS system_name "
-                    f"FROM {retail_tables(platform)[0]} WHERE singleton"
+                    f"FROM {retail_tables(parent)[0]} WHERE singleton"
                 )
             return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "disc_install_manifest.sql").render(
                 release_signature=quote_sql_text(self._signature(release_signature, "release_signature")),

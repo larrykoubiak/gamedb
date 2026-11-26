@@ -96,8 +96,10 @@ def parse_retail_list(html, *, additional_releases=(), expected_rows=672):
                     release.update(publisher=name, creditSources={"publisher": SOURCE})
                 if format_name == "HuCard (PC-SG)":
                     release["medium"] = "SuperGrafx-enhanced HuCard"
+                    release["compatibleHardware"] = ["supergrafx"]
                 if title == "Darius Alpha":
                     release["medium"] = "Promotional HuCard"
+                    release["compatibleHardware"] = ["supergrafx"]
                 game["releases"].append(release)
         if not game["releases"] or title in games:
             raise ValueError(f"Invalid or duplicate PC Engine title {title!r}")

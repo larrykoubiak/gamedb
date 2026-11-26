@@ -153,65 +153,71 @@
       "discs": [
         {
           "archiveName": "Rabbit (Japan).zip",
-          "inputSha1": "5bcf07467f103e82df977f43f4db77a70a2e22fa"
+          "inputSha1": "5bcf07467f103e82df977f43f4db77a70a2e22fa",
+          "outputSha1": "ecb8c9c0794932d5d53d4c7a4617cad6d3d07e46"
         }
       ],
       "archivePage": "https://github.com/DerekPascarella/Rabbit-EnglishPatchSaturn/releases/tag/1.0",
       "sourceUrl": "https://github.com/DerekPascarella/Rabbit-EnglishPatchSaturn",
-      "patchOnly": true,
-      "archiveSha256": "b59d3c0fb00101111db09a5c6362fba811ceed6b2f5b19d74e521b123f04b724"
+      "archiveSha256": "b59d3c0fb00101111db09a5c6362fba811ceed6b2f5b19d74e521b123f04b724",
+      "preparedDiscSha256": "4e1abfdf314c8341aa7f691e02f99ff435e78c55ec10a2fd97ef26721eedb837"
     },
     "5999": {
       "archive": "[5999]ss_cotton_2_eng_v0.9.zip",
       "discs": [
         {
           "archiveName": "Magical Night Dreams - Cotton 2 (Japan).zip",
-          "inputSha1": "25366440f350ec6620e4f78ce61774238766caeb"
+          "inputSha1": "25366440f350ec6620e4f78ce61774238766caeb",
+          "outputSha1": "c50e38dbd26bf23660f7442885ed0f91a77cc2ee"
         }
       ],
       "sourceUrl": "https://www.romhacking.net/translations/5999/",
-      "patchOnly": true,
-      "archiveSha256": "87736c626e215679cf9c90af29e9035eb29a4e4bddf63d7e9a4e96dcf44a1c08"
+      "archiveSha256": "87736c626e215679cf9c90af29e9035eb29a4e4bddf63d7e9a4e96dcf44a1c08",
+      "preparedDiscSha256": "6cefaa9cfe81a938f71cbd9ad5835a479a75d88422eb9a8d4280ca3e3dcc71d8"
     },
     "6835": {
       "archive": "[6835]TO_Patch_v1,0,1_(SS).7z",
       "discs": [
         {
           "archiveName": "Tactics Ogre - Let Us Cling Together (Japan).zip",
-          "inputSha1": "24ce1a059c7172065204f0b22b0c82fc7cce53e3"
+          "inputSha1": "24ce1a059c7172065204f0b22b0c82fc7cce53e3",
+          "outputSha1": "86bb848d42254887b4221f9d0bd11f3c95a3a8aa"
         }
       ],
       "sourceUrl": "https://www.romhacking.net/translations/6835/",
-      "patchOnly": true,
-      "archiveSha256": "780d19248615b42d12dcb0612fbf063cfb7726bb271f2d959768a56513dee843"
+      "archiveSha256": "780d19248615b42d12dcb0612fbf063cfb7726bb271f2d959768a56513dee843",
+      "preparedDiscSha256": "e576fed715fc000165c96e7e8c3894f0fc4220257f5f47359ea4734713c428dc"
     },
     "5700": {
       "archive": "[5700]Valhollian_(v1,3).zip",
       "discs": [
         {
           "archiveName": "Zanma Chou Ougi - Valhollian (Japan).zip",
-          "inputSha1": "7c1111dd03adc76fd53dbb746e79e4be7cf882ca"
+          "inputSha1": "7c1111dd03adc76fd53dbb746e79e4be7cf882ca",
+          "outputSha1": "d07b1b0566f0417cea5378766b83efa0f94bb5ef"
         }
       ],
       "sourceUrl": "https://www.romhacking.net/translations/5700/",
-      "patchOnly": true,
-      "archiveSha256": "755133817b8acafd985eeebfc869aa99352dc04421f5da88c43a406403b399b7"
+      "archiveSha256": "755133817b8acafd985eeebfc869aa99352dc04421f5da88c43a406403b399b7",
+      "preparedDiscSha256": "e43781bec98279f83f03c5fe3b3f44768fe14671900b2ca4ca32762bfc92561a"
     },
     "2652": {
       "archive": "[2652]utena translator 104.rar",
       "discs": [
         {
           "archiveName": "Shoujo Kakumei Utena - Itsuka Kakumei Sareru Monogatari (Japan) (Disc 1).zip",
-          "inputSha1": "02e80bf640c50da94633cd46a71ed856cd58468f"
+          "inputSha1": "02e80bf640c50da94633cd46a71ed856cd58468f",
+          "outputSha1": "c359662fadcd1f7b265ee62977a233ae689f008e"
         },
         {
           "archiveName": "Shoujo Kakumei Utena - Itsuka Kakumei Sareru Monogatari (Japan) (Disc 2).zip",
-          "inputSha1": "7dee85e47594bd621f7dcdf284afc582476c0e5c"
+          "inputSha1": "7dee85e47594bd621f7dcdf284afc582476c0e5c",
+          "outputSha1": "68114d58a97c6a1115b7a3849a81b92b62440c82"
         }
       ],
       "sourceUrl": "http://ohtori.nu/saturn/",
-      "patchOnly": true,
-      "archiveSha256": "89f08528a61a653b0a773ce2fd2e05d0063e0406c280284f7699ab19fa248b3c"
+      "archiveSha256": "89f08528a61a653b0a773ce2fd2e05d0063e0406c280284f7699ab19fa248b3c",
+      "preparedDiscSha256": "9d9c5056467f755f7d656fec3a791ad0053ae5b556ecbdf0b3c251681b49740b"
     },
     "274": {
       "archive": "[274]ninpenb.zip",
@@ -284,12 +290,12 @@
     "silhouette-mirage-2": {
       "archive": "Silhouette-Mirage-EN.zip",
       "archiveSha256": "f1ed6ebdad6491f0b23ebd638cf7f497a509fe32205ef84eed456ebb366847e2",
-      "patchOnly": true,
       "sourceUrl": "https://segaxtreme.net/resources/silhouette-mirage-english-retranslation-patch.298/",
       "discs": [
         {
           "archiveName": "Silhouette Mirage (Japan).zip",
-          "inputSha1": "dc46ccfbee8cd8f85ad35f1838a65c11e7ebad36"
+          "inputSha1": "dc46ccfbee8cd8f85ad35f1838a65c11e7ebad36",
+          "outputSha1": "19d29a67214b8e72169da92de757dfd4dbf679b3"
         }
       ],
       "archivePage": "https://segaxtreme.net/resources/silhouette-mirage-english-retranslation-patch.298/download",
@@ -301,7 +307,8 @@
         ],
         "status": "Complete",
         "releasedAt": 1787788800
-      }
+      },
+      "preparedDiscSha256": "b20b2caa6cb9cd908729ee27621b20a244680e4be1604f755cb0003d8d771c02"
     },
     "sakura-wars-1": {
       "archive": "Sakura-Wars-EN.zip",
@@ -489,12 +496,12 @@
     "6514-1": {
       "archive": "[6514]Ogre_Battle_Patch_(v1,3,1).7z",
       "archiveSha256": "ab1025d92453a30010bc3c692fd154acde6e8fd20dfd892c6dd2dc2c7aebe88a",
-      "patchOnly": true,
       "sourceUrl": "https://www.romhacking.net/translations/6514/",
       "discs": [
         {
           "archiveName": "Densetsu no Ogre Battle (Japan).zip",
-          "inputSha1": "d18f6cebf971cd8486e8f4c79bc2c7b7f21e83b5"
+          "inputSha1": "d18f6cebf971cd8486e8f4c79bc2c7b7f21e83b5",
+          "outputSha1": "48504694fb59fba723822220d78706db516de2e5"
         }
       ],
       "rhdnId": 6514,
@@ -503,7 +510,8 @@
         "paul_met",
         "Pennywise",
         "aishsha"
-      ]
+      ],
+      "preparedDiscSha256": "1d12d2e064c03de0ca066d17815edcffbe5b7033c49f279996d774455c7c219f"
     },
     "5871-1": {
       "archive": "SS_Grandia_EN_v1.1.1.zip",
@@ -685,7 +693,6 @@
       "archive": "Bulk-Slash-English.zip",
       "archivePage": "https://segaxtreme.net/resources/bulk-slash-english.105/download",
       "archiveSha256": "efce226625cd64aeb4e471ea76b74fa9baf2e16e0d92ea97d8481eb5c7ea57ef",
-      "patchOnly": true,
       "sourceUrl": "https://segaxtreme.net/resources/bulk-slash-english.105/",
       "projectMetadata": {
         "language": "English",
@@ -700,9 +707,11 @@
       "discs": [
         {
           "archiveName": "Bulk Slash (Japan).zip",
-          "inputSha1": "4a86915c45a914e54e7b610ba9bfa98d3a73c26f"
+          "inputSha1": "4a86915c45a914e54e7b610ba9bfa98d3a73c26f",
+          "outputSha1": "aa54b6680df679c7fc7655ad1c5faaebe330d1a0"
         }
-      ]
+      ],
+      "preparedDiscSha256": "370168c27c30306a09600e3e1c2249c57cfab1a9b42c5bb7a57c60b738591b68"
     }
   }
 }

@@ -1,0 +1,2713 @@
+{
+  "source": {
+    "name": "SMS Power! SG-1000 catalog",
+    "url": "https://www.smspower.org/Games-Releases/SG-JP",
+    "revision": "2026-11-26",
+    "license": null
+  },
+  "titles": [
+    {
+      "title": "007 James Bond",
+      "dates": {
+        "JP": "1984"
+      },
+      "developer": null,
+      "publisher": "Tsukuda Original",
+      "aliases": [
+        "００７ ジェイムスボンド"
+      ],
+      "archiveTitles": [
+        "007 James Bond"
+      ],
+      "productCodes": [
+        "OM-G008"
+      ],
+      "medium": "Othello Multivision cartridge"
+    },
+    {
+      "title": "Bank Panic",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "バンクパニック"
+      ],
+      "archiveTitles": [
+        "Bank Panic"
+      ],
+      "productCodes": [
+        "C-53"
+      ],
+      "medium": "Sega My Card",
+      "parentTitle": "Bank Panic"
+    },
+    {
+      "title": "The Black Onyx",
+      "dates": {
+        "JP": "1987"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ザ・ブラック オニキス"
+      ],
+      "archiveTitles": [
+        "The Black Onyx"
+      ],
+      "productCodes": [
+        "C-72"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Bomb Jack",
+      "dates": {
+        "JP": "1985",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ボンジャック"
+      ],
+      "archiveTitles": [
+        "Bomb Jack"
+      ],
+      "productCodes": [
+        "C-61"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Borderline",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ボーダーライン"
+      ],
+      "archiveTitles": [
+        "Borderline"
+      ],
+      "productCodes": [
+        "G-1001"
+      ]
+    },
+    {
+      "title": "The Castle",
+      "dates": {
+        "JP": "1986"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ザ・キャッスル"
+      ],
+      "archiveTitles": [
+        "The Castle"
+      ],
+      "productCodes": [
+        "G-1046"
+      ]
+    },
+    {
+      "title": "Chack'n Pop",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "チャックン ポップ"
+      ],
+      "archiveTitles": [
+        "Chack'n Pop"
+      ],
+      "productCodes": [
+        "C-52"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Challenge Derby",
+      "dates": {
+        "JP": "1984"
+      },
+      "developer": null,
+      "publisher": "Tsukuda Original",
+      "aliases": [
+        "チャレンジダービー"
+      ],
+      "archiveTitles": [
+        "Challenge Derby"
+      ],
+      "productCodes": [
+        "OM-G005"
+      ],
+      "medium": "Othello Multivision cartridge"
+    },
+    {
+      "title": "Champion Baseball",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "チャンピオンベースボール"
+      ],
+      "archiveTitles": [
+        "Champion Baseball"
+      ],
+      "productCodes": [
+        "G-1011"
+      ]
+    },
+    {
+      "title": "Champion Billiards",
+      "dates": {
+        "JP": "1986"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "チャンピオンビリヤード"
+      ],
+      "archiveTitles": [
+        "Champion Billiards"
+      ],
+      "productCodes": [
+        "C-71"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Champion Boxing",
+      "dates": {
+        "JP": "1984",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "チャンピオンボクシング"
+      ],
+      "archiveTitles": [
+        "Champion Boxing"
+      ],
+      "productCodes": [
+        "C-33",
+        "G-1033"
+      ],
+      "medium": "Cartridge / Sega My Card"
+    },
+    {
+      "title": "Champion Golf",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "チャンピオンゴルフ"
+      ],
+      "archiveTitles": [
+        "Champion Golf"
+      ],
+      "productCodes": [
+        "C-05",
+        "G-1005"
+      ],
+      "medium": "Cartridge / Sega My Card"
+    },
+    {
+      "title": "Champion Ice Hockey",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "チャンピオンアイスホッケー"
+      ],
+      "archiveTitles": [
+        "Champion Ice Hockey"
+      ],
+      "productCodes": [
+        "C-59"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Champion Kendou",
+      "dates": {
+        "JP": "1986"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "チャンピオン剣道"
+      ],
+      "archiveTitles": [
+        "Champion Kendou"
+      ],
+      "productCodes": [
+        "C-67"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Champion Pro Wrestling",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "チャンピオンプロレス"
+      ],
+      "archiveTitles": [
+        "Champion Pro Wrestling"
+      ],
+      "productCodes": [
+        "G-1039"
+      ]
+    },
+    {
+      "title": "Championship Lode Runner",
+      "dates": {
+        "JP": "1985",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "チャンピオンシップロードランナー"
+      ],
+      "archiveTitles": [
+        "Championship Lode Runner"
+      ],
+      "productCodes": [
+        "C-57"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Champion Soccer",
+      "dates": {
+        "JP": "1984",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "チャンピオンサッカー"
+      ],
+      "archiveTitles": [
+        "Champion Soccer"
+      ],
+      "productCodes": [
+        "G-1034"
+      ]
+    },
+    {
+      "title": "Champion Tennis",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "チャンピオンテニス"
+      ],
+      "archiveTitles": [
+        "Champion Tennis"
+      ],
+      "productCodes": [
+        "G-1009"
+      ]
+    },
+    {
+      "title": "Choplifter",
+      "dates": {
+        "JP": "1985",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "チョップリフター"
+      ],
+      "archiveTitles": [
+        "Choplifter"
+      ],
+      "productCodes": [
+        "C-48"
+      ],
+      "medium": "Sega My Card",
+      "parentTitle": "Choplifter"
+    },
+    {
+      "title": "Congo Bongo",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "コンゴボンゴ"
+      ],
+      "archiveTitles": [
+        "Congo Bongo"
+      ],
+      "productCodes": [
+        "G-1007"
+      ]
+    },
+    {
+      "title": "C_So!",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "シーソー"
+      ],
+      "archiveTitles": [
+        "C_So!"
+      ],
+      "productCodes": [
+        "C-64"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Doki Doki Penguin Land",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ドキドキ ペンギンランド"
+      ],
+      "archiveTitles": [
+        "Doki Doki Penguin Land"
+      ],
+      "productCodes": [
+        "C-50"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Dragon Wang",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ドラゴン‐ワン"
+      ],
+      "archiveTitles": [
+        "Dragon Wang"
+      ],
+      "productCodes": [
+        "C-46"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Drol",
+      "dates": {
+        "JP": "1985",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ドロール"
+      ],
+      "archiveTitles": [
+        "Drol"
+      ],
+      "productCodes": [
+        "C-51"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Elevator Action",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "エレベーターアクション"
+      ],
+      "archiveTitles": [
+        "Elevator Action"
+      ],
+      "productCodes": [
+        "C-55"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Exerion",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "エクセリオン"
+      ],
+      "archiveTitles": [
+        "Exerion"
+      ],
+      "productCodes": [
+        "G-1028"
+      ]
+    },
+    {
+      "title": "Flicky",
+      "dates": {
+        "JP": "1984",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "フリッキー"
+      ],
+      "archiveTitles": [
+        "Flicky"
+      ],
+      "productCodes": [
+        "G-1036"
+      ]
+    },
+    {
+      "title": "Girl's Garden",
+      "dates": {
+        "JP": "1984",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ガールズガーデン"
+      ],
+      "archiveTitles": [
+        "Girl's Garden"
+      ],
+      "productCodes": [
+        "G-1037"
+      ]
+    },
+    {
+      "title": "Golgo 13",
+      "dates": {
+        "JP": "1984"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ゴルゴ13"
+      ],
+      "archiveTitles": [
+        "Golgo 13"
+      ],
+      "productCodes": [
+        "G-1014"
+      ]
+    },
+    {
+      "title": "GP World",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ＧＰワールド"
+      ],
+      "archiveTitles": [
+        "GP World"
+      ],
+      "productCodes": [
+        "G-1040"
+      ]
+    },
+    {
+      "title": "Gulkave",
+      "dates": {
+        "JP": "1986"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ガルケーブ"
+      ],
+      "archiveTitles": [
+        "Gulkave"
+      ],
+      "productCodes": [
+        "C-63"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Guzzler",
+      "dates": {
+        "JP": "1983"
+      },
+      "developer": null,
+      "publisher": "Tsukuda Original",
+      "aliases": [
+        "ガズラー"
+      ],
+      "archiveTitles": [
+        "Guzzler"
+      ],
+      "productCodes": [
+        "OM-G002"
+      ],
+      "medium": "Othello Multivision cartridge"
+    },
+    {
+      "title": "Hang On II",
+      "dates": {
+        "JP": "1985",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ハングオンII"
+      ],
+      "archiveTitles": [
+        "Hang On II"
+      ],
+      "productCodes": [
+        "C-60"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "H.E.R.O.",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ヒーロー"
+      ],
+      "archiveTitles": [
+        "H.E.R.O."
+      ],
+      "productCodes": [
+        "C-58"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Home Mahjong",
+      "dates": {
+        "JP": "1984"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ホーム麻雀"
+      ],
+      "archiveTitles": [
+        "Home Mahjong"
+      ],
+      "productCodes": [
+        "G-1030",
+        "G-1030B"
+      ]
+    },
+    {
+      "title": "Hustle Chumy",
+      "dates": {
+        "JP": "1984"
+      },
+      "developer": null,
+      "publisher": "Compile",
+      "aliases": [
+        "ハッスルチューミー"
+      ],
+      "archiveTitles": [
+        "Hustle Chumy"
+      ],
+      "productCodes": [
+        "G-1035"
+      ]
+    },
+    {
+      "title": "Hyper Sports",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "コナミのハイパースポーツ"
+      ],
+      "archiveTitles": [
+        "Hyper Sports"
+      ],
+      "productCodes": [
+        "G-1042"
+      ]
+    },
+    {
+      "title": "Lode Runner",
+      "dates": {
+        "JP": "1984",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ロードランナー"
+      ],
+      "archiveTitles": [
+        "Lode Runner"
+      ],
+      "productCodes": [
+        "G-1031"
+      ]
+    },
+    {
+      "title": "Mahjong",
+      "dates": {
+        "JP": "1983"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "麻雀"
+      ],
+      "archiveTitles": [
+        "Mahjong"
+      ],
+      "productCodes": [
+        "G-1004"
+      ]
+    },
+    {
+      "title": "Monaco GP",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "モナコＧＰ"
+      ],
+      "archiveTitles": [
+        "Monaco GP"
+      ],
+      "productCodes": [
+        "G-1017",
+        "C-17"
+      ],
+      "medium": "Cartridge / Sega My Card"
+    },
+    {
+      "title": "Ninja Princess",
+      "dates": {
+        "JP": "1986",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "忍者プリンセス"
+      ],
+      "archiveTitles": [
+        "Ninja Princess"
+      ],
+      "productCodes": [
+        "C-65"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "N-Sub",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "Ｎ－サブ"
+      ],
+      "archiveTitles": [
+        "N-Sub"
+      ],
+      "productCodes": [
+        "G-1003"
+      ]
+    },
+    {
+      "title": "Okamoto Ayako no Match Play Golf",
+      "dates": {
+        "JP": null
+      },
+      "developer": null,
+      "publisher": "Tsukuda Original",
+      "aliases": [
+        "岡本綾子のマッチプレイゴルフ"
+      ],
+      "archiveTitles": [
+        "Okamoto Ayako no Match Play Golf"
+      ],
+      "productCodes": [
+        "OM-G006"
+      ],
+      "medium": "Othello Multivision cartridge"
+    },
+    {
+      "title": "Orguss",
+      "dates": {
+        "JP": "1984",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "オーガス"
+      ],
+      "archiveTitles": [
+        "Orguss"
+      ],
+      "productCodes": [
+        "G-1015"
+      ]
+    },
+    {
+      "title": "Othello",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "オセロ"
+      ],
+      "archiveTitles": [
+        "Othello"
+      ],
+      "productCodes": [
+        "G-1044"
+      ]
+    },
+    {
+      "title": "Pacar",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "パッカー"
+      ],
+      "archiveTitles": [
+        "Pacar"
+      ],
+      "productCodes": [
+        "G-1020"
+      ]
+    },
+    {
+      "title": "Pachinko",
+      "dates": {
+        "JP": "1983"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "パチンコ"
+      ],
+      "archiveTitles": [
+        "Pachinko"
+      ],
+      "productCodes": [
+        "G-1027"
+      ]
+    },
+    {
+      "title": "Pachinko II",
+      "dates": {
+        "JP": "1984"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "パチンコⅡ"
+      ],
+      "archiveTitles": [
+        "Pachinko II"
+      ],
+      "productCodes": [
+        "G-1029"
+      ]
+    },
+    {
+      "title": "Pitfall II",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ピットフォールII"
+      ],
+      "archiveTitles": [
+        "Pitfall II - The Lost Caverns"
+      ],
+      "productCodes": [
+        "C-49"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Pop Flamer",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ポップフレーマー"
+      ],
+      "archiveTitles": [
+        "Pop Flamer"
+      ],
+      "productCodes": [
+        "G-1019"
+      ]
+    },
+    {
+      "title": "Q*bert",
+      "dates": {
+        "JP": "1983"
+      },
+      "developer": null,
+      "publisher": "Tsukuda Original",
+      "aliases": [
+        "Ｑ＊バート、キューバート"
+      ],
+      "archiveTitles": [
+        "Q-bert"
+      ],
+      "productCodes": [
+        "OM-G001"
+      ],
+      "medium": "Othello Multivision cartridge"
+    },
+    {
+      "title": "Rock n' Bolt",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ロックンボルト"
+      ],
+      "archiveTitles": [
+        "Rock n' Bolt"
+      ],
+      "productCodes": [
+        "C-54"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Safari Hunting",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "サファリハンティング"
+      ],
+      "archiveTitles": [
+        "Safari Hunting"
+      ],
+      "productCodes": [
+        "G-1002"
+      ]
+    },
+    {
+      "title": "Safari Race",
+      "dates": {
+        "JP": "1984",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "サファリレース"
+      ],
+      "archiveTitles": [
+        "Safari Race"
+      ],
+      "productCodes": [
+        "G-1032"
+      ]
+    },
+    {
+      "title": "San-nin Mahjong",
+      "dates": {
+        "JP": "1984"
+      },
+      "developer": null,
+      "publisher": "Tsukuda Original",
+      "aliases": [
+        "三人麻雀"
+      ],
+      "archiveTitles": [
+        "San-nin Mahjong"
+      ],
+      "productCodes": [
+        "OM-G004A",
+        "OM-G004"
+      ],
+      "medium": "Othello Multivision cartridge"
+    },
+    {
+      "title": "Sega Flipper",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "セガ フリッパー"
+      ],
+      "archiveTitles": [
+        "Sega Flipper"
+      ],
+      "productCodes": [
+        "G-1018"
+      ]
+    },
+    {
+      "title": "Sega-Galaga",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "セガ・ギャラガ"
+      ],
+      "archiveTitles": [
+        "Sega-Galaga"
+      ],
+      "productCodes": [
+        "G-1022"
+      ]
+    },
+    {
+      "title": "Shinnyuushain Tooru-Kun",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "コナミの新入社員とおる君"
+      ],
+      "archiveTitles": [
+        "Shinnyushain Tooru-kun"
+      ],
+      "productCodes": [
+        "G-1041"
+      ]
+    },
+    {
+      "title": "Sindbad Mystery",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "シンドバッドミステリー"
+      ],
+      "archiveTitles": [
+        "Sindbad Mystery"
+      ],
+      "productCodes": [
+        "G-1012"
+      ]
+    },
+    {
+      "title": "Soukoban",
+      "dates": {
+        "JP": "1985",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "倉庫番"
+      ],
+      "archiveTitles": [
+        "Soukoban"
+      ],
+      "productCodes": [
+        "C-56"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Space Armor",
+      "dates": {
+        "JP": "1984"
+      },
+      "developer": null,
+      "publisher": "Tsukuda Original",
+      "aliases": [
+        "スペースアーマー"
+      ],
+      "archiveTitles": [
+        "Space Armor"
+      ],
+      "productCodes": [
+        "OM-G007"
+      ],
+      "medium": "Othello Multivision cartridge"
+    },
+    {
+      "title": "Space Invaders",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "スペースインベーダー"
+      ],
+      "archiveTitles": [
+        "Space Invaders"
+      ],
+      "productCodes": [
+        "G-1045"
+      ]
+    },
+    {
+      "title": "Space Mountain",
+      "dates": {
+        "JP": "1983"
+      },
+      "developer": null,
+      "publisher": "Tsukuda Original",
+      "aliases": [
+        "スペースマウンテン"
+      ],
+      "archiveTitles": [
+        "Space Mountain"
+      ],
+      "productCodes": [
+        "OM-G003A",
+        "OM-G004"
+      ],
+      "medium": "Othello Multivision cartridge"
+    },
+    {
+      "title": "Space Slalom",
+      "dates": {
+        "JP": "1983"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "スペーススラローム"
+      ],
+      "archiveTitles": [
+        "Space Slalom"
+      ],
+      "productCodes": [
+        "G-1023"
+      ]
+    },
+    {
+      "title": "Star Force",
+      "dates": {
+        "JP": "1985",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "スターフォース"
+      ],
+      "archiveTitles": [
+        "Star Force"
+      ],
+      "productCodes": [
+        "C-43",
+        "G-1043"
+      ],
+      "medium": "Cartridge / Sega My Card"
+    },
+    {
+      "title": "Star Jacker",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "スタージャッカー"
+      ],
+      "archiveTitles": [
+        "Star Jacker"
+      ],
+      "productCodes": [
+        "G-1010"
+      ]
+    },
+    {
+      "title": "Super Tank",
+      "dates": {
+        "JP": "1986"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "スーパータンク"
+      ],
+      "archiveTitles": [
+        "Super Tank"
+      ],
+      "productCodes": [
+        "C-66"
+      ],
+      "medium": "Sega My Card"
+    },
+    {
+      "title": "Terebi Oekaki",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "テレビおえかき"
+      ],
+      "archiveTitles": [
+        "Terebi Oekaki"
+      ],
+      "productCodes": [
+        "GB-800"
+      ]
+    },
+    {
+      "title": "Serizawa Hachidan no Tsumeshogi",
+      "dates": {
+        "JP": "1983"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "芹沢八段の詰将棋"
+      ],
+      "archiveTitles": [
+        "Serizawa Hachidan no Tsumeshougi"
+      ],
+      "productCodes": [
+        "G-1006"
+      ]
+    },
+    {
+      "title": "Wonder Boy",
+      "dates": {
+        "JP": "1986",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ワンダーボーイ"
+      ],
+      "archiveTitles": [
+        "Wonder Boy"
+      ],
+      "productCodes": [
+        "C-69"
+      ],
+      "medium": "Sega My Card",
+      "parentTitle": "Wonder Boy"
+    },
+    {
+      "title": "Yamato",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ヤマト"
+      ],
+      "archiveTitles": [
+        "Yamato"
+      ],
+      "productCodes": [
+        "G-1008"
+      ]
+    },
+    {
+      "title": "Zaxxon",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ザクソン"
+      ],
+      "archiveTitles": [
+        "Zaxxon"
+      ],
+      "productCodes": [
+        "G-1038"
+      ]
+    },
+    {
+      "title": "Zippy Race",
+      "dates": {
+        "JP": "1983",
+        "PAL": null
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ジッピーレース"
+      ],
+      "archiveTitles": [
+        "Zippy Race"
+      ],
+      "productCodes": [
+        "C-26",
+        "G-1026"
+      ],
+      "medium": "Cartridge / Sega My Card"
+    },
+    {
+      "title": "Zoom 909",
+      "dates": {
+        "JP": "1985"
+      },
+      "developer": null,
+      "publisher": "Sega",
+      "aliases": [
+        "ズーム909"
+      ],
+      "archiveTitles": [
+        "Zoom 909"
+      ],
+      "productCodes": [
+        "C-47"
+      ],
+      "medium": "Sega My Card"
+    }
+  ],
+  "verifiedArchives": [
+    {
+      "edition": "007 James Bond",
+      "market": "JP",
+      "archiveName": "007 James Bond (Japan) (Othello Multivision).zip",
+      "signature": "027b519bb209123bc0288cf4092719e8",
+      "evidence": "https://www.smspower.org/Games/007JamesBond-SG"
+    },
+    {
+      "edition": "Challenge Derby",
+      "market": "JP",
+      "archiveName": "Challenge Derby (Japan) (Othello Multivision).zip",
+      "signature": "11250dfedd1903e85d441f5a5db231a8",
+      "evidence": "https://www.smspower.org/Games/ChallengeDerby-SG"
+    },
+    {
+      "edition": "Challenge Derby",
+      "market": "JP",
+      "archiveName": "Challenge Derby (Japan) (Rev 1) (Othello Multivision).zip",
+      "signature": "ab4a72ef5595a090cdf371f37e8f472b",
+      "evidence": "https://www.smspower.org/Games/ChallengeDerby-SG"
+    },
+    {
+      "edition": "Guzzler",
+      "market": "JP",
+      "archiveName": "Guzzler (Japan) (Othello Multivision).zip",
+      "signature": "89a71bb45d8526d659eadac0cf956395",
+      "evidence": "https://www.smspower.org/Games/Guzzler-SG"
+    },
+    {
+      "edition": "Okamoto Ayako no Match Play Golf",
+      "market": "JP",
+      "archiveName": "Okamoto Ayako no Match Play Golf (Japan) (Othello Multivision).zip",
+      "signature": "1d8253a5a0fb6922d551460d86737546",
+      "evidence": "https://www.smspower.org/Games/OkamotoAyakoNoMatchPlayGolf-SG"
+    },
+    {
+      "edition": "Okamoto Ayako no Match Play Golf",
+      "market": "JP",
+      "archiveName": "Okamoto Ayako no Match Play Golf (Japan) (Rev 1) (Othello Multivision).zip",
+      "signature": "f9f287784bd2cd61b21cbbf4fa5d33c9",
+      "evidence": "https://www.smspower.org/Games/OkamotoAyakoNoMatchPlayGolf-SG"
+    },
+    {
+      "edition": "Q*bert",
+      "market": "JP",
+      "archiveName": "Q-bert (Japan) (Othello Multivision).zip",
+      "signature": "a9d575e96d1e0322854d9dd211c9133b",
+      "evidence": "https://www.smspower.org/Games/QBert-SG"
+    },
+    {
+      "edition": "San-nin Mahjong",
+      "market": "JP",
+      "archiveName": "San-nin Mahjong (Japan) (Othello Multivision).zip",
+      "signature": "b03e2af27a6de698ce0f48c241b87e04",
+      "evidence": "https://www.smspower.org/Games/SanNinMahjong-SG"
+    },
+    {
+      "edition": "Space Armor",
+      "market": "JP",
+      "archiveName": "Space Armor (Japan) (Othello Multivision).zip",
+      "signature": "3a7f5c3a8dea7a24b7a00f7825b6d64c",
+      "evidence": "https://www.smspower.org/Games/SpaceArmor-SG"
+    },
+    {
+      "edition": "Space Armor",
+      "market": "JP",
+      "archiveName": "Space Armor (Japan) (Rev 1) (Othello Multivision).zip",
+      "signature": "05fb150eb1748e9ec3f870df400ac5e7",
+      "evidence": "https://www.smspower.org/Games/SpaceArmor-SG"
+    },
+    {
+      "edition": "Space Mountain",
+      "market": "JP",
+      "archiveName": "Space Mountain (Japan) (Othello Multivision).zip",
+      "signature": "03380fd1c91994439c901275741477de",
+      "evidence": "https://www.smspower.org/Games/SpaceMountain-SG"
+    }
+  ],
+  "manuals": [
+    {
+      "edition": "007 James Bond",
+      "market": "JP",
+      "name": "007 James Bond — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/007-james-bond-1984.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/007-james-bond-1984/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/007-james-bond-1984/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/007-james-bond-1984/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/007-james-bond-1984/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/007-james-bond-1984/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/007-james-bond-1984/p006.webp"
+      ]
+    },
+    {
+      "edition": "Bank Panic",
+      "market": "JP",
+      "name": "Bank Panic — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/bank-panic-1985.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p020.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p021.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p022.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p023.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p024.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p025.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p026.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p027.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p028.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p029.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p030.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p031.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p032.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p033.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p034.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p035.webp",
+        "https://play-sc-3000.online/documents/pdf/bank-panic-1985/p036.webp"
+      ]
+    },
+    {
+      "edition": "Borderline",
+      "market": "JP",
+      "name": "Borderline — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/borderline-1983.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/borderline-1983-2/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/borderline-1983-2/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/borderline-1983-2/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/borderline-1983-2/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/borderline-1983-2/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/borderline-1983-2/p006.webp"
+      ]
+    },
+    {
+      "edition": "Borderline",
+      "market": "JP",
+      "name": "Borderline — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/borderline-1983.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/borderline-1983-2/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/borderline-1983-2/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/borderline-1983-2/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/borderline-1983-2/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/borderline-1983-2/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/borderline-1983-2/p006.webp"
+      ]
+    },
+    {
+      "edition": "Champion Baseball",
+      "market": "JP",
+      "name": "Champion Baseball — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/champion-baseball-1983.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/champion-baseball-1983/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-baseball-1983/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-baseball-1983/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-baseball-1983/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-baseball-1983/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-baseball-1983/p006.webp"
+      ]
+    },
+    {
+      "edition": "Champion Billiards",
+      "market": "JP",
+      "name": "Champion Billiards — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/champion-billiards-1986.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p020.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p021.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p022.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-billiards-1986/p023.webp"
+      ]
+    },
+    {
+      "edition": "Champion Golf",
+      "market": "JP",
+      "name": "Champion Golf — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/champion-golf-1983.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/champion-golf-1983/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-golf-1983/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-golf-1983/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-golf-1983/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-golf-1983/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-golf-1983/p006.webp"
+      ]
+    },
+    {
+      "edition": "Champion Ice Hockey",
+      "market": "JP",
+      "name": "Champion Ice Hockey — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/champion-ice-hockey-1985.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p020.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p021.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p022.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p023.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-ice-hockey-1985/p024.webp"
+      ]
+    },
+    {
+      "edition": "Champion Pro Wrestling",
+      "market": "JP",
+      "name": "Champion Pro Wrestling — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/champion-pro-wrestling-manual-sg-1000.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p020.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p021.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p022.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-pro-wrestling-manual-sg-1000/p023.webp"
+      ]
+    },
+    {
+      "edition": "Champion Soccer",
+      "market": "JP",
+      "name": "Champion Soccer — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/champion-soccer-1984.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/champion-soccer-1984/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-soccer-1984/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-soccer-1984/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-soccer-1984/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-soccer-1984/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-soccer-1984/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-soccer-1984/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-soccer-1984/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-soccer-1984/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-soccer-1984/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-soccer-1984/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-soccer-1984/p012.webp"
+      ]
+    },
+    {
+      "edition": "Champion Tennis",
+      "market": "JP",
+      "name": "Champion Tennis — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/champion-tennis-1983.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/champion-tennis-1983/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-tennis-1983/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-tennis-1983/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-tennis-1983/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-tennis-1983/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/champion-tennis-1983/p006.webp"
+      ]
+    },
+    {
+      "edition": "Championship Lode Runner",
+      "market": "JP",
+      "name": "Championship Lode Runner — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/championship-lode-runner-1985.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p020.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p021.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p022.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p023.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p024.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p025.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p026.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p027.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p028.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p029.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p030.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p031.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p032.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p033.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p034.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p035.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p036.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p037.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p038.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p039.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p040.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p041.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p042.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p043.webp",
+        "https://play-sc-3000.online/documents/pdf/championship-lode-runner-1985/p044.webp"
+      ]
+    },
+    {
+      "edition": "Choplifter",
+      "market": "JP",
+      "name": "Choplifter — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/choplifter-1985.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/choplifter-1985/p019.webp"
+      ]
+    },
+    {
+      "edition": "Congo Bongo",
+      "market": "JP",
+      "name": "Congo Bongo — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/congo-bongo-1983.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/congo-bongo-1983/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/congo-bongo-1983/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/congo-bongo-1983/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/congo-bongo-1983/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/congo-bongo-1983/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/congo-bongo-1983/p006.webp"
+      ]
+    },
+    {
+      "edition": "Dragon Wang",
+      "market": "JP",
+      "name": "Dragon Wang — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/dragon-wang-1985.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p020.webp",
+        "https://play-sc-3000.online/documents/pdf/dragon-wang-1985/p021.webp"
+      ]
+    },
+    {
+      "edition": "Drol",
+      "market": "JP",
+      "name": "Drol — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/drol-1985.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p020.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p021.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p022.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p023.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p024.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p025.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p026.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p027.webp",
+        "https://play-sc-3000.online/documents/pdf/drol-1985/p028.webp"
+      ]
+    },
+    {
+      "edition": "Exerion",
+      "market": "JP",
+      "name": "Exerion — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/exerion-1983.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/exerion-1983/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/exerion-1983/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/exerion-1983/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/exerion-1983/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/exerion-1983/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/exerion-1983/p006.webp"
+      ]
+    },
+    {
+      "edition": "Guzzler",
+      "market": "JP",
+      "name": "Guzzler — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/guzzler-1983.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/guzzler-1983/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/guzzler-1983/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/guzzler-1983/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/guzzler-1983/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/guzzler-1983/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/guzzler-1983/p006.webp"
+      ]
+    },
+    {
+      "edition": "H.E.R.O.",
+      "market": "JP",
+      "name": "H.E.R.O. — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/h-e-r-o-1985.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p020.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p021.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p022.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p023.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p024.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p025.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p026.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p027.webp",
+        "https://play-sc-3000.online/documents/pdf/h-e-r-o-1985/p028.webp"
+      ]
+    },
+    {
+      "edition": "Hang On II",
+      "market": "JP",
+      "name": "Hang On II — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/hang-on-ii-1985.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/hang-on-ii-1985/p020.webp"
+      ]
+    },
+    {
+      "edition": "Home Mahjong",
+      "market": "JP",
+      "name": "Home Mahjong — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/home-mahjong-1984.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p020.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p021.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p022.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p023.webp",
+        "https://play-sc-3000.online/documents/pdf/home-mahjong-1984/p024.webp"
+      ]
+    },
+    {
+      "edition": "Hyper Sports",
+      "market": "JP",
+      "name": "Hyper Sports — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/hyper-sports-1985.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/hyper-sports-1985/p020.webp"
+      ]
+    },
+    {
+      "edition": "Lode Runner",
+      "market": "JP",
+      "name": "Lode Runner — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/lode-runner-1984.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p020.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p021.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p022.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p023.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p024.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p025.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p026.webp",
+        "https://play-sc-3000.online/documents/pdf/lode-runner-1984/p027.webp"
+      ]
+    },
+    {
+      "edition": "N-Sub",
+      "market": "JP",
+      "name": "N-Sub — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/n-sub-1983.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/n-sub-1983/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/n-sub-1983/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/n-sub-1983/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/n-sub-1983/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/n-sub-1983/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/n-sub-1983/p006.webp"
+      ]
+    },
+    {
+      "edition": "Okamoto Ayako no Match Play Golf",
+      "market": "JP",
+      "name": "Okamoto Ayako no Match Play Golf — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/okamoto-ayako-no-match-play-golf-1984.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/okamoto-ayako-no-match-play-golf-1984/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/okamoto-ayako-no-match-play-golf-1984/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/okamoto-ayako-no-match-play-golf-1984/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/okamoto-ayako-no-match-play-golf-1984/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/okamoto-ayako-no-match-play-golf-1984/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/okamoto-ayako-no-match-play-golf-1984/p006.webp"
+      ]
+    },
+    {
+      "edition": "Orguss",
+      "market": "JP",
+      "name": "Orguss — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/orguss-1984.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/orguss-1984/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/orguss-1984/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/orguss-1984/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/orguss-1984/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/orguss-1984/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/orguss-1984/p006.webp"
+      ]
+    },
+    {
+      "edition": "Othello",
+      "market": "JP",
+      "name": "Othello — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/othello-1985.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p020.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p021.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p022.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p023.webp",
+        "https://play-sc-3000.online/documents/pdf/othello-1985/p024.webp"
+      ]
+    },
+    {
+      "edition": "Pacar",
+      "market": "JP",
+      "name": "Pacar — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/pacar-1984.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/pacar-1984/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/pacar-1984/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/pacar-1984/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/pacar-1984/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/pacar-1984/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/pacar-1984/p006.webp"
+      ]
+    },
+    {
+      "edition": "Pachinko II",
+      "market": "JP",
+      "name": "Pachinko II — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/pachinko-ii-1984.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/pachinko-ii-1984/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/pachinko-ii-1984/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/pachinko-ii-1984/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/pachinko-ii-1984/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/pachinko-ii-1984/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/pachinko-ii-1984/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/pachinko-ii-1984/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/pachinko-ii-1984/p008.webp"
+      ]
+    },
+    {
+      "edition": "Pachinko",
+      "market": "JP",
+      "name": "Pachinko — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/pachinko-sg-1000-jp-manual.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/pachinko-sg1000-jp-manual/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/pachinko-sg1000-jp-manual/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/pachinko-sg1000-jp-manual/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/pachinko-sg1000-jp-manual/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/pachinko-sg1000-jp-manual/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/pachinko-sg1000-jp-manual/p006.webp"
+      ]
+    },
+    {
+      "edition": "Safari Race",
+      "market": "JP",
+      "name": "Safari Race — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/safari-race-1984.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/safari-race-1984/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/safari-race-1984/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/safari-race-1984/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/safari-race-1984/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/safari-race-1984/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/safari-race-1984/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/safari-race-1984/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/safari-race-1984/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/safari-race-1984/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/safari-race-1984/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/safari-race-1984/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/safari-race-1984/p012.webp"
+      ]
+    },
+    {
+      "edition": "Sega Flipper",
+      "market": "JP",
+      "name": "Sega Flipper — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/sega-flipper-1983.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/sega-flipper-1983/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/sega-flipper-1983/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/sega-flipper-1983/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/sega-flipper-1983/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/sega-flipper-1983/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/sega-flipper-1983/p006.webp"
+      ]
+    },
+    {
+      "edition": "Shinnyuushain Tooru-Kun",
+      "market": "JP",
+      "name": "Shinnyuushain Tooru-Kun — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/shinnyuushain-tooru-kun-1985.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/shinnyuushain-tooru-kun-1985/p020.webp"
+      ]
+    },
+    {
+      "edition": "Sindbad Mystery",
+      "market": "JP",
+      "name": "Sindbad Mystery — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/sindbad-mystery-1983.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/sindbad-mystery-1983/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/sindbad-mystery-1983/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/sindbad-mystery-1983/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/sindbad-mystery-1983/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/sindbad-mystery-1983/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/sindbad-mystery-1983/p006.webp"
+      ]
+    },
+    {
+      "edition": "Soukoban",
+      "market": "JP",
+      "name": "Soukoban — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/soukoban-1985.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p020.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p021.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p022.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p023.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p024.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p025.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p026.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p027.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p028.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p029.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p030.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p031.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p032.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p033.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p034.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p035.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p036.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p037.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p038.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p039.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p040.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p041.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p042.webp",
+        "https://play-sc-3000.online/documents/pdf/soukoban-1985/p043.webp"
+      ]
+    },
+    {
+      "edition": "Space Armor",
+      "market": "JP",
+      "name": "Space Armor — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/space-armor-1984.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/space-armor-1984/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/space-armor-1984/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/space-armor-1984/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/space-armor-1984/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/space-armor-1984/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/space-armor-1984/p006.webp"
+      ]
+    },
+    {
+      "edition": "Space Invaders",
+      "market": "JP",
+      "name": "Space Invaders — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/space-invaders-1985.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/space-invaders-1985/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/space-invaders-1985/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/space-invaders-1985/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/space-invaders-1985/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/space-invaders-1985/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/space-invaders-1985/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/space-invaders-1985/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/space-invaders-1985/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/space-invaders-1985/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/space-invaders-1985/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/space-invaders-1985/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/space-invaders-1985/p012.webp"
+      ]
+    },
+    {
+      "edition": "Space Mountain",
+      "market": "JP",
+      "name": "Space Mountain — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/space-mountain-1984.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/space-mountain-1984/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/space-mountain-1984/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/space-mountain-1984/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/space-mountain-1984/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/space-mountain-1984/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/space-mountain-1984/p006.webp"
+      ]
+    },
+    {
+      "edition": "Space Slalom",
+      "market": "JP",
+      "name": "Space Slalom — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/space-slalom-1983.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/space-slalom-1983/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/space-slalom-1983/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/space-slalom-1983/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/space-slalom-1983/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/space-slalom-1983/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/space-slalom-1983/p006.webp"
+      ]
+    },
+    {
+      "edition": "Star Jacker",
+      "market": "JP",
+      "name": "Star Jacker — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/star-jacker-1983.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/star-jacker-1983/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/star-jacker-1983/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/star-jacker-1983/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/star-jacker-1983/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/star-jacker-1983/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/star-jacker-1983/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/star-jacker-1983/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/star-jacker-1983/p008.webp"
+      ]
+    },
+    {
+      "edition": "Wonder Boy",
+      "market": "JP",
+      "name": "Wonder Boy — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/wonder-boy-1986.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/wonder-boy-1986/p020.webp"
+      ]
+    },
+    {
+      "edition": "Yamato",
+      "market": "JP",
+      "name": "Yamato — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/yamato-1983.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/yamato-1983/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/yamato-1983/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/yamato-1983/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/yamato-1983/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/yamato-1983/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/yamato-1983/p006.webp"
+      ]
+    },
+    {
+      "edition": "Zaxxon",
+      "market": "JP",
+      "name": "Zaxxon — Japanese manual",
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese",
+      "url": "https://play-sc-3000.online/docs/zaxxon-1985.html",
+      "source": "Play SC-3000",
+      "sourceUrl": "https://play-sc-3000.online/docs/",
+      "format": "PDF",
+      "pages": [
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p001.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p002.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p003.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p004.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p005.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p006.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p007.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p008.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p009.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p010.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p011.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p012.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p013.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p014.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p015.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p016.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p017.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p018.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p019.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p020.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p021.webp",
+        "https://play-sc-3000.online/documents/pdf/zaxxon-1985/p022.webp"
+      ]
+    }
+  ]
+}

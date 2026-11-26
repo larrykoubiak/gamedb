@@ -14,6 +14,32 @@ def ppf_edit(offset, data):
 
 
 class DiscTranslationTests(unittest.TestCase):
+    def test_single_iso_build_keeps_its_launch_filename(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            source, patch_archive = root / "Example.zip", root / "patch.zip"
+            member, step = "Example (USA).iso", "english.ppf"
+            original = bytes(2048)
+            patched = b"x" + original[1:]
+            with ZipFile(source, "w") as rom:
+                rom.writestr(member, original)
+            with ZipFile(patch_archive, "w") as patches:
+                patches.writestr(step, ppf_edit(0, b"x"))
+            signature = "a" * 32
+            files = {(signature, source.name): [
+                {"path": source.name, "name": member, "size": len(original), "verified": True,
+                 "sha1": sha1(original).hexdigest()},
+            ]}
+            review = {"archive": patch_archive.name, "archiveSha256": sha256(patch_archive.read_bytes()).hexdigest(),
+                      "discs": [{"archiveName": source.name, "imageMember": member,
+                                 "inputSha1": sha1(original).hexdigest(), "outputSha1": sha1(patched).hexdigest(),
+                                 "patches": [step]}]}
+            build = _publish_project(root, patch_archive, review, "Example", signature, files, root,
+                                     {"language": "English", "version": "1.0"})
+            with ZipFile(root / "discs" / f"{build['discSet']['sha256']}.zip") as bundle:
+                self.assertEqual(bundle.namelist(), [member])
+                self.assertEqual(bundle.read(member), patched)
+
     def test_disc_set_keeps_cues_and_audio_and_creates_a_stable_playlist(self):
         with TemporaryDirectory() as directory:
             root = Path(directory)

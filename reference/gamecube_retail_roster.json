@@ -1,0 +1,6950 @@
+{
+  "source": {
+    "name": "Wikipedia contributors",
+    "url": "https://en.wikipedia.org/wiki/Special:PermanentLink/1386315976",
+    "revision": 1386315976,
+    "rowCount": 555,
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "rows": [
+    {
+      "title": "18 Wheeler: American Pro Trucker",
+      "releases": {
+        "NA": "2002-02-20"
+      },
+      "developer": {
+        "default": "Sega AM2"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment"
+      }
+    },
+    {
+      "title": "1080° Avalanche",
+      "releases": {
+        "NA": "2003-12-01"
+      },
+      "developer": {
+        "default": "Nintendo Software Technology"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "2002 FIFA World Cup",
+      "releases": {
+        "NA": "2002-04-30"
+      },
+      "developer": {
+        "default": "EA Canada Creations Intelligent Games Tose"
+      },
+      "publisher": {
+        "default": "EA Sports WW Electronic Arts Square JP"
+      }
+    },
+    {
+      "title": "2006 FIFA World Cup",
+      "releases": {
+        "NA": "2006-04-24"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      },
+      "aliases": [
+        {
+          "title": "FIFA World Cup: Germany 2006",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4x4 Evo 2",
+      "releases": {
+        "NA": "2002-09-24"
+      },
+      "developer": {
+        "default": "Terminal Reality"
+      },
+      "publisher": {
+        "default": "Universal Interactive"
+      }
+    },
+    {
+      "title": "The Adventures of Jimmy Neutron Boy Genius: Attack of the Twonkies",
+      "releases": {
+        "NA": "2004-09-13"
+      },
+      "developer": {
+        "default": "THQ Studio Australia"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "The Adventures of Jimmy Neutron Boy Genius: Jet Fusion",
+      "releases": {
+        "NA": "2003-09-16"
+      },
+      "developer": {
+        "default": "Krome Studios"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Aggressive Inline",
+      "releases": {
+        "NA": "2002-08-01"
+      },
+      "developer": {
+        "default": "Z-Axis"
+      },
+      "publisher": {
+        "default": "AKA Acclaim"
+      }
+    },
+    {
+      "title": "Alien Hominid",
+      "releases": {
+        "NA": "2004-11-23"
+      },
+      "developer": {
+        "default": "The Behemoth"
+      },
+      "publisher": {
+        "default": "O~3 Entertainment"
+      }
+    },
+    {
+      "title": "All-Star Baseball 2002",
+      "releases": {
+        "NA": "2001-11-18"
+      },
+      "developer": {
+        "default": "Acclaim Studios Austin"
+      },
+      "publisher": {
+        "default": "Acclaim Sports"
+      }
+    },
+    {
+      "title": "All-Star Baseball 2003",
+      "releases": {
+        "NA": "2002-03-07"
+      },
+      "developer": {
+        "default": "Acclaim Studios Austin"
+      },
+      "publisher": {
+        "default": "Acclaim Sports"
+      }
+    },
+    {
+      "title": "All-Star Baseball 2004",
+      "releases": {
+        "NA": "2003-02-28"
+      },
+      "developer": {
+        "default": "Acclaim Studios Austin"
+      },
+      "publisher": {
+        "default": "Acclaim Sports"
+      }
+    },
+    {
+      "title": "Amazing Island",
+      "releases": {
+        "NA": "2004-08-24"
+      },
+      "developer": {
+        "default": "Ancient Hitmaker"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "American Chopper 2: Full Throttle",
+      "releases": {
+        "NA": "2005-11-22"
+      },
+      "developer": {
+        "default": "Creat Studios"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Animal Crossing",
+      "releases": {
+        "NA": "2002-09-16"
+      },
+      "developer": {
+        "default": "Nintendo EAD"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Animaniacs: The Great Edgar Hunt",
+      "releases": {
+        "NA": "2005-09-14"
+      },
+      "developer": {
+        "default": "Warthog Games"
+      },
+      "publisher": {
+        "default": "Ignition Entertainment"
+      }
+    },
+    {
+      "title": "The Ant Bully",
+      "releases": {
+        "NA": "2006-07-24"
+      },
+      "developer": {
+        "default": "Artificial Mind and Movement"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Aquaman: Battle for Atlantis",
+      "releases": {
+        "NA": "2003-07-30"
+      },
+      "developer": {
+        "default": "Lucky Chicken Games"
+      },
+      "publisher": {
+        "default": "TDK Mediactive"
+      }
+    },
+    {
+      "title": "Army Men: Air Combat - The Elite Missions",
+      "releases": {
+        "NA": "2003-03-25"
+      },
+      "developer": {
+        "default": "Wide Games"
+      },
+      "publisher": {
+        "default": "The 3DO Company"
+      }
+    },
+    {
+      "title": "Army Men: RTS",
+      "releases": {
+        "NA": "2004-11-02"
+      },
+      "developer": {
+        "default": "Coyote Developments"
+      },
+      "publisher": {
+        "default": "Global Star Software"
+      }
+    },
+    {
+      "title": "Army Men: Sarge's War",
+      "releases": {
+        "NA": "2004-08-21"
+      },
+      "developer": {
+        "default": "Tactical Development"
+      },
+      "publisher": {
+        "default": "Global Star Software"
+      }
+    },
+    {
+      "title": "ATV: Quad Power Racing 2",
+      "releases": {
+        "NA": "2003-01-22"
+      },
+      "developer": {
+        "default": "Climax Brighton"
+      },
+      "publisher": {
+        "default": "AKA Acclaim"
+      }
+    },
+    {
+      "title": "Auto Modellista",
+      "releases": {
+        "NA": "2003-09-30"
+      },
+      "developer": {
+        "default": "Capcom Production Studio 1"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Avatar: The Last Airbender",
+      "releases": {
+        "NA": "2006-10-10"
+      },
+      "developer": {
+        "default": "THQ Studio Australia"
+      },
+      "publisher": {
+        "default": "THQ"
+      },
+      "aliases": [
+        {
+          "title": "Avatar: The Legend of Aang",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Backyard Baseball",
+      "releases": {
+        "NA": "2003-03-31"
+      },
+      "developer": {
+        "default": "Humongous Entertainment"
+      },
+      "publisher": {
+        "default": "Infogrames"
+      }
+    },
+    {
+      "title": "Backyard Football",
+      "releases": {
+        "NA": "2002-10-10"
+      },
+      "developer": {
+        "default": "Left Field Productions"
+      },
+      "publisher": {
+        "default": "Infogrames"
+      }
+    },
+    {
+      "title": "Backyard Sports: Baseball 2007",
+      "releases": {
+        "NA": "2006-04-03"
+      },
+      "developer": {
+        "default": "GameBrains"
+      },
+      "publisher": {
+        "default": "Atari"
+      }
+    },
+    {
+      "title": "Bad Boys: Miami Takedown",
+      "releases": {
+        "NA": "2004-09-21"
+      },
+      "developer": {
+        "default": "Blitz Games"
+      },
+      "publisher": {
+        "default": "Crave Entertainment NA Empire Interactive EU"
+      },
+      "aliases": [
+        {
+          "title": "Bad Boys II",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Baldur's Gate: Dark Alliance",
+      "releases": {
+        "NA": "2002-11-20"
+      },
+      "developer": {
+        "default": "High Voltage Software"
+      },
+      "publisher": {
+        "default": "Interplay Entertainment"
+      }
+    },
+    {
+      "title": "Barnyard",
+      "releases": {
+        "NA": "2006-10-13"
+      },
+      "developer": {
+        "default": "Blue Tongue Entertainment"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Baten Kaitos: Eternal Wings and the Lost Ocean",
+      "releases": {
+        "NA": "2004-11-16"
+      },
+      "developer": {
+        "default": "Monolith Soft tri-Crescendo"
+      },
+      "publisher": {
+        "default": "Namco JP Namco Hometek NA Nintendo PAL"
+      }
+    },
+    {
+      "title": "Baten Kaitos Origins",
+      "releases": {
+        "NA": "2006-09-25"
+      },
+      "developer": {
+        "default": "Monolith Soft tri-Crescendo"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Batman Begins",
+      "releases": {
+        "NA": "2005-06-15"
+      },
+      "developer": {
+        "default": "Eurocom"
+      },
+      "publisher": {
+        "default": "EA Games Warner Bros. Interactive Entertainment"
+      }
+    },
+    {
+      "title": "Batman: Dark Tomorrow",
+      "releases": {
+        "NA": "2003-03-18"
+      },
+      "developer": {
+        "default": "Kemco"
+      },
+      "publisher": {
+        "default": "Kemco"
+      }
+    },
+    {
+      "title": "Batman: Rise of Sin Tzu",
+      "releases": {
+        "NA": "2003-11-11"
+      },
+      "developer": {
+        "default": "Ubi Soft Montreal"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      }
+    },
+    {
+      "title": "Batman: Vengeance",
+      "releases": {
+        "NA": "2001-11-18"
+      },
+      "developer": {
+        "default": "Ubi Soft Montreal"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      }
+    },
+    {
+      "title": "Battalion Wars",
+      "releases": {
+        "NA": "2005-09-19"
+      },
+      "developer": {
+        "default": "Kuju London"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Beach Spikers: Virtua Beach Volleyball",
+      "releases": {
+        "NA": "2002-08-14"
+      },
+      "developer": {
+        "default": "Sega AM2"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Beyblade VForce: Super Tournament Battle",
+      "releases": {
+        "NA": "2003-09-23"
+      },
+      "developer": {
+        "default": "A.I"
+      },
+      "publisher": {
+        "default": "Takara JP Atari WW"
+      }
+    },
+    {
+      "title": "Beyond Good & Evil",
+      "releases": {
+        "NA": "2003-12-10"
+      },
+      "developer": {
+        "default": "Ubisoft Pictures Ubisoft Milan"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "Big Air Freestyle",
+      "releases": {
+        "NA": "2002-09-13"
+      },
+      "developer": {
+        "default": "Paradigm Entertainment"
+      },
+      "publisher": {
+        "default": "Infogrames"
+      }
+    },
+    {
+      "title": "Big Mutha Truckers",
+      "releases": {
+        "NA": "2003-08-14"
+      },
+      "developer": {
+        "default": "Eutechnyx"
+      },
+      "publisher": {
+        "default": "Empire Interactive PAL THQ NA"
+      }
+    },
+    {
+      "title": "Billy Hatcher and the Giant Egg",
+      "releases": {
+        "NA": "2003-09-23"
+      },
+      "developer": {
+        "default": "Sonic Team"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Bionicle",
+      "releases": {
+        "NA": "2003-10-20"
+      },
+      "developer": {
+        "default": "Argonaut Games Argonaut Sheffield"
+      },
+      "publisher": {
+        "default": "Electronic Arts Lego Interactive"
+      }
+    },
+    {
+      "title": "Bionicle Heroes",
+      "releases": {
+        "NA": "2006-11-14"
+      },
+      "developer": {
+        "default": "Traveller's Tales"
+      },
+      "publisher": {
+        "default": "Eidos Interactive TT Games Publishing"
+      }
+    },
+    {
+      "title": "Black & Bruised",
+      "releases": {
+        "NA": "2003-01-28"
+      },
+      "developer": {
+        "default": "Digital Fiction"
+      },
+      "publisher": {
+        "default": "Majesco NA Vivendi Universal Games PAL"
+      }
+    },
+    {
+      "title": "Blood Omen 2",
+      "releases": {
+        "NA": "2002-12-04"
+      },
+      "developer": {
+        "default": "Nixxes Software"
+      },
+      "publisher": {
+        "default": "Eidos Interactive"
+      }
+    },
+    {
+      "title": "BloodRayne",
+      "releases": {
+        "NA": "2002-10-31"
+      },
+      "developer": {
+        "default": "Terminal Reality"
+      },
+      "publisher": {
+        "default": "Majesco NA Vivendi Universal Games PAL"
+      }
+    },
+    {
+      "title": "Bloody Roar: Primal Fury",
+      "releases": {
+        "NA": "2002-03-19"
+      },
+      "developer": {
+        "default": "Eighting"
+      },
+      "publisher": {
+        "default": "Activision WW Hudson Soft JP"
+      }
+    },
+    {
+      "title": "BlowOut",
+      "releases": {
+        "NA": "2003-11-26"
+      },
+      "developer": {
+        "default": "Terminal Reality"
+      },
+      "publisher": {
+        "default": "Majesco"
+      }
+    },
+    {
+      "title": "BMX XXX",
+      "releases": {
+        "NA": "2002-11-25"
+      },
+      "developer": {
+        "default": "Z-Axis"
+      },
+      "publisher": {
+        "default": "AKA Acclaim"
+      }
+    },
+    {
+      "title": "Bomberman Generation",
+      "releases": {
+        "NA": "2002-06-04"
+      },
+      "developer": {
+        "default": "Game Arts"
+      },
+      "publisher": {
+        "default": "Majesco NA Hudson Soft JP Vivendi Universal Games PAL"
+      }
+    },
+    {
+      "title": "Bomberman Jetters",
+      "releases": {
+        "NA": "2004-03-09"
+      },
+      "developer": {
+        "default": "Hudson Soft"
+      },
+      "publisher": {
+        "default": "Hudson Soft JP Majesco NA"
+      }
+    },
+    {
+      "title": "Bratz: Forever Diamondz",
+      "releases": {
+        "NA": "2006-09-18"
+      },
+      "developer": {
+        "default": "Blitz Games"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Bratz: Rock Angelz",
+      "releases": {
+        "NA": "2005-10-04"
+      },
+      "developer": {
+        "default": "Blitz Games"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Buffy the Vampire Slayer: Chaos Bleeds",
+      "releases": {
+        "NA": "2003-08-26"
+      },
+      "developer": {
+        "default": "Eurocom"
+      },
+      "publisher": {
+        "default": "Vivendi Universal Games"
+      }
+    },
+    {
+      "title": "Burnout",
+      "releases": {
+        "NA": "2002-04-30"
+      },
+      "developer": {
+        "default": "Criterion Games"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment"
+      }
+    },
+    {
+      "title": "Burnout 2: Point of Impact",
+      "releases": {
+        "NA": "2003-04-08"
+      },
+      "developer": {
+        "default": "Criterion Games"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment"
+      }
+    },
+    {
+      "title": "Bust-a-Move 3000",
+      "releases": {
+        "NA": "2003-02-12"
+      },
+      "developer": {
+        "default": "Taito"
+      },
+      "publisher": {
+        "default": "Taito JP Ubi Soft WW"
+      },
+      "aliases": [
+        {
+          "title": "Super Bust-a-Move All-Stars",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cabela's Big Game Hunter 2005 Adventures",
+      "releases": {
+        "NA": "2004-12-10"
+      },
+      "developer": {
+        "default": "Magic Wand Productions"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Cabela's Dangerous Hunts 2",
+      "releases": {
+        "NA": "2005-11-15"
+      },
+      "developer": {
+        "default": "Magic Wand Productions"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Cabela's Outdoor Adventures",
+      "releases": {
+        "NA": "2005-09-14"
+      },
+      "developer": {
+        "default": "Magic Wand Productions"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Call of Duty 2: Big Red One",
+      "releases": {
+        "NA": "2005-11-01"
+      },
+      "developer": {
+        "default": "High Voltage Software"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Call of Duty: Finest Hour",
+      "releases": {
+        "NA": "2004-11-16"
+      },
+      "developer": {
+        "default": "Exakt Entertainment"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Capcom vs. SNK 2 EO",
+      "releases": {
+        "NA": "2002-09-24"
+      },
+      "developer": {
+        "default": "Capcom"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Carmen Sandiego: The Secret of the Stolen Drums",
+      "releases": {
+        "NA": "2004-09-13"
+      },
+      "developer": {
+        "default": "Artificial Mind and Movement"
+      },
+      "publisher": {
+        "default": "BAM! Entertainment"
+      }
+    },
+    {
+      "title": "Cars",
+      "releases": {
+        "NA": "2006-06-06"
+      },
+      "developer": {
+        "default": "Rainbow Studios"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Casper: Spirit Dimensions",
+      "releases": {
+        "NA": "2002-10-14"
+      },
+      "developer": {
+        "default": "Lucky Chicken Games"
+      },
+      "publisher": {
+        "default": "TDK Mediactive"
+      }
+    },
+    {
+      "title": "Castleween",
+      "releases": {
+        "NA": "2003-09-29"
+      },
+      "developer": {
+        "default": "Wanadoo Edition"
+      },
+      "publisher": {
+        "default": "Wanadoo Edition PAL MTO JP DreamCatcher Interactive NA"
+      },
+      "aliases": [
+        {
+          "title": "Spirits & Spells",
+          "regions": [
+            "NA"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Catwoman",
+      "releases": {
+        "NA": "2004-07-23"
+      },
+      "developer": {
+        "default": "Argonaut Games EA UK"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Cel Damage",
+      "releases": {
+        "NA": "2002-01-07"
+      },
+      "developer": {
+        "default": "Pseudo Interactive"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Chaos Field",
+      "releases": {
+        "NA": "2005-12-20"
+      },
+      "developer": {
+        "default": "MileStone"
+      },
+      "publisher": {
+        "default": "Sega JP O~3 Entertainment NA"
+      }
+    },
+    {
+      "title": "Charlie and the Chocolate Factory",
+      "releases": {
+        "NA": "2005-07-22"
+      },
+      "developer": {
+        "default": "High Voltage Software"
+      },
+      "publisher": {
+        "default": "Global Star Software"
+      }
+    },
+    {
+      "title": "Charlie's Angels",
+      "releases": {
+        "NA": "2003-07-08"
+      },
+      "developer": {
+        "default": "Neko Entertainment"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      }
+    },
+    {
+      "title": "Chibi-Robo!",
+      "releases": {
+        "NA": "2006-02-08"
+      },
+      "developer": {
+        "default": "Skip Ltd."
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Chicken Little",
+      "releases": {
+        "NA": "2005-10-18"
+      },
+      "developer": {
+        "default": "Avalanche Software"
+      },
+      "publisher": {
+        "default": "Buena Vista Games WW D3 Publisher JP"
+      }
+    },
+    {
+      "title": "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
+      "releases": {
+        "NA": "2005-11-15"
+      },
+      "developer": {
+        "default": "Traveller's Tales"
+      },
+      "publisher": {
+        "default": "Buena Vista Games"
+      }
+    },
+    {
+      "title": "City Racer",
+      "releases": {
+        "NA": "2003-04-29"
+      },
+      "developer": {
+        "default": "Ubi Soft Bucharest"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      }
+    },
+    {
+      "title": "Codename: Kids Next Door – Operation: V.I.D.E.O.G.A.M.E.",
+      "releases": {
+        "NA": "2005-10-11"
+      },
+      "developer": {
+        "default": "High Voltage Software"
+      },
+      "publisher": {
+        "default": "Global Star Software"
+      }
+    },
+    {
+      "title": "Conflict: Desert Storm",
+      "releases": {
+        "NA": "2003-04-22"
+      },
+      "developer": {
+        "default": "Pivotal Games"
+      },
+      "publisher": {
+        "default": "SCi Games PAL Gotham Games NA"
+      }
+    },
+    {
+      "title": "Conflict: Desert Storm II - Back to Baghdad",
+      "releases": {
+        "NA": "2004-01-06"
+      },
+      "developer": {
+        "default": "Pivotal Games"
+      },
+      "publisher": {
+        "default": "Gotham Games NA SCi Games PAL"
+      }
+    },
+    {
+      "title": "Crash Bandicoot: The Wrath of Cortex",
+      "releases": {
+        "NA": "2002-09-17"
+      },
+      "developer": {
+        "default": "Eurocom"
+      },
+      "publisher": {
+        "default": "Universal Interactive WW Konami JP"
+      }
+    },
+    {
+      "title": "Crash Nitro Kart",
+      "releases": {
+        "NA": "2003-11-11"
+      },
+      "developer": {
+        "default": "Vicarious Visions"
+      },
+      "publisher": {
+        "default": "Universal Interactive WW Konami JP"
+      }
+    },
+    {
+      "title": "Crash Tag Team Racing",
+      "releases": {
+        "NA": "2005-10-21"
+      },
+      "developer": {
+        "default": "Radical Entertainment"
+      },
+      "publisher": {
+        "default": "Vivendi Universal Games"
+      }
+    },
+    {
+      "title": "Crazy Taxi",
+      "releases": {
+        "NA": "2001-11-18"
+      },
+      "developer": {
+        "default": "Acclaim Studios Cheltenham"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment WW Sega JP"
+      }
+    },
+    {
+      "title": "Cubivore: Survival of the Fittest",
+      "releases": {
+        "NA": "2002-11-05"
+      },
+      "developer": {
+        "default": "Saru Brunei Intelligent Systems"
+      },
+      "publisher": {
+        "default": "Nintendo JP Atlus NA"
+      }
+    },
+    {
+      "title": "Cubix Robots for Everyone: Showdown",
+      "releases": {
+        "NA": "2003-06-02"
+      },
+      "developer": {
+        "default": "Blitz Games"
+      },
+      "publisher": {
+        "default": "The 3DO Company"
+      }
+    },
+    {
+      "title": "Curious George",
+      "releases": {
+        "NA": "2006-02-01"
+      },
+      "developer": {
+        "default": "Monkey Bar Games"
+      },
+      "publisher": {
+        "default": "Namco Hometek"
+      }
+    },
+    {
+      "title": "Custom Robo",
+      "releases": {
+        "NA": "2004-05-10"
+      },
+      "developer": {
+        "default": "Noise"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Dakar 2: The World's Ultimate Rally",
+      "releases": {
+        "NA": "2003-03-31"
+      },
+      "developer": {
+        "default": "Acclaim Studios Cheltenham"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment"
+      }
+    },
+    {
+      "title": "Dance Dance Revolution: Mario Mix",
+      "releases": {
+        "NA": "2005-10-24"
+      },
+      "developer": {
+        "default": "Konami"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      },
+      "aliases": [
+        {
+          "title": "Dancing Stage Mario Mix",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Darkened Skye",
+      "releases": {
+        "NA": "2002-11-12"
+      },
+      "developer": {
+        "default": "Boston Animation"
+      },
+      "publisher": {
+        "default": "Simon & Schuster Interactive NA TDK Mediactive Europe PAL"
+      }
+    },
+    {
+      "title": "Dark Summit",
+      "releases": {
+        "NA": "2002-02-05"
+      },
+      "developer": {
+        "default": "Radical Entertainment"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Dave Mirra Freestyle BMX 2",
+      "releases": {
+        "NA": "2001-11-18"
+      },
+      "developer": {
+        "default": "Z-Axis"
+      },
+      "publisher": {
+        "default": "Acclaim Max Sports"
+      }
+    },
+    {
+      "title": "Dead to Rights",
+      "releases": {
+        "NA": "2002-11-25"
+      },
+      "developer": {
+        "default": "Namco Hometek"
+      },
+      "publisher": {
+        "default": "Namco Hometek NA Electronic Arts PAL"
+      }
+    },
+    {
+      "title": "Def Jam: Fight for NY",
+      "releases": {
+        "NA": "2004-09-21"
+      },
+      "developer": {
+        "default": "AKI Corporation EA Canada"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Def Jam Vendetta",
+      "releases": {
+        "NA": "2003-04-01"
+      },
+      "developer": {
+        "default": "AKI Corporation EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports BIG"
+      }
+    },
+    {
+      "title": "Defender",
+      "releases": {
+        "NA": "2002-11-04"
+      },
+      "developer": {
+        "default": "Inevitable Entertainment"
+      },
+      "publisher": {
+        "default": "Midway"
+      },
+      "aliases": [
+        {
+          "title": "Defender: For All Mankind",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Hard: Vendetta",
+      "releases": {
+        "NA": "2002-11-19"
+      },
+      "developer": {
+        "default": "Bits Studios"
+      },
+      "publisher": {
+        "default": "Vivendi Universal Games International PAL Sierra Entertainment NA"
+      }
+    },
+    {
+      "title": "Digimon Rumble Arena 2",
+      "releases": {
+        "NA": "2004-09-06"
+      },
+      "developer": {
+        "default": "Bandai Black Ship Games"
+      },
+      "publisher": {
+        "default": "Bandai"
+      }
+    },
+    {
+      "title": "Digimon World 4",
+      "releases": {
+        "NA": "2005-06-02"
+      },
+      "developer": {
+        "default": "BEC"
+      },
+      "publisher": {
+        "default": "Bandai"
+      }
+    },
+    {
+      "title": "Dinotopia: The Sunstone Odyssey",
+      "releases": {
+        "NA": "2003-07-31"
+      },
+      "developer": {
+        "default": "Vicious Cycle Software"
+      },
+      "publisher": {
+        "default": "TDK Mediactive"
+      }
+    },
+    {
+      "title": "Disney Sports Basketball",
+      "releases": {
+        "NA": "2003-01-14"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Osaka Polygon Magic"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Disney Sports Football",
+      "releases": {
+        "NA": "2002-12-17"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Osaka"
+      },
+      "publisher": {
+        "default": "Konami"
+      },
+      "aliases": [
+        {
+          "title": "Disney Sports: American Football",
+          "regions": [
+            "JP"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Disney Sports Skateboarding",
+      "releases": {
+        "NA": "2002-11-12"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Osaka"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Disney Sports Soccer",
+      "releases": {
+        "NA": "2002-11-12"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Osaka"
+      },
+      "publisher": {
+        "default": "Konami"
+      },
+      "aliases": [
+        {
+          "title": "Disney Sports: Football",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Disney's Extreme Skate Adventure",
+      "releases": {
+        "NA": "2003-09-03"
+      },
+      "developer": {
+        "default": "Toys for Bob"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Disney's Hide & Sneak",
+      "releases": {
+        "NA": "2003-11-18"
+      },
+      "developer": {
+        "default": "Capcom"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Disney's Magical Mirror Starring Mickey Mouse",
+      "releases": {
+        "NA": "2002-08-13"
+      },
+      "developer": {
+        "default": "Capcom Polygon Magic"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Disney's Party",
+      "releases": {
+        "NA": "2003-09-16"
+      },
+      "developer": {
+        "default": "Neverland"
+      },
+      "publisher": {
+        "default": "Hudson Soft JP Electronic Arts WW"
+      }
+    },
+    {
+      "title": "Donald Duck: Goin' Quackers",
+      "releases": {
+        "NA": "2002-03-26"
+      },
+      "developer": {
+        "default": "Ubi Soft Montreal"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      },
+      "aliases": [
+        {
+          "title": "Donald Duck: Quack Attack",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Donkey Konga",
+      "releases": {
+        "NA": "2004-09-27"
+      },
+      "developer": {
+        "default": "Namco"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Donkey Konga 2",
+      "releases": {
+        "NA": "2005-05-09"
+      },
+      "developer": {
+        "default": "Namco"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Donkey Kong Jungle Beat",
+      "releases": {
+        "NA": "2005-03-14"
+      },
+      "developer": {
+        "default": "Nintendo EAD Tokyo"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Dora the Explorer: Journey to the Purple Planet",
+      "releases": {
+        "NA": "2005-10-13"
+      },
+      "developer": {
+        "default": "Monkey Bar Games"
+      },
+      "publisher": {
+        "default": "Global Star Software"
+      }
+    },
+    {
+      "title": "Dr. Muto",
+      "releases": {
+        "NA": "2002-12-17"
+      },
+      "developer": {
+        "default": "Midway Games West"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Dragon Ball Z: Budokai",
+      "releases": {
+        "NA": "2003-10-28"
+      },
+      "developer": {
+        "default": "Pyramid, Inc."
+      },
+      "publisher": {
+        "default": "Atari NA Bandai PAL/JP"
+      }
+    },
+    {
+      "title": "Dragon Ball Z: Budokai 2",
+      "releases": {
+        "NA": "2004-12-15"
+      },
+      "developer": {
+        "default": "Pyramid, Inc."
+      },
+      "publisher": {
+        "default": "Atari NA/AUS Bandai EU/JP"
+      }
+    },
+    {
+      "title": "Dragon Ball Z: Sagas",
+      "releases": {
+        "NA": "2005-03-22"
+      },
+      "developer": {
+        "default": "Avalanche Software"
+      },
+      "publisher": {
+        "default": "Atari"
+      }
+    },
+    {
+      "title": "Dragon's Lair 3D: Return to the Lair",
+      "releases": {
+        "NA": "2003-01-06"
+      },
+      "developer": {
+        "default": "Dragonstone Software"
+      },
+      "publisher": {
+        "default": "Encore Software NA THQ PAL"
+      },
+      "aliases": [
+        {
+          "title": "Dragon's Lair 3D: Special Edition",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Driven",
+      "releases": {
+        "NA": "2002-03-26"
+      },
+      "developer": {
+        "default": "Crawfish Interactive"
+      },
+      "publisher": {
+        "default": "BAM! Entertainment"
+      }
+    },
+    {
+      "title": "Drome Racers",
+      "releases": {
+        "NA": "2003-09-16"
+      },
+      "developer": {
+        "default": "Attention to Detail"
+      },
+      "publisher": {
+        "default": "Electronic Arts Lego Interactive"
+      }
+    },
+    {
+      "title": "Ed, Edd n Eddy: The Mis-Edventures",
+      "releases": {
+        "NA": "2005-10-31"
+      },
+      "developer": {
+        "default": "Artificial Mind and Movement"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Egg Mania: Eggstreme Madness",
+      "releases": {
+        "NA": "2002-09-11"
+      },
+      "developer": {
+        "default": "HotGen"
+      },
+      "publisher": {
+        "default": "Kemco WW Kotobuki Systems JP"
+      },
+      "aliases": [
+        {
+          "title": "Eggo Mania",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Enter the Matrix",
+      "releases": {
+        "NA": "2003-05-15"
+      },
+      "developer": {
+        "default": "Shiny Entertainment"
+      },
+      "publisher": {
+        "default": "Infogrames WW Bandai JP"
+      }
+    },
+    {
+      "title": "ESPN International Winter Sports 2002",
+      "releases": {
+        "NA": "2002-01-29"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Osaka"
+      },
+      "publisher": {
+        "default": "Konami"
+      },
+      "aliases": [
+        {
+          "title": "International Winter Sports",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ESPN MLS ExtraTime 2002",
+      "releases": {
+        "NA": "2002-04-02"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Hawaii"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Eternal Darkness: Sanity's Requiem",
+      "releases": {
+        "NA": "2002-06-24"
+      },
+      "developer": {
+        "default": "Silicon Knights"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Evolution Skateboarding",
+      "releases": {
+        "NA": "2002-11-17"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Osaka"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Evolution Snowboarding",
+      "releases": {
+        "NA": "2003-02-25"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Osaka"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Evolution Worlds",
+      "releases": {
+        "NA": "2002-12-02"
+      },
+      "developer": {
+        "default": "Sting Entertainment"
+      },
+      "publisher": {
+        "default": "Entertainment Software Publishing JP Ubi Soft WW"
+      }
+    },
+    {
+      "title": "Extreme-G 3",
+      "releases": {
+        "NA": "2001-11-27"
+      },
+      "developer": {
+        "default": "Acclaim Studios Cheltenham"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment"
+      }
+    },
+    {
+      "title": "F-Zero GX",
+      "releases": {
+        "NA": "2003-08-25"
+      },
+      "developer": {
+        "default": "Amusement Vision"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "F1 2002",
+      "releases": {
+        "NA": "2002-06-24"
+      },
+      "developer": {
+        "default": "Visual Science"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "F1 Career Challenge",
+      "releases": {
+        "NA": "2003-06-24"
+      },
+      "developer": {
+        "default": "Visual Science"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "The Fairly OddParents: Breakin' Da Rules",
+      "releases": {
+        "NA": "2003-11-10"
+      },
+      "developer": {
+        "default": "Blitz Games"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "The Fairly OddParents: Shadow Showdown",
+      "releases": {
+        "NA": "2004-09-09"
+      },
+      "developer": {
+        "default": "Blitz Games"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Fantastic Four",
+      "releases": {
+        "NA": "2005-06-27"
+      },
+      "developer": {
+        "default": "7 Studios"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "FIFA 06",
+      "releases": {
+        "NA": "2005-10-04"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      },
+      "aliases": [
+        {
+          "title": "FIFA Soccer 06",
+          "regions": [
+            "NA"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "FIFA 07",
+      "releases": {
+        "NA": "2006-10-03"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      },
+      "aliases": [
+        {
+          "title": "FIFA Soccer 07",
+          "regions": [
+            "NA"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "FIFA Football 2003",
+      "releases": {
+        "NA": "2002-11-14"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports WW Electronic Arts Square JP"
+      },
+      "aliases": [
+        {
+          "title": "FIFA Soccer 2003",
+          "regions": [
+            "NA"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "FIFA Football 2004",
+      "releases": {
+        "NA": "2003-11-04"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      },
+      "aliases": [
+        {
+          "title": "FIFA Soccer 2004",
+          "regions": [
+            "NA"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "FIFA Football 2005",
+      "releases": {
+        "NA": "2004-10-12"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      },
+      "aliases": [
+        {
+          "title": "FIFA Soccer 2005",
+          "regions": [
+            "NA"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "FIFA Soccer 2002: Major League Soccer",
+      "releases": {
+        "NA": "2001-11-21"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "Electronic Arts Square JP EA Sports NA"
+      }
+    },
+    {
+      "title": "FIFA Street",
+      "releases": {
+        "NA": "2005-02-22"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports BIG"
+      }
+    },
+    {
+      "title": "FIFA Street 2",
+      "releases": {
+        "NA": "2006-02-28"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports BIG"
+      }
+    },
+    {
+      "title": "Fight Night Round 2",
+      "releases": {
+        "NA": "2005-03-01"
+      },
+      "developer": {
+        "default": "EA Chicago"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "Final Fantasy Crystal Chronicles",
+      "releases": {
+        "NA": "2004-02-09"
+      },
+      "developer": {
+        "default": "The Game Designers Studio"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Finding Nemo",
+      "releases": {
+        "NA": "2003-05-09"
+      },
+      "developer": {
+        "default": "Traveller's Tales"
+      },
+      "publisher": {
+        "default": "THQ WW Yuke's JP"
+      }
+    },
+    {
+      "title": "Fire Blade",
+      "releases": {
+        "NA": "2002-12-29"
+      },
+      "developer": {
+        "default": "Kuju Entertainment"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Fire Emblem: Path of Radiance",
+      "releases": {
+        "NA": "2005-10-17"
+      },
+      "developer": {
+        "default": "Intelligent Systems Nintendo SPD"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Flushed Away",
+      "releases": {
+        "NA": "2006-10-24"
+      },
+      "developer": {
+        "default": "Monkey Bar Games"
+      },
+      "publisher": {
+        "default": "D3 Publisher"
+      }
+    },
+    {
+      "title": "Freaky Flyers",
+      "releases": {
+        "NA": "2003-08-04"
+      },
+      "developer": {
+        "default": "Point of View"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Freedom Fighters",
+      "releases": {
+        "NA": "2003-10-01"
+      },
+      "developer": {
+        "default": "IO Interactive"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Freekstyle",
+      "releases": {
+        "NA": "2002-09-04"
+      },
+      "developer": {
+        "default": "Hypnos Entertainment"
+      },
+      "publisher": {
+        "default": "EA Sports BIG"
+      }
+    },
+    {
+      "title": "Freestyle MetalX",
+      "releases": {
+        "NA": "2003-10-03"
+      },
+      "developer": {
+        "default": "Deibus Studios"
+      },
+      "publisher": {
+        "default": "Midway Sports Asylum"
+      }
+    },
+    {
+      "title": "Freestyle Street Soccer",
+      "releases": {
+        "NA": "2004-02-12"
+      },
+      "developer": {
+        "default": "Gusto Games"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment"
+      },
+      "aliases": [
+        {
+          "title": "Urban Freestyle Soccer",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Frogger: Ancient Shadow",
+      "releases": {
+        "NA": "2005-09-27"
+      },
+      "developer": {
+        "default": "Hudson Soft"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Frogger Beyond",
+      "releases": {
+        "NA": "2002-12-05"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Hawaii Konami Software Shanghai"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Frogger's Adventures: The Rescue",
+      "releases": {
+        "NA": "2003-10-28"
+      },
+      "developer": {
+        "default": "Hudson Soft"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Future Tactics: The Uprising",
+      "releases": {
+        "NA": "2004-05-07"
+      },
+      "developer": {
+        "default": "Zed Two"
+      },
+      "publisher": {
+        "default": "Crave Entertainment NA JoWooD Productions PAL"
+      }
+    },
+    {
+      "title": "Gauntlet Dark Legacy",
+      "releases": {
+        "NA": "2002-03-05"
+      },
+      "developer": {
+        "default": "Midway Games West"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Geist",
+      "releases": {
+        "NA": "2005-08-15"
+      },
+      "developer": {
+        "default": "n-Space"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Gladius",
+      "releases": {
+        "NA": "2003-11-03"
+      },
+      "developer": {
+        "default": "LucasArts"
+      },
+      "publisher": {
+        "default": "LucasArts NA Activision PAL"
+      }
+    },
+    {
+      "title": "Go! Go! Hypergrind",
+      "releases": {
+        "NA": "2003-11-18"
+      },
+      "developer": {
+        "default": "Poponchi"
+      },
+      "publisher": {
+        "default": "Atlus"
+      }
+    },
+    {
+      "title": "Goblin Commander: Unleash the Horde",
+      "releases": {
+        "NA": "2003-12-16"
+      },
+      "developer": {
+        "default": "Jaleco Entertainment"
+      },
+      "publisher": {
+        "default": "Jaleco Entertainment"
+      }
+    },
+    {
+      "title": "Godzilla: Destroy All Monsters Melee",
+      "releases": {
+        "NA": "2002-10-15"
+      },
+      "developer": {
+        "default": "Pipeworks Software"
+      },
+      "publisher": {
+        "default": "Infogrames"
+      }
+    },
+    {
+      "title": "GoldenEye: Rogue Agent",
+      "releases": {
+        "NA": "2004-11-22"
+      },
+      "developer": {
+        "default": "EA Los Angeles"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Gotcha Force",
+      "releases": {
+        "NA": "2003-12-05"
+      },
+      "developer": {
+        "default": "Capcom"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "The Grim Adventures of Billy & Mandy",
+      "releases": {
+        "NA": "2006-09-25"
+      },
+      "developer": {
+        "default": "High Voltage Software"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Grooverider: Slot Car Thunder",
+      "releases": {
+        "NA": "2003-09-25"
+      },
+      "developer": {
+        "default": "King of the Jungle"
+      },
+      "publisher": {
+        "default": "Encore Software"
+      }
+    },
+    {
+      "title": "Gun",
+      "releases": {
+        "NA": "2005-11-08"
+      },
+      "developer": {
+        "default": "Neversoft"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Happy Feet",
+      "releases": {
+        "NA": "2006-11-14"
+      },
+      "developer": {
+        "default": "Artificial Mind and Movement"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Harry Potter and the Chamber of Secrets",
+      "releases": {
+        "NA": "2002-11-15"
+      },
+      "developer": {
+        "default": "Eurocom"
+      },
+      "publisher": {
+        "default": "EA Games WW Electronic Arts Square JP"
+      }
+    },
+    {
+      "title": "Harry Potter and the Goblet of Fire",
+      "releases": {
+        "NA": "2005-11-08"
+      },
+      "developer": {
+        "default": "EA UK"
+      },
+      "publisher": {
+        "default": "Electronic Arts"
+      }
+    },
+    {
+      "title": "Harry Potter and the Philosopher's Stone",
+      "releases": {
+        "NA": "2003-12-12"
+      },
+      "developer": {
+        "default": "Warthog Games"
+      },
+      "publisher": {
+        "default": "EA Games"
+      },
+      "aliases": [
+        {
+          "title": "Harry Potter and the Sorcerer's Stone",
+          "regions": [
+            "NA"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Harry Potter and the Prisoner of Azkaban",
+      "releases": {
+        "NA": "2004-05-29"
+      },
+      "developer": {
+        "default": "EA UK"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Harry Potter: Quidditch World Cup",
+      "releases": {
+        "NA": "2003-10-28"
+      },
+      "developer": {
+        "default": "EA UK"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Harvest Moon: Another Wonderful Life",
+      "releases": {
+        "NA": "2005-07-26"
+      },
+      "developer": {
+        "default": "Marvelous Interactive"
+      },
+      "publisher": {
+        "default": "Marvelous Interactive JP Natsume Inc. NA"
+      }
+    },
+    {
+      "title": "Harvest Moon: Magical Melody",
+      "releases": {
+        "NA": "2006-03-28"
+      },
+      "developer": {
+        "default": "Marvelous Interactive"
+      },
+      "publisher": {
+        "default": "Marvelous Interactive JP Natsume Inc. NA"
+      }
+    },
+    {
+      "title": "Harvest Moon: A Wonderful Life",
+      "releases": {
+        "NA": "2004-03-16"
+      },
+      "developer": {
+        "default": "Marvelous Interactive"
+      },
+      "publisher": {
+        "default": "Marvelous Interactive JP Natsume Inc. WW"
+      }
+    },
+    {
+      "title": "The Haunted Mansion",
+      "releases": {
+        "NA": "2003-10-16"
+      },
+      "developer": {
+        "default": "High Voltage Software"
+      },
+      "publisher": {
+        "default": "TDK Mediactive"
+      }
+    },
+    {
+      "title": "Hello Kitty: Roller Rescue",
+      "releases": {
+        "NA": "2005-08-16"
+      },
+      "developer": {
+        "default": "XPEC Entertainment"
+      },
+      "publisher": {
+        "default": "Namco Hometek NA Empire Interactive PAL"
+      }
+    },
+    {
+      "title": "Hitman 2: Silent Assassin",
+      "releases": {
+        "NA": "2003-06-17"
+      },
+      "developer": {
+        "default": "IO Interactive"
+      },
+      "publisher": {
+        "default": "Eidos Interactive"
+      }
+    },
+    {
+      "title": "The Hobbit",
+      "releases": {
+        "NA": "2003-11-11"
+      },
+      "developer": {
+        "default": "Inevitable Entertainment"
+      },
+      "publisher": {
+        "default": "Vivendi Universal Games"
+      }
+    },
+    {
+      "title": "Home Run King",
+      "releases": {
+        "NA": "2002-03-19"
+      },
+      "developer": {
+        "default": "Wow Entertainment"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Hot Wheels: Velocity X",
+      "releases": {
+        "NA": "2002-11-06"
+      },
+      "developer": {
+        "default": "Beyond Games"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Hot Wheels: World Race",
+      "releases": {
+        "NA": "2003-10-28"
+      },
+      "developer": {
+        "default": "Climax Brighton"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Hulk",
+      "releases": {
+        "NA": "2003-05-28"
+      },
+      "developer": {
+        "default": "Radical Entertainment"
+      },
+      "publisher": {
+        "default": "Universal Interactive"
+      }
+    },
+    {
+      "title": "Hunter: The Reckoning",
+      "releases": {
+        "NA": "2002-11-19"
+      },
+      "developer": {
+        "default": "High Voltage Software"
+      },
+      "publisher": {
+        "default": "Interplay Entertainment"
+      }
+    },
+    {
+      "title": "I-Ninja",
+      "releases": {
+        "NA": "2003-12-04"
+      },
+      "developer": {
+        "default": "Argonaut Games"
+      },
+      "publisher": {
+        "default": "Namco Hometek"
+      }
+    },
+    {
+      "title": "Ice Age 2: The Meltdown",
+      "releases": {
+        "NA": "2006-03-14"
+      },
+      "developer": {
+        "default": "Eurocom"
+      },
+      "publisher": {
+        "default": "Vivendi Universal Games"
+      }
+    },
+    {
+      "title": "Ikaruga",
+      "releases": {
+        "NA": "2003-04-15"
+      },
+      "developer": {
+        "default": "Treasure G.rev"
+      },
+      "publisher": {
+        "default": "Infogrames"
+      }
+    },
+    {
+      "title": "The Incredible Hulk: Ultimate Destruction",
+      "releases": {
+        "NA": "2005-08-23"
+      },
+      "developer": {
+        "default": "Radical Entertainment"
+      },
+      "publisher": {
+        "default": "Vivendi Universal Games"
+      }
+    },
+    {
+      "title": "The Incredibles",
+      "releases": {
+        "NA": "2004-11-01"
+      },
+      "developer": {
+        "default": "Heavy Iron Studios"
+      },
+      "publisher": {
+        "default": "THQ WW D3 Publisher JP"
+      }
+    },
+    {
+      "title": "The Incredibles: Rise of the Underminer",
+      "releases": {
+        "NA": "2005-11-01"
+      },
+      "developer": {
+        "default": "Heavy Iron Studios"
+      },
+      "publisher": {
+        "default": "THQ WW Sega JP"
+      }
+    },
+    {
+      "title": "Intellivision Lives!",
+      "releases": {
+        "NA": "2004-11-04"
+      },
+      "developer": {
+        "default": "Realtime Associates"
+      },
+      "publisher": {
+        "default": "Crave Entertainment"
+      }
+    },
+    {
+      "title": "The Italian Job",
+      "releases": {
+        "NA": "2003-07-15"
+      },
+      "developer": {
+        "default": "Climax Brighton"
+      },
+      "publisher": {
+        "default": "Eidos Interactive"
+      }
+    },
+    {
+      "title": "James Bond 007: Agent Under Fire",
+      "releases": {
+        "NA": "2002-03-12"
+      },
+      "developer": {
+        "default": "EA Redwood Shores EA Canada"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "James Bond 007: Everything or Nothing",
+      "releases": {
+        "NA": "2004-02-17"
+      },
+      "developer": {
+        "default": "EA Redwood Shores EA Canada"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "James Bond 007: From Russia with Love",
+      "releases": {
+        "NA": "2005-11-15"
+      },
+      "developer": {
+        "default": "EA Redwood Shores"
+      },
+      "publisher": {
+        "default": "Electronic Arts"
+      }
+    },
+    {
+      "title": "James Bond 007: Nightfire",
+      "releases": {
+        "NA": "2002-11-19"
+      },
+      "developer": {
+        "default": "Eurocom"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Jeremy McGrath Supercross World",
+      "releases": {
+        "NA": "2002-02-26"
+      },
+      "developer": {
+        "default": "Acclaim Studios Salt Lake City"
+      },
+      "publisher": {
+        "default": "Acclaim Max Sports"
+      }
+    },
+    {
+      "title": "Jimmy Neutron: Boy Genius",
+      "releases": {
+        "NA": "2002-12-16"
+      },
+      "developer": {
+        "default": "Big Sky Interactive"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Judge Dredd: Dredd vs. Death",
+      "releases": {
+        "NA": "2005-03-01"
+      },
+      "developer": {
+        "default": "Rebellion Developments"
+      },
+      "publisher": {
+        "default": "Vivendi Universal Games International PAL Evolved Games NA"
+      }
+    },
+    {
+      "title": "Kao the Kangaroo: Round 2",
+      "releases": {
+        "NA": "2006-03-21"
+      },
+      "developer": {
+        "default": "Tate Interactive"
+      },
+      "publisher": {
+        "default": "JoWooD Productions PAL Atari NA"
+      }
+    },
+    {
+      "title": "Karaoke Revolution Party",
+      "releases": {
+        "NA": "2005-11-08"
+      },
+      "developer": {
+        "default": "Harmonix"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Kelly Slater's Pro Surfer",
+      "releases": {
+        "NA": "2002-09-17"
+      },
+      "developer": {
+        "default": "Treyarch"
+      },
+      "publisher": {
+        "default": "Activision O2"
+      }
+    },
+    {
+      "title": "Killer7",
+      "releases": {
+        "NA": "2005-07-05"
+      },
+      "developer": {
+        "default": "Grasshopper Manufacture Capcom Production Studio 4"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "King Arthur",
+      "releases": {
+        "NA": "2004-11-16"
+      },
+      "developer": {
+        "default": "Krome Studios"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Kirby Air Ride",
+      "releases": {
+        "NA": "2003-10-13"
+      },
+      "developer": {
+        "default": "HAL Laboratory"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Knockout Kings 2003",
+      "releases": {
+        "NA": "2002-10-09"
+      },
+      "developer": {
+        "default": "GameFlow Entertainment EA Redwood Studios"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "The Legend of Spyro: A New Beginning",
+      "releases": {
+        "NA": "2006-10-10"
+      },
+      "developer": {
+        "default": "Krome Studios"
+      },
+      "publisher": {
+        "default": "Vivendi Universal Games"
+      }
+    },
+    {
+      "title": "The Legend of Zelda: Collector's Edition",
+      "releases": {
+        "NA": "2003-11-17"
+      },
+      "developer": {
+        "default": "Nintendo EAD"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "The Legend of Zelda: Four Swords Adventures",
+      "releases": {
+        "NA": "2004-06-07"
+      },
+      "developer": {
+        "default": "Nintendo EAD"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "The Legend of Zelda: Ocarina of Time / Master Quest",
+      "releases": {
+        "NA": "2003-02-18"
+      },
+      "developer": {
+        "default": "Nintendo EAD"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "The Legend of Zelda: Twilight Princess",
+      "releases": {
+        "NA": "2006-12-11"
+      },
+      "developer": {
+        "default": "Nintendo EAD"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "The Legend of Zelda: The Wind Waker",
+      "releases": {
+        "NA": "2003-03-24"
+      },
+      "developer": {
+        "default": "Nintendo EAD"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Legends of Wrestling",
+      "releases": {
+        "NA": "2002-05-28"
+      },
+      "developer": {
+        "default": "Acclaim Studios Salt Lake City"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment"
+      }
+    },
+    {
+      "title": "Legends of Wrestling II",
+      "releases": {
+        "NA": "2002-11-26"
+      },
+      "developer": {
+        "default": "Acclaim Studios Salt Lake City"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment"
+      }
+    },
+    {
+      "title": "Lego Star Wars: The Video Game",
+      "releases": {
+        "NA": "2005-10-26"
+      },
+      "developer": {
+        "default": "Traveller's Tales"
+      },
+      "publisher": {
+        "default": "Eidos Interactive Giant Interactive Entertainment"
+      }
+    },
+    {
+      "title": "Lego Star Wars II: The Original Trilogy",
+      "releases": {
+        "NA": "2006-09-12"
+      },
+      "developer": {
+        "default": "Traveller's Tales"
+      },
+      "publisher": {
+        "default": "LucasArts"
+      }
+    },
+    {
+      "title": "Lemony Snicket's A Series of Unfortunate Events",
+      "releases": {
+        "NA": "2004-11-09"
+      },
+      "developer": {
+        "default": "Adrenium Games"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Looney Tunes: Back in Action",
+      "releases": {
+        "NA": "2003-11-24"
+      },
+      "developer": {
+        "default": "Warthog Games"
+      },
+      "publisher": {
+        "default": "Electronic Arts Warner Bros. Interactive Entertainment"
+      }
+    },
+    {
+      "title": "The Lord of the Rings: The Return of the King",
+      "releases": {
+        "NA": "2003-11-06"
+      },
+      "developer": {
+        "default": "Hypnos Entertainment"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "The Lord of the Rings: The Third Age",
+      "releases": {
+        "NA": "2004-11-02"
+      },
+      "developer": {
+        "default": "EA Redwood Shores"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "The Lord of the Rings: The Two Towers",
+      "releases": {
+        "NA": "2002-12-30"
+      },
+      "developer": {
+        "default": "Hypnos Entertainment"
+      },
+      "publisher": {
+        "default": "EA Games WW Electronic Arts Square JP"
+      }
+    },
+    {
+      "title": "Lost Kingdoms",
+      "releases": {
+        "NA": "2002-05-29"
+      },
+      "developer": {
+        "default": "FromSoftware"
+      },
+      "publisher": {
+        "default": "FromSoftware JP Activision WW"
+      }
+    },
+    {
+      "title": "Lost Kingdoms II",
+      "releases": {
+        "NA": "2003-05-22"
+      },
+      "developer": {
+        "default": "FromSoftware"
+      },
+      "publisher": {
+        "default": "Activision FromSoftware JP"
+      }
+    },
+    {
+      "title": "Lotus Challenge",
+      "releases": {
+        "NA": "2004-07-29"
+      },
+      "developer": {
+        "default": "Kuju Entertainment"
+      },
+      "publisher": {
+        "default": "Ignition Entertainment"
+      }
+    },
+    {
+      "title": "Luigi's Mansion",
+      "releases": {
+        "NA": "2001-11-18"
+      },
+      "developer": {
+        "default": "Nintendo EAD"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Madagascar",
+      "releases": {
+        "NA": "2005-05-24"
+      },
+      "developer": {
+        "default": "Toys for Bob"
+      },
+      "publisher": {
+        "default": "Activision WW Bandai JP"
+      }
+    },
+    {
+      "title": "Madden NFL 06",
+      "releases": {
+        "NA": "2005-08-09"
+      },
+      "developer": {
+        "default": "EA Tiburon"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "Madden NFL 07",
+      "releases": {
+        "NA": "2006-08-22"
+      },
+      "developer": {
+        "default": "EA Tiburon"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "Madden NFL 08",
+      "releases": {
+        "NA": "2007-08-14"
+      },
+      "developer": {
+        "default": "EA Tiburon"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "Madden NFL 2002",
+      "releases": {
+        "NA": "2001-11-18"
+      },
+      "developer": {
+        "default": "EA Tiburon"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "Madden NFL 2003",
+      "releases": {
+        "NA": "2002-08-12"
+      },
+      "developer": {
+        "default": "EA Tiburon"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "Madden NFL 2004",
+      "releases": {
+        "NA": "2003-08-11"
+      },
+      "developer": {
+        "default": "EA Tiburon"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "Madden NFL 2005",
+      "releases": {
+        "NA": "2004-08-10"
+      },
+      "developer": {
+        "default": "EA Tiburon"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "Major League Baseball 2K6",
+      "releases": {
+        "NA": "2006-06-12"
+      },
+      "developer": {
+        "default": "Kush Games"
+      },
+      "publisher": {
+        "default": "2K Sports"
+      }
+    },
+    {
+      "title": "Mario Golf: Toadstool Tour",
+      "releases": {
+        "NA": "2003-07-28"
+      },
+      "developer": {
+        "default": "Camelot Software Planning"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Mario Kart: Double Dash",
+      "releases": {
+        "NA": "2003-11-17"
+      },
+      "developer": {
+        "default": "Nintendo EAD"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Mario Party 4",
+      "releases": {
+        "NA": "2002-10-21"
+      },
+      "developer": {
+        "default": "Hudson Soft"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Mario Party 5",
+      "releases": {
+        "NA": "2003-11-11"
+      },
+      "developer": {
+        "default": "Hudson Soft"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Mario Party 6",
+      "releases": {
+        "NA": "2004-12-06"
+      },
+      "developer": {
+        "default": "Hudson Soft"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Mario Party 7",
+      "releases": {
+        "NA": "2005-11-07"
+      },
+      "developer": {
+        "default": "Hudson Soft"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Mario Power Tennis",
+      "releases": {
+        "NA": "2004-11-08"
+      },
+      "developer": {
+        "default": "Camelot Software Planning"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Mario Superstar Baseball",
+      "releases": {
+        "NA": "2005-08-29"
+      },
+      "developer": {
+        "default": "Namco Now Production Nintendo SPD"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Mark Davis Pro Bass Challenge",
+      "releases": {
+        "NA": "2005-09-20"
+      },
+      "developer": {
+        "default": "SIMS"
+      },
+      "publisher": {
+        "default": "Natsume Inc."
+      }
+    },
+    {
+      "title": "Marvel Nemesis: Rise of the Imperfects",
+      "releases": {
+        "NA": "2005-09-20"
+      },
+      "developer": {
+        "default": "Nihilistic Software"
+      },
+      "publisher": {
+        "default": "Electronic Arts"
+      }
+    },
+    {
+      "title": "Mary-Kate and Ashley: Sweet 16 – Licensed to Drive",
+      "releases": {
+        "NA": "2002-10-01"
+      },
+      "developer": {
+        "default": "n-Space"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment"
+      }
+    },
+    {
+      "title": "Mat Hoffman's Pro BMX 2",
+      "releases": {
+        "NA": "2002-10-08"
+      },
+      "developer": {
+        "default": "Gratuitous Games"
+      },
+      "publisher": {
+        "default": "Activision O2"
+      }
+    },
+    {
+      "title": "MC Groovz Dance Craze",
+      "releases": {
+        "NA": "2004-11-22"
+      },
+      "developer": {
+        "default": "Mad Catz"
+      },
+      "publisher": {
+        "default": "Mad Catz"
+      }
+    },
+    {
+      "title": "Medabots Infinity",
+      "releases": {
+        "NA": "2003-12-14"
+      },
+      "developer": {
+        "default": "Natsume Co., Ltd."
+      },
+      "publisher": {
+        "default": "Natsume Co., Ltd. JP Natsume Inc. WW"
+      }
+    },
+    {
+      "title": "Medal of Honor: European Assault",
+      "releases": {
+        "NA": "2005-06-06"
+      },
+      "developer": {
+        "default": "EA Los Angeles"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Medal of Honor: Frontline",
+      "releases": {
+        "NA": "2002-11-07"
+      },
+      "developer": {
+        "default": "EA Los Angeles"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Medal of Honor: Rising Sun",
+      "releases": {
+        "NA": "2003-11-11"
+      },
+      "developer": {
+        "default": "EA Los Angeles"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Meet the Robinsons",
+      "releases": {
+        "NA": "2007-03-27"
+      },
+      "developer": {
+        "default": "Avalanche Software"
+      },
+      "publisher": {
+        "default": "Disney Interactive Studios"
+      }
+    },
+    {
+      "title": "Mega Man Anniversary Collection",
+      "releases": {
+        "NA": "2004-06-22"
+      },
+      "developer": {
+        "default": "Atomic Planet Entertainment"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Mega Man Network Transmission",
+      "releases": {
+        "NA": "2003-06-17"
+      },
+      "developer": {
+        "default": "Arika"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Mega Man X Collection",
+      "releases": {
+        "NA": "2006-01-10"
+      },
+      "developer": {
+        "default": "Capcom"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Mega Man X: Command Mission",
+      "releases": {
+        "NA": "2004-09-21"
+      },
+      "developer": {
+        "default": "Capcom Production Studio 3"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Men in Black II: Alien Escape",
+      "releases": {
+        "NA": "2003-04-08"
+      },
+      "developer": {
+        "default": "Tantalus Interactive"
+      },
+      "publisher": {
+        "default": "Infogrames"
+      }
+    },
+    {
+      "title": "Metal Arms: Glitch in the System",
+      "releases": {
+        "NA": "2003-11-18"
+      },
+      "developer": {
+        "default": "Swingin' Ape Studios"
+      },
+      "publisher": {
+        "default": "Vivendi Universal Games"
+      }
+    },
+    {
+      "title": "Metal Gear Solid: The Twin Snakes",
+      "releases": {
+        "NA": "2004-03-09"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Japan Silicon Knights"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Metroid Prime",
+      "releases": {
+        "NA": "2002-11-18"
+      },
+      "developer": {
+        "default": "Retro Studios"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Metroid Prime 2: Echoes",
+      "releases": {
+        "NA": "2004-11-15"
+      },
+      "developer": {
+        "default": "Retro Studios"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Midway Arcade Treasures",
+      "releases": {
+        "NA": "2003-12-17"
+      },
+      "developer": {
+        "default": "Digital Eclipse"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Midway Arcade Treasures 2",
+      "releases": {
+        "NA": "2004-10-11"
+      },
+      "developer": {
+        "default": "Backbone Entertainment"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Midway Arcade Treasures 3",
+      "releases": {
+        "NA": "2005-10-24"
+      },
+      "developer": {
+        "default": "Backbone Entertainment Gamestar Midway Studios San Diego"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Minority Report: Everybody Runs",
+      "releases": {
+        "NA": "2002-11-19"
+      },
+      "developer": {
+        "default": "Treyarch"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Mission: Impossible – Operation Surma",
+      "releases": {
+        "NA": "2004-03-23"
+      },
+      "developer": {
+        "default": "Paradigm Entertainment"
+      },
+      "publisher": {
+        "default": "Atari"
+      }
+    },
+    {
+      "title": "MLB Slugfest 2003",
+      "releases": {
+        "NA": "2002-09-04"
+      },
+      "developer": {
+        "default": "Gratuitous Games"
+      },
+      "publisher": {
+        "default": "Midway Sports"
+      }
+    },
+    {
+      "title": "MLB Slugfest 2004",
+      "releases": {
+        "NA": "2003-03-17"
+      },
+      "developer": {
+        "default": "Gratuitous Games"
+      },
+      "publisher": {
+        "default": "Midway Sports"
+      }
+    },
+    {
+      "title": "Monopoly Party",
+      "releases": {
+        "NA": "2002-11-20"
+      },
+      "developer": {
+        "default": "Runecraft"
+      },
+      "publisher": {
+        "default": "Infogrames WW Tomy JP"
+      }
+    },
+    {
+      "title": "Monster 4x4: Masters of Metal",
+      "releases": {
+        "NA": "2003-12-10"
+      },
+      "developer": {
+        "default": "Ubi Soft Barcelona Inland Productions"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      }
+    },
+    {
+      "title": "Monster House",
+      "releases": {
+        "NA": "2006-07-18"
+      },
+      "developer": {
+        "default": "Artificial Mind and Movement"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Monsters, Inc. Scream Arena",
+      "releases": {
+        "NA": "2002-09-19"
+      },
+      "developer": {
+        "default": "Radical Entertainment"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Monster Jam: Maximum Destruction",
+      "releases": {
+        "NA": "2002-11-19"
+      },
+      "developer": {
+        "default": "Inland Productions"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      }
+    },
+    {
+      "title": "Mortal Kombat: Deadly Alliance",
+      "releases": {
+        "NA": "2002-11-22"
+      },
+      "developer": {
+        "default": "Midway Games"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Mortal Kombat: Deception",
+      "releases": {
+        "NA": "2005-02-28"
+      },
+      "developer": {
+        "default": "Midway Games"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Muppets Party Cruise",
+      "releases": {
+        "NA": "2003-11-26"
+      },
+      "developer": {
+        "default": "Mass Media"
+      },
+      "publisher": {
+        "default": "TDK Mediactive"
+      }
+    },
+    {
+      "title": "MVP Baseball 2004",
+      "releases": {
+        "NA": "2004-03-09"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "MVP Baseball 2005",
+      "releases": {
+        "NA": "2005-02-22"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "MX Superfly",
+      "releases": {
+        "NA": "2002-06-27"
+      },
+      "developer": {
+        "default": "Pacific Coast Power & Light"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Mystic Heroes",
+      "releases": {
+        "NA": "2002-09-30"
+      },
+      "developer": {
+        "default": "Koei"
+      },
+      "publisher": {
+        "default": "Koei"
+      }
+    },
+    {
+      "title": "Namco Museum",
+      "releases": {
+        "NA": "2002-10-09"
+      },
+      "developer": {
+        "default": "Mass Media"
+      },
+      "publisher": {
+        "default": "Namco Hometek"
+      }
+    },
+    {
+      "title": "Namco Museum 50th Anniversary",
+      "releases": {
+        "NA": "2005-08-30"
+      },
+      "developer": {
+        "default": "Backbone Entertainment"
+      },
+      "publisher": {
+        "default": "Namco Hometek NA Electronic Arts PAL"
+      }
+    },
+    {
+      "title": "Naruto: Clash of Ninja",
+      "releases": {
+        "NA": "2006-03-07"
+      },
+      "developer": {
+        "default": "Eighting"
+      },
+      "publisher": {
+        "default": "Tomy"
+      }
+    },
+    {
+      "title": "Naruto: Clash of Ninja 2",
+      "releases": {
+        "NA": "2006-09-26"
+      },
+      "developer": {
+        "default": "Eighting"
+      },
+      "publisher": {
+        "default": "Tomy JP/NA Nintendo PAL"
+      },
+      "aliases": [
+        {
+          "title": "Naruto: Clash of Ninja European Version",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "NASCAR 2005: Chase for the Cup",
+      "releases": {
+        "NA": "2004-08-31"
+      },
+      "developer": {
+        "default": "EA Tiburon"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "NASCAR: Dirt to Daytona",
+      "releases": {
+        "NA": "2002-11-12"
+      },
+      "developer": {
+        "default": "Monster Games"
+      },
+      "publisher": {
+        "default": "Infogrames"
+      }
+    },
+    {
+      "title": "NASCAR Thunder 2003",
+      "releases": {
+        "NA": "2002-09-18"
+      },
+      "developer": {
+        "default": "EA Tiburon"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "NBA 2K2",
+      "releases": {
+        "NA": "2002-03-19"
+      },
+      "developer": {
+        "default": "Visual Concepts"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "NBA 2K3",
+      "releases": {
+        "NA": "2002-10-07"
+      },
+      "developer": {
+        "default": "Visual Concepts"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "NBA Courtside 2002",
+      "releases": {
+        "NA": "2002-01-14"
+      },
+      "developer": {
+        "default": "Left Field Productions"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "NBA Live 06",
+      "releases": {
+        "NA": "2005-09-26"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "NBA Live 2003",
+      "releases": {
+        "NA": "2002-10-08"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "NBA Live 2004",
+      "releases": {
+        "NA": "2003-10-14"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "NBA Live 2005",
+      "releases": {
+        "NA": "2004-09-28"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "NBA Street",
+      "releases": {
+        "NA": "2002-02-05"
+      },
+      "developer": {
+        "default": "NuFX EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports BIG NA Electronic Arts Square JP"
+      }
+    },
+    {
+      "title": "NBA Street Vol. 2",
+      "releases": {
+        "NA": "2003-04-29"
+      },
+      "developer": {
+        "default": "NuFX EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports BIG"
+      }
+    },
+    {
+      "title": "NBA Street V3",
+      "releases": {
+        "NA": "2005-02-08"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports BIG"
+      }
+    },
+    {
+      "title": "NCAA College Basketball 2K3",
+      "releases": {
+        "NA": "2002-12-10"
+      },
+      "developer": {
+        "default": "Kush Games Visual Concepts"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "NCAA College Football 2K3",
+      "releases": {
+        "NA": "2002-09-03"
+      },
+      "developer": {
+        "default": "Visual Concepts Avalanche Software"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "NCAA Football 2003",
+      "releases": {
+        "NA": "2002-07-22"
+      },
+      "developer": {
+        "default": "EA Tiburon"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "NCAA Football 2004",
+      "releases": {
+        "NA": "2003-07-15"
+      },
+      "developer": {
+        "default": "EA Tiburon"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "NCAA Football 2005",
+      "releases": {
+        "NA": "2004-07-14"
+      },
+      "developer": {
+        "default": "EA Tiburon"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "Need for Speed: Carbon",
+      "releases": {
+        "NA": "2006-10-31"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "Electronic Arts"
+      }
+    },
+    {
+      "title": "Need for Speed: Hot Pursuit 2",
+      "releases": {
+        "NA": "2002-10-01"
+      },
+      "developer": {
+        "default": "EA Seattle"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Need for Speed: Most Wanted",
+      "releases": {
+        "NA": "2005-11-15"
+      },
+      "developer": {
+        "default": "EA Canada EA Black Box"
+      },
+      "publisher": {
+        "default": "Electronic Arts"
+      }
+    },
+    {
+      "title": "Need for Speed: Underground",
+      "releases": {
+        "NA": "2003-11-17"
+      },
+      "developer": {
+        "default": "EA Black Box"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Need for Speed: Underground 2",
+      "releases": {
+        "NA": "2004-11-15"
+      },
+      "developer": {
+        "default": "EA Black Box"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "NFL 2K3",
+      "releases": {
+        "NA": "2002-08-20"
+      },
+      "developer": {
+        "default": "Visual Concepts"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "NFL Blitz 2002",
+      "releases": {
+        "NA": "2002-03-18"
+      },
+      "developer": {
+        "default": "Point of View"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "NFL Blitz 2003",
+      "releases": {
+        "NA": "2002-08-12"
+      },
+      "developer": {
+        "default": "Point of View"
+      },
+      "publisher": {
+        "default": "Midway Sports"
+      }
+    },
+    {
+      "title": "NFL Blitz Pro",
+      "releases": {
+        "NA": "2003-12-02"
+      },
+      "developer": {
+        "default": "Midway Games"
+      },
+      "publisher": {
+        "default": "Midway Sports"
+      }
+    },
+    {
+      "title": "NFL QB Club 2002",
+      "releases": {
+        "NA": "2001-12-20"
+      },
+      "developer": {
+        "default": "Acclaim Studios Austin"
+      },
+      "publisher": {
+        "default": "Acclaim Sports"
+      }
+    },
+    {
+      "title": "NFL Street",
+      "releases": {
+        "NA": "2004-01-13"
+      },
+      "developer": {
+        "default": "EA Tiburon"
+      },
+      "publisher": {
+        "default": "EA Sports BIG"
+      }
+    },
+    {
+      "title": "NFL Street 2",
+      "releases": {
+        "NA": "2004-12-26"
+      },
+      "developer": {
+        "default": "EA Tiburon"
+      },
+      "publisher": {
+        "default": "EA Sports BIG"
+      }
+    },
+    {
+      "title": "NHL 06",
+      "releases": {
+        "NA": "2005-09-06"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "NHL 2003",
+      "releases": {
+        "NA": "2002-10-03"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "NHL 2004",
+      "releases": {
+        "NA": "2003-09-23"
+      },
+      "developer": {
+        "default": "EA Black Box"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "NHL 2005",
+      "releases": {
+        "NA": "2004-09-22"
+      },
+      "developer": {
+        "default": "EA Black Box"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "NHL 2K3",
+      "releases": {
+        "NA": "2002-12-10"
+      },
+      "developer": {
+        "default": "Treyarch"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "NHL Hitz 2002",
+      "releases": {
+        "NA": "2001-11-18"
+      },
+      "developer": {
+        "default": "Black Box Games"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "NHL Hitz 2003",
+      "releases": {
+        "NA": "2002-09-16"
+      },
+      "developer": {
+        "default": "Black Box Games"
+      },
+      "publisher": {
+        "default": "Midway Sports"
+      }
+    },
+    {
+      "title": "NHL Hitz Pro",
+      "releases": {
+        "NA": "2003-09-25"
+      },
+      "developer": {
+        "default": "Next Level Games"
+      },
+      "publisher": {
+        "default": "Midway Sports"
+      }
+    },
+    {
+      "title": "Nickelodeon Party Blast",
+      "releases": {
+        "NA": "2002-11-20"
+      },
+      "developer": {
+        "default": "Data Design Interactive"
+      },
+      "publisher": {
+        "default": "Infogrames"
+      }
+    },
+    {
+      "title": "Nicktoons: Battle for Volcano Island",
+      "releases": {
+        "NA": "2006-10-24"
+      },
+      "developer": {
+        "default": "Blue Tongue Entertainment"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Nicktoons Unite!",
+      "releases": {
+        "NA": "2005-10-26"
+      },
+      "developer": {
+        "default": "Blue Tongue Entertainment"
+      },
+      "publisher": {
+        "default": "THQ"
+      },
+      "aliases": [
+        {
+          "title": "SpongeBob SquarePants & Friends: Unite!",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Odama",
+      "releases": {
+        "NA": "2006-04-10"
+      },
+      "developer": {
+        "default": "Vivarium"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "One Piece: Grand Adventure",
+      "releases": {
+        "NA": "2006-08-30"
+      },
+      "developer": {
+        "default": "Ganbarion"
+      },
+      "publisher": {
+        "default": "Namco Bandai Games"
+      }
+    },
+    {
+      "title": "One Piece: Grand Battle!",
+      "releases": {
+        "NA": "2005-09-07"
+      },
+      "developer": {
+        "default": "Ganbarion"
+      },
+      "publisher": {
+        "default": "Bandai"
+      },
+      "aliases": [
+        {
+          "title": "One Piece: Grand Battle! Rush",
+          "regions": [
+            "JP"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "One Piece: Pirates' Carnival",
+      "releases": {
+        "NA": "2006-09-12"
+      },
+      "developer": {
+        "default": "h.a.n.d."
+      },
+      "publisher": {
+        "default": "Bandai JP Namco Bandai Games NA"
+      }
+    },
+    {
+      "title": "Open Season",
+      "releases": {
+        "NA": "2006-09-18"
+      },
+      "developer": {
+        "default": "Ubisoft Montreal Ubisoft Quebec"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "Outlaw Golf",
+      "releases": {
+        "NA": "2002-10-30"
+      },
+      "developer": {
+        "default": "Hypnotix"
+      },
+      "publisher": {
+        "default": "Simon & Schuster Interactive NA TDK Mediactive Europe PAL"
+      }
+    },
+    {
+      "title": "Over the Hedge",
+      "releases": {
+        "NA": "2006-05-09"
+      },
+      "developer": {
+        "default": "Edge of Reality"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "P.N.03",
+      "releases": {
+        "NA": "2003-09-09"
+      },
+      "developer": {
+        "default": "Capcom Production Studio 4"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Pac-Man Fever",
+      "releases": {
+        "NA": "2002-09-03"
+      },
+      "developer": {
+        "default": "Mass Media"
+      },
+      "publisher": {
+        "default": "Namco Hometek"
+      }
+    },
+    {
+      "title": "Pac-Man Vs.",
+      "releases": {
+        "NA": "2003-12-02"
+      },
+      "developer": {
+        "default": "Nintendo EAD"
+      },
+      "publisher": {
+        "default": "Namco JP Namco Hometek NA Electronic Arts PAL"
+      }
+    },
+    {
+      "title": "Pac-Man World 2",
+      "releases": {
+        "NA": "2002-03-12"
+      },
+      "developer": {
+        "default": "Namco"
+      },
+      "publisher": {
+        "default": "Namco Hometek NA Electronic Arts PAL"
+      }
+    },
+    {
+      "title": "Pac-Man World 3",
+      "releases": {
+        "NA": "2005-11-15"
+      },
+      "developer": {
+        "default": "Blitz Games"
+      },
+      "publisher": {
+        "default": "Namco Hometek NA Electronic Arts PAL"
+      }
+    },
+    {
+      "title": "Pac-Man World Rally",
+      "releases": {
+        "NA": "2006-08-22"
+      },
+      "developer": {
+        "default": "Smart Bomb Interactive"
+      },
+      "publisher": {
+        "default": "Namco Bandai Games"
+      }
+    },
+    {
+      "title": "Paper Mario: The Thousand-Year Door",
+      "releases": {
+        "NA": "2004-10-11"
+      },
+      "developer": {
+        "default": "Intelligent Systems"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Peter Jackson's King Kong",
+      "releases": {
+        "NA": "2005-11-22"
+      },
+      "developer": {
+        "default": "Ubisoft Montpellier"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "Phantasy Star Online Episode I & II",
+      "releases": {
+        "NA": "2002-10-30"
+      },
+      "developer": {
+        "default": "Sonic Team"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Phantasy Star Online Episode I & II Plus",
+      "releases": {
+        "NA": "2004-09-15"
+      },
+      "developer": {
+        "default": "Sonic Team"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Phantasy Star Online Episode III: C.A.R.D. Revolution",
+      "releases": {
+        "NA": "2004-03-02"
+      },
+      "developer": {
+        "default": "Sonic Team"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Piglet's Big Game",
+      "releases": {
+        "NA": "2003-03-21"
+      },
+      "developer": {
+        "default": "Doki Denki Studio"
+      },
+      "publisher": {
+        "default": "Gotham Games"
+      }
+    },
+    {
+      "title": "Pikmin",
+      "releases": {
+        "NA": "2001-12-03"
+      },
+      "developer": {
+        "default": "Nintendo EAD"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Pikmin 2",
+      "releases": {
+        "NA": "2004-08-30"
+      },
+      "developer": {
+        "default": "Nintendo EAD"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "PK: Out of the Shadows",
+      "releases": {
+        "NA": "2002-12-03"
+      },
+      "developer": {
+        "default": "Ubi Soft Montreal"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      },
+      "aliases": [
+        {
+          "title": "Donald Duck: PK",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Pinball Hall of Fame: The Gottlieb Collection",
+      "releases": {
+        "NA": "2005-03-20"
+      },
+      "developer": {
+        "default": "FarSight Studios"
+      },
+      "publisher": {
+        "default": "Crave Entertainment"
+      }
+    },
+    {
+      "title": "Pitfall: The Lost Expedition",
+      "releases": {
+        "NA": "2004-02-17"
+      },
+      "developer": {
+        "default": "Edge of Reality"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Pokémon Box: Ruby and Sapphire",
+      "releases": {
+        "NA": "2004-07-11"
+      },
+      "developer": {
+        "default": "Nintendo EAD Game Freak"
+      },
+      "publisher": {
+        "default": "The Pokémon Company JP Nintendo WW"
+      }
+    },
+    {
+      "title": "Pokémon Channel",
+      "releases": {
+        "NA": "2003-12-01"
+      },
+      "developer": {
+        "default": "Ambrella"
+      },
+      "publisher": {
+        "default": "The Pokémon Company JP Nintendo WW"
+      }
+    },
+    {
+      "title": "Pokémon Colosseum",
+      "releases": {
+        "NA": "2004-03-22"
+      },
+      "developer": {
+        "default": "Genius Sonority"
+      },
+      "publisher": {
+        "default": "The Pokémon Company JP Nintendo WW"
+      }
+    },
+    {
+      "title": "Pokémon XD: Gale of Darkness",
+      "releases": {
+        "NA": "2005-10-03"
+      },
+      "developer": {
+        "default": "Genius Sonority"
+      },
+      "publisher": {
+        "default": "The Pokémon Company JP Nintendo WW"
+      }
+    },
+    {
+      "title": "The Polar Express",
+      "releases": {
+        "NA": "2004-11-02"
+      },
+      "developer": {
+        "default": "Blue Tongue Entertainment"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Pool Paradise",
+      "releases": {
+        "NA": "2004-06-28"
+      },
+      "developer": {
+        "default": "Awesome Studios"
+      },
+      "publisher": {
+        "default": "Ignition Entertainment"
+      }
+    },
+    {
+      "title": "Power Rangers Dino Thunder",
+      "releases": {
+        "NA": "2004-09-22"
+      },
+      "developer": {
+        "default": "Pacific Coast Power & Light"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "The Powerpuff Girls: Relish Rampage - Pickled Edition",
+      "releases": {
+        "NA": "2002-12-15"
+      },
+      "developer": {
+        "default": "VIS Entertainment"
+      },
+      "publisher": {
+        "default": "BAM! Entertainment"
+      }
+    },
+    {
+      "title": "Prince of Persia: The Sands of Time",
+      "releases": {
+        "NA": "2003-11-18"
+      },
+      "developer": {
+        "default": "Ubisoft Montreal"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "Prince of Persia: The Two Thrones",
+      "releases": {
+        "NA": "2005-12-01"
+      },
+      "developer": {
+        "default": "Ubisoft Montreal Ubisoft Casablanca"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "Prince of Persia: Warrior Within",
+      "releases": {
+        "NA": "2004-12-02"
+      },
+      "developer": {
+        "default": "Ubisoft Montreal"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "Pro Rally",
+      "releases": {
+        "NA": "2002-11-11"
+      },
+      "developer": {
+        "default": "Ubi Soft Barcelona"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      }
+    },
+    {
+      "title": "Puyo Pop Fever",
+      "releases": {
+        "NA": "2004-07-20"
+      },
+      "developer": {
+        "default": "Sonic Team"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "R: Racing Evolution",
+      "releases": {
+        "NA": "2003-12-09"
+      },
+      "developer": {
+        "default": "Namco"
+      },
+      "publisher": {
+        "default": "Namco JP Namco Hometek NA Electronic Arts PAL"
+      },
+      "aliases": [
+        {
+          "title": "R: Racing",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Rally Championship",
+      "releases": {
+        "NA": "2003-07-30"
+      },
+      "developer": {
+        "default": "Warthog Games"
+      },
+      "publisher": {
+        "default": "SCi Games PAL Conspiracy Entertainment NA"
+      }
+    },
+    {
+      "title": "Rampage: Total Destruction",
+      "releases": {
+        "NA": "2006-04-24"
+      },
+      "developer": {
+        "default": "Pipeworks Software"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Ratatouille",
+      "releases": {
+        "NA": "2007-06-26"
+      },
+      "developer": {
+        "default": "Asobo Studio"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Rave Master",
+      "releases": {
+        "NA": "2005-03-08"
+      },
+      "developer": {
+        "default": "Konami"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Rayman 3: Hoodlum Havoc",
+      "releases": {
+        "NA": "2003-03-04"
+      },
+      "developer": {
+        "default": "Ubi Pictures"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      }
+    },
+    {
+      "title": "Rayman Arena",
+      "releases": {
+        "NA": "2002-10-01"
+      },
+      "developer": {
+        "default": "Ubi Pictures Ubi Soft Milan"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      }
+    },
+    {
+      "title": "Red Faction II",
+      "releases": {
+        "NA": "2003-04-01"
+      },
+      "developer": {
+        "default": "Cranky Pants Games"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "RedCard 2003",
+      "releases": {
+        "NA": "2002-06-25"
+      },
+      "developer": {
+        "default": "Point of View"
+      },
+      "publisher": {
+        "default": "Midway Sports"
+      },
+      "aliases": [
+        {
+          "title": "RedCard",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Reign of Fire",
+      "releases": {
+        "NA": "2002-11-26"
+      },
+      "developer": {
+        "default": "Kuju London"
+      },
+      "publisher": {
+        "default": "BAM! Entertainment"
+      }
+    },
+    {
+      "title": "Resident Evil",
+      "releases": {
+        "NA": "2002-04-30"
+      },
+      "developer": {
+        "default": "Capcom Production Studio 4"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Resident Evil 2",
+      "releases": {
+        "NA": "2003-01-14"
+      },
+      "developer": {
+        "default": "Capcom"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Resident Evil 3: Nemesis",
+      "releases": {
+        "NA": "2003-01-15"
+      },
+      "developer": {
+        "default": "Capcom"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Resident Evil 4",
+      "releases": {
+        "NA": "2005-01-11"
+      },
+      "developer": {
+        "default": "Capcom Production Studio 4"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Resident Evil – Code: Veronica X",
+      "releases": {
+        "NA": "2003-12-03"
+      },
+      "developer": {
+        "default": "Capcom Production Studio 4"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Resident Evil Zero",
+      "releases": {
+        "NA": "2002-11-12"
+      },
+      "developer": {
+        "default": "Capcom Production Studio 3 Tose"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Ribbit King",
+      "releases": {
+        "NA": "2004-06-08"
+      },
+      "developer": {
+        "default": "Infinity Jamsworks"
+      },
+      "publisher": {
+        "default": "Bandai"
+      }
+    },
+    {
+      "title": "Road Trip: The Arcade Edition",
+      "releases": {
+        "NA": "2004-03-16"
+      },
+      "developer": {
+        "default": "Hudson Soft"
+      },
+      "publisher": {
+        "default": "Takara JP Zoo Digital Publishing PAL Conspiracy Entertainment NA"
+      },
+      "aliases": [
+        {
+          "title": "Gadget Racers",
+          "regions": [
+            "PAL"
+          ]
+        },
+        {
+          "title": "Choro Q!",
+          "regions": [
+            "JP"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "RoadKill",
+      "releases": {
+        "NA": "2003-10-30"
+      },
+      "developer": {
+        "default": "Terminal Reality"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Robotech: Battlecry",
+      "releases": {
+        "NA": "2002-10-16"
+      },
+      "developer": {
+        "default": "Vicious Cycle Software"
+      },
+      "publisher": {
+        "default": "TDK Mediactive"
+      }
+    },
+    {
+      "title": "Robots",
+      "releases": {
+        "NA": "2005-02-22"
+      },
+      "developer": {
+        "default": "Eurocom"
+      },
+      "publisher": {
+        "default": "Vivendi Universal Games"
+      }
+    },
+    {
+      "title": "Rocket Power: Beach Bandits",
+      "releases": {
+        "NA": "2002-09-24"
+      },
+      "developer": {
+        "default": "Evolution Games"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Rocky",
+      "releases": {
+        "NA": "2002-11-14"
+      },
+      "developer": {
+        "default": "Steel Monkeys"
+      },
+      "publisher": {
+        "default": "Ubi Soft NA Rage Software PAL"
+      }
+    },
+    {
+      "title": "Rogue Ops",
+      "releases": {
+        "NA": "2003-10-28"
+      },
+      "developer": {
+        "default": "Bits Studios"
+      },
+      "publisher": {
+        "default": "Kemco"
+      }
+    },
+    {
+      "title": "Rugrats: Royal Ransom",
+      "releases": {
+        "NA": "2002-11-26"
+      },
+      "developer": {
+        "default": "Avalanche Software"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Samurai Jack: The Shadow of Aku",
+      "releases": {
+        "NA": "2004-03-23"
+      },
+      "developer": {
+        "default": "Adrenium Games"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Scaler",
+      "releases": {
+        "NA": "2004-11-17"
+      },
+      "developer": {
+        "default": "Artificial Mind and Movement"
+      },
+      "publisher": {
+        "default": "Global Star Software"
+      }
+    },
+    {
+      "title": "Scooby-Doo! Mystery Mayhem",
+      "releases": {
+        "NA": "2004-03-02"
+      },
+      "developer": {
+        "default": "Artificial Mind and Movement"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Scooby-Doo! Night of 100 Frights",
+      "releases": {
+        "NA": "2002-09-12"
+      },
+      "developer": {
+        "default": "Heavy Iron Studios"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Scooby-Doo! Unmasked",
+      "releases": {
+        "NA": "2005-09-12"
+      },
+      "developer": {
+        "default": "Artificial Mind and Movement"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "The Scorpion King: Rise of the Akkadian",
+      "releases": {
+        "NA": "2002-09-10"
+      },
+      "developer": {
+        "default": "Point of View"
+      },
+      "publisher": {
+        "default": "Universal Interactive"
+      }
+    },
+    {
+      "title": "Second Sight",
+      "releases": {
+        "NA": "2004-09-21"
+      },
+      "developer": {
+        "default": "Free Radical Design"
+      },
+      "publisher": {
+        "default": "Codemasters"
+      }
+    },
+    {
+      "title": "Sega Soccer Slam",
+      "releases": {
+        "NA": "2002-03-19"
+      },
+      "developer": {
+        "default": "Black Box Games"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Serious Sam: Next Encounter",
+      "releases": {
+        "NA": "2004-04-14"
+      },
+      "developer": {
+        "default": "Climax Solent"
+      },
+      "publisher": {
+        "default": "Global Star Software"
+      }
+    },
+    {
+      "title": "Shadow the Hedgehog",
+      "releases": {
+        "NA": "2005-11-15"
+      },
+      "developer": {
+        "default": "Sega Studios USA"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Shamu's Deep Sea Adventures",
+      "releases": {
+        "NA": "2005-11-01"
+      },
+      "developer": {
+        "default": "Fun Labs"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Shark Tale",
+      "releases": {
+        "NA": "2004-09-29"
+      },
+      "developer": {
+        "default": "Edge of Reality"
+      },
+      "publisher": {
+        "default": "Activision WW Taito JP"
+      }
+    },
+    {
+      "title": "Shrek 2",
+      "releases": {
+        "NA": "2004-05-04"
+      },
+      "developer": {
+        "default": "Luxoflux"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Shrek: Extra Large",
+      "releases": {
+        "NA": "2002-10-30"
+      },
+      "developer": {
+        "default": "Digital Illusions Canada"
+      },
+      "publisher": {
+        "default": "TDK Mediactive"
+      }
+    },
+    {
+      "title": "Shrek Smash n' Crash Racing",
+      "releases": {
+        "NA": "2006-11-21"
+      },
+      "developer": {
+        "default": "Torus Games"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Shrek Super Party",
+      "releases": {
+        "NA": "2003-06-05"
+      },
+      "developer": {
+        "default": "Mass Media"
+      },
+      "publisher": {
+        "default": "TDK Mediactive"
+      }
+    },
+    {
+      "title": "Shrek SuperSlam",
+      "releases": {
+        "NA": "2005-10-25"
+      },
+      "developer": {
+        "default": "Shaba Games"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "The Simpsons: Hit & Run",
+      "releases": {
+        "NA": "2003-09-16"
+      },
+      "developer": {
+        "default": "Radical Entertainment"
+      },
+      "publisher": {
+        "default": "Vivendi Universal Games"
+      }
+    },
+    {
+      "title": "The Simpsons: Road Rage",
+      "releases": {
+        "NA": "2001-12-19"
+      },
+      "developer": {
+        "default": "Radical Entertainment"
+      },
+      "publisher": {
+        "default": "Electronic Arts Fox Interactive"
+      }
+    },
+    {
+      "title": "The Sims",
+      "releases": {
+        "NA": "2003-03-25"
+      },
+      "developer": {
+        "default": "Edge of Reality"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "The Sims 2",
+      "releases": {
+        "NA": "2005-10-25"
+      },
+      "developer": {
+        "default": "Maxis"
+      },
+      "publisher": {
+        "default": "Electronic Arts"
+      }
+    },
+    {
+      "title": "The Sims 2: Pets",
+      "releases": {
+        "NA": "2006-10-17"
+      },
+      "developer": {
+        "default": "Maxis"
+      },
+      "publisher": {
+        "default": "Electronic Arts"
+      }
+    },
+    {
+      "title": "The Sims Bustin' Out",
+      "releases": {
+        "NA": "2003-12-16"
+      },
+      "developer": {
+        "default": "Maxis"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Skies of Arcadia Legends",
+      "releases": {
+        "NA": "2003-01-28"
+      },
+      "developer": {
+        "default": "Overworks"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Smashing Drive",
+      "releases": {
+        "NA": "2002-02-18"
+      },
+      "developer": {
+        "default": "Point of View"
+      },
+      "publisher": {
+        "default": "Namco Hometek"
+      }
+    },
+    {
+      "title": "Smuggler's Run: Warzones",
+      "releases": {
+        "NA": "2002-08-06"
+      },
+      "developer": {
+        "default": "Angel Studios"
+      },
+      "publisher": {
+        "default": "Rockstar Games"
+      }
+    },
+    {
+      "title": "Sonic Adventure 2: Battle",
+      "releases": {
+        "NA": "2002-02-12"
+      },
+      "developer": {
+        "default": "Sonic Team USA"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Sonic Adventure DX: Director's Cut",
+      "releases": {
+        "NA": "2003-06-17"
+      },
+      "developer": {
+        "default": "Sonic Team"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Sonic Gems Collection",
+      "releases": {
+        "NA": "2005-08-16"
+      },
+      "developer": {
+        "default": "Sonic Team"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Sonic Heroes",
+      "releases": {
+        "NA": "2004-01-06"
+      },
+      "developer": {
+        "default": "Sonic Team USA"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Sonic Mega Collection",
+      "releases": {
+        "NA": "2002-11-12"
+      },
+      "developer": {
+        "default": "Sonic Team"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Sonic Riders",
+      "releases": {
+        "NA": "2006-02-21"
+      },
+      "developer": {
+        "default": "Sonic Team Now Production"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Soulcalibur II",
+      "releases": {
+        "NA": "2003-08-26"
+      },
+      "developer": {
+        "default": "Project Soul"
+      },
+      "publisher": {
+        "default": "Namco JP Namco Hometek NA Nintendo PAL"
+      }
+    },
+    {
+      "title": "Space Raiders",
+      "releases": {
+        "NA": "2004-04-19"
+      },
+      "developer": {
+        "default": "Taito"
+      },
+      "publisher": {
+        "default": "Taito JP Mastiff NA"
+      }
+    },
+    {
+      "title": "Spartan: Total Warrior",
+      "releases": {
+        "NA": "2005-10-25"
+      },
+      "developer": {
+        "default": "Creative Assembly"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Spawn: Armageddon",
+      "releases": {
+        "NA": "2003-11-21"
+      },
+      "developer": {
+        "default": "Point of View"
+      },
+      "publisher": {
+        "default": "Namco Hometek NA Electronic Arts PAL"
+      }
+    },
+    {
+      "title": "Speed Kings",
+      "releases": {
+        "NA": "2003-05-28"
+      },
+      "developer": {
+        "default": "Climax London"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment"
+      }
+    },
+    {
+      "title": "Sphinx and the Cursed Mummy",
+      "releases": {
+        "NA": "2003-11-10"
+      },
+      "developer": {
+        "default": "Eurocom"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Spider-Man",
+      "releases": {
+        "NA": "2002-04-16"
+      },
+      "developer": {
+        "default": "Treyarch"
+      },
+      "publisher": {
+        "default": "Activision WW Capcom JP"
+      }
+    },
+    {
+      "title": "Spider-Man 2",
+      "releases": {
+        "NA": "2004-06-29"
+      },
+      "developer": {
+        "default": "Treyarch"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "SpongeBob SquarePants: Battle for Bikini Bottom",
+      "releases": {
+        "NA": "2003-10-29"
+      },
+      "developer": {
+        "default": "Heavy Iron Studios"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "SpongeBob SquarePants: Creature from the Krusty Krab",
+      "releases": {
+        "NA": "2006-10-18"
+      },
+      "developer": {
+        "default": "Blitz Games"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "SpongeBob SquarePants: Lights, Camera, Pants!",
+      "releases": {
+        "NA": "2005-10-19"
+      },
+      "developer": {
+        "default": "THQ Studio Australia"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "The SpongeBob SquarePants Movie",
+      "releases": {
+        "NA": "2004-10-27"
+      },
+      "developer": {
+        "default": "Heavy Iron Studios"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "SpongeBob SquarePants: Revenge of the Flying Dutchman",
+      "releases": {
+        "NA": "2002-12-17"
+      },
+      "developer": {
+        "default": "Big Sky Interactive"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "SpyHunter",
+      "releases": {
+        "NA": "2002-03-12"
+      },
+      "developer": {
+        "default": "Point of View"
+      },
+      "publisher": {
+        "default": "Midway"
+      }
+    },
+    {
+      "title": "Spyro: Enter the Dragonfly",
+      "releases": {
+        "NA": "2002-11-19"
+      },
+      "developer": {
+        "default": "Equinoxe Digital Entertainment Check Six Studios"
+      },
+      "publisher": {
+        "default": "Universal Interactive"
+      }
+    },
+    {
+      "title": "Spyro: A Hero's Tail",
+      "releases": {
+        "NA": "2004-11-02"
+      },
+      "developer": {
+        "default": "Eurocom"
+      },
+      "publisher": {
+        "default": "Vivendi Universal Games"
+      }
+    },
+    {
+      "title": "SSX 3",
+      "releases": {
+        "NA": "2003-10-21"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports BIG"
+      }
+    },
+    {
+      "title": "SSX on Tour",
+      "releases": {
+        "NA": "2005-10-11"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports BIG"
+      }
+    },
+    {
+      "title": "SSX Tricky",
+      "releases": {
+        "NA": "2001-11-27"
+      },
+      "developer": {
+        "default": "EA Canada"
+      },
+      "publisher": {
+        "default": "EA Sports BIG WW Electronic Arts Square JP"
+      }
+    },
+    {
+      "title": "Star Fox Adventures",
+      "releases": {
+        "NA": "2002-09-23"
+      },
+      "developer": {
+        "default": "Rare"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Star Fox: Assault",
+      "releases": {
+        "NA": "2005-02-15"
+      },
+      "developer": {
+        "default": "Namco"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Starsky & Hutch",
+      "releases": {
+        "NA": "2004-08-31"
+      },
+      "developer": {
+        "default": "Supersonic Software"
+      },
+      "publisher": {
+        "default": "Empire Interactive"
+      }
+    },
+    {
+      "title": "Star Wars: Bounty Hunter",
+      "releases": {
+        "NA": "2002-12-07"
+      },
+      "developer": {
+        "default": "LucasArts"
+      },
+      "publisher": {
+        "default": "LucasArts"
+      }
+    },
+    {
+      "title": "Star Wars: The Clone Wars",
+      "releases": {
+        "NA": "2002-10-29"
+      },
+      "developer": {
+        "default": "Pandemic Studios"
+      },
+      "publisher": {
+        "default": "LucasArts"
+      }
+    },
+    {
+      "title": "Star Wars Jedi Knight II: Jedi Outcast",
+      "releases": {
+        "NA": "2002-11-19"
+      },
+      "developer": {
+        "default": "Vicarious Visions"
+      },
+      "publisher": {
+        "default": "LucasArts NA Activision PAL"
+      }
+    },
+    {
+      "title": "Star Wars Rogue Squadron II: Rogue Leader",
+      "releases": {
+        "NA": "2001-11-18"
+      },
+      "developer": {
+        "default": "Factor 5 LucasArts"
+      },
+      "publisher": {
+        "default": "LucasArts"
+      }
+    },
+    {
+      "title": "Star Wars Rogue Squadron III: Rebel Strike",
+      "releases": {
+        "NA": "2003-10-21"
+      },
+      "developer": {
+        "default": "Factor 5"
+      },
+      "publisher": {
+        "default": "LucasArts"
+      }
+    },
+    {
+      "title": "Street Hoops",
+      "releases": {
+        "NA": "2002-11-26"
+      },
+      "developer": {
+        "default": "Black Ops Entertainment"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Street Racing Syndicate",
+      "releases": {
+        "NA": "2004-08-31"
+      },
+      "developer": {
+        "default": "Eutechnyx"
+      },
+      "publisher": {
+        "default": "Namco Hometek NA Nintendo PAL"
+      }
+    },
+    {
+      "title": "Strike Force Bowling",
+      "releases": {
+        "NA": "2005-05-06"
+      },
+      "developer": {
+        "default": "LAB Rats Games"
+      },
+      "publisher": {
+        "default": "Crave Entertainment"
+      }
+    },
+    {
+      "title": "The Sum of All Fears",
+      "releases": {
+        "NA": "2002-12-17"
+      },
+      "developer": {
+        "default": "Red Storm Entertainment"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      }
+    },
+    {
+      "title": "Summoner: A Goddess Reborn",
+      "releases": {
+        "NA": "2003-02-04"
+      },
+      "developer": {
+        "default": "Volition"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Super Bubble Pop",
+      "releases": {
+        "NA": "2003-01-03"
+      },
+      "developer": {
+        "default": "Runecraft"
+      },
+      "publisher": {
+        "default": "Jaleco"
+      }
+    },
+    {
+      "title": "Super Mario Strikers",
+      "releases": {
+        "NA": "2005-12-05"
+      },
+      "developer": {
+        "default": "Next Level Games"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      },
+      "aliases": [
+        {
+          "title": "Mario Smash Football",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Super Mario Sunshine",
+      "releases": {
+        "NA": "2002-08-26"
+      },
+      "developer": {
+        "default": "Nintendo EAD"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Super Monkey Ball",
+      "releases": {
+        "NA": "2001-11-18"
+      },
+      "developer": {
+        "default": "Amusement Vision"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Super Monkey Ball 2",
+      "releases": {
+        "NA": "2002-08-26"
+      },
+      "developer": {
+        "default": "Amusement Vision"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Super Monkey Ball Adventure",
+      "releases": {
+        "NA": "2006-08-01"
+      },
+      "developer": {
+        "default": "Traveller's Tales"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Super Smash Bros. Melee",
+      "releases": {
+        "NA": "2001-12-03"
+      },
+      "developer": {
+        "default": "HAL Laboratory"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Superman: Shadow of Apokolips",
+      "releases": {
+        "NA": "2003-03-26"
+      },
+      "developer": {
+        "default": "Infogrames Sheffield House"
+      },
+      "publisher": {
+        "default": "Infogrames"
+      }
+    },
+    {
+      "title": "Surf's Up",
+      "releases": {
+        "NA": "2007-05-29"
+      },
+      "developer": {
+        "default": "Ubisoft Montreal"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "Swingerz Golf",
+      "releases": {
+        "NA": "2002-10-23"
+      },
+      "developer": {
+        "default": "Telenet Japan"
+      },
+      "publisher": {
+        "default": "Eidos Interactive"
+      },
+      "aliases": [
+        {
+          "title": "Ace Golf",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "SX Superstar",
+      "releases": {
+        "NA": "2003-06-30"
+      },
+      "developer": {
+        "default": "Climax Solent"
+      },
+      "publisher": {
+        "default": "AKA Acclaim"
+      }
+    },
+    {
+      "title": "Tak and the Power of Juju",
+      "releases": {
+        "NA": "2003-10-15"
+      },
+      "developer": {
+        "default": "Avalanche Software"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Tak: The Great Juju Challenge",
+      "releases": {
+        "NA": "2005-09-19"
+      },
+      "developer": {
+        "default": "Avalanche Software"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Tak 2: The Staff of Dreams",
+      "releases": {
+        "NA": "2004-10-11"
+      },
+      "developer": {
+        "default": "Avalanche Software"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "Tales of Symphonia",
+      "releases": {
+        "NA": "2004-07-13"
+      },
+      "developer": {
+        "default": "Namco Tales Studio"
+      },
+      "publisher": {
+        "default": "Namco JP Namco Hometek NA Nintendo PAL"
+      }
+    },
+    {
+      "title": "Tarzan: Untamed",
+      "releases": {
+        "NA": "2001-11-18"
+      },
+      "developer": {
+        "default": "Ubi Soft Montreal"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      },
+      "aliases": [
+        {
+          "title": "Tarzan: Freeride",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Taz: Wanted",
+      "releases": {
+        "NA": "2002-10-08"
+      },
+      "developer": {
+        "default": "Blitz Games"
+      },
+      "publisher": {
+        "default": "Infogrames"
+      }
+    },
+    {
+      "title": "Teenage Mutant Ninja Turtles",
+      "releases": {
+        "NA": "2003-10-21"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Studios"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Teenage Mutant Ninja Turtles 2: Battle Nexus",
+      "releases": {
+        "NA": "2004-10-19"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Studios"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Teenage Mutant Ninja Turtles 3: Mutant Nightmare",
+      "releases": {
+        "NA": "2005-11-01"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Studios"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Teen Titans",
+      "releases": {
+        "NA": "2006-05-24"
+      },
+      "developer": {
+        "default": "Artificial Mind and Movement"
+      },
+      "publisher": {
+        "default": "THQ Majesco"
+      }
+    },
+    {
+      "title": "Terminator 3: The Redemption",
+      "releases": {
+        "NA": "2004-09-09"
+      },
+      "developer": {
+        "default": "Paradigm Entertainment"
+      },
+      "publisher": {
+        "default": "Atari"
+      }
+    },
+    {
+      "title": "Tetris Worlds",
+      "releases": {
+        "NA": "2002-06-26"
+      },
+      "developer": {
+        "default": "Radical Entertainment"
+      },
+      "publisher": {
+        "default": "THQ WW Success JP"
+      }
+    },
+    {
+      "title": "Tiger Woods PGA Tour 06",
+      "releases": {
+        "NA": "2005-09-22"
+      },
+      "developer": {
+        "default": "EA Redwood Shores Hypnos Entertainment"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "Tiger Woods PGA Tour 2003",
+      "releases": {
+        "NA": "2002-10-29"
+      },
+      "developer": {
+        "default": "EA Redwood Shores"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "Tiger Woods PGA Tour 2004",
+      "releases": {
+        "NA": "2003-09-22"
+      },
+      "developer": {
+        "default": "EA Redwood Shores"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "Tiger Woods PGA Tour 2005",
+      "releases": {
+        "NA": "2004-09-21"
+      },
+      "developer": {
+        "default": "EA Redwood Shores"
+      },
+      "publisher": {
+        "default": "EA Sports"
+      }
+    },
+    {
+      "title": "TimeSplitters 2",
+      "releases": {
+        "NA": "2002-10-15"
+      },
+      "developer": {
+        "default": "Free Radical Design"
+      },
+      "publisher": {
+        "default": "Eidos Interactive"
+      }
+    },
+    {
+      "title": "TimeSplitters: Future Perfect",
+      "releases": {
+        "NA": "2005-03-22"
+      },
+      "developer": {
+        "default": "Free Radical Design"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "TMNT",
+      "releases": {
+        "NA": "2007-03-20"
+      },
+      "developer": {
+        "default": "Ubisoft Montreal"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "TMNT: Mutant Melee",
+      "releases": {
+        "NA": "2005-03-15"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Hawaii"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Tom and Jerry: War of the Whiskers",
+      "releases": {
+        "NA": "2003-01-04"
+      },
+      "developer": {
+        "default": "VIS Entertainment"
+      },
+      "publisher": {
+        "default": "NewKidCo"
+      }
+    },
+    {
+      "title": "Tom Clancy's Ghost Recon",
+      "releases": {
+        "NA": "2003-02-11"
+      },
+      "developer": {
+        "default": "Red Storm Entertainment"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      }
+    },
+    {
+      "title": "Tom Clancy's Ghost Recon 2",
+      "releases": {
+        "NA": "2005-03-15"
+      },
+      "developer": {
+        "default": "Red Storm Entertainment"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "Tom Clancy's Rainbow Six 3",
+      "releases": {
+        "NA": "2004-06-15"
+      },
+      "developer": {
+        "default": "Ubisoft Shanghai"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "Tom Clancy's Rainbow Six: Lockdown",
+      "releases": {
+        "NA": "2005-09-27"
+      },
+      "developer": {
+        "default": "Red Storm Entertainment"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "Tom Clancy's Splinter Cell",
+      "releases": {
+        "NA": "2003-04-08"
+      },
+      "developer": {
+        "default": "Ubi Soft Shanghai"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      }
+    },
+    {
+      "title": "Tom Clancy's Splinter Cell: Chaos Theory",
+      "releases": {
+        "NA": "2005-03-30"
+      },
+      "developer": {
+        "default": "Ubisoft Montreal Ubisoft Milan"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "Tom Clancy's Splinter Cell: Double Agent",
+      "releases": {
+        "NA": "2006-10-24"
+      },
+      "developer": {
+        "default": "Ubisoft Montreal"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "Tom Clancy's Splinter Cell: Pandora Tomorrow",
+      "releases": {
+        "NA": "2004-07-15"
+      },
+      "developer": {
+        "default": "Ubisoft Milan Ubisoft Shanghai"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "Tomb Raider: Legend",
+      "releases": {
+        "NA": "2006-11-14"
+      },
+      "developer": {
+        "default": "Nixxes Software"
+      },
+      "publisher": {
+        "default": "Eidos Interactive"
+      }
+    },
+    {
+      "title": "Tonka: Rescue Patrol",
+      "releases": {
+        "NA": "2003-11-18"
+      },
+      "developer": {
+        "default": "Lucky Chicken Games"
+      },
+      "publisher": {
+        "default": "TDK Mediactive"
+      }
+    },
+    {
+      "title": "Tony Hawk's American Wasteland",
+      "releases": {
+        "NA": "2005-10-18"
+      },
+      "developer": {
+        "default": "Neversoft"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Tony Hawk's Pro Skater 3",
+      "releases": {
+        "NA": "2001-11-18"
+      },
+      "developer": {
+        "default": "Neversoft"
+      },
+      "publisher": {
+        "default": "Activision O2 WW Success JP"
+      }
+    },
+    {
+      "title": "Tony Hawk's Pro Skater 4",
+      "releases": {
+        "NA": "2002-10-23"
+      },
+      "developer": {
+        "default": "Neversoft"
+      },
+      "publisher": {
+        "default": "Activision O2"
+      }
+    },
+    {
+      "title": "Tony Hawk's Underground",
+      "releases": {
+        "NA": "2003-10-27"
+      },
+      "developer": {
+        "default": "Neversoft"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Tony Hawk's Underground 2",
+      "releases": {
+        "NA": "2004-10-04"
+      },
+      "developer": {
+        "default": "Neversoft"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Top Angler: Real Bass Fishing",
+      "releases": {
+        "NA": "2003-01-01"
+      },
+      "developer": {
+        "default": "SIMS"
+      },
+      "publisher": {
+        "default": "Xicat Interactive"
+      }
+    },
+    {
+      "title": "Top Gun: Combat Zones",
+      "releases": {
+        "NA": "2002-10-28"
+      },
+      "developer": {
+        "default": "Digital Integration"
+      },
+      "publisher": {
+        "default": "Titus Interactive"
+      }
+    },
+    {
+      "title": "TransWorld Surf: Next Wave",
+      "releases": {
+        "NA": "2003-03-18"
+      },
+      "developer": {
+        "default": "Angel Studios"
+      },
+      "publisher": {
+        "default": "Infogrames"
+      }
+    },
+    {
+      "title": "Trigger Man",
+      "releases": {
+        "NA": "2004-09-28"
+      },
+      "developer": {
+        "default": "Point of View"
+      },
+      "publisher": {
+        "default": "Crave Entertainment"
+      }
+    },
+    {
+      "title": "True Crime: New York City",
+      "releases": {
+        "NA": "2005-11-16"
+      },
+      "developer": {
+        "default": "Exakt Entertainment"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "True Crime: Streets of LA",
+      "releases": {
+        "NA": "2003-11-04"
+      },
+      "developer": {
+        "default": "Exakt Entertainment"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Tube Slider",
+      "releases": {
+        "NA": "2003-04-15"
+      },
+      "developer": {
+        "default": "NDcube"
+      },
+      "publisher": {
+        "default": "Interchannel"
+      }
+    },
+    {
+      "title": "Turok: Evolution",
+      "releases": {
+        "NA": "2002-09-01"
+      },
+      "developer": {
+        "default": "Acclaim Studios Austin"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment"
+      }
+    },
+    {
+      "title": "Ty the Tasmanian Tiger",
+      "releases": {
+        "NA": "2002-10-09"
+      },
+      "developer": {
+        "default": "Krome Studios"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Ty the Tasmanian Tiger 2: Bush Rescue",
+      "releases": {
+        "NA": "2004-10-12"
+      },
+      "developer": {
+        "default": "Krome Studios"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Ty the Tasmanian Tiger 3: Night of the Quinkan",
+      "releases": {
+        "NA": "2005-10-12"
+      },
+      "developer": {
+        "default": "Krome Studios"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "UFC: Throwdown",
+      "releases": {
+        "NA": "2002-07-30"
+      },
+      "developer": {
+        "default": "Opus"
+      },
+      "publisher": {
+        "default": "Crave Entertainment NA Capcom JP Ubi Soft PAL"
+      }
+    },
+    {
+      "title": "Ultimate Muscle: Legends vs. New Generation",
+      "releases": {
+        "NA": "2003-06-05"
+      },
+      "developer": {
+        "default": "AKI Corporation"
+      },
+      "publisher": {
+        "default": "Bandai"
+      }
+    },
+    {
+      "title": "Ultimate Spider-Man",
+      "releases": {
+        "NA": "2005-09-22"
+      },
+      "developer": {
+        "default": "Treyarch"
+      },
+      "publisher": {
+        "default": "Activision WW Taito JP"
+      }
+    },
+    {
+      "title": "Universal Studios Theme Parks Adventure",
+      "releases": {
+        "NA": "2001-12-18"
+      },
+      "developer": {
+        "default": "Nai'a Digital Works"
+      },
+      "publisher": {
+        "default": "Kemco"
+      }
+    },
+    {
+      "title": "The Urbz: Sims in the City",
+      "releases": {
+        "NA": "2004-11-09"
+      },
+      "developer": {
+        "default": "Maxis"
+      },
+      "publisher": {
+        "default": "EA Games"
+      }
+    },
+    {
+      "title": "Vexx",
+      "releases": {
+        "NA": "2003-02-11"
+      },
+      "developer": {
+        "default": "Acclaim Studios Austin"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment"
+      }
+    },
+    {
+      "title": "Viewtiful Joe",
+      "releases": {
+        "NA": "2003-10-07"
+      },
+      "developer": {
+        "default": "Capcom Production Studio 4"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Viewtiful Joe 2",
+      "releases": {
+        "NA": "2004-11-18"
+      },
+      "developer": {
+        "default": "Clover Studio"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Viewtiful Joe: Red Hot Rumble",
+      "releases": {
+        "NA": "2005-11-08"
+      },
+      "developer": {
+        "default": "Clover Studio"
+      },
+      "publisher": {
+        "default": "Capcom"
+      }
+    },
+    {
+      "title": "Virtua Quest",
+      "releases": {
+        "NA": "2005-01-18"
+      },
+      "developer": {
+        "default": "Sega AM2 Tose"
+      },
+      "publisher": {
+        "default": "Sega"
+      }
+    },
+    {
+      "title": "Virtua Striker 2002",
+      "releases": {
+        "NA": "2002-05-20"
+      },
+      "developer": {
+        "default": "Amusement Vision"
+      },
+      "publisher": {
+        "default": "Sega"
+      },
+      "aliases": [
+        {
+          "title": "Virtua Striker 3 ver. 2002",
+          "regions": [
+            "JP",
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Wallace & Gromit in Project Zoo",
+      "releases": {
+        "NA": "2003-10-16"
+      },
+      "developer": {
+        "default": "Frontier Developments"
+      },
+      "publisher": {
+        "default": "BAM! Entertainment"
+      }
+    },
+    {
+      "title": "Wario World",
+      "releases": {
+        "NA": "2003-06-23"
+      },
+      "developer": {
+        "default": "Treasure"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "WarioWare, Inc.: Mega Party Games!",
+      "releases": {
+        "NA": "2004-04-05"
+      },
+      "developer": {
+        "default": "Intelligent Systems Nintendo R&D1"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Wave Race: Blue Storm",
+      "releases": {
+        "NA": "2001-11-18"
+      },
+      "developer": {
+        "default": "Nintendo Software Technology"
+      },
+      "publisher": {
+        "default": "Nintendo"
+      }
+    },
+    {
+      "title": "Whirl Tour",
+      "releases": {
+        "NA": "2002-11-05"
+      },
+      "developer": {
+        "default": "Papaya Studio"
+      },
+      "publisher": {
+        "default": "Crave Entertainment Vivendi Universal Games"
+      }
+    },
+    {
+      "title": "Winnie the Pooh's Rumbly Tumbly Adventure",
+      "releases": {
+        "NA": "2005-02-15"
+      },
+      "developer": {
+        "default": "Phoenix Studio"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "World Series of Poker",
+      "releases": {
+        "NA": "2005-09-14"
+      },
+      "developer": {
+        "default": "Left Field Productions"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "Worms 3D",
+      "releases": {
+        "NA": "2004-03-11"
+      },
+      "developer": {
+        "default": "Team17"
+      },
+      "publisher": {
+        "default": "Sega PAL Acclaim Entertainment NA"
+      }
+    },
+    {
+      "title": "Worms Blast",
+      "releases": {
+        "NA": "2002-10-24"
+      },
+      "developer": {
+        "default": "Team17"
+      },
+      "publisher": {
+        "default": "Ubi Soft"
+      }
+    },
+    {
+      "title": "Wreckless: The Yakuza Missions",
+      "releases": {
+        "NA": "2002-11-20"
+      },
+      "developer": {
+        "default": "Broadsword Interactive Limited"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "WTA Tour Tennis",
+      "releases": {
+        "NA": "2002-09-24"
+      },
+      "developer": {
+        "default": "Konami"
+      },
+      "publisher": {
+        "default": "Konami"
+      },
+      "aliases": [
+        {
+          "title": "Pro Tennis WTA Tour",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "WWE Crush Hour",
+      "releases": {
+        "NA": "2003-03-18"
+      },
+      "developer": {
+        "default": "Pacific Data Power & Light"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "WWE Day of Reckoning",
+      "releases": {
+        "NA": "2004-08-30"
+      },
+      "developer": {
+        "default": "Yuke's"
+      },
+      "publisher": {
+        "default": "THQ WW Yuke's JP"
+      }
+    },
+    {
+      "title": "WWE Day of Reckoning 2",
+      "releases": {
+        "NA": "2005-08-29"
+      },
+      "developer": {
+        "default": "Yuke's"
+      },
+      "publisher": {
+        "default": "THQ"
+      }
+    },
+    {
+      "title": "WWE WrestleMania X8",
+      "releases": {
+        "NA": "2002-06-10"
+      },
+      "developer": {
+        "default": "Yuke's"
+      },
+      "publisher": {
+        "default": "THQ WW Yuke's JP"
+      }
+    },
+    {
+      "title": "WWE WrestleMania XIX",
+      "releases": {
+        "NA": "2003-09-08"
+      },
+      "developer": {
+        "default": "Yuke's"
+      },
+      "publisher": {
+        "default": "THQ WW Yuke's JP"
+      }
+    },
+    {
+      "title": "X-Men Legends",
+      "releases": {
+        "NA": "2004-09-21"
+      },
+      "developer": {
+        "default": "Raven Software"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "X-Men Legends II: Rise of Apocalypse",
+      "releases": {
+        "NA": "2005-09-20"
+      },
+      "developer": {
+        "default": "Raven Software"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "X-Men: Next Dimension",
+      "releases": {
+        "NA": "2002-10-22"
+      },
+      "developer": {
+        "default": "Exakt Entertainment"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "X-Men: The Official Game",
+      "releases": {
+        "NA": "2006-05-16"
+      },
+      "developer": {
+        "default": "Hypnos Entertainment"
+      },
+      "publisher": {
+        "default": "Activision"
+      }
+    },
+    {
+      "title": "X2: Wolverine's Revenge",
+      "releases": {
+        "NA": "2003-04-15"
+      },
+      "developer": {
+        "default": "GenePool Software"
+      },
+      "publisher": {
+        "default": "Activision"
+      },
+      "aliases": [
+        {
+          "title": "X-Men 2: Wolverine's Revenge",
+          "regions": [
+            "PAL"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "XGRA: Extreme-G Racing Association",
+      "releases": {
+        "NA": "2003-11-24"
+      },
+      "developer": {
+        "default": "Acclaim Studios Cheltenham"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment"
+      }
+    },
+    {
+      "title": "XIII",
+      "releases": {
+        "NA": "2003-11-25"
+      },
+      "developer": {
+        "default": "Ubisoft Paris"
+      },
+      "publisher": {
+        "default": "Ubisoft"
+      }
+    },
+    {
+      "title": "Yu-Gi-Oh! The Falsebound Kingdom",
+      "releases": {
+        "NA": "2003-11-04"
+      },
+      "developer": {
+        "default": "Konami Computer Entertainment Japan"
+      },
+      "publisher": {
+        "default": "Konami"
+      }
+    },
+    {
+      "title": "Zapper: One Wicked Cricket",
+      "releases": {
+        "NA": "2002-11-05"
+      },
+      "developer": {
+        "default": "Blitz Games"
+      },
+      "publisher": {
+        "default": "Infogrames"
+      }
+    },
+    {
+      "title": "Zatch Bell! Mamodo Battles",
+      "releases": {
+        "NA": "2005-10-19"
+      },
+      "developer": {
+        "default": "Eighting"
+      },
+      "publisher": {
+        "default": "Bandai"
+      }
+    },
+    {
+      "title": "Zatch Bell! Mamodo Fury",
+      "releases": {
+        "NA": "2006-12-12"
+      },
+      "developer": {
+        "default": "Mechanic Arms"
+      },
+      "publisher": {
+        "default": "Namco Bandai Games"
+      }
+    },
+    {
+      "title": "Zoids: Battle Legends",
+      "releases": {
+        "NA": "2004-09-04"
+      },
+      "developer": {
+        "default": "Tomy"
+      },
+      "publisher": {
+        "default": "Tomy JP Atari NA"
+      },
+      "aliases": [
+        {
+          "title": "Zoids Vs. II",
+          "regions": [
+            "JP"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ZooCube",
+      "releases": {
+        "NA": "2002-05-30"
+      },
+      "developer": {
+        "default": "PuzzleKings"
+      },
+      "publisher": {
+        "default": "Acclaim Entertainment"
+      }
+    }
+  ]
+}

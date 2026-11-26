@@ -16,11 +16,22 @@ from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.launchbox.matching import title_key
 
 
-EARLY_DISC_PLATFORMS = {"pcfx": "PC-FX", "cd32": "Amiga CD32", "3do": "3DO"}
+EARLY_DISC_PLATFORMS = {
+    "pcfx": "PC-FX", "cd32": "Amiga CD32", "3do": "3DO", "playdia": "Bandai Playdia", "pippin": "Apple Bandai Pippin",
+}
+SIXTH_GENERATION_PLATFORMS = {
+    "dreamcast": "Sega Dreamcast", "playstation2": "PlayStation 2 (US)", "gamecube": "GameCube (US)",
+}
+OPTICAL_RETAIL_PLATFORMS = {**EARLY_DISC_PLATFORMS, **SIXTH_GENERATION_PLATFORMS}
+SECOND_GENERATION_PLATFORMS = {
+    "channelf": "Fairchild Channel F", "atari2600": "Atari 2600", "atari5200": "Atari 5200",
+    "odyssey2": "Magnavox Odyssey² / Philips Videopac", "intellivision": "Intellivision", "colecovision": "ColecoVision",
+}
+CLASSIC_CARTRIDGE_PLATFORMS = {**SECOND_GENERATION_PLATFORMS, "atari7800": "Atari 7800"}
 RETAIL_PLATFORMS = {"snes": "SNES", "megadrive": "Mega Drive", "nes": "NES / Famicom",
                     "playstation": "PlayStation (US)", "neogeo": "Neo Geo", "mastersystem": "Master System",
                     "pcengine": "PC Engine / TurboGrafx-16", "n64": "Nintendo 64", "saturn": "Sega Saturn",
-                    "jaguar": "Atari Jaguar", **EARLY_DISC_PLATFORMS}
+                    "jaguar": "Atari Jaguar", **OPTICAL_RETAIL_PLATFORMS, **CLASSIC_CARTRIDGE_PLATFORMS}
 ARCHIVE_MARKETS = {
     "JP": {"JP"},
     "NA": {"US", "CA", "MX"},
@@ -30,7 +41,7 @@ LONG_VOWELS = {"ā": ("a", "aa"), "ē": ("e", "ee", "ei"), "ī": ("i", "ii"),
                "ō": ("o", "ou", "oo"), "ū": ("u", "uu")}
 
 def base_archives_query(manufacturer=":manufacturer", commercial_labels=":commercial_labels", *,
-                        alternate_labels="'{}'"):
+                        alternate_labels="'{}'", promotional_labels="'{}'"):
     return text(f"""
     SELECT release.display_title AS title, signature.sha1_set_digest AS signature,
            software.id AS "softwareId", {SOFTWARE_KEY_SQL} AS "softwareKey",
@@ -78,7 +89,10 @@ def base_archives_query(manufacturer=":manufacturer", commercial_labels=":commer
         FROM catalog.release_fact fact
         WHERE fact.release_id = release.id
         HAVING NOT bool_or(
-            fact_key IN ('bios', 'demo', 'release_status', 'dump_modification', 'distribution_channel')
+            fact_key IN ('bios', 'demo', 'dump_modification', 'distribution_channel')
+            OR (fact_key = 'release_status' AND (
+                fact_value IS DISTINCT FROM 'promotional' OR packages.names IS DISTINCT FROM
+                    ARRAY[CAST({promotional_labels} AS jsonb) ->> signature.sha1_set_digest]))
             OR (fact_key = 'dump_status' AND (
                 fact_value IS DISTINCT FROM 'alternate' OR packages.names IS DISTINCT FROM
                     ARRAY[CAST({alternate_labels} AS jsonb) ->> signature.sha1_set_digest]))
@@ -93,7 +107,7 @@ def base_archives_query(manufacturer=":manufacturer", commercial_labels=":commer
 """)
 
 
-BASE_ARCHIVES = base_archives_query(alternate_labels=":alternate_labels")
+BASE_ARCHIVES = base_archives_query(alternate_labels=":alternate_labels", promotional_labels=":promotional_labels")
 
 PUBLICATION_SCHEMA = """
     CREATE SCHEMA IF NOT EXISTS app;
@@ -127,10 +141,12 @@ def read_archives(connection, manufacturer, system, verified_archives=(), *, sec
                          if record.get("independentRetail")}
     alternate_labels = {record["signature"]: record["archiveName"] for record in verified_archives
                         if record.get("alternateDump")}
+    promotional_labels = {record["signature"]: record["archiveName"] for record in verified_archives
+                          if record.get("promotionalRetail")}
     return [dict(row) for row in connection.execute(
         BASE_ARCHIVES, {"manufacturer": manufacturer, "system": system, "sufami": secondary_system,
                         "verified_labels": json.dumps(verified_labels), "commercial_labels": json.dumps(commercial_labels),
-                        "alternate_labels": json.dumps(alternate_labels)},
+                        "alternate_labels": json.dumps(alternate_labels), "promotional_labels": json.dumps(promotional_labels)},
     ).mappings()]
 
 

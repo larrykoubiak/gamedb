@@ -61,6 +61,65 @@ After a full derivation, build the complete consumer projection with
 `python -m gamedb rebuild`. Use `--plan`, `--layers`, `--from-layer`, or
 `--through-layer` to inspect or select its SQL layers.
 
+## Retail add-ons
+
+Famicom Disk System, 32X, and SuperGrafx are available from the **Hardware**
+filter in the NES / Famicom, Mega Drive, and PC Engine catalogs. Reviewed
+cartridge and add-on versions share a game page and use a hardware selector
+above the regional releases. Downloads, patch bases, manuals, and soundtrack
+links belong to the selected release. The SuperGrafx filter also includes the
+existing SuperGrafx-enhanced Darius HuCards.
+
+The parent `seed-nes`, `seed-megadrive`, and `seed-pcengine` commands publish
+the add-on releases as part of their catalog snapshots. The source lists and
+reviewed matches are in [FDS](reference/fds_retail.json),
+[32X](reference/32x_retail.json), and [SuperGrafx](reference/supergrafx_retail.json).
+Use the parent manual sync commands to mirror the scans. Reviewed TOSEC PIX
+manuals use the local `roms/TOSEC-PIX` collection under `GAMEDB_ROM_ROOT`.
+The NES and Mega Drive translation sync commands include the RHDN `fds` and
+`32x` packages when those directories are present.
+
+The same filter covers Sega CD / Mega-CD, PC Engine CD, and Neo Geo CD. Titles
+that require both Sega CD and 32X show up under both filters. PC Engine disc
+releases identify their required CD format. Neo Geo games use the MVS, AES, and
+CD choices available for that title.
+
+The parent seed commands also publish [Sega CD](reference/segacd_retail.json),
+[PC Engine CD](reference/pcecd_retail.json), and [Neo Geo CD](reference/neogeocd_retail.json)
+releases. Original discs use verified Redump archives and keep multi-disc
+pressings together. Explorer reads audio tracks from the verified CUE sheets
+and caches FLAC playback copies. Local disc patches sync with the
+`sync-segacd-translations`, `sync-pcecd-translations`, and
+`sync-neogeocd-translations` commands.
+
+## Early cartridge retail catalogs
+
+The landing page links to Fairchild Channel F, Atari 2600, Atari 5200, Odyssey²,
+Intellivision, and ColecoVision. The [retail roster](reference/second_generation_retail.json)
+uses period releases, including the original Intellivision 125. Odyssey²
+groups reviewed Videopac, Videopac+, and Brazilian releases with their original
+counterparts. The catalog records required add-ons such as the Starpath
+Supercharger and Intellivision ECS on their releases.
+
+The [Atari 7800 roster](reference/atari7800_retail.json) covers the original
+North American and PAL cartridges, including the 32 in 1 pack-in.
+
+```sh
+python -m gamedb seed-cartridge atari2600 --report data/logs/atari2600-retail.json --publish
+python -m gamedb sync-cartridge-manuals atari2600 --catalog data/logs/atari2600-retail.json
+python -m gamedb sync-colecovision-translations --source /path/to/romhacking.net-backup
+python -m gamedb sync-cartridge-soundtracks
+```
+
+The match reports identify locally verified No-Intro archives and TOSEC copies
+corroborated by the MAME cartridge lists. Manual PDFs are mirrored in
+`/mnt/synology/photo/Manuals/Second Generation` or the separate `Atari 7800`
+directory and use the same flipbook reader as the other retail catalogs.
+
+The soundtrack sync mirrors the reviewed VGMRips packs for Mario Bros. on
+Atari 5200, Commando on Atari 7800, and Snafu on Intellivision. Reseed the
+catalogs after syncing to publish the soundtrack links.
+
 ## Neo Geo retail catalog
 
 Explorer’s **Neo Geo retail catalog** at `/catalog/neogeo` covers 148 original
@@ -362,6 +421,36 @@ Omit `--publish` from the seed command for a read-only coverage report. Use
 `sync-pcfx-translations` or `sync-3do-translations` with the local RHDN backup
 and the reviewed patch archives. Explorer plays AIFF and AIFC tracks through
 cached FLAC conversions. [JoshW CD32 soundtracks](https://cdi.joshw.info/amiga/) · [JoshW 3DO soundtracks](https://3do.joshw.info/) · [Digital Press manuals](https://www.digitpress.com/library/manuals/3do/)
+
+## Dreamcast, PlayStation 2, and GameCube retail catalogs
+
+Use `seed-optical` with `dreamcast`, `playstation2`, or `gamecube`. Dreamcast
+covers the international disc library. PlayStation 2 and GameCube cover US
+releases. The catalogs use pinned retail lists and verified Redump pressings.
+Prepatched images and undubs with an identified base title use the install
+manifest and appear alongside translation downloads.
+
+```sh
+python -m gamedb seed-optical dreamcast --publish --report data/logs/dreamcast-retail.json
+python -m gamedb sync-dreamcast-translations --source /mnt/synology/backup2/romhacking.net-20240801
+```
+
+The disc recipe records identify the original pressing and the patch archive.
+The sync imports verified builds. Explorer reads the launch path from the ZIP.
+An entry with `preparedDiscSha256` uses the reviewed ZIP in the translation
+library's `discs` folder. This supports output from tools such as Universal
+Dreamcast Patcher and Sega Saturn Patcher.
+
+Sixth-generation game pages play music from the VGM library. For a matched
+JoshW archive that has yet to be mirrored, **Load soundtrack** fetches the
+listed archive into Explorer's media cache and opens the same playlist.
+The browser decoder handles PSF2 and miniPSF2 with their shared libraries.
+Explorer also uses vgmstream to prepare FLAC playback copies for streams
+such as GameCube AFC files. The Linux x86-64 Explorer image includes
+`vgmstream-cli`. [vgmstream r2168](https://github.com/vgmstream/vgmstream/releases/tag/r2168)
+
+SG-1000 releases appear under Master System. Its hardware filter selects the
+SG-1000 library, and shared titles can switch between the two releases.
 
 ## Atari Jaguar retail catalog
 

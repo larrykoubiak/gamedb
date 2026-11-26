@@ -1,0 +1,5014 @@
+{
+  "source": {
+    "name": "Wikipedia contributors",
+    "url": "https://en.wikipedia.org/wiki/Special:PermanentLink/1369131535#Games",
+    "revision": 1369131535,
+    "sha256": "8d841bef265d58682bc4540178c6c772048a6cb8401435145fd364ec148cf171",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "rowCount": 207
+  },
+  "titles": [
+    {
+      "title": "3 Ninjas Kick Back",
+      "developer": "Malibu Interactive",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "February 28, 1994"
+      },
+      "archiveTitles": [
+        "3 Ninjas Kick Back"
+      ],
+      "parentTitle": "3 Ninjas Kick Back"
+    },
+    {
+      "title": "A-Rank Thunder Tanjouhen",
+      "developer": "Telenet Japan",
+      "publisher": "Riot",
+      "dates": {
+        "JP": "June 25, 1993"
+      },
+      "archiveTitles": [
+        "A-Rank Thunder - Tanjou-hen"
+      ]
+    },
+    {
+      "title": "The Adventures of Batman & Robin",
+      "developer": "Clockwork Tortoise",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "1995",
+        "PAL": "December 1995"
+      },
+      "archiveTitles": [
+        "Adventures of Batman and Robin, The"
+      ],
+      "gameTitle": "The Adventures of Batman & Robin (Sega CD)"
+    },
+    {
+      "title": "The Adventures of Willy Beamish",
+      "developer": "Infinite Laser Dog",
+      "publisher": "Dynamix",
+      "dates": {
+        "NA": "1993"
+      },
+      "archiveTitles": [
+        "Adventures of Willy Beamish, The"
+      ]
+    },
+    {
+      "title": "After Armageddon Gaiden: Majū Tōshōden Eclipse",
+      "developer": "Pandora Box",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "November 11, 1994"
+      },
+      "archiveTitles": [
+        "After Armageddon Gaiden - Majuu Toushouden Eclipse"
+      ]
+    },
+    {
+      "title": "After Burner III",
+      "developer": "CRI",
+      "publisher": "CRI",
+      "dates": {
+        "JP": "December 18, 1992"
+      },
+      "archiveTitles": [
+        "After Burner III"
+      ]
+    },
+    {
+      "title": "After Burner III",
+      "developer": "CRI",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "1993",
+        "PAL": "August 1993"
+      },
+      "archiveTitles": [
+        "After Burner III"
+      ]
+    },
+    {
+      "title": "Aisle Lord",
+      "developer": "Wolf Team",
+      "publisher": "Wolf Team",
+      "dates": {
+        "JP": "May 29, 1992"
+      },
+      "archiveTitles": [
+        "Aisle Lord"
+      ]
+    },
+    {
+      "title": "Alshark",
+      "developer": "Right StuffCRC",
+      "publisher": "Sandstorm",
+      "dates": {
+        "JP": "November 26, 1993"
+      },
+      "archiveTitles": [
+        "Alshark"
+      ]
+    },
+    {
+      "title": "The Amazing Spider-Man vs. The Kingpin",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "1993",
+        "PAL": "November 1993"
+      },
+      "archiveTitles": [
+        "Amazing Spider-Man vs. The Kingpin, The"
+      ]
+    },
+    {
+      "title": "Android Assault: The Revenge of Bari-Arm",
+      "developer": "Human Entertainment",
+      "publisher": "Human Entertainment",
+      "dates": {
+        "JP": "July 30, 1993"
+      },
+      "regionalTitles": {
+        "JP": "Bari-Arm"
+      },
+      "archiveTitles": [
+        "Android Assault - The Revenge of Bari-Arm",
+        "Bari-Arm"
+      ]
+    },
+    {
+      "title": "Android Assault: The Revenge of Bari-Arm",
+      "developer": "Human Entertainment",
+      "publisher": "Big Fun Games",
+      "dates": {
+        "NA": "October 1994"
+      },
+      "archiveTitles": [
+        "Android Assault - The Revenge of Bari-Arm",
+        "Bari-Arm"
+      ]
+    },
+    {
+      "title": "Anett Futatabi",
+      "developer": "Wolf Team",
+      "publisher": "Wolf Team",
+      "dates": {
+        "JP": "March 30, 1993"
+      },
+      "archiveTitles": [
+        "Annett Futatabi"
+      ]
+    },
+    {
+      "title": "Aoki Ōkami to Shiroki Mejika: Genchō Hishi",
+      "developer": "Koei",
+      "publisher": "Koei",
+      "dates": {
+        "JP": "September 24, 1993"
+      },
+      "archiveTitles": [
+        "Aoki Ookami to Shiroki Mejika - Genchou Hishi"
+      ],
+      "parentTitle": "Genghis Khan II: Clan of the Gray Wolf"
+    },
+    {
+      "title": "Arcus I-II-III",
+      "developer": "Wolf Team",
+      "publisher": "Wolf Team",
+      "dates": {
+        "JP": "July 23, 1993"
+      },
+      "archiveTitles": [
+        "Arcus I, II, III"
+      ]
+    },
+    {
+      "title": "Arslān Senki",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "November 19, 1993"
+      },
+      "archiveTitles": [
+        "Arslan Senki"
+      ]
+    },
+    {
+      "title": "A/X-101",
+      "developer": "MicronetGenki",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "March 25, 1994"
+      },
+      "archiveTitles": [
+        "A-X-101",
+        "AX-101"
+      ]
+    },
+    {
+      "title": "A/X-101",
+      "developer": "MicronetGenki",
+      "publisher": "Absolute Entertainment",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "A-X-101",
+        "AX-101"
+      ]
+    },
+    {
+      "title": "Bakuden: Unbalance Zone",
+      "developer": "Kogado Software Products",
+      "publisher": "Sony Music Entertainment",
+      "dates": {
+        "JP": "April 22, 1994"
+      },
+      "archiveTitles": [
+        "Bakuden - The Unbalanced Zone"
+      ]
+    },
+    {
+      "title": "Batman Returns",
+      "developer": "Malibu Interactive",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "1993",
+        "PAL": "August 1993"
+      },
+      "archiveTitles": [
+        "Batman Returns"
+      ],
+      "parentTitle": "Batman Returns"
+    },
+    {
+      "title": "Battlecorps",
+      "developer": "Core Design",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "September 30, 1994"
+      },
+      "archiveTitles": [
+        "Battlecorps"
+      ]
+    },
+    {
+      "title": "Battlecorps",
+      "developer": "Core Design",
+      "publisher": "Core Design",
+      "dates": {
+        "NA": "August 1994",
+        "PAL": "August 1994"
+      },
+      "archiveTitles": [
+        "Battlecorps"
+      ]
+    },
+    {
+      "title": "BC Racers",
+      "developer": "Core Design",
+      "publisher": "Core Design",
+      "dates": {
+        "NA": "February 1995",
+        "PAL": "December 1994"
+      },
+      "archiveTitles": [
+        "BC Racers"
+      ],
+      "parentTitle": "BC Racers"
+    },
+    {
+      "title": "Bill Walsh College Football",
+      "developer": "High Score Productions",
+      "publisher": "EA Sports",
+      "dates": {
+        "NA": "December 1993",
+        "PAL": "March 1994"
+      },
+      "archiveTitles": [
+        "Bill Walsh College Football"
+      ],
+      "parentTitle": "Bill Walsh College Football"
+    },
+    {
+      "title": "Black Hole Assault",
+      "developer": "Micronet",
+      "publisher": "Micronet",
+      "dates": {
+        "JP": "October 23, 1992"
+      },
+      "archiveTitles": [
+        "Black Hole Assault",
+        "Blackhole Assault"
+      ]
+    },
+    {
+      "title": "Black Hole Assault",
+      "developer": "Micronet",
+      "publisher": "Bignet USA",
+      "dates": {
+        "NA": "November 1992"
+      },
+      "archiveTitles": [
+        "Black Hole Assault",
+        "Blackhole Assault"
+      ]
+    },
+    {
+      "title": "Black Hole Assault",
+      "developer": "Micronet",
+      "publisher": "Sega",
+      "dates": {
+        "PAL": "April 2, 1993"
+      },
+      "archiveTitles": [
+        "Black Hole Assault",
+        "Blackhole Assault"
+      ]
+    },
+    {
+      "title": "Bloodshot",
+      "developer": "Domark",
+      "publisher": "Domark",
+      "dates": {
+        "PAL": "June 1995"
+      },
+      "archiveTitles": [
+        "Bloodshot ~ Battle Frenzy"
+      ],
+      "parentTitle": "Bloodshot"
+    },
+    {
+      "title": "Bouncers",
+      "developer": "Dynamix",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "December 1994"
+      },
+      "archiveTitles": [
+        "Bouncers"
+      ]
+    },
+    {
+      "title": "Bram Stoker's Dracula",
+      "developer": "Psygnosis",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "November 1993"
+      },
+      "archiveTitles": [
+        "Bram Stoker's Dracula"
+      ],
+      "parentTitle": "Bram Stoker's Dracula"
+    },
+    {
+      "title": "Brutal: Paws of Fury",
+      "developer": "GameTek",
+      "publisher": "GameTek",
+      "dates": {
+        "NA": "November 1994",
+        "PAL": "September 1994"
+      },
+      "archiveTitles": [
+        "Brutal - Paws of Fury"
+      ],
+      "parentTitle": "Brutal: Paws of Fury"
+    },
+    {
+      "title": "Burai: Hachigyoku no Yūshi Densetsu",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "September 11, 1992"
+      },
+      "archiveTitles": [
+        "Burai - Yatsudama no Yuushi Densetsu"
+      ]
+    },
+    {
+      "title": "Cadillacs and Dinosaurs: The Second Cataclysm",
+      "developer": "Rocket Science Games",
+      "publisher": "Rocket Science Games",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "Cadillacs and Dinosaurs - The Second Cataclysm"
+      ]
+    },
+    {
+      "title": "Capcom no Quiz Tonosama no Yabō",
+      "developer": "SIMS",
+      "publisher": "SIMS",
+      "dates": {
+        "JP": "December 25, 1992"
+      },
+      "archiveTitles": [
+        "Quiz Tonosama no Yabou"
+      ]
+    },
+    {
+      "title": "Captain Tsubasa",
+      "developer": "Tecmo",
+      "publisher": "Tecmo",
+      "dates": {
+        "JP": "September 30, 1994"
+      },
+      "archiveTitles": [
+        "Captain Tsubasa"
+      ]
+    },
+    {
+      "title": "Chuck Rock",
+      "developer": "Core Design",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "1992",
+        "PAL": "July 1993"
+      },
+      "archiveTitles": [
+        "Chuck Rock"
+      ],
+      "parentTitle": "Chuck Rock"
+    },
+    {
+      "title": "Chuck Rock II: Son of Chuck",
+      "developer": "Core Design",
+      "publisher": "Virgin Interactive Entertainment",
+      "dates": {
+        "NA": "1993"
+      },
+      "archiveTitles": [
+        "Chuck Rock II - Son of Chuck"
+      ],
+      "parentTitle": "Chuck Rock II: Son of Chuck"
+    },
+    {
+      "title": "Chuck Rock II: Son of Chuck",
+      "developer": "Core Design",
+      "publisher": "Core Design",
+      "dates": {
+        "PAL": "January 1994"
+      },
+      "archiveTitles": [
+        "Chuck Rock II - Son of Chuck"
+      ],
+      "parentTitle": "Chuck Rock II: Son of Chuck"
+    },
+    {
+      "title": "Cliffhanger",
+      "developer": "Malibu Interactive",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "November 1993"
+      },
+      "archiveTitles": [
+        "Cliffhanger"
+      ],
+      "parentTitle": "Cliffhanger"
+    },
+    {
+      "title": "Cobra Command",
+      "developer": "Wolf Team",
+      "publisher": "Wolf Team",
+      "dates": {
+        "JP": "August 28, 1992"
+      },
+      "regionalTitles": {
+        "JP": "Thunder Storm FX"
+      },
+      "archiveTitles": [
+        "Cobra Command",
+        "Thunder Storm FX"
+      ]
+    },
+    {
+      "title": "Cobra Command",
+      "developer": "Wolf Team",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "October 15, 1992",
+        "PAL": "April 2, 1993"
+      },
+      "archiveTitles": [
+        "Cobra Command",
+        "Thunder Storm FX"
+      ]
+    },
+    {
+      "title": "Corpse Killer",
+      "developer": "Digital Pictures",
+      "publisher": "Digital Pictures",
+      "dates": {
+        "NA": "November 1994",
+        "PAL": "March 1995"
+      },
+      "archiveTitles": [
+        "Corpse Killer"
+      ]
+    },
+    {
+      "title": "Cosmic Fantasy Stories",
+      "developer": "Riot",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "March 27, 1992"
+      },
+      "archiveTitles": [
+        "Cosmic Fantasy Stories"
+      ]
+    },
+    {
+      "title": "Crime Patrol",
+      "developer": "American Laser Games",
+      "publisher": "American Laser Games",
+      "dates": {
+        "NA": "October 1994"
+      },
+      "archiveTitles": [
+        "Crime Patrol"
+      ]
+    },
+    {
+      "title": "Cyborg 009",
+      "developer": "Telenet Japan",
+      "publisher": "Riot",
+      "dates": {
+        "JP": "July 30, 1993"
+      },
+      "archiveTitles": [
+        "Cyborg 009"
+      ]
+    },
+    {
+      "title": "Daihoushinden",
+      "developer": "Flashback",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "February 24, 1995"
+      },
+      "archiveTitles": [
+        "Daihoushinden"
+      ]
+    },
+    {
+      "title": "Dark Wizard",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "November 12, 1993",
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "Dark Wizard",
+        "Dark Wizard - Yomigaerishi Yami no Madoushi"
+      ]
+    },
+    {
+      "title": "Death Bringer",
+      "developer": "Riot",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "April 17, 1992"
+      },
+      "archiveTitles": [
+        "Death Bringer"
+      ]
+    },
+    {
+      "title": "Demolition Man",
+      "developer": "Alexandria",
+      "publisher": "Acclaim Entertainment",
+      "dates": {
+        "NA": "November 15, 1995"
+      },
+      "archiveTitles": [
+        "Demolition Man"
+      ],
+      "parentTitle": "Demolition Man"
+    },
+    {
+      "title": "Detonator Orgun",
+      "developer": "Hot-B",
+      "publisher": "Hot-B",
+      "dates": {
+        "JP": "July 31, 1992"
+      },
+      "archiveTitles": [
+        "Detonator Orgun"
+      ]
+    },
+    {
+      "title": "Devastator",
+      "developer": "Wolf Team",
+      "publisher": "Wolf Team",
+      "dates": {
+        "JP": "May 28, 1993"
+      },
+      "archiveTitles": [
+        "Devastator"
+      ]
+    },
+    {
+      "title": "Double Switch",
+      "developer": "Digital Pictures",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "March 24, 1995",
+        "NA": "1993",
+        "PAL": "February 1994"
+      },
+      "archiveTitles": [
+        "Double Switch"
+      ]
+    },
+    {
+      "title": "Dracula Unleashed",
+      "developer": "ICOM Simulations",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "1993",
+        "PAL": "May 1994"
+      },
+      "archiveTitles": [
+        "Dracula Unleashed"
+      ]
+    },
+    {
+      "title": "Dragon's Lair",
+      "developer": "Epicenter Interactive",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "June 3, 1994",
+        "PAL": "March 1994"
+      },
+      "archiveTitles": [
+        "Dragon's Lair"
+      ]
+    },
+    {
+      "title": "Dragon's Lair",
+      "developer": "Epicenter Interactive",
+      "publisher": "ReadySoft",
+      "dates": {
+        "NA": "1993"
+      },
+      "archiveTitles": [
+        "Dragon's Lair"
+      ]
+    },
+    {
+      "title": "Dune",
+      "developer": "Cryo Interactive",
+      "publisher": "Virgin Interactive Entertainment",
+      "dates": {
+        "NA": "December 1993",
+        "PAL": "January 1994"
+      },
+      "archiveTitles": [
+        "Dune"
+      ]
+    },
+    {
+      "title": "Dungeon Explorer",
+      "developer": "Hudson SoftWestone",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "May 1995"
+      },
+      "archiveTitles": [
+        "Dungeon Explorer"
+      ]
+    },
+    {
+      "title": "Dungeon Explorer",
+      "developer": "Hudson SoftWestone",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "PAL": "1995"
+      },
+      "archiveTitles": [
+        "Dungeon Explorer"
+      ]
+    },
+    {
+      "title": "Dungeon Master II: The Legend of Skullkeep",
+      "developer": "FTL Games",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "March 25, 1994"
+      },
+      "archiveTitles": [
+        "Dungeon Master II - Skullkeep"
+      ]
+    },
+    {
+      "title": "Dungeon Master II: The Legend of Skullkeep",
+      "developer": "FTL Games",
+      "publisher": "JVC Musical Industries",
+      "dates": {
+        "NA": "September 1994",
+        "PAL": "1994"
+      },
+      "archiveTitles": [
+        "Dungeon Master II - Skullkeep"
+      ]
+    },
+    {
+      "title": "Dynamic Country Club",
+      "developer": "Sega AM3",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "July 16, 1993"
+      },
+      "archiveTitles": [
+        "Dynamic Country Club"
+      ]
+    },
+    {
+      "title": "Earnest Evans",
+      "developer": "Wolf Team",
+      "publisher": "Wolf Team",
+      "dates": {
+        "JP": "December 20, 1991"
+      },
+      "archiveTitles": [
+        "Earnest Evans"
+      ],
+      "parentTitle": "Earnest Evans"
+    },
+    {
+      "title": "Earthworm Jim: Special Edition",
+      "developer": "Shiny Entertainment",
+      "publisher": "Interplay Productions",
+      "dates": {
+        "NA": "May 1995",
+        "PAL": "1995"
+      },
+      "archiveTitles": [
+        "Earthworm Jim - Special Edition"
+      ]
+    },
+    {
+      "title": "Ecco the Dolphin",
+      "developer": "Novotrade",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "February 24, 1995",
+        "NA": "1993",
+        "PAL": "August 1993"
+      },
+      "archiveTitles": [
+        "Ecco the Dolphin",
+        "Ecco the Dolphin CD"
+      ],
+      "parentTitle": "Ecco the Dolphin"
+    },
+    {
+      "title": "Ecco: The Tides of Time",
+      "developer": "Novotrade",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "February 24, 1995",
+        "NA": "November 1994",
+        "PAL": "June 1995"
+      },
+      "archiveTitles": [
+        "Ecco - The Tides of Time"
+      ],
+      "parentTitle": "Ecco: The Tides of Time"
+    },
+    {
+      "title": "Egawa Suguru no Super League CD",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "August 6, 1993"
+      },
+      "archiveTitles": [
+        "Egawa Suguru no Super League CD"
+      ]
+    },
+    {
+      "title": "ESPN Baseball Tonight",
+      "developer": "Sony Imagesoft",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "1994",
+        "PAL": "1994"
+      },
+      "archiveTitles": [
+        "ESPN Baseball Tonight"
+      ],
+      "parentTitle": "ESPN Baseball Tonight"
+    },
+    {
+      "title": "ESPN National Hockey Night",
+      "developer": "Sony Imagesoft",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "November 1994"
+      },
+      "archiveTitles": [
+        "ESPN National Hockey Night"
+      ],
+      "parentTitle": "ESPN National Hockey Night"
+    },
+    {
+      "title": "ESPN NBA Hangtime '95",
+      "developer": "Sony Imagesoft",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "ESPN NBA Hangtime '95"
+      ]
+    },
+    {
+      "title": "ESPN Sunday Night NFL",
+      "developer": "Ringler Studios",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "November 1994"
+      },
+      "archiveTitles": [
+        "ESPN Sunday Night NFL"
+      ],
+      "parentTitle": "ESPN Sunday Night NFL"
+    },
+    {
+      "title": "Eternal Champions: Challenge from the Dark Side",
+      "developer": "Sega Interactive Development Division",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "1995",
+        "PAL": "May 1995"
+      },
+      "archiveTitles": [
+        "Eternal Champions - Challenge from the Dark Side"
+      ]
+    },
+    {
+      "title": "Eye of the Beholder",
+      "developer": "Opera House",
+      "publisher": "Pony Canyon",
+      "dates": {
+        "JP": "April 22, 1994"
+      },
+      "archiveTitles": [
+        "Eye of the Beholder"
+      ]
+    },
+    {
+      "title": "Eye of the Beholder",
+      "developer": "Opera House",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "August 1994",
+        "PAL": "December 1994"
+      },
+      "archiveTitles": [
+        "Eye of the Beholder"
+      ]
+    },
+    {
+      "title": "F1 Circus CD",
+      "developer": "Cream",
+      "publisher": "Nichibutsu",
+      "dates": {
+        "JP": "March 18, 1994"
+      },
+      "archiveTitles": [
+        "F1 Circus CD"
+      ]
+    },
+    {
+      "title": "Fahrenheit",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "September 1, 1995",
+        "NA": "1995",
+        "PAL": "May 1995"
+      },
+      "archiveTitles": [
+        "Fahrenheit"
+      ]
+    },
+    {
+      "title": "Fatal Fury Special",
+      "developer": "Funcom",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "March 31, 1995"
+      },
+      "archiveTitles": [
+        "Fatal Fury Special",
+        "Garou Densetsu Special"
+      ]
+    },
+    {
+      "title": "Fatal Fury Special",
+      "developer": "Funcom",
+      "publisher": "JVC Musical Industries",
+      "dates": {
+        "NA": "1995",
+        "PAL": "July 1995"
+      },
+      "archiveTitles": [
+        "Fatal Fury Special",
+        "Garou Densetsu Special"
+      ]
+    },
+    {
+      "title": "FIFA International Soccer",
+      "developer": "Extended Play Productions",
+      "publisher": "EA Sports",
+      "dates": {
+        "NA": "1994",
+        "PAL": "June 1994"
+      },
+      "archiveTitles": [
+        "FIFA International Soccer",
+        "FIFA International Soccer - Championship Edition"
+      ],
+      "parentTitle": "FIFA International Soccer"
+    },
+    {
+      "title": "Final Fight CD",
+      "developer": "A Wave",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "April 2, 1993",
+        "NA": "April 1993",
+        "PAL": "July 1993"
+      },
+      "archiveTitles": [
+        "Final Fight CD"
+      ]
+    },
+    {
+      "title": "Flashback: The Quest for Identity",
+      "developer": "Delphine Software International",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "November 1994"
+      },
+      "archiveTitles": [
+        "Flashback - The Quest for Identity"
+      ],
+      "parentTitle": "Flashback"
+    },
+    {
+      "title": "Flink",
+      "developer": "Psygnosis",
+      "publisher": "Vic Tokai",
+      "dates": {
+        "NA": "February 1995"
+      },
+      "archiveTitles": [
+        "Flink"
+      ],
+      "parentTitle": "Flink"
+    },
+    {
+      "title": "Flink",
+      "developer": "Psygnosis",
+      "publisher": "Sony Electronic Publishing",
+      "dates": {
+        "PAL": "1994"
+      },
+      "archiveTitles": [
+        "Flink"
+      ],
+      "parentTitle": "Flink"
+    },
+    {
+      "title": "Formula One World Championship: Beyond the Limit",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "April 23, 1994",
+        "NA": "August 1994",
+        "PAL": "September 1994"
+      },
+      "regionalTitles": {
+        "JP": "Heavenly Symphony: Formula One World Championship 1993"
+      },
+      "archiveTitles": [
+        "Formula One World Championship - Beyond the Limit",
+        "Heavenly Symphony - Formula One World Championship 1993"
+      ]
+    },
+    {
+      "title": "Gambler Jiko Chuushinha 2: Gekitou! Tokyo Mahjong Land Hen",
+      "developer": "Game Arts",
+      "publisher": "Game Arts",
+      "dates": {
+        "JP": "December 18, 1992"
+      },
+      "archiveTitles": [
+        "Gyuwambler Jiko Chuushinha 2 - Gekitou! Tokyo Mahjongland-hen"
+      ]
+    },
+    {
+      "title": "Game no Kanzume Vol. 1",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "March 18, 1994"
+      },
+      "archiveTitles": [
+        "Game no Kandume Vol. 1"
+      ]
+    },
+    {
+      "title": "Game no Kanzume Vol. 2",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "March 18, 1994"
+      },
+      "archiveTitles": [
+        "Game no Kandume Vol. 2"
+      ]
+    },
+    {
+      "title": "Ground Zero: Texas",
+      "developer": "Digital Pictures",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "November 1993",
+        "PAL": "February 18, 1994"
+      },
+      "archiveTitles": [
+        "Ground Zero Texas"
+      ]
+    },
+    {
+      "title": "Heart of the Alien",
+      "developer": "Interplay Productions",
+      "publisher": "Virgin Interactive Entertainment",
+      "dates": {
+        "NA": "July 1994"
+      },
+      "archiveTitles": [
+        "Heart of the Alien - Out of This World Parts I and II"
+      ]
+    },
+    {
+      "title": "Heavy Nova",
+      "developer": "Holocronet",
+      "publisher": "Micronet",
+      "dates": {
+        "JP": "December 12, 1991"
+      },
+      "archiveTitles": [
+        "Heavy Nova"
+      ],
+      "parentTitle": "Heavy Nova"
+    },
+    {
+      "title": "Heimdall",
+      "developer": "The 8th Day",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "March 18, 1994"
+      },
+      "archiveTitles": [
+        "Heimdall"
+      ]
+    },
+    {
+      "title": "Heimdall",
+      "developer": "The 8th Day",
+      "publisher": "JVC Musical Industries",
+      "dates": {
+        "NA": "April 1994"
+      },
+      "archiveTitles": [
+        "Heimdall"
+      ]
+    },
+    {
+      "title": "Hook",
+      "developer": "Core Design",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "1993",
+        "PAL": "September 1993"
+      },
+      "archiveTitles": [
+        "Hook"
+      ],
+      "parentTitle": "Hook"
+    },
+    {
+      "title": "Illusion City (Genei Toshi)",
+      "developer": "Aisystem Tokyo",
+      "publisher": "Microcabin",
+      "dates": {
+        "JP": "May 28, 1993"
+      },
+      "archiveTitles": [
+        "Gen'ei Toshi - Illusion City"
+      ]
+    },
+    {
+      "title": "INXS: Make My Video",
+      "developer": "Digital Pictures",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "October 15, 1992",
+        "PAL": "August 1993"
+      },
+      "archiveTitles": [
+        "Make My Video - INXS"
+      ]
+    },
+    {
+      "title": "Iron Helix",
+      "developer": "Drew Pictures",
+      "publisher": "Spectrum HoloByte",
+      "dates": {
+        "NA": "September 1994"
+      },
+      "archiveTitles": [
+        "Iron Helix"
+      ]
+    },
+    {
+      "title": "Ishii Hisaichi no Daiseikai",
+      "developer": "G-Sat",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "January 28, 1994"
+      },
+      "archiveTitles": [
+        "Ishii Hisaichi no Daiseikai"
+      ]
+    },
+    {
+      "title": "Jaguar XJ220",
+      "developer": "Core Design",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "March 26, 1993"
+      },
+      "archiveTitles": [
+        "Jaguar XJ220"
+      ]
+    },
+    {
+      "title": "Jaguar XJ220",
+      "developer": "Core Design",
+      "publisher": "JVC Musical Industries",
+      "dates": {
+        "NA": "March 1993"
+      },
+      "archiveTitles": [
+        "Jaguar XJ220"
+      ]
+    },
+    {
+      "title": "Jaguar XJ220",
+      "developer": "Core Design",
+      "publisher": "Sega",
+      "dates": {
+        "PAL": "April 2, 1993"
+      },
+      "archiveTitles": [
+        "Jaguar XJ220"
+      ]
+    },
+    {
+      "title": "Jango World Cup",
+      "developer": "Victor Entertainment",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "August 27, 1993"
+      },
+      "archiveTitles": [
+        "Jangou World Cup"
+      ]
+    },
+    {
+      "title": "Jeopardy!",
+      "developer": "Absolute Entertainment",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "November 1993"
+      },
+      "archiveTitles": [
+        "Jeopardy!"
+      ],
+      "parentTitle": "Jeopardy!"
+    },
+    {
+      "title": "Joe Montana's NFL Football",
+      "developer": "Malibu Interactive",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "October 1993"
+      },
+      "archiveTitles": [
+        "Joe Montana's NFL Football"
+      ]
+    },
+    {
+      "title": "Jurassic Park",
+      "developer": "Sega Multimedia Studio",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "September 30, 1994",
+        "NA": "1994",
+        "PAL": "April 1994"
+      },
+      "archiveTitles": [
+        "Jurassic Park"
+      ],
+      "gameTitle": "Jurassic Park (Sega CD)"
+    },
+    {
+      "title": "Keio Flying Squadron",
+      "developer": "Victor Entertainment",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "August 6, 1993"
+      },
+      "archiveTitles": [
+        "Keio Flying Squadron",
+        "Keiou Yuugekitai"
+      ]
+    },
+    {
+      "title": "Keio Flying Squadron",
+      "developer": "Victor Entertainment",
+      "publisher": "JVC Musical Industries",
+      "dates": {
+        "NA": "November 10, 1994",
+        "PAL": "December 1994"
+      },
+      "archiveTitles": [
+        "Keio Flying Squadron",
+        "Keiou Yuugekitai"
+      ]
+    },
+    {
+      "title": "Kids on Site",
+      "developer": "Digital Pictures",
+      "publisher": "Digital Pictures",
+      "dates": {
+        "NA": "November 1994",
+        "PAL": "1994"
+      },
+      "archiveTitles": [
+        "Kids on Site"
+      ]
+    },
+    {
+      "title": "Kris Kross: Make My Video",
+      "developer": "Digital Pictures",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "December 1992",
+        "PAL": "September 1993"
+      },
+      "archiveTitles": [
+        "Make My Video - Kris Kross"
+      ]
+    },
+    {
+      "title": "The Lawnmower Man",
+      "developer": "SCi",
+      "publisher": "SCi",
+      "dates": {
+        "NA": "1994",
+        "PAL": "November 1994"
+      },
+      "archiveTitles": [
+        "Lawnmower Man, The"
+      ],
+      "parentTitle": "The Lawnmower Man"
+    },
+    {
+      "title": "Lethal Enforcers",
+      "developer": "Konami",
+      "publisher": "Konami",
+      "dates": {
+        "JP": "October 29, 1993",
+        "NA": "November 1993",
+        "PAL": "December 1993"
+      },
+      "archiveTitles": [
+        "Lethal Enforcers"
+      ],
+      "parentTitle": "Lethal Enforcers"
+    },
+    {
+      "title": "Lethal Enforcers II: Gun Fighters",
+      "developer": "Konami",
+      "publisher": "Konami",
+      "dates": {
+        "JP": "November 25, 1994",
+        "NA": "November 24, 1994",
+        "PAL": "December 1994"
+      },
+      "regionalTitles": {
+        "JP": "Lethal Enforcers 2: The Western"
+      },
+      "archiveTitles": [
+        "Lethal Enforcers II - Gun Fighters",
+        "Lethal Enforcers 2: The Western",
+        "Lethal Enforcers II - The Western"
+      ],
+      "parentTitle": "Lethal Enforcers II: Gun Fighters"
+    },
+    {
+      "title": "Links: The Challenge of Golf",
+      "developer": "Papyrus Design Group",
+      "publisher": "Virgin Interactive Entertainment",
+      "dates": {
+        "NA": "September 1994"
+      },
+      "archiveTitles": [
+        "Links - The Challenge of Golf"
+      ]
+    },
+    {
+      "title": "Loadstar: The Legend of Tully Bodine",
+      "developer": "Rocket Science Games",
+      "publisher": "Rocket Science Games",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "Loadstar - The Legend of Tully Bodine"
+      ]
+    },
+    {
+      "title": "Lords of Thunder",
+      "developer": "Hudson SoftEleven",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "1995"
+      },
+      "archiveTitles": [
+        "Lords of Thunder"
+      ]
+    },
+    {
+      "title": "Lords of Thunder",
+      "developer": "Hudson SoftEleven",
+      "publisher": "Virgin Interactive Entertainment",
+      "dates": {
+        "PAL": "1995"
+      },
+      "archiveTitles": [
+        "Lords of Thunder"
+      ]
+    },
+    {
+      "title": "Lunar: Eternal Blue",
+      "developer": "",
+      "publisher": "Game Arts",
+      "dates": {
+        "JP": "December 22, 1994"
+      },
+      "archiveTitles": [
+        "Lunar - Eternal Blue"
+      ]
+    },
+    {
+      "title": "Lunar: Eternal Blue",
+      "developer": "Game ArtsStudio AlexWorking Designs",
+      "publisher": "Working Designs",
+      "dates": {
+        "NA": "September 1995"
+      },
+      "archiveTitles": [
+        "Lunar - Eternal Blue"
+      ]
+    },
+    {
+      "title": "Lunar: The Silver Star",
+      "developer": "",
+      "publisher": "Game Arts",
+      "dates": {
+        "JP": "June 26, 1992"
+      },
+      "archiveTitles": [
+        "Lunar - The Silver Star"
+      ]
+    },
+    {
+      "title": "Lunar: The Silver Star",
+      "developer": "Game ArtsStudio AlexWorking Designs",
+      "publisher": "Working Designs",
+      "dates": {
+        "NA": "December 1993"
+      },
+      "archiveTitles": [
+        "Lunar - The Silver Star"
+      ]
+    },
+    {
+      "title": "Mad Dog McCree",
+      "developer": "American Laser Games",
+      "publisher": "American Laser Games",
+      "dates": {
+        "NA": "1993"
+      },
+      "archiveTitles": [
+        "Mad Dog McCree"
+      ]
+    },
+    {
+      "title": "Mad Dog II: The Lost Gold",
+      "developer": "American Laser Games",
+      "publisher": "American Laser Games",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "Mad Dog II - The Lost Gold"
+      ]
+    },
+    {
+      "title": "Mahou no Shoujo: Silky Lip",
+      "developer": "Riot",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "June 19, 1992"
+      },
+      "archiveTitles": [
+        "Mahou no Shoujo - Silky Lip"
+      ]
+    },
+    {
+      "title": "Mansion of Hidden Souls",
+      "developer": "System Sacom",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "December 10, 1993",
+        "PAL": "March 1994"
+      },
+      "regionalTitles": {
+        "JP": "Yumemi Yakata no Monogatari",
+        "PAL": "Yumemi Mystery Mansion"
+      },
+      "archiveTitles": [
+        "Mansion of Hidden Souls",
+        "Yumemi Yakata no Monogatari",
+        "Yumemi Mystery Mansion"
+      ]
+    },
+    {
+      "title": "Mansion of Hidden Souls",
+      "developer": "System Sacom",
+      "publisher": "Vic Tokai",
+      "dates": {
+        "NA": "February 1994"
+      },
+      "archiveTitles": [
+        "Mansion of Hidden Souls",
+        "Yumemi Yakata no Monogatari",
+        "Yumemi Mystery Mansion"
+      ]
+    },
+    {
+      "title": "Marko's Magic Football",
+      "developer": "Domark",
+      "publisher": "Domark",
+      "dates": {
+        "PAL": "1994"
+      },
+      "archiveTitles": [
+        "Marko's Magic Football"
+      ],
+      "parentTitle": "Marko's Magic Football"
+    },
+    {
+      "title": "Marky Mark and the Funky Bunch: Make My Video",
+      "developer": "Digital Pictures",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "October 15, 1992"
+      },
+      "archiveTitles": [
+        "Make My Video - Marky Mark and the Funky Bunch"
+      ]
+    },
+    {
+      "title": "Mary Shelley's Frankenstein",
+      "developer": "Psygnosis",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "Mary Shelley's Frankenstein"
+      ],
+      "parentTitle": "Mary Shelley's Frankenstein"
+    },
+    {
+      "title": "The Masked Rider: Kamen Rider ZO",
+      "developer": "Telenet Japan",
+      "publisher": "Toei Video",
+      "dates": {
+        "JP": "May 13, 1994"
+      },
+      "regionalTitles": {
+        "JP": "Kamen Rider ZO"
+      },
+      "archiveTitles": [
+        "Masked Rider, The - Kamen Rider ZO",
+        "Kamen Rider ZO"
+      ]
+    },
+    {
+      "title": "The Masked Rider: Kamen Rider ZO",
+      "developer": "Telenet Japan",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "Masked Rider, The - Kamen Rider ZO",
+        "Kamen Rider ZO"
+      ]
+    },
+    {
+      "title": "MegaRace",
+      "developer": "Cryo Interactive",
+      "publisher": "The Software Toolworks",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "MegaRace"
+      ]
+    },
+    {
+      "title": "Mega Schwarzschild",
+      "developer": "Kogado Studio",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "June 25, 1993"
+      },
+      "archiveTitles": [
+        "Mega Schwarzschild"
+      ]
+    },
+    {
+      "title": "Mickey Mania: The Timeless Adventures of Mickey Mouse",
+      "developer": "Traveller's Tales",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "October 26, 1994",
+        "PAL": "October 28, 1994"
+      },
+      "archiveTitles": [
+        "Mickey Mania - The Timeless Adventures of Mickey Mouse",
+        "Mickey Mania"
+      ],
+      "parentTitle": "Mickey Mania: The Timeless Adventures of Mickey Mouse"
+    },
+    {
+      "title": "Microcosm",
+      "developer": "Psygnosis",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "February 25, 1994"
+      },
+      "archiveTitles": [
+        "Microcosm"
+      ]
+    },
+    {
+      "title": "Microcosm",
+      "developer": "Psygnosis",
+      "publisher": "Psygnosis",
+      "dates": {
+        "NA": "December 22, 1993",
+        "PAL": "January 1994"
+      },
+      "archiveTitles": [
+        "Microcosm"
+      ]
+    },
+    {
+      "title": "Midnight Raiders",
+      "developer": "Stargate Productions",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "October 1994",
+        "PAL": "March 1995"
+      },
+      "archiveTitles": [
+        "Midnight Raiders"
+      ]
+    },
+    {
+      "title": "Might and Magic III: Isles of Terra",
+      "developer": "New World Computing",
+      "publisher": "CRI",
+      "dates": {
+        "JP": "November 26, 1993"
+      },
+      "archiveTitles": [
+        "Might and Magic III - Isles of Terra"
+      ]
+    },
+    {
+      "title": "Mighty Morphin Power Rangers",
+      "developer": "Orion Technologies",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "1994",
+        "PAL": "March 1995"
+      },
+      "archiveTitles": [
+        "Mighty Morphin Power Rangers"
+      ],
+      "gameTitle": "Mighty Morphin Power Rangers (Sega CD)"
+    },
+    {
+      "title": "Mortal Kombat",
+      "developer": "Probe Software",
+      "publisher": "Acclaim Entertainment",
+      "dates": {
+        "JP": "June 3, 1994"
+      },
+      "archiveTitles": [
+        "Mortal Kombat",
+        "Mortal Kombat Kanzenban"
+      ],
+      "parentTitle": "Mortal Kombat"
+    },
+    {
+      "title": "Mortal Kombat",
+      "developer": "Probe Software",
+      "publisher": "Arena Entertainment",
+      "dates": {
+        "NA": "April 1994",
+        "PAL": "July 1994"
+      },
+      "archiveTitles": [
+        "Mortal Kombat",
+        "Mortal Kombat Kanzenban"
+      ],
+      "parentTitle": "Mortal Kombat"
+    },
+    {
+      "title": "My Paint: The Animated Paint Program",
+      "developer": "WayForward",
+      "publisher": "Saddleback Graphics",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "My Paint"
+      ]
+    },
+    {
+      "title": "NBA Jam",
+      "developer": "Iguana Entertainment",
+      "publisher": "Acclaim Entertainment",
+      "dates": {
+        "JP": "December 20, 1994",
+        "NA": "December 1994",
+        "PAL": "1994"
+      },
+      "archiveTitles": [
+        "NBA Jam"
+      ],
+      "parentTitle": "NBA Jam"
+    },
+    {
+      "title": "NFL Football Trivia Challenge",
+      "developer": "CapDisc",
+      "publisher": "CapDisc",
+      "dates": {
+        "NA": "November 1994"
+      },
+      "archiveTitles": [
+        "NFL Football Trivia Challenge"
+      ]
+    },
+    {
+      "title": "NFL's Greatest: San Francisco vs. Dallas 1978-1993",
+      "developer": "Park Place Productions",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "October 1993"
+      },
+      "archiveTitles": [
+        "NFL's Greatest - San Francisco vs. Dallas 1978-1993"
+      ]
+    },
+    {
+      "title": "NHL '94",
+      "developer": "High Score Productions",
+      "publisher": "EA Sports",
+      "dates": {
+        "NA": "1993",
+        "PAL": "March 1994"
+      },
+      "archiveTitles": [
+        "NHL '94",
+        "NHL Hockey '94"
+      ],
+      "parentTitle": "NHL '94"
+    },
+    {
+      "title": "Night Striker",
+      "developer": "Aisystem Tokyo",
+      "publisher": "Taito",
+      "dates": {
+        "JP": "May 28, 1993"
+      },
+      "archiveTitles": [
+        "Night Striker"
+      ]
+    },
+    {
+      "title": "Night Trap",
+      "developer": "Digital Pictures",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "November 19, 1993",
+        "NA": "October 15, 1992",
+        "PAL": "June 1993"
+      },
+      "archiveTitles": [
+        "Night Trap"
+      ]
+    },
+    {
+      "title": "The Ninja Warriors",
+      "developer": "Aisystem Tokyo",
+      "publisher": "Taito",
+      "dates": {
+        "JP": "March 12, 1993"
+      },
+      "archiveTitles": [
+        "Ninja Warriors, The"
+      ]
+    },
+    {
+      "title": "Nobunaga no Yabō: Haōden",
+      "developer": "Koei",
+      "publisher": "Koei",
+      "dates": {
+        "JP": "March 25, 1994"
+      },
+      "archiveTitles": [
+        "Nobunaga no Yabou - Haouden"
+      ],
+      "parentTitle": "Nobunaga no Yabō: Haōden"
+    },
+    {
+      "title": "Nostalgia 1907",
+      "developer": "Takeru",
+      "publisher": "Sur Dé Wave",
+      "dates": {
+        "JP": "December 14, 1991"
+      },
+      "archiveTitles": [
+        "Nostalgia 1907 - In North Atlantic Sea"
+      ]
+    },
+    {
+      "title": "Novastorm",
+      "developer": "Psygnosis",
+      "publisher": "Psygnosis",
+      "dates": {
+        "NA": "1995"
+      },
+      "archiveTitles": [
+        "Novastorm"
+      ]
+    },
+    {
+      "title": "Novastorm",
+      "developer": "Psygnosis",
+      "publisher": "Sony Electronic Publishing",
+      "dates": {
+        "PAL": "November 1994"
+      },
+      "archiveTitles": [
+        "Novastorm"
+      ]
+    },
+    {
+      "title": "Panic!",
+      "developer": "SegaOffice I",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "April 23, 1993"
+      },
+      "regionalTitles": {
+        "JP": "Switch"
+      },
+      "archiveTitles": [
+        "Panic!",
+        "Switch"
+      ]
+    },
+    {
+      "title": "Panic!",
+      "developer": "SegaOffice I",
+      "publisher": "Data East USA",
+      "dates": {
+        "NA": "October 1994"
+      },
+      "archiveTitles": [
+        "Panic!",
+        "Switch"
+      ]
+    },
+    {
+      "title": "Pitfall: The Mayan Adventure",
+      "developer": "Activision",
+      "publisher": "Activision",
+      "dates": {
+        "NA": "November 1994",
+        "PAL": "December 1994"
+      },
+      "archiveTitles": [
+        "Pitfall - The Mayan Adventure"
+      ],
+      "parentTitle": "Pitfall: The Mayan Adventure"
+    },
+    {
+      "title": "Popful Mail",
+      "developer": "",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "April 1, 1994"
+      },
+      "archiveTitles": [
+        "Popful Mail",
+        "PopfulMail"
+      ]
+    },
+    {
+      "title": "Popful Mail",
+      "developer": "Sega FalcomWorking Designs",
+      "publisher": "Working Designs",
+      "dates": {
+        "NA": "February 23, 1995"
+      },
+      "archiveTitles": [
+        "Popful Mail",
+        "PopfulMail"
+      ]
+    },
+    {
+      "title": "Power Factory Featuring C+C Music Factory",
+      "developer": "Digital Pictures",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "1993",
+        "PAL": "September 1993"
+      },
+      "archiveTitles": [
+        "Power Factory"
+      ]
+    },
+    {
+      "title": "Powermonger",
+      "developer": "Sprytes",
+      "publisher": "Electronic Arts",
+      "dates": {
+        "NA": "January 1994",
+        "PAL": "April 1994"
+      },
+      "archiveTitles": [
+        "Power Monger",
+        "PowerMonger"
+      ],
+      "parentTitle": "Powermonger"
+    },
+    {
+      "title": "Prince of Persia",
+      "developer": "Bits Laboratory",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "August 7, 1992"
+      },
+      "archiveTitles": [
+        "Prince of Persia"
+      ],
+      "parentTitle": "Prince of Persia"
+    },
+    {
+      "title": "Prince of Persia",
+      "developer": "Bits Laboratory",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "1992",
+        "PAL": "April 2, 1993"
+      },
+      "archiveTitles": [
+        "Prince of Persia"
+      ],
+      "parentTitle": "Prince of Persia"
+    },
+    {
+      "title": "Prize Fighter",
+      "developer": "Digital Pictures",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "March 24, 1995",
+        "NA": "1993",
+        "PAL": "March 1994"
+      },
+      "archiveTitles": [
+        "Prize Fighter"
+      ]
+    },
+    {
+      "title": "Pro Yakyū Super League CD",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "October 30, 1992"
+      },
+      "archiveTitles": [
+        "Pro Yakyuu Super League CD"
+      ]
+    },
+    {
+      "title": "Psychic Detective Series Vol. 3: Aýa",
+      "developer": "DataWest",
+      "publisher": "DataWest",
+      "dates": {
+        "JP": "January 3, 1993"
+      },
+      "archiveTitles": [
+        "Psychic Detective Series Vol. 3 - Aya"
+      ]
+    },
+    {
+      "title": "Psychic Detective Series Vol. 4: Orgel",
+      "developer": "DataWest",
+      "publisher": "DataWest",
+      "dates": {
+        "JP": "December 10, 1993"
+      },
+      "archiveTitles": [
+        "Psychic Detective Series Vol. 4 - Orgel"
+      ]
+    },
+    {
+      "title": "Puggsy",
+      "developer": "Traveller's Tales",
+      "publisher": "Psygnosis",
+      "dates": {
+        "NA": "January 6, 1994",
+        "PAL": "November 1993"
+      },
+      "archiveTitles": [
+        "Puggsy"
+      ],
+      "parentTitle": "Puggsy"
+    },
+    {
+      "title": "Quiz Scramble Special",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "May 29, 1992"
+      },
+      "archiveTitles": [
+        "Quiz Scramble Special"
+      ]
+    },
+    {
+      "title": "Racing Aces",
+      "developer": "Hammond & Leyland",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "1993"
+      },
+      "archiveTitles": [
+        "Racing Aces"
+      ]
+    },
+    {
+      "title": "Radical Rex",
+      "developer": "Beam Software",
+      "publisher": "Activision",
+      "dates": {
+        "NA": "November 1994"
+      },
+      "archiveTitles": [
+        "Radical Rex"
+      ],
+      "parentTitle": "Radical Rex"
+    },
+    {
+      "title": "Ranma ½: Byukuran Aika",
+      "developer": "Klon",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "April 23, 1993"
+      },
+      "archiveTitles": [
+        "Ranma 1-2 - Byakuranaika"
+      ]
+    },
+    {
+      "title": "RDF Global Conflict",
+      "developer": "Absolute Entertainment",
+      "publisher": "Absolute Entertainment",
+      "dates": {
+        "NA": "November 1994"
+      },
+      "archiveTitles": [
+        "RDF - Global Conflict"
+      ]
+    },
+    {
+      "title": "Record of Lodoss War",
+      "developer": "Kogado Studio",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "May 20, 1994"
+      },
+      "archiveTitles": [
+        "Record of Lodoss War"
+      ]
+    },
+    {
+      "title": "Revenge of the Ninja",
+      "developer": "Wolf Team",
+      "publisher": "Renovation Products",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "Revenge of the Ninja"
+      ]
+    },
+    {
+      "title": "Revengers of Vengeance",
+      "developer": "Micronet",
+      "publisher": "Micronet",
+      "dates": {
+        "JP": "April 15, 1994"
+      },
+      "regionalTitles": {
+        "JP": "Battle Fantasy"
+      },
+      "archiveTitles": [
+        "Revengers of Vengeance",
+        "Battle Fantasy"
+      ]
+    },
+    {
+      "title": "Revengers of Vengeance",
+      "developer": "Micronet",
+      "publisher": "Extreme Entertainment Group",
+      "dates": {
+        "NA": "July 1994"
+      },
+      "archiveTitles": [
+        "Revengers of Vengeance",
+        "Battle Fantasy"
+      ]
+    },
+    {
+      "title": "Rise of the Dragon",
+      "developer": "Game Arts",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "September 25, 1992",
+        "NA": "1993"
+      },
+      "archiveTitles": [
+        "Rise of the Dragon",
+        "Rise of the Dragon - A Blade Hunter Mystery"
+      ]
+    },
+    {
+      "title": "Road Avenger",
+      "developer": "Wolf Team",
+      "publisher": "Wolf Team",
+      "dates": {
+        "JP": "December 18, 1992"
+      },
+      "regionalTitles": {
+        "JP": "Road Blaster FX"
+      },
+      "archiveTitles": [
+        "Road Avenger",
+        "Road Blaster FX"
+      ]
+    },
+    {
+      "title": "Road Avenger",
+      "developer": "Wolf Team",
+      "publisher": "Renovation Products",
+      "dates": {
+        "NA": "March 1993"
+      },
+      "archiveTitles": [
+        "Road Avenger",
+        "Road Blaster FX"
+      ]
+    },
+    {
+      "title": "Road Avenger",
+      "developer": "Wolf Team",
+      "publisher": "Sega",
+      "dates": {
+        "PAL": "April 1993"
+      },
+      "archiveTitles": [
+        "Road Avenger",
+        "Road Blaster FX"
+      ]
+    },
+    {
+      "title": "Road Rash",
+      "developer": "Monkey Do ProductionsNew Level Software",
+      "publisher": "Electronic Arts",
+      "dates": {
+        "NA": "March 1995"
+      },
+      "archiveTitles": [
+        "Road Rash"
+      ],
+      "parentTitle": "Road Rash"
+    },
+    {
+      "title": "Robo Aleste",
+      "developer": "Compile",
+      "publisher": "Compile",
+      "dates": {
+        "JP": "November 27, 1992"
+      },
+      "regionalTitles": {
+        "JP": "Dennin Aleste"
+      },
+      "archiveTitles": [
+        "Robo Aleste",
+        "Dennin Aleste",
+        "Dennin Aleste - Nobunaga and His Ninja Force"
+      ]
+    },
+    {
+      "title": "Robo Aleste",
+      "developer": "Compile",
+      "publisher": "Tengen",
+      "dates": {
+        "NA": "August 1993"
+      },
+      "archiveTitles": [
+        "Robo Aleste",
+        "Dennin Aleste",
+        "Dennin Aleste - Nobunaga and His Ninja Force"
+      ]
+    },
+    {
+      "title": "Robo Aleste",
+      "developer": "Compile",
+      "publisher": "Sega",
+      "dates": {
+        "PAL": "April 1993"
+      },
+      "archiveTitles": [
+        "Robo Aleste",
+        "Dennin Aleste",
+        "Dennin Aleste - Nobunaga and His Ninja Force"
+      ]
+    },
+    {
+      "title": "Samurai Shodown",
+      "developer": "Funcom",
+      "publisher": "JVC Musical Industries",
+      "dates": {
+        "NA": "January 1995",
+        "PAL": "June 1995"
+      },
+      "archiveTitles": [
+        "Samurai Shodown"
+      ],
+      "parentTitle": "Samurai Shodown"
+    },
+    {
+      "title": "San Diego Zoo Presents: The Animals!",
+      "developer": "Arnowitz Studios",
+      "publisher": "The Software Toolworks",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "San Diego Zoo Presents... The Animals!, The"
+      ]
+    },
+    {
+      "title": "San Diego Zoo Presents: The Animals!",
+      "developer": "Arnowitz Studios",
+      "publisher": "Mindscape",
+      "dates": {
+        "PAL": "September 1994"
+      },
+      "archiveTitles": [
+        "San Diego Zoo Presents... The Animals!, The"
+      ]
+    },
+    {
+      "title": "Sangokushi III",
+      "developer": "Koei",
+      "publisher": "Koei",
+      "dates": {
+        "JP": "April 23, 1993"
+      },
+      "archiveTitles": [
+        "Sangokushi III"
+      ]
+    },
+    {
+      "title": "The Secret of Monkey Island",
+      "developer": "LucasArts",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "September 23, 1993"
+      },
+      "archiveTitles": [
+        "Secret of Monkey Island, The"
+      ]
+    },
+    {
+      "title": "The Secret of Monkey Island",
+      "developer": "LucasArts",
+      "publisher": "JVC Musical Industries",
+      "dates": {
+        "NA": "1993"
+      },
+      "archiveTitles": [
+        "Secret of Monkey Island, The"
+      ]
+    },
+    {
+      "title": "Sega Classics Arcade Collection (4-in-1)",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "April 23, 1993",
+        "NA": "October 15, 1992"
+      }
+    },
+    {
+      "title": "Sega Classics Arcade Collection (5-in-1)",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "1994",
+        "PAL": "April 2, 1993"
+      }
+    },
+    {
+      "title": "Seima Densetsu 3×3 Eyes",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "July 23, 1993"
+      },
+      "archiveTitles": [
+        "Seima Densetsu 3x3 Eyes"
+      ]
+    },
+    {
+      "title": "Seireishin Seiki Fhey Area",
+      "developer": "Wolf Team",
+      "publisher": "Wolf Team",
+      "dates": {
+        "JP": "February 18, 1992"
+      },
+      "archiveTitles": [
+        "Seirei Shinseiki - Fhey Area"
+      ]
+    },
+    {
+      "title": "Sengoku Denshou",
+      "developer": "SNK",
+      "publisher": "Sammy",
+      "dates": {
+        "JP": "December 28, 1993"
+      },
+      "archiveTitles": [
+        "Sengoku Denshou"
+      ]
+    },
+    {
+      "title": "Sensible Soccer",
+      "developer": "Psygnosis",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "September 1994",
+        "PAL": "July 1994"
+      },
+      "regionalTitles": {
+        "NA": "Championship Soccer '94"
+      },
+      "archiveTitles": [
+        "Sensible Soccer",
+        "Championship Soccer '94"
+      ],
+      "parentTitle": "Sensible Soccer"
+    },
+    {
+      "title": "Sewer Shark",
+      "developer": "Digital Pictures",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "November 1992",
+        "PAL": "June 1993"
+      },
+      "archiveTitles": [
+        "Sewer Shark"
+      ]
+    },
+    {
+      "title": "Shadow of the Beast II",
+      "developer": "Digital Developments",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "July 29, 1994"
+      },
+      "archiveTitles": [
+        "Shadow of the Beast II",
+        "Shadow of the Beast II - Juushin no Jubaku",
+        "Beast II"
+      ],
+      "parentTitle": "Shadow of the Beast II"
+    },
+    {
+      "title": "Shadow of the Beast II",
+      "developer": "Digital Developments",
+      "publisher": "Psygnosis",
+      "dates": {
+        "NA": "1994",
+        "PAL": "May 1994"
+      },
+      "archiveTitles": [
+        "Shadow of the Beast II",
+        "Shadow of the Beast II - Juushin no Jubaku",
+        "Beast II"
+      ],
+      "parentTitle": "Shadow of the Beast II"
+    },
+    {
+      "title": "Shadowrun",
+      "developer": "Compile",
+      "publisher": "Compile",
+      "dates": {
+        "JP": "February 23, 1996"
+      },
+      "archiveTitles": [
+        "Shadowrun"
+      ],
+      "gameTitle": "Shadowrun (Sega CD)"
+    },
+    {
+      "title": "Sherlock Holmes: Consulting Detective",
+      "developer": "ICOM Simulations",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "November 1992",
+        "PAL": "April 1993"
+      },
+      "archiveTitles": [
+        "Sherlock Holmes - Consulting Detective"
+      ]
+    },
+    {
+      "title": "Sherlock Holmes: Consulting Detective Vol. II",
+      "developer": "ICOM Simulations",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "1993",
+        "PAL": "September 1993"
+      },
+      "archiveTitles": [
+        "Sherlock Holmes - Consulting Detective Vol. II"
+      ]
+    },
+    {
+      "title": "Shin Megami Tensei",
+      "developer": "SIMS",
+      "publisher": "SIMS",
+      "dates": {
+        "JP": "February 25, 1994"
+      },
+      "archiveTitles": [
+        "Shin Megami Tensei"
+      ]
+    },
+    {
+      "title": "Shining Force CD",
+      "developer": "Sonic! Software Planning",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "July 22, 1994",
+        "NA": "March 1995",
+        "PAL": "April 1995"
+      },
+      "archiveTitles": [
+        "Shining Force CD"
+      ]
+    },
+    {
+      "title": "Silpheed",
+      "developer": "Game Arts",
+      "publisher": "Game Arts",
+      "dates": {
+        "JP": "July 30, 1993"
+      },
+      "archiveTitles": [
+        "Silpheed"
+      ]
+    },
+    {
+      "title": "Silpheed",
+      "developer": "Game Arts",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "October 1993",
+        "PAL": "September 1993"
+      },
+      "archiveTitles": [
+        "Silpheed"
+      ]
+    },
+    {
+      "title": "SimEarth",
+      "developer": "Game Arts",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "March 12, 1993"
+      },
+      "archiveTitles": [
+        "SimEarth"
+      ]
+    },
+    {
+      "title": "Slam City with Scottie Pippen",
+      "developer": "Digital Pictures",
+      "publisher": "Digital Pictures",
+      "dates": {
+        "NA": "November 1994",
+        "PAL": "February 1995"
+      },
+      "archiveTitles": [
+        "Slam City with Scottie Pippen"
+      ]
+    },
+    {
+      "title": "The Smurfs",
+      "developer": "Malibu Interactive",
+      "publisher": "Infogrames",
+      "dates": {
+        "PAL": "June 1995"
+      },
+      "archiveTitles": [
+        "Smurfs, The"
+      ],
+      "parentTitle": "The Smurfs"
+    },
+    {
+      "title": "Snatcher",
+      "developer": "Konami",
+      "publisher": "Konami",
+      "dates": {
+        "NA": "January 1995",
+        "PAL": "December 15, 1994"
+      },
+      "archiveTitles": [
+        "Snatcher"
+      ]
+    },
+    {
+      "title": "Sol-Feace",
+      "developer": "Wolf Team",
+      "publisher": "Wolf Team",
+      "dates": {
+        "JP": "December 12, 1991"
+      },
+      "archiveTitles": [
+        "Sol-Feace"
+      ]
+    },
+    {
+      "title": "Sol-Feace",
+      "developer": "Wolf Team",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "October 15, 1992",
+        "PAL": "April 2, 1993"
+      },
+      "archiveTitles": [
+        "Sol-Feace"
+      ]
+    },
+    {
+      "title": "Sonic CD",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "September 23, 1993",
+        "NA": "November 23, 1993",
+        "PAL": "November 23, 1993"
+      },
+      "archiveTitles": [
+        "Sonic CD",
+        "Sonic the Hedgehog CD"
+      ]
+    },
+    {
+      "title": "Soulstar",
+      "developer": "Core Design",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "December 22, 1994"
+      },
+      "archiveTitles": [
+        "SoulStar"
+      ]
+    },
+    {
+      "title": "Soulstar",
+      "developer": "Core Design",
+      "publisher": "Core Design",
+      "dates": {
+        "NA": "September 1994",
+        "PAL": "October 1994"
+      },
+      "archiveTitles": [
+        "SoulStar"
+      ]
+    },
+    {
+      "title": "Space Ace",
+      "developer": "ReadySoft",
+      "publisher": "ReadySoft",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "Space Ace"
+      ]
+    },
+    {
+      "title": "The Space Adventure",
+      "developer": "Hudson Soft",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "NA": "June 1995",
+        "PAL": "July 1995"
+      },
+      "archiveTitles": [
+        "Space Adventure, The - Cobra - The Legendary Bandit"
+      ]
+    },
+    {
+      "title": "Starblade",
+      "developer": "Technosoft",
+      "publisher": "Namco",
+      "dates": {
+        "JP": "October 28, 1994",
+        "NA": "September 1994"
+      },
+      "archiveTitles": [
+        "Starblade"
+      ]
+    },
+    {
+      "title": "Starblade",
+      "developer": "Technosoft",
+      "publisher": "Sega",
+      "dates": {
+        "PAL": "December 1994"
+      },
+      "archiveTitles": [
+        "Starblade"
+      ]
+    },
+    {
+      "title": "Star Wars Chess",
+      "developer": "The Software Toolworks",
+      "publisher": "The Software Toolworks",
+      "dates": {
+        "NA": "May 1994"
+      },
+      "archiveTitles": [
+        "Software Toolworks' Star Wars Chess, The"
+      ]
+    },
+    {
+      "title": "Star Wars Chess",
+      "developer": "The Software Toolworks",
+      "publisher": "Mindscape",
+      "dates": {
+        "PAL": "October 1994"
+      },
+      "archiveTitles": [
+        "Software Toolworks' Star Wars Chess, The"
+      ]
+    },
+    {
+      "title": "Star Wars: Rebel Assault",
+      "developer": "LucasArts",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "September 22, 1994"
+      },
+      "archiveTitles": [
+        "Star Wars - Rebel Assault"
+      ]
+    },
+    {
+      "title": "Star Wars: Rebel Assault",
+      "developer": "LucasArts",
+      "publisher": "JVC Musical Industries",
+      "dates": {
+        "NA": "March 1994",
+        "PAL": "September 1994"
+      },
+      "archiveTitles": [
+        "Star Wars - Rebel Assault"
+      ]
+    },
+    {
+      "title": "Stellar-Fire",
+      "developer": "Infinite Laser Dog",
+      "publisher": "Dynamix",
+      "dates": {
+        "NA": "December 1993"
+      },
+      "archiveTitles": [
+        "Stellar-Fire"
+      ]
+    },
+    {
+      "title": "Supreme Warrior",
+      "developer": "Digital Pictures",
+      "publisher": "Digital Pictures",
+      "dates": {
+        "NA": "November 1994",
+        "PAL": "February 1995"
+      },
+      "archiveTitles": [
+        "Supreme Warrior"
+      ]
+    },
+    {
+      "title": "Surgical Strike",
+      "developer": "The Code Monkeys",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "December 22, 1995",
+        "NA": "June 1995",
+        "PAL": "September 1995"
+      },
+      "archiveTitles": [
+        "Surgical Strike"
+      ]
+    },
+    {
+      "title": "Syndicate",
+      "developer": "Bullfrog Productions",
+      "publisher": "Domark",
+      "dates": {
+        "PAL": "June 1995"
+      },
+      "archiveTitles": [
+        "Syndicate"
+      ],
+      "parentTitle": "Syndicate"
+    },
+    {
+      "title": "Tenbu Mega CD Special",
+      "developer": "Wolf Team",
+      "publisher": "Wolf Team",
+      "dates": {
+        "JP": "December 25, 1992"
+      },
+      "archiveTitles": [
+        "Tenbu Mega CD Special"
+      ]
+    },
+    {
+      "title": "Tenka Fubu: Eiyuutachi no Houkou",
+      "developer": "Game Arts",
+      "publisher": "Game Arts",
+      "dates": {
+        "JP": "December 28, 1991"
+      },
+      "archiveTitles": [
+        "Tenkafubu - Eiyuutachi no Houkou"
+      ]
+    },
+    {
+      "title": "The Terminator",
+      "developer": "Virgin Games",
+      "publisher": "Virgin Games",
+      "dates": {
+        "NA": "December 1993",
+        "PAL": "December 1993"
+      },
+      "archiveTitles": [
+        "Terminator, The"
+      ],
+      "parentTitle": "The Terminator"
+    },
+    {
+      "title": "Theme Park",
+      "developer": "Bullfrog Productions",
+      "publisher": "Domark",
+      "dates": {
+        "PAL": "1995"
+      },
+      "archiveTitles": [
+        "Theme Park"
+      ],
+      "parentTitle": "Theme Park"
+    },
+    {
+      "title": "The Third World War",
+      "developer": "Micronet",
+      "publisher": "Micronet",
+      "dates": {
+        "JP": "November 26, 1993"
+      },
+      "archiveTitles": [
+        "IIIrd World War, The",
+        "Third World War"
+      ]
+    },
+    {
+      "title": "The Third World War",
+      "developer": "Micronet",
+      "publisher": "Extreme Entertainment Group",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "IIIrd World War, The",
+        "Third World War"
+      ]
+    },
+    {
+      "title": "Thunderhawk",
+      "developer": "Core Design",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "September 17, 1993"
+      },
+      "archiveTitles": [
+        "Thunderhawk",
+        "AH-3 Thunderstrike",
+        "AH3 - Thunderstrike"
+      ]
+    },
+    {
+      "title": "Thunderhawk",
+      "developer": "Core Design",
+      "publisher": "JVC Musical Industries",
+      "dates": {
+        "NA": "1993"
+      },
+      "regionalTitles": {
+        "NA": "AH-3 Thunderstrike"
+      },
+      "archiveTitles": [
+        "Thunderhawk",
+        "AH-3 Thunderstrike",
+        "AH3 - Thunderstrike"
+      ]
+    },
+    {
+      "title": "Thunderhawk",
+      "developer": "Core Design",
+      "publisher": "Core Design",
+      "dates": {
+        "PAL": "September 1, 1993"
+      },
+      "archiveTitles": [
+        "Thunderhawk",
+        "AH-3 Thunderstrike",
+        "AH3 - Thunderstrike"
+      ]
+    },
+    {
+      "title": "Time Gal",
+      "developer": "Wolf Team",
+      "publisher": "Wolf Team",
+      "dates": {
+        "JP": "November 13, 1992"
+      },
+      "archiveTitles": [
+        "Time Gal"
+      ]
+    },
+    {
+      "title": "Time Gal",
+      "developer": "Wolf Team",
+      "publisher": "Renovation Products",
+      "dates": {
+        "NA": "May 1993"
+      },
+      "archiveTitles": [
+        "Time Gal"
+      ]
+    },
+    {
+      "title": "Time Gal",
+      "developer": "Wolf Team",
+      "publisher": "Sega",
+      "dates": {
+        "PAL": "September 1993"
+      },
+      "archiveTitles": [
+        "Time Gal"
+      ]
+    },
+    {
+      "title": "Tomcat Alley",
+      "developer": "The Code Monkeys",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "December 22, 1994",
+        "NA": "March 1994",
+        "PAL": "May 1994"
+      },
+      "archiveTitles": [
+        "Tomcat Alley"
+      ]
+    },
+    {
+      "title": "Trivial Pursuit",
+      "developer": "Western Technologies",
+      "publisher": "Virgin Interactive Entertainment",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "Trivial Pursuit"
+      ]
+    },
+    {
+      "title": "Ultraverse Prime",
+      "developer": "Malibu Interactive",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "Ultraverse Prime"
+      ]
+    },
+    {
+      "title": "Urusei Yatsura: Dear My Friends",
+      "developer": "Game Arts",
+      "publisher": "Game Arts",
+      "dates": {
+        "JP": "April 15, 1994"
+      },
+      "archiveTitles": [
+        "Urusei Yatsura - Dear My Friends"
+      ]
+    },
+    {
+      "title": "Vay",
+      "developer": "Hertz",
+      "publisher": "SIMS",
+      "dates": {
+        "JP": "October 22, 1993"
+      },
+      "regionalTitles": {
+        "JP": "Vay: Ryuusei no Yoroi"
+      },
+      "archiveTitles": [
+        "Vay",
+        "Vay - Ryuusei no Yoroi"
+      ]
+    },
+    {
+      "title": "Vay",
+      "developer": "Hertz",
+      "publisher": "Working Designs",
+      "dates": {
+        "NA": "July 1994"
+      },
+      "archiveTitles": [
+        "Vay",
+        "Vay - Ryuusei no Yoroi"
+      ]
+    },
+    {
+      "title": "Wakusei Woodstock: Funky Horror Band",
+      "developer": "Advance Communications Company",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "December 20, 1991"
+      },
+      "archiveTitles": [
+        "Wakusei Woodstock - Funky Horror Band"
+      ]
+    },
+    {
+      "title": "Warau Salesman",
+      "developer": "Compile",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "September 17, 1993"
+      },
+      "archiveTitles": [
+        "Warau Salesman"
+      ]
+    },
+    {
+      "title": "Wheel of Fortune",
+      "developer": "Absolute Entertainment",
+      "publisher": "Sony Imagesoft",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "Wheel of Fortune"
+      ],
+      "parentTitle": "Wheel of Fortune"
+    },
+    {
+      "title": "Who Shot Johnny Rock?",
+      "developer": "American Laser Games",
+      "publisher": "American Laser Games",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "Who Shot Johnny Rock"
+      ]
+    },
+    {
+      "title": "Wild Woody",
+      "developer": "Sega Multimedia Studio",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "September 1995"
+      },
+      "archiveTitles": [
+        "Wild Woody"
+      ]
+    },
+    {
+      "title": "Wing Commander",
+      "developer": "Game Arts",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "March 25, 1994"
+      },
+      "archiveTitles": [
+        "Wing Commander"
+      ]
+    },
+    {
+      "title": "Wing Commander",
+      "developer": "Game Arts",
+      "publisher": "Electronic Arts",
+      "dates": {
+        "NA": "1994"
+      },
+      "archiveTitles": [
+        "Wing Commander"
+      ]
+    },
+    {
+      "title": "Winning Post",
+      "developer": "Koei",
+      "publisher": "Koei",
+      "dates": {
+        "JP": "September 17, 1993"
+      },
+      "archiveTitles": [
+        "Winning Post"
+      ]
+    },
+    {
+      "title": "Wirehead",
+      "developer": "The Code Monkeys",
+      "publisher": "Sega / MGM Interactive",
+      "dates": {
+        "NA": "September 1995"
+      },
+      "archiveTitles": [
+        "WireHead"
+      ]
+    },
+    {
+      "title": "Wolfchild",
+      "developer": "Core Design",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "March 19, 1993"
+      },
+      "archiveTitles": [
+        "Wolfchild"
+      ],
+      "parentTitle": "Wolfchild"
+    },
+    {
+      "title": "Wolfchild",
+      "developer": "Core Design",
+      "publisher": "JVC Musical Industries",
+      "dates": {
+        "NA": "December 1992"
+      },
+      "archiveTitles": [
+        "Wolfchild"
+      ],
+      "parentTitle": "Wolfchild"
+    },
+    {
+      "title": "Wolfchild",
+      "developer": "Core Design",
+      "publisher": "Sega",
+      "dates": {
+        "PAL": "April 2, 1993"
+      },
+      "archiveTitles": [
+        "Wolfchild"
+      ],
+      "parentTitle": "Wolfchild"
+    },
+    {
+      "title": "Wonder Dog",
+      "developer": "Core Design",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "September 25, 1992"
+      },
+      "archiveTitles": [
+        "Wonder Dog"
+      ]
+    },
+    {
+      "title": "Wonder Dog",
+      "developer": "Core Design",
+      "publisher": "JVC Musical Industries",
+      "dates": {
+        "NA": "1992",
+        "PAL": "January 1994"
+      },
+      "archiveTitles": [
+        "Wonder Dog"
+      ]
+    },
+    {
+      "title": "Wondermega Collection",
+      "developer": "JVC",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "January 4, 1992"
+      },
+      "archiveTitles": [
+        "WonderMega Collection"
+      ]
+    },
+    {
+      "title": "World Cup USA '94",
+      "developer": "Tiertex Design Studios",
+      "publisher": "U.S. Gold",
+      "dates": {
+        "NA": "1994",
+        "PAL": "June 3, 1994"
+      },
+      "archiveTitles": [
+        "World Cup USA '94"
+      ],
+      "parentTitle": "World Cup USA '94"
+    },
+    {
+      "title": "WWF Rage in the Cage",
+      "developer": "Sculptured Software",
+      "publisher": "Acclaim Entertainment",
+      "dates": {
+        "JP": "June 24, 1994"
+      },
+      "regionalTitles": {
+        "JP": "WWF Mania Tour"
+      },
+      "archiveTitles": [
+        "WWF - Rage in the Cage",
+        "WWF Mania Tour",
+        "WWF Mania Tour - WWF - Rage in the Cage"
+      ]
+    },
+    {
+      "title": "WWF Rage in the Cage",
+      "developer": "Sculptured Software",
+      "publisher": "Arena Entertainment",
+      "dates": {
+        "NA": "November 1993",
+        "PAL": "January 1994"
+      },
+      "archiveTitles": [
+        "WWF - Rage in the Cage",
+        "WWF Mania Tour",
+        "WWF Mania Tour - WWF - Rage in the Cage"
+      ]
+    },
+    {
+      "title": "Yumimi Mix",
+      "developer": "Game Arts",
+      "publisher": "Game Arts",
+      "dates": {
+        "JP": "January 29, 1993"
+      },
+      "archiveTitles": [
+        "Yumimi Mix"
+      ]
+    },
+    {
+      "title": "Corpse Killer (32X CD)",
+      "gameTitle": "Corpse Killer",
+      "dates": {
+        "NA": "1994",
+        "PAL": "1994"
+      },
+      "developer": "Digital Pictures",
+      "publisher": "Digital Pictures",
+      "hardware": "32x-cd",
+      "channel": "32x-cd",
+      "requiredHardware": [
+        "segacd",
+        "32x"
+      ],
+      "medium": "Sega CD + 32X",
+      "archiveTitles": [
+        "Corpse Killer"
+      ],
+      "regionalTitles": {
+        "NA": "Corpse Killer",
+        "PAL": "Corpse Killer"
+      }
+    },
+    {
+      "title": "Fahrenheit (32X CD)",
+      "gameTitle": "Fahrenheit",
+      "dates": {
+        "NA": "1995",
+        "BR": "1995"
+      },
+      "developer": "Sega",
+      "publisher": "Sega",
+      "hardware": "32x-cd",
+      "channel": "32x-cd",
+      "requiredHardware": [
+        "segacd",
+        "32x"
+      ],
+      "medium": "Sega CD + 32X",
+      "archiveTitles": [
+        "Fahrenheit"
+      ],
+      "regionalTitles": {
+        "NA": "Fahrenheit",
+        "BR": "Fahrenheit"
+      }
+    },
+    {
+      "title": "Night Trap (32X CD)",
+      "gameTitle": "Night Trap",
+      "dates": {
+        "NA": "January 1995",
+        "PAL": "1995"
+      },
+      "developer": "Digital Pictures",
+      "publisher": "Sega",
+      "hardware": "32x-cd",
+      "channel": "32x-cd",
+      "requiredHardware": [
+        "segacd",
+        "32x"
+      ],
+      "medium": "Sega CD + 32X",
+      "archiveTitles": [
+        "Night Trap"
+      ],
+      "regionalTitles": {
+        "NA": "Night Trap",
+        "PAL": "Night Trap"
+      }
+    },
+    {
+      "title": "Slam City with Scottie Pippen (32X CD)",
+      "gameTitle": "Slam City with Scottie Pippen",
+      "dates": {
+        "NA": "1995",
+        "PAL": "1995"
+      },
+      "developer": "Digital Pictures",
+      "publisher": "Digital Pictures",
+      "hardware": "32x-cd",
+      "channel": "32x-cd",
+      "requiredHardware": [
+        "segacd",
+        "32x"
+      ],
+      "medium": "Sega CD + 32X",
+      "archiveTitles": [
+        "Slam City with Scottie Pippen"
+      ],
+      "regionalTitles": {
+        "NA": "Slam City with Scottie Pippen",
+        "PAL": "Slam City with Scottie Pippen"
+      }
+    },
+    {
+      "title": "Supreme Warrior (32X CD)",
+      "gameTitle": "Supreme Warrior",
+      "dates": {
+        "NA": "1995",
+        "PAL": "1995"
+      },
+      "developer": "Digital Pictures",
+      "publisher": "Digital Pictures",
+      "hardware": "32x-cd",
+      "channel": "32x-cd",
+      "requiredHardware": [
+        "segacd",
+        "32x"
+      ],
+      "medium": "Sega CD + 32X",
+      "archiveTitles": [
+        "Supreme Warrior"
+      ],
+      "regionalTitles": {
+        "NA": "Supreme Warrior",
+        "PAL": "Supreme Warrior"
+      }
+    },
+    {
+      "title": "Surgical Strike (32X CD)",
+      "gameTitle": "Surgical Strike",
+      "dates": {
+        "BR": "1995"
+      },
+      "developer": "The Code Monkeys",
+      "publisher": "Sega",
+      "hardware": "32x-cd",
+      "channel": "32x-cd",
+      "requiredHardware": [
+        "segacd",
+        "32x"
+      ],
+      "medium": "Sega CD + 32X",
+      "archiveTitles": [
+        "Surgical Strike"
+      ],
+      "regionalTitles": {
+        "BR": "Surgical Strike"
+      }
+    },
+    {
+      "title": "Cadillacs and Dinosaurs: The Second Cataclysm",
+      "developer": "Rocket Science Games",
+      "publisher": "Rocket Science Games",
+      "dates": {
+        "BR": ""
+      },
+      "archiveTitles": [
+        "Cadillacs and Dinosaurs - The Second Cataclysm"
+      ]
+    },
+    {
+      "title": "Loadstar: The Legend of Tully Bodine",
+      "developer": "Rocket Science Games",
+      "publisher": "Rocket Science Games",
+      "dates": {
+        "BR": ""
+      },
+      "archiveTitles": [
+        "Loadstar - The Legend of Tully Bodine"
+      ]
+    },
+    {
+      "title": "Night Striker",
+      "developer": "Aisystem Tokyo",
+      "publisher": "Taito",
+      "dates": {
+        "KR": ""
+      },
+      "archiveTitles": [
+        "Night Striker"
+      ]
+    },
+    {
+      "title": "Seima Densetsu 3×3 Eyes",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "KR": ""
+      },
+      "archiveTitles": [
+        "Seima Densetsu 3x3 Eyes"
+      ]
+    },
+    {
+      "title": "Slam City with Scottie Pippen",
+      "developer": "Digital Pictures",
+      "publisher": "Digital Pictures",
+      "dates": {
+        "BR": ""
+      },
+      "archiveTitles": [
+        "Slam City with Scottie Pippen"
+      ]
+    }
+  ],
+  "discSets": [
+    {
+      "title": "Ecco the Dolphin CD",
+      "archives": [
+        "Ecco the Dolphin CD (Japan) (Disc 1) (Ecco the Dolphin).zip",
+        "Ecco the Dolphin CD (Japan) (Disc 2) (Ecco the Dolphin II).zip"
+      ],
+      "source": "Ordered Redump discs of the same regional edition"
+    },
+    {
+      "title": "Slam City with Scottie Pippen",
+      "archives": [
+        "Slam City with Scottie Pippen (Europe) (Disc 1) (Fingers).zip",
+        "Slam City with Scottie Pippen (Europe) (Disc 2) (Juice).zip",
+        "Slam City with Scottie Pippen (Europe) (Disc 3) (Mad Dog).zip",
+        "Slam City with Scottie Pippen (Europe) (Disc 4) (Smash).zip"
+      ],
+      "source": "Ordered Redump discs of the same regional edition"
+    },
+    {
+      "title": "Slam City with Scottie Pippen",
+      "archives": [
+        "Slam City with Scottie Pippen (Europe) (Disc 1) (Fingers) (Mega-CD 32X).zip",
+        "Slam City with Scottie Pippen (Europe) (Disc 2) (Juice) (Mega-CD 32X).zip",
+        "Slam City with Scottie Pippen (Europe) (Disc 3) (Mad Dog) (Mega-CD 32X).zip",
+        "Slam City with Scottie Pippen (Europe) (Disc 4) (Smash) (Mega-CD 32X).zip"
+      ],
+      "source": "Ordered Redump discs of the same regional edition"
+    },
+    {
+      "title": "Slam City with Scottie Pippen",
+      "archives": [
+        "Slam City with Scottie Pippen (USA, Brazil) (Disc 1) (Fingers) (RE-1).zip",
+        "Slam City with Scottie Pippen (USA, Brazil) (Disc 2) (Juice) (RE-1).zip",
+        "Slam City with Scottie Pippen (USA, Brazil) (Disc 3) (Mad Dog) (RE-1).zip",
+        "Slam City with Scottie Pippen (USA, Brazil) (Disc 4) (Smash).zip"
+      ],
+      "source": "Ordered Redump discs of the same regional edition"
+    },
+    {
+      "title": "Slam City with Scottie Pippen",
+      "archives": [
+        "Slam City with Scottie Pippen (USA) (Disc 1) (Fingers) (Sega CD 32X).zip",
+        "Slam City with Scottie Pippen (USA) (Disc 2) (Juice) (Sega CD 32X).zip",
+        "Slam City with Scottie Pippen (USA) (Disc 3) (Mad Dog) (Sega CD 32X).zip",
+        "Slam City with Scottie Pippen (USA) (Disc 4) (Smash) (Sega CD 32X).zip"
+      ],
+      "source": "Ordered Redump discs of the same regional edition"
+    },
+    {
+      "title": "Supreme Warrior",
+      "archives": [
+        "Supreme Warrior (USA) (Disc 1) (Fire & Earth).zip",
+        "Supreme Warrior (USA) (Disc 2) (Wind & Fang Tu).zip"
+      ],
+      "source": "Ordered Redump discs of the same regional edition"
+    },
+    {
+      "title": "Supreme Warrior",
+      "archives": [
+        "Supreme Warrior (USA) (Disc 1) (Fire & Earth) (Sega CD 32X).zip",
+        "Supreme Warrior (USA) (Disc 2) (Wind & Fang Tu) (Sega CD 32X).zip"
+      ],
+      "source": "Ordered Redump discs of the same regional edition"
+    }
+  ],
+  "standaloneDiscs": [
+    "Fahrenheit (USA) (Disc 1) (Key Disc) (Sega CD).zip",
+    "Fahrenheit (USA) (Disc 2) (32X CD).zip"
+  ],
+  "verifiedArchives": [
+    {
+      "edition": "Sega Classics Arcade Collection (4-in-1)",
+      "market": "JP",
+      "archives": [
+        "Sega Classic Arcade Collection - Limited Edition (Japan).zip"
+      ],
+      "source": "Redump regional Sega Classics compilation edition"
+    },
+    {
+      "edition": "Sega Classics Arcade Collection (4-in-1)",
+      "market": "NA",
+      "archives": [
+        "Sega Classics Arcade Collection (USA) (4-in-1) (RE2).zip"
+      ],
+      "source": "Redump regional Sega Classics compilation edition"
+    },
+    {
+      "edition": "Sega Classics Arcade Collection (4-in-1)",
+      "market": "NA",
+      "archives": [
+        "Sega Classics Arcade Collection (USA) (4-in-1) (RE).zip"
+      ],
+      "source": "Redump regional Sega Classics compilation edition"
+    },
+    {
+      "edition": "Sega Classics Arcade Collection (5-in-1)",
+      "market": "PAL",
+      "archives": [
+        "Sega Classics Arcade Collection - Limited Edition (Europe) (Rev A).zip"
+      ],
+      "source": "Redump regional Sega Classics compilation edition"
+    },
+    {
+      "edition": "Sega Classics Arcade Collection (5-in-1)",
+      "market": "NA",
+      "archives": [
+        "Sega Classics Arcade Collection (USA) (5-in-1).zip"
+      ],
+      "source": "Redump regional Sega Classics compilation edition"
+    }
+  ],
+  "manuals": [
+    {
+      "edition": "3 Ninjas Kick Back",
+      "market": "NA",
+      "name": "3 Ninjas Kick Back — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/3%20Ninjas%20Kick%20Back%20%281994%29%28Sony%20Imagesoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/3 Ninjas Kick Back (1994)(Sony Imagesoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Thunderhawk",
+      "market": "NA",
+      "name": "Thunderhawk — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/AH-3%20Thunderstrike%20%281993%29%28JVC%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/AH-3 Thunderstrike (1993)(JVC)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "A/X-101",
+      "market": "NA",
+      "name": "A/X-101 — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/AX-101%20%281994%29%28Absolute%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/AX-101 (1994)(Absolute)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "The Adventures of Willy Beamish",
+      "market": "NA",
+      "name": "The Adventures of Willy Beamish — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Adventures%20Of%20Willy%20Beamish%2C%20The%20%281993%29%28Dynamix%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Adventures Of Willy Beamish, The (1993)(Dynamix)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "The Adventures of Batman & Robin",
+      "market": "NA",
+      "name": "The Adventures of Batman & Robin — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Adventures%20of%20Batman%20%26%20Robin%2C%20The%20%281995%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Adventures of Batman & Robin, The (1995)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "After Burner III",
+      "market": "JP",
+      "name": "After Burner III — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/After%20Burner%20III%20%281992%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/After Burner III (1992)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "The Amazing Spider-Man vs. The Kingpin",
+      "market": "NA",
+      "name": "The Amazing Spider-Man vs. The Kingpin — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Amazing%20Spider-man%20vs.%20The%20Kingpin%2C%20The%20%281993%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Amazing Spider-man vs. The Kingpin, The (1993)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "BC Racers",
+      "market": "NA",
+      "name": "BC Racers — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/BC%20Racers%20%281994%29%28Core%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/BC Racers (1994)(Core)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Batman Returns",
+      "market": "NA",
+      "name": "Batman Returns — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Batman%20Returns%20%281993%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Batman Returns (1993)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Battlecorps",
+      "market": "NA",
+      "name": "Battlecorps — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Battlecorps%20%281993%29%28Core%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Battlecorps (1993)(Core)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Bill Walsh College Football",
+      "market": "NA",
+      "name": "Bill Walsh College Football — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Bill%20Walsh%20College%20Football%20%281993%29%28Electronic%20Arts%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Bill Walsh College Football (1993)(Electronic Arts)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Black Hole Assault",
+      "market": "JP",
+      "name": "Black Hole Assault — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Black%20Hole%20Assault%20%281992%29%28Micronet%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Black Hole Assault (1992)(Micronet)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Black Hole Assault",
+      "market": "NA",
+      "name": "Black Hole Assault — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Blackhole%20Assault%20%281993%29%28Bignet%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Blackhole Assault (1993)(Bignet)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Bouncers",
+      "market": "NA",
+      "name": "Bouncers — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Bouncers%20%281994%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Bouncers (1994)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Bram Stoker's Dracula",
+      "market": "NA",
+      "name": "Bram Stoker's Dracula — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Bram%20Stoker%27s%20Dracula%20%281993%29%28Sony%20Imagesoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Bram Stoker's Dracula (1993)(Sony Imagesoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Brutal: Paws of Fury",
+      "market": "NA",
+      "name": "Brutal: Paws of Fury — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Brutal%20-%20Paws%20of%20Fury%20%281994%29%28Gametek%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Brutal - Paws of Fury (1994)(Gametek)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Cadillacs and Dinosaurs: The Second Cataclysm",
+      "market": "NA",
+      "name": "Cadillacs and Dinosaurs: The Second Cataclysm — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Cadillacs%20and%20Dinosaurs%20-%20The%20Second%20Cataclysm%20%281994%29%28Rocket%20Science%20Games%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Cadillacs and Dinosaurs - The Second Cataclysm (1994)(Rocket Science Games)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Sensible Soccer",
+      "market": "NA",
+      "name": "Sensible Soccer — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Championship%20Soccer%20%2794%20%281994%29%28Sony%20Imagesoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Championship Soccer '94 (1994)(Sony Imagesoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Chuck Rock",
+      "market": "NA",
+      "name": "Chuck Rock — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Chuck%20Rock%20%281992%29%28Sony%20Imagesoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Chuck Rock (1992)(Sony Imagesoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Chuck Rock II: Son of Chuck",
+      "market": "NA",
+      "name": "Chuck Rock II: Son of Chuck — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Chuck%20Rock%20II%20-%20Son%20of%20Chuck%20%281993%29%28Virgin%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Chuck Rock II - Son of Chuck (1993)(Virgin)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Cliffhanger",
+      "market": "NA",
+      "name": "Cliffhanger — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Cliffhanger%20%281993%29%28Sony%20Imagesoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Cliffhanger (1993)(Sony Imagesoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Cobra Command",
+      "market": "NA",
+      "name": "Cobra Command — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Cobra%20Command%20%281992%29%28Data%20East%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Cobra Command (1992)(Data East)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Cosmic Fantasy Stories",
+      "market": "JP",
+      "name": "Cosmic Fantasy Stories — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Cosmic%20Fantasy%20Stories%20%281992%29%28Riot%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Cosmic Fantasy Stories (1992)(Riot)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Crime Patrol",
+      "market": "NA",
+      "name": "Crime Patrol — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Crime%20Patrol%20%281994%29%28American%20Laser%20Games%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Crime Patrol (1994)(American Laser Games)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Daihoushinden",
+      "market": "JP",
+      "name": "Daihoushinden — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Daihoushinden%20%281995%29%28Victor%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Daihoushinden (1995)(Victor)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Dark Wizard",
+      "market": "NA",
+      "name": "Dark Wizard — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Dark%20Wizard%20%281993%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Dark Wizard (1993)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Dark Wizard",
+      "market": "JP",
+      "name": "Dark Wizard — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Dark%20Wizard%20-%20Yomigaeri%20Shiyami%20no%20Madoushi%20%281993%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Dark Wizard - Yomigaeri Shiyami no Madoushi (1993)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Demolition Man",
+      "market": "NA",
+      "name": "Demolition Man — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Demolition%20Man%20%281995%29%28Acclaim%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Demolition Man (1995)(Acclaim)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Double Switch",
+      "market": "NA",
+      "name": "Double Switch — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Double%20Switch%20%281993%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Double Switch (1993)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Double Switch",
+      "market": "JP",
+      "name": "Double Switch — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Double%20Switch%20%281995%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Double Switch (1995)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Dracula Unleashed",
+      "market": "NA",
+      "name": "Dracula Unleashed — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Dracula%20Unleashed%20%281994%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Dracula Unleashed (1994)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Dragon's Lair",
+      "market": "NA",
+      "name": "Dragon's Lair — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Dragon%27s%20Lair%20%281993%29%28ReadySoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Dragon's Lair (1993)(ReadySoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Dune",
+      "market": "NA",
+      "name": "Dune — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Dune%20%281994%29%28Virgin%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Dune (1994)(Virgin)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Dungeon Explorer",
+      "market": "NA",
+      "name": "Dungeon Explorer — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Dungeon%20Explorer%20%281994%29%28Hudson%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Dungeon Explorer (1994)(Hudson)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Dungeon Master II: The Legend of Skullkeep",
+      "market": "NA",
+      "name": "Dungeon Master II: The Legend of Skullkeep — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Dungeon%20Master%20II%20-%20Skullkeep%20%281994%29%28JVC%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Dungeon Master II - Skullkeep (1994)(JVC)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "ESPN Baseball Tonight",
+      "market": "NA",
+      "name": "ESPN Baseball Tonight — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/ESPN%20Baseball%20Tonight%20%281993%29%28Sony%20Imagesoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/ESPN Baseball Tonight (1993)(Sony Imagesoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "ESPN NBA Hangtime '95",
+      "market": "NA",
+      "name": "ESPN NBA Hangtime '95 — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/ESPN%20NBA%20Hangtime%20%2795%20%281994%29%28Sony%20Imagesoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/ESPN NBA Hangtime '95 (1994)(Sony Imagesoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "ESPN National Hockey Night",
+      "market": "NA",
+      "name": "ESPN National Hockey Night — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/ESPN%20National%20Hockey%20Night%20%281994%29%28Sony%20Imagesoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/ESPN National Hockey Night (1994)(Sony Imagesoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "ESPN Sunday Night NFL",
+      "market": "NA",
+      "name": "ESPN Sunday Night NFL — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/ESPN%20Sunday%20Night%20NFL%20%281993%29%28Sony%20Imagesoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/ESPN Sunday Night NFL (1993)(Sony Imagesoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Earthworm Jim: Special Edition",
+      "market": "NA",
+      "name": "Earthworm Jim: Special Edition — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Earthworm%20Jim%20-%20Special%20Edition%20%281995%29%28Interplay%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Earthworm Jim - Special Edition (1995)(Interplay)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Ecco: The Tides of Time",
+      "market": "NA",
+      "name": "Ecco: The Tides of Time — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Ecco%20-%20The%20Tides%20of%20Time%20%281994%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Ecco - The Tides of Time (1994)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Ecco the Dolphin",
+      "market": "JP",
+      "name": "Ecco the Dolphin — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Ecco%20the%20Dolphin%20%281993%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Ecco the Dolphin (1993)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Ecco the Dolphin",
+      "market": "NA",
+      "name": "Ecco the Dolphin — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Ecco%20the%20Dolphin%20%281993%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Ecco the Dolphin (1993)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Eternal Champions: Challenge from the Dark Side",
+      "market": "NA",
+      "name": "Eternal Champions: Challenge from the Dark Side — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Eternal%20Champions%20-%20Challenge%20from%20the%20Dark%20Side%20%281995%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Eternal Champions - Challenge from the Dark Side (1995)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "FIFA International Soccer",
+      "market": "NA",
+      "name": "FIFA International Soccer — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/FIFA%20International%20Soccer%20%281994%29%28Electronic%20Arts%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/FIFA International Soccer (1994)(Electronic Arts)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Final Fight CD",
+      "market": "JP",
+      "name": "Final Fight CD — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Final%20Fight%20CD%20%281993%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Final Fight CD (1993)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Final Fight CD",
+      "market": "NA",
+      "name": "Final Fight CD — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Final%20Fight%20CD%20%281993%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Final Fight CD (1993)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Flashback: The Quest for Identity",
+      "market": "NA",
+      "name": "Flashback: The Quest for Identity — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Flashback%20-%20The%20Quest%20For%20Identity%20%281993%29%28Delphine%20Software%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Flashback - The Quest For Identity (1993)(Delphine Software)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Flink",
+      "market": "NA",
+      "name": "Flink — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Flink%20%281994%29%28Psygnosis%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Flink (1994)(Psygnosis)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Formula One World Championship: Beyond the Limit",
+      "market": "NA",
+      "name": "Formula One World Championship: Beyond the Limit — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Formula%20One%20World%20Championship%20-%20Beyond%20the%20Limit%20%281994%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Formula One World Championship - Beyond the Limit (1994)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Gambler Jiko Chuushinha 2: Gekitou! Tokyo Mahjong Land Hen",
+      "market": "JP",
+      "name": "Gambler Jiko Chuushinha 2: Gekitou! Tokyo Mahjong Land Hen — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Gambler%20Jiko%20Chuushinha%202%20-%20Gekitou%21%20Tokyo%20Mahjongland%20Hen%20%281992%29%28Game%20Arts%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Gambler Jiko Chuushinha 2 - Gekitou! Tokyo Mahjongland Hen (1992)(Game Arts)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Fatal Fury Special",
+      "market": "JP",
+      "name": "Fatal Fury Special — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Garou%20Densetsu%20Special%20%281995%29%28Victor%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Garou Densetsu Special (1995)(Victor)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Ground Zero: Texas",
+      "market": "NA",
+      "name": "Ground Zero: Texas — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Ground%20Zero%20Texas%20%281993%29%28Sony%20Imagesoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Ground Zero Texas (1993)(Sony Imagesoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Heart of the Alien",
+      "market": "NA",
+      "name": "Heart of the Alien — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Heart%20of%20the%20Alien%20-%20Out%20of%20This%20World%20Parts%20I%20and%20II%20%281994%29%28Virgin%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Heart of the Alien - Out of This World Parts I and II (1994)(Virgin)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Formula One World Championship: Beyond the Limit",
+      "market": "JP",
+      "name": "Formula One World Championship: Beyond the Limit — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Heavenly%20Symphony%20-%20Formula%20One%20World%20Championship%201993%20%281994%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Heavenly Symphony - Formula One World Championship 1993 (1994)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Heavy Nova",
+      "market": "JP",
+      "name": "Heavy Nova — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Heavy%20Nova%20%281991%29%28Micronet%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Heavy Nova (1991)(Micronet)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Heimdall",
+      "market": "NA",
+      "name": "Heimdall — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Heimdall%20%281994%29%28JVC%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Heimdall (1994)(JVC)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Hook",
+      "market": "NA",
+      "name": "Hook — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Hook%20%281992%29%28Sony%20Imagesoft%29%28NTSC%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Hook (1992)(Sony Imagesoft)(NTSC)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Iron Helix",
+      "market": "NA",
+      "name": "Iron Helix — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Iron%20Helix%20%281994%29%28Spectrum%20HoloByte%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Iron Helix (1994)(Spectrum HoloByte)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Jaguar XJ220",
+      "market": "NA",
+      "name": "Jaguar XJ220 — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Jaguar%20XJ220%20%281993%29%28JVC%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Jaguar XJ220 (1993)(JVC)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Jeopardy!",
+      "market": "NA",
+      "name": "Jeopardy! — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Jeopardy%21%20%281994%29%28Sony%20Imagesoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Jeopardy! (1994)(Sony Imagesoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Joe Montana's NFL Football",
+      "market": "NA",
+      "name": "Joe Montana's NFL Football — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Joe%20Montana%27s%20NFL%20Football%20%281993%29%28Sega%20Sports%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Joe Montana's NFL Football (1993)(Sega Sports)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Midnight Raiders",
+      "market": "NA",
+      "name": "Midnight Raiders — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Midnight%20Raiders%20%281994%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Midnight Raiders (1994)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Mighty Morphin Power Rangers",
+      "market": "NA",
+      "name": "Mighty Morphin Power Rangers — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Mighty%20Morphin%20Power%20Rangers%20%281994%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Mighty Morphin Power Rangers (1994)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Powermonger",
+      "market": "NA",
+      "name": "Powermonger — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/PowerMonger%20%281994%29%28Electronic%20Arts%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/PowerMonger (1994)(Electronic Arts)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Prince of Persia",
+      "market": "NA",
+      "name": "Prince of Persia — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Prince%20of%20Persia%20%281993%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Prince of Persia (1993)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Prize Fighter",
+      "market": "NA",
+      "name": "Prize Fighter — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Prize%20Fighter%20%281993%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Prize Fighter (1993)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Puggsy",
+      "market": "NA",
+      "name": "Puggsy — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Puggsy%20%281993%29%28Psygnosis%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Puggsy (1993)(Psygnosis)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "RDF Global Conflict",
+      "market": "NA",
+      "name": "RDF Global Conflict — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/RDF%20-%20Global%20Conflict%20%281994%29%28Absolute%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/RDF - Global Conflict (1994)(Absolute)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Racing Aces",
+      "market": "NA",
+      "name": "Racing Aces — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Racing%20Aces%20%281993%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Racing Aces (1993)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Radical Rex",
+      "market": "NA",
+      "name": "Radical Rex — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Radical%20Rex%20%281994%29%28Activision%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Radical Rex (1994)(Activision)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Revenge of the Ninja",
+      "market": "NA",
+      "name": "Revenge of the Ninja — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Revenge%20of%20the%20Ninja%20%281994%29%28Renovation%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Revenge of the Ninja (1994)(Renovation)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Rise of the Dragon",
+      "market": "NA",
+      "name": "Rise of the Dragon — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Rise%20of%20the%20Dragon%20%281993%29%28Dynamix%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Rise of the Dragon (1993)(Dynamix)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Road Avenger",
+      "market": "NA",
+      "name": "Road Avenger — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Road%20Avenger%20%281993%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Road Avenger (1993)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Road Rash",
+      "market": "NA",
+      "name": "Road Rash — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Road%20Rash%20%281995%29%28Electronic%20Arts%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Road Rash (1995)(Electronic Arts)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Robo Aleste",
+      "market": "NA",
+      "name": "Robo Aleste — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Robo%20Aleste%20%281993%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Robo Aleste (1993)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "The Secret of Monkey Island",
+      "market": "NA",
+      "name": "The Secret of Monkey Island — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Secret%20Of%20Monkey%20Island%2C%20The%20%281994%29%28JVC%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Secret Of Monkey Island, The (1994)(JVC)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Sewer Shark",
+      "market": "NA",
+      "name": "Sewer Shark — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Sewer%20Shark%20%281992%29%28Sony%20Imagesoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Sewer Shark (1992)(Sony Imagesoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Sherlock Holmes: Consulting Detective",
+      "market": "NA",
+      "name": "Sherlock Holmes: Consulting Detective — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Sherlock%20Holmes%20-%20Consulting%20Detective%20%281992%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Sherlock Holmes - Consulting Detective (1992)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Sherlock Holmes: Consulting Detective Vol. II",
+      "market": "NA",
+      "name": "Sherlock Holmes: Consulting Detective Vol. II — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Sherlock%20Holmes%20-%20Consulting%20Detective%20Vol.%20II%20%281992%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Sherlock Holmes - Consulting Detective Vol. II (1992)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Shining Force CD",
+      "market": "NA",
+      "name": "Shining Force CD — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Shining%20Force%20CD%20%281994%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Shining Force CD (1994)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Silpheed",
+      "market": "NA",
+      "name": "Silpheed — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Silpheed%20%281993%29%28Sega%29%28NTSC%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Silpheed (1993)(Sega)(NTSC)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Snatcher",
+      "market": "NA",
+      "name": "Snatcher — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Snatcher%20%281994%29%28Konami%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Snatcher (1994)(Konami)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Sol-Feace",
+      "market": "NA",
+      "name": "Sol-Feace — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Sol-Feace%20%281992%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Sol-Feace (1992)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Sonic CD",
+      "market": "PAL",
+      "name": "Sonic CD — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Sonic%20CD%20%281993%29%28Sega%29%28EU%29%5Ba%5D",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Sonic CD (1993)(Sega)(EU)[a].zip",
+      "language": "English",
+      "regions": [
+        "EU"
+      ]
+    },
+    {
+      "edition": "Sonic CD",
+      "market": "NA",
+      "name": "Sonic CD — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Sonic%20CD%20%281993%29%28Sega%29%28NTSC%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Sonic CD (1993)(Sega)(NTSC)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Sonic CD",
+      "market": "JP",
+      "name": "Sonic CD — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Sonic%20the%20Hedgehog%20CD%20%281993%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Sonic the Hedgehog CD (1993)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Soulstar",
+      "market": "NA",
+      "name": "Soulstar — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/SoulStar%20%281994%29%28Victor%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/SoulStar (1994)(Victor)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Space Ace",
+      "market": "NA",
+      "name": "Space Ace — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Space%20Ace%20%281994%29%28ReadySoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Space Ace (1994)(ReadySoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Star Wars: Rebel Assault",
+      "market": "NA",
+      "name": "Star Wars: Rebel Assault — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Star%20Wars%20-%20Rebel%20Assault%20%281994%29%28JVC%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Star Wars - Rebel Assault (1994)(JVC)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Stellar-Fire",
+      "market": "NA",
+      "name": "Stellar-Fire — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Stellar-Fire%20%281993%29%28Dynamix%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Stellar-Fire (1993)(Dynamix)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Surgical Strike",
+      "market": "NA",
+      "name": "Surgical Strike — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Surgical%20Strike%20%281995%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Surgical Strike (1995)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "The Terminator",
+      "market": "NA",
+      "name": "The Terminator — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Terminator%2C%20The%20%281993%29%28Virgin%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Terminator, The (1993)(Virgin)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Cobra Command",
+      "market": "JP",
+      "name": "Cobra Command — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Thunder%20Storm%20FX%20%281992%29%28Wolf%20Team%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Thunder Storm FX (1992)(Wolf Team)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Thunderhawk",
+      "market": "JP",
+      "name": "Thunderhawk — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Thunderhawk%20%281993%29%28Victor%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Thunderhawk (1993)(Victor)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Time Gal",
+      "market": "NA",
+      "name": "Time Gal — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Time%20Gal%20%281993%29%28Renovation%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Time Gal (1993)(Renovation)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Tomcat Alley",
+      "market": "NA",
+      "name": "Tomcat Alley — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Tomcat%20Alley%20%281994%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Tomcat Alley (1994)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Ultraverse Prime",
+      "market": "NA",
+      "name": "Ultraverse Prime — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Ultraverse%20Prime%20%281994%29%28Sony%20Imagesoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Ultraverse Prime (1994)(Sony Imagesoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Vay",
+      "market": "NA",
+      "name": "Vay — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Vay%20%281993%29%28SIMS%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Vay (1993)(SIMS)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "WWF Rage in the Cage",
+      "market": "NA",
+      "name": "WWF Rage in the Cage — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/WWF%20Rage%20in%20the%20Cage%20%281993%29%28Arena%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/WWF Rage in the Cage (1993)(Arena)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Wheel of Fortune",
+      "market": "NA",
+      "name": "Wheel of Fortune — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Wheel%20of%20Fortune%20%281994%29%28Sony%20Imagesoft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Wheel of Fortune (1994)(Sony Imagesoft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Who Shot Johnny Rock?",
+      "market": "NA",
+      "name": "Who Shot Johnny Rock? — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Who%20Shot%20Johnny%20Rock%20%281994%29%28American%20Laser%20Games%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Who Shot Johnny Rock (1994)(American Laser Games)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Wild Woody",
+      "market": "NA",
+      "name": "Wild Woody — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Wild%20Woody%20%281995%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Wild Woody (1995)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Wing Commander",
+      "market": "NA",
+      "name": "Wing Commander — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Wing%20Commander%20%281994%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Wing Commander (1994)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Winning Post",
+      "market": "JP",
+      "name": "Winning Post — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Winning%20Post%20%281993%29%28KOEI%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Winning Post (1993)(KOEI)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Wirehead",
+      "market": "NA",
+      "name": "Wirehead — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Wirehead%20%281995%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Wirehead (1995)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Wolfchild",
+      "market": "NA",
+      "name": "Wolfchild — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Wolfchild%20%281993%29%28Victor%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Wolfchild (1993)(Victor)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Wonder Dog",
+      "market": "JP",
+      "name": "Wonder Dog — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Wonder%20Dog%20%281991%29%28Victor%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Wonder Dog (1991)(Victor)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Wonder Dog",
+      "market": "NA",
+      "name": "Wonder Dog — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Wonder%20Dog%20%281992%29%28JVC%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Wonder Dog (1992)(JVC)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "World Cup USA '94",
+      "market": "NA",
+      "name": "World Cup USA '94 — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/World%20Cup%20USA%2094%20%281993%29%28U.S.%20Gold%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/World Cup USA 94 (1993)(U.S. Gold)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Yumimi Mix",
+      "market": "JP",
+      "name": "Yumimi Mix — Sega Mega-CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games/Yumimi%20Mix%20%281993%29%28Game%20Arts%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%20Mega-CD%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/Mega-CD & Sega CD/Manuals/Games/Yumimi Mix (1993)(Game Arts)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    }
+  ],
+  "includedIn": [
+    {
+      "edition": "Ecco: The Tides of Time",
+      "market": "JP",
+      "compilation": "Ecco the Dolphin"
+    }
+  ]
+}

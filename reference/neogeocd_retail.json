@@ -1,0 +1,2182 @@
+{
+  "source": {
+    "name": "Wikipedia contributors",
+    "url": "https://en.wikipedia.org/wiki/Special:PermanentLink/1378818686#Games",
+    "revision": 1378818686,
+    "sha256": "af2569b590c36ad243589f25f6863a4475d7baeb5a3863434953484aa2f8c998",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "rowCount": 97
+  },
+  "titles": [
+    {
+      "title": "3 Count Bout",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "April 21, 1995"
+      },
+      "archiveTitles": [
+        "Fire Suplex ~ 3 Count Bout"
+      ],
+      "parentTitle": "3 Count Bout"
+    },
+    {
+      "title": "ADK World",
+      "developer": "ADK",
+      "publisher": "ADK",
+      "dates": {
+        "JP": "November 10, 1995"
+      },
+      "archiveTitles": [
+        "ADK World"
+      ]
+    },
+    {
+      "title": "Aero Fighters 2",
+      "developer": "Video System",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 29, 1994"
+      },
+      "archiveTitles": [
+        "Sonic Wings 2 ~ Aero Fighters 2"
+      ],
+      "parentTitle": "Aero Fighters 2"
+    },
+    {
+      "title": "Aero Fighters 3",
+      "developer": "Video System",
+      "publisher": "SNK, Video System",
+      "dates": {
+        "JP": "December 8, 1995"
+      },
+      "archiveTitles": [
+        "Sonic Wings 3 ~ Aero Fighters 3"
+      ],
+      "parentTitle": "Aero Fighters 3"
+    },
+    {
+      "title": "Aggressors of Dark Kombat",
+      "developer": "ADK",
+      "publisher": "SNK, ADK",
+      "dates": {
+        "JP": "January 13, 1995"
+      },
+      "archiveTitles": [
+        "Tsuukai Gangan Koushinkyoku ~ Aggressors of Dark Kombat"
+      ],
+      "parentTitle": "Aggressors of Dark Kombat"
+    },
+    {
+      "title": "Alpha Mission II",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "ASO II - The Last Guardian ~ Alpha Mission II"
+      ],
+      "parentTitle": "Alpha Mission II"
+    },
+    {
+      "title": "Art of Fighting",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Ryuuko no Ken ~ Art of Fighting"
+      ],
+      "parentTitle": "Art of Fighting"
+    },
+    {
+      "title": "Art of Fighting 2",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Ryuuko no Ken 2 ~ Art of Fighting 2"
+      ],
+      "parentTitle": "Art of Fighting 2"
+    },
+    {
+      "title": "Art of Fighting 3: The Path of the Warrior",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "June 14, 1996"
+      },
+      "archiveTitles": [
+        "Art of Fighting - Ryuuko no Ken Gaiden ~ The Path of the Warrior - Art of Fighting 3"
+      ],
+      "parentTitle": "Art of Fighting 3: The Path of the Warrior"
+    },
+    {
+      "title": "Baseball Stars 2",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Baseball Stars 2"
+      ],
+      "parentTitle": "Baseball Stars 2"
+    },
+    {
+      "title": "Baseball Stars Professional",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "April 21, 1995"
+      },
+      "archiveTitles": [
+        "Baseball Stars Professional"
+      ],
+      "parentTitle": "Baseball Stars Professional"
+    },
+    {
+      "title": "Blue's Journey",
+      "developer": "Alpha Denshi",
+      "publisher": "SNK, Alpha Denshi",
+      "dates": {
+        "JP": "October 31, 1994"
+      },
+      "archiveTitles": [
+        "Raguy ~ Blue's Journey"
+      ],
+      "parentTitle": "Blue's Journey"
+    },
+    {
+      "title": "Breakers",
+      "developer": "Visco",
+      "publisher": "SNK, Visco",
+      "dates": {
+        "JP": "April 25, 1997"
+      },
+      "archiveTitles": [
+        "Breakers"
+      ],
+      "parentTitle": "Breakers"
+    },
+    {
+      "title": "Burning Fight",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Burning Fight"
+      ],
+      "parentTitle": "Burning Fight"
+    },
+    {
+      "title": "Crossed Swords",
+      "developer": "Alpha Denshi",
+      "publisher": "SNK, Alpha Denshi",
+      "dates": {
+        "JP": "October 31, 1994"
+      },
+      "archiveTitles": [
+        "Crossed Swords"
+      ],
+      "parentTitle": "Crossed Swords"
+    },
+    {
+      "title": "Crossed Swords II",
+      "developer": "ADK",
+      "publisher": "ADK",
+      "dates": {
+        "JP": "May 2, 1995"
+      },
+      "archiveTitles": [
+        "Crossed Swords II"
+      ]
+    },
+    {
+      "title": "Cyber-Lip",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "April 21, 1995"
+      },
+      "archiveTitles": [
+        "Cyber-Lip"
+      ],
+      "parentTitle": "Cyber-Lip"
+    },
+    {
+      "title": "Double Dragon",
+      "developer": "Technōs Japan",
+      "publisher": "SNK, Technōs Japan",
+      "dates": {
+        "JP": "June 2, 1995"
+      },
+      "archiveTitles": [
+        "Double Dragon"
+      ],
+      "parentTitle": "Double Dragon"
+    },
+    {
+      "title": "Far East of Eden: Kabuki Klash",
+      "developer": "Racjin, Red Entertainment",
+      "publisher": "SNK, Hudson Soft",
+      "dates": {
+        "JP": "November 24, 1995"
+      },
+      "archiveTitles": [
+        "Far East of Eden - Tengai Makyou Shinden ~ Far East of Eden - Kabuki Klash"
+      ],
+      "parentTitle": "Far East of Eden: Kabuki Klash"
+    },
+    {
+      "title": "Fatal Fury: King of Fighters",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Garou Densetsu - Shukumei no Tatakai ~ Fatal Fury - King of Fighters"
+      ],
+      "parentTitle": "Fatal Fury: King of Fighters"
+    },
+    {
+      "title": "Fatal Fury 2",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Garou Densetsu 2 ~ Fatal Fury 2"
+      ],
+      "parentTitle": "Fatal Fury 2"
+    },
+    {
+      "title": "Fatal Fury 3: Road to the Final Victory",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "April 28, 1995"
+      },
+      "archiveTitles": [
+        "Garou Densetsu 3 - Road to the Final Victory ~ Fatal Fury 3 - Road to the Final Victory"
+      ],
+      "parentTitle": "Fatal Fury 3: Road to the Final Victory"
+    },
+    {
+      "title": "Fatal Fury Special",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Garou Densetsu Special ~ Fatal Fury Special"
+      ],
+      "parentTitle": "Fatal Fury Special"
+    },
+    {
+      "title": "Football Frenzy",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Football Frenzy"
+      ],
+      "parentTitle": "Football Frenzy"
+    },
+    {
+      "title": "Galaxy Fight: Universal Warriors",
+      "developer": "Sunsoft",
+      "publisher": "SNK, Sunsoft",
+      "dates": {
+        "JP": "April 21, 1995"
+      },
+      "archiveTitles": [
+        "Galaxy Fight - Universal Warriors"
+      ],
+      "parentTitle": "Galaxy Fight: Universal Warriors"
+    },
+    {
+      "title": "Ghost Pilots",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "March 17, 1995"
+      },
+      "archiveTitles": [
+        "Ghost Pilots"
+      ],
+      "parentTitle": "Ghost Pilots"
+    },
+    {
+      "title": "Idol Mahjong Final Romance 2",
+      "developer": "Video System",
+      "publisher": "Video System",
+      "dates": {
+        "JP": "August 25, 1995"
+      },
+      "archiveTitles": [
+        "Idol Mahjong - Final Romance 2"
+      ]
+    },
+    {
+      "title": "Ironclad",
+      "developer": "Saurus",
+      "publisher": "Saurus",
+      "dates": {
+        "JP": "September 20, 1996"
+      },
+      "archiveTitles": [
+        "Choutetsu Brikin'ger ~ Ironclad - Tesshou Rusha"
+      ]
+    },
+    {
+      "title": "Janshin Densetsu: Quest of Jongmaster",
+      "developer": "Aicom",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "March 31, 1995"
+      },
+      "archiveTitles": [
+        "Janshin Densetsu - Quest of Jongmaster"
+      ],
+      "parentTitle": "Janshin Densetsu: Quest of Jongmaster"
+    },
+    {
+      "title": "Karnov's Revenge",
+      "developer": "Data East",
+      "publisher": "SNK, Data East",
+      "dates": {
+        "JP": "December 22, 1994"
+      },
+      "archiveTitles": [
+        "Fighter's History Dynamite ~ Karnov's Revenge"
+      ],
+      "parentTitle": "Karnov's Revenge"
+    },
+    {
+      "title": "King of the Monsters 2",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Next Thing, The - King of the Monsters 2"
+      ],
+      "parentTitle": "King of the Monsters 2"
+    },
+    {
+      "title": "Last Resort",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Last Resort"
+      ],
+      "parentTitle": "Last Resort"
+    },
+    {
+      "title": "League Bowling",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "League Bowling"
+      ],
+      "parentTitle": "League Bowling"
+    },
+    {
+      "title": "Magical Drop II",
+      "developer": "Data East",
+      "publisher": "SNK, Data East",
+      "dates": {
+        "JP": "May 24, 1996"
+      },
+      "archiveTitles": [
+        "Magical Drop 2"
+      ],
+      "parentTitle": "Magical Drop II"
+    },
+    {
+      "title": "Magician Lord",
+      "developer": "Alpha Denshi",
+      "publisher": "SNK, Alpha Denshi",
+      "dates": {
+        "JP": "October 31, 1994"
+      },
+      "archiveTitles": [
+        "Magician Lord"
+      ],
+      "parentTitle": "Magician Lord"
+    },
+    {
+      "title": "Mahjong-kyō Retsuden: Nishi Nihon Hen",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Mahjong-kyou Retsuden - Nishi Nihon-hen"
+      ],
+      "parentTitle": "Mahjong-kyō Retsuden: Nishi Nihon Hen"
+    },
+    {
+      "title": "Master of Syougi",
+      "developer": "ADK, SNK",
+      "publisher": "SNK, ADK",
+      "dates": {
+        "JP": "October 20, 1995"
+      },
+      "archiveTitles": [
+        "Shougi no Tatsujin - Master of Syougi"
+      ],
+      "parentTitle": "Master of Syougi"
+    },
+    {
+      "title": "Metal Slug",
+      "developer": "Nazca Corporation",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "July 5, 1996"
+      },
+      "archiveTitles": [
+        "Metal Slug"
+      ],
+      "parentTitle": "Metal Slug"
+    },
+    {
+      "title": "Metal Slug 2",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "June 25, 1998"
+      },
+      "archiveTitles": [
+        "Metal Slug 2"
+      ],
+      "parentTitle": "Metal Slug 2"
+    },
+    {
+      "title": "Mutation Nation",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "February 25, 1995"
+      },
+      "archiveTitles": [
+        "Mutation Nation"
+      ],
+      "parentTitle": "Mutation Nation"
+    },
+    {
+      "title": "NAM-1975",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Nam-1975"
+      ],
+      "parentTitle": "NAM-1975"
+    },
+    {
+      "title": "Neo Drift Out: New Technology",
+      "developer": "Visco",
+      "publisher": "SNK, Visco",
+      "dates": {
+        "JP": "July 26, 1996"
+      },
+      "archiveTitles": [
+        "Neo Drift Out - New Technology"
+      ],
+      "parentTitle": "Neo Drift Out: New Technology"
+    },
+    {
+      "title": "Neo Geo CD Special",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "December 22, 1995"
+      },
+      "archiveTitles": [
+        "Neo-Geo CD Special"
+      ]
+    },
+    {
+      "title": "Neo Turf Masters",
+      "developer": "Nazca Corporation",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "May 3, 1996"
+      },
+      "archiveTitles": [
+        "Big Tournament Golf ~ Neo Turf Masters"
+      ],
+      "parentTitle": "Neo Turf Masters"
+    },
+    {
+      "title": "Ninja Combat",
+      "developer": "Alpha Denshi",
+      "publisher": "SNK, Alpha Denshi",
+      "dates": {
+        "JP": "October 31, 1994"
+      },
+      "archiveTitles": [
+        "Ninja Combat"
+      ],
+      "parentTitle": "Ninja Combat"
+    },
+    {
+      "title": "Ninja Commando",
+      "developer": "Alpha Denshi",
+      "publisher": "SNK, Alpha Denshi",
+      "dates": {
+        "JP": "October 31, 1994"
+      },
+      "archiveTitles": [
+        "Ninja Commando"
+      ],
+      "parentTitle": "Ninja Commando"
+    },
+    {
+      "title": "Ninja Master's: Haō Ninpō Chō",
+      "developer": "ADK, SNK",
+      "publisher": "SNK, ADK",
+      "dates": {
+        "JP": "September 27, 1996"
+      },
+      "archiveTitles": [
+        "Ninja Master's - Haou Ninpou Chou"
+      ],
+      "parentTitle": "Ninja Master's: Haō Ninpō Chō"
+    },
+    {
+      "title": "Over Top",
+      "developer": "ADK",
+      "publisher": "SNK, ADK",
+      "dates": {
+        "JP": "July 26, 1996"
+      },
+      "archiveTitles": [
+        "OverTop"
+      ],
+      "parentTitle": "Over Top"
+    },
+    {
+      "title": "Pleasure Goal: 5 on 5 Mini Soccer",
+      "developer": "Saurus",
+      "publisher": "SNK, Saurus",
+      "dates": {
+        "JP": "July 19, 1996"
+      },
+      "archiveTitles": [
+        "Futsal - 5 on 5 Mini Soccer ~ PleasureGoal - 5 on 5 Mini Soccer"
+      ],
+      "parentTitle": "Pleasure Goal: 5 on 5 Mini Soccer"
+    },
+    {
+      "title": "Power Spikes II",
+      "developer": "Video System",
+      "publisher": "Taito, Video System",
+      "dates": {
+        "JP": "March 17, 1995"
+      },
+      "archiveTitles": [
+        "Power Spikes II"
+      ],
+      "parentTitle": "Power Spikes II"
+    },
+    {
+      "title": "Pulstar",
+      "developer": "Aicom",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "October 27, 1995"
+      },
+      "archiveTitles": [
+        "Pulstar"
+      ],
+      "parentTitle": "Pulstar"
+    },
+    {
+      "title": "Puzzle Bobble",
+      "developer": "Taito",
+      "publisher": "SNK, Taito",
+      "dates": {
+        "JP": "May 2, 1995"
+      },
+      "archiveTitles": [
+        "Puzzle Bobble ~ Bust-A-Move"
+      ],
+      "parentTitle": "Puzzle Bobble"
+    },
+    {
+      "title": "Puzzled",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Joy Joy Kid ~ Puzzled"
+      ],
+      "parentTitle": "Puzzled"
+    },
+    {
+      "title": "Quiz King of Fighters",
+      "developer": "Saurus, SNK",
+      "publisher": "SNK, Saurus",
+      "dates": {
+        "JP": "April 7, 1995"
+      },
+      "archiveTitles": [
+        "Quiz King of Fighters"
+      ],
+      "parentTitle": "Quiz King of Fighters"
+    },
+    {
+      "title": "Ragnagard",
+      "developer": "Saurus, System Vision",
+      "publisher": "SNK, Saurus",
+      "dates": {
+        "JP": "August 23, 1996"
+      },
+      "archiveTitles": [
+        "Shinouken ~ Ragnagard"
+      ],
+      "parentTitle": "Ragnagard"
+    },
+    {
+      "title": "Real Bout Fatal Fury",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "February 23, 1996"
+      },
+      "archiveTitles": [
+        "Real Bout Garou Densetsu ~ Real Bout Fatal Fury"
+      ],
+      "parentTitle": "Real Bout Fatal Fury"
+    },
+    {
+      "title": "Real Bout Fatal Fury 2: The Newcomers",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "July 23, 1998"
+      },
+      "parentTitle": "Real Bout Fatal Fury 2: The Newcomers",
+      "archiveTitles": [
+        "RB2 - The Newcomers - Real Bout Garou Densetsu 2 ~ RB2 - The Newcomers - Real Bout Fatal Fury 2"
+      ]
+    },
+    {
+      "title": "Real Bout Fatal Fury Special",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "March 30, 1997"
+      },
+      "archiveTitles": [
+        "Real Bout Garou Densetsu Special ~ Real Bout Fatal Fury Special"
+      ],
+      "parentTitle": "Real Bout Fatal Fury Special"
+    },
+    {
+      "title": "Riding Hero",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "May 26, 1995"
+      },
+      "archiveTitles": [
+        "Riding Hero"
+      ],
+      "parentTitle": "Riding Hero"
+    },
+    {
+      "title": "Robo Army",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "April 21, 1995"
+      },
+      "archiveTitles": [
+        "Robo Army"
+      ],
+      "parentTitle": "Robo Army"
+    },
+    {
+      "title": "Samurai Shodown",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Samurai Spirits ~ Samurai Shodown"
+      ],
+      "parentTitle": "Samurai Shodown"
+    },
+    {
+      "title": "Samurai Shodown II",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "December 15, 1994"
+      },
+      "archiveTitles": [
+        "Shin Samurai Spirits - Haoumaru Jigokuhen ~ Samurai Shodown II"
+      ],
+      "parentTitle": "Samurai Shodown II"
+    },
+    {
+      "title": "Samurai Shodown III: Blades of Blood",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "December 29, 1995"
+      },
+      "archiveTitles": [
+        "Samurai Spirits - Zankurou Musouken ~ Samurai Shodown III"
+      ],
+      "parentTitle": "Samurai Shodown III: Blades of Blood"
+    },
+    {
+      "title": "Samurai Shodown IV: Amakusa's Revenge",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "December 27, 1996"
+      },
+      "archiveTitles": [
+        "Samurai Spirits - Amakusa Kourin ~ Samurai Shodown IV - Amakusa's Revenge"
+      ],
+      "parentTitle": "Samurai Shodown IV: Amakusa's Revenge"
+    },
+    {
+      "title": "Savage Reign",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "June 16, 1995"
+      },
+      "archiveTitles": [
+        "Fuuun Mokushiroku - Kakutou Sousei ~ Savage Reign"
+      ],
+      "parentTitle": "Savage Reign"
+    },
+    {
+      "title": "Sengoku",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "March 17, 1995"
+      },
+      "archiveTitles": [
+        "Sengoku Denshou ~ Sengoku"
+      ],
+      "parentTitle": "Sengoku"
+    },
+    {
+      "title": "Sengoku 2",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "March 17, 1995"
+      },
+      "archiveTitles": [
+        "Sengoku Denshou 2 ~ Sengoku 2"
+      ],
+      "parentTitle": "Sengoku 2"
+    },
+    {
+      "title": "Shinsetsu Samurai Spirits Bushidō Retsuden",
+      "developer": "Asatsu-DK, Fuji TV, SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "June 27, 1997"
+      },
+      "archiveTitles": [
+        "Shinsetsu Samurai Spirits - Bushidou Retsuden"
+      ],
+      "aliases": [
+        "Samurai Shodown RPG"
+      ]
+    },
+    {
+      "title": "Soccer Brawl",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "March 31, 1995"
+      },
+      "archiveTitles": [
+        "Soccer Brawl"
+      ],
+      "parentTitle": "Soccer Brawl"
+    },
+    {
+      "title": "Stakes Winner",
+      "developer": "Saurus",
+      "publisher": "SNK, Saurus",
+      "dates": {
+        "JP": "March 22, 1996"
+      },
+      "parentTitle": "Stakes Winner",
+      "archiveTitles": [
+        "Stakes Winner - GI Kanzen Seiha e no Michi"
+      ]
+    },
+    {
+      "title": "Street Slam",
+      "developer": "Data East",
+      "publisher": "SNK, Data East",
+      "dates": {
+        "JP": "January 20, 1995"
+      },
+      "archiveTitles": [
+        "Dunk Dream ~ Street Slam ~ Street Hoop"
+      ],
+      "parentTitle": "Street Slam"
+    },
+    {
+      "title": "Super Baseball 2020",
+      "developer": "Pallas, SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "February 25, 1995"
+      },
+      "archiveTitles": [
+        "2020 Super Baseball"
+      ],
+      "parentTitle": "Super Baseball 2020"
+    },
+    {
+      "title": "Super Sidekicks",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "March 31, 1995"
+      },
+      "archiveTitles": [
+        "Super Sidekicks - Tokuten-ou"
+      ],
+      "parentTitle": "Super Sidekicks"
+    },
+    {
+      "title": "Super Sidekicks 2: The World Championship",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Tokuten-ou 2 ~ Super Sidekicks 2 - The World Championship"
+      ],
+      "parentTitle": "Super Sidekicks 2: The World Championship"
+    },
+    {
+      "title": "Super Sidekicks 3: The Next Glory",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "June 23, 1995"
+      },
+      "archiveTitles": [
+        "Tokuten-ou 3 - Eikou e no Chousen ~ Super Sidekicks 3 - The Next Glory"
+      ],
+      "parentTitle": "Super Sidekicks 3: The Next Glory"
+    },
+    {
+      "title": "The King of Fighters '94",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "November 2, 1994"
+      },
+      "archiveTitles": [
+        "King of Fighters '94, The"
+      ],
+      "parentTitle": "The King of Fighters '94"
+    },
+    {
+      "title": "The King of Fighters '95",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 29, 1995"
+      },
+      "archiveTitles": [
+        "King of Fighters '95, The"
+      ],
+      "parentTitle": "The King of Fighters '95"
+    },
+    {
+      "title": "The King of Fighters '96",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "October 25, 1996"
+      },
+      "archiveTitles": [
+        "King of Fighters '96, The"
+      ],
+      "parentTitle": "The King of Fighters '96"
+    },
+    {
+      "title": "The King of Fighters '96 Collection",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "February 14, 1997"
+      },
+      "archiveTitles": [
+        "King of Fighters '96 NeoGeo Collection, The"
+      ]
+    },
+    {
+      "title": "The King of Fighters '97",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "October 30, 1997"
+      },
+      "archiveTitles": [
+        "King of Fighters '97, The"
+      ],
+      "parentTitle": "The King of Fighters '97"
+    },
+    {
+      "title": "The King of Fighters '98: The Slugfest",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "December 23, 1998"
+      },
+      "archiveTitles": [
+        "King of Fighters '98, The - Dream Match Never Ends ~ The King of Fighters '98 - The Slugfest"
+      ],
+      "parentTitle": "The King of Fighters '98: The Slugfest"
+    },
+    {
+      "title": "The King of Fighters '99: Millennium Battle",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "December 2, 1999"
+      },
+      "archiveTitles": [
+        "King of Fighters '99, The ~ The King of Fighters '99 - Millennium Battle"
+      ],
+      "parentTitle": "The King of Fighters '99: Millennium Battle"
+    },
+    {
+      "title": "The Last Blade",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "March 26, 1998"
+      },
+      "archiveTitles": [
+        "Bakumatsu Roman - Gekka no Kenshi ~ The Last Blade"
+      ],
+      "parentTitle": "The Last Blade"
+    },
+    {
+      "title": "The Last Blade 2",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "February 27, 1999"
+      },
+      "archiveTitles": [
+        "Bakumatsu Roman Daini Maku - Gekka no Kenshi - Tsuki ni Saku Hana, Chiri Yuku Hana ~ The Last Blade 2"
+      ],
+      "parentTitle": "The Last Blade 2"
+    },
+    {
+      "title": "The Super Spy",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Super Spy, The"
+      ],
+      "parentTitle": "The Super Spy"
+    },
+    {
+      "title": "Thrash Rally",
+      "developer": "Alpha Denshi",
+      "publisher": "SNK, Alpha Denshi",
+      "dates": {
+        "JP": "October 31, 1994"
+      },
+      "parentTitle": "Thrash Rally"
+    },
+    {
+      "title": "Top Hunter: Roddy & Cathy",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 29, 1994"
+      },
+      "archiveTitles": [
+        "Top Hunter - Roddy & Cathy"
+      ],
+      "parentTitle": "Top Hunter: Roddy & Cathy"
+    },
+    {
+      "title": "Top Player's Golf",
+      "developer": "SNK",
+      "publisher": "SNK",
+      "dates": {
+        "JP": "September 9, 1994"
+      },
+      "archiveTitles": [
+        "Top Player's Golf"
+      ],
+      "parentTitle": "Top Player's Golf"
+    },
+    {
+      "title": "Twinkle Star Sprites",
+      "developer": "ADK",
+      "publisher": "SNK, ADK",
+      "dates": {
+        "JP": "February 21, 1997"
+      },
+      "archiveTitles": [
+        "Twinkle Star Sprites"
+      ],
+      "parentTitle": "Twinkle Star Sprites"
+    },
+    {
+      "title": "Viewpoint",
+      "developer": "Aicom, Sammy",
+      "publisher": "SNK, Sammy",
+      "dates": {
+        "JP": "February 25, 1995"
+      },
+      "archiveTitles": [
+        "Viewpoint"
+      ],
+      "parentTitle": "Viewpoint"
+    },
+    {
+      "title": "Voltage Fighter Gowcaizer",
+      "developer": "Technōs Japan",
+      "publisher": "SNK, Technōs Japan",
+      "dates": {
+        "JP": "November 24, 1995"
+      },
+      "parentTitle": "Voltage Fighter Gowcaizer",
+      "archiveTitles": [
+        "Choujin Gakuen - Gowcaizer"
+      ]
+    },
+    {
+      "title": "Windjammers",
+      "developer": "Data East",
+      "publisher": "SNK, Data East",
+      "dates": {
+        "JP": "January 20, 1995"
+      },
+      "archiveTitles": [
+        "Flying Power Disc ~ Windjammers"
+      ],
+      "parentTitle": "Windjammers"
+    },
+    {
+      "title": "World Heroes",
+      "developer": "Alpha Denshi",
+      "publisher": "SNK, Alpha Denshi",
+      "dates": {
+        "JP": "March 17, 1995"
+      },
+      "archiveTitles": [
+        "World Heroes"
+      ],
+      "parentTitle": "World Heroes"
+    },
+    {
+      "title": "World Heroes 2",
+      "developer": "ADK",
+      "publisher": "SNK, ADK",
+      "dates": {
+        "JP": "April 14, 1995"
+      },
+      "archiveTitles": [
+        "World Heroes 2"
+      ],
+      "parentTitle": "World Heroes 2"
+    },
+    {
+      "title": "World Heroes 2 Jet",
+      "developer": "ADK",
+      "publisher": "SNK, ADK",
+      "dates": {
+        "JP": "November 11, 1994"
+      },
+      "archiveTitles": [
+        "World Heroes 2 Jet"
+      ],
+      "parentTitle": "World Heroes 2 Jet"
+    },
+    {
+      "title": "World Heroes Perfect",
+      "developer": "ADK",
+      "publisher": "SNK, ADK",
+      "dates": {
+        "JP": "July 21, 1995"
+      },
+      "archiveTitles": [
+        "World Heroes Perfect"
+      ],
+      "parentTitle": "World Heroes Perfect"
+    },
+    {
+      "title": "ZinTrick",
+      "developer": "ADK",
+      "publisher": "ADK",
+      "dates": {
+        "JP": "September 27, 1996"
+      },
+      "archiveTitles": [
+        "Oshidashi Zintrick ~ ZinTricK"
+      ]
+    }
+  ],
+  "manuals": [
+    {
+      "edition": "The Last Blade 2",
+      "market": "JP",
+      "name": "The Last Blade 2 — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BRDcd/m.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Neo Turf Masters",
+      "market": "JP",
+      "name": "Neo Turf Masters — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/BTGcd/m.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Fatal Fury 2",
+      "market": "JP",
+      "name": "Fatal Fury 2 — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/q.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/r.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF2cd/s.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Fatal Fury 3: Road to the Final Victory",
+      "market": "JP",
+      "name": "Fatal Fury 3: Road to the Final Victory — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/1.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/1.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/2.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/3.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/4.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/5.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/6.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/7.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/8.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/9.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/10.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/11.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/12.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/13.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/14.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/15.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/16.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/17.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/18.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FF3cd/19.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Karnov's Revenge",
+      "market": "JP",
+      "name": "Karnov's Revenge — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/FHDcd/o.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Fatal Fury: King of Fighters",
+      "market": "JP",
+      "name": "Fatal Fury: King of Fighters — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GD1cd/m.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Fatal Fury Special",
+      "market": "JP",
+      "name": "Fatal Fury Special — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/q.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/r.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/GDScd/s.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Karnov's Revenge",
+      "market": "JP",
+      "name": "Karnov's Revenge — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KRcd/q.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "The King of Fighters '94",
+      "market": "JP",
+      "name": "The King of Fighters '94 — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/q.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/r.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/s.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/t.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF94cd/u.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "The King of Fighters '95",
+      "market": "JP",
+      "name": "The King of Fighters '95 — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/q.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/r.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF95cd/s.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "The King of Fighters '96",
+      "market": "JP",
+      "name": "The King of Fighters '96 — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF96cd/q.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "The King of Fighters '97",
+      "market": "JP",
+      "name": "The King of Fighters '97 — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF97cd/o.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "The King of Fighters '98: The Slugfest",
+      "market": "JP",
+      "name": "The King of Fighters '98: The Slugfest — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/q.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/r.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98LEcd/s.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "The King of Fighters '98: The Slugfest",
+      "market": "JP",
+      "name": "The King of Fighters '98: The Slugfest — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/q.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/r.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/s.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/t.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF98cdu/u.jpg"
+      ],
+      "regions": [
+        "US"
+      ],
+      "language": "English"
+    },
+    {
+      "edition": "The King of Fighters '99: Millennium Battle",
+      "market": "JP",
+      "name": "The King of Fighters '99: Millennium Battle — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/KOF99cd/q.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Metal Slug",
+      "market": "JP",
+      "name": "Metal Slug — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cd/m.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Metal Slug",
+      "market": "JP",
+      "name": "Metal Slug — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS1cdu/o.jpg"
+      ],
+      "regions": [
+        "US"
+      ],
+      "language": "English"
+    },
+    {
+      "edition": "Metal Slug 2",
+      "market": "JP",
+      "name": "Metal Slug 2 — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/MS2cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/MS2cd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS2cd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS2cd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS2cd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS2cd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS2cd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS2cd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS2cd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS2cd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS2cd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS2cd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/MS2cd/k.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Neo Geo CD Special",
+      "market": "JP",
+      "name": "Neo Geo CD Special — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/NGCS/q.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Real Bout Fatal Fury",
+      "market": "JP",
+      "name": "Real Bout Fatal Fury — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/q.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/r.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFFcd/s.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Real Bout Fatal Fury 2: The Newcomers",
+      "market": "JP",
+      "name": "Real Bout Fatal Fury 2: The Newcomers — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBFF2cd/q.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Real Bout Fatal Fury",
+      "market": "JP",
+      "name": "Real Bout Fatal Fury — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBGDcd/q.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Real Bout Fatal Fury Special",
+      "market": "JP",
+      "name": "Real Bout Fatal Fury Special — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RBScd/o.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Art of Fighting",
+      "market": "JP",
+      "name": "Art of Fighting — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK1cd/o.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Art of Fighting 2",
+      "market": "JP",
+      "name": "Art of Fighting 2 — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/RNK2cd/q.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Samurai Shodown II",
+      "market": "JP",
+      "name": "Samurai Shodown II — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/q.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/r.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS2cd/s.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Samurai Shodown",
+      "market": "JP",
+      "name": "Samurai Shodown — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SS1cd/q.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Samurai Shodown III: Blades of Blood",
+      "market": "JP",
+      "name": "Samurai Shodown III: Blades of Blood — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSZcd/q.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Samurai Shodown II",
+      "market": "JP",
+      "name": "Samurai Shodown II — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSScd/q.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "Shinsetsu Samurai Spirits Bushidō Retsuden",
+      "market": "JP",
+      "name": "Shinsetsu Samurai Spirits Bushidō Retsuden — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/q.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/r.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/SSSBR/s.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "World Heroes 2 Jet",
+      "market": "JP",
+      "name": "World Heroes 2 Jet — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WH2Jcd/m.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    },
+    {
+      "edition": "World Heroes Perfect",
+      "market": "JP",
+      "name": "World Heroes Perfect — Neo Geo CD manual",
+      "format": "PDF",
+      "source": "RQ87’s Neo Geo scans",
+      "sourceUrl": "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/1.html",
+      "url": "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/a.jpg",
+      "pages": [
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/a.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/b.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/c.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/d.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/e.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/f.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/g.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/h.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/i.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/j.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/k.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/l.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/m.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/n.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/o.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/p.jpg",
+        "https://rq87.flyingomelette.com/RQ/NG/MS/WHPcd/q.jpg"
+      ],
+      "regions": [
+        "JP"
+      ],
+      "language": "Japanese"
+    }
+  ]
+}

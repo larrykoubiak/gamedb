@@ -1,16 +1,19 @@
 """Apply binary disc patches to temporary, verified images."""
 
+from contextlib import nullcontext
+from mmap import mmap
 import os
 from shutil import copyfile
 import subprocess
+from zlib import crc32
 
-from .patching import PatchError
+from .patching import PatchError, _delta_header, _ips_edits, _ips_reader
 
 
 RAW_CD_SECTOR_SIZE = 2352
 MODE1_USER_DATA_SIZE = 2048
 XDELTA_EXTENSIONS = {".xdelta", ".xdelta3", ".vcdiff"}
-DISC_PATCH_EXTENSIONS = XDELTA_EXTENSIONS | {".ppf"}
+DISC_PATCH_EXTENSIONS = XDELTA_EXTENSIONS | {".ppf", ".ips", ".ups"}
 CD_SYNC = bytes.fromhex("00 ff ff ff ff ff ff ff ff ff ff 00")
 XA_CHECKSUM_OFFSET = 2072
 
@@ -99,9 +102,13 @@ def _apply_ppf3(image, patch):
             disc.write(data[:length])
 
 
-def extract_mode1_iso(source, target, *, pregap_sectors=0):
-    """Extract the user data from a Redump MODE1/2352 track."""
-    with source.open("rb") as original, target.open("wb") as cooked:
+def extract_mode1_iso(source, target, *, pregap_sectors=0, pregap_target=None):
+    """Extract MODE1 user data, optionally writing the pregap separately."""
+    with (
+        source.open("rb") as original,
+        target.open("wb") as cooked,
+        (pregap_target.open("wb") if pregap_target is not None else nullcontext(cooked)) as pregap,
+    ):
         sector_number = 0
         while block := original.read(512 * RAW_CD_SECTOR_SIZE):
             if len(block) % RAW_CD_SECTOR_SIZE:
@@ -111,8 +118,42 @@ def extract_mode1_iso(source, target, *, pregap_sectors=0):
                 silence = sector_number < pregap_sectors and not any(sector)
                 if not silence and (sector[:12] != CD_SYNC or sector[15] != 1):
                     raise PatchError("Expected a MODE1/2352 data track")
-                cooked.write(sector[16:16 + MODE1_USER_DATA_SIZE])
+                output = pregap if sector_number < pregap_sectors else cooked
+                output.write(sector[16:16 + MODE1_USER_DATA_SIZE])
                 sector_number += 1
+
+
+def _patch_ips(image, data):
+    reader = _ips_reader(data)
+    size = image.stat().st_size
+    with image.open("r+b") as stream:
+        for offset, contents in _ips_edits(reader):
+            if offset + len(contents) > size:
+                raise PatchError("An IPS edit exceeds the disc image")
+            stream.seek(offset)
+            stream.write(contents)
+        if reader.remaining == 3 and int.from_bytes(reader.take(3), "big") != size:
+            raise PatchError("The IPS patch changes the disc image size")
+
+
+def _patch_ups(image, data):
+    reader, source_size, target_size, source_crc, target_crc = _delta_header(data, "ups")
+    if image.stat().st_size != source_size or source_size != target_size or not source_size:
+        raise PatchError("Expected a fixed-size UPS disc patch")
+    with image.open("r+b") as stream, mmap(stream.fileno(), 0) as contents:
+        if crc32(contents) != source_crc:
+            raise PatchError("The UPS base checksum does not match")
+        offset = 0
+        while reader.remaining:
+            offset += reader.number()
+            while difference := reader.byte():
+                if offset >= target_size:
+                    raise PatchError("A UPS edit exceeds the disc image")
+                contents[offset] ^= difference
+                offset += 1
+            offset += 1
+        if crc32(contents) != target_crc:
+            raise PatchError("The UPS output checksum does not match")
 
 
 def patch_disc_image(source, patch, target, *, sector_size=RAW_CD_SECTOR_SIZE):
@@ -133,6 +174,10 @@ def patch_disc_image(source, patch, target, *, sector_size=RAW_CD_SECTOR_SIZE):
     elif extension == ".ppf":
         copyfile(source, target)
         _apply_ppf3(target, patch)
+    elif extension in {".ips", ".ups"}:
+        copyfile(source, target)
+        apply = _patch_ips if extension == ".ips" else _patch_ups
+        apply(target, patch.read_bytes())
     else:
         raise PatchError(f"Unsupported disc patch {extension}")
     size = target.stat().st_size

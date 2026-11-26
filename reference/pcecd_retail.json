@@ -1,0 +1,5458 @@
+{
+  "source": {
+    "name": "Wikipedia contributors",
+    "url": "https://en.wikipedia.org/wiki/Special:PermanentLink/1386073683#List_of_games",
+    "revision": 1386073683,
+    "sha256": "142a912fe46ef1a416b71468e53258bc59caea4fa2fd9ade4534b72c7b2118e3",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "rowCount": 378
+  },
+  "titles": [
+    {
+      "title": "1552: Tenka Tairan",
+      "developer": "",
+      "publisher": "ASK Kodansha",
+      "dates": {
+        "JP": "July 16, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "1552 Tenka Tairan"
+      ]
+    },
+    {
+      "title": "Sazan Eyes: Sanjiyan Henjō",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "July 8, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "3x3 Eyes - Sanjiyan Henjou"
+      ]
+    },
+    {
+      "title": "A-Ressha de Ikō III",
+      "developer": "",
+      "publisher": "Artdink",
+      "dates": {
+        "JP": "June 11, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "A.III. - A Ressha de Ikou III"
+      ]
+    },
+    {
+      "title": "Addams Family, The",
+      "developer": "",
+      "publisher": "NEC",
+      "dates": {
+        "NA": "November 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Addams Family, The"
+      ]
+    },
+    {
+      "title": "Advanced V.G.",
+      "developer": "",
+      "publisher": "TGL",
+      "dates": {
+        "JP": "July 22, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Advanced V.G."
+      ]
+    },
+    {
+      "title": "Adventure Quiz: Capcom World + Hatena no Daibouken",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "June 12, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Adventure Quiz: Capcom World /",
+        "Hatena no Daibōken",
+        "Adventure Quiz - Capcom World + Hatena no Daibouken"
+      ]
+    },
+    {
+      "title": "Ai Cho Aniki",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "February 24, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Ai Chou Aniki"
+      ]
+    },
+    {
+      "title": "Akiyama Jin no Sūgaku Mystery",
+      "developer": "",
+      "publisher": "NHK",
+      "dates": {
+        "JP": "December 10, 1994"
+      },
+      "medium": "Super CD-ROM²"
+    },
+    {
+      "title": "Alshark",
+      "developer": "",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "August 26, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Alshark"
+      ]
+    },
+    {
+      "title": "Alzadick",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "July 17, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Summer Carnival '92 - Alzadick"
+      ]
+    },
+    {
+      "title": "Ane-san",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "February 24, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Ane-san"
+      ]
+    },
+    {
+      "title": "Aoki Ōkami to Shiroki Mejika: Genchō Hishi",
+      "developer": "",
+      "publisher": "Koei",
+      "dates": {
+        "JP": "September 30, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Aoki Ookami to Shiroki Mejika - Genchou Hishi"
+      ]
+    },
+    {
+      "title": "Asuka 120% Maxima BURNING Fest.",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "July 28, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Asuka 120% Maxima - Burning Fest. Maxima"
+      ]
+    },
+    {
+      "title": "The Atlas",
+      "developer": "",
+      "publisher": "Artdink",
+      "dates": {
+        "JP": "March 4, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Atlas, The - Renaissance Voyager"
+      ]
+    },
+    {
+      "title": "Aurora Quest: Otaku no Seiza in Another World",
+      "developer": "",
+      "publisher": "Pack-In-Video",
+      "dates": {
+        "JP": "December 10, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Aurora Quest - Otaku no Seiza in Another World"
+      ]
+    },
+    {
+      "title": "Auto Crusher Palladium",
+      "developer": "",
+      "publisher": "Pack-In-Video",
+      "dates": {
+        "JP": "February 25, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Palladion - Auto Crusher Palladium"
+      ]
+    },
+    {
+      "title": "Avenger",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "December 7, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Avenger"
+      ]
+    },
+    {
+      "title": "Andre Panza Kick Boxing",
+      "developer": "",
+      "publisher": "Micro World",
+      "dates": {
+        "JP": "July 31, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "regionalTitles": {
+        "JP": "The Kick Boxing"
+      },
+      "archiveTitles": [
+        "Andre Panza Kick Boxing",
+        "Kick Boxing, The"
+      ],
+      "parentTitle": "Andre Panza Kick Boxing"
+    },
+    {
+      "title": "Babel",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "March 27, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Babel"
+      ]
+    },
+    {
+      "title": "Baby Jo the Superhero",
+      "developer": "",
+      "publisher": "Micro World",
+      "dates": {
+        "JP": "August 28, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Baby Jo - The Super Hero"
+      ]
+    },
+    {
+      "title": "Bakuchō Yoshimoto Shinkigeki",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "January 3, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Bakushou Yoshimoto Shinkigeki"
+      ]
+    },
+    {
+      "title": "Bakuden: Unbalanced Zone",
+      "developer": "",
+      "publisher": "Sony Music Entertainment",
+      "dates": {
+        "JP": "April 22, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Bakuden - Unbalance Zone"
+      ]
+    },
+    {
+      "title": "Basted",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "October 21, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Basted"
+      ]
+    },
+    {
+      "title": "Battle Field '94 in Tokyo Dome",
+      "developer": "",
+      "publisher": "Fujicom",
+      "dates": {
+        "JP": "November 25, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Shin Nihon Pro Wrestling - '94 Battlefield in Tokyo Dome"
+      ]
+    },
+    {
+      "title": "Bazar dé Gozarre no Game de Gozāru",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "July 25, 1996"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Bazar de Gozarre no Game de Gozarre"
+      ]
+    },
+    {
+      "title": "Beyond Shadowgate",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "December 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Beyond Shadowgate"
+      ]
+    },
+    {
+      "title": "Bikkuriman Daijikai",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "December 23, 1988"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Bikkuriman Daijikai"
+      ]
+    },
+    {
+      "title": "Bishōjo Senshi Sailor Moon",
+      "developer": "",
+      "publisher": "Banpresto",
+      "dates": {
+        "JP": "August 5, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Bishoujo Senshi Sailor Moon"
+      ]
+    },
+    {
+      "title": "Bishōjo Senshi Sailor Moon Collection",
+      "developer": "",
+      "publisher": "Banpresto",
+      "dates": {
+        "JP": "November 25, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Bishoujo Senshi Sailor Moon Collection"
+      ]
+    },
+    {
+      "title": "Black Hole Assault",
+      "developer": "",
+      "publisher": "Micronet",
+      "dates": {
+        "JP": "July 23, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Black Hole Assault"
+      ]
+    },
+    {
+      "title": "Blood Gear",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "October 28, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Blood Gear"
+      ]
+    },
+    {
+      "title": "Bonanza Bros.",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "July 31, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Bonanza Bros."
+      ]
+    },
+    {
+      "title": "Bonk 3: Bonk's Big Adventure (CD)",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "December 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Bonk III - Bonk's Big Adventure"
+      ],
+      "parentTitle": "Bonk 3: Bonk's Big Adventure"
+    },
+    {
+      "title": "Brandish",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "June 17, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Brandish"
+      ]
+    },
+    {
+      "title": "Browning",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "February 7, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Browning"
+      ]
+    },
+    {
+      "title": "Builder Land",
+      "developer": "",
+      "publisher": "Micro World",
+      "dates": {
+        "JP": "April 1, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "BuilderLand - The Story of Melba"
+      ]
+    },
+    {
+      "title": "Burai",
+      "developer": "",
+      "publisher": "Riverhillsoft",
+      "dates": {
+        "JP": "August 9, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Burai - Yatsudama no Yuushi Densetsu"
+      ]
+    },
+    {
+      "title": "Burai II",
+      "developer": "",
+      "publisher": "Riverhillsoft",
+      "dates": {
+        "JP": "December 18, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Burai II - Yami Koutei no Gyakushuu"
+      ]
+    },
+    {
+      "title": "Buster Bros.",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "May 31, 1991"
+      },
+      "medium": "CD-ROM²",
+      "regionalTitles": {
+        "JP": "Pomping World"
+      },
+      "archiveTitles": [
+        "Buster Bros.",
+        "Pomping World"
+      ]
+    },
+    {
+      "title": "Buster Bros.",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "January 1993"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Buster Bros.",
+        "Pomping World"
+      ]
+    },
+    {
+      "title": "CAL II",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "March 31, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "CAL II"
+      ]
+    },
+    {
+      "title": "Cal III",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "March 25, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "CAL III - Kanketsu-hen"
+      ]
+    },
+    {
+      "title": "Camp California",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "January 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Camp California"
+      ]
+    },
+    {
+      "title": "Card Angels",
+      "developer": "",
+      "publisher": "Fujicom",
+      "dates": {
+        "JP": "December 9, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Cardangels"
+      ]
+    },
+    {
+      "title": "Akumajō Dracula X: Chi no Rondo",
+      "developer": "",
+      "publisher": "Konami",
+      "dates": {
+        "JP": "October 29, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Akumajou Dracula X - Chi no Rondo"
+      ],
+      "aliases": [
+        "Castlevania: Rondo of Blood"
+      ]
+    },
+    {
+      "title": "CD Battle: Hikari no Yūshatachi",
+      "developer": "",
+      "publisher": "King Records",
+      "dates": {
+        "JP": "March 19, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "CD Battle - Hikari no Yuusha-tachi"
+      ]
+    },
+    {
+      "title": "Championship Rally",
+      "developer": "",
+      "publisher": "Intec",
+      "dates": {
+        "JP": "August 6, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Rally Championship"
+      ]
+    },
+    {
+      "title": "Chiki Chiki Boys",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "July 15, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Chiki Chiki Boys"
+      ]
+    },
+    {
+      "title": "Cho Aniki",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "December 25, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Chou Aniki"
+      ]
+    },
+    {
+      "title": "Chō Jikū Yōsai Macross: Eien no Love Song",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "December 4, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Chou Jikuu Yousai Macross - Eien no Love Song"
+      ]
+    },
+    {
+      "title": "Chō Jikū Yōsai Macross 2036",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "April 3, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Chou Jikuu Yousai Macross 2036"
+      ]
+    },
+    {
+      "title": "Cobra: Kokuryū-Ō no Densetsu",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "March 31, 1989"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Space Adventure Cobra - Kokuryuuou no Densetsu"
+      ]
+    },
+    {
+      "title": "Cobra II: Densetsu no Otoko",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "June 7, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Space Adventure Cobra II - Densetsu no Otoko"
+      ]
+    },
+    {
+      "title": "Color Wars",
+      "developer": "",
+      "publisher": "Coconuts Japan",
+      "dates": {
+        "JP": "July 10, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Color Wars"
+      ]
+    },
+    {
+      "title": "Cosmic Fantasy 2",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "April 5, 1991"
+      },
+      "medium": "CD-ROM²",
+      "regionalTitles": {
+        "JP": "Cosmic Fantasy 2: Bōken Shōnen Van"
+      },
+      "archiveTitles": [
+        "Cosmic Fantasy 2",
+        "Cosmic Fantasy 2: Bōken Shōnen Van",
+        "Cosmic Fantasy 2 - Bouken Shounen Ban"
+      ]
+    },
+    {
+      "title": "Cosmic Fantasy 2",
+      "developer": "",
+      "publisher": "Working Designs",
+      "dates": {
+        "NA": "June 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Cosmic Fantasy 2",
+        "Cosmic Fantasy 2: Bōken Shōnen Van",
+        "Cosmic Fantasy 2 - Bouken Shounen Ban"
+      ]
+    },
+    {
+      "title": "Cosmic Fantasy 3: Bōken Shōnen Rei",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "September 25, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Cosmic Fantasy 3 - Bouken Shounen Rei"
+      ]
+    },
+    {
+      "title": "Cosmic Fantasy 4: Ginga Shōnen Densetsu: Gekitōhen",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "November 25, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Cosmic Fantasy 4 - Ginga Shounen Densetsu - Gekitou-hen"
+      ]
+    },
+    {
+      "title": "Cosmic Fantasy 4: Ginga Shōnen Densetsu: Totsunyūhen",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "June 10, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Cosmic Fantasy 4 - Ginga Shounen Densetsu - Totsunyuu-hen"
+      ]
+    },
+    {
+      "title": "Cosmic Fantasy: Bōken Shōnen Yū",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "March 30, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Cosmic Fantasy - Bouken Shounen Yuu"
+      ]
+    },
+    {
+      "title": "Cotton: Fantastic Night Dreams",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "February 12, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "regionalTitles": {
+        "JP": "Cotton"
+      },
+      "archiveTitles": [
+        "Cotton: Fantastic Night Dreams",
+        "Cotton",
+        "Fantastic Night Dreams - Cotton"
+      ]
+    },
+    {
+      "title": "Cotton: Fantastic Night Dreams",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "April 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Cotton: Fantastic Night Dreams",
+        "Cotton",
+        "Fantastic Night Dreams - Cotton"
+      ]
+    },
+    {
+      "title": "Cyber City Oedo: Kemono no Alignment",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "March 15, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Cyber City Oedo 808 - Kemono no Alignment"
+      ]
+    },
+    {
+      "title": "Daisenpū Custom",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "July 26, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Daisenpuu Custom"
+      ]
+    },
+    {
+      "title": "Daisenryaku II: Campaign Version",
+      "developer": "",
+      "publisher": "Micro Cabin",
+      "dates": {
+        "JP": "May 29, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Campaign Version - Daisenryaku II"
+      ]
+    },
+    {
+      "title": "Davis Cup Tennis",
+      "developer": "",
+      "publisher": "Micro World",
+      "dates": {
+        "JP": "April 1, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "regionalTitles": {
+        "JP": "The Davis Cup Tennis"
+      },
+      "archiveTitles": [
+        "Davis Cup Tennis",
+        "Davis Cup Tennis, The"
+      ],
+      "parentTitle": "Davis Cup Tennis"
+    },
+    {
+      "title": "Dead of the Brain 1 & 2",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "June 3, 1999"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Dead of the Brain 1&2"
+      ]
+    },
+    {
+      "title": "Death Bringer",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "April 27, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Death Bringer - The Knight of Darkness"
+      ]
+    },
+    {
+      "title": "Deko Boko Densetsu",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "November 2, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Dekoboko Densetsu - Hashiru Wagamanmaa"
+      ]
+    },
+    {
+      "title": "Dennō Tenshi: Digital Angel",
+      "developer": "",
+      "publisher": "Tokuma Shoten Intermedia",
+      "dates": {
+        "JP": "November 28, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Dennou Tenshi - Digital Ange"
+      ]
+    },
+    {
+      "title": "DE.JA",
+      "developer": "",
+      "publisher": "NEC Interchannel",
+      "dates": {
+        "JP": "July 12, 1996"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "De-Ja"
+      ]
+    },
+    {
+      "title": "Digital Comic Patlabor: Chapter of Griffon",
+      "developer": "",
+      "publisher": "Riverhillsoft",
+      "dates": {
+        "JP": "September 30, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Patlabor - Chapter of Griffon"
+      ]
+    },
+    {
+      "title": "Dōkyūsei",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "November 23, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Doukyuusei"
+      ]
+    },
+    {
+      "title": "Doraemon: Nobita no Dorabian Night (CD)",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "May 29, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Doraemon - Nobita no Dorabian Night"
+      ],
+      "parentTitle": "Doraemon: Nobita no Dorabian Night"
+    },
+    {
+      "title": "Double Dragon II: The Revenge",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "March 5, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Double Dragon II - The Revenge"
+      ]
+    },
+    {
+      "title": "Download 2",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "March 29, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Down Load 2"
+      ]
+    },
+    {
+      "title": "Downtown Nekketsu Kōshinkyoku",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "December 11, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Downtown Nekketsu Koushinkyoku - Soreyuke Daiundoukai"
+      ]
+    },
+    {
+      "title": "Downtown Nekketsu Monogatari",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "December 24, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Downtown Nekketsu Monogatari"
+      ]
+    },
+    {
+      "title": "Dragon Ball Z: Idainaru Son Goku Densetsu",
+      "developer": "",
+      "publisher": "Bandai",
+      "dates": {
+        "JP": "November 11, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Dragon Ball Z - Idainaru Son Gokuu Densetsu"
+      ]
+    },
+    {
+      "title": "Dragon Half",
+      "developer": "",
+      "publisher": "Micro Cabin",
+      "dates": {
+        "JP": "September 30, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Dragon Half"
+      ]
+    },
+    {
+      "title": "Dragon Knight & Graffiti",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "March 31, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Dragon Knight & Graffiti"
+      ]
+    },
+    {
+      "title": "Dragon Knight II",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "August 7, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Dragon Knight II"
+      ]
+    },
+    {
+      "title": "Dragon Knight III",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "July 22, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Dragon Knight III"
+      ]
+    },
+    {
+      "title": "Dragon Slayer: The Legend of Heroes",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "October 25, 1991"
+      },
+      "medium": "Super CD-ROM²",
+      "regionalTitles": {
+        "JP": "Dragon Slayer: Eiyū Densetsu"
+      },
+      "archiveTitles": [
+        "Dragon Slayer - The Legend of Heroes",
+        "Dragon Slayer: Eiyū Densetsu"
+      ]
+    },
+    {
+      "title": "Dragon Slayer: The Legend of Heroes",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "December 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Dragon Slayer - The Legend of Heroes",
+        "Dragon Slayer: Eiyū Densetsu"
+      ]
+    },
+    {
+      "title": "Dragon Slayer: The Legend of Heroes II",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "December 22, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Dragon Slayer - The Legend of Heroes II"
+      ]
+    },
+    {
+      "title": "Dungeon Explorer II",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "March 26, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Dungeon Explorer II"
+      ]
+    },
+    {
+      "title": "Dungeon Explorer II",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "October 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Dungeon Explorer II"
+      ]
+    },
+    {
+      "title": "Dungeon Master",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "September 18, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "regionalTitles": {
+        "JP": "Dungeon Master: Theron's Quest"
+      },
+      "archiveTitles": [
+        "Dungeon Master",
+        "Dungeon Master - Theron's Quest"
+      ]
+    },
+    {
+      "title": "Dungeon Master",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "May 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Dungeon Master",
+        "Dungeon Master - Theron's Quest"
+      ]
+    },
+    {
+      "title": "Dynastic Hero, The",
+      "developer": "",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "May 20, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "regionalTitles": {
+        "JP": "Chō Eiyū Densetsu Dynastic Hero"
+      },
+      "archiveTitles": [
+        "Dynastic Hero, The",
+        "Chō Eiyū Densetsu Dynastic Hero",
+        "Chou Eiyuu Densetsu - Dynastic Hero"
+      ]
+    },
+    {
+      "title": "Dynastic Hero, The",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "March 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Dynastic Hero, The",
+        "Chō Eiyū Densetsu Dynastic Hero",
+        "Chou Eiyuu Densetsu - Dynastic Hero"
+      ]
+    },
+    {
+      "title": "Efera and Jiliora: The Emblem from Darkness",
+      "developer": "",
+      "publisher": "Brain Grey",
+      "dates": {
+        "JP": "December 13, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Efera & Jiliora - The Emblem from Darkness"
+      ]
+    },
+    {
+      "title": "Eikan wa Kimi ni",
+      "developer": "",
+      "publisher": "Artdink",
+      "dates": {
+        "JP": "July 15, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Eikan wa Kimi ni - Koukou Yakyuu Zenkoku Taikai"
+      ]
+    },
+    {
+      "title": "Eiyū Saigokushi",
+      "developer": "",
+      "publisher": "Irem",
+      "dates": {
+        "JP": "March 26, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Eiyuu Sangokushi"
+      ]
+    },
+    {
+      "title": "Emerald Dragon",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "January 17, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Emerald Dragon"
+      ]
+    },
+    {
+      "title": "Exile",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "March 29, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Exile",
+        "Exile - Toki no Hasama e"
+      ]
+    },
+    {
+      "title": "Exile",
+      "developer": "",
+      "publisher": "Working Designs",
+      "dates": {
+        "NA": "October 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Exile",
+        "Exile - Toki no Hasama e"
+      ]
+    },
+    {
+      "title": "Exile: Wicked Phenomenon",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "September 22, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "regionalTitles": {
+        "JP": "Exile II"
+      },
+      "archiveTitles": [
+        "Exile - Wicked Phenomenon",
+        "Exile II",
+        "Exile II - Janen no Jishou"
+      ]
+    },
+    {
+      "title": "Exile: Wicked Phenomenon",
+      "developer": "",
+      "publisher": "Working Designs",
+      "dates": {
+        "NA": "June 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Exile - Wicked Phenomenon",
+        "Exile II",
+        "Exile II - Janen no Jishou"
+      ]
+    },
+    {
+      "title": "F1 Circus Special",
+      "developer": "",
+      "publisher": "Nichibutsu",
+      "dates": {
+        "JP": "June 26, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "F1 Circus Special - Pole to Win"
+      ]
+    },
+    {
+      "title": "F1 Team Simulation Project F",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "September 4, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "F1 Team Simulation - Project F"
+      ]
+    },
+    {
+      "title": "Faceball",
+      "developer": "",
+      "publisher": "Riverhillsoft",
+      "dates": {
+        "JP": "November 26, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Faceball"
+      ]
+    },
+    {
+      "title": "Fang of Alnam",
+      "developer": "",
+      "publisher": "Right Stuff",
+      "dates": {
+        "JP": "December 23, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Alnam no Kiba - Juuzoku Juuni Shinto Densetsu"
+      ]
+    },
+    {
+      "title": "Farjius no Jakōtei",
+      "developer": "",
+      "publisher": "Human Entertainment",
+      "dates": {
+        "JP": "August 29, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Farjius no Jakoutei - Neo Metal Fantasy"
+      ]
+    },
+    {
+      "title": "Faussete Amour",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "March 26, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Faussete Amour"
+      ]
+    },
+    {
+      "title": "Fiend Hunter",
+      "developer": "",
+      "publisher": "Right Stuff",
+      "dates": {
+        "JP": "April 16, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Fiend Hunter"
+      ]
+    },
+    {
+      "title": "Fighting Street",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "December 4, 1988"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Fighting Street"
+      ]
+    },
+    {
+      "title": "Fighting Street",
+      "developer": "",
+      "publisher": "NEC",
+      "dates": {
+        "NA": "November 1989"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Fighting Street"
+      ]
+    },
+    {
+      "title": "Final Zone II",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "March 23, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Final Zone II"
+      ]
+    },
+    {
+      "title": "Final Zone II",
+      "developer": "",
+      "publisher": "NEC",
+      "dates": {
+        "NA": "November 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Final Zone II"
+      ]
+    },
+    {
+      "title": "Fire Pro Joshi: Shōmu Chōjo Taisen: Zenjo vs. JWP",
+      "developer": "",
+      "publisher": "Human Entertainment",
+      "dates": {
+        "JP": "February 3, 1995"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Wrestling Universe - Fire Pro Joshi - Dome Choujo Taisen - Zenjo vs. JWP"
+      ]
+    },
+    {
+      "title": "Flash Hiders",
+      "developer": "",
+      "publisher": "Right Stuff",
+      "dates": {
+        "JP": "December 19, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Flash Hiders"
+      ]
+    },
+    {
+      "title": "Forgotten Worlds",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "March 27, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Forgotten Worlds"
+      ]
+    },
+    {
+      "title": "Forgotten Worlds",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "November 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Forgotten Worlds"
+      ]
+    },
+    {
+      "title": "Formation Soccer '95 della Seria A",
+      "developer": "",
+      "publisher": "Human Entertainment",
+      "dates": {
+        "JP": "April 7, 1995"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Formation Soccer 95 della Serie A"
+      ]
+    },
+    {
+      "title": "Fray CD: Xak Gaiden",
+      "developer": "",
+      "publisher": "Micro Cabin",
+      "dates": {
+        "JP": "March 30, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "In Magical Adventure - Fray CD - Xak Gaiden"
+      ]
+    },
+    {
+      "title": "Gain Ground SX",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "December 25, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Gain Ground SX"
+      ]
+    },
+    {
+      "title": "Galaxy Deka Gayvan",
+      "developer": "",
+      "publisher": "Intec",
+      "dates": {
+        "JP": "October 29, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Galaxy Deka Gayvan"
+      ]
+    },
+    {
+      "title": "Galaxy Fraulein Yuna",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "October 23, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Ginga Ojousama Densetsu Yuna"
+      ]
+    },
+    {
+      "title": "Galaxy Fräulein Yuna 2",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "June 30, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Ginga Ojousama Densetsu Yuna 2 - Eien no Princess"
+      ]
+    },
+    {
+      "title": "Garō Densetsu 2",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "March 12, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Garou Densetsu 2",
+        "Garou Densetsu 2 - Aratanaru Tatakai"
+      ]
+    },
+    {
+      "title": "Garō Densetsu Special",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "December 2, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Garou Densetsu Special"
+      ]
+    },
+    {
+      "title": "Gate of Thunder",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "February 21, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Gate of Thunder"
+      ]
+    },
+    {
+      "title": "Gate of Thunder",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "October 10, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Gate of Thunder"
+      ]
+    },
+    {
+      "title": "Genocide",
+      "developer": "",
+      "publisher": "Brain Gray",
+      "dates": {
+        "JP": "June 25, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Genocide"
+      ]
+    },
+    {
+      "title": "Gensō Tairiku Auleria",
+      "developer": "",
+      "publisher": "Taito",
+      "dates": {
+        "JP": "February 26, 1993"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Gensou Tairiku Auleria"
+      ]
+    },
+    {
+      "title": "Ghost Sweeper Mikami",
+      "developer": "",
+      "publisher": "Banpresto",
+      "dates": {
+        "JP": "July 29, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "GS (Ghost Sweeper) Mikami"
+      ]
+    },
+    {
+      "title": "Ginga Fukei Densetsu Sapphire",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "November 24, 1995"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Ginga Fukei Densetsu Sapphire"
+      ]
+    },
+    {
+      "title": "Go! Go! Birdie Chance",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "June 28, 1996"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Go! Go! Birdie Chance"
+      ]
+    },
+    {
+      "title": "God Panic: Shijō Saikyō Gundan",
+      "developer": "",
+      "publisher": "Teichiku",
+      "dates": {
+        "JP": "November 27, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "God Panic - Shijou Saikyou no Gundan"
+      ]
+    },
+    {
+      "title": "Godzilla",
+      "developer": "",
+      "publisher": "Toho",
+      "dates": {
+        "JP": "February 26, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "regionalTitles": {
+        "JP": "Gojira: Bakutō Retsuden"
+      },
+      "archiveTitles": [
+        "Godzilla",
+        "Gojira: Bakutō Retsuden",
+        "Godzilla Bakutou Retsuden"
+      ]
+    },
+    {
+      "title": "Godzilla",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "October 3, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Godzilla",
+        "Gojira: Bakutō Retsuden",
+        "Godzilla Bakutou Retsuden"
+      ]
+    },
+    {
+      "title": "Golden Axe",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "March 16, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Golden Axe"
+      ]
+    },
+    {
+      "title": "Götzendiener",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "November 25, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Goetzendiener"
+      ]
+    },
+    {
+      "title": "Gradius II",
+      "developer": "",
+      "publisher": "Konami",
+      "dates": {
+        "JP": "December 18, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Gradius II - Gofer no Yabou"
+      ]
+    },
+    {
+      "title": "Sotsugyō II",
+      "developer": "",
+      "publisher": "Riverhillsoft",
+      "dates": {
+        "JP": "December 23, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Sotsugyou II - Neo Generation"
+      ]
+    },
+    {
+      "title": "Gulclight TDF-2",
+      "developer": "",
+      "publisher": "Pack-In-Video",
+      "dates": {
+        "JP": "January 25, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Gulclight TDF 2"
+      ]
+    },
+    {
+      "title": "Gulliver Boy",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "May 26, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Kuusou Kagaku Sekai Gulliver Boy"
+      ]
+    },
+    {
+      "title": "Gambler Jiko Chūshinha: Gekitō Sanjūroku Janshi",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "November 24, 1989"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Gyuwambler Jiko Chuushinha - Gekitou 36 Janshi"
+      ]
+    },
+    {
+      "title": "Gambler Jiko Chūshinha: Mahjong Puzzle Collection",
+      "developer": "",
+      "publisher": "Taito",
+      "dates": {
+        "JP": "February 28, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Gyuwambler Jiko Chuushinha - Mahjong Puzzle Collection"
+      ]
+    },
+    {
+      "title": "Hataraku Shōjo: Tekipaki Working Love",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "March 28, 1997"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Hataraku Shoujo - Tekipaki Working Love"
+      ]
+    },
+    {
+      "title": "Hatsukoi Monogatari",
+      "developer": "",
+      "publisher": "Tokuma Shoten Intermedia",
+      "dates": {
+        "JP": "April 28, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Hatsukoi Monogatari"
+      ]
+    },
+    {
+      "title": "Hawk F-123",
+      "developer": "",
+      "publisher": "Pack-In-Video",
+      "dates": {
+        "JP": "March 13, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Hawk F-123"
+      ]
+    },
+    {
+      "title": "Hellfire S",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "April 12, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Hellfire S - The Another Story"
+      ]
+    },
+    {
+      "title": "High Grenadier",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "April 12, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "High Grenadier"
+      ]
+    },
+    {
+      "title": "Hihō Densetsu: Chris no Bōken",
+      "developer": "",
+      "publisher": "Pack-In-Video",
+      "dates": {
+        "JP": "December 13, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Hihou Densetsu - Chris no Bouken"
+      ]
+    },
+    {
+      "title": "Himitsu no Hanazono",
+      "developer": "",
+      "publisher": "Tokuma Shoten Intermedia",
+      "dates": {
+        "JP": "December 10, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Himitsu no Hanazono"
+      ]
+    },
+    {
+      "title": "Horror Story",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "February 26, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Horror Story"
+      ]
+    },
+    {
+      "title": "Human Sports Festival",
+      "developer": "",
+      "publisher": "Human",
+      "dates": {
+        "JP": "February 28, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Human Sports Festival"
+      ]
+    },
+    {
+      "title": "Hyakumonogatari: Honto ni Atta Kowai Hanashi",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "August 4, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Hyaku Monogatari - Honto ni Atta Kowai Hanashi"
+      ]
+    },
+    {
+      "title": "Hyper Wars",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "November 5, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Hyper Wars"
+      ]
+    },
+    {
+      "title": "I.Q. Panic",
+      "developer": "",
+      "publisher": "IGS",
+      "dates": {
+        "JP": "February 21, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "IQ Panic"
+      ]
+    },
+    {
+      "title": "Iga Ninden Gaiō",
+      "developer": "",
+      "publisher": "Nichibutsu",
+      "dates": {
+        "JP": "December 10, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Iga Ninden Gaiou"
+      ]
+    },
+    {
+      "title": "Image Fight II",
+      "developer": "",
+      "publisher": "Irem",
+      "dates": {
+        "JP": "December 18, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "ImageFight II - Operation Deepstriker"
+      ]
+    },
+    {
+      "title": "It Came From The Desert",
+      "developer": "",
+      "publisher": "NEC",
+      "dates": {
+        "NA": "December 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "It Came from the Desert"
+      ]
+    },
+    {
+      "title": "Jack Nicklaus' Turbo Golf",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "September 14, 1990"
+      },
+      "medium": "CD-ROM²",
+      "regionalTitles": {
+        "JP": "Jack Nicklaus' World Golf Tour"
+      },
+      "archiveTitles": [
+        "Jack Nicklaus Turbo Golf",
+        "Jack Nicklaus' World Golf Tour"
+      ],
+      "parentTitle": "Jack Nicklaus' Turbo Golf"
+    },
+    {
+      "title": "Jack Nicklaus' Turbo Golf",
+      "developer": "",
+      "publisher": "Accolade",
+      "dates": {
+        "NA": "1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Jack Nicklaus Turbo Golf",
+        "Jack Nicklaus' World Golf Tour"
+      ],
+      "parentTitle": "Jack Nicklaus' Turbo Golf"
+    },
+    {
+      "title": "Janshin Densetsu: Quest of Jongmaster",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "February 24, 1995"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Quest of Jongmaster - Janshin Densetsu"
+      ]
+    },
+    {
+      "title": "Jantei Monogatari",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "October 9, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Jantei Monogatari"
+      ]
+    },
+    {
+      "title": "Jantei Monogatari 2: Uchū Tantei Diban: Kanketsu Hen",
+      "developer": "",
+      "publisher": "Atlus",
+      "dates": {
+        "JP": "April 24, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Jantei Monogatari 2 - Uchuu Tantei Diban - Kanketsu-hen"
+      ]
+    },
+    {
+      "title": "Jantei Monogatari 2: Uchū Tantei Diban: Shutsudō Hen",
+      "developer": "",
+      "publisher": "Atlus",
+      "dates": {
+        "JP": "February 28, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Jantei Monogatari 2 - Uchuu Tantei Diban - Shutsudou-hen"
+      ]
+    },
+    {
+      "title": "Jantei Monogatari 3: Saver Angels",
+      "developer": "",
+      "publisher": "Atlus",
+      "dates": {
+        "JP": "April 23, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Jantei Monogatari 3 - Saver Angels"
+      ]
+    },
+    {
+      "title": "Jim Power",
+      "developer": "",
+      "publisher": "Micro World",
+      "dates": {
+        "JP": "March 19, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Jim Power in Mutant Planet"
+      ]
+    },
+    {
+      "title": "John Madden Duo CD Football",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "September 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "John Madden Duo CD Football"
+      ]
+    },
+    {
+      "title": "Jūōki (CD)",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "September 22, 1989"
+      },
+      "medium": "CD-ROM²",
+      "parentTitle": "Jūōki",
+      "archiveTitles": [
+        "Juuouki"
+      ]
+    },
+    {
+      "title": "J. League Tremendous Soccer '94",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "December 23, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "J.League Tremendous Soccer '94"
+      ]
+    },
+    {
+      "title": "J.B. Harold Murder Club",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "November 23, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "J. B. Harold Murder Club",
+        "J. B. Harold Series 1 - Murder Club"
+      ]
+    },
+    {
+      "title": "J.B. Harold Murder Club",
+      "developer": "",
+      "publisher": "NEC",
+      "dates": {
+        "NA": "August 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "J. B. Harold Murder Club",
+        "J. B. Harold Series 1 - Murder Club"
+      ]
+    },
+    {
+      "title": "Kabuki Ittō Ryōdan",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "February 24, 1995"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Kabuki Ittouryoudan"
+      ]
+    },
+    {
+      "title": "Kagami no Kuni no Legend",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "October 27, 1989"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Kagami no Kuni no Legend"
+      ]
+    },
+    {
+      "title": "Kaizō Chōjin Shubibinman 3: Ikai no Princess",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "February 28, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Kaizou Choujin Shubibinman 3 - Ikai no Princess"
+      ]
+    },
+    {
+      "title": "Kakuto Haō Densetsu Algunos",
+      "developer": "",
+      "publisher": "Intec",
+      "dates": {
+        "JP": "January 21, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Kakutou Haou Densetsu - Algunos"
+      ]
+    },
+    {
+      "title": "Kawa no Nushizuri: Shizenha",
+      "developer": "",
+      "publisher": "Pack-In-Video",
+      "dates": {
+        "JP": "March 27, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Kawa no Nushitsuri - Shizen-ha"
+      ]
+    },
+    {
+      "title": "Kaze Kiri",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "April 28, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Kaze Kiri - Ninja Action"
+      ]
+    },
+    {
+      "title": "Kiaidan 00",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "October 23, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Kiaidan 00"
+      ]
+    },
+    {
+      "title": "Kisō Lōga",
+      "developer": "",
+      "publisher": "Kogado Studio",
+      "dates": {
+        "JP": "December 3, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Kisou Louga"
+      ]
+    },
+    {
+      "title": "K.O. Seiki Beast Sanjūshi",
+      "developer": "",
+      "publisher": "Pack-In-Video",
+      "dates": {
+        "JP": "June 17, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "KO Seiki Beast Sanjuushi - Gaia Fukkatsu - Kanketsu-hen"
+      ]
+    },
+    {
+      "title": "L-Dis",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "April 5, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "L-Dis"
+      ]
+    },
+    {
+      "title": "La Valeur",
+      "developer": "",
+      "publisher": "Kogado Studio",
+      "dates": {
+        "JP": "March 22, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Mashou Denki - La Valeur"
+      ]
+    },
+    {
+      "title": "Lady Phantom",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "November 29, 1991"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Lady Phantom"
+      ]
+    },
+    {
+      "title": "Langrisser: Hikari no Matsuei",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "August 6, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Langrisser - Hikari no Matsuei"
+      ]
+    },
+    {
+      "title": "Laplace no Ma",
+      "developer": "",
+      "publisher": "Human Entertainment",
+      "dates": {
+        "JP": "March 30, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Laplace no Ma"
+      ]
+    },
+    {
+      "title": "Last Alert",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "December 28, 1989"
+      },
+      "medium": "CD-ROM²",
+      "regionalTitles": {
+        "JP": "Red Alert"
+      },
+      "archiveTitles": [
+        "Last Alert",
+        "Red Alert"
+      ]
+    },
+    {
+      "title": "Last Alert",
+      "developer": "",
+      "publisher": "NEC",
+      "dates": {
+        "NA": "November 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Last Alert",
+        "Red Alert"
+      ]
+    },
+    {
+      "title": "Last Armageddon",
+      "developer": "",
+      "publisher": "Brain Grey",
+      "dates": {
+        "JP": "August 31, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Last Armageddon"
+      ]
+    },
+    {
+      "title": "Legend of Xanadu, The",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "February 18, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Legend of Xanadu - Kaze no Densetsu Xanadu"
+      ]
+    },
+    {
+      "title": "Legend of Xanadu II, The",
+      "developer": "",
+      "publisher": "Nihon Falcom",
+      "dates": {
+        "JP": "June 30, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Legend of Xanadu - Kaze no Densetsu Xanadu II"
+      ]
+    },
+    {
+      "title": "Legion",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "September 21, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Legion"
+      ]
+    },
+    {
+      "title": "Lemmings",
+      "developer": "",
+      "publisher": "Sunsoft",
+      "dates": {
+        "JP": "November 28, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Lemmings"
+      ]
+    },
+    {
+      "title": "Linda³",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "October 13, 1995"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Linda^3"
+      ]
+    },
+    {
+      "title": "Loom",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "September 25, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Loom"
+      ]
+    },
+    {
+      "title": "Loom",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "November 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Loom"
+      ]
+    },
+    {
+      "title": "Lord of Wars",
+      "developer": "",
+      "publisher": "SystemSoft",
+      "dates": {
+        "JP": "November 29, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Lord of Wars"
+      ]
+    },
+    {
+      "title": "Lords of the Rising Sun",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "March 13, 1992"
+      },
+      "medium": "CD-ROM²",
+      "regionalTitles": {
+        "JP": "Rising Sun"
+      },
+      "archiveTitles": [
+        "Lords of the Rising Sun",
+        "Rising Sun"
+      ]
+    },
+    {
+      "title": "Lords of the Rising Sun",
+      "developer": "",
+      "publisher": "NEC",
+      "dates": {
+        "NA": "July 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Lords of the Rising Sun",
+        "Rising Sun"
+      ]
+    },
+    {
+      "title": "Lords of Thunder",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "April 23, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "regionalTitles": {
+        "JP": "Winds of Thunder"
+      },
+      "archiveTitles": [
+        "Lords of Thunder",
+        "Winds of Thunder"
+      ]
+    },
+    {
+      "title": "Lords of Thunder",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "March 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Lords of Thunder",
+        "Winds of Thunder"
+      ]
+    },
+    {
+      "title": "Lōga II: The Ends of Shangrila",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "May 26, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Kisou Louga II - The Ends of Shangrila"
+      ]
+    },
+    {
+      "title": "Mad Stalker: Full Metal Force",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "September 15, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Mad Stalker - Full Metal Force"
+      ]
+    },
+    {
+      "title": "Madō Monogatari I",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "December 13, 1996"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Madou Monogatari I - Honoo no Sotsuenji"
+      ]
+    },
+    {
+      "title": "Magical Dinosaur Tour",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "August 24, 1990"
+      },
+      "medium": "CD-ROM²",
+      "regionalTitles": {
+        "JP": "Magical Saurus Tour"
+      },
+      "archiveTitles": [
+        "Magical Dinosaur Tour",
+        "Magical Saurus Tour"
+      ]
+    },
+    {
+      "title": "Magical Dinosaur Tour",
+      "developer": "",
+      "publisher": "NEC",
+      "dates": {
+        "NA": "December 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Magical Dinosaur Tour",
+        "Magical Saurus Tour"
+      ]
+    },
+    {
+      "title": "Magicoal",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "October 29, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Magicoal"
+      ]
+    },
+    {
+      "title": "Mahjong Clinic Special",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "September 24, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Mahjong Clinic Special"
+      ]
+    },
+    {
+      "title": "Mahjong Lemon Angel",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "February 25, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Mahjong Lemon Angel"
+      ]
+    },
+    {
+      "title": "Mahjong on the Beach",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "September 30, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Mahjong on the Beach"
+      ]
+    },
+    {
+      "title": "Mahjong Sword Princess Quest Gaiden",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "August 11, 1995"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Mahjong Sword - Princess Quest Gaiden"
+      ]
+    },
+    {
+      "title": "Mahjong Vanilla Syndrome",
+      "developer": "",
+      "publisher": "Nichibutsu",
+      "dates": {
+        "JP": "October 25, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Mahjong Vanilla Syndrome"
+      ]
+    },
+    {
+      "title": "Inoue Mami: Kono Hoshi ni Tatta Hitori no Kimi",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "December 25, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Inoue Mami - Kono Hoshi ni Tatta Hitori no Kimi"
+      ]
+    },
+    {
+      "title": "Mamono Hunter Yōko: Makai Kara no Tenkōsai",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "March 13, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Mamono Hunter Youko - Makai kara no Tenkousei"
+      ]
+    },
+    {
+      "title": "Mamono Hunter Yōko: Tooki Yobikoe",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "January 8, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Mamono Hunter Youko - Tooki Yobigoe"
+      ]
+    },
+    {
+      "title": "The Manhole",
+      "developer": "",
+      "publisher": "Sunsoft",
+      "dates": {
+        "JP": "March 22, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Manhole, The"
+      ]
+    },
+    {
+      "title": "Martial Champion",
+      "developer": "",
+      "publisher": "Konami",
+      "dates": {
+        "JP": "December 17, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Martial Champion"
+      ]
+    },
+    {
+      "title": "Master of Monsters",
+      "developer": "",
+      "publisher": "Micro Cabin",
+      "dates": {
+        "JP": "February 15, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Master of Monsters"
+      ]
+    },
+    {
+      "title": "Mateki Densetsu Astralius",
+      "developer": "",
+      "publisher": "IGS",
+      "dates": {
+        "JP": "June 21, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Mateki Densetsu Astralius"
+      ]
+    },
+    {
+      "title": "Megami Paradise",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "September 30, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Megami Paradise"
+      ]
+    },
+    {
+      "title": "Meikyū no Elfine",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "July 6, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Faerie Dust Story - Meikyuu no Elfeene"
+      ]
+    },
+    {
+      "title": "Metal Angel",
+      "developer": "",
+      "publisher": "Pack-In-Video",
+      "dates": {
+        "JP": "September 24, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Metal Angel"
+      ]
+    },
+    {
+      "title": "Metal Angel 2",
+      "developer": "",
+      "publisher": "Pack-In-Video",
+      "dates": {
+        "JP": "January 20, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Metal Angel 2"
+      ]
+    },
+    {
+      "title": "Metamor Jupiter",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "January 14, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Metamor Jupiter"
+      ]
+    },
+    {
+      "title": "Might & Magic",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "January 24, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Might and Magic"
+      ]
+    },
+    {
+      "title": "Might and Magic III: Isles of Terra",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "October 29, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Might and Magic III - Isles of Terra"
+      ]
+    },
+    {
+      "title": "Might and Magic III: Isles of Terra",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "August 17, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Might and Magic III - Isles of Terra"
+      ]
+    },
+    {
+      "title": "Minesweeper",
+      "developer": "",
+      "publisher": "Pack-In-Video",
+      "dates": {
+        "JP": "March 20, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Minesweeper"
+      ]
+    },
+    {
+      "title": "Mirai Shōnen Conan",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "February 28, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Mirai Shounen Conan"
+      ]
+    },
+    {
+      "title": "Mitsubachi Gakuen",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "September 14, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Mitsubachi Gakuen"
+      ]
+    },
+    {
+      "title": "Monster Lair",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "August 31, 1989"
+      },
+      "medium": "CD-ROM²",
+      "regionalTitles": {
+        "JP": "Wonder Boy III: Monster Lair"
+      },
+      "archiveTitles": [
+        "Monster Lair",
+        "Wonder Boy III - Monster Lair"
+      ]
+    },
+    {
+      "title": "Monster Lair",
+      "developer": "",
+      "publisher": "NEC",
+      "dates": {
+        "NA": "December 1989"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Monster Lair",
+        "Wonder Boy III - Monster Lair"
+      ]
+    },
+    {
+      "title": "Monster Maker: Yami no Ryūkishi",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "March 30, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Monster Maker - Yami no Ryuukishi"
+      ]
+    },
+    {
+      "title": "Moonlight Lady",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "March 26, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Moonlight Lady"
+      ]
+    },
+    {
+      "title": "Motteke Tamago",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "April 16, 1997"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Motteke Tamago"
+      ]
+    },
+    {
+      "title": "Moto Roader MC",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "December 18, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Motoroader MC"
+      ]
+    },
+    {
+      "title": "Mystic Formula",
+      "developer": "",
+      "publisher": "Micro Cabin",
+      "dates": {
+        "JP": "July 23, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Mystic Formula"
+      ]
+    },
+    {
+      "title": "Fushigi no Umi no Nadia",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "January 29, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Fushigi no Umi no Nadia - The Secret of Blue Water"
+      ]
+    },
+    {
+      "title": "Naritore: The Sugoroku '92",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "December 20, 1991"
+      },
+      "medium": "CD-ROM²"
+    },
+    {
+      "title": "Nekketsu Kōkō Dodgeball Bu: CD Soccer Hen",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "December 20, 1991"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Nekketsu Koukou Dodgeball-bu CD - Soccer-hen"
+      ]
+    },
+    {
+      "title": "Nekketsu Legend Baseballer",
+      "developer": "",
+      "publisher": "Pack-In-Video",
+      "dates": {
+        "JP": "June 16, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Nekketsu Legend - Baseballer"
+      ]
+    },
+    {
+      "title": "Nemurenu Yoru Chiisaina Ohanashi",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "July 30, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Nemurenu Yoru no Chiisana Ohanashi"
+      ]
+    },
+    {
+      "title": "Neo Nectaris",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "July 29, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Neo Nectaris"
+      ]
+    },
+    {
+      "title": "Nexzr",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "December 11, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "NEXZR"
+      ]
+    },
+    {
+      "title": "Nishimura Kyōtaro Mystery: Hokutosei no Onna",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "February 23, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Nishimura Kyoutarou Mystery - Hokutosei no Onna"
+      ]
+    },
+    {
+      "title": "No-Ri-Ko",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "December 4, 1988"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "No-Ri-Ko"
+      ]
+    },
+    {
+      "title": "Nobunaga no Yabō: Bushō Fūunroku",
+      "developer": "",
+      "publisher": "Koei",
+      "dates": {
+        "JP": "February 27, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Nobunaga no Yabou - Bushou Fuuunroku"
+      ]
+    },
+    {
+      "title": "Nobunaga no Yabō: Zenkokuban",
+      "developer": "",
+      "publisher": "Koei",
+      "dates": {
+        "JP": "December 11, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Nobunaga no Yabou - Zenkokuban"
+      ]
+    },
+    {
+      "title": "Pachio-kun: Maboroshi no Densetsu",
+      "developer": "",
+      "publisher": "Coconuts Japan",
+      "dates": {
+        "JP": "April 19, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Pachio-kun - Maboroshi no Densetsu"
+      ]
+    },
+    {
+      "title": "Pachio-kun: Warau Uchū",
+      "developer": "",
+      "publisher": "Coconuts Japan",
+      "dates": {
+        "JP": "December 22, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Pachio-kun - Warau Uchuu"
+      ]
+    },
+    {
+      "title": "Pachio-kun 3: Pachislot & Pachinko",
+      "developer": "",
+      "publisher": "Coconuts Japan",
+      "dates": {
+        "JP": "April 15, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Pachio-kun 3 - Pachi-Slot & Pachinko"
+      ]
+    },
+    {
+      "title": "Panic Bomber",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "December 22, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Bomberman - Panic Bomber"
+      ]
+    },
+    {
+      "title": "Pastel Lime",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "December 18, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Pastel Lime"
+      ]
+    },
+    {
+      "title": "Police Connection",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "February 26, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Police Connection"
+      ]
+    },
+    {
+      "title": "Pop'n Magic",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "July 24, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Pop'n Magic"
+      ]
+    },
+    {
+      "title": "Popful Mail",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "August 12, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "PopfulMail"
+      ]
+    },
+    {
+      "title": "Populous: The Promised Lands",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "October 25, 1991"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Populous - The Promised Lands"
+      ]
+    },
+    {
+      "title": "Power Golf 2",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "March 4, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Hu PGA Tour - PowerGolf 2 - Golfer"
+      ]
+    },
+    {
+      "title": "Prince of Persia",
+      "developer": "",
+      "publisher": "Riverhillsoft",
+      "dates": {
+        "JP": "November 8, 1991"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Prince of Persia"
+      ]
+    },
+    {
+      "title": "Prince of Persia",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "October 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Prince of Persia"
+      ]
+    },
+    {
+      "title": "Princess Maker 1",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "January 3, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Princess Maker 1"
+      ]
+    },
+    {
+      "title": "Princess Maker 2",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "June 16, 1995"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Princess Maker 2"
+      ]
+    },
+    {
+      "title": "Princess Minerva",
+      "developer": "",
+      "publisher": "Riverhillsoft",
+      "dates": {
+        "JP": "March 25, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Princess Minerva"
+      ]
+    },
+    {
+      "title": "Private Eyedol",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "August 11, 1995"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Private Eye dol"
+      ]
+    },
+    {
+      "title": "The Pro Yakyū",
+      "developer": "",
+      "publisher": "Intec",
+      "dates": {
+        "JP": "October 5, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Pro Yakyuu, The"
+      ]
+    },
+    {
+      "title": "The Pro Yakyū Super '94",
+      "developer": "",
+      "publisher": "Intec",
+      "dates": {
+        "JP": "June 17, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Pro Yakyuu Super '94, The"
+      ]
+    },
+    {
+      "title": "The Pro Yakyū Super",
+      "developer": "",
+      "publisher": "Intec",
+      "dates": {
+        "JP": "October 9, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Pro Yakyuu Super, The"
+      ]
+    },
+    {
+      "title": "Psychic Detective Series Vol. 3: Aýa",
+      "developer": "",
+      "publisher": "Data West",
+      "dates": {
+        "JP": "November 20, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Psychic Detective Series Vol. 3 - Aya"
+      ]
+    },
+    {
+      "title": "Psychic Detective Vol. 4: Orgel",
+      "developer": "",
+      "publisher": "Data West",
+      "dates": {
+        "JP": "August 6, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Psychic Detective Series Vol. 4 - Orgel"
+      ]
+    },
+    {
+      "title": "Psychic Storm",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "March 19, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Psychic Storm"
+      ]
+    },
+    {
+      "title": "Puyo Puyo CD",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "April 22, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Puyo Puyo CD"
+      ]
+    },
+    {
+      "title": "Puyo Puyo CD Tsū",
+      "developer": "",
+      "publisher": "NEC Interchannel",
+      "dates": {
+        "JP": "March 29, 1996"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Puyo Puyo CD Tsuu"
+      ]
+    },
+    {
+      "title": "Quiz Avenue",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "February 15, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Quiz Avenue"
+      ]
+    },
+    {
+      "title": "Quiz Avenue II",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "October 11, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Quiz Avenue II"
+      ]
+    },
+    {
+      "title": "Quiz Avenue 3",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "November 25, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Quiz Avenue III"
+      ]
+    },
+    {
+      "title": "Quiz Caravan Cult Q",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "May 28, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Quiz Caravan Cult Q"
+      ]
+    },
+    {
+      "title": "Quiz de Gakuensai",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "November 26, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Quiz de Gakuensai"
+      ]
+    },
+    {
+      "title": "Quiz Marugoto The World",
+      "developer": "",
+      "publisher": "Atlus",
+      "dates": {
+        "JP": "April 5, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Quiz Marugoto the World"
+      ]
+    },
+    {
+      "title": "Quiz Marugoto The World: Time Machine ni Onegai!",
+      "developer": "",
+      "publisher": "Atlus",
+      "dates": {
+        "JP": "March 27, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Quiz Marugoto the World 2 - Time Machine ni Onegai!"
+      ]
+    },
+    {
+      "title": "Quiz no Hoshi",
+      "developer": "",
+      "publisher": "Sunsoft",
+      "dates": {
+        "JP": "August 10, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Quiz no Hoshi - Star of Quiz"
+      ]
+    },
+    {
+      "title": "Quiz Tonosama no Yabō",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "October 10, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Quiz Tonosama no Yabou"
+      ]
+    },
+    {
+      "title": "R-Type: Complete CD",
+      "developer": "",
+      "publisher": "Irem",
+      "dates": {
+        "JP": "December 20, 1991"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "R-Type Complete CD"
+      ]
+    },
+    {
+      "title": "Rainbow Islands",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "June 30, 1993"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Rainbow Islands - The Story of Bubble Bobble 2"
+      ]
+    },
+    {
+      "title": "Ranma ½",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "December 7, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Ranma 1-2"
+      ]
+    },
+    {
+      "title": "Ranma ½: Datō, Ganso Musabetsu Kakuto Ryū",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "October 9, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Ranma 1-2 - Datou, Ganso Musabetsu Kakutou-ryuu!"
+      ]
+    },
+    {
+      "title": "Ranma ½: Toraware no Hayanome",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "December 6, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Ranma 1-2 - Toraware no Hanayome"
+      ]
+    },
+    {
+      "title": "Rayxanber II",
+      "developer": "",
+      "publisher": "Data West",
+      "dates": {
+        "JP": "June 7, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Rayxanber II"
+      ]
+    },
+    {
+      "title": "Rayxanber III",
+      "developer": "",
+      "publisher": "Data West",
+      "dates": {
+        "JP": "June 26, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Rayxanber III"
+      ]
+    },
+    {
+      "title": "Record of Lodoss War",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "July 17, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Record of Lodoss War"
+      ]
+    },
+    {
+      "title": "Record of Lodoss War II",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "December 16, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Record of Lodoss War II"
+      ]
+    },
+    {
+      "title": "Renny Blaster",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "June 23, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Renny Blaster"
+      ]
+    },
+    {
+      "title": "Riot Zone",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "February 26, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "regionalTitles": {
+        "JP": "Crest of Wolf"
+      },
+      "archiveTitles": [
+        "Riot Zone",
+        "Crest of Wolf",
+        "Ookami-teki Monshou - Crest of Wolf"
+      ]
+    },
+    {
+      "title": "Riot Zone",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "February 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Riot Zone",
+        "Crest of Wolf",
+        "Ookami-teki Monshou - Crest of Wolf"
+      ]
+    },
+    {
+      "title": "Road Spirits",
+      "developer": "",
+      "publisher": "Pack-In-Video",
+      "dates": {
+        "JP": "March 22, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Road Spirits"
+      ]
+    },
+    {
+      "title": "ROM ROM Stadium",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "December 22, 1989"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "ROM ROM Stadium"
+      ]
+    },
+    {
+      "title": "Ruin: Kami no Isan",
+      "developer": "",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "November 19, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Ruin - Kami no Isan"
+      ]
+    },
+    {
+      "title": "Ryūkō no Ken",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "March 26, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Ryuuko no Ken"
+      ]
+    },
+    {
+      "title": "Sangokushi: Eiketsu Tenka ni Nozomu",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "March 29, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Sangokushi - Eiketsu Tenka ni Nozomu"
+      ]
+    },
+    {
+      "title": "Sangokushi III",
+      "developer": "",
+      "publisher": "Koei",
+      "dates": {
+        "JP": "October 2, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Sangokushi III"
+      ]
+    },
+    {
+      "title": "Seirei Senshi Spriggan",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "July 12, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Seirei Senshi Spriggan"
+      ]
+    },
+    {
+      "title": "Seiryū Densetsu Monbit",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "August 30, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Seiryuu Densetsu - Monbit"
+      ]
+    },
+    {
+      "title": "Seisenshi Denshō",
+      "developer": "",
+      "publisher": "Nichibutsu",
+      "dates": {
+        "JP": "August 5, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Seisenshi Denshou - Jantaku no Kishi"
+      ]
+    },
+    {
+      "title": "Seiya Monogatari",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "December 22, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Seiya Monogatari - Anearth Fantasy Stories"
+      ]
+    },
+    {
+      "title": "Sengoku Kantō Sangokushi",
+      "developer": "",
+      "publisher": "Intec",
+      "dates": {
+        "JP": "June 28, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Sengoku Kantou Sangokushi"
+      ]
+    },
+    {
+      "title": "Sexy Idol Mahjong",
+      "developer": "",
+      "publisher": "Nichibutsu",
+      "dates": {
+        "JP": "December 24, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Sexy Idol Mahjong"
+      ]
+    },
+    {
+      "title": "Sexy Idol Mahjong: Mahjong Fashion Monogatari",
+      "developer": "",
+      "publisher": "Nichibutsu",
+      "dates": {
+        "JP": "September 16, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Sexy Idol Mahjong - Fashion Monogatari"
+      ]
+    },
+    {
+      "title": "Sexy Idol Mahjong 2: Yakyūken no Uta",
+      "developer": "",
+      "publisher": "Nichibutsu",
+      "dates": {
+        "JP": "January 31, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Sexy Idol Mahjong - Yakyuuken no Uta"
+      ]
+    },
+    {
+      "title": "Shadow of the Beast",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "March 27, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Shadow of the Beast",
+        "Shadow of the Beast - Mashou no Okite"
+      ]
+    },
+    {
+      "title": "Shadow of the Beast",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "November 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Shadow of the Beast",
+        "Shadow of the Beast - Mashou no Okite"
+      ]
+    },
+    {
+      "title": "Shanghai II",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "April 13, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Shanghai II"
+      ]
+    },
+    {
+      "title": "Shanghai III: Dragon's Eye",
+      "developer": "",
+      "publisher": "ASK Kodansha",
+      "dates": {
+        "JP": "December 18, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Battle Shanghai - Dragon's Eye ~ Shanghai III - Dragon's Eye"
+      ]
+    },
+    {
+      "title": "Shape Shifter",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "September 25, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "regionalTitles": {
+        "JP": "Shapeshift: Makai Eiyū Den"
+      },
+      "archiveTitles": [
+        "Shape Shifter",
+        "Shapeshift: Makai Eiyū Den",
+        "Makai Eiyuuden - Shape Shifter"
+      ]
+    },
+    {
+      "title": "Shape Shifter",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "October 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Shape Shifter",
+        "Shapeshift: Makai Eiyū Den",
+        "Makai Eiyuuden - Shape Shifter"
+      ]
+    },
+    {
+      "title": "Sherlock Holmes Consulting Detective",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "July 26, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Sherlock Holmes - Consulting Detective"
+      ]
+    },
+    {
+      "title": "Sherlock Holmes Consulting Detective",
+      "developer": "",
+      "publisher": "NEC",
+      "dates": {
+        "NA": "June 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Sherlock Holmes - Consulting Detective"
+      ]
+    },
+    {
+      "title": "Sherlock Holmes: Consulting Detective Vol. II",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "May 28, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Sherlock Holmes - Consulting Detective Vol. II",
+        "Sherlock Holmes - Consulting Detective - Volume 2"
+      ]
+    },
+    {
+      "title": "Sherlock Holmes: Consulting Detective Vol. II",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "June 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Sherlock Holmes - Consulting Detective Vol. II",
+        "Sherlock Holmes - Consulting Detective - Volume 2"
+      ]
+    },
+    {
+      "title": "Shin Megami Tensei",
+      "developer": "",
+      "publisher": "Atlus",
+      "dates": {
+        "JP": "December 25, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Shin Megami Tensei"
+      ]
+    },
+    {
+      "title": "Shin Onryō Senki",
+      "developer": "",
+      "publisher": "Fujicom",
+      "dates": {
+        "JP": "September 22, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Shin Onryou Senki"
+      ]
+    },
+    {
+      "title": "Shin Sangokushi: Tenka wa Waga ni",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "November 20, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Yokoyama Mitsuteru Shin Sangokushi - Tenka wa Ware ni"
+      ]
+    },
+    {
+      "title": "Shōgi Database Kiyū",
+      "developer": "",
+      "publisher": "SETA",
+      "dates": {
+        "JP": "October 28, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Shougi Database Kiyuu"
+      ]
+    },
+    {
+      "title": "Side Arms Special",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "December 15, 1989"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Hyper Dyne - SideArms Special"
+      ],
+      "parentTitle": "Side Arms Hyper Dyne"
+    },
+    {
+      "title": "SimEarth",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "January 14, 1993",
+        "NA": "April 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "SimEarth - The Living Planet"
+      ]
+    },
+    {
+      "title": "Slime World",
+      "developer": "",
+      "publisher": "Micro World",
+      "dates": {
+        "JP": "October 9, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Todd's Adventures in Slime World"
+      ]
+    },
+    {
+      "title": "Slot Gambler",
+      "developer": "",
+      "publisher": "Nichibutsu",
+      "dates": {
+        "JP": "April 28, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Slot Gambler"
+      ]
+    },
+    {
+      "title": "Snatcher CD-ROMantic",
+      "developer": "",
+      "publisher": "Konami",
+      "dates": {
+        "JP": "October 23, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Snatcher CD-ROMantic"
+      ]
+    },
+    {
+      "title": "Sol Bianca",
+      "developer": "",
+      "publisher": "Masaya",
+      "dates": {
+        "JP": "June 29, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Sol Bianca"
+      ]
+    },
+    {
+      "title": "Sol Moonarge",
+      "developer": "",
+      "publisher": "Irem",
+      "dates": {
+        "JP": "January 7, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Sol Moonarge"
+      ]
+    },
+    {
+      "title": "Solid Force",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "March 17, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Solid Force"
+      ]
+    },
+    {
+      "title": "Sorcerian",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "July 17, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Sorcerian"
+      ]
+    },
+    {
+      "title": "Sotsugyō: Graduation",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "July 30, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Sotsugyou - Graduation"
+      ]
+    },
+    {
+      "title": "Sotsugyō Shashin: Miki",
+      "developer": "",
+      "publisher": "Coconuts Japan",
+      "dates": {
+        "JP": "October 28, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Sotsugyou Shashin - Miki"
+      ]
+    },
+    {
+      "title": "Space Invaders: The Original Game",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "July 21, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Space Invaders - The Original Game"
+      ]
+    },
+    {
+      "title": "Splash Lake",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "June 28, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Splash Lake",
+        "Splash Lake - Ostrich Daibouken"
+      ]
+    },
+    {
+      "title": "Splash Lake",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "August 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Splash Lake",
+        "Splash Lake - Ostrich Daibouken"
+      ]
+    },
+    {
+      "title": "Spriggan Mk. II",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "May 1, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Spriggan Mark 2 - Re Terraform Project"
+      ]
+    },
+    {
+      "title": "Star Breaker",
+      "developer": "",
+      "publisher": "Ray Force",
+      "dates": {
+        "JP": "February 10, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Star Breaker"
+      ]
+    },
+    {
+      "title": "Star Mobile",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "October 2, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Star Mobile"
+      ]
+    },
+    {
+      "title": "Star Parodier",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "April 24, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Star Parodier"
+      ]
+    },
+    {
+      "title": "Startling Odyssey",
+      "developer": "",
+      "publisher": "Ray Force",
+      "dates": {
+        "JP": "October 22, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Startling Odyssey"
+      ]
+    },
+    {
+      "title": "Startling Odyssey II",
+      "developer": "",
+      "publisher": "Ray Force",
+      "dates": {
+        "JP": "October 21, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Startling Odyssey II - Maryuu Sensou"
+      ]
+    },
+    {
+      "title": "Steam-Heart's",
+      "developer": "",
+      "publisher": "TGL",
+      "dates": {
+        "JP": "March 22, 1996"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Steam-Heart's"
+      ]
+    },
+    {
+      "title": "Strider Hiryū",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "September 22, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Strider Hiryuu"
+      ]
+    },
+    {
+      "title": "Super Air Zonk",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "July 30, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "regionalTitles": {
+        "JP": "CD Denjin: Rockabilly Tengoku"
+      },
+      "archiveTitles": [
+        "Super Air Zonk",
+        "CD Denjin - Rockabilly Tengoku",
+        "Super Air Zonk - Rockabilly-Paradise"
+      ]
+    },
+    {
+      "title": "Super Air Zonk",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "April 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Super Air Zonk",
+        "CD Denjin - Rockabilly Tengoku",
+        "Super Air Zonk - Rockabilly-Paradise"
+      ]
+    },
+    {
+      "title": "Super Albatross",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "September 14, 1989"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Super Albatross"
+      ]
+    },
+    {
+      "title": "Super Daisenryaku",
+      "developer": "",
+      "publisher": "Micro Cabin",
+      "dates": {
+        "JP": "April 27, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Super Daisenryaku"
+      ]
+    },
+    {
+      "title": "Super Darius",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "March 16, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Super Darius"
+      ],
+      "parentTitle": "Darius Plus"
+    },
+    {
+      "title": "Super Darius II",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "December 23, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Super Darius II"
+      ]
+    },
+    {
+      "title": "Super Mahjong Taikai",
+      "developer": "",
+      "publisher": "Koei",
+      "dates": {
+        "JP": "December 28, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Super Mahjong Taikai"
+      ]
+    },
+    {
+      "title": "Super Raiden",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "April 2, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Super Raiden"
+      ]
+    },
+    {
+      "title": "Super Real Mahjong P II/III Custom",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "August 5, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Super Real Mahjong PII-III Custom"
+      ]
+    },
+    {
+      "title": "Super Real Mahjong PIV",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "December 17, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Super Real Mahjong PIV Custom"
+      ]
+    },
+    {
+      "title": "Super Real Mahjong P.V Custom",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "March 3, 1995"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Super Real Mahjong P.V Custom"
+      ]
+    },
+    {
+      "title": "Super Real Mahjong Special",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "December 18, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Super Real Mahjong Special - Miki Kasumi Shouko no Omoide yori"
+      ]
+    },
+    {
+      "title": "Super Schwarzchild",
+      "developer": "",
+      "publisher": "Kogado Studio",
+      "dates": {
+        "JP": "December 6, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Super Schwarzschild"
+      ]
+    },
+    {
+      "title": "Super Schwarzschild 2",
+      "developer": "",
+      "publisher": "Kogado Studio",
+      "dates": {
+        "JP": "December 4, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Super Schwarzschild 2"
+      ]
+    },
+    {
+      "title": "Sword Master",
+      "developer": "",
+      "publisher": "Right Stuff",
+      "dates": {
+        "JP": "November 19, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Sword Master"
+      ]
+    },
+    {
+      "title": "Syd Mead's Terraforming",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "May 1, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "regionalTitles": {
+        "JP": "Terraforming"
+      },
+      "archiveTitles": [
+        "Syd Mead's Terraforming",
+        "TerraForming",
+        "SydMead's TerraForming"
+      ]
+    },
+    {
+      "title": "Syd Mead's Terraforming",
+      "developer": "",
+      "publisher": "TTI",
+      "dates": {
+        "NA": "May 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Syd Mead's Terraforming",
+        "TerraForming",
+        "SydMead's TerraForming"
+      ]
+    },
+    {
+      "title": "Sylphia",
+      "developer": "",
+      "publisher": "Tonkin House",
+      "dates": {
+        "JP": "October 22, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Sylphia"
+      ]
+    },
+    {
+      "title": "Taidaima Yūsha Boshūchū",
+      "developer": "",
+      "publisher": "Human Entertainment",
+      "dates": {
+        "JP": "November 26, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Tadaima Yuusha Boshuu-chuu"
+      ]
+    },
+    {
+      "title": "Taiheiki",
+      "developer": "",
+      "publisher": "Intec",
+      "dates": {
+        "JP": "December 13, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Taiheiki"
+      ]
+    },
+    {
+      "title": "Tanjō: Debut",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "September 22, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Tanjou - Debut"
+      ]
+    },
+    {
+      "title": "Tecmo World Cup: Super Soccer",
+      "developer": "",
+      "publisher": "Media Rings",
+      "dates": {
+        "JP": "December 4, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Tecmo World Cup Super Soccer"
+      ]
+    },
+    {
+      "title": "Tenchi Muyō! Ryōōki",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "May 26, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Tenchi Muyou! Ryououki"
+      ]
+    },
+    {
+      "title": "Tenchi wo Kurau",
+      "developer": "",
+      "publisher": "NEC Avenue",
+      "dates": {
+        "JP": "June 17, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Tenchi o Kurau"
+      ]
+    },
+    {
+      "title": "Tengai Makyō: Fūun Kabukiden",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "July 10, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Far East of Eden - Tengai Makyou - Fuun Kabuki-den"
+      ]
+    },
+    {
+      "title": "Tengai Makyō: Ziria",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "June 30, 1989"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Far East of Eden - Tengai Makyou - Ziria"
+      ]
+    },
+    {
+      "title": "Tengai Makyō II: Manji Maru",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "March 26, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Far East of Eden - Tengai Makyou II - Manji Maru"
+      ]
+    },
+    {
+      "title": "Tenshi no Uta",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "October 25, 1991"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Tenshi no Uta"
+      ]
+    },
+    {
+      "title": "Tenshi no Uta II",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "March 26, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Tenshi no Uta II - Datenshi no Sentaku"
+      ]
+    },
+    {
+      "title": "Tokimeki Memorial",
+      "developer": "",
+      "publisher": "Konami",
+      "dates": {
+        "JP": "May 27, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Tokimeki Memorial"
+      ]
+    },
+    {
+      "title": "Top o Nerae! GunBuster Vol. 1",
+      "developer": "",
+      "publisher": "Riverhillsoft",
+      "dates": {
+        "JP": "June 25, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Top o Nerae! GunBuster Vol. 1"
+      ]
+    },
+    {
+      "title": "Top o Nerae! GunBuster Vol. 2",
+      "developer": "",
+      "publisher": "Riverhillsoft",
+      "dates": {
+        "JP": "March 26, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Top o Nerae! GunBuster Vol. 2"
+      ]
+    },
+    {
+      "title": "Travelers!: Densetsu o Buttobase",
+      "developer": "",
+      "publisher": "Victor Entertainment",
+      "dates": {
+        "JP": "December 29, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Travellers! Densetsu o Buttobase"
+      ]
+    },
+    {
+      "title": "Travel Epuru",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "September 4, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Travel Eple"
+      ]
+    },
+    {
+      "title": "The TV Show",
+      "developer": "",
+      "publisher": "Right Stuff",
+      "dates": {
+        "JP": "September 29, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "TV Show, The"
+      ]
+    },
+    {
+      "title": "Uchū Senkan Yamato",
+      "developer": "",
+      "publisher": "Human Entertainment",
+      "dates": {
+        "JP": "December 22, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Uchuu Senkan Yamato"
+      ]
+    },
+    {
+      "title": "Ultra Box No. 2",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "September 28, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Ultra Box 2-gou"
+      ]
+    },
+    {
+      "title": "Ultra Box No. 3",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "December 28, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Ultra Box 3-gou"
+      ]
+    },
+    {
+      "title": "Ultra Box No. 4",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "May 24, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Ultra Box 4-gou"
+      ]
+    },
+    {
+      "title": "Ultra Box No. 5",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "September 27, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Ultra Box 5-gou"
+      ]
+    },
+    {
+      "title": "Ultra Box No. 6",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "January 31, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Ultra Box 6-gou"
+      ]
+    },
+    {
+      "title": "Ultra Box Premiere Issue",
+      "developer": "",
+      "publisher": "Victor Musical Industries",
+      "dates": {
+        "JP": "June 15, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Ultra Box Soukan-gou"
+      ]
+    },
+    {
+      "title": "Urusei Yatsura: Stay With You",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "June 29, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Urusei Yatsura - Stay with You"
+      ]
+    },
+    {
+      "title": "Valis II",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "June 23, 1989"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Valis II"
+      ]
+    },
+    {
+      "title": "Valis II",
+      "developer": "",
+      "publisher": "NEC",
+      "dates": {
+        "NA": "May 23, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Valis II"
+      ]
+    },
+    {
+      "title": "Valis III",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "September 7, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Valis III"
+      ]
+    },
+    {
+      "title": "Valis III",
+      "developer": "",
+      "publisher": "NEC",
+      "dates": {
+        "NA": "March 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Valis III"
+      ]
+    },
+    {
+      "title": "Valis IV",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "August 23, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Valis IV"
+      ]
+    },
+    {
+      "title": "Valis: The Fantasm Soldier",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "March 19, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Mugen Senshi Valis - The Legend of a Fantasm Soldier"
+      ]
+    },
+    {
+      "title": "Vasteel",
+      "developer": "",
+      "publisher": "Human Entertainment",
+      "dates": {
+        "JP": "December 20, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Vasteel"
+      ]
+    },
+    {
+      "title": "Vasteel",
+      "developer": "",
+      "publisher": "Working Designs",
+      "dates": {
+        "NA": "April 1993"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Vasteel"
+      ]
+    },
+    {
+      "title": "Vasteel 2",
+      "developer": "",
+      "publisher": "Human Entertainment",
+      "dates": {
+        "JP": "July 8, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "Vasteel 2"
+      ]
+    },
+    {
+      "title": "Virgin Dream",
+      "developer": "",
+      "publisher": "Tokuma Shoten Intermedia",
+      "dates": {
+        "JP": "May 31, 1996"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Virgin Dream"
+      ]
+    },
+    {
+      "title": "Where in the World is Carmen Sandiego?",
+      "developer": "",
+      "publisher": "Pack-In-Video",
+      "dates": {
+        "JP": "March 30, 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Where in the World Is Carmen Sandiego"
+      ]
+    },
+    {
+      "title": "Wizardry I & II",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "July 23, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Wizardry I, II"
+      ]
+    },
+    {
+      "title": "Wizardry III & IV",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "March 4, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Wizardry III, IV"
+      ]
+    },
+    {
+      "title": "Wizardry V",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "September 25, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Wizardry V - Heart of the Maelstrom"
+      ]
+    },
+    {
+      "title": "World Heroes 2",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "June 4, 1994"
+      },
+      "medium": "Arcade CD-ROM²",
+      "archiveTitles": [
+        "World Heroes 2"
+      ]
+    },
+    {
+      "title": "Wrestle Angels: Double Impact",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "May 19, 1995"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Wrestle Angels - Double Impact"
+      ]
+    },
+    {
+      "title": "Xak I & II",
+      "developer": "",
+      "publisher": "Telenet Japan",
+      "dates": {
+        "JP": "December 25, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Xak"
+      ]
+    },
+    {
+      "title": "Xak III: The Eternal Recurrence",
+      "developer": "",
+      "publisher": "NEC Home Electronics",
+      "dates": {
+        "JP": "September 30, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Xak III - The Eternal Recurrence"
+      ]
+    },
+    {
+      "title": "Yamamura Misa Suspense: Kizenka Kyō Ezara Satsujin Jiken",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "March 6, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Yamamura Misa Suspense - Kinsenka Kyouezara Satsujin Jiken"
+      ]
+    },
+    {
+      "title": "Yami no Ketsuzoku",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "December 17, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Yami no Ketsuzoku - Harukanaru Kioku"
+      ]
+    },
+    {
+      "title": "Yawara!",
+      "developer": "",
+      "publisher": "Sofix",
+      "dates": {
+        "JP": "October 1, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "YaWaRa! A Fashionable Judo Girl!"
+      ]
+    },
+    {
+      "title": "Yawara! 2",
+      "developer": "",
+      "publisher": "Sofix",
+      "dates": {
+        "JP": "September 23, 1994"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "YaWaRa! 2 - A Fashionable Judo Girl!"
+      ]
+    },
+    {
+      "title": "Yū Yū Hakusho: Yami Shōbu!! Ankoku Bujutsu Kai",
+      "developer": "",
+      "publisher": "Banpresto",
+      "dates": {
+        "JP": "September 30, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Yuu Yuu Hakusho - Yami Shoubu!! Ankoku Bujutsu-kai"
+      ]
+    },
+    {
+      "title": "Ys: Book I & II",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "December 21, 1989"
+      },
+      "medium": "CD-ROM²",
+      "regionalTitles": {
+        "JP": "Ys I & II"
+      },
+      "archiveTitles": [
+        "Ys Book I & II",
+        "Ys I & II",
+        "Ys III"
+      ]
+    },
+    {
+      "title": "Ys: Book I & II",
+      "developer": "",
+      "publisher": "NEC",
+      "dates": {
+        "NA": "May 1990"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Ys Book I & II",
+        "Ys I & II",
+        "Ys III"
+      ]
+    },
+    {
+      "title": "Ys III: Wanderers from Ys",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "March 22, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Ys III - Wanderers from Ys",
+        "Ys III"
+      ]
+    },
+    {
+      "title": "Ys III: Wanderers from Ys",
+      "developer": "",
+      "publisher": "NEC",
+      "dates": {
+        "NA": "November 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Ys III - Wanderers from Ys",
+        "Ys III"
+      ]
+    },
+    {
+      "title": "Ys IV: The Dawn of Ys",
+      "developer": "",
+      "publisher": "Hudson Soft",
+      "dates": {
+        "JP": "December 22, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Ys IV - The Dawn of Ys"
+      ]
+    },
+    {
+      "title": "Zan: Kagerō no Toki",
+      "developer": "",
+      "publisher": "Taito",
+      "dates": {
+        "JP": "December 27, 1991"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Zan - Kagerou no Toki"
+      ]
+    },
+    {
+      "title": "Zero4 Champ II",
+      "developer": "",
+      "publisher": "Media Rings",
+      "dates": {
+        "JP": "March 5, 1993"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Zero 4 Champ II"
+      ]
+    },
+    {
+      "title": "Zero Wing",
+      "developer": "",
+      "publisher": "Naxat Soft",
+      "dates": {
+        "JP": "September 18, 1992"
+      },
+      "medium": "CD-ROM²",
+      "archiveTitles": [
+        "Zero Wing"
+      ]
+    },
+    {
+      "title": "4 in 1 Super CD",
+      "publisher": "Hudson Soft",
+      "developer": "",
+      "dates": {
+        "NA": "October 10, 1992"
+      },
+      "medium": "Super CD-ROM²",
+      "archiveTitles": [
+        "Gate of Thunder + Bonk's Adventure + Bonk's Revenge"
+      ]
+    }
+  ],
+  "includedIn": [
+    {
+      "edition": "Gate of Thunder",
+      "market": "NA",
+      "compilation": "4 in 1 Super CD"
+    }
+  ],
+  "manuals": [
+    {
+      "edition": "Akumajō Dracula X: Chi no Rondo",
+      "market": "JP",
+      "name": "Akumajō Dracula X: Chi no Rondo — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Akumajo%20Dracula%20X%20Chi%20no%20Rondo%20%281993%29%28Konami%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Akumajo Dracula X Chi no Rondo (1993)(Konami)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Beyond Shadowgate",
+      "market": "NA",
+      "name": "Beyond Shadowgate — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Beyond%20Shadowgate%20%281993%29%28Viacom%20New%20Media%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Beyond Shadowgate (1993)(Viacom New Media)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Bishōjo Senshi Sailor Moon",
+      "market": "JP",
+      "name": "Bishōjo Senshi Sailor Moon — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Bishoujo%20Senshi%20Sailor%20Moon%20%281994%29%28Banpresto%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Bishoujo Senshi Sailor Moon (1994)(Banpresto)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Bishōjo Senshi Sailor Moon Collection",
+      "market": "JP",
+      "name": "Bishōjo Senshi Sailor Moon Collection — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Bishoujo%20Senshi%20Sailor%20Moon%20Collection%20%281994%29%28Banpresto%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Bishoujo Senshi Sailor Moon Collection (1994)(Banpresto)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Buster Bros.",
+      "market": "NA",
+      "name": "Buster Bros. — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Buster%20Bros%20%281993%29%28Hudson%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Buster Bros (1993)(Hudson)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Cosmic Fantasy 2",
+      "market": "NA",
+      "name": "Cosmic Fantasy 2 — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Cosmic%20Fantasy%202%20%281991%29%28Taito%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Cosmic Fantasy 2 (1991)(Taito)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Dungeon Explorer II",
+      "market": "NA",
+      "name": "Dungeon Explorer II — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Dungeon%20Explorer%20II%20%281993%29%28Hudson%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Dungeon Explorer II (1993)(Hudson)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Dungeon Master",
+      "market": "NA",
+      "name": "Dungeon Master — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Dungeon%20Master%20%281993%29%28Software%20Heaven%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Dungeon Master (1993)(Software Heaven)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Forgotten Worlds",
+      "market": "NA",
+      "name": "Forgotten Worlds — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Forgotten%20Worlds%20%281992%29%28Capcom%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Forgotten Worlds (1992)(Capcom)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Gate of Thunder",
+      "market": "NA",
+      "name": "Gate of Thunder — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Gate%20of%20Thunder%20%281992%29%28Hudson%20Soft%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Gate of Thunder (1992)(Hudson Soft)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "J.B. Harold Murder Club",
+      "market": "NA",
+      "name": "J.B. Harold Murder Club — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/J.B.%20Harold%20Murder%20Club%20%281991%29%28NEC%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/J.B. Harold Murder Club (1991)(NEC)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Last Alert",
+      "market": "NA",
+      "name": "Last Alert — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Last%20Alert%20%281990%29%28Telenet%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Last Alert (1990)(Telenet)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Lords of Thunder",
+      "market": "NA",
+      "name": "Lords of Thunder — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Lords%20of%20Thunder%20%281993%29%28Hudson%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Lords of Thunder (1993)(Hudson)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Might and Magic III: Isles of Terra",
+      "market": "NA",
+      "name": "Might and Magic III: Isles of Terra — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Might%20and%20Magic%20III%20Isles%20of%20Terra%20%281993%29%28Hudson%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Might and Magic III Isles of Terra (1993)(Hudson)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Monster Lair",
+      "market": "NA",
+      "name": "Monster Lair — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Monster%20Lair%20%281989%29%28Hudson%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Monster Lair (1989)(Hudson)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Shape Shifter",
+      "market": "NA",
+      "name": "Shape Shifter — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Shape%20Shifter%20%281992%29%28Icom%20Simulations%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Shape Shifter (1992)(Icom Simulations)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Sotsugyō II",
+      "market": "JP",
+      "name": "Sotsugyō II — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Sotsugyou%20II%20Neo%20Generation%20%281994%29%28Riverhill%20Soft%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Sotsugyou II Neo Generation (1994)(Riverhill Soft)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Splash Lake",
+      "market": "NA",
+      "name": "Splash Lake — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Splash%20Lake%20%281992%29%28NEC%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Splash Lake (1992)(NEC)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Vasteel",
+      "market": "NA",
+      "name": "Vasteel — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Vasteel%20%281992%29%28Working%20Designs%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Vasteel (1992)(Working Designs)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Ys: Book I & II",
+      "market": "NA",
+      "name": "Ys: Book I & II — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Ys%20-%20Book%20I%20%26%20II%20%281988%29%28NEC%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Ys - Book I & II (1988)(NEC)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Ys III: Wanderers from Ys",
+      "market": "NA",
+      "name": "Ys III: Wanderers from Ys — PC Engine CD manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games/Ys%20III%20-%20Wanderers%20From%20Ys%20%281989%29%28NEC%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/PC%20Engine%20CD%20-%20Manuals%20-%20Games",
+      "localArchive": "NEC/PC-Engine CD & TurboGrafx-16 CD/Manuals/Games/Ys III - Wanderers From Ys (1989)(NEC)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    }
+  ],
+  "verifiedArchives": [
+    {
+      "edition": "Ys: Book I & II",
+      "market": "JP",
+      "archives": [
+        "Ys I & II (Japan).zip"
+      ],
+      "source": "Redump Japanese Ys I & II original pressing"
+    },
+    {
+      "edition": "Ys: Book I & II",
+      "market": "JP",
+      "archives": [
+        "Ys I & II (Japan) (Alt).zip"
+      ],
+      "source": "Redump Japanese Ys I & II original pressing"
+    }
+  ]
+}

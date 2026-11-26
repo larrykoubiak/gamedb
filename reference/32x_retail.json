@@ -1,0 +1,899 @@
+{
+  "source": {
+    "name": "Wikipedia contributors",
+    "url": "https://en.wikipedia.org/wiki/Special:PermanentLink/1353266648#Games",
+    "revision": 1353266648,
+    "sha256": "0ea06fd262d2e726e9deaa392df53f5738d561b680780de929fdd731fb94cd80",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "rowCount": 34
+  },
+  "titles": [
+    {
+      "title": "After Burner Complete",
+      "developer": "Rutubo Games",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "January 13, 1995",
+        "NA": "January 1995",
+        "PAL": "January 1995"
+      },
+      "parentTitle": "After Burner II"
+    },
+    {
+      "title": "The Amazing Spider-Man: Web of Fire",
+      "developer": "BlueSky Software Zono",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "March 1996"
+      }
+    },
+    {
+      "title": "BC Racers",
+      "developer": "Core Design",
+      "publisher": "Front Street Publishing",
+      "dates": {
+        "NA": "June 1995"
+      }
+    },
+    {
+      "title": "Blackthorne",
+      "developer": "Blizzard Entertainment Paradox Development",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "September 1995"
+      }
+    },
+    {
+      "title": "Blackthorne",
+      "developer": "Blizzard Entertainment Paradox Development",
+      "publisher": "Tec Toy",
+      "dates": {
+        "BR": "January 1996"
+      }
+    },
+    {
+      "title": "Brutal: Above the Claw",
+      "developer": "GameTek",
+      "publisher": "GameTek",
+      "dates": {
+        "NA": "March 1995"
+      }
+    },
+    {
+      "title": "Cosmic Carnage",
+      "developer": "Almanic Corporation ALU",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "January 27, 1995",
+        "NA": "December 1994",
+        "PAL": "February 1995"
+      },
+      "regionalTitles": {
+        "JP": "Cyber Brawl"
+      },
+      "archiveTitles": [
+        "Cosmic Carnage",
+        "Cyber Brawl"
+      ]
+    },
+    {
+      "title": "Cosmic Carnage",
+      "developer": "Almanic Corporation ALU",
+      "publisher": "Tec Toy",
+      "dates": {
+        "BR": "1995"
+      },
+      "regionalTitles": {
+        "JP": "Cyber Brawl"
+      },
+      "archiveTitles": [
+        "Cosmic Carnage",
+        "Cyber Brawl"
+      ]
+    },
+    {
+      "title": "Darxide",
+      "developer": "Frontier Developments",
+      "publisher": "Sega",
+      "dates": {
+        "PAL": "January 1996"
+      }
+    },
+    {
+      "title": "Doom",
+      "developer": "id Software Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "December 3, 1994",
+        "NA": "November 21, 1994",
+        "PAL": "January 1995"
+      }
+    },
+    {
+      "title": "Doom",
+      "developer": "id Software Sega",
+      "publisher": "Tec Toy",
+      "dates": {
+        "BR": "1995"
+      }
+    },
+    {
+      "title": "FIFA Soccer 96",
+      "developer": "Extended Play Productions Probe Entertainment",
+      "publisher": "EA Sports",
+      "dates": {
+        "PAL": "November 1995"
+      },
+      "parentTitle": "FIFA Soccer 96"
+    },
+    {
+      "title": "Golf Magazine: 36 Great Holes Starring Fred Couples",
+      "developer": "Flashpoint Productions",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "February 24, 1995",
+        "NA": "January 1995",
+        "PAL": "March 1995"
+      },
+      "archiveTitles": [
+        "Golf Magazine Presents - 36 Great Holes Starring Fred Couples"
+      ]
+    },
+    {
+      "title": "Golf Magazine: 36 Great Holes Starring Fred Couples",
+      "developer": "Flashpoint Productions",
+      "publisher": "Tec Toy",
+      "dates": {
+        "BR": "1995"
+      },
+      "archiveTitles": [
+        "Golf Magazine Presents - 36 Great Holes Starring Fred Couples"
+      ]
+    },
+    {
+      "title": "Knuckles' Chaotix",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "April 21, 1995",
+        "NA": "April 1995",
+        "PAL": "June 23, 1995"
+      },
+      "regionalTitles": {
+        "JP": "Chaotix"
+      },
+      "archiveTitles": [
+        "Knuckles' Chaotix",
+        "Chaotix"
+      ]
+    },
+    {
+      "title": "Knuckles' Chaotix",
+      "developer": "Sega",
+      "publisher": "Tec Toy",
+      "dates": {
+        "BR": "1995"
+      },
+      "regionalTitles": {
+        "JP": "Chaotix"
+      },
+      "archiveTitles": [
+        "Knuckles' Chaotix",
+        "Chaotix"
+      ]
+    },
+    {
+      "title": "Kolibri",
+      "developer": "Novotrade",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "October 1995",
+        "PAL": "November 17, 1995"
+      }
+    },
+    {
+      "title": "Kolibri",
+      "developer": "Novotrade",
+      "publisher": "Tec Toy",
+      "dates": {
+        "BR": "January 1996"
+      }
+    },
+    {
+      "title": "Metal Head",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "February 24, 1995",
+        "NA": "February 1995",
+        "PAL": "April 1995"
+      }
+    },
+    {
+      "title": "Metal Head",
+      "developer": "Sega",
+      "publisher": "Tec Toy",
+      "dates": {
+        "BR": "1995"
+      }
+    },
+    {
+      "title": "Mortal Kombat II",
+      "developer": "Probe Entertainment",
+      "publisher": "Acclaim Entertainment",
+      "dates": {
+        "JP": "May 19, 1995",
+        "NA": "March 1995",
+        "PAL": "March 1995"
+      },
+      "parentTitle": "Mortal Kombat II"
+    },
+    {
+      "title": "Mortal Kombat II",
+      "developer": "Probe Entertainment",
+      "publisher": "Tec Toy",
+      "dates": {
+        "BR": "1995"
+      },
+      "parentTitle": "Mortal Kombat II"
+    },
+    {
+      "title": "Motocross Championship",
+      "developer": "Artech Studios",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "January 1995",
+        "PAL": "March 1995",
+        "BR": "1995"
+      }
+    },
+    {
+      "title": "NBA Jam Tournament Edition",
+      "developer": "Iguana Entertainment",
+      "publisher": "Acclaim Entertainment",
+      "dates": {
+        "JP": "September 1, 1995",
+        "NA": "1995",
+        "PAL": "June 1995"
+      },
+      "parentTitle": "NBA Jam Tournament Edition"
+    },
+    {
+      "title": "NFL Quarterback Club",
+      "developer": "Iguana Entertainment",
+      "publisher": "Acclaim Entertainment",
+      "dates": {
+        "JP": "July 14, 1995",
+        "NA": "1995",
+        "PAL": "July 1995"
+      },
+      "parentTitle": "NFL Quarterback Club"
+    },
+    {
+      "title": "Pitfall: The Mayan Adventure",
+      "developer": "Activision Big Bang Software Zombie Virtual Reality Entertainment",
+      "publisher": "Activision",
+      "dates": {
+        "NA": "October 1995"
+      },
+      "parentTitle": "Pitfall: The Mayan Adventure"
+    },
+    {
+      "title": "Primal Rage",
+      "developer": "Probe Entertainment",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "November 14, 1995",
+        "PAL": "March 1996"
+      },
+      "parentTitle": "Primal Rage"
+    },
+    {
+      "title": "R.B.I. Baseball '95",
+      "developer": "Time Warner Interactive",
+      "publisher": "Time Warner Interactive",
+      "dates": {
+        "NA": "1995"
+      }
+    },
+    {
+      "title": "Sangokushi IV",
+      "developer": "Sega",
+      "publisher": "Koei",
+      "dates": {
+        "JP": "July 28, 1995"
+      }
+    },
+    {
+      "title": "Shadow Squadron",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "April 26, 1995",
+        "NA": "June 1995",
+        "PAL": "June 1995"
+      },
+      "regionalTitles": {
+        "JP": "Stellar Assault",
+        "PAL": "Stellar Assault"
+      },
+      "archiveTitles": [
+        "Shadow Squadron",
+        "Stellar Assault"
+      ]
+    },
+    {
+      "title": "Space Harrier",
+      "developer": "Rutubo Games",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "December 3, 1994",
+        "NA": "January 1995",
+        "PAL": "January 1995"
+      }
+    },
+    {
+      "title": "Star Trek: Starfleet Academy – Starship Bridge Simulator",
+      "developer": "Interplay High Voltage Software",
+      "publisher": "Interplay",
+      "dates": {
+        "NA": "1995"
+      }
+    },
+    {
+      "title": "Star Trek: Starfleet Academy – Starship Bridge Simulator",
+      "developer": "Interplay High Voltage Software",
+      "publisher": "Tec Toy",
+      "dates": {
+        "BR": "1995"
+      }
+    },
+    {
+      "title": "Star Wars Arcade",
+      "developer": "Sega InterActive",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "December 3, 1994",
+        "NA": "November 21, 1994",
+        "PAL": "January 1995"
+      }
+    },
+    {
+      "title": "Star Wars Arcade",
+      "developer": "Sega InterActive",
+      "publisher": "Tec Toy",
+      "dates": {
+        "BR": "March 1995"
+      }
+    },
+    {
+      "title": "T-MEK",
+      "developer": "Bits Corporation",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "1995",
+        "PAL": "October 1995"
+      }
+    },
+    {
+      "title": "Tempo",
+      "developer": "Sega Red Company",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "March 24, 1995",
+        "NA": "1995"
+      }
+    },
+    {
+      "title": "Tempo",
+      "developer": "Sega Red Company",
+      "publisher": "Tec Toy",
+      "dates": {
+        "BR": "1995"
+      }
+    },
+    {
+      "title": "Toughman Contest",
+      "developer": "High Score Productions Visual Concepts",
+      "publisher": "EA Sports",
+      "dates": {
+        "NA": "May 1995",
+        "PAL": "June 1995"
+      },
+      "parentTitle": "Toughman Contest"
+    },
+    {
+      "title": "Virtua Fighter",
+      "developer": "Sega-AM2",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "October 20, 1995",
+        "NA": "October 10, 1995",
+        "PAL": "November 30, 1995"
+      }
+    },
+    {
+      "title": "Virtua Fighter",
+      "developer": "Sega-AM2",
+      "publisher": "Tec Toy",
+      "dates": {
+        "BR": "1995"
+      }
+    },
+    {
+      "title": "Virtua Racing Deluxe",
+      "developer": "Sega-AM2",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "December 16, 1994",
+        "NA": "November 21, 1994",
+        "PAL": "January 1995"
+      },
+      "parentTitle": "Virtua Racing"
+    },
+    {
+      "title": "Virtua Racing Deluxe",
+      "developer": "Sega-AM2",
+      "publisher": "Tec Toy",
+      "dates": {
+        "BR": "March 1995"
+      },
+      "parentTitle": "Virtua Racing"
+    },
+    {
+      "title": "World Series Baseball Starring Deion Sanders",
+      "developer": "Blue Sky Software",
+      "publisher": "Sega",
+      "dates": {
+        "NA": "February 1996"
+      }
+    },
+    {
+      "title": "WWF Raw",
+      "developer": "Sculptured Software",
+      "publisher": "Acclaim Entertainment",
+      "dates": {
+        "JP": "September 1, 1995",
+        "NA": "1995",
+        "PAL": "September 1995"
+      },
+      "parentTitle": "WWF Raw"
+    },
+    {
+      "title": "WWF WrestleMania: The Arcade Game",
+      "developer": "Sculptured Software",
+      "publisher": "Acclaim Entertainment",
+      "dates": {
+        "NA": "November 1995"
+      },
+      "parentTitle": "WWF WrestleMania: The Arcade Game"
+    },
+    {
+      "title": "Zaxxon's Motherbase 2000",
+      "developer": "CSK Research Institute",
+      "publisher": "Sega",
+      "dates": {
+        "JP": "July 14, 1995",
+        "NA": "June 1995",
+        "PAL": "June 1995"
+      },
+      "regionalTitles": {
+        "PAL": "Motherbase",
+        "JP": "Parasquad"
+      },
+      "archiveTitles": [
+        "Zaxxon's Motherbase 2000",
+        "Motherbase",
+        "Parasquad"
+      ]
+    }
+  ],
+  "manuals": [
+    {
+      "edition": "Golf Magazine: 36 Great Holes Starring Fred Couples",
+      "market": "JP",
+      "name": "Golf Magazine: 36 Great Holes Starring Fred Couples — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/36%20Great%20Holes%20starring%20Fred%20Couples%20%281994%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/36 Great Holes starring Fred Couples (1994)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "After Burner Complete",
+      "market": "JP",
+      "name": "After Burner Complete — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/After%20Burner%20Complete%20%281994%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/After Burner Complete (1994)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Knuckles' Chaotix",
+      "market": "JP",
+      "name": "Knuckles' Chaotix — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Chaotix%20featuring%20Knuckles%20the%20Echidna%20%281995%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Chaotix featuring Knuckles the Echidna (1995)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Knuckles' Chaotix",
+      "market": "NA",
+      "name": "Knuckles' Chaotix — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Chaotix%20featuring%20Knuckles%20the%20Echidna%20%281995%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Chaotix featuring Knuckles the Echidna (1995)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Cosmic Carnage",
+      "market": "JP",
+      "name": "Cosmic Carnage — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Cyber%20Brawl%20%281995%29%28SEGA%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Cyber Brawl (1995)(SEGA)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Doom",
+      "market": "JP",
+      "name": "Doom — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Doom%20%281994%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Doom (1994)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Doom",
+      "market": "NA",
+      "name": "Doom — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Doom%20%281994%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Doom (1994)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Kolibri",
+      "market": "NA",
+      "name": "Kolibri — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Kolibri%20%281995%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Kolibri (1995)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Metal Head",
+      "market": "JP",
+      "name": "Metal Head — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Metal%20Head%20%281995%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Metal Head (1995)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Metal Head",
+      "market": "NA",
+      "name": "Metal Head — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Metal%20Head%20%281995%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Metal Head (1995)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Mortal Kombat II",
+      "market": "JP",
+      "name": "Mortal Kombat II — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Mortal%20Kombat%20II%20%281994%29%28Acclaim%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Mortal Kombat II (1994)(Acclaim)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "NBA Jam Tournament Edition",
+      "market": "JP",
+      "name": "NBA Jam Tournament Edition — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/NBA%20Jam%20Tournament%20Edition%20%281995%29%28Acclaim%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/NBA Jam Tournament Edition (1995)(Acclaim)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "NFL Quarterback Club",
+      "market": "JP",
+      "name": "NFL Quarterback Club — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/NFL%20Quarterback%20Club%20%281995%29%28Acclaim%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/NFL Quarterback Club (1995)(Acclaim)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Zaxxon's Motherbase 2000",
+      "market": "JP",
+      "name": "Zaxxon's Motherbase 2000 — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Parasquad%20%281995%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Parasquad (1995)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Sangokushi IV",
+      "market": "JP",
+      "name": "Sangokushi IV — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Sangokushi%20IV%20%281995%29%28Koei%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Sangokushi IV (1995)(Koei)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Shadow Squadron",
+      "market": "NA",
+      "name": "Shadow Squadron — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Shadow%20Squadron%20%281995%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Shadow Squadron (1995)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Space Harrier",
+      "market": "JP",
+      "name": "Space Harrier — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Space%20Harrier%20%281994%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Space Harrier (1994)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Space Harrier",
+      "market": "NA",
+      "name": "Space Harrier — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Space%20Harrier%20%281994%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Space Harrier (1994)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Star Trek: Starfleet Academy – Starship Bridge Simulator",
+      "market": "NA",
+      "name": "Star Trek: Starfleet Academy – Starship Bridge Simulator — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Star%20Trek%20-%20Starfleet%20Academy%20-%20Starship%20Bridge%20Simulator%20%281994%29%28Interplay%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Star Trek - Starfleet Academy - Starship Bridge Simulator (1994)(Interplay)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Star Wars Arcade",
+      "market": "JP",
+      "name": "Star Wars Arcade — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Star%20Wars%20Arcade%20%281994%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Star Wars Arcade (1994)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Star Wars Arcade",
+      "market": "NA",
+      "name": "Star Wars Arcade — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Star%20Wars%20Arcade%20%281994%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Star Wars Arcade (1994)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Shadow Squadron",
+      "market": "JP",
+      "name": "Shadow Squadron — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Stellar%20Assault%20%281995%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Stellar Assault (1995)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Tempo",
+      "market": "JP",
+      "name": "Tempo — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Tempo%20%281995%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Tempo (1995)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Virtua Fighter",
+      "market": "JP",
+      "name": "Virtua Fighter — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Virtua%20Fighter%20%281995%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Virtua Fighter (1995)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Virtua Racing Deluxe",
+      "market": "JP",
+      "name": "Virtua Racing Deluxe — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Virtua%20Racing%20Deluxe%20%281994%29%28Sega%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Virtua Racing Deluxe (1994)(Sega)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "Virtua Racing Deluxe",
+      "market": "NA",
+      "name": "Virtua Racing Deluxe — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Virtua%20Racing%20Deluxe%20%281994%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Virtua Racing Deluxe (1994)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "WWF Raw",
+      "market": "JP",
+      "name": "WWF Raw — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/WWF%20RAW%20%281995%29%28Acclaim%29%28JP%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/WWF RAW (1995)(Acclaim)(JP).zip",
+      "language": "Japanese",
+      "regions": [
+        "JP"
+      ]
+    },
+    {
+      "edition": "WWF Raw",
+      "market": "NA",
+      "name": "WWF Raw — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/WWF%20RAW%20%281995%29%28Acclaim%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/WWF RAW (1995)(Acclaim)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    },
+    {
+      "edition": "Zaxxon's Motherbase 2000",
+      "market": "NA",
+      "name": "Zaxxon's Motherbase 2000 — 32X manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games/Zaxxon%27s%20Motherbase%202000%20%281995%29%28Sega%29%28US%29",
+      "sourceUrl": "https://data.spludlow.co.uk/tosec/tosec-pix/Sega%2032X%20-%20Manuals%20-%20Games",
+      "localArchive": "Sega/32X/Manuals/Games/Zaxxon's Motherbase 2000 (1995)(Sega)(US).zip",
+      "language": "English",
+      "regions": [
+        "US"
+      ]
+    }
+  ]
+}

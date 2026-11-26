@@ -1168,6 +1168,10 @@ function chooseSystem(system) {
     systemBrowserToggle.focus();
     setSystemBrowserOpen(false);
   }
+  const url = new URL(location.href);
+  if (system?.key) url.searchParams.set("system", system.key);
+  else url.searchParams.delete("system");
+  if (url.href !== location.href) history.replaceState(history.state, "", url);
   selectSystem(system);
 }
 document.querySelector("#all-platforms").addEventListener("click", () => chooseSystem(null));
@@ -1236,7 +1240,12 @@ hideRomHacks.addEventListener("change", () => {
   selectSystem(state.selectedSystem, 1, loadSystemCounts());
 });
 
-function startCatalog() {
+async function startCatalog() {
   initializeMetadataFilters();
-  selectSystem(null, 1, loadPlatforms());
+  const platforms = loadPlatforms();
+  const key = new URLSearchParams(location.search).get("system");
+  if (!key) return selectSystem(null, 1, platforms);
+  await platforms;
+  const system = state.systems.find(item => item.key === key);
+  return selectSystem(system || null);
 }

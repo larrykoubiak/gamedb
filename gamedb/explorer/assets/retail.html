@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Retail catalog | GameDB</title>
   <link rel="stylesheet" href="/styles.css?v=17">
-  <link rel="stylesheet" href="/retail.css">
+  <link rel="stylesheet" href="/retail.css?v=2">
   <link rel="stylesheet" href="/manual-reader.css">
-  <script src="/vgm/player.js?v=6" defer></script>
-  <script src="/vgm/soundtracks.js?v=3" defer></script>
+  <script src="/vgm/player.js?v=7" defer></script>
+  <script src="/vgm/soundtracks.js?v=4" defer></script>
   <script src="/artwork-viewer.js" defer></script>
   <script src="/manual-reader.js" defer></script>
-  <script src="/retail.js?v=6" defer></script>
+  <script src="/retail.js?v=13" defer></script>
 </head>
 <body class="snes-page">
   <nav class="snes-topbar" aria-label="Catalog navigation">
@@ -27,6 +27,9 @@
           <span class="sr-only">Search games</span>
           <input id="snes-search" type="search" placeholder="Search by title" autocomplete="off">
         </label>
+        <select id="snes-hardware" class="snes-hardware" aria-label="Hardware" hidden>
+          <option value="">All hardware</option>
+        </select>
         <select id="snes-genre" class="snes-genre" aria-label="Genre">
           <option value="">All genres</option>
         </select>
@@ -54,6 +57,7 @@
     <footer id="snes-source" class="snes-source" hidden>
       Release list adapted from <a id="snes-source-link"></a>.
       <a id="snes-source-license" hidden>CC BY-SA 4.0</a>
+      <span id="snes-addon-sources"></span>
     </footer>
   </main>
   <dialog id="snes-rom-dialog" class="artwork-dialog snes-rom-dialog" aria-labelledby="snes-rom-title">

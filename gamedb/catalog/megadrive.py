@@ -7,6 +7,7 @@ import re
 from xml.etree import ElementTree
 
 from gamedb.catalog import retail
+from gamedb.catalog.addons import ADDONS, DISC_ADDONS, add_retail_addon
 from gamedb.catalog.megadrive_media import DIGITAL_PRESS, add_scans, sega_retro_scans
 from gamedb.catalog.megadrive_source import HTML_URL, parse_retail_list
 from gamedb.catalog.cartridges import COUNTRY_MARKETS, LIBRETRO_DB, VERIFIED_ROM_SQL, rdb_cartridge_records
@@ -180,6 +181,8 @@ def seed_megadrive(html_path=None, report=None, *, publish_catalog=False, source
             )
             if warnings:
                 catalog["summary"]["sourceWarnings"] = warnings
+            for addon in (ADDONS["megadrive"], DISC_ADDONS["megadrive"]):
+                add_retail_addon(connection, catalog, directory, addon, ARCHIVE_MARKETS)
             if publish_catalog:
                 retail.publish(connection, catalog, "megadrive")
     finally:

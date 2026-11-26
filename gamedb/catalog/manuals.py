@@ -17,8 +17,10 @@ import unicodedata
 from urllib.error import HTTPError
 from urllib.parse import quote, urlsplit
 from urllib.request import Request, urlopen
+from zipfile import BadZipFile, ZipFile
 
 from gamedb.config import PROJECT_ROOT
+from gamedb.exo.media import location_path
 
 from .references import read_index
 
@@ -123,7 +125,8 @@ def _sources(manual, cache, reviewed):
         "necretro.org", "retrocdn.net", "dds.konami.com", "www.pcengine.co.uk", "www.videogameden.com",
         "cdn-ak.f.st-hatena.com", "cdn.rwemulator.com", "www.emulation64.fr", "emulation64.fr",
         "drive.usercontent.google.com", "goldeneyedepot.com", "m1.nintendo.net", "www.nintendo.com", "bdjogos.com.br",
-        "db.hfsplay.fr", "static.atariage.com", "www.gamesdatabase.org",
+        "db.hfsplay.fr", "static.atariage.com", "www.gamesdatabase.org", "odyssey2.info", "www.odyssey2.info",
+        "play-sc-3000.online",
     } and not hostname.endswith(".archive.org")):
         raise ValueError("Unsupported manual source URL")
     if "pages" in manual:
@@ -176,6 +179,22 @@ def _copy_source(file, stream):
     return size, checksum
 
 
+def _copy_tosec_manual(relative, stream):
+    rom_root = Path(os.environ.get("GAMEDB_ROM_ROOT") or "/mnt/synology")
+    path = location_path(rom_root / "roms/TOSEC-PIX", relative)
+    try:
+        with ZipFile(path) as archive:
+            pdfs = [member for member in archive.infolist() if member.filename.lower().endswith(".pdf")]
+            if len(pdfs) != 1 or not 0 < pdfs[0].file_size <= 128 * 1024**2:
+                raise ValueError("Expected one PDF in the local manual archive")
+            with archive.open(pdfs[0]) as source:
+                while chunk := source.read(CHUNK_SIZE):
+                    stream.write(chunk)
+    except (BadZipFile, RuntimeError, NotImplementedError) as error:
+        raise ValueError("Could not read the local manual archive") from error
+    return _measure(stream)
+
+
 def _measure(stream):
     stream.seek(0)
     digest = sha1()
@@ -204,11 +223,16 @@ def _assemble_scan(files, output, name):
     return _measure(output)
 
 
-def _save_manual(path, files, scan, name):
+def _save_manual(path, files, scan, name, *, local_archive=None):
     with NamedTemporaryFile(dir=path.parent, prefix=".manual-", suffix=".part", delete=False) as stream:
         temporary = Path(stream.name)
         try:
-            size, checksum = _assemble_scan(files, stream, name) if scan else _copy_source(files[0], stream)
+            if local_archive:
+                size, checksum = _copy_tosec_manual(local_archive, stream)
+            elif scan:
+                size, checksum = _assemble_scan(files, stream, name)
+            else:
+                size, checksum = _copy_source(files[0], stream)
             _verify_pdf(stream, size)
             stream.close()
             temporary.chmod(0o644)
@@ -239,13 +263,14 @@ def _sync_manual(root, record, relative, manual, cache, reviewed):
     path.parent.mkdir(parents=True, exist_ok=True)
     for attempt in range(3):
         try:
-            files, scan = _sources(manual, cache, reviewed)
+            local_archive = manual.get("localArchive")
+            files, scan = ([(manual["url"], None, None)], False) if local_archive else _sources(manual, cache, reviewed)
             _, expected_digest, expected_size = files[0] if not scan else (None, None, None)
             if existing := _existing_pdf(path, expected_digest, expected_size):
                 size, digest = existing
                 status = "reused"
             else:
-                size, digest = _save_manual(path, files, scan, manual["name"])
+                size, digest = _save_manual(path, files, scan, manual["name"], local_archive=local_archive)
                 status = "downloaded"
             return status, {"path": relative.as_posix(), "size": size, "sha1": digest,
                             "mtime_ns": path.stat().st_mtime_ns, "source": manual["url"],

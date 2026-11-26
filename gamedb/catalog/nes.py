@@ -7,6 +7,7 @@ import re
 from xml.etree import ElementTree
 
 from gamedb.catalog import retail
+from gamedb.catalog.addons import ADDONS, add_retail_addon
 from gamedb.catalog.cartridges import COUNTRY_MARKETS, VERIFIED_ROM_SQL, _markets_in_label, _serials
 from gamedb.catalog.nes_media import add_manuals, manual_inventory
 from gamedb.catalog.nes_rom import ines_fingerprints
@@ -127,6 +128,7 @@ def seed_nes(html_path=None, report=None, *, publish_catalog=False, sources=None
                 connection, catalog, platform=SYSTEM, secondary_platform=None, formats=("nsf", "nsfe", "vgm", "vgz"),
                 aliases=[{"edition": alias["edition"], "title": alias["archiveTitle"]} for alias in aliases],
             )
+            add_retail_addon(connection, catalog, directory, ADDONS["nes"], retail.ARCHIVE_MARKETS)
             if publish_catalog:
                 retail.publish(connection, catalog, "nes")
     finally:

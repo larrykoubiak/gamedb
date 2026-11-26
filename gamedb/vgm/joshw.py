@@ -7,6 +7,7 @@ from pathlib import PurePosixPath
 COLLECTION = "JoshW"
 PSF_COLLECTION = "The PlayStation Music Collection PSF"
 INDEX_URL = "https://vgm.hcs64.com/index-clean.json"
+SIXTH_GENERATION_BUCKETS = {"dreamcast": "dsf", "playstation2": "psf2", "gamecube": "gcn"}
 DEFAULT_SYSTEMS = {
     "spc": ("Nintendo", "Super Nintendo Entertainment System"),
     "nsf": ("Nintendo", "Nintendo Entertainment System"),
@@ -17,6 +18,9 @@ DEFAULT_SYSTEMS = {
     "2sf": ("Nintendo", "Nintendo DS"),
     "psf": ("Sony", "PlayStation"),
     "3do": ("The 3DO Company", "3DO Interactive Multiplayer"),
+    "dsf": ("Sega", "Dreamcast"),
+    "gcn": ("Nintendo", "GameCube"),
+    "psf2": ("Sony", "PlayStation 2"),
 }
 CARTRIDGES = {
     "smd": {"smd": ("Sega", "Mega Drive"), "32x": ("Sega", "32X"), "pico": ("Sega", "Pico")},
@@ -41,6 +45,7 @@ PLATFORM_NOTES = {
     "kss": {"gg", "sms", "sg-1000"}, "cdi": {"jaguar", "amiga", "cd32", "cdtv"},
     "psf": {"ps1", "psx", "psf"},
     "ssf": {"sat", "saturn", "ssf"}, "3do": {"3do"},
+    "dsf": {"dc", "dsf"}, "gcn": {"gcn", "gc"}, "psf2": {"ps2", "psf2"},
 }
 OTHER_NOTES = {"a", "ab", "alt", "en", "eu", "fixed", "jp", "mod", "rr", "tagged", "us", "ut", "z0", "z1"}
 
@@ -78,6 +83,9 @@ def platform(domain, path):
     if domain == "spc" and stem.startswith("bs "):
         return "Nintendo", "Satellaview"
     if domain == "ssf" and (tags & {"stv", "st-v", "arcade"} or re.search(r"\((?:st-?v|arcade)\)", stem)):
+        return None
+    if domain == "dsf" and (tags & {"naomi", "atomiswave", "arcade"}
+                            or re.search(r"\((?:naomi|atomiswave|arcade)\)", stem)):
         return None
     if domain == "usf" and (tags & {"64dd", "n64dd"} or "(64dd)" in stem or "(randnetdd)" in stem
                             or stem.startswith("mario artist paint studio ")):

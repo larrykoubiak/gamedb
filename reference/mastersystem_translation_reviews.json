@@ -4,13 +4,54 @@
       "url": "https://github.com/maxim-zhao/psrp/releases/download/v2.6.1/PhantasyStar-SMS-EN-2.6.1.zip",
       "sourceUrl": "https://github.com/maxim-zhao/psrp/releases/tag/v2.6.1",
       "sha256": "1aff11dc86cf811695a90855e1fa3f8a5fc4baf7f2ab817b38bbb7ae3bed6867",
-      "members": ["ps1jert.en.bps", "ps1jert.literal.bps"],
+      "members": [
+        "ps1jert.en.bps",
+        "ps1jert.literal.bps"
+      ],
       "baseSha1": "c9a40ddd217c58dddcd6b5c0fe66c3a50d3e68e4",
       "language": "English",
-      "authors": ["Phantasy Star Retranslation Project"],
+      "authors": [
+        "Phantasy Star Retranslation Project"
+      ],
       "version": "2.6.1",
-      "versions": {"ps1jert.literal.bps": "2.6.1 (literal)"},
+      "versions": {
+        "ps1jert.literal.bps": "2.6.1 (literal)"
+      },
       "released": "2025-12-22"
     }
-  ]
+  ],
+  "ips": {
+    "1489": {
+      "archive": "[1489]BlackOnyx.rar",
+      "layout": "headerless",
+      "baseSha1ByPatch": {
+        "Black_Onyx.ips": "7ecb9ac646346900046a61ff0242d6c90a812eda",
+        "Black_Onyx_Enhanced.ips": "7ecb9ac646346900046a61ff0242d6c90a812eda"
+      },
+      "patches": {
+        "Black_Onyx.ips": "1be69088e42bb868310d3863ea3295565e3979226344dea4c59beb9046fe6049",
+        "Black_Onyx_Enhanced.ips": "5a5ba46d0a5b489edb1817c41f1938246399f0521ec9b7ac01bd2ba7250c005a"
+      },
+      "outputSha1": {
+        "Black_Onyx.ips": "2e2baee16a34839770587d5fab890080bbcd9550",
+        "Black_Onyx_Enhanced.ips": "5c46089a417add0f00a3cebf01dc59f53465d47b"
+      }
+    },
+    "4895": {
+      "archive": "[4895]segagalagasg.zip",
+      "layout": "headerless",
+      "baseSha1ByPatch": {
+        "segagalagasg16kbversion.ips": "32e776b3a17f7c0df0fa9eb49a3e451cfe702bfd",
+        "segagalagasg40kbversion.ips": "9b093878f92ce8b918beaa44dcc8a41282f9f267"
+      },
+      "patches": {
+        "segagalagasg16kbversion.ips": "5d0b4e679e60bde68e5c3a818b4dfab2ec4f7bf88eb5f4fb0fe8f1274b4384de",
+        "segagalagasg40kbversion.ips": "966c197186ca95d798f85e93eb1ef31a0711f8a3cb5e8f353c2617983e1c1c36"
+      },
+      "outputSha1": {
+        "segagalagasg16kbversion.ips": "7380829852ab7113aa02cb2a4f5018d50a0bbb23",
+        "segagalagasg40kbversion.ips": "39b393614f307c0e05a662fbad159fb1cf52701e"
+      }
+    }
+  }
 }

@@ -164,7 +164,8 @@ def main(argv=None):
             parser.error(f"unsupported JoshW buckets: {', '.join(sorted(unknown))}")
         selected = {domain: selected[domain] for domain in dict.fromkeys(buckets)}
     else:
-        selected.pop("psf", None)
+        for domain in ("psf", "dsf", "gcn", "psf2"):
+            selected.pop(domain, None)
     if not selected:
         parser.error("no supported downloads found in the HCS64 index")
     for domain, entries in selected.items():

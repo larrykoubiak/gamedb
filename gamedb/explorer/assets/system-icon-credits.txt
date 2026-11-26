@@ -42,6 +42,59 @@ https://github.com/RetroPie/es-theme-carbon/blob/b09973e0b0c589cb11fe772c169a6ff
 Amiga CD32 wordmark by Commodore, rendered as PNG.
 https://commons.wikimedia.org/wiki/File:Amigacd32-logo.svg
 
+Atari 2600, Atari 5200 and Atari 7800 wordmarks, rendered as PNG.
+https://commons.wikimedia.org/wiki/File:Atari2600logo.svg
+https://commons.wikimedia.org/wiki/File:Atari_5200_logo.svg
+https://commons.wikimedia.org/wiki/File:Atari_7800_logo.svg
+
+Channel F logo vectorized by Schnurrikowski, rendered as PNG.
+Creative Commons Attribution-ShareAlike 4.0 International
+https://creativecommons.org/licenses/by-sa/4.0/
+https://commons.wikimedia.org/wiki/File:Channel_F_Logo.svg
+
+Mattel Intellivision and ColecoVision wordmarks, rendered as PNG.
+https://commons.wikimedia.org/wiki/File:Intellivision-logo.svg
+https://commons.wikimedia.org/wiki/File:COLECO_VISION_LOGO.svg
+
+Sega Dreamcast PAL logo, rendered as PNG.
+https://commons.wikimedia.org/wiki/File:Dreamcast_logo_PAL.svg
+
+PlayStation 2 logo and wordmark, rendered as PNG.
+https://commons.wikimedia.org/wiki/File:PlayStation_2_logo.svg
+
+Nintendo GameCube logo from Nintendo's manual, prepared by JustDanPatrick and rendered as PNG.
+https://commons.wikimedia.org/wiki/File:Nintendo_GameCube_Official_Logo.svg
+
+Bandai Playdia logo.
+https://commons.wikimedia.org/wiki/File:Playdia-logo.png
+
+Apple Pippin logo, vectorized by Groink and rendered as PNG.
+Creative Commons Attribution-ShareAlike 3.0 Unported
+https://creativecommons.org/licenses/by-sa/3.0/
+https://commons.wikimedia.org/wiki/File:PIPPIN.svg
+
+Game Boy, Game Boy Color, Game Boy Advance, Nintendo DS, Game Gear, WonderSwan, WonderSwan Color,
+Neo Geo Pocket, Neo Geo Pocket Color, PSP, and Odyssey² wordmarks from the RetroPie Carbon theme by Rookervik.
+Rendered as PNG. Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+https://github.com/RetroPie/es-theme-carbon/tree/b09973e0b0c589cb11fe772c169a6ff5d588b390
+
+Atari Lynx wordmark by Atari, vectorized by Dan Patrick.
+https://commons.wikimedia.org/wiki/File:Atari_Lynx_logo.svg
+
+Pokémon Mini and Nintendo 3DS wordmarks by Nintendo.
+https://commons.wikimedia.org/wiki/File:Pokemon_mini_logo.svg
+https://commons.wikimedia.org/wiki/File:Nintendo_3DS_logo.svg
+
+N-Gage wordmark by Nokia.
+https://commons.wikimedia.org/wiki/File:N-Gage_console_logo.svg
+
+PlayStation Vita wordmark by Sony, vectorized by Tokyoship and Cbabb7.
+https://commons.wikimedia.org/wiki/File:PlayStation_Vita_logo.svg
+
+Watara Supervision wordmark, vectorized by Suspiciouscelery.
+https://commons.wikimedia.org/wiki/File:Watara_Supervision_logo.svg
+
 Platform icons from RetroArch assets (Libretro contributors), pixel and monochrome themes.
 Source: https://github.com/libretro/retroarch-assets/tree/d9f969054dc7fbb6fa89519036d2b971e0855b51
 License: Creative Commons Attribution 4.0 International.

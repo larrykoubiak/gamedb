@@ -1,0 +1,24 @@
+{
+  "projects": {
+    "7113": {
+      "archive": "Samurai Shodown RPG English v1.10.rar",
+      "archivePage": "https://romhackplaza.org/translations/shinsetsu-samurai-spirits-bushido-retsuden-english-translation-neo-geo-cd/",
+      "archiveSha256": "c814dd750a77677de50cb511847f115a11ebf84f70d1261a24fe00d9b80d1a9a",
+      "sourceUrl": "https://romhackplaza.org/translations/shinsetsu-samurai-spirits-bushido-retsuden-english-translation-neo-geo-cd/",
+      "authors": ["MoriyaMug"],
+      "version": "1.10",
+      "releasedAt": 1707004800,
+      "patchOnly": true,
+      "discs": [
+        {
+          "archiveName": "Shinsetsu Samurai Spirits - Bushidou Retsuden (Japan).zip",
+          "inputSha1": "69da036e094a971a035c63c7b365179e031aea2c",
+          "outputSha1": "239b2b6d53749a4c38bbd228b96e7e1a4ac981d3",
+          "patches": [
+            "REDUMP-SSRPG-E1.10.xdelta"
+          ]
+        }
+      ]
+    }
+  }
+}

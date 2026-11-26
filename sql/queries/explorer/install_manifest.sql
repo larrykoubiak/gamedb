@@ -19,7 +19,7 @@ legacy AS MATERIALIZED (
         WHERE release_id IS NOT NULL
     ) preferred ON preferred.software_id = software.id AND preferred.release_id = release.id
     JOIN app.app_user user_account ON user_account.id = preferred.user_id
-    WHERE user_account.username = __USERNAME__
+    WHERE user_account.username = __USERNAME__ AND __SOFTWARE_KEY__ IS NULL
     ORDER BY preferred.priority, software.id, release.id
     LIMIT 1
 ),
@@ -31,7 +31,9 @@ retail_links AS (
         '$.games[*].releases[*] ? (@.status == "matched").archives[*] ? (@.signature == $signature)',
         jsonb_build_object('signature', __RELEASE_SIGNATURE__::text)
     ) AS matched(archive)
-    WHERE EXISTS (SELECT FROM inventory) AND NOT EXISTS (SELECT FROM legacy)
+    WHERE EXISTS (SELECT FROM inventory)
+        AND NOT EXISTS (SELECT FROM legacy)
+        AND (__SOFTWARE_KEY__ IS NULL OR matched.archive->>'softwareKey' = __SOFTWARE_KEY__)
 ),
 selected AS MATERIALIZED (
     TABLE legacy

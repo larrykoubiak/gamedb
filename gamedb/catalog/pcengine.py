@@ -6,6 +6,7 @@ import re
 from xml.etree import ElementTree
 
 from gamedb.catalog import retail
+from gamedb.catalog.addons import ADDONS, DISC_ADDONS, add_retail_addon
 from gamedb.catalog.cartridges import COUNTRY_MARKETS, VERIFIED_ROM_SQL
 from gamedb.catalog.megadrive import Cartridge, add_cartridge_details
 from gamedb.catalog.pcengine_media import MANUAL_SOURCES, add_manuals, nec_retro_scans
@@ -144,6 +145,8 @@ def seed_pcengine(html_path=None, report=None, *, publish_catalog=False, sources
             catalog["summary"]["soundtracks"] = _add_hucard_soundtracks(connection, catalog, reference)
             if warnings:
                 catalog["summary"]["sourceWarnings"] = warnings
+            for addon in (ADDONS[PLATFORM], DISC_ADDONS[PLATFORM]):
+                add_retail_addon(connection, catalog, directory, addon, ARCHIVE_MARKETS)
             if publish_catalog:
                 retail.publish(connection, catalog, PLATFORM)
     finally:

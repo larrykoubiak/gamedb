@@ -1,4 +1,4 @@
-"""Publish the original PC-FX, Amiga CD32, and 3DO disc catalogs."""
+"""Publish retail catalogs for standalone disc consoles."""
 
 from collections import Counter, defaultdict
 from hashlib import sha256
@@ -12,10 +12,12 @@ from bs4 import BeautifulSoup
 from gamedb.config import PROJECT_ROOT
 from gamedb.database import create_database_engine
 from gamedb.vgm.inventory import BROWSER_AUDIO
+from gamedb.vgm.joshw import SIXTH_GENERATION_BUCKETS
 
 from . import retail
 from .cartridges import COUNTRY_MARKETS
-from .disc_catalog import DISC_SYSTEMS, disc_bundle, redump_archives, verified_disc_archives
+from .disc_catalog import DISC_SYSTEMS, approved_disc_matches, complete_disc_archives, redump_archives, verified_disc_archives
+from .disc_variants import add_disc_variants
 from .references import read_index
 from .retail_media import (
     LIBRETRO_KINDS, _libretro_paths, _manual_key, add_descriptions_and_art, add_manuals, libretro_asset, release_names,
@@ -25,26 +27,39 @@ from .soundtracks import add_soundtracks
 
 
 SOURCE_DIRECTORY = PROJECT_ROOT / "data/media/cache/early-disc-retail"
-SYSTEMS = {platform: DISC_SYSTEMS[platform] for platform in retail.EARLY_DISC_PLATFORMS}
+SYSTEMS = {platform: DISC_SYSTEMS[platform] for platform in retail.OPTICAL_RETAIL_PLATFORMS}
 MARKETS = {"pcfx": {"JP": retail.ARCHIVE_MARKETS["JP"]},
            "cd32": {market: retail.ARCHIVE_MARKETS[market] for market in ("PAL", "NA")},
-           "3do": {**retail.ARCHIVE_MARKETS, "KR": {"KR"}, "BR": {"BR"}, "AS": {"TW", "HK", "AS"}}}
+           "3do": {**retail.ARCHIVE_MARKETS, "KR": {"KR"}, "BR": {"BR"}, "AS": {"TW", "HK", "AS"}},
+           "playdia": {"JP": {"JP"}}, "pippin": {"JP": {"JP"}, "NA": {"US"}},
+           "dreamcast": {**retail.ARCHIVE_MARKETS, "KR": {"KR"}, "BR": {"BR"}, "AS": {"TW", "HK", "AS"}},
+           "playstation2": {"NA": {"US"}}, "gamecube": {"NA": {"US"}}}
 SCAN_MARKETS = COUNTRY_MARKETS | {"KR": "KR", "Korea": "KR", "South Korea": "KR",
                                   "BR": "BR", "Brazil": "BR", "TW": "AS", "Taiwan": "AS"}
-LAUNCHBOX = {"pcfx": "NEC PC-FX", "cd32": "Commodore Amiga CD32", "3do": "3DO Interactive Multiplayer"}
+LAUNCHBOX = {"pcfx": "NEC PC-FX", "cd32": "Commodore Amiga CD32", "3do": "3DO Interactive Multiplayer",
+             "dreamcast": "Sega Dreamcast", "playstation2": "Sony Playstation 2", "gamecube": "Nintendo GameCube"}
 THUMBNAILS = {
     "pcfx": ("NEC - PC-FX", "1d82abb896d8dd5b125e70a3b7dd23118045ef2e"),
     "cd32": ("Commodore - CD32", "4bcde3a68b854bbb07add8b4f6403649b7fd75c6"),
     "3do": ("The 3DO Company - 3DO", "72a17178bbd4f3bc4cdcbadce746821dab84688f"),
+    "dreamcast": ("Sega - Dreamcast", "28b140d16f188301ad697e5935c6dbb412a4ceda"),
+    "playstation2": ("Sony - PlayStation 2", "9be559835a99124720badc6ec3ec4f3f2351deb3"),
+    "gamecube": ("Nintendo - GameCube", "c0e778f3242811f31f4815ff2807022c1c5ac7bd"),
 }
 MANUAL_COLLECTIONS = {
     "3do": ("digitpress.html", "https://www.digitpress.com/library/manuals/3do/", "Digital Press", "NA"),
+    "gamecube": ("gamecube-manual.json", "https://archive.org/metadata/NintendoGameCubeManuals",
+                 "Nintendo GameCube Manuals", "NA"),
+    "playstation2": ("ps2-manual.json",
+                      "https://archive.org/metadata/kirklands-manual-labor-sony-playstation-2-usa-4k-version",
+                      "Kirkland's Manual Labor", "NA"),
 }
-NUMBERED_DISC = re.compile(r"\(Disc\s+(\d+|[A-D])(?:[ )-])", re.I)
 YEAR = re.compile(r"\b(?:19|20)\d{2}\b")
 TRACK_FORMATS = {suffix[1:] for suffix in BROWSER_AUDIO} | {
-    "mod", "xm", "it", "s3m", "okt", "med", "pro", "pt36", "ahx", "sid", "adx", "genh", "xa",
+    "mod", "xm", "it", "s3m", "okt", "med", "pro", "pt36", "ahx", "sid", "adx", "afc", "adp", "ads",
+    "aix", "at3", "genh", "xa",
     "ape", "aif", "aiff", "aifc",
+    "dsf", "minidsf", "psf2", "minipsf2", "hps", "dsp", "ast", "brstm", "ss2", "vag", "vgmstream",
 }
 
 
@@ -70,16 +85,20 @@ def _read_roster(platform, roster, review):
         if title in games or not title.strip():
             raise ValueError(f"Duplicate or empty {platform} retail title {title!r}")
         alternates = row.get("regionalTitles", {})
+        aliases = row.get("aliases", [])
         credits = {field: row.get(field, {}) for field in ("developer", "publisher")}
         game = {"key": _key(platform, "game", title), "title": title, "releases": [], "genres": row.get("genres", []),
-                "aliases": [{"title": name, "regions": [market]} for market, name in alternates.items()
-                            if name != title], **{field: values.get("default", "") for field, values in credits.items()}}
+                "aliases": [*aliases, *({"title": name, "regions": [market]} for market, name in alternates.items()
+                                        if name != title)],
+                **{field: values.get("default", "") for field, values in credits.items()}}
         for market, date in row["releases"].items():
             if market in review.get("omittedMarkets", {}).get(title, ()):
                 continue
             if market not in MARKETS[platform] or (date and not YEAR.search(date)):
                 raise ValueError(f"Unexpected {market} release for {title!r}: {date}")
-            release = _release(platform, title, market, date, [alternates.get(market, title)])
+            names = [alternates.get(market, title), *(alias["title"] for alias in aliases
+                     if not alias["regions"] or market in alias["regions"])]
+            release = _release(platform, title, market, date, list(dict.fromkeys(names)))
             local_credits = {field: value for field, values in credits.items()
                              if (value := values.get(market, values.get("default")))}
             release.update(local_credits, creditSources=dict.fromkeys(local_credits, source))
@@ -90,40 +109,16 @@ def _read_roster(platform, roster, review):
     add_reviewed_releases(games, review.get("additionalReleases", ()), markets=MARKETS[platform],
                           game_key=lambda title: _key(platform, "game", title),
                           make_release=lambda *args, **kwargs: _release(platform, *args, **kwargs))
+    for former_title, title in review.get("mergedTitles", {}).items():
+        if former_title in games or title not in games:
+            raise ValueError(f"Invalid {platform} title merge {former_title!r} into {title!r}")
+        game = games[title]
+        game.setdefault("formerKeys", []).append(_key(platform, "game", former_title))
+        if not any(alias["title"] == former_title for alias in game["aliases"]):
+            game["aliases"].append({"title": former_title, "regions": []})
     if any(not game["releases"] for game in games.values()):
         raise ValueError(f"A {platform} title has no published release")
     return {"source": source, "games": sorted(games.values(), key=lambda game: game["title"].casefold())}
-
-
-def _complete_archives(platform, archives, reviews):
-    individual = defaultdict(list)
-    for archive in archives:
-        if len(archive["discs"]) == 1:
-            (disc,) = archive["discs"]
-            individual[disc["name"]].append((archive, disc))
-            if disc.get("number") is not None or NUMBERED_DISC.search(disc["name"]):
-                continue
-        yield archive
-    for review in reviews:
-        candidates = [individual[name] for name in review["archives"]]
-        if all(len(group) == 1 for group in candidates):
-            entries = [group[0] for group in candidates]
-            if len({tuple(archive["regions"]) for archive, _ in entries}) != 1:
-                raise ValueError(f"Disc regions disagree for {review['title']!r}")
-            yield {**disc_bundle(review["title"], entries, platform=platform), "evidence": review["source"]}
-
-
-def _approved_matches(archives, reviews):
-    by_name = defaultdict(list)
-    for archive in archives:
-        by_name[tuple(archive["archiveNames"])].append(archive)
-    for review in reviews:
-        signature = review.get("signature")
-        rows = [archive for archive in by_name[tuple(review["archives"])]
-                if signature is None or archive["signature"] == signature]
-        if len(rows) == 1:
-            yield {"edition": review["edition"], "market": review["market"], "signature": rows[0]["signature"],
-                   "evidence": review["source"]}
 
 
 def _archive_aliases(catalog, review, field):
@@ -145,14 +140,32 @@ def _reviewed_cd32_discs(connection, regions, records):
         yield from (archive for archive in candidates if archive["signature"] == record["signature"])
 
 
+def _add_compilation_matches(catalog, inclusions):
+    if not inclusions:
+        return
+    games = {game["title"]: game for game in catalog["games"]}
+    for title, compilation in inclusions.items():
+        pack = games[compilation]
+        pack_markets = {release["market"] for release in pack["releases"] if release["status"] == "matched"}
+        for release in games[title]["releases"]:
+            if release["status"] == "unmatched" and release["market"] in pack_markets:
+                release.update(status="matched", archives=[], includedIn={"key": pack["key"], "title": compilation})
+
+
 def match_discs(connection, catalog, platform, review):
     markets = MARKETS[platform]
     regions = set().union(*markets.values(), {"WORLD"})
     raw = redump_archives(connection, *SYSTEMS[platform], regions)
-    redump = list(_complete_archives(platform, raw, review.get("discSets", ())))
-    verified = list(_approved_matches(redump, review.get("verifiedArchives", ())))
+    redump = list(complete_disc_archives(platform, raw, review.get("discSets", ())))
+    verified = list(approved_disc_matches(redump, review.get("verifiedArchives", ())))
     aliases = list(_archive_aliases(catalog, review, "archiveTitles"))
     retail.match_archives(catalog, redump, aliases, verified, markets=markets)
+    inclusions = review.get("includedIn", {})
+    if platform in retail.SIXTH_GENERATION_PLATFORMS:
+        if inclusions:
+            _add_compilation_matches(catalog, inclusions)
+            retail.summarize_matches(catalog, len(redump), markets)
+        return
     remaining = {"source": catalog["source"], "games": [
         {**game, "releases": [release for release in game["releases"] if release["status"] == "unmatched"]}
         for game in catalog["games"]
@@ -161,7 +174,7 @@ def match_discs(connection, catalog, platform, review):
     # supply the documented PAL release when the title has no Redump match.
     raw = verified_disc_archives(connection, *SYSTEMS[platform], regions, "TOSEC-ISO",
                                  inferred_region="EU" if platform == "cd32" else None)
-    tosec = list(_complete_archives(platform, raw, review.get("tosecDiscSets", ())))
+    tosec = list(complete_disc_archives(platform, raw, review.get("tosecDiscSets", ())))
     reviewed_tosec = review.get("verifiedTosecArchives", ())
     if platform == "cd32" and reviewed_tosec:
         # Exact, reviewed discs can also be stored with the Amiga or CDTV collection.
@@ -169,30 +182,24 @@ def match_discs(connection, catalog, platform, review):
         tosec.extend(archive for archive in _reviewed_cd32_discs(connection, regions, reviewed_tosec)
                      if archive["signature"] not in existing)
     aliases = (*_archive_aliases(remaining, review, "archiveTitles"), *_archive_aliases(remaining, review, "tosecTitles"))
-    approved = list(_approved_matches(tosec, reviewed_tosec))
+    approved = list(approved_disc_matches(tosec, reviewed_tosec))
     remaining_editions = {(release["edition"], release["market"]) for game in remaining["games"]
                           for release in game["releases"]}
     approved = [item for item in approved if (item["edition"], item["market"]) in remaining_editions]
     retail.match_archives(remaining, tosec, aliases, approved, markets=markets)
-    games = {game["title"]: game for game in catalog["games"]}
-    for title, compilation in review.get("includedIn", {}).items():
-        pack = games[compilation]
-        pack_markets = {release["market"] for release in pack["releases"] if release["status"] == "matched"}
-        for release in games[title]["releases"]:
-            if release["status"] == "unmatched" and release["market"] in pack_markets:
-                release.update(status="matched", archives=[], includedIn={"key": pack["key"], "title": compilation})
+    _add_compilation_matches(catalog, inclusions)
     retail.summarize_matches(catalog, len(redump) + len(tosec), markets)
 
 
 def _add_reviewed_artwork(catalog, platform, indexes, reviewed):
     paths = _libretro_paths(indexes, THUMBNAILS).get(platform, ())
-    folder, revision = THUMBNAILS[platform]
     releases = {(release["edition"], release["market"]): release
                 for game in catalog["games"] for release in game["releases"]}
     for record in reviewed:
         release = releases[record["edition"], record["market"]]
         images = record.get("images", {}).copy()
         if stem := record.get("thumbnail"):
+            folder, revision = THUMBNAILS[platform]
             for directory, kind in LIBRETRO_KINDS.items():
                 path = f"{directory}/{stem}.png"
                 if kind in record["kinds"] and path in paths:
@@ -205,7 +212,7 @@ def _add_reviewed_artwork(catalog, platform, indexes, reviewed):
 
 
 def _collection_manuals(catalog, html, collection, reference):
-    _, url, source, market = collection
+    filename, url, source, market = collection
     source_names = reference.get("manualAliases", {})
     claims = defaultdict(set)
     for game in catalog["games"]:
@@ -214,6 +221,9 @@ def _collection_manuals(catalog, html, collection, reference):
                 edition = release["edition"]
                 for title in {edition, *release_names(release), *source_names.get(edition, ())}:
                     claims[_manual_key(title)].add(edition)
+    if filename.endswith(".json"):
+        yield from _archive_collection_manuals(html, url, source, market, claims)
+        return
     excluded = set(reference.get("unavailableManuals", ()))
     for link in BeautifulSoup(html, "html.parser").select("a[href]"):
         href = link["href"]
@@ -228,15 +238,61 @@ def _collection_manuals(catalog, html, collection, reference):
                    "source": source, "sourceUrl": url, "format": "PDF", "url": manual_url}
 
 
+def _archive_collection_manuals(content, url, source, market, claims):
+    item = url.rsplit("/", 1)[-1]
+    payload = json.loads(content)
+    if payload.get("metadata", {}).get("identifier") != item:
+        raise ValueError(f"Unexpected manual archive {item}")
+    for doc in payload["files"]:
+        filename = doc["name"]
+        if doc.get("source") != "original" or not filename.lower().endswith(".pdf"):
+            continue
+        name = PurePosixPath(filename).stem
+        match = re.fullmatch(r"(.+?)\s*\((?:USA|US)\)(?:\s*\(.*\))?", name)
+        if not match or not doc.get("sha1") or not str(doc.get("size", "")).isdigit():
+            continue
+        if len(editions := claims[_manual_key(match[1])]) != 1:
+            continue
+        edition, = editions
+        yield {"edition": edition, "market": market, "name": name + " — manual", "regions": ["US"],
+               "language": "English", "format": "PDF", "source": source,
+               "sourceUrl": f"https://archive.org/details/{item}",
+               "url": f"https://archive.org/download/{item}/{quote(filename, safe='/')}",
+               "sha1": doc["sha1"], "size": int(doc["size"])}
+
+
+def _add_soundtrack_sources(catalog, platform, records):
+    by_game = defaultdict(list)
+    for record in records:
+        by_game[record["game"]].append(record)
+    for game in catalog["games"]:
+        if sources := by_game.get(game["title"]):
+            game["soundtrackSources"] = []
+            for source in sources:
+                url = source["url"]
+                item = {"title": source["title"], "url": url,
+                        "releases": [release["key"] for release in game["releases"]
+                                     if release["market"] in source["markets"]]}
+                if platform in SIXTH_GENERATION_BUCKETS and "size" in source and "revision" in source:
+                    key = sha256(url.encode()).hexdigest()
+                    item.update(size=source["size"], revision=source["revision"],
+                                loadUrl=f"/related-media/joshw/{platform}/{game['key']}/{key}")
+                game["soundtrackSources"].append(item)
+
+
 def seed(platform, report=None, *, publish_catalog=False, sources=None):
     roster = json.loads((PROJECT_ROOT / f"reference/{platform}_retail_roster.json").read_text(encoding="utf-8"))
     review = json.loads((PROJECT_ROOT / f"reference/{platform}_retail.json").read_text(encoding="utf-8"))
     catalog = _read_roster(platform, roster, review)
-    directory = sources or SOURCE_DIRECTORY / platform
-    thumb_folder, revision = THUMBNAILS[platform]
-    thumb_repo = thumb_folder.replace(" ", "_")
-    urls = {f"thumbs-{platform}.json":
-            f"https://api.github.com/repos/libretro-thumbnails/{thumb_repo}/git/trees/{revision}?recursive=1"}
+    directory = sources or (SOURCE_DIRECTORY.parent / "sixth-generation-retail"
+                            if platform in retail.SIXTH_GENERATION_PLATFORMS else SOURCE_DIRECTORY / platform)
+    urls = {}
+    if platform in THUMBNAILS:
+        thumb_folder, revision = THUMBNAILS[platform]
+        thumb_repo = thumb_folder.replace(" ", "_")
+        urls[f"thumbs-{platform}.json"] = (
+            f"https://api.github.com/repos/libretro-thumbnails/{thumb_repo}/git/trees/{revision}?recursive=1"
+        )
     collection = MANUAL_COLLECTIONS.get(platform)
     if collection:
         filename, url, *_ = collection
@@ -256,7 +312,11 @@ def seed(platform, report=None, *, publish_catalog=False, sources=None):
             else:
                 connection.exec_driver_sql("SET TRANSACTION READ ONLY")
             match_discs(connection, catalog, platform, review)
-            add_descriptions_and_art(connection, catalog, indexes, review, platforms={LAUNCHBOX[platform]},
+            if platform in retail.SIXTH_GENERATION_PLATFORMS:
+                catalog["summary"]["prepatchedVariants"] = add_disc_variants(
+                    connection, catalog, SYSTEMS[platform], MARKETS[platform], reviewed=review.get("prepatchedVariants", ()),
+                )
+            add_descriptions_and_art(connection, catalog, indexes, review, platforms={LAUNCHBOX.get(platform, SYSTEMS[platform][1])},
                                      thumbnails=THUMBNAILS, thumbnail_key=platform, country_markets=SCAN_MARKETS)
             if artwork := review.get("reviewedArtwork"):
                 _add_reviewed_artwork(catalog, platform, indexes, artwork)
@@ -268,6 +328,7 @@ def seed(platform, report=None, *, publish_catalog=False, sources=None):
                 connection, catalog, platform=SYSTEMS[platform], secondary_platform=None, formats=sorted(TRACK_FORMATS),
                 aliases=review.get("soundtrackAliases", ()),
             )
+            _add_soundtrack_sources(catalog, platform, review.get("soundtrackSources", ()))
             catalog["summary"]["metadata"] = retail.enrichment_coverage(catalog, MARKETS[platform])
             catalog["summary"]["mediaTitles"] = dict(Counter(
                 field for game in catalog["games"] for field in ("manuals", "artwork")

@@ -4,6 +4,7 @@ from collections import Counter
 import json
 
 from gamedb.catalog import retail
+from gamedb.catalog.addons import ADDONS, add_retail_addon
 from gamedb.catalog.cartridges import COUNTRY_MARKETS, VERIFIED_ROM_SQL
 from gamedb.catalog.mastersystem_media import (
     GAME_INDEX, MANUAL_INDEX, SOURCE_DIRECTORY, add_archive_manuals, add_reviewed_artwork, sms_power_matches,
@@ -116,6 +117,7 @@ def seed_mastersystem(html_path=None, report=None, *, publish_catalog=False, sou
             catalog["summary"]["soundtracks"] = add_master_system_soundtracks(connection, catalog, aliases)
             if warnings:
                 catalog["summary"]["sourceWarnings"] = warnings
+            add_retail_addon(connection, catalog, directory, ADDONS[PLATFORM], ARCHIVE_MARKETS)
             if publish_catalog:
                 retail.publish(connection, catalog, PLATFORM)
     finally:

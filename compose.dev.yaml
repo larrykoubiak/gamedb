@@ -19,12 +19,19 @@ services:
       GAMEDB_N64_MANUAL_ROOT: /mnt/n64-manuals
       GAMEDB_SATURN_MANUAL_ROOT: /mnt/saturn-manuals
       GAMEDB_JAGUAR_MANUAL_ROOT: /mnt/jaguar-manuals
+      GAMEDB_ATARI7800_MANUAL_ROOT: /mnt/atari7800-manuals
       GAMEDB_PCFX_MANUAL_ROOT: /mnt/pcfx-manuals
       GAMEDB_CD32_MANUAL_ROOT: /mnt/cd32-manuals
       GAMEDB_3DO_MANUAL_ROOT: /mnt/3do-manuals
+      GAMEDB_PLAYDIA_MANUAL_ROOT: /mnt/playdia-manuals
+      GAMEDB_PIPPIN_MANUAL_ROOT: /mnt/pippin-manuals
+      GAMEDB_DREAMCAST_MANUAL_ROOT: /mnt/dreamcast-manuals
+      GAMEDB_PLAYSTATION2_MANUAL_ROOT: /mnt/playstation2-manuals
+      GAMEDB_GAMECUBE_MANUAL_ROOT: /mnt/gamecube-manuals
       GAMEDB_NES_MANUAL_ROOT: /mnt/nes-manuals
       GAMEDB_PLAYSTATION_MANUAL_ROOT: /mnt/playstation-manuals
       GAMEDB_NEOGEO_MANUAL_ROOT: /mnt/neogeo-manuals
+      GAMEDB_SECOND_GENERATION_MANUAL_ROOT: /mnt/second-generation-manuals
     ports:
       - "${GAMEDB_EXPLORER_PORT:-8082}:8000"
     volumes:
@@ -41,6 +48,10 @@ services:
       - ./data/media/3do-translations:/app/data/media/3do-translations:ro
       - ./data/media/neogeo-translations:/app/data/media/neogeo-translations:ro
       - ./data/media/playstation-translations:/app/data/media/playstation-translations:ro
+      - ./data/media/dreamcast-translations:/app/data/media/dreamcast-translations:ro
+      - ./data/media/playstation2-translations:/app/data/media/playstation2-translations:ro
+      - ./data/media/gamecube-translations:/app/data/media/gamecube-translations:ro
+      - ./data/media/colecovision-translations:/app/data/media/colecovision-translations:ro
       - "${GAMEDB_VGM_HOST_ROOT:-/mnt/synology/music/VGM/By Format}:/mnt/vgm:ro"
       - "${GAMEDB_SNES_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/SNES}:/mnt/snes-manuals:ro"
       - "${GAMEDB_MEGADRIVE_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Mega Drive}:/mnt/megadrive-manuals:ro"
@@ -49,12 +60,19 @@ services:
       - "${GAMEDB_N64_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Nintendo 64}:/mnt/n64-manuals:ro"
       - "${GAMEDB_SATURN_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Saturn}:/mnt/saturn-manuals:ro"
       - "${GAMEDB_JAGUAR_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Jaguar}:/mnt/jaguar-manuals:ro"
+      - "${GAMEDB_ATARI7800_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Atari 7800}:/mnt/atari7800-manuals:ro"
       - "${GAMEDB_PCFX_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/PC-FX}:/mnt/pcfx-manuals:ro"
       - "${GAMEDB_CD32_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Amiga CD32}:/mnt/cd32-manuals:ro"
       - "${GAMEDB_3DO_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/3DO}:/mnt/3do-manuals:ro"
+      - "${GAMEDB_PLAYDIA_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Bandai Playdia}:/mnt/playdia-manuals:ro"
+      - "${GAMEDB_PIPPIN_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Apple Bandai Pippin}:/mnt/pippin-manuals:ro"
+      - "${GAMEDB_DREAMCAST_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Sega Dreamcast}:/mnt/dreamcast-manuals:ro"
+      - "${GAMEDB_PLAYSTATION2_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/PlayStation 2}:/mnt/playstation2-manuals:ro"
+      - "${GAMEDB_GAMECUBE_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/GameCube}:/mnt/gamecube-manuals:ro"
       - "${GAMEDB_NES_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/NES}:/mnt/nes-manuals:ro"
       - "${GAMEDB_PLAYSTATION_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/PlayStation}:/mnt/playstation-manuals:ro"
       - "${GAMEDB_NEOGEO_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Neo Geo}:/mnt/neogeo-manuals:ro"
+      - "${GAMEDB_SECOND_GENERATION_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Second Generation}:/mnt/second-generation-manuals:ro"
       - /mnt/synology/roms:/mnt/synology/roms:ro
       - /mnt/synology/backup/games/Undub:/mnt/synology/backup/games/Undub:ro
 

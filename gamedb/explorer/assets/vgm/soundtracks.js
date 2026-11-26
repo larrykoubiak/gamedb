@@ -198,9 +198,10 @@ function renderSoundtracks(container, soundtracks, {compact = false} = {}) {
     optionsSummary = soundtrackElement("summary", "Options");
     const tools = picker.parentElement;
     tools.append(credits);
-    const sources = [...new Set(albums.map(album => album.sourceUrl).filter(Boolean))];
-    for (const url of sources) {
-      const link = soundtrackElement("a", "VGMRips source");
+    const sources = new Map(albums.filter(album => album.sourceUrl).map(album => [album.sourceUrl, album.collection]));
+    for (const [url, collection] of sources) {
+      const label = collection === "JoshW" ? "JoshW archive" : "VGMRips source";
+      const link = soundtrackElement("a", label);
       link.href = url;
       link.target = "_blank";
       link.rel = "noopener noreferrer";

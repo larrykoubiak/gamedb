@@ -29,7 +29,7 @@ def _packs():
     packs = {}
     for record in json.loads(MANIFEST.read_text(encoding="utf-8"))["packs"]:
         name = record["slug"]
-        if (name in packs or not re.fullmatch(r"[A-Za-z0-9.]+-SMS(?:-FM|-PSG)?", name)
+        if (name in packs or not re.fullmatch(r"[A-Za-z0-9.]+-(?:SMS(?:-FM|-PSG)?|SG)", name)
                 or not re.fullmatch(r"[0-9a-f]{64}", record["sha256"])
                 or not 0 < record["size"] <= 5 * 1024 * 1024
                 or not set() < set(record["markets"]) <= set(MARKETS)):
@@ -53,6 +53,8 @@ def add_master_system_soundtracks(connection, catalog, aliases):
         """), {"collection": SMS_POWER_COLLECTION}).all())
         games = {game["title"]: game for game in catalog["games"]}
         for name, pack in _packs().items():
+            if name.endswith("-SG"):
+                continue
             if not (key := published.get(name)) or not (game := games.get(pack["game"])):
                 continue
             releases = [release["key"] for release in game["releases"]

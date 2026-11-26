@@ -1,9 +1,10 @@
 """Create browser-playable FLAC copies of supported soundtrack formats."""
 
 import os
-from shutil import copyfileobj
+from pathlib import Path
+from shutil import copyfileobj, which
 import subprocess
-from tempfile import NamedTemporaryFile
+from tempfile import NamedTemporaryFile, TemporaryDirectory
 from threading import BoundedSemaphore, Lock
 
 from gamedb.vgm.archives import open_vgm_location
@@ -12,10 +13,24 @@ from gamedb.vgm.archives import open_vgm_location
 _conversions = BoundedSemaphore(2)
 _locks = [Lock() for _ in range(32)]
 INPUT_FORMATS = {"ape": "ape", **dict.fromkeys(("aif", "aiff", "aifc"), "aiff")}
+STREAM_FORMATS = frozenset({"adp", "ads", "afc", "aix", "ast", "at3", "brstm", "dsp", "ss2", "vag"})
+
+
+def flac_formats():
+    return set(INPUT_FORMATS) | (STREAM_FORMATS if which("vgmstream-cli") else set())
+
+
+def _transcode(source, output, input_format):
+    subprocess.run([
+        "ffmpeg", "-nostdin", "-v", "error", "-xerror", "-y", "-threads", "1", "-protocol_whitelist", "file",
+        "-f", input_format, "-i", str(source), "-map", "0:a:0", "-map_metadata", "-1",
+        "-c:a", "flac", "-compression_level", "2", "-threads", "1", "-f", "flac", str(output),
+    ], check=True, capture_output=True, timeout=90)
 
 
 def browser_flac(cache, root, key, location):
-    if location["kind"] != "track" or (format_name := INPUT_FORMATS.get(location["format"])) is None:
+    format_name = location["format"]
+    if location["kind"] != "track" or format_name not in flac_formats():
         raise ValueError("Unsupported soundtrack format for FLAC playback")
     directory = cache / "soundtrack-flac" / key[:2]
     target = directory / f"{key}-{location['mtime_ns']}.flac"
@@ -23,15 +38,17 @@ def browser_flac(cache, root, key, location):
         if target.is_file():
             return target
         directory.mkdir(parents=True, exist_ok=True)
-        with _conversions, NamedTemporaryFile(dir=directory) as original, NamedTemporaryFile(dir=directory) as output:
-            with open_vgm_location(root, location) as source:
-                copyfileobj(source, original, 1024 * 1024)
-            original.flush()
-            subprocess.run([
-                "ffmpeg", "-nostdin", "-v", "error", "-xerror", "-y", "-threads", "1", "-protocol_whitelist", "file",
-                "-f", format_name, "-i", original.name, "-map", "0:a:0", "-map_metadata", "-1",
-                "-c:a", "flac", "-compression_level", "2", "-threads", "1", "-f", "flac", output.name,
-            ], check=True, capture_output=True, timeout=90)
+        with _conversions, TemporaryDirectory(dir=directory) as work, NamedTemporaryFile(dir=directory) as output:
+            original = Path(work) / f"track.{format_name}"
+            with open_vgm_location(root, location) as source, original.open("wb") as destination:
+                copyfileobj(source, destination, 1024 * 1024)
+            if format_name in STREAM_FORMATS:
+                wave = Path(work) / "decoded.wav"
+                subprocess.run(["vgmstream-cli", "-i", "-o", str(wave), str(original)],
+                               check=True, capture_output=True, timeout=90)
+                _transcode(wave, output.name, "wav")
+            else:
+                _transcode(original, output.name, INPUT_FORMATS[format_name])
             if not os.path.getsize(output.name):
                 raise ValueError("Soundtrack conversion produced no audio")
             try:

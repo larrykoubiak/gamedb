@@ -1,0 +1,96 @@
+{
+  "projects": {
+    "6044": {
+      "rhdnId": 6044,
+      "archive": "[6044]BKO-PatchTool-DE-v1.2_fix.zip",
+      "archiveSha256": "28289885bf84bc086835548686ca5aca1d5f5b571328683e6af0b1cfb12a0e78",
+      "sourceUrl": "https://www.romhacking.net/translations/6044/",
+      "patchOnly": true,
+      "discs": [
+        {
+          "archiveName": "Baten Kaitos Origins (USA) (Disc 1).zip",
+          "inputSha1": "b5e6aafae4aa171caa558875ca7d66b465a78f7f",
+          "imageMember": "Baten Kaitos Origins (USA) (Disc 1).iso"
+        },
+        {
+          "archiveName": "Baten Kaitos Origins (USA) (Disc 2).zip",
+          "inputSha1": "706774280ed6dba841a9ed600066f8773c80a8c0",
+          "imageMember": "Baten Kaitos Origins (USA) (Disc 2).iso"
+        }
+      ]
+    },
+    "6189": {
+      "rhdnId": 6189,
+      "archive": "[6189]Zelda TP (GC) NTSC Esp.rar",
+      "archiveSha256": "1f4ca2ce9a77b55e878a6ca015521977a200615f6aab71811ebdece4cdd622fb",
+      "sourceUrl": "https://www.romhacking.net/translations/6189/",
+      "preparedDiscSha256": "a468bed6ec0084a82f3d789fffe1ebc48ce79bc21c481a5cb294b7f358bcb671",
+      "discs": [
+        {
+          "archiveName": "Legend of Zelda, The - Twilight Princess (USA).zip",
+          "inputSha1": "75edd3ddff41f125d1b4ce1a40378f1b565519e7",
+          "imageMember": "Legend of Zelda, The - Twilight Princess (USA).iso",
+          "outputSha1": "81a7602e321a5d3f18370b9a62da02e5fd1aead9",
+          "patches": [
+            "Zelda TP (GC) NTSC Esp.xdelta"
+          ]
+        }
+      ]
+    },
+    "5481": {
+      "rhdnId": 5481,
+      "archive": "[5481]Patcheur_FR_BKO_(v1.01)_-_MYTH-Project.rar",
+      "archiveSha256": "48378451d1bb8560ffad21837a9773e2d283bcd462571e33f39c310cf54b36f2",
+      "sourceUrl": "https://www.romhacking.net/translations/5481/",
+      "patchOnly": true,
+      "discs": [
+        {
+          "archiveName": "Baten Kaitos Origins (USA) (Disc 1).zip",
+          "inputSha1": "b5e6aafae4aa171caa558875ca7d66b465a78f7f",
+          "imageMember": "Baten Kaitos Origins (USA) (Disc 1).iso"
+        },
+        {
+          "archiveName": "Baten Kaitos Origins (USA) (Disc 2).zip",
+          "inputSha1": "706774280ed6dba841a9ed600066f8773c80a8c0",
+          "imageMember": "Baten Kaitos Origins (USA) (Disc 2).iso"
+        }
+      ]
+    },
+    "6195": {
+      "rhdnId": 6195,
+      "archive": "[6195]MK DD NTSC Esp.rar",
+      "archiveSha256": "33db468db984648719ce7f3dd53779a73c5cbbf919db1307c12a257b136e6640",
+      "sourceUrl": "https://www.romhacking.net/translations/6195/",
+      "preparedDiscSha256": "84b50e2c63b53e551b7b3579bb70b4c0f8d5e8f7538f154c3f6ae1270c1b4ff3",
+      "discs": [
+        {
+          "archiveName": "Mario Kart - Double Dash!! (USA).zip",
+          "inputSha1": "34bdef709a1ae9799fdabe8e54cff1c7d3665f2b",
+          "imageMember": "Mario Kart - Double Dash!! (USA).iso",
+          "outputSha1": "10603db906667b571a0bb9f1199f1ed1072267a3",
+          "patches": [
+            "MK DD NTSC Esp.xdelta"
+          ]
+        }
+      ]
+    },
+    "6140": {
+      "rhdnId": 6140,
+      "archive": "[6140]TC SofLA Esp.rar",
+      "archiveSha256": "e28e8da3244cc172c3bc4cf909cef3868e460df8f09f27ef036d19cd7fc317de",
+      "sourceUrl": "https://www.romhacking.net/translations/6140/",
+      "preparedDiscSha256": "8374d7f5d81c3cf357097a3c9814dbca7d0dd226a8cffecbf0d109cb4949d6d8",
+      "discs": [
+        {
+          "archiveName": "True Crime - Streets of LA (USA).zip",
+          "inputSha1": "e6f80176c5d016c33bf796c0db16682406275809",
+          "imageMember": "True Crime - Streets of LA (USA).iso",
+          "outputSha1": "b988779fbb40aeb17a916abc25fc9188e05a28e9",
+          "patches": [
+            "TC SofLA Esp/TC SofLA Esp.xdelta"
+          ]
+        }
+      ]
+    }
+  }
+}

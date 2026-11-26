@@ -1,0 +1,309 @@
+{
+  "projects": {
+    "1304": {
+      "rhdnId": 1304,
+      "archive": "[1304]toa-spa-v1.0.0.7z",
+      "archiveSha256": "3d85f66d28e47f556d1de55677d0b7587f69d135fb486ecfadee81552a55366c",
+      "sourceUrl": "https://www.romhacking.net/translations/1304/",
+      "patchOnly": true,
+      "discs": [
+        {
+          "archiveName": "Tales of the Abyss (USA).zip",
+          "inputSha1": "ee645c3a336cebb2a087bcbf7ef47f8d437d5533",
+          "imageMember": "Tales of the Abyss (USA).iso"
+        }
+      ]
+    },
+    "1424": {
+      "rhdnId": 1424,
+      "archive": "[1424]okami10c.rar",
+      "archiveSha256": "a96a6f187cba7eba3fafd3007a42b8e29448e584ff0ef6148b0614fb29576edf",
+      "sourceUrl": "https://www.romhacking.net/translations/1424/",
+      "patchOnly": true,
+      "discs": [
+        {
+          "archiveName": "Ookami (USA).zip",
+          "inputSha1": "b62790ebc844ae4e8fcc2d9ebe52e730ccadb4c1",
+          "imageMember": "Ookami (USA).iso"
+        }
+      ]
+    },
+    "1436": {
+      "rhdnId": 1436,
+      "archive": "[1436]SOS_Spanish_v1.10Full.rar",
+      "archiveSha256": "e135183c1f50a5d1e8f655c1cd6cdcb4c18af7e76e499c1ab448c6b8b33dfd44",
+      "sourceUrl": "https://www.romhacking.net/translations/1436/",
+      "patchOnly": true,
+      "discs": [
+        {
+          "archiveName": "Disaster Report (USA).zip",
+          "inputSha1": "3885383c9a3ce000c009fb0d807b69bdf9388c56",
+          "imageMember": "Disaster Report (USA).iso"
+        }
+      ]
+    },
+    "6371": {
+      "rhdnId": 6371,
+      "archive": "[6371]trapt.zip",
+      "archiveSha256": "9fb939e6e84f6dc08a29cf280dbb71a17865528bfeae97ff54f6a0f5d619e831",
+      "sourceUrl": "https://www.romhacking.net/translations/6371/",
+      "preparedDiscSha256": "45c7fa485611c3fd4f961037841fa6d7509aa6d6696138f599df841176de506c",
+      "discs": [
+        {
+          "archiveName": "Trapt (USA).zip",
+          "inputSha1": "75464ecce723a8e056ae89b9e0c5e843bcc8170b",
+          "imageMember": "Trapt (USA).iso",
+          "outputSha1": "21f2874b7554158f1d5504b98397dea54511508d",
+          "patches": [
+            "trapt_ind.xdelta"
+          ]
+        }
+      ]
+    },
+    "2146": {
+      "rhdnId": 2146,
+      "archive": "[2146]AI1_Patch_US-FR_v1.22.rar",
+      "archiveSha256": "ea5523c19630dfbc4a6b57ee5a720a9291f1d912ad6b043f5d5291088e5ee057",
+      "sourceUrl": "https://www.romhacking.net/translations/2146/",
+      "preparedDiscSha256": "8607dc406bf5d406b10d6b8a34dc1da5687ae7e6fe2d5ee6c3b691735f115535",
+      "discs": [
+        {
+          "archiveName": "Atelier Iris - Eternal Mana (USA).zip",
+          "inputSha1": "8631578f1c4e1924de424a1bef11422ef599a207",
+          "imageMember": "Atelier Iris - Eternal Mana (USA).iso",
+          "outputSha1": "1513711883a16b7bae49ad1dc6a757c3c256e85d",
+          "patches": [
+            "Patch/AI1_Patch_US-FR_v1.22.xdelta"
+          ]
+        }
+      ]
+    },
+    "6346": {
+      "rhdnId": 6346,
+      "archive": "[6346]FatalFrame.zip",
+      "archiveSha256": "e5c0f86e3f8088a1e7b66e7ff14f4d21d3fcababe131372ecc6444cc2e5fcc86",
+      "sourceUrl": "https://www.romhacking.net/translations/6346/",
+      "preparedDiscSha256": "3d8b6c0d15115011a9116961e3dfd8328b72c0c8a119c3e7a67f822db3547228",
+      "discs": [
+        {
+          "archiveName": "Fatal Frame (USA).zip",
+          "inputSha1": "574e55d2b47955d64db21071469176698de9fb64",
+          "imageMember": "Fatal Frame (USA).iso",
+          "outputSha1": "1b1e51c346a5ea6df34e15c399f217e98215eba6",
+          "patches": [
+            "FatalFrame.xdelta"
+          ]
+        }
+      ]
+    },
+    "6800": {
+      "rhdnId": 6800,
+      "archive": "[6800]Gradius V _ PT_BR - By FTR_ Ver -1.0.zip",
+      "archiveSha256": "c692b4d9733057c8a2724ded2dbef54501419cb4379e3e68e8c83a34c08c850b",
+      "sourceUrl": "https://www.romhacking.net/translations/6800/",
+      "patchOnly": true,
+      "discs": [
+        {
+          "archiveName": "Gradius V (USA).zip",
+          "inputSha1": "57a4a82fa3aa89d2fdd68c0d354aacca0fc82fd2"
+        }
+      ]
+    },
+    "2593": {
+      "rhdnId": 2593,
+      "archive": "[2593]Mana_Khemia_Patch_FR_v1.rar",
+      "archiveSha256": "7b60930c1f821633a0409d974ff730104657a8980aebbf4aac97ca8a101cf96f",
+      "sourceUrl": "https://www.romhacking.net/translations/2593/",
+      "preparedDiscSha256": "6966ecaed85f4b26efe584025e98ad93a7c11c85e0ebca6fbc3c2fc96d2db02b",
+      "discs": [
+        {
+          "archiveName": "Mana Khemia - Alchemists of Al-Revis (USA).zip",
+          "inputSha1": "115caf613adbef17ef3f4a4c6cb4ea1f7509a922",
+          "imageMember": "Mana Khemia - Alchemists of Al-Revis (USA).iso",
+          "outputSha1": "bb45d8865f2e5e4d87396d249cceda8f23716539",
+          "patches": [
+            "Patch/MK1_Patch_v1.xdelta"
+          ]
+        }
+      ]
+    },
+    "6512": {
+      "rhdnId": 6512,
+      "archive": "[6512]Disgaea_ind.zip",
+      "archiveSha256": "1d7909f39e4ac66a64c67e7236db252e020bc3231bf51f1997ce885a7c873c33",
+      "sourceUrl": "https://www.romhacking.net/translations/6512/",
+      "preparedDiscSha256": "3fe5e8a45a9c23e92873834c3a69e8790e637bf423881fd1c45c7357011480df",
+      "discs": [
+        {
+          "archiveName": "Disgaea - Hour of Darkness (USA).zip",
+          "inputSha1": "886cdff2662ba74b5bcbb2f2df42a967d11dcb68",
+          "imageMember": "Disgaea - Hour of Darkness (USA).iso",
+          "outputSha1": "4c9901c3672f38677bb4f0a0de2c74fb5efb5d1b",
+          "patches": [
+            "Disgaea.xdelta"
+          ]
+        }
+      ]
+    },
+    "6917": {
+      "rhdnId": 6917,
+      "archive": "[6917]EoE.zip",
+      "archiveSha256": "0b288defe2de79361293fb2f5d4070e96d168e3357b0562e9181917de0ad2ced",
+      "sourceUrl": "https://www.romhacking.net/translations/6917/",
+      "preparedDiscSha256": "9889d14b461dc4df8583df9191962fd01d920f74a5aa3885093a49e577b191a5",
+      "discs": [
+        {
+          "archiveName": "E.O.E - Eve of Extinction (USA).zip",
+          "inputSha1": "72a185a748d16b8e6490261871b0e7d6b569c222",
+          "imageMember": "E.O.E - Eve of Extinction (USA).iso",
+          "outputSha1": "757d481918184ba1dd154f4daff5b7f0fa15113a",
+          "patches": [
+            "EoE_v10.xdelta"
+          ]
+        }
+      ]
+    },
+    "6941": {
+      "rhdnId": 6941,
+      "archive": "[6941]kuon.zip",
+      "archiveSha256": "2bb7a97080dd757691ccd62d20169548bbb2fc38d0dc011f6f6944808b0b04d9",
+      "sourceUrl": "https://www.romhacking.net/translations/6941/",
+      "preparedDiscSha256": "2a54b966b08ac325edf8aed7b10fc95dae558582b42f0ae70a7c5ee64957c3df",
+      "discs": [
+        {
+          "archiveName": "Kuon (USA).zip",
+          "inputSha1": "029f1e1dc9c9c6f6fe9c3a999d946554536b1e10",
+          "imageMember": "Kuon (USA).iso",
+          "outputSha1": "f59bb5d29ad466454c5c20f3a902ede236ede3df",
+          "patches": [
+            "kuon.xdelta"
+          ]
+        }
+      ]
+    },
+    "6572": {
+      "rhdnId": 6572,
+      "archive": "[6572]FatalFrame2v10.zip",
+      "archiveSha256": "72f0d5627654ecbeef9017eb4f6fb27e0072367cc34f444792001a55cf7164fd",
+      "sourceUrl": "https://www.romhacking.net/translations/6572/",
+      "preparedDiscSha256": "bc55917e3749e0216a0e76c06ef715689993337bf937fa3edaff4224f2c4f8ee",
+      "discs": [
+        {
+          "archiveName": "Fatal Frame II - Crimson Butterfly (USA).zip",
+          "inputSha1": "267ff958bc0f02bec862023bc16e73831eea9359",
+          "imageMember": "Fatal Frame II - Crimson Butterfly (USA).iso",
+          "outputSha1": "20222b7b73653eaeefbbbca1acfc18d2d8ed082f",
+          "patches": [
+            "FatalFrame2v10.xdelta"
+          ]
+        }
+      ]
+    },
+    "7075": {
+      "rhdnId": 7075,
+      "archive": "[7075] Mosquitov11.zip",
+      "archiveSha256": "168dbf7f67337f46ee8a54e751d1401d0a39b6718312a539dc433ea542f3bf40",
+      "sourceUrl": "https://www.romhacking.net/translations/7075/",
+      "discs": [
+        {
+          "archiveName": "Mister Mosquito (USA).zip",
+          "inputSha1": "97d32f29506787645e5e521319fe77406b0a6476",
+          "outputSha1": "fffc16fda3ab3a37a0a34e0cbce24a2f6836209c",
+          "patches": [
+            "Mosquito_v11.xdelta"
+          ]
+        }
+      ]
+    },
+    "6876": {
+      "rhdnId": 6876,
+      "archive": "[6876]Nights_v10.zip",
+      "archiveSha256": "82a4094eb2ea655f47b41096c9a2411b8d0f96820979cb677b5f1d494dc5bed4",
+      "sourceUrl": "https://www.romhacking.net/translations/6876/",
+      "preparedDiscSha256": "235b2d40230cf48f2c337c6acce944b19f544e7ced70b5764cfb50a2d2dcdc41",
+      "discs": [
+        {
+          "archiveName": "Nightshade (USA).zip",
+          "inputSha1": "c5ba6b349c6403d60bbeddabe4e100a5d844611d",
+          "imageMember": "Nightshade (USA).iso",
+          "outputSha1": "67adc1b75249b6fdd229d22fe7a07d3fcfb5b497",
+          "patches": [
+            "Nights_v10.xdelta"
+          ]
+        }
+      ]
+    },
+    "6825": {
+      "rhdnId": 6825,
+      "archive": "[6825]HGv13.zip",
+      "archiveSha256": "f111b5917262933d01800c81db60bd49039bd842f81fa9ad741a1f497dbae0aa",
+      "sourceUrl": "https://www.romhacking.net/translations/6825/",
+      "preparedDiscSha256": "23fd4889d510b5a0a668067c6af3bd4dae1447de63aa8b149b1b3ab10f1e8745",
+      "discs": [
+        {
+          "archiveName": "Haunting Ground (USA).zip",
+          "inputSha1": "45b9dabe26a0b9082b13635e85ba4635c8f91a31",
+          "imageMember": "Haunting Ground (USA).iso",
+          "outputSha1": "883d8b891871faeaf89fadc39b9b0b7c6cc43f39",
+          "patches": [
+            "Hauntingv13.xdelta"
+          ]
+        }
+      ]
+    },
+    "7197": {
+      "rhdnId": 7197,
+      "archive": "[7197]SHOrigin.zip",
+      "archiveSha256": "e222db320d29f964a8e77fdf2c5ecde581e0547e0379f9e715b8c37c30a568e8",
+      "sourceUrl": "https://www.romhacking.net/translations/7197/",
+      "preparedDiscSha256": "08594c984772fd34562649dcfc5bfee571d6a8760c33e008ded8ca39159564d4",
+      "discs": [
+        {
+          "archiveName": "Silent Hill Origins (USA) (En,Fr,De,Es,It).zip",
+          "inputSha1": "4458f1c0c599745967dd341433a17b6bb32cbf69",
+          "imageMember": "Silent Hill Origins (USA) (En,Fr,De,Es,It).iso",
+          "outputSha1": "a7aef97bc719fe08a686f13f989f29ac6bae8a85",
+          "patches": [
+            "SHO.xdelta"
+          ]
+        }
+      ]
+    },
+    "7090": {
+      "rhdnId": 7090,
+      "archive": "[7090]SH2.zip",
+      "archiveSha256": "f1c667120c0286b801e5b01512caa72b3f1418ddb1b701960d032ae40744a0b8",
+      "sourceUrl": "https://www.romhacking.net/translations/7090/",
+      "preparedDiscSha256": "3bdd9f12d8ae596c7d9834ef5d95b4254a38c6aeabe28c70f598fa48e1dc3115",
+      "discs": [
+        {
+          "archiveName": "Silent Hill 2 (USA) (En,Ja,Fr,De,Es,It) (v2.01).zip",
+          "inputSha1": "2f4d89736d9240c6f8719e50a8d450a81ad638ae",
+          "imageMember": "Silent Hill 2 (USA) (En,Ja,Fr,De,Es,It) (v2.01).iso",
+          "outputSha1": "03971f2a8d868973b01a21f6d58934a2c4ec1866",
+          "patches": [
+            "SH2Ind.xdelta"
+          ]
+        }
+      ]
+    },
+    "7216": {
+      "rhdnId": 7216,
+      "archive": "[7216]SH3.zip",
+      "archiveSha256": "f20869063d9964674dee236c91631e95096c12868d6166d110bc253cbe97073c",
+      "sourceUrl": "https://www.romhacking.net/translations/7216/",
+      "preparedDiscSha256": "3e46028dc7b98a116a5e300b7011dffaf03881bc94e0a2dcc23c69c06a45ef8a",
+      "discs": [
+        {
+          "archiveName": "Silent Hill 3 (USA) (En,Ja,Fr,De,Es,It,Ko).zip",
+          "inputSha1": "0f7b0d5d75fe34ddf72e26aae1b4f5e7891282b0",
+          "imageMember": "Silent Hill 3 (USA) (En,Ja,Fr,De,Es,It,Ko).iso",
+          "outputSha1": "bd2da2476728d0de8623011233b16e236b83f9c1",
+          "patches": [
+            "SH3.xdelta"
+          ]
+        }
+      ]
+    }
+  }
+}

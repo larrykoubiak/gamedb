@@ -1,0 +1,205 @@
+{
+  "projects": {
+    "514": {
+      "rhdnId": 514,
+      "archive": "[514]YsIV(US)v95.zip",
+      "archiveSha256": "ad2716ae03a6f5b233ecccabe26fa11bc2a94660ce91a375c98d8e0c83fc0324",
+      "patchOnly": true,
+      "discs": [
+        {
+          "archiveName": "Ys IV - The Dawn of Ys (Japan) (Rev 4).zip",
+          "inputSha1": "0f721f8877c18f3c9a488fe25f42a9806c275813"
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/514/"
+    },
+    "522": {
+      "rhdnId": 522,
+      "archive": "[522]522Xak3(US)-B.rar",
+      "archiveSha256": "b70b7587662d30003da52304810fc23eb6469d2e812534ff08301f9d3bcca118",
+      "patchOnly": true,
+      "discs": [
+        {
+          "archiveName": "Xak III - The Eternal Recurrence (Japan).zip",
+          "inputSha1": "f53fa8567c82a8e88d5a713b2aa611d0a382443a"
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/522/"
+    },
+    "846": {
+      "rhdnId": 846,
+      "archive": "[846]DraculaX_v1.01.zip",
+      "archiveSha256": "3269b58662a6f2cb6c95b2383576d9a84622aa5827f3c492b049914fcd8ed72c",
+      "discs": [
+        {
+          "archiveName": "Akumajou Dracula X - Chi no Rondo (Japan) (FABT, FACT).zip",
+          "inputSha1": "c9b092fb15af2a7436f425bf29ed5d948f9c9640",
+          "outputSha1": "97687128dea498f988560658fcba447f07c766d5"
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/846/",
+      "preparedDiscSha256": "6f7e91f9edab84cc988ffae31df2a4b1db4dd30d14660e008fcb8ca10196e0e6"
+    },
+    "2801": {
+      "rhdnId": 2801,
+      "archive": "[2801]Final_Match_Tennis_Ladies-translation_v1-0.zip",
+      "archiveSha256": "40179fb3350fc3c42d191c40a7a09336287e66daa2135660fb7463102a271fe5",
+      "patchOnly": true,
+      "discs": [
+        {
+          "archiveName": "Human Sports Festival (Japan).zip",
+          "inputSha1": "b6e805a4974f357bcc4a4ce998d8c088243d24a6"
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/2801/"
+    },
+    "5506": {
+      "rhdnId": 5506,
+      "archive": "[5506]Bishoujo Senshi Sailor Moon (PC-Engine CD) EN [v1.1].zip",
+      "archiveSha256": "e753f92f688aec74cc1948b183a2e7a18890ced1882c25e70f75d641f1eb908a",
+      "discs": [
+        {
+          "archiveName": "Bishoujo Senshi Sailor Moon (Japan).zip",
+          "inputSha1": "03d75d832d153d3cbfb812e974936eaeffe37909",
+          "outputSha1": "de58d5cdb18941109bfe858c04b0ca571105086a",
+          "inputJoinedSha1": "868a40278c4e4ef2da9fa082dbdbba88966ea8c0",
+          "joinedCue": "redump_patch/Bishoujo Senshi Sailor Moon PCECD EN [v1.1] Redump.cue",
+          "patches": [
+            "redump_patch/Bishoujo Senshi Sailor Moon PCECD EN [v1.1] Redump.xdelta"
+          ]
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/5506/"
+    },
+    "5805": {
+      "rhdnId": 5805,
+      "archive": "[5805]Madou Monogatari I - Honoo no Sotsuenji EN [v1.0].zip",
+      "archiveSha256": "9aec646e1a295b9c5f7d571db653333240d8c75047ac752ce90f5f543c0427e2",
+      "discs": [
+        {
+          "archiveName": "Madou Monogatari I - Honoo no Sotsuenji (Japan).zip",
+          "inputSha1": "754696b6527c12259280e82f9233d555f1157340",
+          "outputSha1": "071264d401d9d8f7418167d9c9853b140db580aa",
+          "inputJoinedSha1": "8e583b2c38736871aa44ba842291f257f9b5af34",
+          "joinedCue": "redump_patch/Madou Monogatari I - Honoo no Sotsuenji EN [v1.0] Redump.cue",
+          "patches": [
+            "redump_patch/Madou Monogatari I - Honoo no Sotsuenji EN [v1.0] Redump.xdelta"
+          ]
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/5805/"
+    },
+    "6382": {
+      "rhdnId": 6382,
+      "archive": "[6382]Ginga Ojousama Densetsu Yuna 2 EN [v1.0] RHDN Special Edition.zip",
+      "archiveSha256": "56d3b6bf2c6e49b47bd9a209b8f609669cee947fa4c4033c9012d37512b14150",
+      "discs": [
+        {
+          "archiveName": "Ginga Ojousama Densetsu Yuna 2 - Eien no Princess (Japan) (FAAT).zip",
+          "inputSha1": "25a98e554b2bea06c932561d16976d866bdc5664",
+          "outputSha1": "245f6fd0ed3be995088787f1b7861148c1d429e8",
+          "inputJoinedSha1": "74073958cd6560d6206c83786c457a41daa7b0d5",
+          "joinedCue": "redump_patch/Ginga Ojousama Densetsu Yuna 2 EN [v1.0] Redump.cue",
+          "patches": [
+            "redump_patch/Ginga Ojousama Densetsu Yuna 2 EN [v1.0-faat] Redump.xdelta"
+          ]
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/6382/"
+    },
+    "6386": {
+      "rhdnId": 6386,
+      "archive": "[6386]bazaru_1.0.zip",
+      "archiveSha256": "3456986dc9a919ddeb32c85d06c5fb22a5c4ce40bb75b6c0231edac28fdb714c",
+      "discs": [
+        {
+          "archiveName": "Bazar de Gozarre no Game de Gozarre (Japan).zip",
+          "inputSha1": "6f3405324cc47b46c562603cb77ac0eb5d4a5b52",
+          "inputIsoSha1": "fbb7c39776683ba2d8ce5f9c161a9e514118cc84",
+          "isoPregapSectors": 225,
+          "patchIsoAfterPregap": true,
+          "patches": [
+            "Bazaru_English_1.0.ips"
+          ],
+          "outputSha1": "b1133ecfec8d1106608f2ed5e29d6be887255f39"
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/6386/"
+    },
+    "6785": {
+      "rhdnId": 6785,
+      "archive": "[6785]Private Eye Dol EN [v1.0].zip",
+      "archiveSha256": "09533a3e6926430e3840d4593b831437a314c3235ce0fdd6246f2f41d20f2112",
+      "discs": [
+        {
+          "archiveName": "Private Eye dol (Japan).zip",
+          "inputSha1": "36d99d019eae63ed9c7e3afc6904e680aab66e73",
+          "outputSha1": "5fd2b1b2f78e7678ed6e2662e389004879dfec56",
+          "inputJoinedSha1": "5502081d84ce4b036b81b35471b56a6cd510c80a",
+          "joinedCue": "redump_patch/Private Eye Dol EN [v1.0] Redump.cue",
+          "patches": [
+            "redump_patch/Private Eye Dol EN [v1.0] Redump.xdelta"
+          ]
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/6785/"
+    },
+    "7087": {
+      "rhdnId": 7087,
+      "archive": "[7087]DotB1_Eng_v1.0_Patch.zip",
+      "archiveSha256": "9852dfbb28a2764542b3b3a6b06f4aade6b3c46e7803be2f9df64b5a1d68d6ee",
+      "discs": [
+        {
+          "archiveName": "Dead of the Brain 1&2 (Japan).zip",
+          "inputSha1": "9ac8ac828bdd7915b9b65d074482026b4f85b218",
+          "inputIsoSha1": "84b62e1a1a26cfc8c73648f71fa8b6c66ae37be1",
+          "isoPregapSectors": 225,
+          "patchIsoAfterPregap": true,
+          "patches": [
+            "Dead of the Brain I & II (E) [v1.0].xdelta"
+          ],
+          "outputSha1": "d2a53261881658007fa4e30e68116f332ee5c970"
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/7087/"
+    },
+    "7089": {
+      "rhdnId": 7089,
+      "archive": "[7089]DotB1_Fr_v1.0_Patch.zip",
+      "archiveSha256": "9bc83fb14b570563e5933bb03a5e9e67c66293788b70161fea010eda4abddbf0",
+      "discs": [
+        {
+          "archiveName": "Dead of the Brain 1&2 (Japan).zip",
+          "inputSha1": "9ac8ac828bdd7915b9b65d074482026b4f85b218",
+          "inputIsoSha1": "84b62e1a1a26cfc8c73648f71fa8b6c66ae37be1",
+          "isoPregapSectors": 225,
+          "patchIsoAfterPregap": true,
+          "patches": [
+            "Dead of the Brain I & II (F) [v1.0].xdelta"
+          ],
+          "outputSha1": "ec2406dd67ceca2e81816b6e4beef4dbb49a3339"
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/7089/"
+    },
+    "7207": {
+      "rhdnId": 7207,
+      "archive": "[7207]DL2-ITA1.0A.rar",
+      "archiveSha256": "f0ef5563ff9b03b01baac046b9ab428c615485b6437fd6a47289994f8d497026",
+      "discs": [
+        {
+          "archiveName": "Down Load 2 (Japan).zip",
+          "inputSha1": "32c53b29ce8b65f510d299b4964a87502a8d0e07",
+          "inputIsoSha1": "e8818148e8d3f0c44413d5d3b0df40e5fbd9ab6a",
+          "outputSha1": "708d697c97f70e0d86790c9e11f8cd83806a1126",
+          "isoPregapSectors": 225,
+          "patchIsoAfterPregap": true,
+          "patches": [
+            "DL2-ITA1.0.xdelta"
+          ]
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/7207/"
+    }
+  }
+}

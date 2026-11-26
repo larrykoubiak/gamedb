@@ -1,7 +1,7 @@
 const vgmFormats = new Set([
-  "2sf", "adx", "ay", "gbs", "genh", "gsf", "gym", "hes", "hwas", "it", "kss", "med", "mini2sf", "minigsf",
-  "minincsf", "minipsf", "minissf", "miniusf", "mod", "ncsf", "nsf", "nsfe", "okt", "psf", "s3m", "sap", "sfx",
-  "sid", "sndh", "spc", "ssf", "strm", "swav", "usf", "vgm", "vgz", "xa", "xm",
+  "2sf", "adx", "ay", "dsf", "gbs", "genh", "gsf", "gym", "hes", "hps", "hwas", "it", "kss", "med", "mini2sf", "minidsf", "minigsf",
+  "minincsf", "minipsf", "minipsf2", "minissf", "miniusf", "mod", "ncsf", "nsf", "nsfe", "okt", "psf", "psf2",
+  "s3m", "sap", "sfx", "sid", "sndh", "spc", "ssf", "strm", "swav", "usf", "vgm", "vgz", "xa", "xm",
 ]);
 const vgmAudioContext = window.AudioContext || window.webkitAudioContext;
 
@@ -98,7 +98,7 @@ function startVgmPlayback(asset, libraries, {started, ended, subsong, volume}) {
   }
 
   try {
-    worker = new Worker("/vgm/decoder.mjs?v=6", {type: "module"});
+    worker = new Worker("/vgm/decoder.mjs?v=7", {type: "module"});
     worker.addEventListener("error", () => finish("The playback engine could not load."));
     worker.addEventListener("messageerror", () => finish("The playback engine returned unreadable audio."));
     worker.addEventListener("message", ({data}) => {

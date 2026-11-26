@@ -268,7 +268,7 @@ def _scope_launchbox(connection, catalog, reviewed, *, platforms=LAUNCHBOX_PLATF
         titles={game["title"], *(name for release in game["releases"] for name in release_names(release))},
         match_facts={
             "release_date": {match[0] for release in game["releases"]
-                             if (match := re.search(r"\b\d{4}\b", release["date"]))},
+                             if (match := re.search(r"\b\d{4}\b", release["date"] or ""))},
             "publisher": {game["publisher"]}, "developer": {game["developer"]},
         },
     ) for game in catalog["games"]]
@@ -354,6 +354,8 @@ def libretro_asset(folder, revision, path):
 def _libretro_art(release, paths, reviewed=(), *,
                   thumbnails=THUMBNAILS, thumbnail_key="snes", country_markets=COUNTRY_MARKETS):
     folder_key = "sufami" if release["channel"] == "sufami-turbo" else thumbnail_key
+    if folder_key not in paths:
+        return
     folder, revision = thumbnails[folder_key]
     local_titles = {title_key(title) for title in release["titles"]}
     for archive in release.get("archives", ()):
@@ -372,7 +374,7 @@ def _libretro_art(release, paths, reviewed=(), *,
                     continue
                 filename = (review or {}).get("filename", f"{stem}.png")
                 path = f"{directory}/{filename}"
-                if path in paths.get(folder_key, ()):
+                if path in paths[folder_key]:
                     rank = 2 if exclusive else 0
                     if not archive["revisions"] and not archive["versions"]:
                         rank += 1

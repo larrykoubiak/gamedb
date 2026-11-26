@@ -14,6 +14,7 @@ from .archives import open_vgm_location, packed_locations
 PSF_VERSIONS = {"psf": 1, "minipsf": 1, "psf2": 2, "minipsf2": 2}
 RELATED_PSF_VERSIONS = {
     "ssf": 0x11, "minissf": 0x11,
+    "dsf": 0x12, "minidsf": 0x12,
     "usf": 0x21, "miniusf": 0x21, "gsf": 0x22, "minigsf": 0x22, "snsf": 0x23, "minisnsf": 0x23,
     "2sf": 0x24, "mini2sf": 0x24, "ncsf": 0x25, "minincsf": 0x25,
 }

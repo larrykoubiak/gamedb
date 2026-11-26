@@ -1,0 +1,70 @@
+{
+  "projects": {
+    "1567-1": {
+      "rhdnId": 1567,
+      "archive": "[1567]Game no Kandzume Jap-Eng Translation.zip",
+      "archiveSha256": "dd5a004f573f031017c5a5a2ab68163e50c7b6e89cd1b13929b5fedafc4030d9",
+      "discs": [
+        {
+          "archiveName": "Game no Kandume Vol. 1 (Japan).zip",
+          "inputSha1": "6fffef93a9264868e0e7a4f345e1e386c2d9db5f",
+          "inputIsoSha1": "582a79df8378c04d5c6fceaf7166e1d68703eeca",
+          "outputSha1": "2fd4ad417589113f8e5c8b29faffc44e8b876b1a",
+          "patches": [
+            "Game Can - Volume 1.ips"
+          ]
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/1567/"
+    },
+    "1567-2": {
+      "rhdnId": 1567,
+      "archive": "[1567]Game no Kandzume Jap-Eng Translation.zip",
+      "archiveSha256": "dd5a004f573f031017c5a5a2ab68163e50c7b6e89cd1b13929b5fedafc4030d9",
+      "discs": [
+        {
+          "archiveName": "Game no Kandume Vol. 2 (Japan).zip",
+          "inputSha1": "01bb8e772b0b9a2264c6203b228471286c5496f6",
+          "inputIsoSha1": "dc35dcb458ceabbc4daaa0ab77342612f1603450",
+          "outputSha1": "b76b9aa58bd70c15bf78249e4d0319af734cd113",
+          "patches": [
+            "Game Can - Volume 2.ips"
+          ]
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/1567/"
+    },
+    "2026": {
+      "rhdnId": 2026,
+      "archive": "[2026]snatcher_spanish_0-99_repack.zip",
+      "archiveSha256": "b2d2aecda86087ddc1e9c93f8509e43fdae7d5bf028374054fc00f7ebf7847ef",
+      "discs": [
+        {
+          "archiveName": "Snatcher (USA).zip",
+          "inputSha1": "1f4164205ed736a0d9a03eb7972868e9aa737d35",
+          "patches": [
+            "Snatcher (USA) (Track 01, Traducido).xdelta3"
+          ],
+          "outputSha1": "b0ed11544b060feebee18a11361ab72096a048e1"
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/2026/"
+    },
+    "5629": {
+      "rhdnId": 5629,
+      "archive": "[5629]Eternal Champions - Challenge from the Dark Side (USA) (RE) (Track 01) patch.zip",
+      "archiveSha256": "d60a800528764ab3c01fb37d0a33ee61f83502c3489a67b80eaae4afd85e05c1",
+      "discs": [
+        {
+          "archiveName": "Eternal Champions - Challenge from the Dark Side (USA) (RE).zip",
+          "inputSha1": "06ccf19a9d84ed0efc4e8a0a40c22252411f6fe6",
+          "outputSha1": "bf85cb19cc4f950dad6e37be37ea8dbe4b50acfa",
+          "patches": [
+            "Eternal Champions - Challenge from the Dark Side (USA) (RE) (Track 01).ips"
+          ]
+        }
+      ],
+      "sourceUrl": "https://www.romhacking.net/translations/5629/"
+    }
+  }
+}

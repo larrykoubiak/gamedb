@@ -15,7 +15,7 @@ CROSS JOIN LATERAL (
         'subsongs', asset.detail->'subsongs', 'defaultSubsong', asset.detail->'default_subsong',
         'subsongTitles', asset.detail->'subsong_titles', 'playlistSongs', asset.detail->'playlist_songs',
         'url', '/related-media/vgm/' || asset.key,
-        'playbackUrl', CASE WHEN asset.detail->>'kind' = 'track' AND asset.detail->>'format' IN ('ape', 'aif', 'aiff', 'aifc')
+        'playbackUrl', CASE WHEN asset.detail->>'kind' = 'track' AND asset.detail->>'format' IN (__FLAC_FORMATS__)
                             THEN '/related-media/vgm/' || asset.key || '?audio=flac' END
     ) ORDER BY asset.position) AS items
     FROM vgm.asset asset WHERE asset.soundtrack_key = soundtrack.key

@@ -1,0 +1,3873 @@
+{
+  "archiveTitles": {
+    "All-Star Baseball 2003": [
+      "All-Star Baseball 2003 featuring Derek Jeter"
+    ],
+    "All-Star Baseball 2004": [
+      "All-Star Baseball 2004 featuring Derek Jeter"
+    ],
+    "Cars": [
+      "Disney-Pixar Cars"
+    ],
+    "Chicken Little": [
+      "Disney's Chicken Little"
+    ],
+    "Donald Duck: Goin' Quackers": [
+      "Disney's Donald Duck - Goin' Quackers"
+    ],
+    "FIFA Soccer 2002: Major League Soccer": [
+      "FIFA Soccer 2002"
+    ],
+    "Finding Nemo": [
+      "Disney-Pixar Finding Nemo"
+    ],
+    "Monsters, Inc. Scream Arena": [
+      "Disney-Pixar Monsters, Inc. - Scream Arena"
+    ],
+    "PK: Out of the Shadows": [
+      "Disney's PK - Out of the Shadows"
+    ],
+    "Peter Jackson's King Kong": [
+      "Peter Jackson's King Kong - The Official Game of the Movie"
+    ],
+    "Piglet's Big Game": [
+      "Disney's Piglet's Big Game"
+    ],
+    "Ratatouille": [
+      "Disney-Pixar Ratatouille"
+    ],
+    "Tarzan: Untamed": [
+      "Disney's Tarzan - Untamed"
+    ],
+    "The Haunted Mansion": [
+      "Disney's The Haunted Mansion"
+    ],
+    "Tom and Jerry: War of the Whiskers": [
+      "Tom and Jerry in War of the Whiskers"
+    ],
+    "Universal Studios Theme Parks Adventure": [
+      "Universal Studios Theme Park Adventure"
+    ],
+    "WarioWare, Inc.: Mega Party Games!": [
+      "WarioWare, Inc. - Mega Party Game$!"
+    ],
+    "Winnie the Pooh's Rumbly Tumbly Adventure": [
+      "Disney's Winnie the Pooh's Rumbly Tumbly Adventure"
+    ],
+    "James Bond 007: Agent Under Fire": [
+      "007 - Agent Under Fire"
+    ],
+    "James Bond 007: Everything or Nothing": [
+      "007 - Everything or Nothing"
+    ],
+    "James Bond 007: From Russia with Love": [
+      "007 - From Russia with Love"
+    ],
+    "James Bond 007: Nightfire": [
+      "007 - Nightfire"
+    ],
+    "Blood Omen 2": [
+      "Blood Omen 2 - The Legacy of Kain Series"
+    ],
+    "Chibi-Robo!": [
+      "Chibi-Robo! Plug into Adventure!"
+    ],
+    "The Incredibles": [
+      "Disney-Pixar The Incredibles"
+    ],
+    "The Incredibles: Rise of the Underminer": [
+      "Disney-Pixar The Incredibles - Rise of the Underminer"
+    ],
+    "Flushed Away": [
+      "DreamWorks & Aardman Flushed Away"
+    ],
+    "Madagascar": [
+      "DreamWorks Madagascar"
+    ],
+    "Over the Hedge": [
+      "DreamWorks Over the Hedge"
+    ],
+    "Shark Tale": [
+      "DreamWorks Shark Tale"
+    ],
+    "Shrek Smash n' Crash Racing": [
+      "DreamWorks Shrek - Smash n' Crash Racing"
+    ],
+    "Shrek SuperSlam": [
+      "DreamWorks Shrek - SuperSlam"
+    ],
+    "Fantastic Four": [
+      "Fantastic 4"
+    ],
+    "2006 FIFA World Cup": [
+      "FIFA World Cup Germany 2006"
+    ],
+    "The Hobbit": [
+      "Hobbit, The - The Prelude to the Lord of the Rings"
+    ],
+    "Tomb Raider: Legend": [
+      "Lara Croft Tomb Raider - Legend"
+    ],
+    "Avatar: The Last Airbender": [
+      "Nickelodeon Avatar - The Last Airbender"
+    ],
+    "Barnyard": [
+      "Nickelodeon Barnyard"
+    ],
+    "Jimmy Neutron: Boy Genius": [
+      "Nickelodeon Jimmy Neutron - Boy Genius"
+    ],
+    "The Adventures of Jimmy Neutron Boy Genius: Attack of the Twonkies": [
+      "Nickelodeon Jimmy Neutron - Boy Genius - Attack of the Twonkies"
+    ],
+    "Rocket Power: Beach Bandits": [
+      "Nickelodeon Rocket Power - Beach Bandits"
+    ],
+    "Rugrats: Royal Ransom": [
+      "Nickelodeon Rugrats - Royal Ransom"
+    ],
+    "SpongeBob SquarePants: Battle for Bikini Bottom": [
+      "Nickelodeon SpongeBob SquarePants - Battle for Bikini Bottom"
+    ],
+    "SpongeBob SquarePants: Creature from the Krusty Krab": [
+      "Nickelodeon SpongeBob SquarePants - Creature from the Krusty Krab"
+    ],
+    "SpongeBob SquarePants: Lights, Camera, Pants!": [
+      "Nickelodeon SpongeBob SquarePants - Lights, Camera, Pants!"
+    ],
+    "SpongeBob SquarePants: Revenge of the Flying Dutchman": [
+      "Nickelodeon SpongeBob SquarePants - Revenge of the Flying Dutchman"
+    ],
+    "The SpongeBob SquarePants Movie": [
+      "Nickelodeon SpongeBob SquarePants - The Movie"
+    ],
+    "Tak 2: The Staff of Dreams": [
+      "Nickelodeon Tak 2 - The Staff of Dreams"
+    ],
+    "Tak: The Great Juju Challenge": [
+      "Nickelodeon Tak - The Great Juju Challenge"
+    ],
+    "The Adventures of Jimmy Neutron Boy Genius: Jet Fusion": [
+      "Nickelodeon The Adventures of Jimmy Neutron - Boy Genius - Jet Fusion"
+    ],
+    "Dora the Explorer: Journey to the Purple Planet": [
+      "Nick Jr. Dora the Explorer - Journey to the Purple Planet"
+    ],
+    "Pokémon Box: Ruby and Sapphire": [
+      "Pokemon Box - Ruby & Sapphire"
+    ],
+    "Pro Rally": [
+      "Pro Rally 2002"
+    ],
+    "Shamu's Deep Sea Adventures": [
+      "SeaWorld Adventure Parks - Shamu's Deep Sea Adventures"
+    ],
+    "One Piece: Grand Adventure": [
+      "Shonen Jump's One Piece - Grand Adventure"
+    ],
+    "One Piece: Grand Battle!": [
+      "Shonen Jump's One Piece - Grand Battle"
+    ],
+    "One Piece: Pirates' Carnival": [
+      "Shonen Jump's One Piece - Pirates' Carnival"
+    ],
+    "Street Racing Syndicate": [
+      "SRS - Street Racing Syndicate"
+    ],
+    "Tube Slider": [
+      "Tube Slider - The Championship of Future Formula"
+    ],
+    "Ty the Tasmanian Tiger 3: Night of the Quinkan": [
+      "TY the Tasmanian Tiger - Night of the Quinkan"
+    ],
+    "Meet the Robinsons": [
+      "Walt Disney Pictures Presents Meet the Robinsons"
+    ],
+    "Extreme-G 3": [
+      "XGIII - Extreme G Racing"
+    ],
+    "Zapper: One Wicked Cricket": [
+      "Zapper"
+    ]
+  },
+  "additionalReleases": [
+    {
+      "game": "Game Boy Player Start-Up Disc",
+      "market": "NA",
+      "title": "Game Boy Player Start-Up Disc",
+      "source": {
+        "name": "Redump",
+        "url": "https://redump.org/",
+        "revision": "local verified disc inventory",
+        "license": null
+      },
+      "newGame": true
+    },
+    {
+      "game": "Nintendo GameCube Service Disc Version 1.0-03",
+      "market": "NA",
+      "title": "Nintendo GameCube Service Disc Version 1.0-03",
+      "source": {
+        "name": "Redump",
+        "url": "https://redump.org/",
+        "revision": "local verified disc inventory",
+        "license": null
+      },
+      "newGame": true
+    },
+    {
+      "game": "Ribbit King Plus!",
+      "market": "NA",
+      "title": "Ribbit King Plus!",
+      "source": {
+        "name": "Redump",
+        "url": "https://redump.org/",
+        "revision": "local verified disc inventory",
+        "license": null
+      },
+      "newGame": true
+    }
+  ],
+  "manuals": [
+    {
+      "edition": "Aggressive Inline",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Aggressive Inline — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FAggressive%20Inline%20%282001%29%28Acclaim%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Aggressive Inline (2001)(Acclaim)(US).zip"
+    },
+    {
+      "edition": "Amazing Island",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Amazing Island — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FAmazing%20Island%20%282001%29%28Sega%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Amazing Island (2001)(Sega)(US).zip"
+    },
+    {
+      "edition": "Baten Kaitos: Eternal Wings and the Lost Ocean",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Baten Kaitos - Eternal Wings and the Lost Ocean — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FBaten%20Kaitos%20-%20Eternal%20Wings%20and%20the%20Lost%20Ocean%20%282001%29%28Namco%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Baten Kaitos - Eternal Wings and the Lost Ocean (2001)(Namco)(US).zip"
+    },
+    {
+      "edition": "Battalion Wars",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Battalion Wars — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FBattalion%20Wars%20%282006%29%28Nintendo%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Battalion Wars (2006)(Nintendo)(US).zip"
+    },
+    {
+      "edition": "Beyond Good & Evil",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Beyond Good & Evil — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FBeyond%20Good%20%26%20Evil%20%282001%29%28Ubisoft%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Beyond Good & Evil (2001)(Ubisoft)(US).zip"
+    },
+    {
+      "edition": "Bloody Roar: Primal Fury",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Bloody Roar Primal Fury — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FBloody%20Roar%20Primal%20Fury%20%282002%29%28Hudson%20Soft%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Bloody Roar Primal Fury (2002)(Hudson Soft)(US).zip"
+    },
+    {
+      "edition": "Burnout 2: Point of Impact",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Burnout 2 - Point of Impact — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FBurnout%202%20-%20Point%20of%20Impact%20%282003%29%28Acclaim%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Burnout 2 - Point of Impact (2003)(Acclaim)(US).zip"
+    },
+    {
+      "edition": "Chibi-Robo!",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Chibi-Robo Plug Into Adventure — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FChibi-Robo%20Plug%20Into%20Adventure%20%282005%29%28Nintendo%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Chibi-Robo Plug Into Adventure (2005)(Nintendo)(US).zip"
+    },
+    {
+      "edition": "Custom Robo",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Custom Robo — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FCustom%20Robo%20%282004%29%28Nintendo%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Custom Robo (2004)(Nintendo)(US).zip"
+    },
+    {
+      "edition": "Def Jam Vendetta",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Def Jam Vendetta — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FDef%20Jam%20Vendetta%20%282001%29%28Electronic%20Arts%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Def Jam Vendetta (2001)(Electronic Arts)(US).zip"
+    },
+    {
+      "edition": "Donkey Kong Jungle Beat",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Donkey Kong - Jungle Beat — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FDonkey%20Kong%20-%20Jungle%20Beat%20%282005%29%28Nintendo%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Donkey Kong - Jungle Beat (2005)(Nintendo)(US).zip"
+    },
+    {
+      "edition": "Donkey Konga",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Donkey Konga — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FDonkey%20Konga%20%282004%29%28Nintendo%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Donkey Konga (2004)(Nintendo)(US).zip"
+    },
+    {
+      "edition": "Luigi's Mansion",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Luigi's Mansion — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FLuigi%27s%20Mansion%20%282001%29%28Nintendo%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Luigi's Mansion (2001)(Nintendo)(US).zip"
+    },
+    {
+      "edition": "Mario Superstar Baseball",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Mario Superstar Baseball — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FMario%20Superstar%20Baseball%20%282003%29%28Nintendo%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Mario Superstar Baseball (2003)(Nintendo)(US).zip"
+    },
+    {
+      "edition": "Resident Evil",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Resident Evil — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FResident%20Evil%20%282001%29%28Capcom%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Resident Evil (2001)(Capcom)(US).zip"
+    },
+    {
+      "edition": "Resident Evil 2",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Resident Evil 2 — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FResident%20Evil%202%20%282001%29%28Capcom%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Resident Evil 2 (2001)(Capcom)(US).zip"
+    },
+    {
+      "edition": "Resident Evil 3: Nemesis",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Resident Evil 3 - Nemesis — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FResident%20Evil%203%20-%20Nemesis%20%282001%29%28Capcom%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Resident Evil 3 - Nemesis (2001)(Capcom)(US).zip"
+    },
+    {
+      "edition": "Resident Evil Zero",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Resident Evil Zero — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FResident%20Evil%20Zero%20%282002%29%28Capcom%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Resident Evil Zero (2002)(Capcom)(US).zip"
+    },
+    {
+      "edition": "Smuggler's Run: Warzones",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Smuggler's Run Warzones — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FSmuggler%27s%20Run%20Warzones%20%282001%29%28Rockstar%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Smuggler's Run Warzones (2001)(Rockstar)(US).zip"
+    },
+    {
+      "edition": "Sonic Mega Collection",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Sonic - Mega Collection — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FSonic%20-%20Mega%20Collection%20%282002%29%28Sega%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Sonic - Mega Collection (2002)(Sega)(US).zip"
+    },
+    {
+      "edition": "Super Mario Sunshine",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Super Mario Sunshine — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FSuper%20Mario%20Sunshine%20%282002%29%28Nintendo%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Super Mario Sunshine (2002)(Nintendo)(US).zip"
+    },
+    {
+      "edition": "Super Monkey Ball",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Super Monkey Ball — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FSuper%20Monkey%20Ball%20%282001%29%28Sega%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Super Monkey Ball (2001)(Sega)(US).zip"
+    },
+    {
+      "edition": "Super Monkey Ball Adventure",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Super Monkey Ball Adventure — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FSuper%20Monkey%20Ball%20Adventure%20%282001%29%28Sega%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Super Monkey Ball Adventure (2001)(Sega)(US).zip"
+    },
+    {
+      "edition": "Super Smash Bros. Melee",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Super Smash Bros. Melee — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FSuper%20Smash%20Bros.%20Melee%20%282001%29%28Nintendo%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Super Smash Bros. Melee (2001)(Nintendo)(US).zip"
+    },
+    {
+      "edition": "Swingerz Golf",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Swingerz Golf — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FSwingerz%20Golf%20%282001%29%28Eidos%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Swingerz Golf (2001)(Eidos)(US).zip"
+    },
+    {
+      "edition": "Teen Titans",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Teen Titans — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FTeen%20Titans%20%282006%29%28THQ%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Teen Titans (2006)(THQ)(US).zip"
+    },
+    {
+      "edition": "WarioWare, Inc.: Mega Party Games!",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Wario Ware, Inc. - Mega Party Game — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FWario%20Ware%2C%20Inc.%20-%20Mega%20Party%20Game%20%282004%29%28Nintendo%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Wario Ware, Inc. - Mega Party Game (2004)(Nintendo)(US).zip"
+    },
+    {
+      "edition": "Wario World",
+      "market": "NA",
+      "regions": [
+        "US"
+      ],
+      "name": "Wario World — manual",
+      "format": "PDF",
+      "source": "TOSEC PIX",
+      "url": "https://archive.org/details/TOSEC-PIX#Nintendo%2FGameCube%2FManuals%2FGames%2FWario%20World%20%282003%29%28Nintendo%29%28US%29.zip",
+      "sourceUrl": "https://archive.org/details/TOSEC-PIX",
+      "localArchive": "Nintendo/GameCube/Manuals/Games/Wario World (2003)(Nintendo)(US).zip"
+    }
+  ],
+  "soundtrackSources": [
+    {
+      "game": "James Bond 007: Agent Under Fire",
+      "title": "007 - Agent Under Fire — JoshW archive",
+      "url": "https://gcn.joshw.info/0-9/007%20-%20Agent%20Under%20Fire%20%282002-03-13%29%28EA%20Redwood%20Shores%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 228844188,
+      "revision": 1375422180
+    },
+    {
+      "game": "James Bond 007: Everything or Nothing",
+      "title": "007 - Everything or Nothing — JoshW archive",
+      "url": "https://gcn.joshw.info/0-9/007%20-%20Everything%20or%20Nothing%20%282004-02-11%29%28EA%20Redwood%20Shores%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 162141823,
+      "revision": 1629479580
+    },
+    {
+      "game": "James Bond 007: From Russia with Love",
+      "title": "007 - From Russia With Love — JoshW archive",
+      "url": "https://gcn.joshw.info/0-9/007%20-%20From%20Russia%20With%20Love%20%282005-11-15%29%28EA%20Redwood%20Shores%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 217034877,
+      "revision": 1546619880
+    },
+    {
+      "game": "James Bond 007: Nightfire",
+      "title": "007 - Nightfire — JoshW archive",
+      "url": "https://gcn.joshw.info/0-9/007%20-%20Nightfire%20%282002-11-18%29%28Eurocom%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 49111192,
+      "revision": 1375425000
+    },
+    {
+      "game": "1080° Avalanche",
+      "title": "1080 - Avalanche — JoshW archive",
+      "url": "https://gcn.joshw.info/0-9/1080%20-%20Avalanche%20%282003-11-28%29%28-%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 298345934,
+      "revision": 1375427760
+    },
+    {
+      "game": "18 Wheeler: American Pro Trucker",
+      "title": "18 Wheeler - American Pro Trucker — JoshW archive",
+      "url": "https://gcn.joshw.info/0-9/18%20Wheeler%20-%20American%20Pro%20Trucker%20%282002-08-18%29%28Sega%20AM2%29%28Acclaim%20Cheltenham%29%28Acclaim%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 77130289,
+      "revision": 1375428480
+    },
+    {
+      "game": "4x4 Evo 2",
+      "title": "4x4 Evo 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/0-9/4x4%20Evo%202%20%282002-09-10%29%28Terminal%20Reality%29%28Universal%20Interactive%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 23564071,
+      "revision": 1753599000
+    },
+    {
+      "game": "ATV: Quad Power Racing 2",
+      "title": "ATV Quad Power Racing 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/a/ATV%20Quad%20Power%20Racing%202%20%282003-01-22%29%28Climax%20Group%29%28AKA%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 141823540,
+      "revision": 1375440660
+    },
+    {
+      "game": "Alien Hominid",
+      "title": "Alien Hominid — JoshW archive",
+      "url": "https://gcn.joshw.info/a/Alien%20Hominid%20%282004-11-23%29%28The%20Behemoth%29%28O3%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 108286286,
+      "revision": 1375431720
+    },
+    {
+      "game": "Amazing Island",
+      "title": "Amazing Island — JoshW archive",
+      "url": "https://gcn.joshw.info/a/Amazing%20Island%20%282004-08-25%29%28Hitmaker%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 298140752,
+      "revision": 1375434600
+    },
+    {
+      "game": "American Chopper 2: Full Throttle",
+      "title": "American Chopper 2 - Full Throttle — JoshW archive",
+      "url": "https://gcn.joshw.info/a/American%20Chopper%202%20-%20Full%20Throttle%20%282005-11-29%29%28Creat%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 212665367,
+      "revision": 1375436640
+    },
+    {
+      "game": "Animaniacs: The Great Edgar Hunt",
+      "title": "Animaniacs - The Great Edgar Hunt — JoshW archive",
+      "url": "https://gcn.joshw.info/a/Animaniacs%20-%20The%20Great%20Edgar%20Hunt%20%282005-05-27%29%28Warthog%29%28Ignition%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 112332024,
+      "revision": 1743331800
+    },
+    {
+      "game": "Aquaman: Battle for Atlantis",
+      "title": "Aquaman - Battle for Atlantis — JoshW archive",
+      "url": "https://gcn.joshw.info/a/Aquaman%20-%20Battle%20for%20Atlantis%20%282003-07-23%29%28Lucky%20Chicken%29%28TDK%20Mediactive%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 77063781,
+      "revision": 1375438260
+    },
+    {
+      "game": "Army Men: Air Combat - The Elite Missions",
+      "title": "Army Men - Air Combat - The Elite Missions — JoshW archive",
+      "url": "https://gcn.joshw.info/a/Army%20Men%20-%20Air%20Combat%20-%20The%20Elite%20Missions%20%282003-03-25%29%28-%29%283DO%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 40902911,
+      "revision": 1375438620
+    },
+    {
+      "game": "Auto Modellista",
+      "title": "Auto Modellista — JoshW archive",
+      "url": "https://gcn.joshw.info/a/Auto%20Modellista%20%5BAuto%20Modellista%20-%20U.S.-tuned%5D%20%282003-07-03%29%28Capcom%20Production%20Studio%201%29%28Capcom%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 384807119,
+      "revision": 1375444680
+    },
+    {
+      "game": "Backyard Baseball",
+      "title": "Backyard Baseball — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Backyard%20Baseball%20%282003-03-31%29%28Humongous%29%28Atari%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 72769608,
+      "revision": 1375448460
+    },
+    {
+      "game": "Bad Boys: Miami Takedown",
+      "title": "Bad Boys - Miami Takedown — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Bad%20Boys%20-%20Miami%20Takedown%20%282004-09-14%29%28Blitz%29%28Empire%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 387181278,
+      "revision": 1533655500
+    },
+    {
+      "game": "Baldur's Gate: Dark Alliance",
+      "title": "Baldur's Gate - Dark Alliance — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Baldur%27s%20Gate%20-%20Dark%20Alliance%20%282002-11-20%29%28High%20Voltage%29%28Black%20Isle%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 72617287,
+      "revision": 1672145400
+    },
+    {
+      "game": "Baten Kaitos Origins",
+      "title": "Baten Kaitos Origins — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Baten%20Kaitos%20Origins%20%5BBaten%20Kaitos%20II%20-%20Hajimari%20no%20Tsubasa%20to%20Kamigami%20no%20Shishi%5D%20%282006-02-23%29%28Monolith%2C%20tri-Crescendo%29%28Namco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 322263168,
+      "revision": 1694512200
+    },
+    {
+      "game": "Baten Kaitos: Eternal Wings and the Lost Ocean",
+      "title": "Baten Kaitos - Eternal Wings and the Lost Ocean — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Baten%20Kaitos%20-%20Eternal%20Wings%20and%20the%20Lost%20Ocean%20%5BBaten%20Kaitos%20-%20Owaranai%20Tsubasa%20to%20Ushinawareta%20Umi%5D%20%282003-12-05%29%28Monolith%2C%20tri-Crescendo%29%28Namco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 235133354,
+      "revision": 1375453260
+    },
+    {
+      "game": "Batman Begins",
+      "title": "Batman Begins — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Batman%20Begins%20%282005-06-14%29%28Eurocom%29%28Warner%20Bros.%20Interactive%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 135572094,
+      "revision": 1521723300
+    },
+    {
+      "game": "Batman: Dark Tomorrow",
+      "title": "Batman - Dark Tomorrow — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Batman%20-%20Dark%20Tomorrow%20%282003-03-21%29%28Kemco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 63416247,
+      "revision": 1582237440
+    },
+    {
+      "game": "Batman: Rise of Sin Tzu",
+      "title": "Batman - Rise of Sin Tzu — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Batman%20-%20Rise%20of%20Sin%20Tzu%20%282003-11-11%29%28Ubisoft%20Montreal%29%28Ubisoft%29%5BGC%5D%5Bunsorted%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 286367771,
+      "revision": 1548871320
+    },
+    {
+      "game": "Batman: Vengeance",
+      "title": "Batman - Vengeance — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Batman%20-%20Vengeance%20%282001-11-17%29%28Ubisoft%20Montreal%29%28Ubisoft%29%5BGC%5D%5Bunsorted%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 261466024,
+      "revision": 1548699360
+    },
+    {
+      "game": "Battalion Wars",
+      "title": "Battalion Wars — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Battalion%20Wars%20%5BTotsugeki%21%20Famicom%20Wars%5D%20%282005-09-19%29%28Kuju%20London%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 104360843,
+      "revision": 1375456860
+    },
+    {
+      "game": "Beach Spikers: Virtua Beach Volleyball",
+      "title": "Beach Spikers - Virtua Beach Volleyball — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Beach%20Spikers%20-%20Virtua%20Beach%20Volleyball%20%282002-07-19%29%28Sega%20AM2%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 58749163,
+      "revision": 1375458060
+    },
+    {
+      "game": "Beyblade VForce: Super Tournament Battle",
+      "title": "Beyblade VForce - Super Tournament Battle — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Beyblade%20VForce%20-%20Super%20Tournament%20Battle%20%5BBakuten%20Shoot%20Beyblade%202002%20-%20Nettou%21%20Magne%20Tag%20Battle%5D%20%282002-12-19%29%28A.I%29%28Takara%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 11820080,
+      "revision": 1375458180
+    },
+    {
+      "game": "Beyond Good & Evil",
+      "title": "Beyond Good & Evil — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Beyond%20Good%20%26%20Evil%20%282003-12-11%29%28Ubisoft%20Montpellier%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 218239683,
+      "revision": 1375460100
+    },
+    {
+      "game": "Big Air Freestyle",
+      "title": "Big Air Freestyle — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Big%20Air%20Freestyle%20%282002-09-13%29%28Paradigm%29%28Infogrames%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 158040722,
+      "revision": 1375461480
+    },
+    {
+      "game": "Billy Hatcher and the Giant Egg",
+      "title": "Billy Hatcher and the Giant Egg — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Billy%20Hatcher%20and%20the%20Giant%20Egg%20%5BGiant%20Egg%20-%20Billy%20Hatcher%20no%20Daibouken%5D%20%282003-09-23%29%28Sonic%20Team%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 198401594,
+      "revision": 1635695400
+    },
+    {
+      "game": "Bionicle Heroes",
+      "title": "Bionicle Heroes — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Bionicle%20Heroes%20%282006-11-14%29%28Traveller%27s%20Tales%29%28Eidos%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 133024514,
+      "revision": 1375464180
+    },
+    {
+      "game": "BloodRayne",
+      "title": "BloodRayne — JoshW archive",
+      "url": "https://gcn.joshw.info/b/BloodRayne%20%282002-10-15%29%28Terminal%20Reality%29%28Majesco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 54414176,
+      "revision": 1375466760
+    },
+    {
+      "game": "Bloody Roar: Primal Fury",
+      "title": "Bloody Roar - Primal Fury — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Bloody%20Roar%20-%20Primal%20Fury%20%5BBloody%20Roar%20Extreme%5D%20%282002-03-18%29%28Eighting%29%28Hudson%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 98365147,
+      "revision": 1685789400
+    },
+    {
+      "game": "BlowOut",
+      "title": "BlowOut — JoshW archive",
+      "url": "https://gcn.joshw.info/b/BlowOut%20%282003-10-28%29%28Terminal%20Reality%29%28Majesco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 34785200,
+      "revision": 1520790780
+    },
+    {
+      "game": "Bomberman Generation",
+      "title": "Bomberman Generation — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Bomberman%20Generation%20%282002-06-03%29%28Game%20Arts%29%28Hudson%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 416333041,
+      "revision": 1375496880
+    },
+    {
+      "game": "Bomberman Jetters",
+      "title": "Bomberman Jetters — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Bomberman%20Jetters%20%282002-12-19%29%28Hudson%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 428018039,
+      "revision": 1375501260
+    },
+    {
+      "game": "Burnout",
+      "title": "Burnout — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Burnout%20%282002-04-29%29%28Criterion%29%28Acclaim%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 141472717,
+      "revision": 1686412200
+    },
+    {
+      "game": "Burnout 2: Point of Impact",
+      "title": "Burnout 2 - Point of Impact — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Burnout%202%20-%20Point%20of%20Impact%20%282003-04-09%29%28Criterion%29%28Acclaim%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 577620164,
+      "revision": 1498437720
+    },
+    {
+      "game": "Bust-a-Move 3000",
+      "title": "Bust-A-Move 3000 — JoshW archive",
+      "url": "https://gcn.joshw.info/b/Bust-A-Move%203000%20%5BSuper%20Puzzle%20Bobble%20All-Stars%5D%20%5BSuper%20Bust-A-Move%20All%20Stars%5D%20%282003-02-12%29%28Taito%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 21818978,
+      "revision": 1375502820
+    },
+    {
+      "game": "Cabela's Big Game Hunter 2005 Adventures",
+      "title": "Cabela's Big Game Hunter - 2005 Adventures — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Cabela%27s%20Big%20Game%20Hunter%20-%202005%20Adventures%20%282004-12-09%29%28Magic%20Wand%29%28Activision%20Value%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 18746550,
+      "revision": 1524876060
+    },
+    {
+      "game": "Capcom vs. SNK 2 EO",
+      "title": "Capcom vs. SNK 2 EO — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Capcom%20vs.%20SNK%202%20EO%20%5BCapcom%20vs.%20SNK%202%20EO%20-%20Millionaire%20Fighting%202001%5D%20%282002-07-04%29%28Capcom%20Production%20Studio%201%29%28Capcom%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 142550500,
+      "revision": 1597938900
+    },
+    {
+      "game": "Cars",
+      "title": "Cars — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Cars%20%282006-06-06%29%28Rainbow%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 176547582,
+      "revision": 1375506840
+    },
+    {
+      "game": "Casper: Spirit Dimensions",
+      "title": "Casper - Spirit Dimensions — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Casper%20-%20Spirit%20Dimensions%20%282002-10-15%29%28Lucky%20Chicken%29%28TDK%20Mediactive%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 63620544,
+      "revision": 1375507500
+    },
+    {
+      "game": "Castleween",
+      "title": "Spirits & Spells — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Spirits%20%26%20Spells%20%5BCastleween%5D%20%5BMahou%20no%20Pumpkin%20-%20Ann%20to%20Greg%20no%20Daibouken%5D%20%282003-09-24%29%28Kalisto%29%28Wanadoo%29%28DreamCatcher%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 231777701,
+      "revision": 1741111680
+    },
+    {
+      "game": "Cel Damage",
+      "title": "Cel Damage — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Cel%20Damage%20%282002-01-07%29%28Pseudo%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 117557376,
+      "revision": 1375508580
+    },
+    {
+      "game": "Chaos Field",
+      "title": "Chaos Field — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Chaos%20Field%20%5BChaos%20Field%20-%20Expanded%5D%20%282005-02-24%29%28MileStone%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 302602181,
+      "revision": 1375511460
+    },
+    {
+      "game": "Charlie and the Chocolate Factory",
+      "title": "Charlie and the Chocolate Factory — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Charlie%20and%20the%20Chocolate%20Factory%20%282005-07-11%29%28High%20Voltage%29%28Global%20Star%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 255684279,
+      "revision": 1786798200
+    },
+    {
+      "game": "Charlie's Angels",
+      "title": "Charlie's Angels — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Charlie%27s%20Angels%20%282003-07-09%29%28Neko%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 142341615,
+      "revision": 1375512780
+    },
+    {
+      "game": "Chibi-Robo!",
+      "title": "Chibi-Robo! Plug Into Adventure — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Chibi-Robo%21%20Plug%20Into%20Adventure%20%5BChibi-Robo%21%5D%20%282005-06-23%29%28Skip%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 119069451,
+      "revision": 1375513860
+    },
+    {
+      "game": "Chicken Little",
+      "title": "Chicken Little — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Chicken%20Little%20%282005-10-20%29%28Avalanche%29%28Buena%20Vista%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 107883043,
+      "revision": 1375514820
+    },
+    {
+      "game": "Codename: Kids Next Door – Operation: V.I.D.E.O.G.A.M.E.",
+      "title": "Codename - Kids Next Door - Operation V.I.D.E.O.G.A.M.E. — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Codename%20-%20Kids%20Next%20Door%20-%20Operation%20V.I.D.E.O.G.A.M.E.%20%282005-10-11%29%28High%20Voltage%29%28Global%20Star%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 387814994,
+      "revision": 1786798200
+    },
+    {
+      "game": "Conflict: Desert Storm",
+      "title": "Conflict - Desert Storm — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Conflict%20-%20Desert%20Storm%20%5BConflict%20Delta%20-%20Wangan%20Sensou%201991%5D%20%282003-04-17%29%28Pivotal%29%28SCi%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 48599486,
+      "revision": 1567620900
+    },
+    {
+      "game": "Conflict: Desert Storm II - Back to Baghdad",
+      "title": "Conflict - Desert Storm II - Back to Baghdad — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Conflict%20-%20Desert%20Storm%20II%20-%20Back%20to%20Baghdad%20%5BConflict%20-%20Desert%20Storm%20II%5D%20%282004-01-07%29%28Pivotal%29%28Gotham%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 112830560,
+      "revision": 1567620840
+    },
+    {
+      "game": "Crash Bandicoot: The Wrath of Cortex",
+      "title": "Crash Bandicoot - The Wrath of Cortex — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Crash%20Bandicoot%20-%20The%20Wrath%20of%20Cortex%20%5BCrash%20Bandicoot%204%20-%20Sakuretsu%21%20Majin%20Power%5D%20%282002-09-17%29%28Traveller%27s%20Tales%2C%20Eurocom%29%28Universal%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 195425516,
+      "revision": 1375523220
+    },
+    {
+      "game": "Crash Nitro Kart",
+      "title": "Crash Nitro Kart — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Crash%20Nitro%20Kart%20%5BCrash%20Bandicoot%20-%20Bakusou%21%20Nitro%20Kart%5D%20%282003-11-11%29%28Driver-Inter%2C%20Vicarious%20Visions%29%28Universal%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 148779602,
+      "revision": 1513356000
+    },
+    {
+      "game": "Crazy Taxi",
+      "title": "Crazy Taxi — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Crazy%20Taxi%20%282001-11-17%29%28Hitmaker%29%28Acclaim%20Cheltenham%29%28Acclaim%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 32217701,
+      "revision": 1375524900
+    },
+    {
+      "game": "Cubivore: Survival of the Fittest",
+      "title": "Cubivore - Survival of the Fittest — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Cubivore%20-%20Survival%20of%20the%20Fittest%20%5BDoubutsu%20Banchou%5D%20%282002-02-21%29%28Saru%20Brunei%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 13175317,
+      "revision": 1722529560
+    },
+    {
+      "game": "Cubix Robots for Everyone: Showdown",
+      "title": "Cubix - Robots For Everyone - Showdown — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Cubix%20-%20Robots%20For%20Everyone%20-%20Showdown%20%282003-06-02%29%28Blitz%29%283DO%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 167224374,
+      "revision": 1375527240
+    },
+    {
+      "game": "Curious George",
+      "title": "Curious George — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Curious%20George%20%282006-02-01%29%28Monkey%20Bar%29%28Namco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 63561643,
+      "revision": 1782064200
+    },
+    {
+      "game": "Custom Robo",
+      "title": "Custom Robo — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Custom%20Robo%20%5BCustom%20Robo%20-%20Battle%20Revolution%5D%20%282004-03-04%29%28Noise%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 387197932,
+      "revision": 1375531260
+    },
+    {
+      "game": "Dance Dance Revolution: Mario Mix",
+      "title": "Dance Dance Revolution - Mario Mix — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Dance%20Dance%20Revolution%20-%20Mario%20Mix%20%5BDancing%20Stage%20-%20Mario%20Mix%5D%20%282005-07-14%29%28Konami%2C%20Hudson%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 167631853,
+      "revision": 1565170860
+    },
+    {
+      "game": "Dark Summit",
+      "title": "Dark Summit — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Dark%20Summit%20%282002-02-04%29%28Radical%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 321054554,
+      "revision": 1375534920
+    },
+    {
+      "game": "Dead to Rights",
+      "title": "Dead to Rights — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Dead%20to%20Rights%20%282002-11-25%29%28-%29%28Namco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 146553429,
+      "revision": 1375536720
+    },
+    {
+      "game": "Def Jam Vendetta",
+      "title": "Def Jam Vendetta — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Def%20Jam%20Vendetta%20%282003-03-31%29%28AKI%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 76390521,
+      "revision": 1375537500
+    },
+    {
+      "game": "Defender",
+      "title": "Defender — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Defender%20%282002-11-03%29%287%29%28Inevitable%29%28Midway%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 145910374,
+      "revision": 1375539060
+    },
+    {
+      "game": "Digimon Rumble Arena 2",
+      "title": "Digimon Rumble Arena 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Digimon%20Rumble%20Arena%202%20%5BDigimon%20Battle%20Chronicle%5D%20%282004-07-29%29%28Black%20Ship%29%28Bandai%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 560293405,
+      "revision": 1630297080
+    },
+    {
+      "game": "Digimon World 4",
+      "title": "Digimon World 4 — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Digimon%20World%204%20%5BDigimon%20World%20X%5D%20%282005-01-06%29%28-%29%28Bandai%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 185491040,
+      "revision": 1375543260
+    },
+    {
+      "game": "Dinotopia: The Sunstone Odyssey",
+      "title": "Dinotopia - The Sunstone Odyssey — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Dinotopia%20-%20The%20Sunstone%20Odyssey%20%282003-07-23%29%28Vicious%20Cycle%29%28TDK%20Mediactive%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 29368888,
+      "revision": 1551534000
+    },
+    {
+      "game": "Disney Sports Basketball",
+      "title": "Disney Sports - Basketball — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Disney%20Sports%20-%20Basketball%20%282002-12-19%29%28Polygon%20Magic%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 49850338,
+      "revision": 1375543740
+    },
+    {
+      "game": "Disney Sports Skateboarding",
+      "title": "Disney Sports Skateboarding — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Disney%20Sports%20Skateboarding%20%282002-09-19%29%28KCE%20Osaka%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 46246839,
+      "revision": 1375545000
+    },
+    {
+      "game": "Donkey Konga",
+      "title": "Donkey Konga — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Donkey%20Konga%20%282003-12-12%29%28Namco%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 201604526,
+      "revision": 1375547040
+    },
+    {
+      "game": "Donkey Konga 2",
+      "title": "Donkey Konga 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Donkey%20Konga%202%20%5BDonkey%20Konga%202%20-%20Hit%20Song%20Parade%5D%20%282004-07-01%29%28Namco%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 169104781,
+      "revision": 1375548780
+    },
+    {
+      "game": "Dr. Muto",
+      "title": "Dr. Muto — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Dr.%20Muto%20%282002-12-17%29%28Midway%20West%29%28Midway%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 543302234,
+      "revision": 1522353840
+    },
+    {
+      "game": "Dragon Ball Z: Sagas",
+      "title": "Dragon Ball Z - Sagas — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Dragon%20Ball%20Z%20-%20Sagas%20%282005-03-22%29%28Avalanche%29%28Atari%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 87116374,
+      "revision": 1375551720
+    },
+    {
+      "game": "Dragon's Lair 3D: Return to the Lair",
+      "title": "Dragon's Lair 3D - Return to the Lair — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Dragon%27s%20Lair%203D%20-%20Return%20to%20the%20Lair%20%5BDragon%27s%20Lair%203D%20-%20Special%20Edition%5D%20%282002-12-22%29%28Dragonstone%29%28Encore%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 154107180,
+      "revision": 1375554240
+    },
+    {
+      "game": "Driven",
+      "title": "Driven — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Driven%20%282002-03-30%29%28BAM%21%20Europe%29%28BAM%21%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 63716020,
+      "revision": 1375555620
+    },
+    {
+      "game": "ESPN International Winter Sports 2002",
+      "title": "ESPN International Winter Sports 2002 — JoshW archive",
+      "url": "https://gcn.joshw.info/e/ESPN%20International%20Winter%20Sports%202002%20%5BHyper%20Sports%202002%20Winter%5D%20%5BESPN%20International%20Winter%20Sports%5D%20%282002-01-31%29%28KCE%20Osaka%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 42015285,
+      "revision": 1375556940
+    },
+    {
+      "game": "ESPN MLS ExtraTime 2002",
+      "title": "ESPN MLS ExtraTime 2002 — JoshW archive",
+      "url": "https://gcn.joshw.info/e/ESPN%20MLS%20ExtraTime%202002%20%282002-03-25%29%28KCE%20Hawaii%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 89920463,
+      "revision": 1375557840
+    },
+    {
+      "game": "Egg Mania: Eggstreme Madness",
+      "title": "Egg Mania - Eggstreme Madness — JoshW archive",
+      "url": "https://gcn.joshw.info/e/Egg%20Mania%20-%20Eggstreme%20Madness%20%5BEgg%20Mania%20-%20Tsukande%21%20Mawashite%21%20Dossun%20Puzzle%21%21%5D%20%5BEggo%20Mania%5D%20%282002-09-11%29%28HotGen%29%28Kemco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 62013624,
+      "revision": 1375556220
+    },
+    {
+      "game": "Eternal Darkness: Sanity's Requiem",
+      "title": "Eternal Darkness - Sanity's Requiem — JoshW archive",
+      "url": "https://gcn.joshw.info/e/Eternal%20Darkness%20-%20Sanity%27s%20Requiem%20%5BEternal%20Darkness%20-%20Manukareta%2013-nin%5D%20%282002-06-23%29%28Silicon%20Knights%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 105225138,
+      "revision": 1375558860
+    },
+    {
+      "game": "Evolution Skateboarding",
+      "title": "Evolution Skateboarding — JoshW archive",
+      "url": "https://gcn.joshw.info/e/Evolution%20Skateboarding%20%282002-11-17%29%28KCE%20Osaka%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 134970063,
+      "revision": 1375560180
+    },
+    {
+      "game": "Evolution Worlds",
+      "title": "Evolution Worlds — JoshW archive",
+      "url": "https://gcn.joshw.info/e/Evolution%20Worlds%20%282002-07-26%29%28Sting%20Entertainment%29%28ESP%2C%20Ubisoft%29%5BGCN%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 232959239,
+      "revision": 1553771820
+    },
+    {
+      "game": "F-Zero GX",
+      "title": "F-Zero GX — JoshW archive",
+      "url": "https://gcn.joshw.info/f/F-Zero%20GX%20%282003-07-25%29%28Amusement%20Vision%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 307486237,
+      "revision": 1375565160
+    },
+    {
+      "game": "F1 2002",
+      "title": "F1 2002 — JoshW archive",
+      "url": "https://gcn.joshw.info/f/F1%202002%20%282002-06-22%29%20%28Visual%20Sciences%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 45926798,
+      "revision": 1738936200
+    },
+    {
+      "game": "FIFA 06",
+      "title": "FIFA Soccer 06 — JoshW archive",
+      "url": "https://gcn.joshw.info/f/FIFA%20Soccer%2006%20%5BFIFA%2006%5D%20%282005-09-30%29%28EA%20Canada%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 85701460,
+      "revision": 1375566660
+    },
+    {
+      "game": "FIFA 07",
+      "title": "FIFA Soccer 07 — JoshW archive",
+      "url": "https://gcn.joshw.info/f/FIFA%20Soccer%2007%20%5BFIFA%2007%5D%20%282006-09-25%29%28EA%20Canada%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 84763607,
+      "revision": 1375567500
+    },
+    {
+      "game": "FIFA Football 2003",
+      "title": "FIFA Soccer 2003 — JoshW archive",
+      "url": "https://gcn.joshw.info/f/FIFA%20Soccer%202003%20%5BFIFA%202003%20-%20European%20Soccer%5D%20%5BFIFA%20Football%202003%5D%20%282002-11-01%29%28EA%20Canada%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 77602882,
+      "revision": 1375568880
+    },
+    {
+      "game": "FIFA Football 2004",
+      "title": "FIFA Soccer 2004 — JoshW archive",
+      "url": "https://gcn.joshw.info/f/FIFA%20Soccer%202004%20%5BFIFA%20Football%202004%5D%20%282003-10-24%29%28-%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 58644729,
+      "revision": 1375569360
+    },
+    {
+      "game": "FIFA Football 2005",
+      "title": "FIFA Soccer 2005 — JoshW archive",
+      "url": "https://gcn.joshw.info/f/FIFA%20Soccer%202005%20%5BFIFA%20Football%202005%5D%20%282004-10-08%29%28EA%20Canada%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 56318986,
+      "revision": 1375569840
+    },
+    {
+      "game": "FIFA Soccer 2002: Major League Soccer",
+      "title": "FIFA Soccer 2002 — JoshW archive",
+      "url": "https://gcn.joshw.info/f/FIFA%20Soccer%202002%20%5BFIFA%202002%20-%20Road%20to%20FIFA%20World%20Cup%5D%20%282001-11-15%29%28-%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 67097481,
+      "revision": 1375568160
+    },
+    {
+      "game": "2006 FIFA World Cup",
+      "title": "FIFA World Cup - Germany 2006 — JoshW archive",
+      "url": "https://gcn.joshw.info/f/FIFA%20World%20Cup%20-%20Germany%202006%20%5B2006%20FIFA%20World%20Cup%5D%20%282006-04-24%29%28EA%20Canada%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 109175789,
+      "revision": 1375570800
+    },
+    {
+      "game": "Fantastic Four",
+      "title": "Fantastic 4 — JoshW archive",
+      "url": "https://gcn.joshw.info/f/Fantastic%204%20%282005-06-27%29%287%20Studios%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 434688384,
+      "revision": 1776022260
+    },
+    {
+      "game": "Fantastic Four",
+      "title": "Fantastic 4 — JoshW archive",
+      "url": "https://gcn.joshw.info/f/Fantastic%204%20%282005-06-27%29%287%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 65092609,
+      "revision": 1375565820
+    },
+    {
+      "game": "Fight Night Round 2",
+      "title": "Fight Night Round 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/f/Fight%20Night%20Round%202%20%282005-02-28%29%28-%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 60950656,
+      "revision": 1375571340
+    },
+    {
+      "game": "Final Fantasy Crystal Chronicles",
+      "title": "Final Fantasy Crystal Chronicles — JoshW archive",
+      "url": "https://gcn.joshw.info/f/Final%20Fantasy%20Crystal%20Chronicles%20%282003-08-08%29%28Square%20Enix%29%5BGC%5D%5Bunplayable%5D.7z",
+      "markets": [
+        "NA"
+      ]
+    },
+    {
+      "game": "Finding Nemo",
+      "title": "Finding Nemo — JoshW archive",
+      "url": "https://gcn.joshw.info/f/Finding%20Nemo%20%282003-05-12%29%28Traveller%27s%20Tales%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 88295301,
+      "revision": 1375572060
+    },
+    {
+      "game": "Fire Emblem: Path of Radiance",
+      "title": "Fire Emblem - Path of Radiance — JoshW archive",
+      "url": "https://gcn.joshw.info/f/Fire%20Emblem%20-%20Path%20of%20Radiance%20%5BFire%20Emblem%20-%20Souen%20no%20Kiseki%5D%20%282005-04-20%29%28Intelligent%20Systems%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 236635072,
+      "revision": 1500090120
+    },
+    {
+      "game": "Freaky Flyers",
+      "title": "Freaky Flyers — JoshW archive",
+      "url": "https://gcn.joshw.info/f/Freaky%20Flyers%20%282003-08-08%29%28Midway%20San%20Diego%29%28Point%20of%20View%29%28Midway%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 226628816,
+      "revision": 1375576140
+    },
+    {
+      "game": "Freekstyle",
+      "title": "Freekstyle — JoshW archive",
+      "url": "https://gcn.joshw.info/f/Freekstyle%20%282002-09-05%29%28Page%2044%20Studios%29%28EA%20Sports%20Big%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 120738976,
+      "revision": 1524876120
+    },
+    {
+      "game": "Frogger Beyond",
+      "title": "Frogger Beyond — JoshW archive",
+      "url": "https://gcn.joshw.info/f/Frogger%20Beyond%20%5BFrogger%5D%20%282002-12-06%29%28KCE%20Hawaii%2C%20Konami%20Shanghai%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 59839987,
+      "revision": 1375576680
+    },
+    {
+      "game": "Frogger's Adventures: The Rescue",
+      "title": "Frogger's Adventures - The Rescue — JoshW archive",
+      "url": "https://gcn.joshw.info/f/Frogger%27s%20Adventures%20-%20The%20Rescue%20%282003-10-31%29%28Hudson%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 119125023,
+      "revision": 1375577700
+    },
+    {
+      "game": "Frogger: Ancient Shadow",
+      "title": "Frogger - Ancient Shadow — JoshW archive",
+      "url": "https://gcn.joshw.info/f/Frogger%20-%20Ancient%20Shadow%20%282005-09-27%29%28Hudson%20Soft%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 104580291,
+      "revision": 1522587480
+    },
+    {
+      "game": "Future Tactics: The Uprising",
+      "title": "Future Tactics - The Uprising — JoshW archive",
+      "url": "https://gcn.joshw.info/f/Future%20Tactics%20-%20The%20Uprising%20%282004-05-10%29%28Craftgold%29%28Crave%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 58265904,
+      "revision": 1375578180
+    },
+    {
+      "game": "Gauntlet Dark Legacy",
+      "title": "Gauntlet Dark Legacy — JoshW archive",
+      "url": "https://gcn.joshw.info/g/Gauntlet%20Dark%20Legacy%20%282002-03-06%29%28Midway%20West%29%28Big%20Ape%29%28Midway%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 231459952,
+      "revision": 1375580160
+    },
+    {
+      "game": "Geist",
+      "title": "Geist — JoshW archive",
+      "url": "https://gcn.joshw.info/g/Geist%20%282005-08-15%29%28n-Space%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 3389985,
+      "revision": 1375580160
+    },
+    {
+      "game": "Go! Go! Hypergrind",
+      "title": "Go! Go! Hypergrind — JoshW archive",
+      "url": "https://gcn.joshw.info/g/Go%21%20Go%21%20Hypergrind%20%282003-11-18%29%28Team%20Poponchi%29%28Atlus%20USA%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 128655347,
+      "revision": 1711288200
+    },
+    {
+      "game": "Godzilla: Destroy All Monsters Melee",
+      "title": "Godzilla - Destroy All Monsters Melee — JoshW archive",
+      "url": "https://gcn.joshw.info/g/Godzilla%20-%20Destroy%20All%20Monsters%20Melee%20%5BGodzilla%20-%20Kaijuu%20Dairantou%5D%20%282002-10-08%29%28Pipeworks%29%28Atari%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 32532998,
+      "revision": 1375583160
+    },
+    {
+      "game": "GoldenEye: Rogue Agent",
+      "title": "GoldenEye - Rogue Agent — JoshW archive",
+      "url": "https://gcn.joshw.info/g/GoldenEye%20-%20Rogue%20Agent%20%5BGoldenEye%20-%20Dark%20Agent%5D%20%282004-11-22%29%28EA%20Los%20Angeles%2C%20Savage%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 280219226,
+      "revision": 1546620120
+    },
+    {
+      "game": "Gotcha Force",
+      "title": "Gotcha Force — JoshW archive",
+      "url": "https://gcn.joshw.info/g/Gotcha%20Force%20%282003-11-27%29%28Capcom%20Production%20Studio%201%29%28Capcom%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 108741971,
+      "revision": 1375586340
+    },
+    {
+      "game": "Grooverider: Slot Car Thunder",
+      "title": "Grooverider - Slot Car Thunder — JoshW archive",
+      "url": "https://gcn.joshw.info/g/Grooverider%20-%20Slot%20Car%20Thunder%20%282003-09-28%29%28King%20of%20the%20Jungle%29%28Encore%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 53920049,
+      "revision": 1375586760
+    },
+    {
+      "game": "Gun",
+      "title": "Gun — JoshW archive",
+      "url": "https://gcn.joshw.info/g/Gun%20%282005-11-08%29%28Neversoft%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 167296176,
+      "revision": 1672145400
+    },
+    {
+      "game": "Harry Potter and the Chamber of Secrets",
+      "title": "Harry Potter and the Chamber of Secrets — JoshW archive",
+      "url": "https://gcn.joshw.info/h/Harry%20Potter%20and%20the%20Chamber%20of%20Secrets%20%282002-11-14%29%28Eurocom%2C%20EA%20UK%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 94551085,
+      "revision": 1626007740
+    },
+    {
+      "game": "Harry Potter and the Goblet of Fire",
+      "title": "Harry Potter and the Goblet of Fire — JoshW archive",
+      "url": "https://gcn.joshw.info/h/Harry%20Potter%20and%20the%20Goblet%20of%20Fire%20%282005-11-08%29%28EA%20UK%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 210061428,
+      "revision": 1654320840
+    },
+    {
+      "game": "Harry Potter and the Philosopher's Stone",
+      "title": "Harry Potter and the Sorcerer's Stone — JoshW archive",
+      "url": "https://gcn.joshw.info/h/Harry%20Potter%20and%20the%20Sorcerer%27s%20Stone%20%282003-12-09%29%28Warthog%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 99094204,
+      "revision": 1428840000
+    },
+    {
+      "game": "Harry Potter and the Prisoner of Azkaban",
+      "title": "Harry Potter and the Prisoner of Azkaban — JoshW archive",
+      "url": "https://gcn.joshw.info/h/Harry%20Potter%20and%20the%20Prisoner%20of%20Azkaban%20%282004-05-29%29%28EA%20UK%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 167100419,
+      "revision": 1654320840
+    },
+    {
+      "game": "Harvest Moon: Another Wonderful Life",
+      "title": "Harvest Moon - Another Wonderful Life — JoshW archive",
+      "url": "https://gcn.joshw.info/h/Harvest%20Moon%20-%20Another%20Wonderful%20Life%20%5BBokujou%20Monogatari%20-%20Wonderful%20Life%20for%20Girls%5D%20%282004-07-08%29%28Tose%29%28Marvelous%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 53879618,
+      "revision": 1617968760
+    },
+    {
+      "game": "Hello Kitty: Roller Rescue",
+      "title": "Hello Kitty - Roller Rescue — JoshW archive",
+      "url": "https://gcn.joshw.info/h/Hello%20Kitty%20-%20Roller%20Rescue%20%5BHello%20Kitty%20-%20Mission%20Rescue%5D%20%282005-08-16%29%28Xpec%29%28Namco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 31469000,
+      "revision": 1375591380
+    },
+    {
+      "game": "Home Run King",
+      "title": "Home Run King — JoshW archive",
+      "url": "https://gcn.joshw.info/h/Home%20Run%20King%20%282002-03-18%29%28WOW%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 53955386,
+      "revision": 1375592820
+    },
+    {
+      "game": "Hot Wheels: World Race",
+      "title": "Hot Wheels - World Race — JoshW archive",
+      "url": "https://gcn.joshw.info/h/Hot%20Wheels%20-%20World%20Race%20%5BHot%20Wheels%20-%20Highway%2035%20World%20Race%5D%20%282003-10-31%29%28Climax%20Group%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 104603310,
+      "revision": 1375595400
+    },
+    {
+      "game": "Hulk",
+      "title": "Hulk — JoshW archive",
+      "url": "https://gcn.joshw.info/h/Hulk%20%282003-05-27%29%28Radical%29%28Universal%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 304589784,
+      "revision": 1643452620
+    },
+    {
+      "game": "Hunter: The Reckoning",
+      "title": "Hunter - The Reckoning — JoshW archive",
+      "url": "https://gcn.joshw.info/h/Hunter%20-%20The%20Reckoning%20%282002-11-18%29%28High%20Voltage%29%28Interplay%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 252602656,
+      "revision": 1375598160
+    },
+    {
+      "game": "Ice Age 2: The Meltdown",
+      "title": "Ice Age 2 - The Meltdown — JoshW archive",
+      "url": "https://gcn.joshw.info/i/Ice%20Age%202%20-%20The%20Meltdown%20%282006-03-14%29%28Eurocom%29%28Sierra%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 275918884,
+      "revision": 1375600800
+    },
+    {
+      "game": "Ikaruga",
+      "title": "Ikaruga — JoshW archive",
+      "url": "https://gcn.joshw.info/i/Ikaruga%20%282003-01-16%29%28Treasure%29%28Atari%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 94994871,
+      "revision": 1375601700
+    },
+    {
+      "game": "Jeremy McGrath Supercross World",
+      "title": "Jeremy McGrath Supercross World — JoshW archive",
+      "url": "https://gcn.joshw.info/j/Jeremy%20McGrath%20Supercross%20World%20%282002-02-27%29%28Acclaim%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 136144438,
+      "revision": 1520166480
+    },
+    {
+      "game": "Judge Dredd: Dredd vs. Death",
+      "title": "Judge Dredd - Dredd vs Death — JoshW archive",
+      "url": "https://gcn.joshw.info/j/Judge%20Dredd%20-%20Dredd%20vs%20Death%20%282003-12-12%29%28Rebellion%29%28Evolved%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 259766134,
+      "revision": 1375608420
+    },
+    {
+      "game": "Karaoke Revolution Party",
+      "title": "Karaoke Revolution Party — JoshW archive",
+      "url": "https://gcn.joshw.info/k/Karaoke%20Revolution%20Party%20%282005-11-08%29%28Harmonix%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 528277234,
+      "revision": 1375613520
+    },
+    {
+      "game": "Killer7",
+      "title": "Killer7 — JoshW archive",
+      "url": "https://gcn.joshw.info/k/Killer7%20%282005-06-09%29%28Capcom%20Production%20Studio%204%2C%20Grasshopper%20Manufacture%29%28Capcom%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 394368866,
+      "revision": 1375618620
+    },
+    {
+      "game": "King Arthur",
+      "title": "King Arthur — JoshW archive",
+      "url": "https://gcn.joshw.info/k/King%20Arthur%20%5BKing%20Arthur%20-%20The%20Truth%20Behind%20The%20Legend%5D%20%282004-11-18%29%28Krome%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 194849152,
+      "revision": 1375620480
+    },
+    {
+      "game": "Kirby Air Ride",
+      "title": "Kirby Air Ride — JoshW archive",
+      "url": "https://gcn.joshw.info/k/Kirby%20Air%20Ride%20%5BKirby%20no%20Air%20Ride%5D%20%282003-07-11%29%28HAL%20Laboratory%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 144527577,
+      "revision": 1375621920
+    },
+    {
+      "game": "Legends of Wrestling",
+      "title": "Legends of Wrestling — JoshW archive",
+      "url": "https://gcn.joshw.info/l/Legends%20of%20Wrestling%20%282002-05-27%29%28Acclaim%20Salt%20Lake%20City%29%28Acclaim%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 134678058,
+      "revision": 1376403240
+    },
+    {
+      "game": "Lego Star Wars II: The Original Trilogy",
+      "title": "LEGO Star Wars II - The Original Trilogy — JoshW archive",
+      "url": "https://gcn.joshw.info/l/LEGO%20Star%20Wars%20II%20-%20The%20Original%20Trilogy%20%282006-09-11%29%28Traveller%27s%20Tales%29%28LucasArts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 369411879,
+      "revision": 1376411160
+    },
+    {
+      "game": "Looney Tunes: Back in Action",
+      "title": "Looney Tunes - Back in Action — JoshW archive",
+      "url": "https://gcn.joshw.info/l/Looney%20Tunes%20-%20Back%20in%20Action%20%282003-11-24%29%28Warthog%20PLC%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 87677802,
+      "revision": 1376412060
+    },
+    {
+      "game": "Lost Kingdoms",
+      "title": "Lost Kingdoms — JoshW archive",
+      "url": "https://gcn.joshw.info/l/Lost%20Kingdoms%20%5BRune%5D%20%282002-04-25%29%28From%20Software%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 126322852,
+      "revision": 1376416320
+    },
+    {
+      "game": "Lost Kingdoms II",
+      "title": "Lost Kingdoms II — JoshW archive",
+      "url": "https://gcn.joshw.info/l/Lost%20Kingdoms%20II%20%5BRune%20II%20-%20Koruten%20no%20Kagi%20no%20Himitsu%5D%20%282003-05-21%29%28From%20Software%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 236702562,
+      "revision": 1376414880
+    },
+    {
+      "game": "Luigi's Mansion",
+      "title": "Luigi's Mansion — JoshW archive",
+      "url": "https://gcn.joshw.info/l/Luigi%27s%20Mansion%20%5BLuigi%20Mansion%5D%20%282001-09-14%29%28Nintendo%20EAD%29%28Nintendo%29%5BGC%5D%5Bunplayable%5D.7z",
+      "markets": [
+        "NA"
+      ]
+    },
+    {
+      "game": "MC Groovz Dance Craze",
+      "title": "MC Groovz Dance Craze — JoshW archive",
+      "url": "https://gcn.joshw.info/m/MC%20Groovz%20Dance%20Craze%20%282004-11-22%29%28Mad%20Catz%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 355929875,
+      "revision": 1376456280
+    },
+    {
+      "game": "Madden NFL 06",
+      "title": "Madden NFL 06 — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Madden%20NFL%2006%20%282005-08-08%29%28EA%20Tiburon%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 141438620,
+      "revision": 1376417880
+    },
+    {
+      "game": "Madden NFL 07",
+      "title": "Madden NFL 07 — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Madden%20NFL%2007%20%282006-08-22%29%28EA%20Tiburon%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 117392642,
+      "revision": 1376419080
+    },
+    {
+      "game": "Madden NFL 08",
+      "title": "Madden NFL 08 — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Madden%20NFL%2008%20%282007-08-14%29%28EA%20Tiburon%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 148318927,
+      "revision": 1376420460
+    },
+    {
+      "game": "Madden NFL 2002",
+      "title": "Madden NFL 2002 — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Madden%20NFL%202002%20%282001-11-17%29%28-%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 31946238,
+      "revision": 1376420760
+    },
+    {
+      "game": "Madden NFL 2003",
+      "title": "Madden NFL 2003 — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Madden%20NFL%202003%20%282002-08-12%29%28-%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 66378375,
+      "revision": 1376421360
+    },
+    {
+      "game": "Madden NFL 2004",
+      "title": "Madden NFL 2004 — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Madden%20NFL%202004%20%282003-08-12%29%28EA%20Tiburon%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 91989123,
+      "revision": 1376422260
+    },
+    {
+      "game": "Madden NFL 2005",
+      "title": "Madden NFL 2005 — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Madden%20NFL%202005%20%282004-08-09%29%28EA%20Tiburon%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 86268666,
+      "revision": 1376423040
+    },
+    {
+      "game": "Mario Kart: Double Dash",
+      "title": "Mario Kart - Double Dash!! — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Mario%20Kart%20-%20Double%20Dash%21%21%20%282003-11-07%29%28Nintendo%20EAD%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 285156683,
+      "revision": 1376442420
+    },
+    {
+      "game": "Mario Party 4",
+      "title": "Mario Party 4 — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Mario%20Party%204%20%282002-10-21%29%28Hudson%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 10613498,
+      "revision": 1376444100
+    },
+    {
+      "game": "Mario Party 5",
+      "title": "Mario Party 5 — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Mario%20Party%205%20%282003-11-10%29%28Hudson%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 105305520,
+      "revision": 1376445360
+    },
+    {
+      "game": "Mario Party 6",
+      "title": "Mario Party 6 — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Mario%20Party%206%20%282004-11-18%29%28Hudson%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 145404285,
+      "revision": 1376447040
+    },
+    {
+      "game": "Mario Party 7",
+      "title": "Mario Party 7 — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Mario%20Party%207%20%282005-11-07%29%28Hudson%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 87514903,
+      "revision": 1746957000
+    },
+    {
+      "game": "Mario Superstar Baseball",
+      "title": "Mario Superstar Baseball — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Mario%20Superstar%20Baseball%20%5BSuper%20Mario%20Stadium%20-%20Miracle%20Baseball%5D%20%282005-07-21%29%28Namco%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 132450257,
+      "revision": 1376449680
+    },
+    {
+      "game": "Mary-Kate and Ashley: Sweet 16 – Licensed to Drive",
+      "title": "Mary-Kate and Ashley Sweet 16 - Licensed to Drive — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Mary-Kate%20and%20Ashley%20Sweet%2016%20-%20Licensed%20to%20Drive%20%282003-02-14%29%28n-Space%29%28Acclaim%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 95830825,
+      "revision": 1376450820
+    },
+    {
+      "game": "Mat Hoffman's Pro BMX 2",
+      "title": "Mat Hoffman's Pro BMX 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Mat%20Hoffman%27s%20Pro%20BMX%202%20%282002-10-08%29%28Rainbow%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 98422149,
+      "revision": 1376452020
+    },
+    {
+      "game": "Medabots Infinity",
+      "title": "Medabots - Infinity — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Medabots%20-%20Infinity%20%5BMedarot%20Brave%5D%20%282003-11-28%29%28Natsume%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 99683705,
+      "revision": 1376457420
+    },
+    {
+      "game": "Mega Man Anniversary Collection",
+      "title": "Mega Man Anniversary Collection — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Mega%20Man%20Anniversary%20Collection%20%282004-06-22%29%28Capcom%20Production%20Studio%202%29%28Atomic%20Planet%29%28Capcom%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 775085880,
+      "revision": 1376471100
+    },
+    {
+      "game": "Mega Man Network Transmission",
+      "title": "Mega Man - Network Transmission — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Mega%20Man%20-%20Network%20Transmission%20%5BRockMan%20EXE%20Transmission%5D%20%282003-03-06%29%28Arika%29%28Capcom%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 90942622,
+      "revision": 1376461560
+    },
+    {
+      "game": "Mega Man X Collection",
+      "title": "Mega Man X Collection — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Mega%20Man%20X%20Collection%20%282006-01-10%29%28Capcom%29%28OeRSTED%2C%20Bloom%29%28Capcom%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 401352932,
+      "revision": 1376476020
+    },
+    {
+      "game": "Mega Man X: Command Mission",
+      "title": "Mega Man X - Command Mission — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Mega%20Man%20X%20-%20Command%20Mission%20%5BRockMan%20X%20-%20Command%20Mission%5D%20%282004-07-29%29%28Value%20Wave%29%28Capcom%29%5BGCN%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 110683165,
+      "revision": 1543195020
+    },
+    {
+      "game": "Metal Arms: Glitch in the System",
+      "title": "Metal Arms - Glitch in the System — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Metal%20Arms%20-%20Glitch%20in%20the%20System%20%282003-11-18%29%28Swingin%27%20Ape%29%28Sierra%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 140686670,
+      "revision": 1635695400
+    },
+    {
+      "game": "Metal Gear Solid: The Twin Snakes",
+      "title": "Metal Gear Solid - The Twin Snakes — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Metal%20Gear%20Solid%20-%20The%20Twin%20Snakes%20%282004-03-09%29%28Silicon%20Knights%2C%20KCE%20Japan%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 293585510,
+      "revision": 1758977400
+    },
+    {
+      "game": "Metroid Prime",
+      "title": "Metroid Prime — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Metroid%20Prime%20%282002-11-27%29%28Retro%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 182368922,
+      "revision": 1686987540
+    },
+    {
+      "game": "Metroid Prime",
+      "title": "Metroid Prime — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Metroid%20Prime%20%282002-11-17%29%28Retro%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 319625735,
+      "revision": 1676094600
+    },
+    {
+      "game": "Metroid Prime 2: Echoes",
+      "title": "Metroid Prime 2 - Echoes — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Metroid%20Prime%202%20-%20Echoes%20%5BMetroid%20Prime%202%20-%20Dark%20Echoes%5D%20%282004-11-15%29%28Retro%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 209021995,
+      "revision": 1376489280
+    },
+    {
+      "game": "Monopoly Party",
+      "title": "Monopoly Party! — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Monopoly%20Party%21%20%5BMonopoly%20-%20Mezase%21%21%20Daifugou%20Jinsei%21%21%5D%20%282002-11-20%29%28Runecraft%29%28Infogrames%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 127367013,
+      "revision": 1376496420
+    },
+    {
+      "game": "Monster Jam: Maximum Destruction",
+      "title": "Monster Jam - Maximum Destruction — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Monster%20Jam%20-%20Maximum%20Destruction%20%282002-12-29%29%28Inland%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 41450041,
+      "revision": 1541169900
+    },
+    {
+      "game": "Monsters, Inc. Scream Arena",
+      "title": "Monsters, Inc. - Scream Arena — JoshW archive",
+      "url": "https://gcn.joshw.info/m/Monsters%2C%20Inc.%20-%20Scream%20Arena%20%282002-09-14%29%28Radical%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 140903193,
+      "revision": 1376498340
+    },
+    {
+      "game": "NASCAR 2005: Chase for the Cup",
+      "title": "NASCAR 2005 - Chase for the Cup — JoshW archive",
+      "url": "https://gcn.joshw.info/n/NASCAR%202005%20-%20Chase%20for%20the%20Cup%20%282004-09-04%29%28EA%20Tiburon%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 129382006,
+      "revision": 1605356880
+    },
+    {
+      "game": "NASCAR: Dirt to Daytona",
+      "title": "NASCAR - Dirt to Daytona — JoshW archive",
+      "url": "https://gcn.joshw.info/n/NASCAR%20-%20Dirt%20to%20Daytona%20%282002-11-12%29%28Monster%20Games%29%28Infogrames%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 10425304,
+      "revision": 1743331800
+    },
+    {
+      "game": "NBA Courtside 2002",
+      "title": "NBA Courtside 2002 — JoshW archive",
+      "url": "https://gcn.joshw.info/n/NBA%20Courtside%202002%20%282002-01-13%29%28Left%20Field%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 42826737,
+      "revision": 1376538720
+    },
+    {
+      "game": "NBA Live 06",
+      "title": "NBA Live 06 — JoshW archive",
+      "url": "https://gcn.joshw.info/n/NBA%20Live%2006%20%282005-09-26%29%28EA%20Canada%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 134718543,
+      "revision": 1376540640
+    },
+    {
+      "game": "NFL Blitz 2003",
+      "title": "NFL Blitz 20-03 — JoshW archive",
+      "url": "https://gcn.joshw.info/n/NFL%20Blitz%2020-03%20%282002-08-12%29%28Point%20of%20View%29%28Midway%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 39517450,
+      "revision": 1376542680
+    },
+    {
+      "game": "NHL 2003",
+      "title": "NHL 2003 — JoshW archive",
+      "url": "https://gcn.joshw.info/n/NHL%202003%20%282002-09-30%29%28EA%20Canada%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 329961064,
+      "revision": 1685550720
+    },
+    {
+      "game": "NHL Hitz Pro",
+      "title": "NHL Hitz Pro — JoshW archive",
+      "url": "https://gcn.joshw.info/n/NHL%20Hitz%20Pro%20%282003-09-25%29%28Next%20Level%29%28Midway%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 122448787,
+      "revision": 1376544420
+    },
+    {
+      "game": "Namco Museum",
+      "title": "Namco Museum — JoshW archive",
+      "url": "https://gcn.joshw.info/n/Namco%20Museum%20%282002-10-09%29%28Mass%20Media%29%28Namco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 167375218,
+      "revision": 1590823260
+    },
+    {
+      "game": "Namco Museum 50th Anniversary",
+      "title": "Namco Museum 50th Anniversary — JoshW archive",
+      "url": "https://gcn.joshw.info/n/Namco%20Museum%2050th%20Anniversary%20%282005-08-30%29%28Digital%20Eclipse%29%28Namco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 52770851,
+      "revision": 1597938840
+    },
+    {
+      "game": "Naruto: Clash of Ninja",
+      "title": "Naruto - Clash of Ninja — JoshW archive",
+      "url": "https://gcn.joshw.info/n/Naruto%20-%20Clash%20of%20Ninja%20%282006-03-07%29%28Eighting%29%28Tomy%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 152660253,
+      "revision": 1644166920
+    },
+    {
+      "game": "Naruto: Clash of Ninja 2",
+      "title": "Naruto - Clash of Ninja 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/n/Naruto%20-%20Clash%20of%20Ninja%202%20%282006-09-26%29%28Eighting%29%28Tomy%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 321120978,
+      "revision": 1644166920
+    },
+    {
+      "game": "Need for Speed: Most Wanted",
+      "title": "Need for Speed - Most Wanted — JoshW archive",
+      "url": "https://gcn.joshw.info/n/Need%20for%20Speed%20-%20Most%20Wanted%20%282005-11-15%29%28Black%20Box%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 193302809,
+      "revision": 1624094220
+    },
+    {
+      "game": "Need for Speed: Underground",
+      "title": "Need for Speed - Underground — JoshW archive",
+      "url": "https://gcn.joshw.info/n/Need%20for%20Speed%20-%20Underground%20%282003-11-17%29%28Black%20Box%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 335518644,
+      "revision": 1645962960
+    },
+    {
+      "game": "Need for Speed: Underground 2",
+      "title": "Need for Speed - Underground 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/n/Need%20for%20Speed%20-%20Underground%202%20%282004-11-15%29%28Black%20Box%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 163359316,
+      "revision": 1644519480
+    },
+    {
+      "game": "Nickelodeon Party Blast",
+      "title": "Nickelodeon Party Blast — JoshW archive",
+      "url": "https://gcn.joshw.info/n/Nickelodeon%20Party%20Blast%20%282002-10-30%29%28Data%20Design%20Interactive%29%28Infogrames%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 74602934,
+      "revision": 1625144520
+    },
+    {
+      "game": "Nicktoons Unite!",
+      "title": "Nicktoons Unite! — JoshW archive",
+      "url": "https://gcn.joshw.info/n/Nicktoons%20Unite%21%20%5BSpongeBob%20SquarePants%20and%20Friends%20Unite%21%5D%20%282005-10-27%29%28Blue%20Tongue%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 111102520,
+      "revision": 1376545980
+    },
+    {
+      "game": "Nicktoons: Battle for Volcano Island",
+      "title": "Nicktoons - Battle for Volcano Island — JoshW archive",
+      "url": "https://gcn.joshw.info/n/Nicktoons%20-%20Battle%20for%20Volcano%20Island%20%5BSpongeBob%20%26%20Friends%20-%20Battle%20for%20Volcano%20Island%5D%20%282006-10-24%29%28Blue%20Tongue%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 226901957,
+      "revision": 1626007740
+    },
+    {
+      "game": "Open Season",
+      "title": "Open Season — JoshW archive",
+      "url": "https://gcn.joshw.info/o/Open%20Season%20%282006-09-19%29%28Ubisoft%20Quebec%2C%20Ubisoft%20Montreal%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 210801779,
+      "revision": 1626007740
+    },
+    {
+      "game": "P.N.03",
+      "title": "P.N.03 — JoshW archive",
+      "url": "https://gcn.joshw.info/p/P.N.03%20%282003-03-27%29%28Capcom%20Production%20Studio%204%29%28Capcom%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 85752290,
+      "revision": 1661067300
+    },
+    {
+      "game": "PK: Out of the Shadows",
+      "title": "Disney's PK - Out of the Shadows — JoshW archive",
+      "url": "https://gcn.joshw.info/d/Disney%27s%20PK%20-%20Out%20of%20the%20Shadows%20%282002-11-29%29%28Ubisoft%20Montreal%29%28Ubisoft%29%5BGC%5D%5Bunsorted%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 357584256,
+      "revision": 1571161140
+    },
+    {
+      "game": "Pac-Man Vs.",
+      "title": "Pac-Man vs. — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Pac-Man%20vs.%20%282003-12-02%29%28Namco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 46573453,
+      "revision": 1376554020
+    },
+    {
+      "game": "Pac-Man World 2",
+      "title": "Pac-Man World 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Pac-Man%20World%202%20%282002-03-19%29%28Namco%20Hometek%29%28Namco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 373153701,
+      "revision": 1376559420
+    },
+    {
+      "game": "Pac-Man World 3",
+      "title": "Pac-Man World 3 — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Pac-Man%20World%203%20%282005-11-15%29%28Blitz%29%28Namco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 529442954,
+      "revision": 1533655500
+    },
+    {
+      "game": "Pac-Man World Rally",
+      "title": "Pac-Man World Rally — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Pac-Man%20World%20Rally%20%282006-08-22%29%28Smart%20Bomb%29%28Namco%20Bandai%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 92974437,
+      "revision": 1553768220
+    },
+    {
+      "game": "Paper Mario: The Thousand-Year Door",
+      "title": "Paper Mario - The Thousand-Year Door — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Paper%20Mario%20-%20The%20Thousand-Year%20Door%20%5BPaper%20Mario%20RPG%5D%20%282004-07-22%29%28Intelligent%20Systems%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 243809977,
+      "revision": 1722018420
+    },
+    {
+      "game": "Peter Jackson's King Kong",
+      "title": "Peter Jackson's King Kong - The Official Game of the Movie — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Peter%20Jackson%27s%20King%20Kong%20-%20The%20Official%20Game%20of%20the%20Movie%20%282005-11-17%29%28Ubisoft%20Montpellier%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 422486629,
+      "revision": 1643216760
+    },
+    {
+      "game": "Phantasy Star Online Episode I & II Plus",
+      "title": "Phantasy Star Online Episode I & II Plus — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Phantasy%20Star%20Online%20Episode%20I%20%26%20II%20Plus%20%282003-11-27%29%28Sonic%20Team%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 360535850,
+      "revision": 1376568180
+    },
+    {
+      "game": "Phantasy Star Online Episode III: C.A.R.D. Revolution",
+      "title": "Phantasy Star Online Episode III - C.A.R.D. Revolution — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Phantasy%20Star%20Online%20Episode%20III%20-%20C.A.R.D.%20Revolution%20%282003-11-27%29%28Sonic%20Team%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 558503232,
+      "revision": 1376576520
+    },
+    {
+      "game": "Pikmin",
+      "title": "Pikmin — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Pikmin%20%282001-10-26%29%28Nintendo%20EAD%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 55388512,
+      "revision": 1710445020
+    },
+    {
+      "game": "Pikmin 2",
+      "title": "Pikmin 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Pikmin%202%20%282004-04-29%29%28Nintendo%20EAD%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 90945361,
+      "revision": 1708266840
+    },
+    {
+      "game": "Pokémon XD: Gale of Darkness",
+      "title": "Pokemon XD - Gale of Darkness — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Pokemon%20XD%20-%20Gale%20of%20Darkness%20%5BPokemon%20XD%20-%20Yami%20no%20Senpuu%20Dark%20Lugia%5D%20%282005-08-04%29%28Genius%20Sonority%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 135979771,
+      "revision": 1617968760
+    },
+    {
+      "game": "Pool Paradise",
+      "title": "Pool Paradise — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Pool%20Paradise%20%282004-03-15%29%28Awesome%29%28Ignition%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 136505052,
+      "revision": 1376581680
+    },
+    {
+      "game": "Power Rangers Dino Thunder",
+      "title": "Power Rangers - Dino Thunder — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Power%20Rangers%20-%20Dino%20Thunder%20%282004-09-14%29%28Pacific%20Coast%20Power%20%26%20Light%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 56543512,
+      "revision": 1376582460
+    },
+    {
+      "game": "Prince of Persia: The Sands of Time",
+      "title": "Prince of Persia - The Sands of Time — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Prince%20of%20Persia%20-%20The%20Sands%20of%20Time%20%282003-11-18%29%28Ubisoft%20Montreal%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 144207911,
+      "revision": 1510292520
+    },
+    {
+      "game": "Prince of Persia: The Two Thrones",
+      "title": "Prince of Persia - The Two Thrones — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Prince%20of%20Persia%20-%20The%20Two%20Thrones%20%282005-06-15%29%28Ubisoft%20Montreal%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 292211731,
+      "revision": 1553768220
+    },
+    {
+      "game": "Prince of Persia: Warrior Within",
+      "title": "Prince of Persia - Warrior Within — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Prince%20of%20Persia%20-%20Warrior%20Within%20%282004-11-30%29%28Ubisoft%20Montreal%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 320525664,
+      "revision": 1511536560
+    },
+    {
+      "game": "Puyo Pop Fever",
+      "title": "Puyo Pop Fever — JoshW archive",
+      "url": "https://gcn.joshw.info/p/Puyo%20Pop%20Fever%20%5BPuyo%20Puyo%20Fever%5D%20%282004-02-27%29%28MileStone%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 84303683,
+      "revision": 1376585940
+    },
+    {
+      "game": "R: Racing Evolution",
+      "title": "R - Racing Evolution — JoshW archive",
+      "url": "https://gcn.joshw.info/r/R%20-%20Racing%20Evolution%20%282003-11-27%29%28Namco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 213441238,
+      "revision": 1376588640
+    },
+    {
+      "game": "Rampage: Total Destruction",
+      "title": "Rampage - Total Destruction — JoshW archive",
+      "url": "https://gcn.joshw.info/r/Rampage%20-%20Total%20Destruction%20%282006-04-24%29%28Pipeworks%29%28Midway%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 70107114,
+      "revision": 1376616900
+    },
+    {
+      "game": "Ratatouille",
+      "title": "Ratatouille — JoshW archive",
+      "url": "https://gcn.joshw.info/r/Ratatouille%20%282007-06-26%29%28Heavy%20Iron%29%28Asobo%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 76019695,
+      "revision": 1376617980
+    },
+    {
+      "game": "Rave Master",
+      "title": "Rave Master — JoshW archive",
+      "url": "https://gcn.joshw.info/r/Rave%20Master%20%5BGroove%20Adventure%20Rave%20-%20Fighting%20Live%5D%20%282002-03-20%29%28-%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 138611970,
+      "revision": 1376619900
+    },
+    {
+      "game": "Rayman 3: Hoodlum Havoc",
+      "title": "Rayman 3 - Hoodlum Havoc — JoshW archive",
+      "url": "https://gcn.joshw.info/r/Rayman%203%20-%20Hoodlum%20Havoc%20%282003-02-21%29%28Ubi%20Pictures%29%28Ubisoft%29%5BGC%5D%5Bunsorted%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 630238149,
+      "revision": 1571161320
+    },
+    {
+      "game": "Rayman Arena",
+      "title": "Rayman Arena — JoshW archive",
+      "url": "https://gcn.joshw.info/r/Rayman%20Arena%20%282002-07-24%29%28Ubi%20Pictures%2C%20Ubisoft%20Milan%29%28Ubisoft%29%5BGC%5D%5Bunsorted%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 371605130,
+      "revision": 1571161260
+    },
+    {
+      "game": "Red Faction II",
+      "title": "Red Faction II — JoshW archive",
+      "url": "https://gcn.joshw.info/r/Red%20Faction%20II%20%282003-03-31%29%28Volition%29%28Cranky%20Pants%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 389356972,
+      "revision": 1376625000
+    },
+    {
+      "game": "RedCard 2003",
+      "title": "RedCard 20-03 — JoshW archive",
+      "url": "https://gcn.joshw.info/r/RedCard%2020-03%20%5BRedCard%5D%20%282002-06-24%29%28Point%20of%20View%29%28Midway%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 14555729,
+      "revision": 1565093520
+    },
+    {
+      "game": "Resident Evil 2",
+      "title": "Resident Evil 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/r/Resident%20Evil%202%20%5BBioHazard%202%5D%20%282003-01-16%29%28Capcom%20Production%20Studio%204%29%28Capcom%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 452869387,
+      "revision": 1688151000
+    },
+    {
+      "game": "Resident Evil 4",
+      "title": "Resident Evil 4 — JoshW archive",
+      "url": "https://gcn.joshw.info/r/Resident%20Evil%204%20%5BBioHazard%204%5D%20%282005-01-11%29%28Capcom%20Production%20Studio%204%29%28Capcom%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 154019494,
+      "revision": 1746255000
+    },
+    {
+      "game": "Resident Evil – Code: Veronica X",
+      "title": "Resident Evil - CODE - Veronica X — JoshW archive",
+      "url": "https://gcn.joshw.info/r/Resident%20Evil%20-%20CODE%20-%20Veronica%20X%20%5BBiohazard%20-%20CODE%20-%20Veronica%20Kanzenban%5D%20%282003-08-07%29%28Nextech%2C%20Flagship%2C%20Capcom%20Production%20Studio%204%29%28Capcom%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 200180143,
+      "revision": 1376627400
+    },
+    {
+      "game": "RoadKill",
+      "title": "RoadKill — JoshW archive",
+      "url": "https://gcn.joshw.info/r/RoadKill%20%282003-10-30%29%28Terminal%20Reality%29%28Midway%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 393323622,
+      "revision": 1547966040
+    },
+    {
+      "game": "Robots",
+      "title": "Robots — JoshW archive",
+      "url": "https://gcn.joshw.info/r/Robots%20%282005-02-24%29%28Eurocom%29%28Sierra%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 127790817,
+      "revision": 1376634120
+    },
+    {
+      "game": "Rocky",
+      "title": "Rocky — JoshW archive",
+      "url": "https://gcn.joshw.info/r/Rocky%20%282002-11-17%29%28Rage%29%28Steel%20Monkeys%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 38368003,
+      "revision": 1376634540
+    },
+    {
+      "game": "SSX 3",
+      "title": "SSX 3 — JoshW archive",
+      "url": "https://gcn.joshw.info/s/SSX%203%20%282003-10-20%29%28EA%20Canada%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 367865762,
+      "revision": 1590823320
+    },
+    {
+      "game": "SSX Tricky",
+      "title": "SSX Tricky — JoshW archive",
+      "url": "https://gcn.joshw.info/s/SSX%20Tricky%20%282001-12-02%29%28EA%20Canada%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 285780367,
+      "revision": 1613809680
+    },
+    {
+      "game": "SX Superstar",
+      "title": "SX Superstar — JoshW archive",
+      "url": "https://gcn.joshw.info/s/SX%20Superstar%20%282003-06-30%29%28Climax%20Group%29%28AKA%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 146180126,
+      "revision": 1377158220
+    },
+    {
+      "game": "Samurai Jack: The Shadow of Aku",
+      "title": "Samurai Jack - The Shadow of Aku — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Samurai%20Jack%20-%20The%20Shadow%20of%20Aku%20%282004-03-23%29%28Adrenium%20Games%29%28SEGA%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 119835216,
+      "revision": 1597938900
+    },
+    {
+      "game": "Second Sight",
+      "title": "Second Sight — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Second%20Sight%20%282004-09-03%29%28Free%20Radical%20Design%29%28Codemasters%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 218540090,
+      "revision": 1376640840
+    },
+    {
+      "game": "Sega Soccer Slam",
+      "title": "Sega Soccer Slam — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Sega%20Soccer%20Slam%20%282002-03-18%29%28Black%20Box%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 52342337,
+      "revision": 1376641440
+    },
+    {
+      "game": "Shadow the Hedgehog",
+      "title": "Shadow the Hedgehog — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Shadow%20the%20Hedgehog%20%282005-11-15%29%28Sega%20Studio%20USA%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 291246649,
+      "revision": 1376644920
+    },
+    {
+      "game": "Shrek 2",
+      "title": "Shrek 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Shrek%202%20%282004-04-28%29%28Luxoflux%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 306698929,
+      "revision": 1704310080
+    },
+    {
+      "game": "Shrek: Extra Large",
+      "title": "Shrek - Extra Large — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Shrek%20-%20Extra%20Large%20%282002-10-31%29%28Digital%20Illusions%20CE%29%28TDK%20Mediactive%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 93358109,
+      "revision": 1571161200
+    },
+    {
+      "game": "Skies of Arcadia Legends",
+      "title": "Skies of Arcadia Legends — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Skies%20of%20Arcadia%20Legends%20%5BEternal%20Arcadia%20Legends%5D%20%282002-12-26%29%28Overworks%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 16144316,
+      "revision": 1376656980
+    },
+    {
+      "game": "Smashing Drive",
+      "title": "Smashing Drive — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Smashing%20Drive%20%282002-02-18%29%28Point%20of%20View%29%28Namco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 58973736,
+      "revision": 1429415940
+    },
+    {
+      "game": "Sonic Adventure 2: Battle",
+      "title": "Sonic Adventure 2 - Battle — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Sonic%20Adventure%202%20-%20Battle%20%282001-12-20%29%28Sonic%20Team%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 340526494,
+      "revision": 1614180120
+    },
+    {
+      "game": "Sonic Adventure DX: Director's Cut",
+      "title": "Sonic Adventure DX Director's Cut — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Sonic%20Adventure%20DX%20Director%27s%20Cut%20%5BSonic%20Adventure%20DX%5D%20%282003-06-18%29%28Sonic%20Team%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 472479542,
+      "revision": 1722529560
+    },
+    {
+      "game": "Sonic Gems Collection",
+      "title": "Sonic Gems Collection — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Sonic%20Gems%20Collection%20%282005-08-11%29%28Sonic%20Team%2C%20Traveller%27s%20Tales%2C%20Sega%20AM2%29%28H.I.C.%2C%20Comolink%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 450280449,
+      "revision": 1524876780
+    },
+    {
+      "game": "Sonic Heroes",
+      "title": "Sonic Heroes — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Sonic%20Heroes%20%282003-12-30%29%28Sonic%20Team%20USA%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 202183428,
+      "revision": 1376672520
+    },
+    {
+      "game": "Sonic Mega Collection",
+      "title": "Sonic Mega Collection — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Sonic%20Mega%20Collection%20%282002-11-10%29%28Sonic%20Team%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 82573736,
+      "revision": 1688797620
+    },
+    {
+      "game": "Sonic Riders",
+      "title": "Sonic Riders — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Sonic%20Riders%20%282006-02-21%29%28Now%20Production%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 258259125,
+      "revision": 1377096600
+    },
+    {
+      "game": "Soulcalibur II",
+      "title": "SoulCalibur II — JoshW archive",
+      "url": "https://gcn.joshw.info/s/SoulCalibur%20II%20%282003-03-27%29%28Namco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 144522573,
+      "revision": 1377099120
+    },
+    {
+      "game": "Spartan: Total Warrior",
+      "title": "Spartan - Total Warrior — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Spartan%20-%20Total%20Warrior%20%282005-10-27%29%28Creative%20Assembly%2C%20The%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 461309725,
+      "revision": 1551534360
+    },
+    {
+      "game": "Sphinx and the Cursed Mummy",
+      "title": "Sphinx and the Cursed Mummy — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Sphinx%20and%20the%20Cursed%20Mummy%20%282003-11-10%29%28Eurocom%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 103509073,
+      "revision": 1645962960
+    },
+    {
+      "game": "Spider-Man 2",
+      "title": "Spider-Man 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Spider-Man%202%20%282004-06-28%29%28Treyarch%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 380798357,
+      "revision": 1637988600
+    },
+    {
+      "game": "Spyro: A Hero's Tail",
+      "title": "Spyro - A Hero's Tail — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Spyro%20-%20A%20Hero%27s%20Tail%20%282004-11-03%29%28Eurocom%29%28Vivid%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 148557816,
+      "revision": 1377104880
+    },
+    {
+      "game": "Spyro: Enter the Dragonfly",
+      "title": "Spyro - Enter the Dragonfly — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Spyro%20-%20Enter%20the%20Dragonfly%20%282002-11-08%29%28Equinoxe%29%28Vivendi%20Universal%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 113562959,
+      "revision": 1429417260
+    },
+    {
+      "game": "Star Fox: Assault",
+      "title": "Star Fox Assault — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Star%20Fox%20Assault%20%282005-02-14%29%28Namco%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 179782716,
+      "revision": 1716313440
+    },
+    {
+      "game": "Star Wars: Bounty Hunter",
+      "title": "Star Wars - Bounty Hunter — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Star%20Wars%20-%20Bounty%20Hunter%20%282002-12-07%29%28LucasArts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 122968184,
+      "revision": 1377135000
+    },
+    {
+      "game": "Star Wars: Bounty Hunter",
+      "title": "Star Wars - Bounty Hunter — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Star%20Wars%20-%20Bounty%20Hunter%20%282002-12-07%29%28Lucas%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 174363995,
+      "revision": 1672170600
+    },
+    {
+      "game": "Starsky & Hutch",
+      "title": "Starsky & Hutch — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Starsky%20%26%20Hutch%20%282003-09-26%29%28Supersonic%29%28Empire%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 30130083,
+      "revision": 1604679900
+    },
+    {
+      "game": "Summoner: A Goddess Reborn",
+      "title": "Summoner - A Goddess Reborn — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Summoner%20-%20A%20Goddess%20Reborn%20%282003-01-31%29%28Volition%29%28Cranky%20Pants%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 382698891,
+      "revision": 1377140820
+    },
+    {
+      "game": "Super Bubble Pop",
+      "title": "Super Bubble Pop — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Super%20Bubble%20Pop%20%282003-01-03%29%28Runecraft%29%28Jaleco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 178740391,
+      "revision": 1377143280
+    },
+    {
+      "game": "Super Mario Strikers",
+      "title": "Super Mario Strikers — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Super%20Mario%20Strikers%20%5BMario%20Smash%20Football%5D%20%282005-11-18%29%28Next%20Level%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 193912288,
+      "revision": 1377145620
+    },
+    {
+      "game": "Super Mario Sunshine",
+      "title": "Super Mario Sunshine — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Super%20Mario%20Sunshine%20%282002-07-19%29%28Nintendo%20EAD%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 1510544,
+      "revision": 1377145620
+    },
+    {
+      "game": "Super Monkey Ball",
+      "title": "Super Monkey Ball — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Super%20Monkey%20Ball%20%282001-09-14%29%28Amusement%20Vision%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 117535173,
+      "revision": 1586998320
+    },
+    {
+      "game": "Super Monkey Ball 2",
+      "title": "Super Monkey Ball 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Super%20Monkey%20Ball%202%20%282002-08-25%29%28Amusement%20Vision%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 257515366,
+      "revision": 1377149820
+    },
+    {
+      "game": "Super Monkey Ball Adventure",
+      "title": "Super Monkey Ball Adventure — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Super%20Monkey%20Ball%20Adventure%20%282006-07-14%29%28Traveller%27s%20Tales%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 234138715,
+      "revision": 1377152160
+    },
+    {
+      "game": "Super Smash Bros. Melee",
+      "title": "Super Smash Bros. Melee — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Super%20Smash%20Bros.%20Melee%20%5BDairantou%20Smash%20Brothers%20DX%5D%20%282001-11-21%29%28HAL%20Laboratory%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 228028125,
+      "revision": 1377154320
+    },
+    {
+      "game": "Swingerz Golf",
+      "title": "Swingerz Golf — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Swingerz%20Golf%20%5BAce%20Golf%5D%20%5BWai%20Wai%20Golf%5D%20%282002-10-23%29%28Telenet%20Japan%29%28Eidos%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 271215058,
+      "revision": 1377156900
+    },
+    {
+      "game": "TMNT",
+      "title": "TMNT — JoshW archive",
+      "url": "https://gcn.joshw.info/t/TMNT%20%282007-03-13%29%28Ubisoft%20Montreal%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 141629181,
+      "revision": 1513356120
+    },
+    {
+      "game": "Tak and the Power of Juju",
+      "title": "Tak and the Power of Juju — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Tak%20and%20the%20Power%20of%20Juju%20%282003-10-15%29%28Avalanche%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 87248499,
+      "revision": 1377160560
+    },
+    {
+      "game": "Tales of Symphonia",
+      "title": "Tales of Symphonia — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Tales%20of%20Symphonia%20%282003-08-29%29%28Namco%20Tales%20Studio%29%28Namco%29%5BGC%5D%5Bunplayable%5D.7z",
+      "markets": [
+        "NA"
+      ]
+    },
+    {
+      "game": "Taz: Wanted",
+      "title": "Taz Wanted — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Taz%20Wanted%20%282002-10-04%29%28Blitz%29%28Infogrames%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 206346684,
+      "revision": 1644165660
+    },
+    {
+      "game": "Teenage Mutant Ninja Turtles",
+      "title": "Teenage Mutant Ninja Turtles — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Teenage%20Mutant%20Ninja%20Turtles%20%282003-10-31%29%28KCE%20Studios%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 112388203,
+      "revision": 1377163560
+    },
+    {
+      "game": "Teenage Mutant Ninja Turtles 2: Battle Nexus",
+      "title": "Teenage Mutant Ninja Turtles 2 - Battle Nexus — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Teenage%20Mutant%20Ninja%20Turtles%202%20-%20Battle%20Nexus%20%282004-10-19%29%28KCE%20Studios%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 134813619,
+      "revision": 1377164880
+    },
+    {
+      "game": "Teenage Mutant Ninja Turtles 3: Mutant Nightmare",
+      "title": "Teenage Mutant Ninja Turtles 3 - Mutant Nightmare — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Teenage%20Mutant%20Ninja%20Turtles%203%20-%20Mutant%20Nightmare%20%282005-11-01%29%28KCE%20Studios%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 115872700,
+      "revision": 1377165960
+    },
+    {
+      "game": "Tetris Worlds",
+      "title": "Tetris Worlds — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Tetris%20Worlds%20%282002-06-23%29%28Blue%20Planet%2C%20Radical%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 140467108,
+      "revision": 1377168480
+    },
+    {
+      "game": "The Ant Bully",
+      "title": "Ant Bully, The — JoshW archive",
+      "url": "https://gcn.joshw.info/a/Ant%20Bully%2C%20The%20%282006-07-24%29%28Artificial%20Mind%20and%20Movement%29%28Midway%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 113478590,
+      "revision": 1785682200
+    },
+    {
+      "game": "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
+      "title": "Chronicles of Narnia, The - The Lion, The Witch and The Wardrobe — JoshW archive",
+      "url": "https://gcn.joshw.info/c/Chronicles%20of%20Narnia%2C%20The%20-%20The%20Lion%2C%20The%20Witch%20and%20The%20Wardrobe%20%282005-11-14%29%28Traveller%27s%20Tales%29%28Buena%20Vista%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 121702123,
+      "revision": 1375515960
+    },
+    {
+      "game": "The Fairly OddParents: Breakin' Da Rules",
+      "title": "Fairly OddParents! - Breakin' da Rules, The — JoshW archive",
+      "url": "https://gcn.joshw.info/f/Fairly%20OddParents%21%20-%20Breakin%27%20da%20Rules%2C%20The%20%282003-11-03%29%28Blitz%20Games%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 368118253,
+      "revision": 1625576820
+    },
+    {
+      "game": "The Fairly OddParents: Shadow Showdown",
+      "title": "Fairly OddParents! - Shadow Showdown, The — JoshW archive",
+      "url": "https://gcn.joshw.info/f/Fairly%20OddParents%21%20-%20Shadow%20Showdown%2C%20The%20%282004-09-08%29%28Blitz%20Games%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 319223906,
+      "revision": 1625144520
+    },
+    {
+      "game": "The Grim Adventures of Billy & Mandy",
+      "title": "Grim Adventures of Billy & Mandy, The — JoshW archive",
+      "url": "https://gcn.joshw.info/g/Grim%20Adventures%20of%20Billy%20%26%20Mandy%2C%20The%20%282006-09-25%29%28High%20Voltage%29%28Midway%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 133022879,
+      "revision": 1783677000
+    },
+    {
+      "game": "The Haunted Mansion",
+      "title": "Haunted Mansion, The — JoshW archive",
+      "url": "https://gcn.joshw.info/h/Haunted%20Mansion%2C%20The%20%282003-10-14%29%28High%20Voltage%29%28TDK%20Mediactive%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 56856600,
+      "revision": 1375591080
+    },
+    {
+      "game": "The Incredible Hulk: Ultimate Destruction",
+      "title": "Incredible Hulk, The - Ultimate Destruction — JoshW archive",
+      "url": "https://gcn.joshw.info/i/Incredible%20Hulk%2C%20The%20-%20Ultimate%20Destruction%20%282005-08-23%29%28Radical%29%28Vivendi%20Universal%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 222095704,
+      "revision": 1428841800
+    },
+    {
+      "game": "The Italian Job",
+      "title": "Italian Job, The — JoshW archive",
+      "url": "https://gcn.joshw.info/i/Italian%20Job%2C%20The%20%5BItalian%20Job%2C%20The%20-%20L.A.%20Heist%5D%20%282003-07-17%29%28Climax%20Group%29%28Eidos%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 41196788,
+      "revision": 1375604160
+    },
+    {
+      "game": "The Legend of Spyro: A New Beginning",
+      "title": "Legend of Spyro, The - A New Beginning — JoshW archive",
+      "url": "https://gcn.joshw.info/l/Legend%20of%20Spyro%2C%20The%20-%20A%20New%20Beginning%20%282006-10-10%29%28Krome%29%28Sierra%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 193454449,
+      "revision": 1376395680
+    },
+    {
+      "game": "The Legend of Zelda: Collector's Edition",
+      "title": "Legend of Zelda, The - Collector's Edition — JoshW archive",
+      "url": "https://gcn.joshw.info/l/Legend%20of%20Zelda%2C%20The%20-%20Collector%27s%20Edition%20%282003-11-07%29%28Nintendo%20EAD%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 2312553,
+      "revision": 1616594520
+    },
+    {
+      "game": "The Legend of Zelda: Four Swords Adventures",
+      "title": "Legend of Zelda, The - Four Swords Adventures — JoshW archive",
+      "url": "https://gcn.joshw.info/l/Legend%20of%20Zelda%2C%20The%20-%20Four%20Swords%20Adventures%20%5BZelda%20no%20Densetsu%20-%204tsu%20no%20Tsurugi%2B%5D%20%282004-03-18%29%28Nintendo%20EAD%2C%20Capcom%20Production%20Studio%202%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 51545624,
+      "revision": 1376396160
+    },
+    {
+      "game": "The Legend of Zelda: Ocarina of Time / Master Quest",
+      "title": "Legend of Zelda, The - Ocarina of Time & Master Quest — JoshW archive",
+      "url": "https://gcn.joshw.info/l/Legend%20of%20Zelda%2C%20The%20-%20Ocarina%20of%20Time%20%26%20Master%20Quest%20%282002-11-28%29%28Nintendo%20EAD%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 6741559,
+      "revision": 1376396220
+    },
+    {
+      "game": "The Legend of Zelda: The Wind Waker",
+      "title": "Legend of Zelda, The - The Wind Waker — JoshW archive",
+      "url": "https://gcn.joshw.info/l/Legend%20of%20Zelda%2C%20The%20-%20The%20Wind%20Waker%20%5BZelda%20no%20Densetsu%20-%20Kaze%20no%20Takuto%5D%20%282002-12-13%29%28Nintendo%20EAD%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 147756028,
+      "revision": 1376397600
+    },
+    {
+      "game": "The Legend of Zelda: Twilight Princess",
+      "title": "Legend of Zelda, The - Twilight Princess — JoshW archive",
+      "url": "https://gcn.joshw.info/l/Legend%20of%20Zelda%2C%20The%20-%20Twilight%20Princess%20%5BZelda%20no%20Densetsu%20-%20Twilight%20Princess%5D%20%282006-12-02%29%28Nintendo%20EAD%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 316359205,
+      "revision": 1376401800
+    },
+    {
+      "game": "The Scorpion King: Rise of the Akkadian",
+      "title": "Scorpion King, The - Rise of the Akkadian — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Scorpion%20King%2C%20The%20-%20Rise%20of%20the%20Akkadian%20%282002-09-11%29%28Point%20of%20View%29%28Universal%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 249069808,
+      "revision": 1753599000
+    },
+    {
+      "game": "The Simpsons: Hit & Run",
+      "title": "Simpsons, The - Hit & Run — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Simpsons%2C%20The%20-%20Hit%20%26%20Run%20%282003-09-16%29%28Radical%29%28Vivendi%20Universal%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 144836443,
+      "revision": 1376651700
+    },
+    {
+      "game": "The Simpsons: Road Rage",
+      "title": "Simpsons, The - Road Rage — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Simpsons%2C%20The%20-%20Road%20Rage%20%282001-12-17%29%28Radical%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 180408114,
+      "revision": 1494724680
+    },
+    {
+      "game": "The Sims 2: Pets",
+      "title": "Sims 2, The - Pets — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Sims%202%2C%20The%20-%20Pets%20%282006-10-17%29%28Maxis%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 163284413,
+      "revision": 1376653620
+    },
+    {
+      "game": "The Sum of All Fears",
+      "title": "Sum of All Fears, The — JoshW archive",
+      "url": "https://gcn.joshw.info/s/Sum%20of%20All%20Fears%2C%20The%20%282003-01-09%29%28Red%20Storm%29%28Ubisoft%20Shanghai%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 64684787,
+      "revision": 1377135780
+    },
+    {
+      "game": "The Urbz: Sims in the City",
+      "title": "Urbz, The - Sims in the City — JoshW archive",
+      "url": "https://gcn.joshw.info/u/Urbz%2C%20The%20-%20Sims%20in%20the%20City%20%282004-11-09%29%28Maxis%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 132724582,
+      "revision": 1377247320
+    },
+    {
+      "game": "TimeSplitters 2",
+      "title": "TimeSplitters 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/t/TimeSplitters%202%20%282002-10-16%29%28Free%20Radical%20Design%29%28Eidos%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 621014817,
+      "revision": 1377176400
+    },
+    {
+      "game": "TimeSplitters: Future Perfect",
+      "title": "TimeSplitters - Future Perfect — JoshW archive",
+      "url": "https://gcn.joshw.info/t/TimeSplitters%20-%20Future%20Perfect%20%282005-03-21%29%28Free%20Radical%20Design%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 202420927,
+      "revision": 1377170400
+    },
+    {
+      "game": "Tom Clancy's Ghost Recon",
+      "title": "Tom Clancy's Ghost Recon — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Tom%20Clancy%27s%20Ghost%20Recon%20%282003-02-09%29%28Red%20Storm%29%28Ubisoft%20Shanghai%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 63525001,
+      "revision": 1377177060
+    },
+    {
+      "game": "Tom Clancy's Rainbow Six 3",
+      "title": "Tom Clancy's Rainbow Six 3 — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Tom%20Clancy%27s%20Rainbow%20Six%203%20%282004-06-16%29%28Ubisoft%20Shanghai%29%28Ubisoft%29%5BGC%5D%5Bunsorted%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 209831222,
+      "revision": 1550510340
+    },
+    {
+      "game": "Tom Clancy's Splinter Cell",
+      "title": "Tom Clancy's Splinter Cell — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Tom%20Clancy%27s%20Splinter%20Cell%20%282003-04-08%29%28Ubisoft%20Shanghai%29%28Ubisoft%29%5BGC%5D%5Bunsorted%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 162411412,
+      "revision": 1548869580
+    },
+    {
+      "game": "Tom Clancy's Splinter Cell: Chaos Theory",
+      "title": "Tom Clancy's Splinter Cell - Chaos Theory — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Tom%20Clancy%27s%20Splinter%20Cell%20-%20Chaos%20Theory%20%282005-03-28%29%28Ubisoft%20Montreal%29%28Ubisoft%29%5BGC%5D%5Bunsorted%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 286789388,
+      "revision": 1550514840
+    },
+    {
+      "game": "Tom Clancy's Splinter Cell: Double Agent",
+      "title": "Tom Clancy's Splinter Cell - Double Agent — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Tom%20Clancy%27s%20Splinter%20Cell%20-%20Double%20Agent%20%282006-10-26%29%28Ubisoft%20Montreal%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 405388352,
+      "revision": 1551534660
+    },
+    {
+      "game": "Tom Clancy's Splinter Cell: Pandora Tomorrow",
+      "title": "Tom Clancy's Splinter Cell - Pandora Tomorrow — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Tom%20Clancy%27s%20Splinter%20Cell%20-%20Pandora%20Tomorrow%20%282004-07-20%29%28Ubisoft%20Shanghai%2C%20Ubisoft%20Milan%29%28Ubisoft%29%5BGC%5D%5Bunsorted%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 227360148,
+      "revision": 1548871680
+    },
+    {
+      "game": "Tonka: Rescue Patrol",
+      "title": "Tonka Rescue Patrol — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Tonka%20Rescue%20Patrol%20%282003-11-18%29%28Lucky%20Chicken%29%28TDK%20Mediactive%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 30797327,
+      "revision": 1377183540
+    },
+    {
+      "game": "Tony Hawk's American Wasteland",
+      "title": "Tony Hawk's American Wasteland — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Tony%20Hawk%27s%20American%20Wasteland%20%282005-10-18%29%28Neversoft%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 225638266,
+      "revision": 1377186420
+    },
+    {
+      "game": "Tony Hawk's Pro Skater 3",
+      "title": "Tony Hawk's Pro Skater 3 — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Tony%20Hawk%27s%20Pro%20Skater%203%20%282001-11-13%29%28Neversoft%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 225048703,
+      "revision": 1377189360
+    },
+    {
+      "game": "Top Angler: Real Bass Fishing",
+      "title": "Top Angler - Real Bass Fishing — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Top%20Angler%20-%20Real%20Bass%20Fishing%20%282003-01-01%29%28SIMS%29%28Xicat%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 27530463,
+      "revision": 1377189720
+    },
+    {
+      "game": "Top Gun: Combat Zones",
+      "title": "Top Gun - Combat Zones — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Top%20Gun%20-%20Combat%20Zones%20%5BTop%20Gun%20-%20Ace%20of%20the%20Sky%5D%20%282002-10-24%29%28Digital%20Integration%29%28Titus%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 60948403,
+      "revision": 1377190500
+    },
+    {
+      "game": "TransWorld Surf: Next Wave",
+      "title": "TransWorld Surf - Next Wave — JoshW archive",
+      "url": "https://gcn.joshw.info/t/TransWorld%20Surf%20-%20Next%20Wave%20%282003-03-18%29%28Angel%29%28Atari%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 596603271,
+      "revision": 1685112600
+    },
+    {
+      "game": "True Crime: New York City",
+      "title": "True Crime - New York City — JoshW archive",
+      "url": "https://gcn.joshw.info/t/True%20Crime%20-%20New%20York%20City%20%282005-11-15%29%28Luxoflux%29%28Exakt%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 199970360,
+      "revision": 1377224400
+    },
+    {
+      "game": "True Crime: Streets of LA",
+      "title": "True Crime - Streets of LA — JoshW archive",
+      "url": "https://gcn.joshw.info/t/True%20Crime%20-%20Streets%20of%20LA%20%282003-11-03%29%28Luxoflux%29%28Exakt%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 220742633,
+      "revision": 1377227220
+    },
+    {
+      "game": "Turok: Evolution",
+      "title": "Turok - Evolution — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Turok%20-%20Evolution%20%282002-08-31%29%28Acclaim%20Austin%29%28Acclaim%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 105520546,
+      "revision": 1377228600
+    },
+    {
+      "game": "Ty the Tasmanian Tiger",
+      "title": "Ty the Tasmanian Tiger — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Ty%20the%20Tasmanian%20Tiger%20%282002-09-10%29%28Krome%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 223024376,
+      "revision": 1722529560
+    },
+    {
+      "game": "Ty the Tasmanian Tiger 2: Bush Rescue",
+      "title": "Ty the Tasmanian Tiger 2 - Bush Rescue — JoshW archive",
+      "url": "https://gcn.joshw.info/t/Ty%20the%20Tasmanian%20Tiger%202%20-%20Bush%20Rescue%20%282004-10-12%29%28Krome%29%28Electronic%20Arts%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 338437821,
+      "revision": 1690105800
+    },
+    {
+      "game": "UFC: Throwdown",
+      "title": "UFC - Throwdown — JoshW archive",
+      "url": "https://gcn.joshw.info/u/UFC%20-%20Throwdown%20%5BUFC%202%20-%20Tapout%20Final%20Spec%5D%20%282002-07-29%29%28Anchor%29%28Crave%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 75508605,
+      "revision": 1377244140
+    },
+    {
+      "game": "Ultimate Spider-Man",
+      "title": "Ultimate Spider-Man — JoshW archive",
+      "url": "https://gcn.joshw.info/u/Ultimate%20Spider-Man%20%282005-09-22%29%28Treyarch%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 239912499,
+      "revision": 1637988600
+    },
+    {
+      "game": "Universal Studios Theme Parks Adventure",
+      "title": "Universal Studios Theme Parks Adventure — JoshW archive",
+      "url": "https://gcn.joshw.info/u/Universal%20Studios%20Theme%20Parks%20Adventure%20%5BUniversal%20Studios%20Japan%20Adventure%5D%20%282001-12-07%29%28Zoom%2C%20Nai%27a%20Digital%20Works%29%28Kemco%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 141569009,
+      "revision": 1377245760
+    },
+    {
+      "game": "Viewtiful Joe",
+      "title": "Viewtiful Joe — JoshW archive",
+      "url": "https://gcn.joshw.info/v/Viewtiful%20Joe%20%282003-06-26%29%28Capcom%20Production%20Studio%204%29%28Capcom%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 235611351,
+      "revision": 1661067300
+    },
+    {
+      "game": "Viewtiful Joe 2",
+      "title": "Viewtiful Joe 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/v/Viewtiful%20Joe%202%20%5BViewtiful%20Joe%202%20-%20Black%20Film%20no%20Nazo%5D%20%282004-11-18%29%28Clover%29%28Capcom%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 155805758,
+      "revision": 1377252840
+    },
+    {
+      "game": "Viewtiful Joe: Red Hot Rumble",
+      "title": "Viewtiful Joe - Red Hot Rumble — JoshW archive",
+      "url": "https://gcn.joshw.info/v/Viewtiful%20Joe%20-%20Red%20Hot%20Rumble%20%5BViewtiful%20Joe%20-%20Battle%20Carnival%5D%20%282005-09-29%29%28Clover%29%28Capcom%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 152050436,
+      "revision": 1377251220
+    },
+    {
+      "game": "Virtua Quest",
+      "title": "Virtua Quest — JoshW archive",
+      "url": "https://gcn.joshw.info/v/Virtua%20Quest%20%5BVirtua%20Fighter%20Cyber%20Generation%20-%20Judgment%20Six%20no%20Yabou%5D%20%282004-08-26%29%28Tose%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 264636344,
+      "revision": 1377255660
+    },
+    {
+      "game": "Virtua Striker 2002",
+      "title": "Virtua Striker 2002 — JoshW archive",
+      "url": "https://gcn.joshw.info/v/Virtua%20Striker%202002%20%5BVirtua%20Striker%203%20Ver.2002%5D%20%282002-02-14%29%28Amusement%20Vision%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 258403724,
+      "revision": 1377258060
+    },
+    {
+      "game": "WTA Tour Tennis",
+      "title": "WTA Tour Tennis — JoshW archive",
+      "url": "https://gcn.joshw.info/w/WTA%20Tour%20Tennis%20%5BWTA%20Tour%20Tennis%20-%20Pro%20Evolution%5D%20%5BPro%20Tennis%20WTA%20Tour%5D%20%282002-08-29%29%28KCE%20Osaka%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 56755476,
+      "revision": 1377270480
+    },
+    {
+      "game": "WWE Day of Reckoning",
+      "title": "WWE Day of Reckoning — JoshW archive",
+      "url": "https://gcn.joshw.info/w/WWE%20Day%20of%20Reckoning%20%282004-08-30%29%28Yuke%27s%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 207611905,
+      "revision": 1401977820
+    },
+    {
+      "game": "WWE Day of Reckoning 2",
+      "title": "WWE Day of Reckoning 2 — JoshW archive",
+      "url": "https://gcn.joshw.info/w/WWE%20Day%20of%20Reckoning%202%20%282005-08-29%29%28Yuke%27s%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 230154800,
+      "revision": 1401980520
+    },
+    {
+      "game": "WWE WrestleMania X8",
+      "title": "WWE WrestleMania X8 — JoshW archive",
+      "url": "https://gcn.joshw.info/w/WWE%20WrestleMania%20X8%20%282002-06-09%29%28Yuke%27s%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 242215695,
+      "revision": 1377274800
+    },
+    {
+      "game": "WWE WrestleMania XIX",
+      "title": "WWE WrestleMania XIX — JoshW archive",
+      "url": "https://gcn.joshw.info/w/WWE%20WrestleMania%20XIX%20%282003-09-08%29%28Yuke%27s%29%28THQ%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 201858291,
+      "revision": 1377276660
+    },
+    {
+      "game": "Wario World",
+      "title": "WarioWorld — JoshW archive",
+      "url": "https://gcn.joshw.info/w/WarioWorld%20%282003-06-20%29%28Treasure%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 128463487,
+      "revision": 1377259200
+    },
+    {
+      "game": "Wave Race: Blue Storm",
+      "title": "Wave Race - Blue Storm — JoshW archive",
+      "url": "https://gcn.joshw.info/w/Wave%20Race%20-%20Blue%20Storm%20%282001-09-14%29%28NST%29%28Nintendo%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 273782200,
+      "revision": 1377261600
+    },
+    {
+      "game": "Whirl Tour",
+      "title": "Whirl Tour — JoshW archive",
+      "url": "https://gcn.joshw.info/w/Whirl%20Tour%20%282002-11-12%29%28Papaya%29%28Crave%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 255599831,
+      "revision": 1377263940
+    },
+    {
+      "game": "Winnie the Pooh's Rumbly Tumbly Adventure",
+      "title": "Winnie the Pooh's Rumbly Tumbly Adventure — JoshW archive",
+      "url": "https://gcn.joshw.info/w/Winnie%20the%20Pooh%27s%20Rumbly%20Tumbly%20Adventure%20%282005-02-15%29%28Phoenix%20Studio%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 5898283,
+      "revision": 1565097300
+    },
+    {
+      "game": "World Series of Poker",
+      "title": "World Series of Poker — JoshW archive",
+      "url": "https://gcn.joshw.info/w/World%20Series%20of%20Poker%20%282005-09-14%29%28Left%20Field%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 7067727,
+      "revision": 1377265440
+    },
+    {
+      "game": "Worms 3D",
+      "title": "Worms 3D — JoshW archive",
+      "url": "https://gcn.joshw.info/w/Worms%203D%20%282003-10-31%29%28Team17%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 144545518,
+      "revision": 1793209800
+    },
+    {
+      "game": "Worms 3D",
+      "title": "Worms 3D — JoshW archive",
+      "url": "https://gcn.joshw.info/w/Worms%203D%20%282003-10-31%29%28Team%2017%29%28Sega%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 314742036,
+      "revision": 1377268260
+    },
+    {
+      "game": "Worms Blast",
+      "title": "Worms Blast — JoshW archive",
+      "url": "https://gcn.joshw.info/w/Worms%20Blast%20%282002-09-13%29%28Team%2017%29%28Ubisoft%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 183615700,
+      "revision": 1377269940
+    },
+    {
+      "game": "X-Men Legends II: Rise of Apocalypse",
+      "title": "X-Men Legends II - Rise of Apocalypse — JoshW archive",
+      "url": "https://gcn.joshw.info/x/X-Men%20Legends%20II%20-%20Rise%20of%20Apocalypse%20%282005-09-20%29%28Raven%29%28Vicarious%20Visions%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 307627134,
+      "revision": 1544300100
+    },
+    {
+      "game": "X-Men: Next Dimension",
+      "title": "X-Men - Next Dimension — JoshW archive",
+      "url": "https://gcn.joshw.info/x/X-Men%20-%20Next%20Dimension%20%282002-10-15%29%28Paradox%29%28Exakt%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 35798073,
+      "revision": 1377276960
+    },
+    {
+      "game": "X2: Wolverine's Revenge",
+      "title": "X2 - Wolverine's Revenge — JoshW archive",
+      "url": "https://gcn.joshw.info/x/X2%20-%20Wolverine%27s%20Revenge%20%5BX-Men%202%20-%20Wolverine%27s%20Revenge%5D%20%282003-04-14%29%28GenePool%29%28Activision%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 201929595,
+      "revision": 1377278760
+    },
+    {
+      "game": "Extreme-G 3",
+      "title": "XGIII - Extreme G Racing — JoshW archive",
+      "url": "https://gcn.joshw.info/x/XGIII%20-%20Extreme%20G%20Racing%20%282001-11-27%29%28Acclaim%20Cheltenham%29%28Acclaim%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 115653806,
+      "revision": 1377279840
+    },
+    {
+      "game": "XGRA: Extreme-G Racing Association",
+      "title": "XGRA - Extreme-G Racing Association — JoshW archive",
+      "url": "https://gcn.joshw.info/x/XGRA%20-%20Extreme-G%20Racing%20Association%20%282003-11-24%29%28Acclaim%20Cheltenham%29%28Acclaim%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 256246465,
+      "revision": 1377282120
+    },
+    {
+      "game": "XIII",
+      "title": "XIII — JoshW archive",
+      "url": "https://gcn.joshw.info/x/XIII%20%282003-11-25%29%28Ubisoft%20Paris%29%28Ubisoft%29%5BGC%5D%5Bunsorted%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 680745270,
+      "revision": 1571161320
+    },
+    {
+      "game": "Yu-Gi-Oh! The Falsebound Kingdom",
+      "title": "Yu-Gi-Oh! The Falsebound Kingdom — JoshW archive",
+      "url": "https://gcn.joshw.info/y/Yu-Gi-Oh%21%20The%20Falsebound%20Kingdom%20%5BYu-Gi-Oh%21%20-%20Kyokou%20ni%20Tozasareta%20Oukoku%5D%20%282002-12-05%29%28KCE%20Japan%29%28Konami%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 155157542,
+      "revision": 1377287940
+    },
+    {
+      "game": "Zatch Bell! Mamodo Fury",
+      "title": "Zatch Bell! - Mamodo Fury — JoshW archive",
+      "url": "https://gcn.joshw.info/z/Zatch%20Bell%21%20-%20Mamodo%20Fury%20%5BKonjiki%20no%20Gashbell%21%21%20-%20Go%21%20Go%21%20Mamono%20Fight%21%21%5D%20%282005-12-15%29%28Mechanic%20Arms%29%28Bandai%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 51254978,
+      "revision": 1377288540
+    },
+    {
+      "game": "ZooCube",
+      "title": "ZooCube — JoshW archive",
+      "url": "https://gcn.joshw.info/z/ZooCube%20%282002-05-30%29%28PuzzleKings%29%28Acclaim%29%5BGC%5D.7z",
+      "markets": [
+        "NA"
+      ],
+      "size": 58378264,
+      "revision": 1790535000
+    }
+  ]
+}

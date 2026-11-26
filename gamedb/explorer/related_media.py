@@ -22,7 +22,7 @@ from gamedb.catalog.manuals import manual_key
 from gamedb.catalog.n64_rom import N64_LAYOUTS, N64_ROM_LIMIT
 from gamedb.catalog.patching import MAX_ROM_SIZE, apply_translation, supports_patching
 from gamedb.catalog.translations import (
-    CARTRIDGE_EXTENSIONS, DISC_LAYOUT, DISC_PATCH_ARCHIVES, DISC_PLATFORMS, FORMATS,
+    ADDON_CONSOLES, ADDON_EXTENSIONS, CARTRIDGE_EXTENSIONS, DISC_LAYOUT, DISC_PATCH_ARCHIVES, DISC_PLATFORMS, FORMATS,
     INDEX_NAME as TRANSLATION_INDEX, INDEX_VERSION, MAX_PATCH_SIZE, TRANSLATION_ROOTS, translation_order,
 )
 from gamedb.exo.media import location_path, open_location
@@ -62,6 +62,10 @@ def serve_vgm(handler, key, *, flac=False):
     location = handler.server.repository.vgm_asset(key)
     if not location:
         return handler.send_error(HTTPStatus.NOT_FOUND)
+    return serve_vgm_file(handler, root, key, location, flac=flac)
+
+
+def serve_vgm_file(handler, root, key, location, *, flac=False):
     if flac:
         try:
             track = browser_flac(handler.server.preview_cache.root, root, key, location)
@@ -203,11 +207,12 @@ def _disc_launch_path(root, location):
         return None
     if "Play.m3u" in names:
         return "Play.m3u"
-    cues = [name for name in names if name.lower().endswith(".cue")]
-    if len(cues) == 1:
-        cue = cues[0]
-        if Path(cue).name == cue and "\\" not in cue and cue.isprintable():
-            return cue
+    for extensions in ((".cue", ".gdi"), (".iso", ".cdi", ".chd")):
+        launch_files = [name for name in names if name.lower().endswith(extensions)]
+        if len(launch_files) == 1:
+            launch = launch_files[0]
+            if Path(launch).name == launch and "\\" not in launch and launch.isprintable():
+                return launch
     return None
 
 
@@ -245,17 +250,21 @@ def add_local_translations(game, root, platform="snes"):
                     public["baseArchive"] = archive["archiveNames"][0]
                 matches[record["key"]] = public
         if matches:
-            release["translations"] = sorted(matches.values(), key=translation_order)
+            release["translations"] = [*sorted(matches.values(), key=translation_order), *release.get("translations", ())]
 
 
-def add_translation_availability(games, root):
-    _, by_signature = _translation_index(root)
-    available = {signature for signature, records in by_signature.items()
-                 if any(_translation_location(root, record) for record in records)}
+def add_translation_availability(games, root, extra_roots=()):
+    available = set()
+    for index in (root, *extra_roots):
+        _, by_signature = _translation_index(index)
+        available.update(signature for signature, records in by_signature.items()
+                         if any(_translation_location(index, record) for record in records))
     for game in games:
         for release in game["releases"]:
             signatures = release.pop("archiveSignatures", ())
-            release["hasTranslations"] = release["status"] == "matched" and not available.isdisjoint(signatures)
+            release["hasTranslations"] = release["status"] == "matched" and (
+                release.get("hasTranslations", False) or not available.isdisjoint(signatures)
+            )
 
 
 @contextmanager
@@ -280,6 +289,7 @@ def serve_retail_translation(handler, platform, key):
 
 
 def serve_retail_translation_rom(handler, signature, key, *, disc_only=False):
+    from gamedb.catalog.disc_catalog import DISC_ADDON_PARENTS
     from gamedb.explorer.server import _resolve_rom_path
 
     for platform, root in handler.server.retail_translation_roots.items():
@@ -293,7 +303,8 @@ def serve_retail_translation_rom(handler, signature, key, *, disc_only=False):
         return handler.send_error(HTTPStatus.NOT_FOUND)
     if platform in DISC_PLATFORMS and record["layout"] == DISC_LAYOUT:
         location = _disc_set_location(root, record)
-        if location is None or not handler.server.repository.retail_has_archive(platform, signature):
+        parent = DISC_ADDON_PARENTS.get(platform, platform)
+        if location is None or not handler.server.repository.retail_has_archive(parent, signature):
             return handler._json_response({"error": "The verified disc set is unavailable."}, HTTPStatus.NOT_FOUND)
         digest = record["discSet"]["sha256"]
         return _serve_file(handler, key, root, {
@@ -339,7 +350,8 @@ def serve_retail_translation_rom(handler, signature, key, *, disc_only=False):
 
     base_name = Path(rom["member_path"].replace("\\", "/")).stem
     tag = " ".join(item for item in (record["language"], record["version"]) if item)
-    extension = CARTRIDGE_EXTENSIONS[platform]
+    addon_extension = ADDON_EXTENSIONS.get(ADDON_CONSOLES.get(platform))
+    extension = addon_extension if addon_extension and record.get("extension") == addon_extension else CARTRIDGE_EXTENSIONS[platform]
     filename = re.sub(r"[/\\\x00-\x1f\x7f]", "_", f"{base_name} [{tag}].{extension}")
     digest = hashlib.sha256(patched).hexdigest()
     return _serve_file(handler, key, root, {
