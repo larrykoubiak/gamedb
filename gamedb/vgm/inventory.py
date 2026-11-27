@@ -59,6 +59,10 @@ ARCHIVES = {".zip", ".rar", ".7z", ".rsn", ".vgm7z", ".lha", ".iso", ".d64", ".d
 BROWSER_AUDIO = {".mp3", ".flac", ".ogg", ".opus", ".wav", ".m4a", ".aac"}
 DEPENDENCIES = {".psflib", ".psf2lib", ".snsflib", ".m3u", ".m3u8", ".cue", ".wd", ".wi", ".sep", ".seb"}
 HANDHELD_STREAMS = {".at9", ".bcstm", ".bcwav", ".bfstm", ".bfwav", ".xvag"}
+PS2_STREAMS = {
+    ".asf", ".fsb", ".int", ".joe", ".lasf", ".mic", ".mp2", ".mss", ".npsf",
+    ".rsd", ".rws", ".sdt", ".sng", ".stream", ".sts", ".vgv", ".vs",
+}
 JOSHW_TRACKS = {
     ".2sf", ".adp", ".ads", ".adx", ".afc", ".aix", ".at3", ".gsf", ".gym", ".hes", ".hwas",
     ".kss", ".mgb", ".mini2sf", ".minigsf",
@@ -244,6 +248,8 @@ def tracks_for_set(root, album):
     formats = SUFFIXES - ARCHIVES
     if album.collection == JOSHW_COLLECTION:
         formats = formats | JOSHW_TRACKS | JOSHW_LIBRARIES | {".txt"}
+        if album.system == PS2:
+            formats |= PS2_STREAMS
         if album.system == ("Philips", "CD-i"):
             formats |= {".grn", ".mpg", ".txtp"}
     elif album.collection == PSF_COLLECTION:

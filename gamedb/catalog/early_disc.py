@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 
 from gamedb.config import PROJECT_ROOT
 from gamedb.database import create_database_engine
-from gamedb.vgm.inventory import BROWSER_AUDIO
+from gamedb.vgm.inventory import BROWSER_AUDIO, PS2_STREAMS
 from gamedb.vgm.joshw import RETAIL_BUCKETS
 
 from . import retail
@@ -256,8 +256,9 @@ def _archive_collection_manuals(content, url, source, market, claims):
 
 
 def add_optical_soundtracks(connection, catalog, platform, review):
+    formats = TRACK_FORMATS | {suffix[1:] for suffix in PS2_STREAMS} if platform == "playstation2" else TRACK_FORMATS
     return add_soundtracks(
-        connection, catalog, platform=SYSTEMS[platform], secondary_platform=None, formats=sorted(TRACK_FORMATS),
+        connection, catalog, platform=SYSTEMS[platform], secondary_platform=None, formats=sorted(formats),
         aliases=review.get("soundtrackAliases", ()),
         joshw_archive_bucket=RETAIL_BUCKETS[platform] if platform == "playstation2" else None,
     )
