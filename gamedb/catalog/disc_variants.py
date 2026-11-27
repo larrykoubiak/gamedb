@@ -84,7 +84,8 @@ def add_disc_variants(connection, catalog, system, markets, *, reviewed=(), revi
             "installManifestUrl": f"/api/v1/releases/{record['signature']}/install-manifest",
         }
         if review:
-            translation.update(language=review["language"], baseEdition=review["baseEdition"])
+            translation.update(language=review["language"], baseEdition=review["baseEdition"],
+                               status=review.get("status", status))
         release.setdefault("translations", []).append(translation)
         result += 1
         used.add(record["signature"])

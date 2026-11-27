@@ -2407,6 +2407,7 @@
           "boxart": "Cover art (HexFlow)"
         },
         "files": {
+          "NPUH10123": {"boxart": "Covers/PSP/NPUH10123.png"},
           "UCAS40015": {"boxart": "Covers/PSP/UCAS40015.png"},
           "UCAS40018": {"boxart": "Covers/PSP/UCAS40018.png"},
           "UCAS40032": {"boxart": "Covers/PSP/UCAS40032.png"},

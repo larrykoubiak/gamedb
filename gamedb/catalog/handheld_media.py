@@ -216,7 +216,8 @@ def add_handheld_sources(builder, indexes, reference):
     for item in reference.get("releases", ()):
         names = [item["title"], *item.get("aliases", ())]
         builder.add(names, item.get("regions", ()), item["source"], channel=item["channel"], game=builder.find(names),
-                    date=_date(item.get("date")), publisher=item.get("publisher", ""), artwork=item.get("artwork"))
+                    date=_date(item.get("date")), publisher=item.get("publisher", ""), artwork=item.get("artwork"),
+                    developer=item.get("developer", ""), codes=item.get("productCodes", ()))
 
 
 def _pdf_links(index, source, market):

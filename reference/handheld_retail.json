@@ -1100,7 +1100,30 @@
     }
   },
   "psp": {
+    "releases": [
+      {
+        "title": "Unchained Blades",
+        "regions": ["USA"],
+        "channel": "download",
+        "date": "2012-06-26",
+        "publisher": "Xseed Games",
+        "productCodes": ["NPUH-10123"],
+        "source": {
+          "name": "PlayStation Store",
+          "url": "https://blog.playstation.com/2012/06/26/playstation-store-update-245/"
+        }
+      }
+    ],
     "prepatchedVariants": [
+      {
+        "signature": "3b2be1caba36cc340cfffe6844a3405d",
+        "edition": "Unchained Blades",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Unchained Blades",
+        "status": "Prepatched PSP game archive",
+        "allowMissingBase": true
+      },
       {
         "signature": "07a7119d9f829d88f9df8c363bd9e540",
         "edition": "The 3rd Birthday",
