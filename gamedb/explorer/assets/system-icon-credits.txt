@@ -110,6 +110,12 @@ https://commons.wikimedia.org/wiki/File:PlayStation_Vita_logo.svg
 Watara Supervision wordmark, vectorized by Suspiciouscelery.
 https://commons.wikimedia.org/wiki/File:Watara_Supervision_logo.svg
 
+Handheld hardware icons from the RetroArch Systematic theme by Libretro contributors.
+The PNGs are unchanged. The GameKing 3 icon depicts the GM-221 variant.
+Creative Commons Attribution 4.0 International
+https://creativecommons.org/licenses/by/4.0/
+https://github.com/libretro/retroarch-assets/tree/d9f969054dc7fbb6fa89519036d2b971e0855b51/xmb/systematic/png
+
 Additional catalog wordmarks
 
 Adventure Vision, Arcadia 2001, Astrocade, CreatiVision, Vectrex, PV-1000,

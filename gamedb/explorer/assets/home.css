@@ -307,14 +307,6 @@
 
 .catalog-card-art-dark { background: #221f25; }
 
-.catalog-card-name {
-  color: #281c16;
-  font-size: .74rem;
-  font-weight: 700;
-  line-height: 1.12;
-  text-align: center;
-}
-
 #no-retail-catalogs {
   color: var(--home-muted);
 }
