@@ -110,11 +110,33 @@ https://commons.wikimedia.org/wiki/File:PlayStation_Vita_logo.svg
 Watara Supervision wordmark, vectorized by Suspiciouscelery.
 https://commons.wikimedia.org/wiki/File:Watara_Supervision_logo.svg
 
-Handheld hardware icons from the RetroArch Systematic theme by Libretro contributors.
-The PNGs are unchanged. The GameKing 3 icon depicts the GM-221 variant.
-Creative Commons Attribution 4.0 International
-https://creativecommons.org/licenses/by/4.0/
-https://github.com/libretro/retroarch-assets/tree/d9f969054dc7fbb6fa89519036d2b971e0855b51/xmb/systematic/png
+Analogue Pocket, GP2X and OpenPandora wordmarks by their respective manufacturers.
+https://commons.wikimedia.org/wiki/File:Analogue_pocket.png
+https://commons.wikimedia.org/wiki/File:GP2X_logo.svg
+https://commons.wikimedia.org/wiki/File:Pandora_logo.svg
+
+P/ECE, Cybiko, Bandai Design Master and Leapster wordmarks from the original
+manufacturer website or user guide. Backgrounds were removed where needed.
+https://aquaplus.jp/piece/
+https://www.rigpix.com/rfgadgets/cybiko_classic_manual.pdf
+https://www.gamingalexandria.com/highquality/designmaster/Rockman%20X3/Rockman%20X3%20Design%20Master%20-%20Manual%20%28Searchable%29.pdf
+https://t7.leapfrog.com/images/l/Leapster.pdf
+
+Cybiko Xtreme wordmark by Cybiko, Inc.
+https://worldvectorlogo.com/logo/cybiko-xtreme
+
+Hartung Game Master, Nintendo DSi, Playdate and Dreamcast Visual Memory Unit
+wordmarks prepared by Dan Patrick.
+https://archive.org/details/console-logos-professionally-redrawn-plus-official-versions
+
+Gamate, Game.com, GameKing, Game Pocket Computer, Game & Watch, GP32, Mega Duck,
+Pocket Challenge V2 and PocketStation wordmarks from the Ckau-book theme.
+GameDB added a III mark to the GameKing artwork for the GameKing 3 card.
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+https://github.com/CkauNui/ckau-book/tree/0acba45a03e33c3c088289992c5e75a15f49cd62/_inc/logos
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+Pocket Challenge W wordmark drawn for GameDB.
 
 Additional catalog wordmarks
 

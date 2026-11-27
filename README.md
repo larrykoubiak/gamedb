@@ -124,7 +124,7 @@ catalogs after syncing to publish the soundtrack links.
 
 Explorer’s **Handhelds** section uses the same manufacturer rows as Home
 consoles where applicable, with an **Others** row for the remaining handhelds.
-Each card has a system icon or wordmark. Accessories such as PocketStation
+Each card has a system wordmark. Accessories such as PocketStation
 and the Dreamcast VMU appear in their host console’s generation. The section
 covers cartridges, PSP UMDs, DSiWare, dedicated Game & Watch units, and the
 downloadable libraries of systems such as Playdate and P-ECE.

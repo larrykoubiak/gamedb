@@ -1180,7 +1180,7 @@ async function start() {
     logo.alt = catalogLabel;
     logo.addEventListener("error", () => { heading.textContent = catalogLabel; }, {once: true});
     const filename = platform === "odyssey2" ? "odyssey2-wordmark" : platform;
-    logo.src = `/system-icons/retail-logo-${filename}.png`;
+    logo.src = `/system-icons/retail-logo-${filename}.png?v=2`;
     if (["copera", "myvision", "picno"].includes(platform)) {
       const crop = element("span", "", "system-logo-crop");
       crop.dataset.platform = platform;

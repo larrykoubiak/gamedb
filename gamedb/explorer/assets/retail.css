@@ -78,6 +78,8 @@
 }
 .snes-platform-logo[data-platform="atari5200"],
 .snes-platform-logo[data-platform="creativision"],
+.snes-platform-logo[data-platform="gamepock"],
+.snes-platform-logo[data-platform="playdate"],
 .snes-platform-logo[data-platform="loopy"] { background: #221f25; }
 .snes-platform-logo[data-platform="neogeo"] img {
   /* Trim the transparent margins around the original wordmark. */
