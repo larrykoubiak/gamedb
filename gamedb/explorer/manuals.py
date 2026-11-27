@@ -12,7 +12,9 @@ from threading import Timer
 from PIL import Image
 
 from gamedb.catalog.manuals import INDEX_NAME, read_manual_index
-from gamedb.catalog.retail import ADDITIONAL_CARTRIDGE_PLATFORMS, OPTICAL_RETAIL_PLATFORMS, SECOND_GENERATION_PLATFORMS
+from gamedb.catalog.retail import (
+    ADDITIONAL_CARTRIDGE_PLATFORMS, HANDHELD_PLATFORMS, OPTICAL_RETAIL_PLATFORMS, SECOND_GENERATION_PLATFORMS,
+)
 from gamedb.exo.media import location_path
 from gamedb.explorer.previews import source_revision
 
@@ -32,6 +34,7 @@ def manual_roots():
     xegs = os.environ.get("GAMEDB_XEGS_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Atari XEGS"
     second_generation = Path(os.environ.get("GAMEDB_SECOND_GENERATION_MANUAL_ROOT")
                              or "/mnt/synology/photo/Manuals/Second Generation")
+    handhelds = Path(os.environ.get("GAMEDB_HANDHELD_MANUAL_ROOT") or "/mnt/synology/photo/Manuals/Handhelds")
     return {"snes": Path(snes) if snes else None, "megadrive": Path(megadrive), "mastersystem": Path(mastersystem), "nes": Path(nes),
             "playstation": Path(playstation), "neogeo": Path(neogeo), "pcengine": Path(pcengine), "n64": Path(n64),
             "saturn": Path(saturn), "jaguar": Path(jaguar), "atari7800": Path(atari7800), "xegs": Path(xegs), **{
@@ -39,7 +42,8 @@ def manual_roots():
                                or f"/mnt/synology/photo/Manuals/{label.removesuffix(' (US)')}")
                 for platform, label in OPTICAL_RETAIL_PLATFORMS.items()
             }, **{platform: second_generation / platform
-                  for platform in (*SECOND_GENERATION_PLATFORMS, *ADDITIONAL_CARTRIDGE_PLATFORMS)}}
+                  for platform in (*SECOND_GENERATION_PLATFORMS, *ADDITIONAL_CARTRIDGE_PLATFORMS)},
+            **{platform: handhelds / platform for platform in HANDHELD_PLATFORMS}}
 
 
 @lru_cache(maxsize=4)

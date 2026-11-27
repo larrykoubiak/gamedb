@@ -40,7 +40,8 @@ VARIANTS = text("""
 """)
 
 
-def add_disc_variants(connection, catalog, system, markets, *, reviewed=()):
+def add_disc_variants(connection, catalog, system, markets, *, reviewed=(), reviewed_only=False,
+                      status="Prepatched disc image"):
     by_name, by_id = defaultdict(dict), defaultdict(dict)
     by_edition = {}
     for game in catalog["games"]:
@@ -67,6 +68,8 @@ def add_disc_variants(connection, catalog, system, markets, *, reviewed=()):
             if release is None or (release["status"] != "matched" and not review.get("allowMissingBase")):
                 continue
         else:
+            if reviewed_only:
+                continue
             regions = set(record["regions"] or ())
             ids = [release for scope, release in by_id[record["software_id"]].values() if scope & regions]
             names = [release for scope, release in by_name[_title_key(record["title"])].values() if scope & regions]
@@ -77,7 +80,7 @@ def add_disc_variants(connection, catalog, system, markets, *, reviewed=()):
 
         translation = {
             "key": record["signature"], "language": "Undub" if record["modification"] == "undub" else "English",
-            "status": "Prepatched disc image", "version": record["version"], "archiveNames": record["names"],
+            "status": status, "version": record["version"], "archiveNames": record["names"],
             "installManifestUrl": f"/api/v1/releases/{record['signature']}/install-manifest",
         }
         if review:

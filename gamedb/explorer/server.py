@@ -21,7 +21,7 @@ from gamedb.arcade.bundle import prepare_manifest, public_manifest, write_bundle
 from gamedb.catalog.disc_catalog import DISC_ADDON_PARENTS
 from gamedb.catalog.retail import RETAIL_PLATFORMS
 from gamedb.catalog.translations import TRANSLATION_ROOTS
-from gamedb.config import PROJECT_ROOT, ProjectEnvironment
+from gamedb.config import ProjectEnvironment
 from gamedb.database import create_database_engine
 from gamedb.explorer.cache import JsonResponseCache
 from gamedb.explorer.disc_audio import DISC_AUDIO_PATH, disc_soundtracks, serve_disc_audio
@@ -320,11 +320,11 @@ class ExplorerHandler(BaseHTTPRequestHandler):
                         catalog.setdefault("soundtracks", []).extend(albums)
                 return self._json_response(catalog)
             if parsed.path == "/api/capabilities":
+                published = set(self.server.repository.published_retail_platforms())
                 return self._json_response({
                     "softwareCorrections": self.server.corrections_enabled,
                     "vgm": bool(self.server.vgm_root),
-                    **{f"{platform}Retail": self.server.repository.retail_available(platform)
-                       for platform in RETAIL_PLATFORMS},
+                    **{f"{platform}Retail": platform in published for platform in RETAIL_PLATFORMS},
                 })
             if parsed.path == "/api/metadata-options":
                 system_id = query.get("system_id", [""])[0]

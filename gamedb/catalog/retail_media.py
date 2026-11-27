@@ -220,7 +220,8 @@ LAUNCHBOX_IMAGES_SQL = text("""
     JOIN staging.launchbox_image_import imported ON imported.import_id = image.import_id
     WHERE image.import_id = :snapshot AND image.database_id = ANY(CAST(:games AS bigint[]))
       AND image.image_type = ANY(CAST(:kinds AS text[]))
-      AND (image.region <> '' OR image.image_type = 'Clear Logo')
+      AND (image.region <> '' OR image.image_type = 'Clear Logo'
+           OR (:neutral_screens AND image.image_type LIKE 'Screenshot%'))
       AND lower(left(image.file_name, 3)) <> 'r2_'
     ORDER BY image.database_id, image.region, image.file_name
 """)
@@ -235,12 +236,13 @@ def _owners(catalog):
     return owners
 
 
-def _scope_launchbox(connection, catalog, reviewed, *, platforms=LAUNCHBOX_PLATFORMS):
+def _scope_launchbox(connection, catalog, reviewed, *, platforms=LAUNCHBOX_PLATFORMS,
+                     neutral_screens=False, known_launchbox=None):
     names = connection.execute(text("""
         SELECT to_regclass('staging.launchbox_import') IS NOT NULL
            AND to_regclass('staging.launchbox_record') IS NOT NULL
     """)).scalar_one()
-    if not names:
+    if not names or not platforms:
         return {}, {}
     snapshot = connection.execute(text("""
         SELECT id, source_revision FROM staging.launchbox_import ORDER BY imported_at DESC, id DESC LIMIT 1
@@ -283,7 +285,7 @@ def _scope_launchbox(connection, catalog, reviewed, *, platforms=LAUNCHBOX_PLATF
             local = {item for archive in release.get("archives", ()) for item in attributed[archive["softwareId"]]}
             release_ids[release["key"]] = local
             known.update(local)
-        direct = canonical.get(game["key"])
+        direct = (known_launchbox or {}).get(game["key"], canonical.get(game["key"]))
         if direct:
             known.add(direct)
         review = reviewed.get(game["title"], {})
@@ -321,7 +323,8 @@ def _scope_launchbox(connection, catalog, reviewed, *, platforms=LAUNCHBOX_PLATF
            AND to_regclass('staging.launchbox_image_import') IS NOT NULL
     """)).scalar_one()
     if available and chosen:
-        parameters = {"snapshot": snapshot.id, "games": sorted(chosen), "kinds": sorted(IMAGE_KINDS)}
+        parameters = {"snapshot": snapshot.id, "games": sorted(chosen), "kinds": sorted(IMAGE_KINDS),
+                      "neutral_screens": neutral_screens}
         for row in connection.execute(LAUNCHBOX_IMAGES_SQL, parameters):
             if valid_filename(row.file_name):
                 images[row.database_id].append((row, games[row.database_id]["Name"]))
@@ -376,23 +379,23 @@ def add_reviewed_artwork(catalog, platform, indexes, reviewed, *, thumbnails):
 
 
 def _libretro_art(release, paths, reviewed=(), *,
-                  thumbnails=THUMBNAILS, thumbnail_key="snes", country_markets=COUNTRY_MARKETS):
+                  thumbnails=THUMBNAILS, thumbnail_key="snes", country_markets=COUNTRY_MARKETS, shared_boxart=False):
     folder_key = "sufami" if release["channel"] == "sufami-turbo" else thumbnail_key
     if folder_key not in paths:
         return
     folder, revision = thumbnails[folder_key]
     local_titles = {title_key(title) for title in release["titles"]}
-    for archive in release.get("archives", ()):
+    for archive in (*release.get("archives", ()), *release.get("artworkArchives", ())):
         regions = archive["regions"]
         markets = {country_markets[region] for region in regions if region in country_markets}
-        exclusive = markets == {release["market"]} and "WORLD" not in regions
+        exclusive = markets == {release["market"]} and ("WORLD" not in regions or release["market"] == "WORLD")
         for name in archive["archiveNames"]:
             stem = PurePosixPath(name).stem.translate(BAD_CHARS)
             for directory, kind in LIBRETRO_KINDS.items():
                 review = reviewed.get((name, kind)) if reviewed else None
                 if review and release["market"] not in review.get("markets", [review.get("market")]):
                     continue
-                if kind == "boxart" and not (exclusive or review):
+                if kind == "boxart" and not (exclusive or review or (shared_boxart and release["market"] in markets)):
                     continue
                 if kind == "logo" and not (exclusive or review or title_key(archive.get("title", "")) in local_titles):
                     continue
@@ -412,15 +415,20 @@ def _libretro_art(release, paths, reviewed=(), *,
                     yield 4 if review else rank, kind, asset
 
 
-def _launchbox_art(release, keys, images, *, country_markets=COUNTRY_MARKETS, checksum_reviews=None):
+def _launchbox_art(release, keys, images, *, country_markets=COUNTRY_MARKETS, checksum_reviews=None,
+                   neutral_art=False):
     local_titles = {title_key(title) for title in release["titles"]}
     for key in keys:
         for image, title in images.get(key, ()):
             kind = IMAGE_KINDS[image.image_type]
             regions = sorted(LAUNCHBOX_REGIONS.get(image.region, ()))
             regional = {country_markets.get(region) for region in regions} == {release["market"]}
-            if not regional and not (kind == "logo" and image.region in ("", "World")
-                                     and title_key(title) in local_titles):
+            generic = title_key(title) in local_titles and (
+                (kind == "logo" and image.region in ("", "World"))
+                or (neutral_art and (release["market"] == "UNK"
+                                     or kind in {"title", "snap"} and image.region in ("", "World")))
+            )
+            if not regional and not generic:
                 continue
             path = f"launchbox/{kind}/{image.file_name}"
             crc32 = (checksum_reviews or {}).get((image.file_name, image.crc32), image.crc32)
@@ -434,14 +442,16 @@ def _launchbox_art(release, keys, images, *, country_markets=COUNTRY_MARKETS, ch
 
 def add_descriptions_and_art(connection, catalog, indexes, reference, *,
                              platforms=LAUNCHBOX_PLATFORMS, thumbnails=THUMBNAILS,
-                             thumbnail_key="snes", country_markets=COUNTRY_MARKETS):
+                             thumbnail_key="snes", country_markets=COUNTRY_MARKETS,
+                             include_unmatched=False, known_launchbox=None):
     reviewed = reference.get("metadata", {})
     unavailable = set(reference.get("unavailableImages", ()))
     artwork_regions = {(record["archiveName"], record["kind"]): record
                        for record in reference.get("artworkRegions", ())}
     checksum_reviews = {(filename, review["previousCrc32"]): review["crc32"]
                         for filename, review in json.loads(LAUNCHBOX_IMAGE_CHECKSUMS.read_text(encoding="utf-8")).items()}
-    release_ids, images = _scope_launchbox(connection, catalog, reviewed, platforms=platforms)
+    launchbox_options = {"neutral_screens": True, "known_launchbox": known_launchbox} if include_unmatched else {}
+    release_ids, images = _scope_launchbox(connection, catalog, reviewed, platforms=platforms, **launchbox_options)
     paths = _libretro_paths(indexes, thumbnails)
     for game in catalog["games"]:
         if description := reviewed.get(game["title"], {}).get("description"):
@@ -455,14 +465,16 @@ def add_descriptions_and_art(connection, catalog, indexes, reference, *,
                     game[field] = value
                     game.setdefault("creditSources", {})[field] = source
         for release in game["releases"]:
-            if release["status"] != "matched":
+            if not include_unmatched and release["status"] != "matched":
                 continue
-            art = {}
+            art = release.get("artwork", {}).copy()
             candidates = (*_libretro_art(release, paths, artwork_regions, thumbnails=thumbnails,
-                                        thumbnail_key=thumbnail_key, country_markets=country_markets), *_launchbox_art(
+                                        thumbnail_key=thumbnail_key, country_markets=country_markets,
+                                        shared_boxart=include_unmatched), *_launchbox_art(
                 release, release_ids.get(release["key"], ()), images,
-                country_markets=country_markets, checksum_reviews=checksum_reviews,
+                country_markets=country_markets, checksum_reviews=checksum_reviews, neutral_art=include_unmatched,
             ))
+            release.pop("artworkArchives", None)
             for _, kind, asset in sorted(candidates, key=lambda item: (-item[0], item[2]["url"])):
                 if asset.get("filename") not in unavailable and asset["url"] not in unavailable:
                     art.setdefault(kind, asset)

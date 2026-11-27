@@ -21,8 +21,10 @@ from libarchive import file_reader
 from libarchive.exception import ArchiveError
 
 from gamedb.catalog.cartridges import VERIFIED_ROM_SQL, read_verified_rom
-from gamedb.catalog.n64_rom import N64_ROM_LIMIT
-from gamedb.catalog.patching import N64_DISK_LAYOUT, PatchError, apply_translation, embedded_input, supports_patching, valid_ips
+from gamedb.catalog.patching import (
+    HANDHELD_ROM_LIMITS, N64_DISK_LAYOUT, PatchError, apply_translation, embedded_input, rom_size_limit,
+    supports_patching, valid_ips,
+)
 from gamedb.catalog.references import read_index
 from gamedb.catalog.retail import RETAIL_PLATFORMS, SIXTH_GENERATION_PLATFORMS, retail_tables, write_report
 from gamedb.catalog.disc_catalog import DISC_ADDON_PARENTS
@@ -31,19 +33,28 @@ from gamedb.database import create_database_engine
 from gamedb.vgm.archives import member_name, safe_member
 
 
+HANDHELD_PATCH_SOURCES = {
+    "gb": "gameboy", "gbc": "gameboy", "gba": "gba", "nds": "ds", "lynx": "lynx", "pokemini": "pokemin",
+    "gamegear": "gamegear", "ngpc": "ngpc", "wonderswan": "ws", "wonderswancolor": "ws",
+}
 RHDN_CONSOLES = {"snes": "snes", "megadrive": "genesis", "nes": "nes", "playstation": "psx",
                  "mastersystem": "sms", "pcengine": "tg16", "n64": "n64", "saturn": "saturn",
                  "pcfx": "pcfx", "3do": "3do", "segacd": "segacd", "pcecd": "tgcd", "neogeocd": "ngcd",
-                 "colecovision": "cole", "dreamcast": "dc", "playstation2": "ps2", "gamecube": "gc"}
+                 "colecovision": "cole", "dreamcast": "dc", "playstation2": "ps2", "gamecube": "gc",
+                 **HANDHELD_PATCH_SOURCES}
 ADDON_CONSOLES = {"nes": "fds", "megadrive": "32x", "mastersystem": "sg1k"}
 ADDON_LAYOUTS = {"fds": {1: "headerless"}, "32x": {1: "headerless", 8: "headerless"}, "sg1k": {1: "headerless"}}
 ADDON_EXTENSIONS = {"fds": "fds", "32x": "32x", "sg1k": "sg"}
 TRANSLATION_ROOTS = {platform: PROJECT_ROOT / f"data/media/{platform}-translations"
-                     for platform in (*RHDN_CONSOLES, "neogeo", "virtualboy")}
+    for platform in (*RHDN_CONSOLES, "neogeo", "virtualboy")}
 TRANSLATION_ROOTS.update({addon: TRANSLATION_ROOTS[parent] / addon for addon, parent in DISC_ADDON_PARENTS.items()})
+TRANSLATION_ROOTS.update({platform: PROJECT_ROOT / "data/media/handheld-translations" / platform
+                          for platform in HANDHELD_PATCH_SOURCES})
 CARTRIDGE_EXTENSIONS = {
     "snes": "sfc", "megadrive": "md", "nes": "nes", "mastersystem": "sms", "pcengine": "pce", "n64": "z64",
     "colecovision": "col", "virtualboy": "vb",
+    "gb": "gb", "gbc": "gbc", "gba": "gba", "nds": "nds", "lynx": "lnx", "pokemini": "min",
+    "gamegear": "gg", "ngpc": "ngc", "wonderswan": "ws", "wonderswancolor": "wsc",
 }
 AUTHOR_REFERENCE = PROJECT_ROOT / "reference/translation_authors.json"
 REVIEW_REFERENCES = {platform: PROJECT_ROOT / f"reference/{platform}_translation_reviews.json"
@@ -61,6 +72,9 @@ NES_LAYOUTS = {1: "ines", 2: "ines"}
 CARTRIDGE_LAYOUTS = {"snes": SNES_LAYOUTS, "megadrive": MEGADRIVE_LAYOUTS, "nes": NES_LAYOUTS,
                      "mastersystem": {1: "headerless"}, "pcengine": {14: "headerless"}, "n64": {},
                      "colecovision": {1: "headerless"}}
+CARTRIDGE_LAYOUTS.update({platform: {1: platform if platform in HANDHELD_ROM_LIMITS else "headerless"}
+                          for platform in HANDHELD_PATCH_SOURCES})
+HANDHELD_XDELTA = dict.fromkeys(("xdelta", "xdelta3", "vcdiff"), "xdelta")
 MAX_PATCH_SIZE = 16 * 1024 * 1024
 MAX_PACKAGE_PATCH_BYTES = 64 * 1024 * 1024
 TOKEN = re.compile(r"\s*('(?:''|\\.|[^'\\])*'|NULL|-?\d+(?:\.\d+)?|[(),;])", re.S)
@@ -305,16 +319,23 @@ def _documented_input(rominfo, layout):
 
 def _package_matches(row, path, bases, *, layouts=SNES_LAYOUTS, review=None, native_layout="headerless"):
     nintendo64 = native_layout == "z64"
+    extras = None
     if nintendo64:
-        from gamedb.catalog.n64_translations import EXTENSIONS, match_members
+        from gamedb.catalog.n64_translations import EXTENSIONS
+
+        extras = EXTENSIONS
+    elif native_layout in HANDHELD_ROM_LIMITS:
+        extras = HANDHELD_XDELTA
 
     try:
-        members = _patch_members(path, extra_formats=EXTENSIONS if nintendo64 else None)
+        members = _patch_members(path, extra_formats=extras)
     except (ArchiveError, BadZipFile, NotImplementedError, OSError, RuntimeError, SubprocessError, ValueError):
         return [], "unreadable package"
     if not any(data is not None for _, _, data in members):
         return [], "no supported patch file"
     if nintendo64:
+        from gamedb.catalog.n64_translations import match_members
+
         return match_members(row, path, members, bases, review)
     matches = []
     for name, patch_format, data in members:
@@ -340,6 +361,18 @@ def _package_matches(row, path, bases, *, layouts=SNES_LAYOUTS, review=None, nat
                     base, layout = bases.match_ines_ips(row["rominfo"])
                 else:
                     base, layout = bases.match_input(_documented_input(row["rominfo"], layout), layout)
+                evidence = "documented"
+            else:
+                continue
+        elif patch_format == "xdelta":
+            layout = native_layout
+            if review and review["archive"] == path.name:
+                if review["patches"].get(name) != sha256(data).hexdigest():
+                    continue
+                base = bases.by_sha1.get(review.get("baseSha1ByPatch", {}).get(name, review.get("baseSha1")))
+                evidence = "reviewed"
+            elif len(members) == 1 and row["patchstatus"] != 4:
+                base = bases.match(_documented_input(row["rominfo"], "headerless"))
                 evidence = "documented"
             else:
                 continue
@@ -421,7 +454,7 @@ def _published_patches(root, sources, bases):
         rom = bases.roms[base["sha1"]]
         if is_disk and not rom.member_path.casefold().endswith(".ndd"):
             continue
-        original = read_verified_rom(rom, max_size=N64_ROM_LIMIT) if is_disk else read_verified_rom(rom)
+        original = read_verified_rom(rom, max_size=rom_size_limit(layout))
         if original is None:
             continue
         digest = source["sha256"]
@@ -504,7 +537,8 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
         hardware = source_consoles[row["consolekey"]]
         addon_layouts = ADDON_LAYOUTS.get(hardware)
         addon_extension = ADDON_EXTENSIONS.get(hardware)
-        native_layout = "headerless" if addon_layouts else {"nes": "ines", "n64": "z64"}.get(platform, "headerless")
+        default_layout = platform if platform in HANDHELD_ROM_LIMITS else "headerless"
+        native_layout = "headerless" if addon_layouts else {"nes": "ines", "n64": "z64"}.get(platform, default_layout)
         matches, reason = _package_matches(row, path, bases, layouts=addon_layouts or layouts,
                                            review=review, native_layout=native_layout)
         if reason:
@@ -522,11 +556,10 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
                                            bytes.fromhex(header) if header else None)
                 if layout is None:
                     continue
-            if addon_layouts or platform in {"mastersystem", "pcengine", "n64", "colecovision"}:
+            if addon_layouts or platform in {"mastersystem", "pcengine", "n64", "colecovision", *HANDHELD_PATCH_SOURCES}:
                 if addon_layouts and Path(bases.roms[base["sha1"]].member_path).suffix.casefold() != f".{addon_extension}":
                     continue
-                original = (read_verified_rom(bases.roms[base["sha1"]], max_size=N64_ROM_LIMIT) if platform == "n64"
-                            else read_verified_rom(bases.roms[base["sha1"]]))
+                original = read_verified_rom(bases.roms[base["sha1"]], max_size=rom_size_limit(layout))
                 if original is None:
                     continue
                 try:
@@ -535,7 +568,7 @@ def _import_translations(source, root, bases, *, platform="snes", report=None):
                     continue
                 if expected_sha1 and sha1(patched).hexdigest() != expected_sha1:
                     continue
-                if platform == "n64":
+                if platform == "n64" or platform in HANDHELD_PATCH_SOURCES:
                     expected_sha1 = sha1(patched).hexdigest()
             digest = sha256(data).hexdigest()
             fingerprint = f"{base['sha1']}:{language.casefold()}:{layout}:{digest}"

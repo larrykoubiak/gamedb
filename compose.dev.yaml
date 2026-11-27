@@ -34,6 +34,7 @@ services:
       GAMEDB_PLAYSTATION_MANUAL_ROOT: /mnt/playstation-manuals
       GAMEDB_NEOGEO_MANUAL_ROOT: /mnt/neogeo-manuals
       GAMEDB_SECOND_GENERATION_MANUAL_ROOT: /mnt/second-generation-manuals
+      GAMEDB_HANDHELD_MANUAL_ROOT: /mnt/handheld-manuals
     ports:
       - "${GAMEDB_EXPLORER_PORT:-8082}:8000"
     volumes:
@@ -54,6 +55,7 @@ services:
       - ./data/media/playstation2-translations:/app/data/media/playstation2-translations:ro
       - ./data/media/gamecube-translations:/app/data/media/gamecube-translations:ro
       - ./data/media/colecovision-translations:/app/data/media/colecovision-translations:ro
+      - ./data/media/handheld-translations:/app/data/media/handheld-translations:ro
       - "${GAMEDB_VGM_HOST_ROOT:-/mnt/synology/music/VGM/By Format}:/mnt/vgm:ro"
       - "${GAMEDB_SNES_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/SNES}:/mnt/snes-manuals:ro"
       - "${GAMEDB_MEGADRIVE_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Mega Drive}:/mnt/megadrive-manuals:ro"
@@ -77,6 +79,7 @@ services:
       - "${GAMEDB_PLAYSTATION_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/PlayStation}:/mnt/playstation-manuals:ro"
       - "${GAMEDB_NEOGEO_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Neo Geo}:/mnt/neogeo-manuals:ro"
       - "${GAMEDB_SECOND_GENERATION_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Second Generation}:/mnt/second-generation-manuals:ro"
+      - "${GAMEDB_HANDHELD_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Handhelds}:/mnt/handheld-manuals:ro"
       - /mnt/synology/roms:/mnt/synology/roms:ro
       - /mnt/synology/backup/games/Undub:/mnt/synology/backup/games/Undub:ro
 

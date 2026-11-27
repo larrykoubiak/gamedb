@@ -29,6 +29,7 @@ WITH snapshot AS (
     GROUP BY game_order
 )
 SELECT jsonb_build_object('source', payload->'source', 'addonSources', payload->'addonSources',
+    'releaseSources', payload->'releaseSources',
     'summary', payload->'summary', 'games', (
     SELECT jsonb_agg(jsonb_build_object(
         'key', game->'key', 'title', game->'title', 'aliases', game->'aliases',

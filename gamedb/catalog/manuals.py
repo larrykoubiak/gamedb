@@ -29,7 +29,7 @@ INDEX_NAME = ".gamedb-manuals.json"
 SOURCE_REFERENCES = PROJECT_ROOT / "reference/snes_retail_manual_files.json"
 MARKET_DIRECTORIES = {
     "JP": "Japan", "NA": "North America", "PAL": "PAL", "BR": "Brazil", "KR": "South Korea", "AS": "Asia",
-    "MVS": "MVS", "AES": "AES", "UNK": "Unconfirmed",
+    "MVS": "MVS", "AES": "AES", "LA": "Latin America", "WORLD": "Worldwide", "UNK": "Unconfirmed",
 }
 USER_AGENT = "GameDB/2.0 (retail manual library)"
 CHUNK_SIZE = 1024 * 1024
@@ -126,7 +126,7 @@ def _sources(manual, cache, reviewed):
         "cdn-ak.f.st-hatena.com", "cdn.rwemulator.com", "www.emulation64.fr", "emulation64.fr",
         "drive.usercontent.google.com", "goldeneyedepot.com", "m1.nintendo.net", "www.nintendo.com", "bdjogos.com.br",
         "db.hfsplay.fr", "static.atariage.com", "www.gamesdatabase.org", "odyssey2.info", "www.odyssey2.info",
-        "play-sc-3000.online",
+        "play-sc-3000.online", "assets.nintendo.eu", "csassets.nintendo.com", "www.thegameisafootarcade.com",
     } and not hostname.endswith(".archive.org")):
         raise ValueError("Unsupported manual source URL")
     if "pages" in manual:

@@ -40,10 +40,53 @@ ADDITIONAL_CARTRIDGE_PLATFORMS = {
 CLASSIC_CARTRIDGE_PLATFORMS = {
     **SECOND_GENERATION_PLATFORMS, "atari7800": "Atari 7800", "xegs": "Atari XEGS", **ADDITIONAL_CARTRIDGE_PLATFORMS,
 }
+HANDHELD_SYSTEMS = {
+    "analoguepocket": ("Analogue", "Pocket", "Analogue Pocket"),
+    "pece": ("Aquaplus", "P-ECE", "Aquaplus P-ECE"),
+    "lynx": ("Atari", "Lynx", "Atari Lynx"),
+    "designmaster": ("Bandai", "Design Master Denshi Mangajuku", "Bandai Design Master"),
+    "wonderswan": ("Bandai", "WonderSwan", "Bandai WonderSwan"),
+    "wonderswancolor": ("Bandai", "WonderSwan Color", "Bandai WonderSwan Color"),
+    "pocketchallengev2": ("Benesse", "Pocket Challenge V2", "Benesse Pocket Challenge V2"),
+    "pocketchallengew": ("Benesse", "Pocket Challenge W", "Benesse Pocket Challenge W"),
+    "gamate": ("Bit Corporation", "Gamate", "Bit Corporation Gamate"),
+    "cybiko": ("Cybiko", "Cybiko", "Cybiko"),
+    "cybikoxtreme": ("Cybiko", "Xtreme", "Cybiko Xtreme"),
+    "gamepock": ("Epoch", "Game Pocket Computer", "Epoch Game Pocket Computer"),
+    "gp2x": ("GamePark", "GP2X", "GamePark GP2X"),
+    "gp32": ("GamePark", "GP32", "GamePark GP32"),
+    "gamemaster": ("Hartung", "Game Master", "Hartung Game Master"),
+    "leapster": ("LeapFrog", "Leapster", "LeapFrog Leapster"),
+    "gamewatch": ("Nintendo", "Game & Watch", "Nintendo Game & Watch"),
+    "gb": ("Nintendo", "Game Boy", "Nintendo Game Boy"),
+    "gbc": ("Nintendo", "Game Boy Color", "Nintendo Game Boy Color"),
+    "gba": ("Nintendo", "Game Boy Advance", "Nintendo Game Boy Advance"),
+    "nds": ("Nintendo", "Nintendo DS", "Nintendo DS"),
+    "dsi": ("Nintendo", "Nintendo DSi", "Nintendo DSi"),
+    "3ds": ("Nintendo", "3DS", "Nintendo 3DS"),
+    "pokemini": ("Nintendo", "Pokemon Mini", "Pokémon Mini"),
+    "ngage": ("Nokia", "N-Gage", "Nokia N-Gage"),
+    "pandora": ("OpenPandora", "Pandora", "OpenPandora Pandora"),
+    "playdate": ("Panic", "Playdate", "Panic Playdate"),
+    "gamegear": ("Sega", "Game Gear", "Sega Game Gear"),
+    "vmu": ("Sega", "Visual Memory System", "Sega Visual Memory Unit"),
+    "ngp": ("SNK", "Neo Geo Pocket", "SNK Neo Geo Pocket"),
+    "ngpc": ("SNK", "Neo Geo Pocket Color", "SNK Neo Geo Pocket Color"),
+    "psp": ("Sony", "PlayStation Portable", "PlayStation Portable"),
+    "psvita": ("Sony", "PlayStation Vita", "PlayStation Vita"),
+    "pocketstation": ("Sony", "PocketStation", "Sony PocketStation"),
+    "gamecom": ("Tiger Electronics", "Game.com", "Tiger Game.com"),
+    "gameking": ("TimeTop", "GameKing", "TimeTop GameKing"),
+    "gameking3": ("TimeTop", "GameKing 3", "TimeTop GameKing 3"),
+    "supervision": ("Watara", "Supervision", "Watara Supervision"),
+    "megaduck": ("Welback", "Mega Duck / Cougar Boy", "Mega Duck / Cougar Boy"),
+}
+HANDHELD_PLATFORMS = {key: label for key, (_, _, label) in HANDHELD_SYSTEMS.items()}
 RETAIL_PLATFORMS = {"snes": "SNES", "megadrive": "Mega Drive", "nes": "NES / Famicom",
                     "playstation": "PlayStation (US)", "neogeo": "Neo Geo", "mastersystem": "Master System",
                     "pcengine": "PC Engine / TurboGrafx-16", "n64": "Nintendo 64", "saturn": "Sega Saturn",
-                    "jaguar": "Atari Jaguar", **OPTICAL_RETAIL_PLATFORMS, **CLASSIC_CARTRIDGE_PLATFORMS}
+                    "jaguar": "Atari Jaguar", **OPTICAL_RETAIL_PLATFORMS, **CLASSIC_CARTRIDGE_PLATFORMS,
+                    **HANDHELD_PLATFORMS}
 ARCHIVE_MARKETS = {
     "JP": {"JP"},
     "NA": {"US", "CA", "MX"},
@@ -148,7 +191,7 @@ PUBLICATION_SCHEMA = """
 def retail_tables(platform):
     if platform not in RETAIL_PLATFORMS:
         raise ValueError(f"Unknown retail platform {platform!r}")
-    prefix = "threedo" if platform == "3do" else platform
+    prefix = {"3do": "threedo", "3ds": "threeds"}.get(platform, platform)
     return tuple(f"app.{prefix}_retail_{part}" for part in ("catalog", "image", "soundtrack"))
 
 

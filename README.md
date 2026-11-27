@@ -120,6 +120,39 @@ The soundtrack sync mirrors the reviewed VGMRips packs for Mario Bros. on
 Atari 5200, Commando on Atari 7800, and Snafu on Intellivision. Reseed the
 catalogs after syncing to publish the soundtrack links.
 
+## Handheld retail catalogs
+
+Explorer’s **Handhelds** section includes the systems classified as handhelds
+in GameDB. It covers cartridges, PSP UMDs, DSiWare, dedicated Game & Watch
+units, and the downloadable libraries of systems such as Playdate and P-ECE.
+The catalogs show a release’s market when the source records one and offer
+archive downloads when the local inventory confirms the original files.
+
+The builders use GameDB’s scoped No-Intro, Redump, and TOSEC inventories,
+pinned MAME and Libretro indexes, LaunchBox, and publisher listings. Game
+details show the source of the release and its media. Reviewed title groups,
+artwork, and retained patched variants are in
+[the handheld reference](reference/handheld_retail.json).
+
+```sh
+python -m gamedb seed-handheld gba --report data/logs/handheld-retail/gba.json --publish
+python -m gamedb sync-handheld-manuals gba --catalog data/logs/handheld-retail/gba.json
+python -m gamedb sync-handheld-translations gba --source /mnt/synology/backup2/romhacking.net-20240801
+```
+
+Omit `--publish` to generate a report before replacing a catalog snapshot.
+Manuals are mirrored in `/mnt/synology/photo/Manuals/Handhelds/<platform>`.
+The translation command uses checksum evidence from the RHDN packages and
+verifies the patch against the matching local ROM. It stores its index and
+patch files under `data/media/handheld-translations/<platform>`. GBA and
+Nintendo DS xdelta patches use `xdelta3`.
+
+The catalog uses the indexed VGM library for cartridge and DS music. PSP,
+Nintendo 3DS, and Vita game pages also offer matching JoshW archives and
+load their supported tracks on demand. The original 3DS and Vita releases
+in this pass use external release metadata. Retained 3DS undubs appear where
+their title, market, and local archive could be confirmed.
+
 ## Neo Geo retail catalog
 
 Explorer’s **Neo Geo retail catalog** at `/catalog/neogeo` covers 148 original

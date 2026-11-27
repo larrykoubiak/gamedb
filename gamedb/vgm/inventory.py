@@ -58,12 +58,13 @@ SET_FOLDERS = {
 ARCHIVES = {".zip", ".rar", ".7z", ".rsn", ".vgm7z", ".lha", ".iso", ".d64", ".d71", ".d81", ".dfi"}
 BROWSER_AUDIO = {".mp3", ".flac", ".ogg", ".opus", ".wav", ".m4a", ".aac"}
 DEPENDENCIES = {".psflib", ".psf2lib", ".snsflib", ".m3u", ".m3u8", ".cue", ".wd", ".wi", ".sep", ".seb"}
+HANDHELD_STREAMS = {".at9", ".bcstm", ".bcwav", ".bfstm", ".bfwav", ".xvag"}
 JOSHW_TRACKS = {
     ".2sf", ".adp", ".ads", ".adx", ".afc", ".aix", ".at3", ".gsf", ".gym", ".hes", ".hwas",
     ".kss", ".mgb", ".mini2sf", ".minigsf",
     ".minincsf", ".minissf", ".miniusf", ".ncsf", ".ssf", ".strm", ".swav", ".usf", ".wsr",
     ".dsf", ".minidsf", ".hps", ".dsp", ".ast", ".brstm", ".ss2", ".vag", ".vgmstream",
-}
+} | HANDHELD_STREAMS
 JOSHW_LIBRARIES = {".2sflib", ".gsflib", ".ncsflib", ".ssflib", ".usflib", ".dsflib"}
 NATIVE_AUDIO = {
     ".nsf", ".nsfe", ".sid", ".gbs", ".ay", ".ym", ".snd", ".sndh", ".sc68", ".vgm", ".vgz",

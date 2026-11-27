@@ -79,6 +79,10 @@ function wavTone() {
   };
   const server = http.createServer(async (req, res) => {
     const url = new URL(req.url, 'http://localhost');
+    if (url.pathname === '/archive' && url.searchParams.get('exo') === sourceKey) {
+      res.writeHead(302, {Location: sourcePath});
+      return res.end();
+    }
     if (url.pathname.startsWith('/api/')) {
       requests.push(req.url);
       let payload;
@@ -154,7 +158,7 @@ function wavTone() {
       res.writeHead(302, {Location: sourcePath});
       return res.end();
     }
-    const name = ['/', softwarePath, sourcePath].includes(url.pathname) ? 'index.html' : url.pathname.slice(1);
+    const name = ['/archive', softwarePath, sourcePath].includes(url.pathname) ? 'archive.html' : url.pathname.slice(1);
     const file = path.resolve(__dirname, '../../gamedb/explorer/assets', name);
     const mimeTypes = {
       '.js': 'text/javascript', '.mjs': 'text/javascript', '.wasm': 'application/wasm',
@@ -171,9 +175,9 @@ function wavTone() {
     const page = await context.newPage();
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    await page.goto(`http://127.0.0.1:${server.address().port}`);
+    await page.goto(`http://127.0.0.1:${server.address().port}/archive`);
     await page.waitForFunction(() => document.querySelector('.game-card .game-art')?.naturalWidth > 0);
-    const catalogHome = page.getByRole('link', {name: 'GameDB Almanac home'});
+    const catalogHome = page.getByRole('link', {name: 'GameDB V1 archive'});
     const backToCatalog = page.locator('#back-to-catalog');
     assert.equal(await catalogHome.getAttribute('aria-current'), 'page');
     assert.equal(await backToCatalog.isVisible(), false);
@@ -247,8 +251,8 @@ function wavTone() {
     await page.setViewportSize({width: 390, height: 844});
     await page.waitForFunction(() => document.querySelector('.book-tabs').getAttribute('aria-orientation') === 'horizontal');
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-    await page.getByRole('link', {name: 'Back to catalog'}).click();
-    await page.waitForURL(url => url.pathname === '/');
+    await page.getByRole('link', {name: 'Back to archive'}).click();
+    await page.waitForURL(url => url.pathname === '/archive');
     assert.equal(await page.locator('#game-filter').inputValue(), 'Mario');
     assert(await cardDetails.evaluate(element => element === document.activeElement));
     await page.locator('#game-filter').fill('');
@@ -263,7 +267,7 @@ function wavTone() {
     await direct.reload();
     await direct.getByRole('button', {name: 'Play Opening Theme'}).waitFor();
     assert.equal(catalogRequests(), beforeDirect);
-    await direct.goto(origin + '/?exo=' + sourceKey);
+    await direct.goto(origin + '/archive?exo=' + sourceKey);
     await direct.waitForURL('**' + sourcePath);
     await direct.getByRole('heading', {name: 'DOS Adventure', exact: true}).waitFor();
     await direct.getByRole('tab', {name: 'Related media'}).click();
@@ -453,7 +457,7 @@ function wavTone() {
     await tableTitle.click();
     await page.getByRole('heading', {name: 'Mario', exact: true}).waitFor();
     await catalogHome.click();
-    await page.waitForURL(url => url.pathname === '/');
+    await page.waitForURL(url => url.pathname === '/archive');
     assert.match(await page.locator('#page-label').innerText(), /Page 2/);
     assert.equal(await page.locator('#active-metadata-filters button').count(), 2);
     assert(await tableTitle.evaluate(element => element === document.activeElement));

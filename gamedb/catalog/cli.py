@@ -4,7 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
-from .retail import CLASSIC_CARTRIDGE_PLATFORMS, OPTICAL_RETAIL_PLATFORMS, SIXTH_GENERATION_PLATFORMS
+from .retail import CLASSIC_CARTRIDGE_PLATFORMS, HANDHELD_PLATFORMS, OPTICAL_RETAIL_PLATFORMS, SIXTH_GENERATION_PLATFORMS
 from .workflow import RebuildWorkflow, WorkflowConfig
 
 
@@ -75,6 +75,11 @@ def main(argv=None) -> int:
     cartridge.add_argument("--report", type=Path, help="Write the full match report as JSON")
     cartridge.add_argument("--publish", action="store_true", help="Publish the catalog to Explorer")
     cartridge.add_argument("--sources", type=Path, help="Directory of saved reference indexes")
+    handheld = commands.add_parser("seed-handheld", help="Build a handheld retail catalog")
+    handheld.add_argument("platform", choices=HANDHELD_PLATFORMS)
+    handheld.add_argument("--report", type=Path, help="Write the full match report as JSON")
+    handheld.add_argument("--publish", action="store_true", help="Publish the catalog to Explorer")
+    handheld.add_argument("--sources", type=Path, help="Directory of saved reference indexes")
     nes = commands.add_parser("seed-nes", help="Build the NES and Famicom retail catalog")
     nes.add_argument("--html", type=Path, help="Use a saved copy of the pinned Wikipedia HTML")
     nes.add_argument("--report", type=Path, help="Write the full match report as JSON")
@@ -127,6 +132,11 @@ def main(argv=None) -> int:
     optical_manuals = commands.add_parser("sync-optical-manuals", help="Download manuals linked by an optical retail catalog")
     optical_manuals.add_argument("platform", choices=OPTICAL_RETAIL_PLATFORMS)
     optical_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-optical")
+    handheld_manuals = commands.add_parser("sync-handheld-manuals", help="Mirror manuals linked by a handheld catalog")
+    handheld_manuals.add_argument("platform", choices=HANDHELD_PLATFORMS)
+    handheld_manuals.add_argument("--catalog", required=True, type=Path, help="JSON report from seed-handheld")
+    handheld_manuals.add_argument("--root", type=Path, help="Local directory for this platform's manual library")
+    handheld_manuals.add_argument("--workers", type=int, default=4, help="Concurrent downloads")
     optical_manuals.add_argument("--root", required=True, type=Path, help="Local directory for the manual library")
     optical_manuals.add_argument("--workers", type=int, default=8, help="Concurrent downloads (default: 8)")
     nes_manuals = commands.add_parser("sync-nes-manuals", help="Download the linked NES and Famicom manuals")
@@ -167,6 +177,13 @@ def main(argv=None) -> int:
     ps_translations.add_argument("--report", type=Path, help="Write the list of verified builds and failures")
     translation_commands = {"snes": translations, "megadrive": md_translations, "nes": nes_translations,
                             "playstation": ps_translations}
+    from .translations import HANDHELD_PATCH_SOURCES
+
+    handheld_patches = commands.add_parser("sync-handheld-translations", help="Verify and index handheld translation patches")
+    handheld_patches.add_argument("platform", choices=HANDHELD_PATCH_SOURCES)
+    handheld_patches.add_argument("--source", type=Path, required=True, help="Local RHDN backup directory")
+    handheld_patches.add_argument("--root", type=Path, help="Local patch library for this platform")
+    handheld_patches.add_argument("--report", type=Path, help="Write an audit of packages that could not be matched")
     for platform, label in (("mastersystem", "Master System ROMs"), ("pcengine", "HuCards"),
                             ("n64", "Nintendo 64 Game Paks"), ("saturn", "Saturn discs"),
                             ("pcfx", "PC-FX discs"), ("3do", "3DO discs"),
@@ -258,6 +275,27 @@ def main(argv=None) -> int:
         print(json.dumps(result, indent=2))
         return 0
 
+    if args.command == "seed-handheld":
+        from .handhelds import seed_handheld
+
+        try:
+            result = seed_handheld(args.platform, args.report, publish_catalog=args.publish, sources=args.sources)
+        except (OSError, ValueError) as error:
+            handheld.error(str(error))
+        print(json.dumps(result, indent=2))
+        return 0
+
+    if args.command == "sync-handheld-translations":
+        from .translations import TRANSLATION_ROOTS, sync_translations
+
+        try:
+            result = sync_translations(args.source, args.root or TRANSLATION_ROOTS[args.platform],
+                                       platform=args.platform, report=args.report)
+        except (OSError, ValueError) as error:
+            handheld_patches.error(str(error))
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return 0
+
     if args.command in {"seed-cartridge", "seed-second-generation"}:
         from .second_generation import seed_cartridge
 
@@ -325,6 +363,20 @@ def main(argv=None) -> int:
                                   workers=args.workers, source_references=None)
         except (OSError, ValueError) as error:
             optical_manuals.error(str(error))
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return int(bool(result["failures"]))
+
+    if args.command == "sync-handheld-manuals":
+        from gamedb.explorer.manuals import manual_roots
+
+        from .handhelds import SOURCE_DIRECTORY
+        from .manuals import sync_manuals
+
+        try:
+            result = sync_manuals(args.catalog, args.root or manual_roots()[args.platform],
+                                  SOURCE_DIRECTORY / "manual-items", workers=args.workers, source_references=None)
+        except (OSError, ValueError) as error:
+            handheld_manuals.error(str(error))
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return int(bool(result["failures"]))
 

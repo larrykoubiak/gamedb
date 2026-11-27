@@ -1,0 +1,1359 @@
+{
+  "lynx": {
+    "manualAliases": {
+      "All Points Bulletin": "A.P.B.",
+      "Block Out": "Blockout"
+    }
+  },
+  "pokemini": {
+    "roster": {
+      "Pichu Bros. Mini": [
+        "Pichu Bros Mini"
+      ],
+      "Pokémon Breeder Mini": [
+        "Pokemon Sodateyasan Mini",
+        "Pokémon Sodateyasan Mini"
+      ],
+      "Pokémon Party Mini": [
+        "Pokemon Party Mini"
+      ],
+      "Pokémon Pinball Mini": [
+        "Pokemon Pinball Mini"
+      ],
+      "Pokémon Puzzle Collection": [
+        "Pokemon Puzzle Collection"
+      ],
+      "Pokémon Puzzle Collection Vol. 2": [
+        "Pokemon Puzzle Collection Vol. 2"
+      ],
+      "Pokémon Race Mini": [
+        "Pokemon Race Mini"
+      ],
+      "Pokémon Tetris": [
+        "Pokemon Tetris",
+        "Pokémon Shock Tetris",
+        "Pokemon Shock Tetris"
+      ],
+      "Pokémon Zany Cards": [
+        "Pokemon Zany Cards",
+        "Pokémon Anime Card Daisakusen",
+        "Pokemon Anime Card Daisakusen"
+      ],
+      "Togepi's Great Adventure": [
+        "Togepi no Daibouken",
+        "Togepi no Daiboken"
+      ]
+    },
+    "mameArtwork": {
+      "snap": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/pokemini.zip",
+        "sha256": "271bf4f1f15db09980a9101e52c0ba9dcc1172ba2e919054a9a853e4cc211008",
+        "records": [
+          "pichubro",
+          "pokeacrd",
+          "pokerace",
+          "pokesoda",
+          "pokezcrd",
+          "pokezcrdf",
+          "pokezcrdg",
+          "pparty",
+          "ppartyj",
+          "ppartyu",
+          "ppinb",
+          "ppinbj",
+          "ppuzzlc",
+          "ppuzzlc2",
+          "ppuzzlcf",
+          "ppuzzlcg",
+          "ppuzzlcj",
+          "ptetris",
+          "ptetrisj",
+          "togepi"
+        ]
+      },
+      "title": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/pokemini_titles.zip",
+        "sha256": "defe47a03dbadbe9c9c8b0320a9e0f4bc637ec787dfe4e9c95426eec1ba43454",
+        "records": [
+          "pichubro",
+          "pokeacrd",
+          "pokerace",
+          "pokesoda",
+          "pokezcrd",
+          "pokezcrdf",
+          "pokezcrdg",
+          "pparty",
+          "ppartyj",
+          "ppartyu",
+          "ppinb",
+          "ppinbj",
+          "ppuzzlc",
+          "ppuzzlc2",
+          "ppuzzlcf",
+          "ppuzzlcg",
+          "ppuzzlcj",
+          "ptetris",
+          "ptetrisj",
+          "togepi"
+        ]
+      }
+    }
+  },
+  "gamate": {
+    "mameArtwork": {
+      "snap": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/gamate.zip",
+        "sha256": "9b23986503c5e7bea8cda78492017e6df05f21d7f275f90955b01344d69cb0ec",
+        "records": [
+          "1milwhys",
+          "4in1",
+          "baoqingt",
+          "baseball",
+          "basketba",
+          "bomblast",
+          "bomblasta",
+          "boom",
+          "boxforum",
+          "brikblst",
+          "cosmicfg",
+          "cubeup",
+          "dinoball",
+          "dinobibo",
+          "dinopark",
+          "dknight",
+          "dvcastle",
+          "encbrick",
+          "famous7",
+          "fanttrav",
+          "fistofth",
+          "flgoblin",
+          "flipuzle",
+          "fortress",
+          "ftnnluck",
+          "galaxinv",
+          "goldpyra",
+          "gprace",
+          "hannibal",
+          "hothero",
+          "incouple",
+          "insectwa",
+          "jewelris",
+          "kikiinla",
+          "killshot",
+          "kungfu",
+          "marauder",
+          "marsvoya",
+          "mightbox",
+          "mightytk",
+          "minigolf",
+          "mjigsaw",
+          "moneymaz",
+          "monstpit",
+          "mythasam",
+          "pharaoh",
+          "pipemani",
+          "punkboy",
+          "quizfigh",
+          "robinhoo",
+          "rotat",
+          "santa",
+          "snowman",
+          "tennis",
+          "timewarr",
+          "tornado",
+          "toughguy",
+          "treashnt",
+          "vindicat",
+          "volpanic",
+          "wcupsocc",
+          "wittyape"
+        ]
+      },
+      "title": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/gamate_titles.zip",
+        "sha256": "bda83352d9512fc1f65ca2bd003128f08fef1a930f3338e23985d297496aeb01",
+        "records": [
+          "1milwhys",
+          "4in1",
+          "baoqingt",
+          "baseball",
+          "basketba",
+          "bomblast",
+          "bomblasta",
+          "boom",
+          "boxforum",
+          "brikblst",
+          "cosmicfg",
+          "cubeup",
+          "dinoball",
+          "dinobibo",
+          "dinopark",
+          "dknight",
+          "dvcastle",
+          "encbrick",
+          "famous7",
+          "fanttrav",
+          "fistofth",
+          "flgoblin",
+          "flipuzle",
+          "fortress",
+          "ftnnluck",
+          "galaxinv",
+          "goldpyra",
+          "gprace",
+          "hannibal",
+          "hothero",
+          "incouple",
+          "insectwa",
+          "jewelris",
+          "kikiinla",
+          "killshot",
+          "kungfu",
+          "marauder",
+          "marsvoya",
+          "mightbox",
+          "mightytk",
+          "minigolf",
+          "mjigsaw",
+          "moneymaz",
+          "monstpit",
+          "mythasam",
+          "pharaoh",
+          "pipemani",
+          "punkboy",
+          "quizfigh",
+          "robinhoo",
+          "rotat",
+          "santa",
+          "snowman",
+          "tennis",
+          "timewarr",
+          "tornado",
+          "toughguy",
+          "treashnt",
+          "vindicat",
+          "volpanic",
+          "wcupsocc",
+          "wittyape"
+        ]
+      }
+    }
+  },
+  "gamepock": {
+    "mameArtwork": {
+      "snap": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/gamepock.zip",
+        "sha256": "b84ebd648650600f3c4ee14c752184972ef2c022e857efdc3ad242cbff214a4e",
+        "records": [
+          "astrobom",
+          "blockmaz",
+          "pokemahj",
+          "pokereve",
+          "sokoban"
+        ]
+      },
+      "title": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/gamepock_titles.zip",
+        "sha256": "6fbcb6f5205049d1b1610d2507fd13cffaa7aab14df4de9dd2258e3af9c81ce3",
+        "records": [
+          "astrobom",
+          "blockmaz",
+          "pokemahj",
+          "pokereve",
+          "sokoban"
+        ]
+      }
+    }
+  },
+  "gameking": {
+    "mameArtwork": {
+      "snap": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/gameking.zip",
+        "sha256": "e41bfa0e113a0f6ce3f5b2c95a1d03776d8feb818151f0d1a6abed60cf6c7415",
+        "records": [
+          "2004",
+          "alcarlo",
+          "aries",
+          "dinoadv",
+          "duckman",
+          "f1_2k4",
+          "feichun7",
+          "happybal",
+          "happykil",
+          "lanner",
+          "mc_4szlh",
+          "mc_4v01",
+          "mc_4v02",
+          "mc_4v02a",
+          "mc_4v03",
+          "mc_4v04",
+          "mc_4v05",
+          "mc_4v05a",
+          "mc_4v06",
+          "mc_4v06a",
+          "mc_4v06b",
+          "mc_4v07",
+          "mc_4v07a",
+          "mc_4v08",
+          "mc_4v09",
+          "mc_4v10",
+          "mc_4v10a",
+          "mc_4v11",
+          "mc_4v12",
+          "mc_4v13",
+          "mc_4v14",
+          "mc_4v15",
+          "mc_4v16",
+          "mc_4v16a",
+          "mc_4v17",
+          "mc_4v18",
+          "mc_4v19",
+          "mc_4v19a",
+          "penguin",
+          "popper",
+          "seatrcel",
+          "shero",
+          "smotor",
+          "soldier",
+          "trojanl"
+        ]
+      },
+      "title": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/gameking_titles.zip",
+        "sha256": "2b9eff31052dac49001597d1943cc1557695458dbfa9234050fa54900b3c2144",
+        "records": [
+          "2004",
+          "alcarlo",
+          "aries",
+          "dinoadv",
+          "duckman",
+          "f1_2k4",
+          "feichun7",
+          "happybal",
+          "happykil",
+          "lanner",
+          "mc_4szlh",
+          "mc_4v01",
+          "mc_4v02",
+          "mc_4v02a",
+          "mc_4v03",
+          "mc_4v04",
+          "mc_4v05",
+          "mc_4v05a",
+          "mc_4v06",
+          "mc_4v06a",
+          "mc_4v06b",
+          "mc_4v07",
+          "mc_4v07a",
+          "mc_4v08",
+          "mc_4v09",
+          "mc_4v10",
+          "mc_4v10a",
+          "mc_4v11",
+          "mc_4v12",
+          "mc_4v13",
+          "mc_4v14",
+          "mc_4v15",
+          "mc_4v16",
+          "mc_4v16a",
+          "mc_4v17",
+          "mc_4v18",
+          "mc_4v19",
+          "mc_4v19a",
+          "penguin",
+          "popper",
+          "seatrcel",
+          "shero",
+          "smotor",
+          "soldier",
+          "trojanl"
+        ]
+      }
+    }
+  },
+  "gameking3": {
+    "mameArtwork": {
+      "snap": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/gameking3.zip",
+        "sha256": "ab3a7c0bb8aeaf1dbefc81e9d5950b4ec078d47e936eac45bb8cd67ccb2be083",
+        "records": [
+          "2030",
+          "adventr",
+          "diamond",
+          "falconc",
+          "flycar",
+          "hemic",
+          "panzer",
+          "searcha",
+          "urgent",
+          "vagrant"
+        ]
+      },
+      "title": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/gameking3_titles.zip",
+        "sha256": "f0455d68b928bdab4e7e3c1a7fd69e1a1c6735d0578be7b7075605b9b108e241",
+        "records": [
+          "2030",
+          "adventr",
+          "diamond",
+          "falconc",
+          "flycar",
+          "hemic",
+          "panzer",
+          "searcha",
+          "urgent",
+          "vagrant"
+        ]
+      }
+    }
+  },
+  "megaduck": {
+    "mameArtwork": {
+      "snap": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/megaduck.zip",
+        "sha256": "aa39730c227ce2aed5d932c5c1d6ac02510e5a968b6a1a0c8be93981dd9a068f",
+        "records": [
+          "2ndspace",
+          "aforce",
+          "antsoldr",
+          "arczone",
+          "bftale",
+          "bombdisp",
+          "brckwall",
+          "bstfgtr",
+          "c5in1",
+          "captkk",
+          "duckadv",
+          "magictwr",
+          "md4in1",
+          "mmaze",
+          "pilewndr",
+          "pilewndra",
+          "puptkngt",
+          "railway",
+          "snakeroy",
+          "srider",
+          "trapturn",
+          "treasure",
+          "vex",
+          "wormvstr",
+          "zipball"
+        ]
+      },
+      "title": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/megaduck_titles.zip",
+        "sha256": "a6b14e12337327077bb99989633ddec80edc600d5d6cfd4400b110380e54ed01",
+        "records": [
+          "2ndspace",
+          "aforce",
+          "antsoldr",
+          "arczone",
+          "bftale",
+          "bombdisp",
+          "brckwall",
+          "bstfgtr",
+          "c5in1",
+          "captkk",
+          "duckadv",
+          "magictwr",
+          "md4in1",
+          "mmaze",
+          "pilewndr",
+          "pilewndra",
+          "puptkngt",
+          "railway",
+          "snakeroy",
+          "srider",
+          "trapturn",
+          "treasure",
+          "vex",
+          "wormvstr",
+          "zipball"
+        ]
+      }
+    }
+  },
+  "gp32": {
+    "mameArtwork": {
+      "snap": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/gp32.zip",
+        "sha256": "5ce11f40d557515c8d013041c3c3eeb61f5d9175ba15d57b02f6e7ffafb4e16b",
+        "records": [
+          "astonish",
+          "blueangl",
+          "doolysoc",
+          "dunguard",
+          "dunguarde",
+          "dyhard",
+          "dyharde",
+          "funnysoc",
+          "gloopdx",
+          "gpdaenan",
+          "hanypart",
+          "herknite",
+          "herknitee",
+          "holbatra",
+          "kimchimn",
+          "ltwizard",
+          "ltwizarde",
+          "mil",
+          "oneshot",
+          "pinbdrea",
+          "prinmak2",
+          "rallypop",
+          "raphael",
+          "sobemons",
+          "suplusha",
+          "talowila",
+          "tanggle",
+          "tearsast",
+          "therapy",
+          "tomak",
+          "tomake",
+          "tomake2",
+          "totogogo",
+          "treasisl",
+          "treasisle",
+          "wbw",
+          "winteris",
+          "wizardsl"
+        ]
+      },
+      "title": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/gp32_titles.zip",
+        "sha256": "5ce11f40d557515c8d013041c3c3eeb61f5d9175ba15d57b02f6e7ffafb4e16b",
+        "records": [
+          "astonish",
+          "blueangl",
+          "doolysoc",
+          "dunguard",
+          "dunguarde",
+          "dyhard",
+          "dyharde",
+          "funnysoc",
+          "gloopdx",
+          "gpdaenan",
+          "hanypart",
+          "herknite",
+          "herknitee",
+          "holbatra",
+          "kimchimn",
+          "ltwizard",
+          "ltwizarde",
+          "mil",
+          "oneshot",
+          "pinbdrea",
+          "prinmak2",
+          "rallypop",
+          "raphael",
+          "sobemons",
+          "suplusha",
+          "talowila",
+          "tanggle",
+          "tearsast",
+          "therapy",
+          "tomak",
+          "tomake",
+          "tomake2",
+          "totogogo",
+          "treasisl",
+          "treasisle",
+          "wbw",
+          "winteris",
+          "wizardsl"
+        ]
+      }
+    }
+  },
+  "gamecom": {
+    "mameArtwork": {
+      "snap": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/gamecom.zip",
+        "sha256": "39b3274fbc426897529df269eabb9d8f8940c7a0a0037324d26aa8408b6b1b0b",
+        "records": [
+          "arcadecl",
+          "batmanr",
+          "centiped",
+          "dukenuke",
+          "fightmix",
+          "frogger",
+          "henry",
+          "indy500",
+          "internet",
+          "jeopardy",
+          "lightout",
+          "lostwrld",
+          "mktrilgy",
+          "monopoly",
+          "quizwiz",
+          "re2",
+          "scrabble",
+          "sonicjam",
+          "tcasino",
+          "weblink",
+          "wheelfo2",
+          "wheelfor"
+        ]
+      },
+      "title": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/gamecom_titles.zip",
+        "sha256": "c7bd2321f53ca5206c4667445bb7e6eee734607fee384b93c500b7662026cc89",
+        "records": [
+          "arcadecl",
+          "batmanr",
+          "centiped",
+          "dukenuke",
+          "fightmix",
+          "frogger",
+          "henry",
+          "indy500",
+          "internet",
+          "jeopardy",
+          "lightout",
+          "lostwrld",
+          "mktrilgy",
+          "monopoly",
+          "quizwiz",
+          "re2",
+          "scrabble",
+          "sonicjam",
+          "tcasino",
+          "weblink",
+          "wheelfo2",
+          "wheelfor"
+        ]
+      }
+    }
+  },
+  "supervision": {
+    "mameArtwork": {
+      "snap": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/svision.zip",
+        "sha256": "75fbb6f880454fe6acee32b6aef2ed8e285e1e295e7b9a84230ed90261d90b93",
+        "records": [
+          "2in1",
+          "2in1a",
+          "alien",
+          "balonfgt",
+          "blockbus",
+          "brainpow",
+          "bubbwrld",
+          "carrier",
+          "cavewond",
+          "challtnk",
+          "chimera",
+          "chinesch",
+          "classcas",
+          "climber",
+          "crsshigh",
+          "crystbal",
+          "danceblk",
+          "dhero",
+          "dreamwld",
+          "eaglplan",
+          "earthdef",
+          "fatcraft",
+          "fcombat",
+          "fcombata",
+          "galaxy",
+          "galcrus",
+          "gp",
+          "happyp",
+          "happyrac",
+          "hashbloc",
+          "herohawk",
+          "herokid",
+          "honeybee",
+          "jackyluc",
+          "jagbombr",
+          "johnadv",
+          "jrnywest",
+          "juggler",
+          "kabiisl",
+          "kitchenw",
+          "kungfust",
+          "linear",
+          "maginx",
+          "mattablt",
+          "mjleitai",
+          "olympict",
+          "p52sea",
+          "pacboy",
+          "pacificb",
+          "penguinh",
+          "policebu",
+          "popoteam",
+          "pyramid",
+          "recycled",
+          "sblock",
+          "scaffold",
+          "skong",
+          "soccerch",
+          "sonnyxpr",
+          "spang",
+          "spcfghtr",
+          "sssnake",
+          "tasac",
+          "tennis92",
+          "thunter",
+          "tshoot",
+          "tvlink",
+          "untchble",
+          "wittycat"
+        ]
+      },
+      "title": {
+        "url": "https://www.progettosnaps.net/softwareresources/packs/svision_titles.zip",
+        "sha256": "2daf277759f670191ca3f026921adbb843dda2cc9a6bbc7405d7b1520f6d9fc0",
+        "records": [
+          "2in1",
+          "2in1a",
+          "alien",
+          "balonfgt",
+          "blockbus",
+          "brainpow",
+          "bubbwrld",
+          "carrier",
+          "cavewond",
+          "challtnk",
+          "chimera",
+          "chinesch",
+          "classcas",
+          "climber",
+          "crystbal",
+          "danceblk",
+          "dhero",
+          "dreamwld",
+          "eaglplan",
+          "earthdef",
+          "fatcraft",
+          "fcombat",
+          "fcombata",
+          "galaxy",
+          "galcrus",
+          "gp",
+          "happyp",
+          "happyrac",
+          "hashbloc",
+          "herohawk",
+          "herokid",
+          "honeybee",
+          "jackyluc",
+          "jagbombr",
+          "johnadv",
+          "jrnywest",
+          "juggler",
+          "kabiisl",
+          "kitchenw",
+          "kungfust",
+          "linear",
+          "maginx",
+          "mattablt",
+          "mjleitai",
+          "olympict",
+          "p52sea",
+          "pacboy",
+          "pacificb",
+          "penguinh",
+          "policebu",
+          "popoteam",
+          "pyramid",
+          "recycled",
+          "sblock",
+          "scaffold",
+          "skong",
+          "soccerch",
+          "sonnyxpr",
+          "spang",
+          "spcfghtr",
+          "sssnake",
+          "tasac",
+          "tennis92",
+          "thunter",
+          "tshoot",
+          "tvlink",
+          "untchble",
+          "wittycat"
+        ]
+      }
+    }
+  },
+  "3ds": {
+    "prepatchedVariants": [
+      {
+        "signature": "e8e09f520472009dbdd3f2f278c30d9c",
+        "edition": "Code of Princess",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Code of Princess",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "2bba1f4323a23b24b4d218360f8d4215",
+        "edition": "Conception II - Children of the Seven Stars",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Conception II - Children of the Seven Stars",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "4e3f3bf3a1cfcabf48e24a245aae45e9",
+        "edition": "Doctor Lautrec and the Forgotten Knights",
+        "market": "PAL",
+        "language": "Undub",
+        "baseEdition": "Doctor Lautrec and the Forgotten Knights",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "62533bb9ee4fd53b005cc725119f1275",
+        "edition": "Dragon Quest VIII - Journey of the Cursed King",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Dragon Quest VIII - Journey of the Cursed King",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "defd9dd51ee1f1de7d256ec70e33bd0c",
+        "edition": "Etrian Odyssey 2 Untold - The Fafnir Knight",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Etrian Odyssey 2 Untold - The Fafnir Knight",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "28ac8083fbc354d1b9857f19dfd0040d",
+        "edition": "Etrian Odyssey Untold - The Millennium Girl",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Etrian Odyssey Untold - The Millennium Girl",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "e5ee1b34946670b26bacf2e9c7d03e86",
+        "edition": "Etrian Odyssey V - Beyond the Myth",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Etrian Odyssey V - Beyond the Myth",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "17996f1955bf99467a613a043e70964b",
+        "edition": "Final Fantasy Explorers",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Final Fantasy Explorers",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "bc007bead9f58f1b17701559a12a7f17",
+        "edition": "Fire Emblem Echoes - Shadows of Valentia",
+        "market": "PAL",
+        "language": "Undub",
+        "baseEdition": "Fire Emblem Echoes - Shadows of Valentia",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "3787346b94da11e06fbba84b89e531d4",
+        "edition": "Fire Emblem Fates - Special Edition",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Fire Emblem Fates - Special Edition",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "c767ff0aa5e177587ebfd5a053194532",
+        "edition": "Inazuma Eleven 3 - Team Ogre Attacks!",
+        "market": "PAL",
+        "language": "Undub",
+        "baseEdition": "Inazuma Eleven 3 - Team Ogre Attacks!",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "30ea839bac9d898ba6e943503b7a70c2",
+        "edition": "Kid Icarus - Uprising",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Kid Icarus - Uprising",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "37275dcce41f9da263ecbabb3d6459cd",
+        "edition": "Layton's Mystery Journey - Katrielle and the Millionaires' Conspiracy",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Layton's Mystery Journey - Katrielle and the Millionaires' Conspiracy",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "84ae04d10a337baa3bc3dfb7596f8e8b",
+        "edition": "LBX - Little Battlers eXperience",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "LBX - Little Battlers eXperience",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "d89eadb5e89c6fe99ef2222fc11100fd",
+        "edition": "Liberation Maiden",
+        "market": "PAL",
+        "language": "Undub",
+        "baseEdition": "Liberation Maiden",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "71fd1938bf872ba8ea86bf45c2591681",
+        "edition": "Lord of Magna - Maiden Heaven",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Lord of Magna - Maiden Heaven",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "b0aebfce81ff53c16006da71868384cf",
+        "edition": "Persona Q - Shadow of the Labyrinth",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Persona Q - Shadow of the Labyrinth",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "37c8f96de38063736791f93ddc8b4fe1",
+        "edition": "Phoenix Wright - Ace Attorney - Dual Destinies",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Phoenix Wright - Ace Attorney - Dual Destinies",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "e981627eb05e9f9ad7e4c40e6c3a2e99",
+        "edition": "Professor Layton and the Azran Legacy",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Professor Layton and the Azran Legacy",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "6d933280b6f3142996f2821ad484337d",
+        "edition": "Professor Layton and the Miracle Mask",
+        "market": "PAL",
+        "language": "Undub",
+        "baseEdition": "Professor Layton and the Miracle Mask",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "7b3db8521febea24b4a2b6d7c29d48ca",
+        "edition": "Professor Layton vs Phoenix Wright - Ace Attorney",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Professor Layton vs. Phoenix Wright - Ace Attorney",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "57efd76661394bdb5ea542dc63a70a2b",
+        "edition": "Radiant Historia - Perfect Chronology",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Radiant Historia - Perfect Chronology",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "6c65fb169475e2d144fc98e42e24d37b",
+        "edition": "Rhythm Thief & the Emperor's Treasure",
+        "market": "PAL",
+        "language": "Undub",
+        "baseEdition": "Rhythm Thief & the Emperor's Treasure",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "e8e9d92e95127e4381e71a756c10789d",
+        "edition": "Rune Factory 4",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Rune Factory 4",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "a79a4ebaca2a27e191f8a898f86bf7c9",
+        "edition": "Shin Megami Tensei - Devil Summoner - Soul Hackers",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Shin Megami Tensei - Devil Summoner - Soul Hackers",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "138fe85ccb8c0c95c3ee6923dad3e01c",
+        "edition": "Shin Megami Tensei - Devil Survivor 2 - Record Breaker",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Shin Megami Tensei - Devil Survivor 2 - Record Breaker",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "64af89759f7e886b6d41d13e5d9b4c0b",
+        "edition": "Shin Megami Tensei - Devil Survivor Overclocked",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Shin Megami Tensei - Devil Survivor Overclocked",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "25c7e03571465d2c3ad9484d5b8e354c",
+        "edition": "Shin Megami Tensei IV",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Shin Megami Tensei IV",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "10a46872ddafd8a35bfb702bbc5d89a3",
+        "edition": "Shin Megami Tensei IV - Apocalypse",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Shin Megami Tensei IV - Apocalypse",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "24e3b574a28dab11185b24364ab58d44",
+        "edition": "Spirit Camera - The Cursed Memoir",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Spirit Camera - The Cursed Memoir",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "b309d2dfd5cacb045ab762c91b9ec20b",
+        "edition": "Star Fox 64 3D",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Star Fox 64 3D",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "fe4b56852f445bd0569ff55ed3f83d95",
+        "edition": "Stella Glow",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Stella Glow",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "5e9d5eff35c1de6c3a4ec1053cfc5aef",
+        "edition": "Tales of the Abyss",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Tales of the Abyss",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "ad1a619fa41f251f778b0a18281bbbba",
+        "edition": "The Legend of Legacy",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "The Legend of Legacy",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "8baaaea038a279c542b97654b9633bb3",
+        "edition": "Yo-Kai Watch 2 - Fleshy Souls",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Yo-Kai Watch 2 - Fleshy Souls",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "e9e7ee5fa8078808785ae587a3f99aea",
+        "edition": "Yo-Kai Watch 2 - Psychic Specters",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Yo-Kai Watch 2 - Psychic Specters",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "d5e6e5d08f93ad5622661adf6b97e2ba",
+        "edition": "Yo-Kai Watch 3",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Yo-Kai Watch 3",
+        "allowMissingBase": true
+      }
+    ]
+  },
+  "psp": {
+    "prepatchedVariants": [
+      {
+        "signature": "07a7119d9f829d88f9df8c363bd9e540",
+        "edition": "The 3rd Birthday",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "The 3rd Birthday",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "ac12ec0295088996adec8434dbe31ec0",
+        "edition": "Aedis Eclipse - Generation of Chaos",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Aedis Eclipse - Generation of Chaos",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "bccd38c6fbb747af5f112c01c3eca225",
+        "edition": "Blazing Souls Accelate",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Blazing Souls Accelate",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "1ea624263d2242155858b4ba703b6ba3",
+        "edition": "Brave Story - New Traveler",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Brave Story - New Traveler",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "e82372293f07b26642dc77c661244b83",
+        "edition": "Crisis Core - Final Fantasy VII",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Crisis Core - Final Fantasy VII",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "92a0be9f2018a34a8349f4a816614cfb",
+        "edition": "Dissidia 012 - Duodecim Final Fantasy",
+        "market": "PAL",
+        "language": "Undub",
+        "baseEdition": "Dissidia 012 - Duodecim Final Fantasy",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "8c3a901a01566cd1ed8e6a553b0a06c5",
+        "edition": "Dissidia Final Fantasy",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Dissidia Final Fantasy",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "805250b51b920feae572bc58a1938aaa",
+        "edition": "Gods Eater Burst",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Gods Eater Burst",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "f0329c4fe175f85cf2402627b04382d7",
+        "edition": "Growlanser - Wayfarer of Time",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Growlanser - Wayfarer of Time",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "09880fe5d680605ab4e60106f2f022f3",
+        "edition": "Gurumin - A Monstrous Adventure",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Gurumin - A Monstrous Adventure",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "25f707c700e5509a4553a027f2e7a3c4",
+        "edition": "Hexyz Force",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Hexyz Force",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "245b14054a6de159172a2b7ffc88e916",
+        "edition": "Kingdom Hearts - Birth by Sleep",
+        "market": "JP",
+        "language": "Undub",
+        "baseEdition": "Kingdom Hearts - Birth by Sleep",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "83fe16fde7d40b262e31ebb616cc7392",
+        "edition": "Kingdom of Paradise",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Kingdom of Paradise",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "73aa96248793ca5f1c68065c3932923b",
+        "edition": "The Legend of Heroes - Trails in the Sky",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "The Legend of Heroes - Trails in the Sky",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "ce80979ea3508b7536605e1199b6e86f",
+        "edition": "Lunar - Silver Star Harmony",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Lunar - Silver Star Harmony",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "8118dab0674934e9e791eef73ebba64a",
+        "edition": "Mana Khemia - Student Alliance",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Mana Khemia - Student Alliance",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "31575090e5f2a3093620355d727a61c5",
+        "edition": "Mimana - IYAR Chronicle",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Mimana - IYAR Chronicle",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "4c98598339a2812f05993052f7b77459",
+        "edition": "Monster Kingdom - Jewel Summoner",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Monster Kingdom - Jewel Summoner",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "b967e97e56700a72aa464d0579e06a65",
+        "edition": "Prinny 2 - Dawn of Operation Panties, Dood!",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Prinny 2 - Dawn of Operation Panties, Dood!",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "5c010c38c1842aa50fa02d02d372d1ee",
+        "edition": "Prinny - Can I Really Be the Hero",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Prinny - Can I Really Be the Hero",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "910a1f87841f8cac2095ce0b2f774685",
+        "edition": "Shin Megami Tensei - Persona 2 - Innocent Sin",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Shin Megami Tensei - Persona 2 - Innocent Sin",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "374033bad4cc5ec73aae8e2a41ce627a",
+        "edition": "Shin Megami Tensei - Persona 3 Portable",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Shin Megami Tensei - Persona 3 Portable",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "4ad8edf3e5a0483f093b9ae236a2af10",
+        "edition": "Star Ocean - First Departure",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Star Ocean - First Departure",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "1c6b741616a46477b4b4f3e4342be41a",
+        "edition": "Star Ocean - Second Evolution",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Star Ocean - Second Evolution",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "aac5592644df0b89149631865a622574",
+        "edition": "Tales of Eternia",
+        "market": "PAL",
+        "language": "Undub",
+        "baseEdition": "Tales of Eternia",
+        "allowMissingBase": true
+      },
+      {
+        "signature": "860f52cbebd27ffed108ba83126eafac",
+        "edition": "Tenchu - Shadow Assassins",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Tenchu - Shadow Assassins",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "1c7f6e26b459484a9ffe4b72d561302a",
+        "edition": "Valkyria Chronicles II",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Valkyria Chronicles II",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "353636deef80e8172e8d606cfda090ff",
+        "edition": "Valkyrie Profile - Lenneth",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Valkyrie Profile - Lenneth",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "fa8616d7328b6152ed1c679ce4acfb14",
+        "edition": "Ys Seven",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Ys Seven",
+        "allowMissingBase": false
+      },
+      {
+        "signature": "ddb5040aba76df484cd83822bba7f927",
+        "edition": "Ys - The Oath in Felghana",
+        "market": "NA",
+        "language": "Undub",
+        "baseEdition": "Ys - The Oath in Felghana",
+        "allowMissingBase": false
+      }
+    ]
+  },
+  "gb": {
+    "unavailableManuals": [
+      "https://www.videogamemanual.com/gameboy/Mario's%20Picross%20(USA).pdf",
+      "https://www.videogamemanual.com/gameboy/Nigel%20Mansell's%20World%20Championship%20Racing%20(USA).pdf"
+    ],
+    "manuals": [
+      {
+        "title": "Mario's Picross",
+        "market": "NA",
+        "name": "Mario's Picross — manual",
+        "regions": [
+          "US"
+        ],
+        "language": "English",
+        "format": "PDF",
+        "source": "Games Database scan",
+        "sourceUrl": "https://www.thegameisafootarcade.com/wp-content/uploads/2017/03/Marios-Picross-Game-Manual.pdf",
+        "url": "https://www.thegameisafootarcade.com/wp-content/uploads/2017/03/Marios-Picross-Game-Manual.pdf",
+        "size": 2715911,
+        "sha1": "d870150f7f72dd897bb74dc17aead425b094cb7c"
+      }
+    ]
+  },
+  "gbc": {
+    "unavailableManuals": [
+      "https://www.videogamemanual.com/gbc/WCW%20Mayhem%20(USA).pdf"
+    ]
+  },
+  "gba": {
+    "unavailableManuals": [
+      "https://www.videogamemanual.com/gba/Metal%20Slug%20Advance%20(USA).pdf",
+      "https://www.videogamemanual.com/gba/SEGA%20Rally%20Championship%20(USA).pdf"
+    ]
+  }
+}

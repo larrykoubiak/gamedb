@@ -14,7 +14,50 @@ const cartridgeIcons = {
   vsmile: "monochrome-vtech-v-smile-a5e50e65.png",
   gx4000: "monochrome-amstrad-gx4000-675eae7c.png",
 };
+const handheldLabels = {
+  analoguepocket: "Analogue Pocket",
+  pece: "Aquaplus P-ECE",
+  lynx: "Atari Lynx",
+  designmaster: "Bandai Design Master",
+  wonderswan: "Bandai WonderSwan",
+  wonderswancolor: "Bandai WonderSwan Color",
+  pocketchallengev2: "Benesse Pocket Challenge V2",
+  pocketchallengew: "Benesse Pocket Challenge W",
+  gamate: "Bit Corporation Gamate",
+  cybiko: "Cybiko",
+  cybikoxtreme: "Cybiko Xtreme",
+  gamepock: "Epoch Game Pocket Computer",
+  gp2x: "GamePark GP2X",
+  gp32: "GamePark GP32",
+  gamemaster: "Hartung Game Master",
+  leapster: "LeapFrog Leapster",
+  gamewatch: "Nintendo Game & Watch",
+  gb: "Nintendo Game Boy",
+  gbc: "Nintendo Game Boy Color",
+  gba: "Nintendo Game Boy Advance",
+  nds: "Nintendo DS",
+  dsi: "Nintendo DSi",
+  "3ds": "Nintendo 3DS",
+  pokemini: "Pokémon Mini",
+  ngage: "Nokia N-Gage",
+  pandora: "OpenPandora Pandora",
+  playdate: "Panic Playdate",
+  gamegear: "Sega Game Gear",
+  vmu: "Sega Visual Memory Unit",
+  ngp: "SNK Neo Geo Pocket",
+  ngpc: "SNK Neo Geo Pocket Color",
+  psp: "PlayStation Portable",
+  psvita: "PlayStation Vita",
+  pocketstation: "Sony PocketStation",
+  gamecom: "Tiger Game.com",
+  gameking: "TimeTop GameKing",
+  gameking3: "TimeTop GameKing 3",
+  supervision: "Watara Supervision",
+  megaduck: "Mega Duck / Cougar Boy",
+};
+const handheld = Object.hasOwn(handheldLabels, platform);
 const catalogLabel = {
+  ...handheldLabels,
   snes: "SNES", megadrive: "Mega Drive", nes: "NES / Famicom", playstation: "PlayStation (US)", neogeo: "Neo Geo",
   mastersystem: "Master System", pcengine: "PC Engine / TurboGrafx-16", n64: "Nintendo 64", saturn: "Sega Saturn",
   jaguar: "Atari Jaguar", pcfx: "PC-FX", cd32: "Amiga CD32", cdtv: "Commodore CDTV", "3do": "3DO",
@@ -32,6 +75,8 @@ const catalogLabel = {
 const catalogApi = `/api/${platform}-retail`;
 const romExtension = {
   snes: ".sfc", megadrive: ".md", nes: ".nes", mastersystem: ".sms", pcengine: ".pce", n64: ".z64", colecovision: ".col", virtualboy: ".vb",
+  gb: ".gb", gbc: ".gbc", gba: ".gba", nds: ".nds", lynx: ".lnx", pokemini: ".min",
+  gamegear: ".gg", ngpc: ".ngc", wonderswan: ".ws", wonderswancolor: ".wsc",
 }[platform];
 const playStation = platform === "playstation";
 const saturn = platform === "saturn";
@@ -45,14 +90,17 @@ const neoGeo = platform === "neogeo";
 const masterSystem = platform === "mastersystem";
 const pcEngine = platform === "pcengine";
 const nintendo64 = platform === "n64";
-const useCoverFallback = neoGeo || masterSystem || pcEngine || jaguar || earlyDisc || classicCartridge || sixthGeneration;
+const useCoverFallback = neoGeo || masterSystem || pcEngine || jaguar || earlyDisc || classicCartridge || sixthGeneration || handheld;
 const marketNames = {
   JP: "Japan", NA: playStation || ["gamecube", "playstation2", "pippin"].includes(platform) ? "United States" : "North America",
-  PAL: "PAL region", BR: "Brazil", WORLD: "Worldwide", UNK: "Market unconfirmed",
+  PAL: "PAL region", BR: "Brazil", LA: "Latin America", WORLD: "Worldwide", UNK: "Market unconfirmed",
   KR: "South Korea", AS: saturn || platform === "superacan" ? "Taiwan" : "Asia",
   MVS: "MVS arcade", AES: "AES home",
 };
-const channelNames = {"nintendo-power": "Nintendo Power", "sufami-turbo": "SuFami Turbo"};
+const channelNames = {
+  "nintendo-power": "Nintendo Power", "sufami-turbo": "SuFami Turbo",
+  download: "Download", dsiware: "DSiWare", eshop: "Nintendo eShop", "host-game": "Included with a host game",
+};
 const hardwareNames = {
   snes: "SNES / Super Famicom", n64: "Nintendo 64",
   satellaview: "Satellaview", "sufami-turbo": "SuFami Turbo", n64dd: "Nintendo 64DD",
@@ -70,7 +118,8 @@ const addonDownloads = {
   fds: "Download disk", "32x": "Download cartridge", supergrafx: "Download HuCard", sg1000: "Download cartridge",
   satellaview: "Download broadcast", "sufami-turbo": "Download cartridge", n64dd: "Download disk",
 };
-const matchNames = {ambiguous: "Needs review", unmatched: optical ? "No verified discs" : "No base ROM match"};
+const matchNames = {ambiguous: "Needs review", unmatched: handheld ? "No verified local archive"
+  : optical ? "No verified discs" : "No base ROM match"};
 const artworkNames = {
   boxart: "Box art", cartridge: "Cartridge", flyer: "Arcade flyer", marquee: "Mini marquee",
   title: "Title screen", snap: "Gameplay", logo: "Clear logo",
@@ -163,7 +212,7 @@ function supportsHardware(release, hardware) {
 }
 
 function discRelease(release) {
-  return optical || cdAddons.has(release.hardware);
+  return optical || cdAddons.has(release.hardware) || (handheld && release.channel === "optical-disc");
 }
 
 function browseParameters({query, hardware, genre, translated}, pageNumber) {
@@ -738,7 +787,7 @@ function romCell(release) {
     link.href = `${location.pathname}?${query}`;
     return releaseListCell([link]);
   }
-  if (release.channel === "built-in") return element("td", "Included in the console BIOS");
+  if (release.channel === "built-in" && !handheld) return element("td", "Included in the console BIOS");
   if (neoGeo && !discRelease(release)) {
     const sets = release.arcadeSets || [];
     if (!sets.length) {
@@ -862,7 +911,8 @@ function labelReleaseCells(cells, columns) {
 }
 
 function releaseColumns(release) {
-  return discRelease(release) ? ["Market", "Released", "Manuals", "Verified discs", "Serials"]
+  return handheld ? ["Market", "Released", "Manuals", "Verified archives", "Product code"]
+    : discRelease(release) ? ["Market", "Released", "Manuals", "Verified discs", "Serials"]
     : neoGeo ? ["Release", "Released", "Manuals and instructions", "Arcade sets", "Cartridge no."]
     : jaguar ? ["Market", "Released", "Manuals", "ROM archives"]
     : ["Market", "Released", "Manuals", "ROM archives", "Product code", ...(pcEngine || classicCartridge ? [] : ["PCB"])];
@@ -889,7 +939,7 @@ function renderReleaseTable(game, picker, hardwarePicker, targets, onSelection) 
     const date = element("td", release.date || "—");
     const medium = release.medium || channelNames[release.channel];
     if (medium) date.append(element("small", medium));
-    const dateSource = (masterSystem || nintendo64 || classicCartridge) && (release.dateSource || release.source);
+    const dateSource = (masterSystem || nintendo64 || classicCartridge || handheld) && (release.dateSource || release.source);
     if (dateSource?.url) {
       const citation = element("small");
       citation.append(newTabLink(dateSource.name, dateSource.url));
@@ -908,7 +958,7 @@ function renderReleaseTable(game, picker, hardwarePicker, targets, onSelection) 
     }
     const cells = [date, manualCell(releaseTableManuals(game, release)), romCell(release)];
     if (!jaguar) cells.push(productCodes);
-    if (!discRelease(release) && !neoGeo && !pcEngine && !jaguar && !classicCartridge) cells.push(pcb);
+    if (!discRelease(release) && !neoGeo && !pcEngine && !jaguar && !classicCartridge && !handheld) cells.push(pcb);
     labelReleaseCells(cells, columns);
     row.append(market, ...cells);
     const flag = element("button", "", "snes-region-button");
@@ -1154,6 +1204,12 @@ async function start() {
     license.hidden = !payload.source.license;
     if (payload.source.license) license.href = payload.source.license;
     const addonCredits = document.querySelector("#snes-addon-sources");
+    const credited = new Set([payload.source.name]);
+    for (const item of payload.releaseSources || []) {
+      if (credited.has(item.name)) continue;
+      addonCredits.append(" · ", newTabLink(item.name, item.url));
+      credited.add(item.name);
+    }
     for (const [hardware, credit] of Object.entries(payload.addonSources || {})) {
       addonCredits.append(" · ", newTabLink(`${hardwareNames[hardware]} release list`, credit.url));
       if (credit.license) addonCredits.append(" ", newTabLink("CC BY-SA 4.0", credit.license));
@@ -1171,7 +1227,7 @@ async function start() {
     search.value = params.get("q") || "";
     if (optical) search.placeholder = "Search by title or serial";
     if (neoGeo) search.placeholder = "Search by title, cartridge number, or set";
-    if (pcEngine || classicCartridge) search.placeholder = "Search by title or product code";
+    if (pcEngine || classicCartridge || handheld) search.placeholder = "Search by title or product code";
     const addons = Object.keys(payload.addonSources || {});
     if (addons.length) {
       const hardware = [...(neoGeo ? ["mvs", "aes"] : [platform]), ...addons];

@@ -13,6 +13,7 @@ from gamedb.catalog.nes_rom import INES_HEADER_SIZE, ines_boundaries
 
 
 MAX_ROM_SIZE = 16 * 1024 * 1024
+HANDHELD_ROM_LIMITS = {"gba": 32 * 1024 * 1024, "nds": 512 * 1024 * 1024}
 COPIER_HEADER_SIZE = 512
 N64_DISK_LAYOUT = "ndd"
 N64_DISK_SIZE = 64_931_840
@@ -69,8 +70,16 @@ def supports_patching(patch_format, layout):
         return patch_format == "ppf"
     if layout in N64_LAYOUTS:
         return patch_format in {"bps", "ips", "ups", "xdelta"}
+    if layout in HANDHELD_ROM_LIMITS:
+        return patch_format in {"bps", "ips", "ups", "xdelta"}
     return ((patch_format == "ips" and layout in ("headerless", "headered", "ines", "ines-payload"))
             or (patch_format in DELTA_MAGIC and layout in ("headerless", "ines", "ines-payload")))
+
+
+def rom_size_limit(layout):
+    if layout in N64_LAYOUTS or layout == N64_DISK_LAYOUT:
+        return N64_ROM_LIMIT
+    return HANDHELD_ROM_LIMITS.get(layout, MAX_ROM_SIZE)
 
 
 def _ips_reader(patch):
@@ -285,7 +294,7 @@ def apply_translation(source, patch, patch_format, layout, *, pad_to_size=None, 
             apply_ppf3(disk, delta, len(source))
             return disk.getvalue()
     nintendo64 = layout in N64_LAYOUTS
-    max_rom_size = N64_ROM_LIMIT if nintendo64 else MAX_ROM_SIZE
+    max_rom_size = rom_size_limit(layout)
     if not 0 < len(source) <= max_rom_size:
         raise PatchError("Invalid base ROM size.")
     if pad_to_size is not None:

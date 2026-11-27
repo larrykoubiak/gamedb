@@ -4,6 +4,7 @@ from base64 import b64encode
 import hashlib
 import json
 import mimetypes
+import os
 import re
 import shutil
 import subprocess
@@ -19,8 +20,7 @@ from urllib.parse import quote, urlsplit
 from zipfile import BadZipFile, ZipFile
 
 from gamedb.catalog.manuals import manual_key
-from gamedb.catalog.n64_rom import N64_LAYOUTS, N64_ROM_LIMIT
-from gamedb.catalog.patching import MAX_ROM_SIZE, N64_DISK_LAYOUT, apply_translation, supports_patching
+from gamedb.catalog.patching import N64_DISK_LAYOUT, apply_translation, rom_size_limit, supports_patching
 from gamedb.catalog.translations import (
     ADDON_CONSOLES, ADDON_EXTENSIONS, CARTRIDGE_EXTENSIONS, DISC_LAYOUT, DISC_PATCH_ARCHIVES, DISC_PLATFORMS, FORMATS,
     INDEX_NAME as TRANSLATION_INDEX, INDEX_VERSION, MAX_PATCH_SIZE, TRANSLATION_ROOTS, translation_order,
@@ -138,7 +138,7 @@ def _read_translation_index(path, revision):
     for record in document["translations"]:
         key = record["key"]
         disc = record["layout"] == DISC_LAYOUT
-        cartridge_formats = FORMATS | {"xdelta"} if record["layout"] in N64_LAYOUTS else FORMATS
+        cartridge_formats = FORMATS | {"xdelta"} if supports_patching("xdelta", record["layout"]) else FORMATS
         valid_patch = (record["format"] in DISC_PATCH_ARCHIVES and record["size"] > 0) if disc else (
             record["format"] in cartridge_formats and 0 < record["size"] <= MAX_PATCH_SIZE
         )
@@ -324,7 +324,7 @@ def serve_retail_translation_rom(handler, signature, key, *, disc_only=False):
     rom = handler.server.repository.retail_translation_base(platform, signature, record["baseSha1"])
     if rom is None:
         return handler._json_response({"error": "The verified base ROM is unavailable."}, HTTPStatus.CONFLICT)
-    rom_limit = N64_ROM_LIMIT if platform == "n64" else MAX_ROM_SIZE
+    rom_limit = rom_size_limit(record["layout"])
     try:
         path = _resolve_rom_path(handler.server.rom_root, rom["path"])
         with ZipFile(path) as archive, archive.open(rom["member_path"]) as member:

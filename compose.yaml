@@ -62,6 +62,7 @@ services:
       GAMEDB_PLAYSTATION_MANUAL_ROOT: /mnt/playstation-manuals
       GAMEDB_NEOGEO_MANUAL_ROOT: /mnt/neogeo-manuals
       GAMEDB_SECOND_GENERATION_MANUAL_ROOT: /mnt/second-generation-manuals
+      GAMEDB_HANDHELD_MANUAL_ROOT: /mnt/handheld-manuals
     depends_on:
       db:
         condition: service_healthy
@@ -92,6 +93,7 @@ services:
       - ./data/media/gamecube-translations:/app/data/media/gamecube-translations:ro
       - ./data/media/colecovision-translations:/app/data/media/colecovision-translations:ro
       - ./data/media/virtualboy-translations:/app/data/media/virtualboy-translations:ro
+      - ./data/media/handheld-translations:/app/data/media/handheld-translations:ro
       - "${GAMEDB_VGM_HOST_ROOT:-/mnt/synology/music/VGM/By Format}:/mnt/vgm:ro"
       - "${GAMEDB_SNES_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/SNES}:/mnt/snes-manuals:ro"
       - "${GAMEDB_MEGADRIVE_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Mega Drive}:/mnt/megadrive-manuals:ro"
@@ -116,6 +118,7 @@ services:
       - "${GAMEDB_PLAYSTATION_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/PlayStation}:/mnt/playstation-manuals:ro"
       - "${GAMEDB_NEOGEO_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Neo Geo}:/mnt/neogeo-manuals:ro"
       - "${GAMEDB_SECOND_GENERATION_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Second Generation}:/mnt/second-generation-manuals:ro"
+      - "${GAMEDB_HANDHELD_MANUAL_HOST_ROOT:-/mnt/synology/photo/Manuals/Handhelds}:/mnt/handheld-manuals:ro"
       - ./data/libretro-thumbnails:/data/libretro-thumbnails:ro
       - /mnt/synology/roms:/mnt/synology/roms:ro
       - /mnt/synology/backup/games/Undub:/mnt/synology/backup/games/Undub:ro
@@ -158,6 +161,7 @@ services:
       - ./data/libretro-thumbnails:/data/libretro-thumbnails:ro
       - ./data/media/cache:/data/media/cache
       - ./data/media/playstation-translations:/app/data/media/playstation-translations
+      - ./data/media/handheld-translations:/app/data/media/handheld-translations
       - /mnt/synology/roms:/mnt/synology/roms:ro
       - /mnt/exo:/mnt/exo:ro
       - "${GAMEDB_VGM_HOST_ROOT:-/mnt/synology/music/VGM/By Format}:/mnt/vgm:ro"

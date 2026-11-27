@@ -7,7 +7,8 @@ from pathlib import PurePosixPath
 COLLECTION = "JoshW"
 PSF_COLLECTION = "The PlayStation Music Collection PSF"
 INDEX_URL = "https://vgm.hcs64.com/index-clean.json"
-RETAIL_BUCKETS = {"dreamcast": "dsf", "playstation2": "psf2", "gamecube": "gcn", "cdi": "cdi"}
+HANDHELD_BUCKETS = {"3ds": "3sf", "psp": "psp", "psvita": "vita"}
+RETAIL_BUCKETS = {"dreamcast": "dsf", "playstation2": "psf2", "gamecube": "gcn", "cdi": "cdi", **HANDHELD_BUCKETS}
 DEFAULT_SYSTEMS = {
     "spc": ("Nintendo", "Super Nintendo Entertainment System"),
     "nsf": ("Nintendo", "Nintendo Entertainment System"),
@@ -22,6 +23,9 @@ DEFAULT_SYSTEMS = {
     "dsf": ("Sega", "Dreamcast"),
     "gcn": ("Nintendo", "GameCube"),
     "psf2": ("Sony", "PlayStation 2"),
+    "3sf": ("Nintendo", "3DS"),
+    "psp": ("Sony", "PlayStation Portable"),
+    "vita": ("Sony", "PlayStation Vita"),
 }
 CARTRIDGES = {
     "smd": {"smd": ("Sega", "Mega Drive"), "32x": ("Sega", "32X"), "pico": ("Sega", "Pico")},
@@ -29,7 +33,7 @@ CARTRIDGES = {
     "wsr": {"ws": ("Bandai", "WonderSwan"), "wsc": ("Bandai", "WonderSwan Color")},
 }
 KSS_SYSTEMS = {name: ("Sega", name) for name in ("Game Gear", "Master System")}
-DOMAINS = DEFAULT_SYSTEMS.keys() | CARTRIDGES.keys() | {"kss"}
+DOMAINS = (DEFAULT_SYSTEMS.keys() | CARTRIDGES.keys() | {"kss"}).difference(HANDHELD_BUCKETS.values())
 BRACKET = re.compile(r"\[([^\[\]]+)\]")
 TRAILING_TAGS = re.compile(r"(?:\s*\[[^\[\]]+\])+$")
 RELEASE_DATE = re.compile(r"\s*\((?:19|20)[0-9x]{2}(?:-\d{1,2}){0,2}\)", re.IGNORECASE)
@@ -47,6 +51,7 @@ PLATFORM_NOTES = {
     "psf": {"ps1", "psx", "psf"},
     "ssf": {"sat", "saturn", "ssf"}, "3do": {"3do"},
     "dsf": {"dc", "dsf"}, "gcn": {"gcn", "gc"}, "psf2": {"ps2", "psf2"},
+    "3sf": {"3ds", "new3ds", "3sf", "eshop"}, "psp": {"psp", "psn", "umd"}, "vita": {"vita", "psvita", "psn"},
 }
 OTHER_NOTES = {"a", "ab", "alt", "en", "eu", "fixed", "jp", "mod", "rr", "tagged", "us", "ut", "z0", "z1"}
 

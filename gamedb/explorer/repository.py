@@ -348,6 +348,14 @@ class CatalogRepository:
         table, _, _ = retail_tables(platform)
         return self._read_listing(f"SELECT to_jsonb(to_regclass('{table}') IS NOT NULL)")
 
+    def published_retail_platforms(self):
+        tables = ", ".join(f"('{platform}', '{retail_tables(platform)[0]}')" for platform in RETAIL_PLATFORMS)
+        return self._read_listing(f"""
+            SELECT coalesce(jsonb_agg(platform ORDER BY platform), '[]'::jsonb)
+            FROM (VALUES {tables}) AS retail(platform, relation)
+            WHERE to_regclass(relation) IS NOT NULL
+        """)
+
     def retail_has_archive(self, platform, signature):
         if not self.retail_available(platform):
             return False
@@ -391,7 +399,8 @@ class CatalogRepository:
         if game_key is not None:
             key = quote_sql_text(game_key)
             catalog = self._read_listing(f"""
-                SELECT jsonb_build_object('source', payload->'source', 'addonSources', payload->'addonSources', 'game', game)
+                SELECT jsonb_build_object('source', payload->'source', 'addonSources', payload->'addonSources',
+                    'releaseSources', payload->'releaseSources', 'game', game)
                 FROM {table}
                 CROSS JOIN LATERAL jsonb_array_elements(payload->'games') AS games(game)
                 WHERE singleton AND (game->>'key' = {key} OR (game->'formerKeys') ? {key})
@@ -715,12 +724,7 @@ class CatalogRepository:
         ))
 
     def install_manifest(self, release_signature: str, *, software_key=None):
-        tables = ", ".join(f"('{platform}', '{retail_tables(platform)[0]}')" for platform in RETAIL_PLATFORMS)
-        platforms = self._read_listing(f"""
-            SELECT coalesce(jsonb_agg(platform ORDER BY platform), '[]'::jsonb)
-            FROM (VALUES {tables}) AS retail(platform, relation)
-            WHERE to_regclass(relation) IS NOT NULL
-        """)
+        platforms = self.published_retail_platforms()
         manifest = self._read_listing(self.install_manifest_sql(release_signature, platforms, software_key=software_key))
         if software_key is not None:
             return manifest

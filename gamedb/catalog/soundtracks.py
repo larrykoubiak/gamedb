@@ -23,9 +23,9 @@ RIP_MARKETS = {"JP": "JP", "JPN": "JP", "US": "NA", "USA": "NA", "EU": "PAL", "E
 def add_soundtrack_sources(catalog, platform, records):
     by_game = defaultdict(list)
     for record in records:
-        by_game[record["game"]].append(record)
+        by_game[record.get("gameKey", record["game"])].append(record)
     for game in catalog["games"]:
-        for source in by_game.get(game["title"], ()):
+        for source in (*by_game.get(game.get("key"), ()), *by_game.get(game["title"], ())):
             url = source["url"]
             item = {"title": source["title"], "url": url,
                     "releases": [release["key"] for release in game["releases"]
@@ -67,6 +67,8 @@ def _release_names(release):
 
 
 def _date(date):
+    if re.fullmatch(r"(?:19|20)\d{2}-\d{2}(?:-\d{2})?", date or ""):
+        return date
     for format, output in (("%B %d, %Y", "%Y-%m-%d"), ("%B %Y", "%Y-%m"), ("%Y", "%Y")):
         try:
             return datetime.strptime(date, format).strftime(output)
@@ -102,40 +104,43 @@ def _compatible_release(release, version, markets, platform):
     if not version:
         return True
     if platform == ("Nintendo", "Nintendo 64") and version == "1.0" and any(
-        not (archive["revisions"] or archive["versions"]) for archive in release["archives"]
+        not (archive["revisions"] or archive["versions"]) for archive in release.get("archives", ())
     ):
         return True
-    facts = [(kind, value) for archive in release["archives"]
+    facts = [(kind, value) for archive in release.get("archives", ())
              for kind, field in (("revision", "revisions"), ("version", "versions"))
              for value in archive[field]]
     return supports_version(platform, version, facts)
 
 
-def link_soundtracks(catalog, albums, *, reviews=None, aliases=(), system=SNES, secondary_platform=SUFAMI):
+def link_soundtracks(catalog, albums, *, reviews=None, aliases=(), system=SNES, secondary_platform=SUFAMI,
+                     include_unmatched=False):
     """Reuse the catalog's ownership evidence and reconcile explicit retail titles."""
     reviews = {} if reviews is None else reviews
-    editions, titles, owners = {}, defaultdict(set), defaultdict(set)
-    for game in catalog["games"]:
+    editions, edition_names, titles, owners = {}, defaultdict(set), defaultdict(set), defaultdict(set)
+    for game_index, game in enumerate(catalog["games"]):
         staged = defaultdict(list)
         for release in game["releases"]:
-            if release["status"] == "matched":
+            if release["status"] == "matched" or include_unmatched:
                 staged[release["edition"]].append(release)
         for edition, releases in staged.items():
-            editions[edition] = game, releases
+            identity = game_index, edition
+            editions[identity] = game, releases
+            edition_names[edition].add(identity)
             platforms = ((system, secondary_platform) if releases[0]["channel"] == "sufami-turbo"
                          else (system,))
             names = {_title_key(edition)}
             for release in releases:
                 names.update(_release_names(release))
-                for archive in release["archives"]:
-                    owners[archive["softwareKey"]].add(edition)
+                for archive in release.get("archives", ()):
+                    owners[archive["softwareKey"]].add(identity)
             for platform in platforms:
                 for name in names:
-                    titles[platform, name].add(edition)
+                    titles[platform, name].add(identity)
 
     for item in aliases:
-        if item["edition"] in editions:
-            titles[system, _title_key(item["title"])].add(item["edition"])
+        if len(matches := edition_names[item["edition"]]) == 1:
+            titles[system, _title_key(item["title"])].update(matches)
 
     fixed = superseded_sources(album["source_name"] for album in albums if album["collection"] == COLLECTION)
     for album in albums:
@@ -183,7 +188,7 @@ def link_soundtracks(catalog, albums, *, reviews=None, aliases=(), system=SNES, 
 
 def add_soundtracks(connection, catalog, aliases=(), *,
                     platform=SNES, secondary_platform=SUFAMI, formats=("spc",), joshw_archive_bucket=None,
-                    excluded_collection=None, reviewed_sources=None):
+                    excluded_collection=None, reviewed_sources=None, include_unmatched=False):
     present = connection.execute(text("""
         SELECT to_regclass('vgm.soundtrack') IS NOT NULL AND to_regclass('vgm.asset') IS NOT NULL
     """)).scalar_one()
@@ -196,4 +201,4 @@ def add_soundtracks(connection, catalog, aliases=(), *,
     if reviewed_sources is not None:
         albums = [album for album in albums if album["source_name"] in reviewed_sources]
     return link_soundtracks(catalog, albums, reviews=reviewed_titles(), aliases=aliases, system=platform,
-                            secondary_platform=secondary_platform)
+                            secondary_platform=secondary_platform, include_unmatched=include_unmatched)

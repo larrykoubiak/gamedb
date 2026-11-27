@@ -29,13 +29,20 @@ function showCatalogs(capabilities = {}) {
     total += available;
   }
   let handheldRetail = 0;
-  for (const link of document.querySelectorAll('.handheld-grid .catalog-card[href^="/catalog/"]')) {
-    const platform = link.pathname.split("/").at(-1);
-    link.hidden = capabilities[`${platform}Retail`] === false;
-    if (!link.hidden) handheldRetail += 1;
+  let handheldArchive = 0;
+  for (const link of document.querySelectorAll(".handheld-grid .catalog-card")) {
+    const platform = link.dataset.catalog;
+    const published = capabilities[`${platform}Retail`] !== false;
+    link.href = published ? `/catalog/${platform}` : link.dataset.archive;
+    handheldRetail += Number(published);
+    handheldArchive += Number(!published);
   }
-  document.querySelector(".handheld-section .catalog-count").textContent = handheldRetail
-    ? "V1 and V2 libraries" : "V1 libraries";
+  const count = document.querySelector(".handheld-section .catalog-count");
+  count.textContent = [
+    handheldRetail && `${handheldRetail} V2 ${handheldRetail === 1 ? "catalog" : "catalogs"}`,
+    handheldArchive && `${handheldArchive} V1 ${handheldArchive === 1 ? "library" : "libraries"}`,
+  ].filter(Boolean).join(" · ");
+  count.hidden = false;
   document.querySelector("#no-retail-catalogs").hidden = total + handheldRetail > 0;
 }
 
