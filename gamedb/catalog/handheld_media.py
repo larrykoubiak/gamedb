@@ -71,8 +71,9 @@ MANUAL_PAGES = {
 TOSEC_MANUALS = {
     "lynx": ("Atari/Lynx", "NA"), "gamate": ("Bit Corporation/Gamate", "UNK"),
     "gba": ("Nintendo/Game Boy Advance", "NA"), "ngage": ("Nokia/N-Gage", "PAL"), "gamegear": ("Sega/Game Gear", "NA"),
+    "psp": ("Sony/PlayStation Portable", None),
 }
-PSP_MANUALS = ("SonyPSPManuals", "PSP-instruction-manuals-and-document-dat")
+PSP_MANUALS = ("SonyPSPManuals", "SonyPSPManualsv1.2", "PSP-instruction-manuals-and-document-dat")
 DS_MANUALS = "NintendoDSManuals"
 VITA_MANUALS = "persona-4-golden"
 DS_MANUAL_NAME = re.compile(
@@ -282,7 +283,7 @@ def _tosec_manuals(platform):
         regions = [region for region in re.findall(r"\(([^)]+)\)", labels) if region in COUNTRIES]
         markets = {COUNTRIES[region] for region in regions}
         relative = path.relative_to(root).as_posix()
-        for market in markets or {default_market}:
+        for market in markets or ({default_market} if default_market else set()):
             yield title, market, {"name": title + " — manual", "regions": regions, "format": "PDF", "source": "TOSEC PIX",
                                   "url": f"{TOSEC}#pix/{quote(relative)}", "sourceUrl": TOSEC, "localArchive": relative}
 
@@ -416,4 +417,4 @@ def add_handheld_soundtracks(platform, catalog, indexes):
                         "markets": sorted({release["market"] for release in game["releases"]}),
                         "size": row["sz"], "revision": int(datetime.fromisoformat(row["md"]).replace(tzinfo=timezone.utc).timestamp())})
     add_soundtrack_sources(catalog, platform, sources)
-    return len(sources)
+    return sum(len(game.get("soundtrackSources", ())) for game in catalog["games"])

@@ -1344,11 +1344,13 @@
     ],
     "retailReview": {
       "source": "http://redump.org/discs/system/psp/",
-      "reason": "Demo, kiosk and sampler UMDs.",
+      "reason": "U.S. retail UMDs, excluding demo, kiosk, sampler and installer discs.",
+      "markets": ["NA"],
       "excludedTitles": [
         "7 At One Stroke - UMD Demo by Sony DCE",
         "Demo Disc for PSP Vol. 1",
         "Demo Disc for PSP Vol. 2",
+        "PSP (PlayStation Portable) Go Bonus 3-Game DVD",
         "PSP System Best Buy Kiosk Disc #4",
         "PSP System Kiosk Disc 1",
         "PSP System Kiosk Disc 3 - Yellow",

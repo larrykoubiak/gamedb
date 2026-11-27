@@ -5,6 +5,7 @@ from datetime import datetime
 from hashlib import sha256
 from pathlib import PurePosixPath
 import re
+from urllib.parse import unquote, urlsplit
 
 from sqlalchemy import text
 
@@ -16,6 +17,7 @@ SNES = ("Nintendo", "Super Nintendo Entertainment System")
 SUFAMI = ("Nintendo", "Sufami Turbo")
 RIP_DATE = re.compile(r"\(((?:19|20)\d{2}(?:-\d{2}){0,2})\)")
 PLAYSTATION_PREVIEW = re.compile(r"\b(?:demo|preview|prototype|trial|taikenban|sampler|homebrew|unlicensed)\b", re.I)
+PLAYSTATION_ARCHIVES = ("psf/", "psf2/", "psp/")
 RIP_MARKETS = {"JP": "JP", "JPN": "JP", "US": "NA", "USA": "NA", "EU": "PAL", "EUR": "PAL", "PAL": "PAL",
                "BR": "BR", "KR": "KR"}
 
@@ -23,6 +25,8 @@ RIP_MARKETS = {"JP": "JP", "JPN": "JP", "US": "NA", "USA": "NA", "EU": "PAL", "E
 def add_soundtrack_sources(catalog, platform, records):
     by_game = defaultdict(list)
     for record in records:
+        if platform in {"playstation2", "psp"} and PLAYSTATION_PREVIEW.search(unquote(urlsplit(record["url"]).path)):
+            continue
         by_game[record.get("gameKey", record["game"])].append(record)
     for game in catalog["games"]:
         for source in (*by_game.get(game.get("key"), ()), *by_game.get(game["title"], ())):
@@ -149,7 +153,7 @@ def link_soundtracks(catalog, albums, *, reviews=None, aliases=(), system=SNES, 
         review = reviews.get((album["collection"], album["source_name"]))
         if ((review and not review["catalog_title"]) or album["status"] == "review" or EDITION.search(title)
                 or (album["collection"] == COLLECTION and album["source_name"] in fixed)
-                or (album["collection"] == COLLECTION and album["source_name"].startswith("psf/")
+                or (album["collection"] == COLLECTION and album["source_name"].startswith(PLAYSTATION_ARCHIVES)
                     and PLAYSTATION_PREVIEW.search(album["source_name"]))
                 or title.casefold().endswith(" (game genie)")
                 or re.search(r"\[(?:mod|hack|unl)\]", album["source_name"], re.I)):

@@ -33,7 +33,7 @@ CARTRIDGES = {
     "wsr": {"ws": ("Bandai", "WonderSwan"), "wsc": ("Bandai", "WonderSwan Color")},
 }
 KSS_SYSTEMS = {name: ("Sega", name) for name in ("Game Gear", "Master System")}
-DOMAINS = (DEFAULT_SYSTEMS.keys() | CARTRIDGES.keys() | {"kss"}).difference(HANDHELD_BUCKETS.values())
+DOMAINS = (DEFAULT_SYSTEMS.keys() | CARTRIDGES.keys() | {"kss"}).difference({"3sf", "vita"})
 BRACKET = re.compile(r"\[([^\[\]]+)\]")
 TRAILING_TAGS = re.compile(r"(?:\s*\[[^\[\]]+\])+$")
 RELEASE_DATE = re.compile(r"\s*\((?:19|20)[0-9x]{2}(?:-\d{1,2}){0,2}\)", re.IGNORECASE)

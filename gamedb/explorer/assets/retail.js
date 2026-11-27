@@ -58,6 +58,7 @@ const handheldLabels = {
 const handheld = Object.hasOwn(handheldLabels, platform);
 const catalogLabel = {
   ...handheldLabels,
+  psp: "PlayStation Portable (US)",
   snes: "SNES", megadrive: "Mega Drive", nes: "NES / Famicom", playstation: "PlayStation (US)", neogeo: "Neo Geo",
   mastersystem: "Master System", pcengine: "PC Engine / TurboGrafx-16", n64: "Nintendo 64", saturn: "Sega Saturn",
   jaguar: "Atari Jaguar", pcfx: "PC-FX", cd32: "Amiga CD32", cdtv: "Commodore CDTV", "3do": "3DO",
@@ -1164,9 +1165,10 @@ function renderDetail(game, soundtracks) {
     soundtrack.hidden = !current.length;
     if (albums.length) renderSoundtracks(player, albums, {compact: true});
     if (sources.length && !albums.length) renderSoundtrackSources(player, sources);
-    if (platform === "playstation2" && albums.length) {
+    const bucket = {playstation2: "psf2", psp: "psp"}[platform];
+    if (bucket && albums.length) {
       const pending = sources.filter(source => !albums.some(album => album.sourceUrl === source.url
-        || (album.collection === "JoshW" && album.sourceName === `psf2${decodeURIComponent(new URL(source.url).pathname)}`)));
+        || (album.collection === "JoshW" && album.sourceName === `${bucket}${decodeURIComponent(new URL(source.url).pathname)}`)));
       if (pending.length) {
         const downloads = element("div");
         renderSoundtrackSources(downloads, pending);

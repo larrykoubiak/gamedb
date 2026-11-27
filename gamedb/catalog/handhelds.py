@@ -493,6 +493,7 @@ def apply_handheld_retail_review(catalog, reference):
         return {}
     excluded_records = set(review.get("mameRecords", ()))
     excluded_titles = set(review.get("excludedTitles", ()))
+    allowed_markets = set(review.get("markets", ()))
     games = catalog["games"]
     before = sum(len(game["releases"]) for game in games)
     archive_count = catalog["summary"]["eligibleArchives"]
@@ -501,7 +502,9 @@ def apply_handheld_retail_review(catalog, reference):
         releases = []
         for release in game["releases"]:
             source = release["source"]
-            if game["title"] in excluded_titles or (source["name"] == "MAME" and source.get("record") in excluded_records):
+            if ((allowed_markets and release["market"] not in allowed_markets)
+                    or game["title"] in excluded_titles
+                    or (source["name"] == "MAME" and source.get("record") in excluded_records)):
                 archive_count -= len(release.get("archives", ()))
             else:
                 releases.append(release)
@@ -532,16 +535,47 @@ def apply_handheld_retail_review(catalog, reference):
     if not (removed_releases or merged):
         return {}
     catalog["games"] = kept
+    markets = {market: MARKETS[market] for market in allowed_markets} if allowed_markets else MARKETS
+    if allowed_markets:
+        archive_count = len({archive["signature"] for game in kept for release in game["releases"]
+                             for archive in release.get("archives", ())})
+        for game in kept:
+            keys = {release["key"] for release in game["releases"]}
+            for field in ("soundtrackLinks", "soundtrackSources"):
+                if field not in game:
+                    continue
+                retained = []
+                for record in game.pop(field):
+                    releases = [key for key in record["releases"] if key in keys]
+                    if releases:
+                        record["releases"] = releases
+                        if "titleMatches" in record:
+                            record["titleMatches"] = [key for key in record["titleMatches"] if key in keys]
+                        retained.append(record)
+                if retained:
+                    game[field] = retained
     summary = catalog["summary"]
-    retail.summarize_matches(catalog, archive_count, MARKETS)
+    retail.summarize_matches(catalog, archive_count, markets)
     summary.update(catalog["summary"])
     catalog["summary"] = summary
     if "metadata" in summary:
-        summary["metadata"] = retail.enrichment_coverage(catalog, MARKETS)
+        summary["metadata"] = retail.enrichment_coverage(catalog, markets)
     if "mediaTitles" in summary:
         summary["mediaTitles"]["manuals"] = sum(
             any(release.get("manuals") for release in game["releases"]) for game in kept
         )
+    if allowed_markets:
+        if "soundtracks" in summary:
+            summary["soundtracks"] = {
+                "titles": sum(bool(game.get("soundtrackLinks")) for game in kept),
+                "sets": sum(len(game.get("soundtrackLinks", ())) for game in kept),
+            }
+        if "soundtrackSources" in summary:
+            summary["soundtrackSources"] = sum(len(game.get("soundtrackSources", ())) for game in kept)
+        if "prepatchedVariants" in summary:
+            summary["prepatchedVariants"] = sum(
+                len(release.get("translations", ())) for game in kept for release in game["releases"]
+            )
     return {"excludedTitles": len(games) - len(kept) - len(merged), "excludedReleases": removed_releases,
             "mergedTitles": len(merged)}
 
@@ -554,6 +588,7 @@ def seed_handheld(platform, report=None, *, publish_catalog=False, sources=None)
     ProjectEnvironment().load()
     directory = sources or SOURCE_DIRECTORY
     reference = json.loads(REFERENCE.read_text(encoding="utf-8")).get(platform, {})
+    markets = {market: MARKETS[market] for market in reference.get("retailReview", {}).get("markets", ())} or MARKETS
     builder = HandheldCatalog(platform, reference)
     indexes, warnings = {}, []
     mame = MAME_LISTS.get(platform)
@@ -593,7 +628,7 @@ def seed_handheld(platform, report=None, *, publish_catalog=False, sources=None)
             add_handheld_manuals(platform, catalog, indexes, reference)
             if variants := reference.get("prepatchedVariants"):
                 catalog["summary"]["prepatchedVariants"] = add_disc_variants(
-                    connection, catalog, retail.HANDHELD_SYSTEMS[platform][:2], MARKETS,
+                    connection, catalog, retail.HANDHELD_SYSTEMS[platform][:2], markets,
                     reviewed=variants, reviewed_only=True,
                     status="Prepatched UMD image" if platform == "psp" else "Prepatched game archive",
                 )
@@ -603,7 +638,7 @@ def seed_handheld(platform, report=None, *, publish_catalog=False, sources=None)
                 joshw_archive_bucket=HANDHELD_BUCKETS.get(platform), include_unmatched=True,
             )
             catalog["summary"]["soundtrackSources"] = add_handheld_soundtracks(platform, catalog, indexes)
-            catalog["summary"]["metadata"] = retail.enrichment_coverage(catalog, markets=MARKETS)
+            catalog["summary"]["metadata"] = retail.enrichment_coverage(catalog, markets=markets)
             catalog["summary"]["mediaTitles"] = {field: sum(any(release.get(field) for release in game["releases"])
                 for game in catalog["games"]) for field in ("artwork", "manuals")}
             fill_handheld_artwork(catalog, platform, thumbnail_root(), artwork_sources().get(platform, {}))

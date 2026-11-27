@@ -97,6 +97,23 @@ def test_reviewed_mame_bootleg_is_removed_without_dropping_a_licensed_compilatio
     assert not apply_handheld_retail_review(catalog, review)
 
 
+def test_psp_market_review_scopes_soundtracks_to_the_retained_release():
+    builder = HandheldCatalog("psp", {})
+    source = {"name": "Redump", "url": "https://example.org"}
+    builder.add(["Disc Game"], ["USA", "Japan"], source, channel="optical-disc")
+    catalog = builder.payload()
+    game, = catalog["games"]
+    keys = {release["market"]: release["key"] for release in game["releases"]}
+    game["soundtrackLinks"] = [
+        {"key": "multi", "releases": [keys["JP"], keys["NA"]], "titleMatches": [keys["JP"], keys["NA"]]},
+        {"key": "japan", "releases": [keys["JP"]], "titleMatches": [keys["JP"]]},
+    ]
+    apply_handheld_retail_review(catalog, {"retailReview": {"markets": ["NA"]}})
+    assert [r["market"] for r in game["releases"]] == ["NA"]
+    assert set(catalog["summary"]["byMarket"]) == {"NA"}
+    assert game["soundtrackLinks"] == [{"key": "multi", "releases": [keys["NA"]], "titleMatches": [keys["NA"]]}]
+
+
 def test_playdate_store_excludes_catalog_promotion_cards():
     source = SourceIndex("https://play.date/games/search/", b'''
 <li class="gameCard" id="game1">
