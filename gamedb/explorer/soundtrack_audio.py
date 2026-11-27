@@ -14,7 +14,8 @@ from gamedb.vgm.inventory import HANDHELD_STREAMS
 _conversions = BoundedSemaphore(2)
 _locks = [Lock() for _ in range(32)]
 INPUT_FORMATS = {"ape": "ape", "mpg": "mpeg", **dict.fromkeys(("aif", "aiff", "aifc"), "aiff")}
-STREAM_FORMATS = frozenset({"adp", "ads", "afc", "aix", "ast", "at3", "brstm", "dsp", "grn", "mib", "ss2", "vag", "xa"}
+STREAM_FORMATS = frozenset({"adp", "ads", "afc", "aix", "ast", "at3", "brstm", "dsp", "genh", "grn", "mib",
+                            "ss2", "vag", "xa"}
                            | {suffix[1:] for suffix in HANDHELD_STREAMS})
 
 

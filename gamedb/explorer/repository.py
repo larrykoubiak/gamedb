@@ -445,8 +445,11 @@ class CatalogRepository:
         return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "retail_browse.sql").render(
             catalog_table=table, genres_sql=genres,
             cover_alternatives_sql="""
-                'coverAlternative', coalesce(release->'artwork'->'flyer', release->'artwork'->'title',
-                    release->'artwork'->'snap', release->'artwork'->'logo'),
+                'coverAlternative', (array_remove(ARRAY[
+                    release->'artwork'->'boxart', release->'artwork'->'flyer',
+                    release->'artwork'->'marquee', release->'artwork'->'cartridge',
+                    release->'artwork'->'title', release->'artwork'->'snap', release->'artwork'->'logo'
+                ], NULL))[2],
             """ if platform in HANDHELD_PLATFORMS or platform == "virtualboy" else "",
         ))
 
