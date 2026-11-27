@@ -10,7 +10,7 @@ import subprocess
 from gamedb.catalog.cartridges import verified_roms_sql
 from gamedb.catalog.neogeo import PLATFORM as NEOGEO, SET_NAME as NEOGEO_SET, add_arcade_sets, arcade_sets_sql
 from gamedb.catalog.disc_catalog import DISC_ADDON_PARENTS, DISC_SYSTEMS
-from gamedb.catalog.retail import RETAIL_PLATFORMS, retail_tables
+from gamedb.catalog.retail import HANDHELD_PLATFORMS, RETAIL_PLATFORMS, retail_tables
 from gamedb.catalog.software_identity import SOFTWARE_KEY_SQL
 from gamedb.config import PROJECT_ROOT
 from gamedb.explorer.cache import JsonResponseCache
@@ -444,6 +444,10 @@ class CatalogRepository:
             """
         return self._read_listing(SqlTemplate(QUERY_DIRECTORY / "retail_browse.sql").render(
             catalog_table=table, genres_sql=genres,
+            cover_alternatives_sql="""
+                'coverAlternative', coalesce(release->'artwork'->'flyer', release->'artwork'->'title',
+                    release->'artwork'->'snap', release->'artwork'->'logo'),
+            """ if platform in HANDHELD_PLATFORMS or platform == "virtualboy" else "",
         ))
 
     def retail_browse_revision(self, platform):

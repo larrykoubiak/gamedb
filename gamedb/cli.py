@@ -40,6 +40,7 @@ GameDB commands:
   sync-optical-manuals  Download the manuals linked by an optical retail catalog.
   sync-cartridge-manuals  Mirror the manuals linked by an early cartridge catalog.
   sync-handheld-manuals  Mirror the manuals linked by a handheld catalog.
+  sync-handheld-artwork  Fill artwork gaps in published handheld catalogs.
   sync-handheld-translations  Verify and index handheld translation patches.
   sync-nes-manuals       Download the manuals linked by the NES and Famicom retail catalog.
   sync-playstation-manuals  Download the manuals linked by the PlayStation retail catalog.
@@ -132,7 +133,7 @@ def main(argv=None) -> int:
         "sync-pcecd-translations", "sync-neogeocd-translations", "sync-colecovision-translations",
         "sync-dreamcast-translations", "sync-playstation2-translations", "sync-gamecube-translations",
         "seed-cartridge", "sync-cartridge-manuals", "sync-cartridge-soundtracks",
-        "seed-handheld", "sync-handheld-manuals", "sync-handheld-translations",
+        "seed-handheld", "sync-handheld-artwork", "sync-handheld-manuals", "sync-handheld-translations",
         "seed-second-generation", "sync-second-generation-manuals", "sync-second-generation-soundtracks",
     }:
         from gamedb.catalog.cli import main as catalog_main

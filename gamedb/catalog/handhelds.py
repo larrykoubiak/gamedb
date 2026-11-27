@@ -76,7 +76,7 @@ COUNTRIES = {**COUNTRY_MARKETS, "Eur": "PAL", "Euro": "PAL", "Aus": "PAL", "Jpn"
 MARKETS = {market: {region for region, scope in COUNTRIES.items() if market == scope}
            for market in ("NA", "PAL", "JP", "KR", "AS", "BR", "LA", "WORLD", "UNK")}
 DEVELOPMENT = re.compile(r"\((?:[^)]*, )?(?:prototype|proto|beta|alpha|demo|preview|unreleased|sampler|trial|sample|kiosk|test|"
-                         r"hack|pirate|homebrew|unl)(?:\b|\))|^\[(?:bios|firmware|bad dump)\]", re.I)
+                         r"hack|bootleg|pirate|homebrew|unl|unlicensed)(?:\b|\))|^\[(?:bios|firmware|bad dump)\]", re.I)
 SUFFIX = re.compile(r"\s+\(([^()]*)\)$")
 GAME_WATCH = re.compile(
     r'^SYST\(\s*(\d{4}),\s*(gnw_\w+)\s*,[^\n]*?"Nintendo"\s*,\s*"(?:Game & Watch|Micro Vs\. System): ([^"]+)"',
@@ -371,7 +371,7 @@ def _local_games(connection, builder):
             builder.archive_count += archive is not None
 
 
-def _mame_games(builder, index, list_name, artwork_sources):
+def _mame_games(builder, index, list_name, artwork_sources, excluded_records=()):
     source = {"name": "MAME", "url": index.url, "revision": "mame0285", "sha256": index.digest}
     hierarchy = {}
     root = ElementTree.fromstring(index.content)
@@ -379,8 +379,10 @@ def _mame_games(builder, index, list_name, artwork_sources):
         raise ValueError(f"Unexpected MAME software list {list_name}")
     for record in root.findall("software"):
         description = record.findtext("description")
-        if (DEVELOPMENT.search(description) or re.search(r"^demo |\bdemo$", description, re.I)
-                or record.findtext("publisher", "").casefold() in {"<homebrew>", "<unknown>"}):
+        category = record.findtext("publisher", "").casefold().strip("<>")
+        if (record.get("name") in excluded_records or DEVELOPMENT.search(description)
+                or re.search(r"^demo |\bdemo$", description, re.I)
+                or category in {"homebrew", "unknown", "bootleg", "pirate", "unlicensed"}):
             continue
         if builder.platform == "pokemini" and re.search(r"\([^)]*\bGameCube\b", description, re.I):
             continue
@@ -485,7 +487,67 @@ def _source_index(directory, name, url, indexes, warnings):
     return index
 
 
+def apply_handheld_retail_review(catalog, reference):
+    review = reference.get("retailReview", {})
+    if not review:
+        return {}
+    excluded_records = set(review.get("mameRecords", ()))
+    excluded_titles = set(review.get("excludedTitles", ()))
+    games = catalog["games"]
+    before = sum(len(game["releases"]) for game in games)
+    archive_count = catalog["summary"]["eligibleArchives"]
+    kept = []
+    for game in games:
+        releases = []
+        for release in game["releases"]:
+            source = release["source"]
+            if game["title"] in excluded_titles or (source["name"] == "MAME" and source.get("record") in excluded_records):
+                archive_count -= len(release.get("archives", ()))
+            else:
+                releases.append(release)
+        if releases:
+            game["releases"] = releases
+            kept.append(game)
+    removed_releases = before - sum(len(game["releases"]) for game in kept)
+    by_title = defaultdict(list)
+    for game in kept:
+        by_title[game["title"]].append(game)
+    merged = set()
+    for duplicate, canonical in review.get("mergedTitles", {}).items():
+        if len(by_title[duplicate]) != 1 or len(by_title[canonical]) != 1:
+            continue
+        former, = by_title[duplicate]
+        target, = by_title[canonical]
+        target.setdefault("formerKeys", []).extend([former["key"], *former.get("formerKeys", ())])
+        for alias in [{"title": duplicate, "regions": []}, *former.get("aliases", ())]:
+            if alias["title"] != canonical and alias not in target["aliases"]:
+                target["aliases"].append(alias)
+        target["releases"].extend(former["releases"])
+        for field in ("soundtrackLinks", "soundtrackSources"):
+            if former.get(field):
+                sources = target.setdefault(field, [])
+                sources.extend(item for item in former[field] if item not in sources)
+        merged.add(former["key"])
+    kept = [game for game in kept if game["key"] not in merged]
+    if not (removed_releases or merged):
+        return {}
+    catalog["games"] = kept
+    summary = catalog["summary"]
+    retail.summarize_matches(catalog, archive_count, MARKETS)
+    summary.update(catalog["summary"])
+    catalog["summary"] = summary
+    if "metadata" in summary:
+        summary["metadata"] = retail.enrichment_coverage(catalog, MARKETS)
+    if "mediaTitles" in summary:
+        summary["mediaTitles"]["manuals"] = sum(
+            any(release.get("manuals") for release in game["releases"]) for game in kept
+        )
+    return {"excludedTitles": len(games) - len(kept) - len(merged), "excludedReleases": removed_releases,
+            "mergedTitles": len(merged)}
+
+
 def seed_handheld(platform, report=None, *, publish_catalog=False, sources=None):
+    from .handheld_artwork import artwork_sources, fill_handheld_artwork, thumbnail_root
     from .handheld_media import (THUMBNAILS, TRACK_FORMATS, add_handheld_manuals, add_handheld_soundtracks,
                                  add_handheld_sources, read_handheld_sources)
 
@@ -512,7 +574,8 @@ def seed_handheld(platform, report=None, *, publish_catalog=False, sources=None)
                 connection.exec_driver_sql("SET TRANSACTION READ ONLY")
             _local_games(connection, builder)
             if mame_index:
-                _mame_games(builder, mame_index, mame, reference.get("mameArtwork", {}))
+                _mame_games(builder, mame_index, mame, reference.get("mameArtwork", {}),
+                            set(reference.get("retailReview", {}).get("mameRecords", ())))
             if watch:
                 _game_watch(builder, watch)
             add_handheld_sources(builder, indexes, reference)
@@ -520,6 +583,7 @@ def seed_handheld(platform, report=None, *, publish_catalog=False, sources=None)
             if launchbox:
                 _add_launchbox(connection, builder, launchbox)
             catalog = builder.payload()
+            apply_handheld_retail_review(catalog, reference)
             if not catalog["games"]:
                 raise ValueError(f"No documented releases found for {retail.HANDHELD_PLATFORMS[platform]}")
             catalog["enrichmentSources"] = [{"url": item.url, "sha256": item.digest} for item in indexes.values()]
@@ -542,6 +606,7 @@ def seed_handheld(platform, report=None, *, publish_catalog=False, sources=None)
             catalog["summary"]["metadata"] = retail.enrichment_coverage(catalog, markets=MARKETS)
             catalog["summary"]["mediaTitles"] = {field: sum(any(release.get(field) for release in game["releases"])
                 for game in catalog["games"]) for field in ("artwork", "manuals")}
+            fill_handheld_artwork(catalog, platform, thumbnail_root(), artwork_sources().get(platform, {}))
             if warnings:
                 catalog["summary"]["sourceWarnings"] = warnings
             if publish_catalog:

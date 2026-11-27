@@ -190,6 +190,16 @@ function artworkImage(source, alt) {
   return image;
 }
 
+function loadArtworkImage(assets, alt, onFailure) {
+  const sources = [...new Set(assets.flatMap(asset => [asset?.preview, asset?.url, asset?.fallbackUrl]).filter(Boolean))];
+  const image = artworkImage(sources.shift(), alt);
+  image.addEventListener("error", () => {
+    if (sources.length) image.src = sources.shift();
+    else onFailure(image);
+  });
+  return image;
+}
+
 function marketFlag(market) {
   if (!["JP", "NA", "PAL", "BR"].includes(market)) {
     const code = element("span", market, "snes-market-code");
@@ -315,9 +325,11 @@ function renderBrowse() {
     if (platform === "nuon") stage.dataset.hardware = "nuon";
     if (detailRelease?.hardware === "satellaview") stage.dataset.hardware = "satellaview";
     if (cover) {
-      const image = artworkImage(cover.preview || cover.url, "");
-      image.addEventListener("error", () => image.remove(), {once: true});
-      stage.append(image);
+      const alternatives = handheld || platform === "virtualboy"
+        ? [coverRelease?.coverAlternative, ...releases.flatMap(release =>
+          [release.boxart, release.cover, release.coverAlternative])]
+        : [];
+      stage.append(loadArtworkImage([cover, ...alternatives], "", image => image.remove()));
     }
     link.href = `?${detailQuery}`;
     const label = element("span", "", "snes-game-label");
@@ -455,17 +467,16 @@ function renderArt(release) {
   const items = kinds.filter(kind => release.artwork?.[kind]).map(kind => {
     const asset = release.artwork[kind];
     const label = asset.label ?? artworkNames[kind];
-    return {kind, label, asset, source: asset.url, caption: `${title} — ${label}`,
+    return {kind, label, asset, source: asset.url, fallbackSource: asset.fallbackUrl, caption: `${title} — ${label}`,
       pixelArt: kind === "title" || kind === "snap"};
   });
   for (const [index, {kind, label, asset, caption}] of items.entries()) {
     if (kind === "logo" && hasCover) continue;
-    const image = artworkImage(asset.preview || asset.url, caption);
+    const image = loadArtworkImage([asset], caption, () => {
+      zoom.textContent = `View ${label.toLowerCase()}`;
+    });
     image.loading = "eager";
     const zoom = artworkButton(image, items, () => index);
-    image.addEventListener("error", () => {
-      zoom.textContent = `View ${label.toLowerCase()}`;
-    }, {once: true});
     const figure = element("figure");
     figure.dataset.kind = kind;
     figure.append(zoom, element("figcaption", label));
@@ -1153,6 +1164,15 @@ function renderDetail(game, soundtracks) {
     soundtrack.hidden = !current.length;
     if (albums.length) renderSoundtracks(player, albums, {compact: true});
     if (sources.length && !albums.length) renderSoundtrackSources(player, sources);
+    if (platform === "playstation2" && albums.length) {
+      const pending = sources.filter(source => !albums.some(album => album.sourceUrl === source.url
+        || (album.collection === "JoshW" && album.sourceName === `psf2${decodeURIComponent(new URL(source.url).pathname)}`)));
+      if (pending.length) {
+        const downloads = element("div");
+        renderSoundtrackSources(downloads, pending);
+        player.append(downloads);
+      }
+    }
   }
 
   const releases = renderReleaseTable(

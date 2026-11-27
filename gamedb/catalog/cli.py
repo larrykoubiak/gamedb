@@ -80,6 +80,11 @@ def main(argv=None) -> int:
     handheld.add_argument("--report", type=Path, help="Write the full match report as JSON")
     handheld.add_argument("--publish", action="store_true", help="Publish the catalog to Explorer")
     handheld.add_argument("--sources", type=Path, help="Directory of saved reference indexes")
+    handheld_art = commands.add_parser("sync-handheld-artwork", help="Fill artwork gaps in published handheld catalogs")
+    handheld_art.add_argument("--platform", action="append", choices=(*HANDHELD_PLATFORMS, "virtualboy"),
+                              help="Limit the update to the selected platform. Repeat for multiple platforms")
+    handheld_art.add_argument("--publish", action="store_true", help="Update the catalog in Explorer")
+    handheld_art.add_argument("--report", type=Path, help="Write candidate catalogs into this directory")
     nes = commands.add_parser("seed-nes", help="Build the NES and Famicom retail catalog")
     nes.add_argument("--html", type=Path, help="Use a saved copy of the pinned Wikipedia HTML")
     nes.add_argument("--report", type=Path, help="Write the full match report as JSON")
@@ -282,6 +287,17 @@ def main(argv=None) -> int:
             result = seed_handheld(args.platform, args.report, publish_catalog=args.publish, sources=args.sources)
         except (OSError, ValueError) as error:
             handheld.error(str(error))
+        print(json.dumps(result, indent=2))
+        return 0
+
+    if args.command == "sync-handheld-artwork":
+        from .handheld_artwork import PLATFORMS, refresh_handheld_artwork
+
+        try:
+            platforms = tuple(dict.fromkeys(args.platform)) if args.platform else PLATFORMS
+            result = refresh_handheld_artwork(platforms, publish=args.publish, report=args.report)
+        except (OSError, ValueError) as error:
+            handheld_art.error(str(error))
         print(json.dumps(result, indent=2))
         return 0
 

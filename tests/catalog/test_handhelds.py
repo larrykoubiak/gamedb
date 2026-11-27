@@ -1,5 +1,6 @@
+from gamedb.catalog.handheld_artwork import fill_handheld_artwork
 from gamedb.catalog.handheld_media import _dat_games, _dsi_ware, _playdate_games
-from gamedb.catalog.handhelds import HandheldCatalog
+from gamedb.catalog.handhelds import HandheldCatalog, apply_handheld_retail_review
 from gamedb.catalog.references import SourceIndex
 from gamedb.catalog.retail import retail_tables
 from gamedb.explorer.related_media import _read_translation_index
@@ -59,6 +60,41 @@ def test_dsi_store_title_joins_by_product_code():
     assert release["titles"] == ["Example", "サンプル"]
     assert release["date"] == "2009-04-01"
     assert release["artwork"]["title"]["url"].endswith("/img/thumb/KEPJ.png")
+
+
+def test_handheld_art_requires_a_unique_title_and_compatible_market(tmp_path):
+    builder = HandheldCatalog("gb", {})
+    source = {"name": "Test", "url": "https://example.org"}
+    builder.add(["A Game", "Shared Name"], ["Europe", "USA"], source, channel="cartridge")
+    builder.add(["Other Game", "Shared Name"], ["USA"], source, channel="cartridge")
+    catalog = builder.payload()
+    thumbnails = tmp_path / "Nintendo - Game Boy" / "Named_Boxarts"
+    thumbnails.mkdir(parents=True)
+    for name in ("A Game (USA) (En,Fr).png", "Shared Name (USA).png"):
+        (thumbnails / name).touch()
+    first = fill_handheld_artwork(catalog, "gb", tmp_path, {})
+    game, other = catalog["games"]
+    north_america, europe = game["releases"]
+    assert north_america["market"] == "NA"
+    assert north_america["artwork"]["boxart"]["regions"] == ["USA"]
+    assert "artwork" not in europe and "artwork" not in other["releases"][0]
+    assert first["after"]["illustrated"] == 1
+    second = fill_handheld_artwork(catalog, "gb", tmp_path, {})
+    assert second["before"] == second["after"]
+
+
+def test_reviewed_mame_bootleg_is_removed_without_dropping_a_licensed_compilation():
+    builder = HandheldCatalog("gb", {})
+    for name, record in (("4 in 1", "4in1_001"), ("4-in-1 Fun Pak", "funpak")):
+        builder.add([name], ["USA"], {"name": "MAME", "url": "https://example.org", "record": record},
+                    channel="cartridge")
+    catalog = builder.payload()
+    review = {"retailReview": {"mameRecords": ["4in1_001"]}}
+    result = apply_handheld_retail_review(catalog, review)
+    assert result == {"excludedTitles": 1, "excludedReleases": 1, "mergedTitles": 0}
+    assert [game["title"] for game in catalog["games"]] == ["4-in-1 Fun Pak"]
+    assert catalog["summary"]["byMarket"]["NA"]["unmatched"] == 1
+    assert not apply_handheld_retail_review(catalog, review)
 
 
 def test_playdate_store_excludes_catalog_promotion_cards():

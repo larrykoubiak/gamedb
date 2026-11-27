@@ -83,6 +83,11 @@ artworkDialog.addEventListener("close", () => {
 });
 artworkFullImage.addEventListener("error", () => {
   if (!artworkDialog.open) return;
+  const fallback = artworkItems[artworkIndex]?.fallbackSource;
+  if (fallback && artworkFullImage.getAttribute("src") !== fallback) {
+    artworkFullImage.src = fallback;
+    return;
+  }
   artworkFullImage.hidden = true;
   artworkError.hidden = false;
 });

@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 from gamedb.config import PROJECT_ROOT
 from gamedb.database import create_database_engine
 from gamedb.vgm.inventory import BROWSER_AUDIO
+from gamedb.vgm.joshw import RETAIL_BUCKETS
 
 from . import retail
 from .cartridges import COUNTRY_MARKETS
@@ -67,7 +68,7 @@ TRACK_FORMATS = {suffix[1:] for suffix in BROWSER_AUDIO} | {
     "mod", "xm", "it", "s3m", "okt", "med", "pro", "pt36", "ahx", "sid", "adx", "afc", "adp", "ads",
     "aix", "at3", "genh", "xa", "grn", "mpg",
     "ape", "aif", "aiff", "aifc",
-    "dsf", "minidsf", "psf2", "minipsf2", "hps", "dsp", "ast", "brstm", "ss2", "vag", "vgmstream",
+    "dsf", "minidsf", "psf2", "minipsf2", "hps", "dsp", "ast", "brstm", "mib", "ss2", "vag", "vgmstream",
 }
 
 
@@ -254,6 +255,14 @@ def _archive_collection_manuals(content, url, source, market, claims):
                "sha1": doc["sha1"], "size": int(doc["size"])}
 
 
+def add_optical_soundtracks(connection, catalog, platform, review):
+    return add_soundtracks(
+        connection, catalog, platform=SYSTEMS[platform], secondary_platform=None, formats=sorted(TRACK_FORMATS),
+        aliases=review.get("soundtrackAliases", ()),
+        joshw_archive_bucket=RETAIL_BUCKETS[platform] if platform == "playstation2" else None,
+    )
+
+
 def seed(platform, report=None, *, publish_catalog=False, sources=None):
     roster = json.loads((PROJECT_ROOT / f"reference/{platform}_retail_roster.json").read_text(encoding="utf-8"))
     review = json.loads((PROJECT_ROOT / f"reference/{platform}_retail.json").read_text(encoding="utf-8"))
@@ -298,10 +307,7 @@ def seed(platform, report=None, *, publish_catalog=False, sources=None):
             if collection and collection[0] in indexes:
                 manuals.extend(_collection_manuals(catalog, indexes[collection[0]].content, collection, review))
             add_manuals(catalog, {}, reviewed=manuals)
-            catalog["summary"]["soundtracks"] = add_soundtracks(
-                connection, catalog, platform=SYSTEMS[platform], secondary_platform=None, formats=sorted(TRACK_FORMATS),
-                aliases=review.get("soundtrackAliases", ()),
-            )
+            catalog["summary"]["soundtracks"] = add_optical_soundtracks(connection, catalog, platform, review)
             add_soundtrack_sources(catalog, platform, review.get("soundtrackSources", ()))
             catalog["summary"]["metadata"] = retail.enrichment_coverage(catalog, MARKETS[platform])
             catalog["summary"]["mediaTitles"] = dict(Counter(
