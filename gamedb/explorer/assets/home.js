@@ -2,12 +2,21 @@ const catalogSections = document.querySelectorAll(".catalog-section");
 const visibleCard = ".catalog-card:not([hidden])";
 
 function showCatalogs(capabilities = {}) {
-  let total = 0;
+  let totalRetail = 0;
   for (const section of catalogSections) {
     const matrix = section.querySelector(".system-matrix");
+    let retail = 0;
+    let archive = 0;
     for (const link of matrix.querySelectorAll(".catalog-card")) {
-      const platform = link.pathname.split("/").at(-1);
-      link.hidden = capabilities[`${platform}Retail`] === false;
+      const platform = link.dataset.catalog || link.pathname.split("/").at(-1);
+      const published = capabilities[`${platform}Retail`] !== false;
+      const archiveUrl = link.dataset.archive;
+      link.hidden = !published && !archiveUrl;
+      if (archiveUrl) {
+        link.href = published ? `/catalog/${platform}` : archiveUrl;
+        archive += Number(!published);
+      }
+      retail += Number(published);
     }
     const rows = Array.from(matrix.tBodies[0].rows);
     for (const row of rows) row.hidden = !row.querySelector(visibleCard);
@@ -21,29 +30,18 @@ function showCatalogs(capabilities = {}) {
       for (const row of rows) row.cells[index].hidden = empty;
     }
 
-    const available = matrix.querySelectorAll(visibleCard).length;
     const count = section.querySelector(".catalog-count");
-    count.textContent = `${available} ${available === 1 ? "system" : "systems"}`;
+    count.textContent = section.classList.contains("handheld-section")
+      ? [
+          retail && `${retail} V2 ${retail === 1 ? "catalog" : "catalogs"}`,
+          archive && `${archive} V1 ${archive === 1 ? "library" : "libraries"}`,
+        ].filter(Boolean).join(" · ")
+      : `${retail} ${retail === 1 ? "system" : "systems"}`;
     count.hidden = false;
-    section.hidden = available === 0;
-    total += available;
+    section.hidden = retail + archive === 0;
+    totalRetail += retail;
   }
-  let handheldRetail = 0;
-  let handheldArchive = 0;
-  for (const link of document.querySelectorAll(".handheld-grid .catalog-card")) {
-    const platform = link.dataset.catalog;
-    const published = capabilities[`${platform}Retail`] !== false;
-    link.href = published ? `/catalog/${platform}` : link.dataset.archive;
-    handheldRetail += Number(published);
-    handheldArchive += Number(!published);
-  }
-  const count = document.querySelector(".handheld-section .catalog-count");
-  count.textContent = [
-    handheldRetail && `${handheldRetail} V2 ${handheldRetail === 1 ? "catalog" : "catalogs"}`,
-    handheldArchive && `${handheldArchive} V1 ${handheldArchive === 1 ? "library" : "libraries"}`,
-  ].filter(Boolean).join(" · ");
-  count.hidden = false;
-  document.querySelector("#no-retail-catalogs").hidden = total + handheldRetail > 0;
+  document.querySelector("#no-retail-catalogs").hidden = totalRetail > 0;
 }
 
 showCatalogs();

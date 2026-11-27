@@ -122,9 +122,11 @@ catalogs after syncing to publish the soundtrack links.
 
 ## Handheld retail catalogs
 
-Explorer’s **Handhelds** section includes the systems classified as handhelds
-in GameDB. It covers cartridges, PSP UMDs, DSiWare, dedicated Game & Watch
-units, and the downloadable libraries of systems such as Playdate and P-ECE.
+Explorer’s **Handhelds** section groups the systems classified as handhelds
+in GameDB by manufacturer and generation. Accessories such as PocketStation
+and the Dreamcast VMU appear in their host console’s generation. The section
+covers cartridges, PSP UMDs, DSiWare, dedicated Game & Watch units, and the
+downloadable libraries of systems such as Playdate and P-ECE.
 The catalogs show a release’s market when the source records one and offer
 archive downloads when the local inventory confirms the original files.
 

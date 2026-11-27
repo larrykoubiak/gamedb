@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Browse GameDB’s home consoles by generation and discover its handheld libraries.">
+  <meta name="description" content="Browse GameDB’s home console and handheld catalogs by manufacturer and generation.">
   <title>GameDB</title>
   <link rel="stylesheet" href="/styles.css?v=21">
-  <link rel="stylesheet" href="/home.css?v=10">
-  <script src="/home.js?v=4" defer></script>
+  <link rel="stylesheet" href="/home.css?v=11">
+  <script src="/home.js?v=5" defer></script>
 </head>
 <body class="catalog-home">
   <header class="home-bar">
@@ -349,173 +349,486 @@
       </table>
     </section>
     <p id="no-retail-catalogs" hidden>No retail catalogs are available. <a href="/archive">Browse the V1 archive</a>.</p>
-    <section class="handheld-section" aria-labelledby="handhelds">
+    <section class="catalog-section handheld-section" aria-labelledby="handhelds">
       <header class="catalog-heading">
         <h2 id="handhelds">Handhelds</h2>
         <span class="catalog-count" hidden></span>
       </header>
-      <div class="handheld-grid">
-        <a class="catalog-card" href="/catalog/lynx" data-catalog="lynx"
-            data-archive="/archive?system=863086d1521a97b1745bc1f9387435e0" title="Atari Lynx">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-lynx.png" width="330" height="38" alt="Atari Lynx"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/wonderswan" data-catalog="wonderswan"
-            data-archive="/archive?system=5c473ba6740d36ebb624d66c9650db1a" title="Bandai WonderSwan">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-wonderswan.png" width="330" height="50" alt="Bandai WonderSwan"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/wonderswancolor" data-catalog="wonderswancolor"
-            data-archive="/archive?system=819282a94afcd129f3e3dae79730aa59" title="Bandai WonderSwan Color">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-wonderswancolor.png" width="330" height="70" alt="Bandai WonderSwan Color"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/gb" data-catalog="gb"
-            data-archive="/archive?system=15a807447103ba5d7dc573625154c385" title="Nintendo Game Boy">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-gb.png" width="330" height="58" alt="Nintendo Game Boy"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/gbc" data-catalog="gbc"
-            data-archive="/archive?system=5353eaf6585a6e363193cde24c1cdc45" title="Nintendo Game Boy Color">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-gbc.png" width="330" height="39" alt="Nintendo Game Boy Color"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/gba" data-catalog="gba"
-            data-archive="/archive?system=b6ae64027002cc3547f2d709f9340263" title="Nintendo Game Boy Advance">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-gba.png" width="330" height="39" alt="Nintendo Game Boy Advance"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/pokemini" data-catalog="pokemini"
-            data-archive="/archive?system=bc64107a4c5d538ebb6eaa3c9bf5b2ad" title="Pokémon Mini">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-pokemini.png" width="330" height="52" alt="Pokémon Mini"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/nds" data-catalog="nds"
-            data-archive="/archive?system=ddb5637adfabbda569477db47d73e36d" title="Nintendo DS">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-nds.png" width="330" height="46" alt="Nintendo DS"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/3ds" data-catalog="3ds"
-            data-archive="/archive?system=5eea9018ad802c2f27dcf0218a5509ba" title="Nintendo 3DS">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-3ds.png" width="330" height="40" alt="Nintendo 3DS"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/virtualboy" data-catalog="virtualboy"
-            data-archive="/archive?system=ad5c1f13ebb7e086bb9a6ae2af76f037" title="Nintendo Virtual Boy">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-virtualboy.png" width="440" height="111" alt="Nintendo Virtual Boy"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/ngage" data-catalog="ngage"
-            data-archive="/archive?system=173f2cf2be138aab4d8600de2b47bfce" title="Nokia N-Gage">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-ngage.png" width="330" height="75" alt="Nokia N-Gage"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/gamegear" data-catalog="gamegear"
-            data-archive="/archive?system=c2dd2b7d76fd8f11a382ebf0572a1c7c" title="Sega Game Gear">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-gamegear.png" width="330" height="41" alt="Sega Game Gear"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/ngp" data-catalog="ngp"
-            data-archive="/archive?system=e548fdff6c2752e4f8ca2dbf9c3d582c" title="SNK Neo Geo Pocket">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-ngp.png" width="330" height="73" alt="SNK Neo Geo Pocket"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/ngpc" data-catalog="ngpc"
-            data-archive="/archive?system=36275f44d8b314a9dd5c4754ed4f4f2c" title="SNK Neo Geo Pocket Color">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-ngpc.png" width="330" height="98" alt="SNK Neo Geo Pocket Color"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/psp" data-catalog="psp"
-            data-archive="/archive?system=0331be696210cddee0ab6a3e1dac0315" title="PlayStation Portable">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-psp.png" width="330" height="108" alt="PlayStation Portable"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/psvita" data-catalog="psvita"
-            data-archive="/archive?system=1e889c81320622772484947a5996b261" title="PlayStation Vita">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-psvita.png" width="330" height="95" alt="PlayStation Vita"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/supervision" data-catalog="supervision"
-            data-archive="/archive?system=0c3c322f29036ce636e8b0a4a96d9f43" title="Watara Supervision">
-          <span class="catalog-card-art"><img src="/system-icons/retail-logo-supervision.png" width="331" height="46" alt="Watara Supervision"></span>
-        </a>
-        <a class="catalog-card" href="/catalog/analoguepocket" data-catalog="analoguepocket"
-            data-archive="/archive?system=f569c0100713d3833f8363b92eee775a" title="Analogue Pocket">
-          <span class="catalog-card-art catalog-card-name">Analogue Pocket</span>
-        </a>
-        <a class="catalog-card" href="/catalog/pece" data-catalog="pece"
-            data-archive="/archive?system=7b335d7b66979f45da91e674960614b8" title="Aquaplus P-ECE">
-          <span class="catalog-card-art catalog-card-name">Aquaplus P-ECE</span>
-        </a>
-        <a class="catalog-card" href="/catalog/designmaster" data-catalog="designmaster"
-            data-archive="/archive?system=6aeb460f0257ad2ff1cf30ee17da7fc5" title="Bandai Design Master">
-          <span class="catalog-card-art catalog-card-name">Bandai Design Master</span>
-        </a>
-        <a class="catalog-card" href="/catalog/pocketchallengev2" data-catalog="pocketchallengev2"
-            data-archive="/archive?system=9b6d99bab6ba5bca85c9d2df7336e98d" title="Benesse Pocket Challenge V2">
-          <span class="catalog-card-art catalog-card-name">Benesse Pocket Challenge V2</span>
-        </a>
-        <a class="catalog-card" href="/catalog/pocketchallengew" data-catalog="pocketchallengew"
-            data-archive="/archive?system=86455edfc7e4dfc173446c031ff75b8b" title="Benesse Pocket Challenge W">
-          <span class="catalog-card-art catalog-card-name">Benesse Pocket Challenge W</span>
-        </a>
-        <a class="catalog-card" href="/catalog/gamate" data-catalog="gamate"
-            data-archive="/archive?system=7c35093e984bed72c38ecc250f77c271" title="Bit Corporation Gamate">
-          <span class="catalog-card-art catalog-card-name">Bit Corporation Gamate</span>
-        </a>
-        <a class="catalog-card" href="/catalog/cybiko" data-catalog="cybiko"
-            data-archive="/archive?system=c632b15981667cba420c1157be35436c" title="Cybiko">
-          <span class="catalog-card-art catalog-card-name">Cybiko</span>
-        </a>
-        <a class="catalog-card" href="/catalog/cybikoxtreme" data-catalog="cybikoxtreme"
-            data-archive="/archive?system=5a2fb580f01312d469e16089c4f52768" title="Cybiko Xtreme">
-          <span class="catalog-card-art catalog-card-name">Cybiko Xtreme</span>
-        </a>
-        <a class="catalog-card" href="/catalog/gamepock" data-catalog="gamepock"
-            data-archive="/archive?system=3e05d509acb5a921dd3c23dce2841ee0" title="Epoch Game Pocket Computer">
-          <span class="catalog-card-art catalog-card-name">Epoch Game Pocket Computer</span>
-        </a>
-        <a class="catalog-card" href="/catalog/gp2x" data-catalog="gp2x"
-            data-archive="/archive?system=18ad6f4e9212bb6b7ab28cef6492a6c8" title="GamePark GP2X">
-          <span class="catalog-card-art catalog-card-name">GamePark GP2X</span>
-        </a>
-        <a class="catalog-card" href="/catalog/gp32" data-catalog="gp32"
-            data-archive="/archive?system=64a1f1a62c828de2cc8ff47555f65f25" title="GamePark GP32">
-          <span class="catalog-card-art catalog-card-name">GamePark GP32</span>
-        </a>
-        <a class="catalog-card" href="/catalog/gamemaster" data-catalog="gamemaster"
-            data-archive="/archive?system=e4074dcf88ef2e61e283ce1ecade721b" title="Hartung Game Master">
-          <span class="catalog-card-art catalog-card-name">Hartung Game Master</span>
-        </a>
-        <a class="catalog-card" href="/catalog/leapster" data-catalog="leapster"
-            data-archive="/archive?system=68ea316c81002a6acd5f844707205e2e" title="LeapFrog Leapster">
-          <span class="catalog-card-art catalog-card-name">LeapFrog Leapster</span>
-        </a>
-        <a class="catalog-card" href="/catalog/gamewatch" data-catalog="gamewatch"
-            data-archive="/archive?system=bcd6441871ea93b82cc20d8baf4af869" title="Nintendo Game &amp; Watch">
-          <span class="catalog-card-art catalog-card-name">Nintendo Game &amp; Watch</span>
-        </a>
-        <a class="catalog-card" href="/catalog/dsi" data-catalog="dsi"
-            data-archive="/archive?system=fdcd80ba8d58e3e0b145d71aadd71674" title="Nintendo DSi">
-          <span class="catalog-card-art catalog-card-name">Nintendo DSi</span>
-        </a>
-        <a class="catalog-card" href="/catalog/pandora" data-catalog="pandora"
-            data-archive="/archive?system=7871a4b3b1112c22f8fc2ecd15cdb819" title="OpenPandora Pandora">
-          <span class="catalog-card-art catalog-card-name">OpenPandora Pandora</span>
-        </a>
-        <a class="catalog-card" href="/catalog/playdate" data-catalog="playdate"
-            data-archive="/archive?system=20c1287b76a0e320cb356ef43ffa306e" title="Panic Playdate">
-          <span class="catalog-card-art catalog-card-name">Panic Playdate</span>
-        </a>
-        <a class="catalog-card" href="/catalog/vmu" data-catalog="vmu"
-            data-archive="/archive?system=b1806074716529ba6df3d7f22916d46e" title="Sega Visual Memory Unit">
-          <span class="catalog-card-art catalog-card-name">Sega Visual Memory Unit</span>
-        </a>
-        <a class="catalog-card" href="/catalog/pocketstation" data-catalog="pocketstation"
-            data-archive="/archive?system=84690317d90b5eceae4912f366d7a414" title="Sony PocketStation">
-          <span class="catalog-card-art catalog-card-name">Sony PocketStation</span>
-        </a>
-        <a class="catalog-card" href="/catalog/gamecom" data-catalog="gamecom"
-            data-archive="/archive?system=f38071b459921c5fa3c9191eae401f57" title="Tiger Game.com">
-          <span class="catalog-card-art catalog-card-name">Tiger Game.com</span>
-        </a>
-        <a class="catalog-card" href="/catalog/gameking" data-catalog="gameking"
-            data-archive="/archive?system=96c7e4e81881c78e54d3080dfc371b6c" title="TimeTop GameKing">
-          <span class="catalog-card-art catalog-card-name">TimeTop GameKing</span>
-        </a>
-        <a class="catalog-card" href="/catalog/gameking3" data-catalog="gameking3"
-            data-archive="/archive?system=801572394cf1c723b7f31b924a5314d6" title="TimeTop GameKing 3">
-          <span class="catalog-card-art catalog-card-name">TimeTop GameKing 3</span>
-        </a>
-        <a class="catalog-card" href="/catalog/megaduck" data-catalog="megaduck"
-            data-archive="/archive?system=51c4a424a782e6c7944f67e4a99f14de" title="Mega Duck / Cougar Boy">
-          <span class="catalog-card-art catalog-card-name">Mega Duck / Cougar Boy</span>
-        </a>
-      </div>
+      <table class="system-matrix handheld-matrix" role="table" aria-label="Handhelds by manufacturer and generation">
+        <colgroup>
+          <col class="maker-column">
+          <col>
+          <col>
+          <col>
+          <col>
+          <col>
+          <col>
+          <col>
+          <col>
+        </colgroup>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th scope="col" role="columnheader">Manufacturer</th>
+            <th scope="col" role="columnheader" data-era="2nd"><span>2nd</span> generation</th>
+            <th scope="col" role="columnheader" data-era="3rd"><span>3rd</span> generation</th>
+            <th scope="col" role="columnheader" data-era="4th"><span>4th</span> generation</th>
+            <th scope="col" role="columnheader" data-era="5th"><span>5th</span> generation</th>
+            <th scope="col" role="columnheader" data-era="6th"><span>6th</span> generation</th>
+            <th scope="col" role="columnheader" data-era="7th"><span>7th</span> generation</th>
+            <th scope="col" role="columnheader" data-era="8th"><span>8th</span> generation</th>
+            <th scope="col" role="columnheader" data-era="9th"><span>9th</span> generation</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th scope="row" role="rowheader">Analogue</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th"></td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th">
+              <a class="catalog-card" data-era="9th" href="/catalog/analoguepocket" data-catalog="analoguepocket"
+                  data-archive="/archive?system=f569c0100713d3833f8363b92eee775a" title="Analogue Pocket">
+                <span class="catalog-card-art catalog-card-name">Pocket</span>
+              </a>
+            </td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Aquaplus</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th">
+              <a class="catalog-card" data-era="6th" href="/catalog/pece" data-catalog="pece"
+                  data-archive="/archive?system=7b335d7b66979f45da91e674960614b8" title="Aquaplus P-ECE">
+                <span class="catalog-card-art catalog-card-name">P-ECE</span>
+              </a>
+            </td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Atari</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th">
+              <a class="catalog-card" data-era="4th" href="/catalog/lynx" data-catalog="lynx"
+                  data-archive="/archive?system=863086d1521a97b1745bc1f9387435e0" title="Atari Lynx">
+                <span class="catalog-card-art"><img src="/system-icons/retail-logo-lynx.png" width="330" height="38" alt="Atari Lynx"></span>
+              </a>
+            </td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th"></td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Bandai</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th">
+              <a class="catalog-card" data-era="5th" href="/catalog/designmaster" data-catalog="designmaster"
+                  data-archive="/archive?system=6aeb460f0257ad2ff1cf30ee17da7fc5" title="Bandai Design Master">
+                <span class="catalog-card-art catalog-card-name">Design Master</span>
+              </a>
+            </td>
+            <td role="cell" data-era="6th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="6th" href="/catalog/wonderswan" data-catalog="wonderswan"
+                    data-archive="/archive?system=5c473ba6740d36ebb624d66c9650db1a" title="Bandai WonderSwan">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-wonderswan.png" width="330" height="50" alt="Bandai WonderSwan"></span>
+                </a>
+                <a class="catalog-card" data-era="6th" href="/catalog/wonderswancolor" data-catalog="wonderswancolor"
+                    data-archive="/archive?system=819282a94afcd129f3e3dae79730aa59" title="Bandai WonderSwan Color">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-wonderswancolor.png" width="330" height="70" alt="Bandai WonderSwan Color"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Benesse</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th">
+              <a class="catalog-card" data-era="5th" href="/catalog/pocketchallengew" data-catalog="pocketchallengew"
+                  data-archive="/archive?system=86455edfc7e4dfc173446c031ff75b8b" title="Benesse Pocket Challenge W">
+                <span class="catalog-card-art catalog-card-name">Pocket Challenge W</span>
+              </a>
+            </td>
+            <td role="cell" data-era="6th">
+              <a class="catalog-card" data-era="6th" href="/catalog/pocketchallengev2" data-catalog="pocketchallengev2"
+                  data-archive="/archive?system=9b6d99bab6ba5bca85c9d2df7336e98d" title="Benesse Pocket Challenge V2">
+                <span class="catalog-card-art catalog-card-name">Pocket Challenge V2</span>
+              </a>
+            </td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Bit Corporation</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th">
+              <a class="catalog-card" data-era="4th" href="/catalog/gamate" data-catalog="gamate"
+                  data-archive="/archive?system=7c35093e984bed72c38ecc250f77c271" title="Bit Corporation Gamate">
+                <span class="catalog-card-art catalog-card-name">Gamate</span>
+              </a>
+            </td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th"></td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Cybiko</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="6th" href="/catalog/cybiko" data-catalog="cybiko"
+                    data-archive="/archive?system=c632b15981667cba420c1157be35436c" title="Cybiko">
+                  <span class="catalog-card-art catalog-card-name">Cybiko</span>
+                </a>
+                <a class="catalog-card" data-era="6th" href="/catalog/cybikoxtreme" data-catalog="cybikoxtreme"
+                    data-archive="/archive?system=5a2fb580f01312d469e16089c4f52768" title="Cybiko Xtreme">
+                  <span class="catalog-card-art catalog-card-name">Xtreme</span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Epoch</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd">
+              <a class="catalog-card" data-era="3rd" href="/catalog/gamepock" data-catalog="gamepock"
+                  data-archive="/archive?system=3e05d509acb5a921dd3c23dce2841ee0" title="Epoch Game Pocket Computer">
+                <span class="catalog-card-art catalog-card-name">Game Pocket Computer</span>
+              </a>
+            </td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th"></td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">GamePark</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th">
+              <a class="catalog-card" data-era="6th" href="/catalog/gp32" data-catalog="gp32"
+                  data-archive="/archive?system=64a1f1a62c828de2cc8ff47555f65f25" title="GamePark GP32">
+                <span class="catalog-card-art catalog-card-name">GP32</span>
+              </a>
+            </td>
+            <td role="cell" data-era="7th">
+              <a class="catalog-card" data-era="7th" href="/catalog/gp2x" data-catalog="gp2x"
+                  data-archive="/archive?system=18ad6f4e9212bb6b7ab28cef6492a6c8" title="GamePark GP2X">
+                <span class="catalog-card-art catalog-card-name">GP2X</span>
+              </a>
+            </td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Hartung</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th">
+              <a class="catalog-card" data-era="4th" href="/catalog/gamemaster" data-catalog="gamemaster"
+                  data-archive="/archive?system=e4074dcf88ef2e61e283ce1ecade721b" title="Hartung Game Master">
+                <span class="catalog-card-art catalog-card-name">Game Master</span>
+              </a>
+            </td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th"></td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">LeapFrog</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th">
+              <a class="catalog-card" data-era="6th" href="/catalog/leapster" data-catalog="leapster"
+                  data-archive="/archive?system=68ea316c81002a6acd5f844707205e2e" title="LeapFrog Leapster">
+                <span class="catalog-card-art catalog-card-name">Leapster</span>
+              </a>
+            </td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Nintendo</th>
+            <td role="cell" data-era="2nd">
+              <a class="catalog-card" data-era="2nd" href="/catalog/gamewatch" data-catalog="gamewatch"
+                  data-archive="/archive?system=bcd6441871ea93b82cc20d8baf4af869" title="Nintendo Game &amp; Watch">
+                <span class="catalog-card-art catalog-card-name">Game &amp; Watch</span>
+              </a>
+            </td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th">
+              <a class="catalog-card" data-era="4th" href="/catalog/gb" data-catalog="gb"
+                  data-archive="/archive?system=15a807447103ba5d7dc573625154c385" title="Nintendo Game Boy">
+                <span class="catalog-card-art"><img src="/system-icons/retail-logo-gb.png" width="330" height="58" alt="Nintendo Game Boy"></span>
+              </a>
+            </td>
+            <td role="cell" data-era="5th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="5th" href="/catalog/virtualboy" data-catalog="virtualboy"
+                    data-archive="/archive?system=ad5c1f13ebb7e086bb9a6ae2af76f037" title="Nintendo Virtual Boy">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-virtualboy.png" width="440" height="111" alt="Nintendo Virtual Boy"></span>
+                </a>
+                <a class="catalog-card" data-era="5th" href="/catalog/gbc" data-catalog="gbc"
+                    data-archive="/archive?system=5353eaf6585a6e363193cde24c1cdc45" title="Nintendo Game Boy Color">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-gbc.png" width="330" height="39" alt="Nintendo Game Boy Color"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="6th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="6th" href="/catalog/gba" data-catalog="gba"
+                    data-archive="/archive?system=b6ae64027002cc3547f2d709f9340263" title="Nintendo Game Boy Advance">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-gba.png" width="330" height="39" alt="Nintendo Game Boy Advance"></span>
+                </a>
+                <a class="catalog-card" data-era="6th" href="/catalog/pokemini" data-catalog="pokemini"
+                    data-archive="/archive?system=bc64107a4c5d538ebb6eaa3c9bf5b2ad" title="Pokémon Mini">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-pokemini.png" width="330" height="52" alt="Pokémon Mini"></span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="7th">
+              <div class="catalog-stack">
+                <a class="catalog-card" data-era="7th" href="/catalog/nds" data-catalog="nds"
+                    data-archive="/archive?system=ddb5637adfabbda569477db47d73e36d" title="Nintendo DS">
+                  <span class="catalog-card-art"><img src="/system-icons/retail-logo-nds.png" width="330" height="46" alt="Nintendo DS"></span>
+                </a>
+                <a class="catalog-card" data-era="7th" href="/catalog/dsi" data-catalog="dsi"
+                    data-archive="/archive?system=fdcd80ba8d58e3e0b145d71aadd71674" title="Nintendo DSi">
+                  <span class="catalog-card-art catalog-card-name">DSi</span>
+                </a>
+              </div>
+            </td>
+            <td role="cell" data-era="8th">
+              <a class="catalog-card" data-era="8th" href="/catalog/3ds" data-catalog="3ds"
+                  data-archive="/archive?system=5eea9018ad802c2f27dcf0218a5509ba" title="Nintendo 3DS">
+                <span class="catalog-card-art"><img src="/system-icons/retail-logo-3ds.png" width="330" height="40" alt="Nintendo 3DS"></span>
+              </a>
+            </td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Nokia</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th">
+              <a class="catalog-card" data-era="6th" href="/catalog/ngage" data-catalog="ngage"
+                  data-archive="/archive?system=173f2cf2be138aab4d8600de2b47bfce" title="Nokia N-Gage">
+                <span class="catalog-card-art"><img src="/system-icons/retail-logo-ngage.png" width="330" height="75" alt="Nokia N-Gage"></span>
+              </a>
+            </td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">OpenPandora</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th"></td>
+            <td role="cell" data-era="7th">
+              <a class="catalog-card" data-era="7th" href="/catalog/pandora" data-catalog="pandora"
+                  data-archive="/archive?system=7871a4b3b1112c22f8fc2ecd15cdb819" title="OpenPandora Pandora">
+                <span class="catalog-card-art catalog-card-name">Pandora</span>
+              </a>
+            </td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Panic</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th"></td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th">
+              <a class="catalog-card" data-era="9th" href="/catalog/playdate" data-catalog="playdate"
+                  data-archive="/archive?system=20c1287b76a0e320cb356ef43ffa306e" title="Panic Playdate">
+                <span class="catalog-card-art catalog-card-name">Playdate</span>
+              </a>
+            </td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Sega</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th">
+              <a class="catalog-card" data-era="4th" href="/catalog/gamegear" data-catalog="gamegear"
+                  data-archive="/archive?system=c2dd2b7d76fd8f11a382ebf0572a1c7c" title="Sega Game Gear">
+                <span class="catalog-card-art"><img src="/system-icons/retail-logo-gamegear.png" width="330" height="41" alt="Sega Game Gear"></span>
+              </a>
+            </td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th">
+              <a class="catalog-card" data-era="6th" href="/catalog/vmu" data-catalog="vmu"
+                  data-archive="/archive?system=b1806074716529ba6df3d7f22916d46e" title="Sega Visual Memory Unit">
+                <span class="catalog-card-art catalog-card-name">Visual Memory Unit</span>
+              </a>
+            </td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">SNK</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th">
+              <a class="catalog-card" data-era="5th" href="/catalog/ngp" data-catalog="ngp"
+                  data-archive="/archive?system=e548fdff6c2752e4f8ca2dbf9c3d582c" title="SNK Neo Geo Pocket">
+                <span class="catalog-card-art"><img src="/system-icons/retail-logo-ngp.png" width="330" height="73" alt="SNK Neo Geo Pocket"></span>
+              </a>
+            </td>
+            <td role="cell" data-era="6th">
+              <a class="catalog-card" data-era="6th" href="/catalog/ngpc" data-catalog="ngpc"
+                  data-archive="/archive?system=36275f44d8b314a9dd5c4754ed4f4f2c" title="SNK Neo Geo Pocket Color">
+                <span class="catalog-card-art"><img src="/system-icons/retail-logo-ngpc.png" width="330" height="98" alt="SNK Neo Geo Pocket Color"></span>
+              </a>
+            </td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Sony</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th">
+              <a class="catalog-card" data-era="5th" href="/catalog/pocketstation" data-catalog="pocketstation"
+                  data-archive="/archive?system=84690317d90b5eceae4912f366d7a414" title="Sony PocketStation">
+                <span class="catalog-card-art catalog-card-name">PocketStation</span>
+              </a>
+            </td>
+            <td role="cell" data-era="6th"></td>
+            <td role="cell" data-era="7th">
+              <a class="catalog-card" data-era="7th" href="/catalog/psp" data-catalog="psp"
+                  data-archive="/archive?system=0331be696210cddee0ab6a3e1dac0315" title="PlayStation Portable">
+                <span class="catalog-card-art"><img src="/system-icons/retail-logo-psp.png" width="330" height="108" alt="PlayStation Portable"></span>
+              </a>
+            </td>
+            <td role="cell" data-era="8th">
+              <a class="catalog-card" data-era="8th" href="/catalog/psvita" data-catalog="psvita"
+                  data-archive="/archive?system=1e889c81320622772484947a5996b261" title="PlayStation Vita">
+                <span class="catalog-card-art"><img src="/system-icons/retail-logo-psvita.png" width="330" height="95" alt="PlayStation Vita"></span>
+              </a>
+            </td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Tiger Electronics</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th">
+              <a class="catalog-card" data-era="5th" href="/catalog/gamecom" data-catalog="gamecom"
+                  data-archive="/archive?system=f38071b459921c5fa3c9191eae401f57" title="Tiger Game.com">
+                <span class="catalog-card-art catalog-card-name">Game.com</span>
+              </a>
+            </td>
+            <td role="cell" data-era="6th"></td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">TimeTop</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th"></td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th">
+              <a class="catalog-card" data-era="6th" href="/catalog/gameking" data-catalog="gameking"
+                  data-archive="/archive?system=96c7e4e81881c78e54d3080dfc371b6c" title="TimeTop GameKing">
+                <span class="catalog-card-art catalog-card-name">GameKing</span>
+              </a>
+            </td>
+            <td role="cell" data-era="7th">
+              <a class="catalog-card" data-era="7th" href="/catalog/gameking3" data-catalog="gameking3"
+                  data-archive="/archive?system=801572394cf1c723b7f31b924a5314d6" title="TimeTop GameKing 3">
+                <span class="catalog-card-art catalog-card-name">GameKing 3</span>
+              </a>
+            </td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Watara</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th">
+              <a class="catalog-card" data-era="4th" href="/catalog/supervision" data-catalog="supervision"
+                  data-archive="/archive?system=0c3c322f29036ce636e8b0a4a96d9f43" title="Watara Supervision">
+                <span class="catalog-card-art"><img src="/system-icons/retail-logo-supervision.png" width="331" height="46" alt="Watara Supervision"></span>
+              </a>
+            </td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th"></td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Welback</th>
+            <td role="cell" data-era="2nd"></td>
+            <td role="cell" data-era="3rd"></td>
+            <td role="cell" data-era="4th">
+              <a class="catalog-card" data-era="4th" href="/catalog/megaduck" data-catalog="megaduck"
+                  data-archive="/archive?system=51c4a424a782e6c7944f67e4a99f14de" title="Mega Duck / Cougar Boy">
+                <span class="catalog-card-art catalog-card-name">Mega Duck / Cougar Boy</span>
+              </a>
+            </td>
+            <td role="cell" data-era="5th"></td>
+            <td role="cell" data-era="6th"></td>
+            <td role="cell" data-era="7th"></td>
+            <td role="cell" data-era="8th"></td>
+            <td role="cell" data-era="9th"></td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </main>
 </body>
